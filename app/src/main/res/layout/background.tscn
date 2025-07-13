@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8ral72y1fx6r"]
+
+[ext_resource type="Script" uid="uid://yq5qaw8tmn16" path="res://core/java/android/view/view_group.gd" id="1_m66ce"]
+
+[node name="mainLayout" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_m66ce")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://w5onfsn6xmo2"]
+
+[ext_resource type="Script" uid="uid://gqoe6fmif420" path="res://app/src/main/java/com/easytech/wc2/ec_application.gd" id="1"]
+[ext_resource type="Script" uid="uid://ymce0oyk8gbg" path="res://app/src/main/java/com/easytech/wc2/wc2_activity.gd" id="2"]
+
+[node name="ecApplication" type="Node"]
+script = ExtResource("1")
+
+[node name="Wc2Activity" type="Node" parent="."]
+script = ExtResource("2")

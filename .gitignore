@@ -1,3 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
+.import/
 /android/
+*.import
+*.uid
+
+# Game Assets
+/app/src/main/assets
