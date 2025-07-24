@@ -10,7 +10,6 @@ extends "res://app/src/main/cpp/native-lib.gd"
 ## Godot document. Currently this is handled by the engine and therefore not by
 ## this class.
 
-
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
 const _Wc2Activity = preload("res://app/src/main/java/com/easytech/wc2/wc2_activity.gd")
 const _ecLine = preload("res://app/src/main/cpp/ec_line.gd")
@@ -29,9 +28,8 @@ var _orientation: int
 var _canvas_size_mode: int
 var _blend_mode := 2
 var _render_shape := 3
-var _bound_texture: _ecTexture
+var _bound_texture: Texture2D
 var _occupied_buffer := 0
-var _loaded_texture: Dictionary[StringName, WeakRef] = {}
 var _fade_color := Color.BLACK
 var _render_target: CanvasItem
 
@@ -90,9 +88,7 @@ func create_texture_with_string(a1: String, a2: String, a3: int, a4: int, width:
 	var r_texture:Array[Texture] = []
 	if ec_texture_with_string(a1, a2, a3, a4, r_width, r_height, r_texture):
 		var ec_texture := _ecTexture.new()
-		ec_texture.ref_count = 1
-		ec_texture.width = r_width[0]
-		ec_texture.height = r_height[0]
+		ec_texture.size_override = Vector2i(r_width[0], r_height[0])
 		ec_texture.texture = r_texture[0]
 		bind_texture(ec_texture)
 		return ec_texture
@@ -100,40 +96,19 @@ func create_texture_with_string(a1: String, a2: String, a3: int, a4: int, width:
 		return null
 
 
-# Other varients of LoadTexture are omitted.
-func load_texture(texture_name: String) -> _ecTexture:
-	if not _loaded_texture.has(texture_name):
-		_flush()
-		var r_width:Array[int] = []
-		var r_height:Array[int] = []
-		var r_texture:Array[Texture2D] = []
-		if ec_texture_load(texture_name, r_width, r_height, r_texture):
-			var ec_texture := _ecTexture.new()
-			ec_texture.ref_count = 1
-			ec_texture.width = r_width[0]
-			ec_texture.height = r_height[0]
-			ec_texture.texture = r_texture[0]
-			_loaded_texture[texture_name] = weakref(ec_texture)
-			bind_texture(ec_texture)
-			return ec_texture
-		else:
-			return null
+## Other varients of LoadTexture are omitted.
+func load_texture(texture_name: String) -> Texture2D:
+	# Caching of the texture is handled by ResourceLoader.
+	var r_texture:Array[Texture2D] = []
+	if ec_texture_load(texture_name, [], [], r_texture):
+		return r_texture[0]
 	else:
-		var loaded_texture: _ecTexture = _loaded_texture[texture_name].get_ref()
-		loaded_texture.ref_count += 1
-		return loaded_texture
+		return null
 
 
-func _free_texture(texture_name: StringName) -> void:
-	if not _loaded_texture.has(texture_name):
-		return 
-	var freed_texture: _ecTexture = _loaded_texture[texture_name].get_ref()
-	if freed_texture == null:
-		_loaded_texture.erase(texture_name)
-		return
-	freed_texture.ref_count -= 1
-	if freed_texture.ref_count == 0:
-		_loaded_texture.erase(texture_name)
+func free_texture(_texture_name: StringName) -> void:
+	# nothing to do
+	pass
 
 
 func render_begin():

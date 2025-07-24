@@ -1,6 +1,5 @@
 
 const _Context = preload("res://core/java/android/content/context.gd")
-const _ecFile = preload("res://app/src/main/cpp/ec_file.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 
 static var _str_version_name: String
@@ -39,12 +38,11 @@ static func get_2x_path(file_name: String, _a2: String) -> String:
 static func get_path(file_name: String, _a2: String) -> String:
 	const ASSETS_PATH = "res://app/src/main/assets/"
 	var path := ASSETS_PATH + file_name
-	var file := _ecFile.new()
-	if file.is_file_exist(path):
+	if ResourceLoader.exists(path) or FileAccess.file_exists(path):
 		return path
 	else:
 		path = ASSETS_PATH + _lang_dir + '/' + file_name
-		if file.is_file_exist(path):
+		if ResourceLoader.exists(path) or FileAccess.file_exists(path):
 			return path
 		else:
 			return ""
@@ -74,7 +72,6 @@ static func Java_com_easytech_wc2_ecRenderer_nativeInit(game_view_width: float, 
 	_s_time_offset = 0
 	_m_old_time = _get_time()
 	# NOTTODO: assign a callback that is triggered when an in app purchase is performed
-	
 
 
 static func _ec_game_init(canvas_width: float, canvas_height: float, orientation: int, game_view_width: float, game_view_height: float) -> void:
@@ -151,23 +148,17 @@ static func ec_texture_with_string(a1: String, a2: String, a3: int, a4: int, r_w
 
 static func ec_texture_load(texture_name: String, r_width: Array[int], r_height: Array[int], r_texture: Array[Texture2D]) -> bool:
 	var path := ""
-	var is_2x := false
 	if g_content_scale_factor == 2.0:
 		path = get_2x_path(texture_name, "")
-		if path != "":
-			is_2x = true
-	if not is_2x:
+	if path == "":
 		path = get_path(texture_name, "")
-	var file := _ecFile.new()
-	var texture := file.open(path, FileAccess.READ) as Texture2D
+	var texture := load(path) as Texture2D
 	if texture == null:
+		if not texture_name.ends_with(".png"):
+			texture_name = texture_name.substr(0, texture_name.rfind(".")) + ".png"
+			return ec_texture_load(texture_name, r_width, r_height, r_texture)
 		return false
-	file.close()
-	r_texture.append(texture )
-	if is_2x:
-		r_width.append(texture.get_width() / 2)
-		r_height.append(texture.get_height() / 2)
-	else:
-		r_width.append(texture.get_width())
-		r_height.append(texture.get_height())
+	r_texture.append(texture)
+	r_width.append(texture.get_width())
+	r_height.append(texture.get_height())
 	return true
