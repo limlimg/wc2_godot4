@@ -1,6 +1,7 @@
 
 const _Context = preload("res://core/java/android/content/context.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
+const _CStateManager = preload("res://app/src/main/cpp/c_state_manager.gd")
 
 static var _str_version_name: String
 static var _document_file_path: String
@@ -54,39 +55,69 @@ static var _m_old_time: int # in ms
 
 static func Java_com_easytech_wc2_ecRenderer_nativeInit(game_view_width: float, game_view_height: float, _a3, _a4) -> void:
 	var ratio = game_view_width / game_view_height
-	var canvas_width: float
-	var canvas_height: float = 320
+	var content_scale_width: float
+	var content_scale_height: float
 	if ratio > 1.8875:
-		canvas_width = 640
+		content_scale_width = 640
+		content_scale_height = 320
 	elif ratio > 1.7219:
-		canvas_width = 568
+		content_scale_width = 568
+		content_scale_height = 320
 	elif ratio > 1.5844:
-		canvas_width = 534
+		content_scale_width = 534
+		content_scale_height = 320
 	elif ratio >= 1.4062:
-		canvas_width = 480
+		content_scale_width = 480
+		content_scale_height = 320
 	else:
-		canvas_width = 1024
-		canvas_height = 768
+		content_scale_width = 1024
+		content_scale_height = 768
 	g_content_scale_factor = 2.0
-	_ec_game_init(canvas_width, canvas_height, 0, game_view_width, game_view_height)
+	_ec_game_init(content_scale_width, content_scale_height, 0, game_view_width, game_view_height)
 	_s_time_offset = 0
 	_m_old_time = _get_time()
 	# NOTTODO: assign a callback that is triggered when an in app purchase is performed
 
 
-static func _ec_game_init(canvas_width: float, canvas_height: float, orientation: int, game_view_width: float, game_view_height: float) -> void:
+static func _ec_game_init(content_scale_width: float, content_scale_height: float, orientation: int, game_view_width: float, game_view_height: float) -> void:
 	_set_ai_rand_seed(randi())
 	_set_rand_seed(randi())
-	_ecGraphics.instance().init(canvas_width, canvas_height, orientation, game_view_width, game_view_height)
+	_ecGraphics.instance().init(content_scale_width, content_scale_height, orientation, game_view_width, game_view_height)
+	# GUIManager is no longer a singleton, can't initialize here
+	_CStateManager.instance().init()
+	# no creation and registration of states here
+	
 	# TODO: lots of initialization
 
 
-static func _set_ai_rand_seed(seed: int) -> void:
-	pass
+static var _ai_rand_seed: int
 
+static func _set_ai_rand_seed(seed: int) -> void:
+	_ai_rand_seed = seed
+
+
+static func get_ai_rand_seed() -> int:
+	return _ai_rand_seed
+
+
+static func get_ai_rand() -> int:
+	_ai_rand_seed = 214013 * _ai_rand_seed + 2531011
+	return (_ai_rand_seed >> 16) & 0x7FFF
+
+
+static var _rand_seed: int
 
 static func _set_rand_seed(seed: int) -> void:
-	pass
+	_rand_seed = seed
+
+
+static func get_rand_seed() -> int:
+	return _rand_seed
+
+
+static func  get_rand() -> int:
+	_rand_seed = 1103515245 * _rand_seed + 12345;
+	return (_rand_seed >> 16) & 0x7FFF;
 
 
 static func _get_time() -> int:

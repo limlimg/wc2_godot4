@@ -1,16 +1,24 @@
 extends "res://core/java/android/app/activity.gd"
 
-# An Activity in Android development is similar to a scene in Godot. Wc2Activity
-# is the Activity class implemented in the original Java game code. It provides
-# the following functionalities:
-# 1. managing the life cycle of the game (starting, pausing etc.)
-# 2. loading libworld-conqueror-2.so the native library
-# 3. handling in-game purchase and promotions
-# 4. reacting to user pressing the back button
-# 5. setting the position and size of the entire game view
-# 6. playing background music and sound effects
-# 7. hiding the system navigation ui
-# 8. detecting system language and setting up localization
+## An Activity in Android development is similar to a scene in Godot. It is the
+## primary controller of an App and can be switched to another.
+##
+## Wc2Activity is the only Activity class implemented in the original Java game
+## code. It provides the following functionalities:
+## 1. managing the life cycle of the game (starting, pausing etc.)
+## 2. loading libworld-conqueror-2.so the native library
+## 3. detecting system language and setting up localization
+## 4. setting the position and size of the entire game view
+## 5. hiding the system navigation ui
+## 6. providing a callback that is triggered when the back button is pressed
+## 7. bridging the call from native code to other java methods to:
+##     7.1 play background music and sound effects
+##     7.2 handle in game purchase
+## 
+## In this Godot port, 7.2 is obviously not implemented. And because the states
+## take the position of main scenes from Activity, 4. and 6. are mostly
+## irrelevant. To learn about states, see
+## "res://app/src/main/cpp/c_state_manager.gd"
 
 const _R = preload("res://app/src/main/java/com/easytech/wc2/r.gd")
 const _ecGLSurfaceView = preload("res://app/src/main/java/com/easytech/wc2/ec_gl_surface_view.gd")
@@ -82,9 +90,12 @@ func _prepare_view_size(show_game_view: bool) -> void:
 
 
 func _show_game_view(_width: float, _height: float) -> void:
-	# NOTTODO: adjust view size according to build version and model 
+	# NOTTODO: adjust view size according to build version and model
 	if _m_game_view_width > (_m_game_view_height * 16) / 9:
 		_m_game_view_width = (_m_game_view_height * 16) / 9
+		get_viewport().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
+	else:
+		get_viewport().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_IGNORE
 	_ecRenderer.is_app_running = true
 	_m_gl_view = _ecGLSurfaceView.new()
 	_m_gl_view.size = Vector2(_m_game_view_width, _m_game_view_height)
