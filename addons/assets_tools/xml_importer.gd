@@ -1,7 +1,13 @@
 @tool
 extends EditorImportPlugin
 
-var _regex_not_whitespace := RegEx.create_from_string(r"[^\s]+")
+## Curiously, unlike .bin files, .xml files are not marked for export by a
+## loader (probably because it is recognized as a text file within the engine).
+## Neither does a loader instruct the engine to scan .xml files for syntax
+## errors. The downside of defining an importer is that it stops the editor
+## from opening .xml files inside the script editor.
+
+static var _regex_not_whitespace := RegEx.create_from_string(r"[^\s]+")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml"
@@ -52,6 +58,14 @@ func _get_save_extension() -> String:
 
 
 func _import(source_file: String, save_path: String, options: Dictionary, platform_variants: Array[String], gen_files: Array[String]) -> Error:
+	var xml = static_load(source_file)
+	if xml is not XML:
+		return xml
+	var filename = save_path + "." + _get_save_extension()
+	return ResourceSaver.save(xml, filename)
+
+
+static func static_load(source_file: String) -> Variant:
 	var parser := XMLParser.new()
 	var err := parser.open(source_file)
 	if err != OK:
@@ -67,11 +81,10 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 			return ERR_PARSE_ERROR
 	elif err != ERR_FILE_EOF:
 		return err
-	var filename = save_path + "." + _get_save_extension()
-	return ResourceSaver.save(xml, filename)
+	return xml
 
 
-func _parse_section(parser: XMLParser, section: Array[XMLNode], source_file: String) -> Error:
+static func _parse_section(parser: XMLParser, section: Array[XMLNode], source_file: String) -> Error:
 	var err := parser.read()
 	var line := parser.get_current_line()
 	while err == OK:

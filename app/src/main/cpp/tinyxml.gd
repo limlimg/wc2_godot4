@@ -1,3 +1,4 @@
+@tool
 extends TiXmlNode
 
 ## The top level class of this file is TiXmlDocument. Since writing methods are
@@ -21,6 +22,12 @@ func load_file(path: String) -> bool:
 	if xml == null:
 		return false
 	_value = path
+	return load_resource(xml)
+
+
+func load_resource(xml: XML) -> bool:
+	if xml == null or xml.nodes.is_empty():
+		return false
 	_children_resrouce = xml.nodes
 	return true
 

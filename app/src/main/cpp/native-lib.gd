@@ -2,6 +2,7 @@
 const _Context = preload("res://core/java/android/content/context.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 const _CStateManager = preload("res://app/src/main/cpp/c_state_manager.gd")
+const _ecStringTable = preload("res://app/src/main/cpp/ec_string_table.gd")
 
 static var _str_version_name: String
 static var _document_file_path: String
@@ -50,6 +51,8 @@ static func get_path(file_name: String, _a2: String) -> String:
 
 
 static var g_content_scale_factor := 1.0
+static var g_localizable_strings := _ecStringTable.new()
+static var g_string_table := _ecStringTable.new()
 static var _s_time_offset: int # in ms
 static var _m_old_time: int # in ms
 
@@ -85,8 +88,16 @@ static func _ec_game_init(content_scale_width: float, content_scale_height: floa
 	_ecGraphics.instance().init(content_scale_width, content_scale_height, orientation, game_view_width, game_view_height)
 	# GUIManager is no longer a singleton, can't initialize here
 	_CStateManager.instance().init()
+	var string_table_key: StringName
+	if _ecGraphics.instance()._content_scale_size_mode == 3:
+		string_table_key = &"stringtable iPad"
+	else:
+		string_table_key = &"stringtable"
+	var string_table_name := g_localizable_strings.get_string(string_table_key)
+	g_string_table.load(string_table_name)
+	TranslationServer.add_translation(g_string_table._translation)
 	# no creation and registration of states here
-	
+	g_localizable_strings.load("Localizable.strings")
 	# TODO: lots of initialization
 
 
