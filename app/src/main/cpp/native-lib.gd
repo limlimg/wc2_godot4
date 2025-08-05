@@ -88,6 +88,8 @@ static func _ec_game_init(content_scale_width: float, content_scale_height: floa
 	_ecGraphics.instance().init(content_scale_width, content_scale_height, orientation, game_view_width, game_view_height)
 	# GUIManager is no longer a singleton, can't initialize here
 	_CStateManager.instance().init()
+	# no creation and registration of states here
+	g_localizable_strings.load("Localizable.strings")
 	var string_table_key: StringName
 	if _ecGraphics.instance()._content_scale_size_mode == 3:
 		string_table_key = &"stringtable iPad"
@@ -96,8 +98,6 @@ static func _ec_game_init(content_scale_width: float, content_scale_height: floa
 	var string_table_name := g_localizable_strings.get_string(string_table_key)
 	g_string_table.load(string_table_name)
 	TranslationServer.add_translation(g_string_table._translation)
-	# no creation and registration of states here
-	g_localizable_strings.load("Localizable.strings")
 	# TODO: lots of initialization
 
 

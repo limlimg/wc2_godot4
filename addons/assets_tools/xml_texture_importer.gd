@@ -72,17 +72,20 @@ func _get_save_extension() -> String:
 
 
 func _import(source_file: String, save_path: String, options: Dictionary, platform_variants: Array[String], gen_files: Array[String]) -> Error:
+	var xml = _XmlImporter.static_load(source_file)
+	if xml is not XML:
+		return xml
 	var doc := _TiXmlDocument.new()
-	var err := doc.load_file(source_file)
-	if err != OK:
-		return err
+	if not doc.load_resource(xml):
+		push_error("{0} is empty".format([source_file]))
+		return FAILED
 	var root := doc.root_element()
 	if root == null or root.value() != "plist":
-		push_error("Parse Error: Expected root node of type <plist> in {0}".format([source_file]))
+		push_error("{0}: Expected root node of type <plist> in {1}".format([error_string(ERR_PARSE_ERROR), source_file]))
 		return ERR_PARSE_ERROR
 	var dict := root.first_child_element("dict")
 	if dict == null:
-		push_error("Parse Error: First child of <plist> should be <dict> in {0}".format([source_file]))
+		push_error("{0}: First child of <plist> should be <dict> in {1}".format([error_string(ERR_PARSE_ERROR), source_file]))
 		return ERR_PARSE_ERROR
 	var transltion := Translation.new()
 	transltion.locale = options["locale"]
@@ -90,16 +93,16 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	while node != null:
 		var key := node.get_text()
 		if key == "":
-			push_error("Parse Error: Node at line {0} should contain a text child as key in {1}".format([node.row() + 1, source_file]))
+			push_error("{0}: Node at line {1} should contain a text child as key in {2}".format([error_string(ERR_PARSE_ERROR), node.row() + 1, source_file]))
 			return ERR_PARSE_ERROR
 		var last_node_row := node.row() + 1
 		node = node.next_sibling_element()
 		if node == null:
-			push_error("Parse Error: Node at line {0} should be followed by a node containing string in {1}".format([last_node_row, source_file]))
+			push_error("{0}: Node at line {1} should be followed by a node containing string in {2}".format([error_string(ERR_PARSE_ERROR), last_node_row, source_file]))
 			return ERR_PARSE_ERROR
 		var value := node.get_text()
 		if value == "":
-			push_error("Parse Error: Node at line {0} should contain a text child as string in {1}".format([node.row() + 1, source_file]))
+			push_error("{0}: Node at line {1} should contain a text child as string in {2}".format([error_string(ERR_PARSE_ERROR), node.row() + 1, source_file]))
 			return ERR_PARSE_ERROR
 		transltion.add_message(key, value.c_unescape())
 		node = node.next_sibling_element()
