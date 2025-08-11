@@ -5,7 +5,8 @@ var IMPORTERS = [
 	preload("res://addons/assets_tools/fnt_importer.gd"),
 	preload("res://addons/assets_tools/raw_importer.gd"),
 	preload("res://addons/assets_tools/xml_importer.gd"),
-	preload("res://addons/assets_tools/xml_translation_importer.gd")
+	preload("res://addons/assets_tools/xml_translation_importer.gd"),
+	preload("res://addons/assets_tools/xml_armies_importer.gd"),
 ]
 
 var LOADERS = [

@@ -3,7 +3,6 @@ extends EditorImportPlugin
 
 # Reference: Godot source code of resource_importer_csv_translation (https://github.com/godotengine/godot/blob/master/editor/import/resource_importer_csv_translation.cpp)
 
-const _XmlImporter = preload("res://addons/assets_tools/xml_importer.gd")
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
 
 func _get_importer_name() -> String:

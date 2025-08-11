@@ -20,26 +20,21 @@ func _init() -> void:
 
 
 func load_file(source_file: String) -> Error:
-	var res = load(source_file) as XML
-	if res != null:
-		_children_resrouce = res.nodes
-		return OK
-	else:
-		var parser := XMLParser.new()
-		var err := parser.open(source_file)
-		if err != OK:
-			push_error("{0}: Failed to open {1}".format([error_string(err), source_file]))
-			return err
-		err = _parse_section(parser, _children_resrouce, source_file)
-		if err == OK:
-			var end_name := parser.get_node_name()
-			var line := parser.get_current_line()
-			if parser.read() != ERR_FILE_EOF:
-				push_error("Parse Error: Unexpected closing tag in {0}: {1} on line {2}".format([source_file, end_name, line]))
-				return ERR_PARSE_ERROR
-		elif err != ERR_FILE_EOF:
-			return err
-		return OK
+	var parser := XMLParser.new()
+	var err := parser.open(source_file)
+	if err != OK:
+		push_error("{0}: Failed to open {1}".format([error_string(err), source_file]))
+		return err
+	err = _parse_section(parser, _children_resrouce, source_file)
+	if err == OK:
+		var end_name := parser.get_node_name()
+		var line := parser.get_current_line()
+		if parser.read() != ERR_FILE_EOF:
+			push_error("Parse Error: Unexpected closing tag in {0}: {1} on line {2}".format([source_file, end_name, line]))
+			return ERR_PARSE_ERROR
+	elif err != ERR_FILE_EOF:
+		return err
+	return OK
 
 
 static func _parse_section(parser: XMLParser, section: Array[XMLNode], source_file: String) -> Error:
