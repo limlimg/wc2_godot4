@@ -75,13 +75,13 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	var err := doc.load_file(source_file)
 	if err != OK:
 		return err
-	var root := doc.root_element()
-	if root == null or root.value() != "plist":
-		push_error("Parse Error: Expected root node of type <plist> in {0}".format([source_file]))
+	var root := doc.first_child_element("plist")
+	if root == null:
+		push_error("Parse Error: Failed to find <plist> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
 	var dict := root.first_child_element("dict")
 	if dict == null:
-		push_error("Parse Error: First child of <plist> should be <dict> in {0}".format([source_file]))
+		push_error("Parse Error: Failed to find <dict> in children of <plist> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
 	var transltion := Translation.new()
 	transltion.locale = options["locale"]
