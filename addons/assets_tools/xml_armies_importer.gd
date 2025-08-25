@@ -1,8 +1,6 @@
 @tool
 extends EditorImportPlugin
 
-# Reference: Godot source code of resource_importer_csv_translation (https://github.com/godotengine/godot/blob/master/editor/import/resource_importer_csv_translation.cpp)
-
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
 const _ArmyDef = preload("res://app/src/main/cpp/imported/army_def.gd")
 const _ArmyDefList = preload("res://app/src/main/cpp/imported/army_def_list.gd")
@@ -93,11 +91,11 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 			if xml_army.query_int_attribute("minatk", p) != xml_army.TIXML_SUCCESS:
 				push_error("Parse Error: Element does not have valid \"minatk\" attibute on line {0} of {1}".format([xml_country.row() + 1, source_file]))
 				return ERR_PARSE_ERROR
-			res_army.min_atk = p.pop_back()
+			res_army.minatk = p.pop_back()
 			if xml_army.query_int_attribute("maxatk", p) != xml_army.TIXML_SUCCESS:
 				push_error("Parse Error: Element does not have valid \"maxatk\" attibute on line {0} of {1}".format([xml_country.row() + 1, source_file]))
 				return ERR_PARSE_ERROR
-			res_army.max_atk = p.pop_back()
+			res_army.maxatk = p.pop_back()
 			res_country.armies[res_army.id] = res_army
 			xml_army = xml_army.next_sibling_element()
 		if country_name == "others":

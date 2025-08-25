@@ -29,7 +29,7 @@ var strength: int
 var movement: int
 
 @export
-var min_atk: int
+var minatk: int
 
 @export
-var max_atk: int
+var maxatk: int

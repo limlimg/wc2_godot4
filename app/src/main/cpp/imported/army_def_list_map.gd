@@ -1,8 +1,10 @@
 class_name ArmyDefListMap
 extends Resource
 
-@export
-var others: ArmyDefList
+const _ArmyDefList = preload("res://app/src/main/cpp/imported/army_def_list.gd")
 
 @export
-var countries: Dictionary[StringName, ArmyDefList]
+var others: _ArmyDefList
+
+@export
+var countries: Dictionary[StringName, _ArmyDefList]
