@@ -319,8 +319,8 @@ class TiXmlElement:
 		if name not in _resource.attributes:
 			return TIXML_NO_ATTRIBUTE
 		var s = _resource.attributes[name]
-		if not s.is_valid_int():
-			return TIXML_WRONG_TYPE
+		#if not s.is_valid_int():
+			#return TIXML_WRONG_TYPE
 		p.append(s.to_int())
 		return TIXML_SUCCESS
 	
@@ -329,8 +329,8 @@ class TiXmlElement:
 		if name not in _resource.attributes:
 			return TIXML_NO_ATTRIBUTE
 		var s = _resource.attributes[name]
-		if not s.is_valid_float():
-			return TIXML_WRONG_TYPE
+		#if not s.is_valid_float():
+			#return TIXML_WRONG_TYPE
 		p.append(s.to_float())
 		return TIXML_SUCCESS
 	
@@ -408,16 +408,16 @@ class TiXmlAttribute:
 	
 	func query_int_value(p: Array[int]) -> int:
 		var s := value()
-		if not s.is_valid_int():
-			return TIXML_WRONG_TYPE
+		#if not s.is_valid_int():
+			#return TIXML_WRONG_TYPE
 		p.append(s.to_int())
 		return TIXML_SUCCESS
 	
 	
 	func query_float_value(p: Array[float]) -> int:
 		var s := value()
-		if not s.is_valid_float():
-			return TIXML_WRONG_TYPE
+		#if not s.is_valid_float():
+			#return TIXML_WRONG_TYPE
 		p.append(s.to_float())
 		return TIXML_SUCCESS
 	

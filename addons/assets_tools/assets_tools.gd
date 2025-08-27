@@ -8,7 +8,8 @@ var IMPORTERS = [
 	preload("res://addons/assets_tools/xml_translation_importer.gd"),
 	preload("res://addons/assets_tools/xml_armies_importer.gd"),
 	preload("res://addons/assets_tools/xml_cards_importer.gd"),
-	preload("res://addons/assets_tools/xml_units_motions_importer.gd"),
+	preload("res://addons/assets_tools/xml_unit_motions_importer.gd"),
+	preload("res://addons/assets_tools/xml_unit_positions_importer.gd"),
 ]
 
 var LOADERS = [

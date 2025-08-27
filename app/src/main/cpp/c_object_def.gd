@@ -6,10 +6,13 @@ const _CardDef = preload("res://app/src/main/cpp/imported/card_def.gd")
 const _CardDefList = preload("res://app/src/main/cpp/imported/card_def_list.gd")
 const _UnitMotions = preload("res://app/src/main/cpp/imported/unit_motions.gd")
 const _UnitMotionsMap = preload("res://app/src/main/cpp/imported/unit_motions_map.gd")
+const _UnitPositions = preload("res://app/src/main/cpp/imported/unit_positions.gd")
+const _UnitPositionsMap = preload("res://app/src/main/cpp/imported/unit_positions_map.gd")
 
 var _army_def: _ArmyDefListMap
 var _card_def: _CardDefList
 var _unit_motions: _UnitMotionsMap
+var _unit_positions: _UnitPositionsMap
 
 func _load_army_def() -> void:
 	_army_def = load(get_path("armydef.xml", "")) as _ArmyDefListMap
@@ -58,3 +61,15 @@ func get_unit_motions(type: String, country: String) -> _UnitMotions:
 		if _unit_motions.units.has(key):
 			return _unit_motions.units[key]
 	return _unit_motions.units.get(type)
+
+
+func _load_unit_positions() -> void:
+	_unit_positions = load(get_path("unitposdef.xml", "")) as _UnitPositionsMap
+
+
+func _release_unit_positions() -> void:
+	_unit_positions = null
+
+
+func get_unit_positions(type: StringName) -> _UnitPositions:
+	return _unit_positions.units.get(type)

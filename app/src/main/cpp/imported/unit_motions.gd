@@ -1,7 +1,7 @@
 class_name UnitMotions
 extends Resource
 
-const _UnitMotionList = preload("res://app/src/main/cpp/imported/unit_motion_list.gd")
+const _UnitMotion = preload("res://app/src/main/cpp/imported/unit_motion.gd")
 
 @export
 var res: StringName
@@ -13,4 +13,10 @@ var fireeffect: String
 var dir: float
 
 @export
-var motions: Array[_UnitMotionList]
+var standby: Array[_UnitMotion]
+
+@export
+var attack: Array[_UnitMotion]
+
+@export
+var destroyed: Array[_UnitMotion]

@@ -8,7 +8,6 @@ const MOTION_TYPE = [
 ]
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
 const _UnitMotion = preload("res://app/src/main/cpp/imported/unit_motion.gd")
-const _UnitMotionList = preload("res://app/src/main/cpp/imported/unit_motion_list.gd")
 const _UnitMotions = preload("res://app/src/main/cpp/imported/unit_motions.gd")
 const _UnitMotionsMap = preload("res://app/src/main/cpp/imported/unit_motions_map.gd")
 
@@ -73,9 +72,6 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	var xml_unit := xml_units.first_child_element()
 	while xml_unit != null:
 		var res_unit := _UnitMotions.new()
-		res_unit.motions.append(_UnitMotionList.new()) # fill() will fill with reference to the same resource
-		res_unit.motions.append(_UnitMotionList.new())
-		res_unit.motions.append(_UnitMotionList.new())
 		var name := xml_unit.attribute("name")
 		var res := xml_unit.attribute("res")
 		if res == "":
@@ -118,7 +114,12 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 				if xml_motion.query_float_attribute("firey", pf) == xml_motion.TIXML_SUCCESS:
 					firey = pf.pop_back()
 				res_motion.firey = firey
-				res_unit.motions[type].motions.append(res_motion)
+				if type == 1:
+					res_unit.attack.append(res_motion)
+				elif type == 2:
+					res_unit.destroyed.append(res_motion)
+				else:
+					res_unit.standby.append(res_motion)
 				xml_motion = xml_motion.next_sibling_element()
 		res_units.units[name] = res_unit
 		xml_unit = xml_unit.next_sibling_element()
