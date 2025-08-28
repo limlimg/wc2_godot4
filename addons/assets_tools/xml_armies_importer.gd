@@ -59,12 +59,12 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	var err := doc.load_file(source_file)
 	if err != OK:
 		return err
-	var xml_armies := doc.first_child_element("armies")
-	if xml_armies == null:
+	var xml_root := doc.first_child_element("armies")
+	if xml_root == null:
 		push_error("Parse Error: Failed to find <armies> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
 	var res_armies := _ArmyDefListMap.new()
-	var xml_country := xml_armies.first_child_element()
+	var xml_country := xml_root.first_child_element()
 	while xml_country != null:
 		var country_name := xml_country.attribute("name")
 		if country_name == "":

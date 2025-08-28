@@ -64,12 +64,12 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	var err := doc.load_file(source_file)
 	if err != OK:
 		return err
-	var xml_units := doc.first_child_element("Units")
-	if xml_units == null:
+	var xml_root := doc.first_child_element("Units")
+	if xml_root == null:
 		push_error("Parse Error: Failed to find <Units> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
 	var res_units := _UnitMotionsMap.new()
-	var xml_unit := xml_units.first_child_element()
+	var xml_unit := xml_root.first_child_element()
 	while xml_unit != null:
 		var res_unit := _UnitMotions.new()
 		var name := xml_unit.attribute("name")

@@ -65,18 +65,16 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	var err := doc.load_file(source_file)
 	if err != OK:
 		return err
-	var xml_cards := doc.first_child_element("cards")
-	if xml_cards == null:
+	var xml_root := doc.first_child_element("cards")
+	if xml_root == null:
 		push_error("Parse Error: Failed to find <cards> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
 	var res_cards := _CardDefList.new()
 	res_cards.cards.resize(CARD_LIST_SIZE)
-	var xml_card := xml_cards.first_child_element()
+	var xml_card := xml_root.first_child_element()
 	while xml_card != null:
 		var p: Array[int] = []
 		if xml_card.query_int_attribute("id", p) != xml_card.TIXML_SUCCESS or p.back() < 0 or p.back() >= CARD_LIST_SIZE:
-			print(xml_card.attribute("name"))
-			print(xml_card._resource.attributes)
 			push_error("Parse Error: Element does not have valid \"id\" attibute on line {0} of {1}".format([xml_card.row() + 1, source_file]))
 			return ERR_PARSE_ERROR
 		var res_card := _CardDef.new()
