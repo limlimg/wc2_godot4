@@ -3,6 +3,7 @@ const _Context = preload("res://core/java/android/content/context.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 const _CStateManager = preload("res://app/src/main/cpp/c_state_manager.gd")
 const _ecStringTable = preload("res://app/src/main/cpp/ec_string_table.gd")
+const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
 
 static var _str_version_name: String
 static var _document_file_path: String
@@ -88,7 +89,7 @@ static func _ec_game_init(content_scale_width: float, content_scale_height: floa
 	_ecGraphics.instance().init(content_scale_width, content_scale_height, orientation, game_view_width, game_view_height)
 	# GUIManager is no longer a singleton, can't initialize here
 	_CStateManager.instance().init()
-	# no creation and registration of states here
+	# TODO: register and set initial state
 	g_localizable_strings.load("Localizable.strings")
 	var string_table_key: StringName
 	if _ecGraphics.instance()._content_scale_size_mode == 3:
@@ -98,6 +99,7 @@ static func _ec_game_init(content_scale_width: float, content_scale_height: floa
 	var string_table_name := g_localizable_strings.get_string(string_table_key)
 	g_string_table.load(string_table_name)
 	TranslationServer.add_translation(g_string_table._translation)
+	_CObjectDef.instance().init()
 	# TODO: lots of initialization
 
 

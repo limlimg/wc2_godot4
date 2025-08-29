@@ -12,6 +12,12 @@ const _CommanderDef = preload("res://app/src/main/cpp/imported/commander_def.gd"
 const _CommanderDefMap = preload("res://app/src/main/cpp/imported/commander_def_map.gd")
 const _GeneralPhoto = preload("res://app/src/main/cpp/imported/general_photo.gd")
 const _GeneralPhotoMap = preload("res://app/src/main/cpp/imported/general_photo_map.gd")
+const _BattleDef = preload("res://app/src/main/cpp/imported/battle_def.gd")
+const _BattleDefMap = preload("res://app/src/main/cpp/imported/battle_def_map.gd")
+const _ConquestDef = preload("res://app/src/main/cpp/imported/conquest_def.gd")
+const _ConquestDefMap = preload("res://app/src/main/cpp/imported/conquest_def_map.gd")
+
+static var _m_instance: _CObjectDef
 
 var _army_def: _ArmyDefListMap
 var _card_def: _CardDefList
@@ -19,6 +25,40 @@ var _unit_motions: _UnitMotionsMap
 var _unit_positions: _UnitPositionsMap
 var _commander_def: _CommanderDefMap
 var _general_photos: _GeneralPhotoMap
+var _battle_list: _BattleDefMap
+var _conquest_list: _ConquestDefMap
+
+static func instance() -> _CObjectDef:
+	if _m_instance == null:
+		_m_instance = _CObjectDef.new()
+	return _m_instance
+
+
+static func destroy() -> void:
+	if _m_instance != null:
+		_m_instance.release()
+		_m_instance = null
+
+
+func init() -> void:
+	_load_army_def()
+	_load_card_def()
+	_load_unit_motions()
+	_load_unit_positions()
+	_load_commander_def()
+	_load_general_photos()
+	_load_battle_list()
+	_load_conquest_list()
+
+
+func release() -> void:
+	_release_army_def()
+	_release_unit_motions()
+	_release_unit_positions()
+	_release_commander_def()
+	_release_general_photos()
+	_release_battle_list()
+	_release_conquest_list()
 
 func _load_army_def() -> void:
 	_army_def = load(get_path("armydef.xml", "")) as _ArmyDefListMap
@@ -115,3 +155,31 @@ func _release_general_photos() -> void:
 
 func get_general_photo(name: StringName) -> _GeneralPhoto:
 	return _general_photos.generals[name]
+
+
+func _load_battle_list() -> void:
+	_battle_list = load(get_path("battlelist.xml", "")) as _BattleDefMap
+	if _battle_list == null:
+		push_error("Failed to load battlelist.xml")
+
+
+func _release_battle_list() -> void:
+	_battle_list = null
+
+
+func get_battle_def(name: StringName) -> _BattleDef:
+	return _battle_list.battlelist.get(name)
+
+
+func _load_conquest_list() -> void:
+	_conquest_list = load(get_path("conquestlist.xml", "")) as _ConquestDefMap
+	if _conquest_list == null:
+		push_error("Failed to load conquestlist.xml")
+
+
+func _release_conquest_list() -> void:
+	_conquest_list = null
+
+
+func get_conquest_def(name: StringName) -> _ConquestDef:
+	return _conquest_list.battlelist.get(name)
