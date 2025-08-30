@@ -13,7 +13,6 @@ extends "res://app/src/main/cpp/native-lib.gd"
 ## viewport is modified to achieve the same effect.
 
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
-const _Wc2Activity = preload("res://app/src/main/java/com/easytech/wc2/wc2_activity.gd")
 const _ecLine = preload("res://app/src/main/cpp/ec_line.gd")
 const _ecTriple = preload("res://app/src/main/cpp/ec_line.gd")
 const _ecQuad = preload("res://app/src/main/cpp/ec_quad.gd")

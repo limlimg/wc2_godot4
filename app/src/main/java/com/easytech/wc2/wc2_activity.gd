@@ -264,7 +264,7 @@ static func resume_background_music() -> void:
 	_background_music_player.resume_background_music()
 
 
-static func stop_background_music(_looping: bool) -> void:
+static func stop_background_music() -> void:
 	_background_music_player.stop_background_music()
 
 
