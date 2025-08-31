@@ -64,9 +64,9 @@ func touch_end(x: float, y: float, index: float) -> void:
 	pass
 
 
-func back_pressed() -> void:
+func back_pressed() -> bool:
 	# State functions are invoked by Node callbacks instead
-	pass
+	return false
 
 
 func key_down(key: Key) -> void:

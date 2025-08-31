@@ -8,6 +8,7 @@ const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
 const _CCommander = preload("res://app/src/main/cpp/c_commander.gd")
 const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
+const _CGameSettings = preload("res://app/src/main/cpp/c_game_settings.gd")
 
 static var _str_version_name: String
 static var _document_file_path: String
@@ -120,7 +121,7 @@ static func _ec_game_init(content_scale_width: float, content_scale_height: floa
 	_CSoundBox.get_instance().load_se("btn.wav")
 	g_font1.init("font1.fnt", false)
 	var language := g_localizable_strings.get_string("language")
-	if _ecGraphics.instance().widthMode == 3:
+	if _ecGraphics.instance()._content_scale_size_mode == 3:
 		g_font2.init("font2_{0}_hd.fnt".format([language]), false)
 		g_font3.init("font3_{0}_hd.fnt".format([language]), false)
 		if g_content_scale_factor == 2.0:
@@ -197,30 +198,78 @@ static func Java_com_easytech_wc2_Wc2Activity_nativeDone() -> void:
 	_ec_game_shutdown()
 
 
+static func _ec_game_shutdown() -> void:
+	_game_initialized = false
+	# TODO: finalize g_PlayerManager
+	g_font1.release()
+	g_font2.release()
+	g_font3.release()
+	g_font6.release()
+	g_font7.release()
+	g_num1.release()
+	g_num3.release()
+	g_num4.release()
+	if _ecGraphics.instance()._content_scale_size_mode == 3:
+		g_num4b.release()
+	g_num5.release()
+	g_num8.release()
+	_CSoundBox.get_instance().unload_se("btn.wav")
+	_CStateManager.instance().term()
+	# no GUIManager
+	_ecGraphics.instance().shutdown()
+	_CSoundBox.destroy()
+	_CObjectDef.instance().destroy()
+	g_string_table.clear()
+	g_localizable_strings.clear()
+
+
 static func end_jni() -> void:
 	_Wc2Activity.end()
 
 
-static func _ec_game_did_enter_background() -> void:
-	pass
-
-
-static func _ec_game_shutdown() -> void:
-	# TODO: a lot of finalization
-	_ecGraphics.instance().shutdown()
-	# TODO: more finalization
-
+static var g_game_settings := _CGameSettings.new()
+static var _game_paused := false
 
 static func Java_com_easytech_wc2_Wc2Activity_nativeResume() -> void:
-	pass
+	_ec_game_will_enter_foreground()
+	_ec_game_resume()
+
+
+static func _ec_game_will_enter_foreground() -> void:
+	var sound_box := _CSoundBox.get_instance()
+	sound_box.set_music_volume(g_game_settings.music_volume)
+	sound_box.set_se_volume(g_game_settings.se_volume)
+	sound_box.resume_music()
+	_CStateManager.instance().enter_foreground()
+
+
+static func _ec_game_resume() -> void:
+	_game_paused = false
 
 
 static func Java_com_easytech_wc2_Wc2Activity_nativePause() -> void:
-	pass
+	_ec_game_did_enter_background()
+	_ec_game_pause()
+
+
+static func _ec_game_did_enter_background() -> void:
+	g_commander.save()
+	_CStateManager.instance().enter_background()
+
+
+static func _ec_game_pause() -> void:
+	_game_paused = true
 
 
 static func Java_com_easytech_wc2_Wc2Activity_CallNativeExit() -> void:
-	pass
+	if not _ec_back_pressed():
+		# TODO: Show exit game popup
+		pass
+
+
+static func _ec_back_pressed() -> bool:
+	# no GUIManager
+	return _CStateManager.instance().back_pressed()
 
 
 static func Java_com_easytech_wc2_Wc2Activity_CallNativeError() -> void:
@@ -229,7 +278,8 @@ static func Java_com_easytech_wc2_Wc2Activity_CallNativeError() -> void:
 
 
 static func Java_com_easytech_wc2_Wc2Activity_AddMedal(medal: int) -> void:
-	pass
+	g_commander.buy_medel(medal)
+	g_commander.save()
 
 
 static func Java_com_easytech_wc2_ecRenderer_nativeRender() -> void:
@@ -237,6 +287,7 @@ static func Java_com_easytech_wc2_ecRenderer_nativeRender() -> void:
 
 
 static func Java_com_easytech_wc2_ecRenderer_nativeResize(game_view_width: float, game_view_height: float) -> void:
+	# Unimplemented in the original game code
 	pass
 
 
