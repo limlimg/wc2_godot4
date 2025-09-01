@@ -228,7 +228,11 @@ static func end_jni() -> void:
 
 
 static var g_game_settings := _CGameSettings.new()
-static var _game_paused := false
+static var _game_paused := false:
+	set(value):
+		_game_paused = value
+		_update_paused_fade()
+
 
 static func Java_com_easytech_wc2_Wc2Activity_nativeResume() -> void:
 	_ec_game_will_enter_foreground()
@@ -282,8 +286,54 @@ static func Java_com_easytech_wc2_Wc2Activity_AddMedal(medal: int) -> void:
 	g_commander.save()
 
 
+static var _game_waiting := false:
+	set(value):
+		_game_waiting = value
+		_update_paused_fade()
+
+
 static func Java_com_easytech_wc2_ecRenderer_nativeRender() -> void:
-	pass
+	var time := _get_time()
+	var delta := clampf(0.001 * (time - _m_old_time), 0.0, 0.05)
+	_s_time_offset = time
+	_m_old_time = time
+	_ec_game_update(delta)
+	_ec_game_render()
+
+
+static func _ec_game_update(delta: float) -> void:
+	if not _game_paused and not _game_waiting:
+		# TODO: update PlayerManager
+		_CStateManager.instance().update(delta)
+		# no GUIManager
+		# no GUIMotionManager
+		_CSoundBox.get_instance().update_sound()
+
+
+static func _ec_game_render() -> void:
+	# no global render target
+	_CStateManager.instance().render()
+	# no GUIManager
+	# Fade out in black, a=0.5 when game paused or waiting. Handled by the following method, called by setters of _game_paused and _game_waiting.
+
+
+static var _paused_fade_node: ColorRect
+
+static func _update_paused_fade() -> void:
+	if _game_paused or _game_waiting:
+		if _paused_fade_node == null:
+			_paused_fade_node = ColorRect.new()
+			_paused_fade_node.set_anchors_preset(Control.PRESET_FULL_RECT)
+			_paused_fade_node.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
+			_paused_fade_node.color = Color(0.0, 0.0, 0.0, 0.5)
+			(Engine.get_main_loop() as SceneTree).root.add_child(_paused_fade_node)
+	else:
+		_paused_fade_node.queue_free()
+		_paused_fade_node = null
+
+
+func _ec_game_waiting(value: bool) -> void:
+	_game_waiting = value
 
 
 static func Java_com_easytech_wc2_ecRenderer_nativeResize(game_view_width: float, game_view_height: float) -> void:
