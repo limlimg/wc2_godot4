@@ -38,7 +38,7 @@ func term() -> void:
 	(Engine.get_main_loop() as SceneTree).change_scene_to_packed(pack)
 
 
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	# State transition is invoked by call_defered in set_cur_state
 	# State functions are invoked by Node callbacks instead
 	pass
@@ -49,17 +49,17 @@ func render() -> void:
 	pass
 
 
-func touch_begin(x: float, y: float, index: float) -> void:
+func touch_begin(_x: float, _y: float, _index: float) -> void:
 	# State functions are invoked by Node callbacks instead
 	pass
 
 
-func touch_move(x: float, y: float, index: float) -> void:
+func touch_move(_x: float, _y: float, _index: float) -> void:
 	# State functions are invoked by Node callbacks instead
 	pass
 
 
-func touch_end(x: float, y: float, index: float) -> void:
+func touch_end(_x: float, _y: float, _index: float) -> void:
 	# State functions are invoked by Node callbacks instead
 	pass
 
@@ -69,12 +69,12 @@ func back_pressed() -> bool:
 	return false
 
 
-func key_down(key: Key) -> void:
+func key_down(_key: Key) -> void:
 	# State functions are invoked by Node callbacks instead
 	pass
 
 
-func scroll_wheel(x_value: float, y_value: float, _a3: float) -> void:
+func scroll_wheel(_x_value: float, _y_value: float, _a3: float) -> void:
 	# State functions are invoked by Node callbacks instead
 	pass
 

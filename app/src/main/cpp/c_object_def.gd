@@ -34,7 +34,7 @@ static func instance() -> _CObjectDef:
 	return _m_instance
 
 
-static func destroy() -> void:
+func destroy() -> void:
 	if _m_instance != null:
 		_m_instance.release()
 		_m_instance = null

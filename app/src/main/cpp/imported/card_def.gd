@@ -17,6 +17,7 @@ var price: int
 var industry: int
 
 @export
+@warning_ignore("shadowed_global_identifier")
 var round: int
 
 @export

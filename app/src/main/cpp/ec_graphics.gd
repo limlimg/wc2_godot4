@@ -23,9 +23,9 @@ static var _instance := new()
 #var _height_multiplier: float
 var _content_scale_width: int
 var _content_scale_height: int
-var _orientated_content_scale_width: int
-var _orientated_content_scale_height: int
-var _orientation: int
+var orientated_content_scale_width: int
+var orientated_content_scale_height: int
+var orientation: int
 var _content_scale_size_mode: int
 var _blend_mode := 2
 var _render_shape := 3
@@ -39,10 +39,10 @@ static func instance() -> _ecGraphics:
 	return _instance
 
 
-func init(content_scale_width: int, content_scale_height: int, orientation: int, _view_width: int, _view_height: int) -> void:
+func init(content_scale_width: int, content_scale_height: int, _orientation: int, _view_width: int, _view_height: int) -> void:
 	_content_scale_width = content_scale_width
 	_content_scale_height = content_scale_height
-	_orientation = orientation
+	orientation = _orientation
 	#if view_width == 1 and view_height == 1:
 		#_width_multiplier = 1.0
 		#_height_multiplier = 1.0
@@ -57,11 +57,11 @@ func init(content_scale_width: int, content_scale_height: int, orientation: int,
 	_Wc2Activity.get_game_view().size = Vector2(content_scale_width, content_scale_height)
 	_Wc2Activity.get_game_view().position = Vector2.ZERO
 	if orientation <= 1:
-		_orientated_content_scale_width = content_scale_width
-		_orientated_content_scale_height = content_scale_height
+		orientated_content_scale_width = content_scale_width
+		orientated_content_scale_height = content_scale_height
 	else:
-		_orientated_content_scale_width = content_scale_height
-		_orientated_content_scale_height = content_scale_width
+		orientated_content_scale_width = content_scale_height
+		orientated_content_scale_height = content_scale_width
 	if content_scale_width > 320:
 		if content_scale_height > 640 :
 			_content_scale_size_mode = 3
@@ -85,13 +85,13 @@ func shutdown() -> void:
 
 
 func set_orientation(value: int) -> void:
-	_orientation = value
+	orientation = value
 	if value > 1:
-		_orientated_content_scale_width = _content_scale_height
-		_orientated_content_scale_height = _content_scale_width
+		orientated_content_scale_width = _content_scale_height
+		orientated_content_scale_height = _content_scale_width
 	else:
-		_orientated_content_scale_width = _content_scale_width
-		_orientated_content_scale_height = _content_scale_height
+		orientated_content_scale_width = _content_scale_width
+		orientated_content_scale_height = _content_scale_height
 
 
 func create_texture(_1: int, _2: int) -> _ecTexture:
@@ -150,10 +150,10 @@ func set_view_point(x: float, y: float, scale: float):
 		return
 	_flush()
 	var transform = Transform2D.IDENTITY
-	if _orientation == 3:
+	if orientation == 3:
 		transform = transform.rotated_local(deg_to_rad(90.0))
 		transform = transform.translated_local(Vector2(0.0, -_content_scale_width))
-	elif _orientation == 2:
+	elif orientation == 2:
 		transform = transform.rotated_local(deg_to_rad(-90.0))
 		transform = transform.translated_local(Vector2(-_content_scale_height, 0.0))
 	transform = transform.scaled_local(Vector2(scale, scale))
@@ -242,7 +242,7 @@ func fade(alpha: float):
 	var color := _fade_color
 	color.a = alpha
 	# Note: fade is properly applied only if view_point is at 0.0, 0.0. This is bad but is consistent with the original game code.
-	render_rect(0.0, 0.0, _orientated_content_scale_width, _orientated_content_scale_height, color)
+	render_rect(0.0, 0.0, orientated_content_scale_width, orientated_content_scale_height, color)
 
 
 func _flush():

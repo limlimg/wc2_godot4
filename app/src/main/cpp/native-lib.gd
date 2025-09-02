@@ -9,12 +9,13 @@ const _CCommander = preload("res://app/src/main/cpp/c_commander.gd")
 const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
 const _CGameSettings = preload("res://app/src/main/cpp/c_game_settings.gd")
+const _ecMultipleTouch = preload("res://app/src/main/cpp/ec_multiple_touch.gd")
 
 static var _str_version_name: String
 static var _document_file_path: String
 static var _lang_dir: String
 
-static func Java_com_easytech_wc2_Wc2Activity_nativeSetPaths(context: _Context, resource_loader, data_dir: String, lang_dir: String, version: String) -> void:
+static func Java_com_easytech_wc2_Wc2Activity_nativeSetPaths(_context: _Context, _resource_loader, data_dir: String, lang_dir: String, version: String) -> void:
 	# NOTTODO: store reference to classloader and assetmanager
 	_str_version_name = version
 	_set_document_path(data_dir)
@@ -74,10 +75,10 @@ static var _game_initialized := false
 static var _s_time_offset: int # in ms
 static var _m_old_time: int # in ms
 
-static func Java_com_easytech_wc2_ecRenderer_nativeInit(game_view_width: float, game_view_height: float, _a3, _a4) -> void:
-	var ratio = game_view_width / game_view_height
-	var content_scale_width: float
-	var content_scale_height: float
+static func Java_com_easytech_wc2_ecRenderer_nativeInit(game_view_width: int, game_view_height: int, _a3, _a4) -> void:
+	var ratio = game_view_width as float / game_view_height as float
+	var content_scale_width: int
+	var content_scale_height: int
 	if ratio > 1.8875:
 		content_scale_width = 640
 		content_scale_height = 320
@@ -100,7 +101,7 @@ static func Java_com_easytech_wc2_ecRenderer_nativeInit(game_view_width: float, 
 	# NOTTODO: assign a callback that is triggered when an in app purchase is performed
 
 
-static func _ec_game_init(content_scale_width: float, content_scale_height: float, orientation: int, game_view_width: float, game_view_height: float) -> void:
+static func _ec_game_init(content_scale_width: int, content_scale_height: int, orientation: int, game_view_width: int, game_view_height: int) -> void:
 	_set_ai_rand_seed(randi())
 	_set_rand_seed(randi())
 	_ecGraphics.instance().init(content_scale_width, content_scale_height, orientation, game_view_width, game_view_height)
@@ -161,8 +162,8 @@ static func _ec_game_init(content_scale_width: float, content_scale_height: floa
 
 static var _ai_rand_seed: int
 
-static func _set_ai_rand_seed(seed: int) -> void:
-	_ai_rand_seed = seed
+static func _set_ai_rand_seed(value: int) -> void:
+	_ai_rand_seed = value
 
 
 static func get_ai_rand_seed() -> int:
@@ -176,8 +177,8 @@ static func get_ai_rand() -> int:
 
 static var _rand_seed: int
 
-static func _set_rand_seed(seed: int) -> void:
-	_rand_seed = seed
+static func _set_rand_seed(value: int) -> void:
+	_rand_seed = value
 
 
 static func get_rand_seed() -> int:
@@ -328,6 +329,7 @@ static func _update_paused_fade() -> void:
 			_paused_fade_node.color = Color(0.0, 0.0, 0.0, 0.5)
 			(Engine.get_main_loop() as SceneTree).root.add_child(_paused_fade_node)
 	else:
+		(Engine.get_main_loop() as SceneTree).root.remove_child(_paused_fade_node)
 		_paused_fade_node.queue_free()
 		_paused_fade_node = null
 
@@ -336,16 +338,59 @@ func _ec_game_waiting(value: bool) -> void:
 	_game_waiting = value
 
 
-static func Java_com_easytech_wc2_ecRenderer_nativeResize(game_view_width: float, game_view_height: float) -> void:
+static func Java_com_easytech_wc2_ecRenderer_nativeResize(_game_view_width: float, _game_view_height: float) -> void:
 	# Unimplemented in the original game code
 	pass
 
 
 static func Java_com_easytech_wc2_ecRenderer_nativeTouch(touch_type: int, x: float, y: float, reset: int) -> void:
-	pass
+	var graphics := _ecGraphics.instance()
+	if graphics.orientation == 2:
+		y = graphics.orientated_content_scale_width - y
+	elif graphics.orientation == 3:
+		x = graphics.orientated_content_scale_height - x
+	else:
+		if graphics.orientation == 1:
+			y = graphics.orientated_content_scale_height - y
+		var tmp := x
+		x = y
+		y = tmp
+	# no need to scale the coords, the root Viewport already did it
+	var multiple_touch := _ecMultipleTouch.instance()
+	if reset != 0:
+		multiple_touch.reset()
+	if touch_type == 0:
+		var index := multiple_touch.touch_began(x, y)
+		_ec_touch_begin(x, y, index)
+	elif touch_type == 1:
+		var index := multiple_touch.touch_ended(x, y)
+		if index >= 0:
+			_ec_touch_end(x, y, index)
+	elif touch_type == 2:
+		var index := multiple_touch.touch_moved(x, y)
+		if index >= 0:
+			_ec_touch_move(x, y, index)
 
 
-static func ec_texture_with_string(a1: String, a2: String, a3: int, a4: int, r_width: Array[int], r_height: Array[int], r_texture: Array[Texture]) -> bool:
+static func _ec_touch_begin(x: float, y: float, index: int) -> void:
+	if not _game_paused and not _game_waiting:
+		# no GUIManager
+		_CStateManager.instance().touch_begin(x, y, index)
+
+
+static func _ec_touch_move(x: float, y: float, index: int) -> void:
+	if not _game_paused and not _game_waiting:
+		# no GUIManager
+		_CStateManager.instance().touch_move(x, y, index)
+
+
+static func _ec_touch_end(x: float, y: float, index: int) -> void:
+	if not _game_paused and not _game_waiting:
+		# no GUIManager
+		_CStateManager.instance().touch_end(x, y, index)
+
+
+static func ec_texture_with_string(_a1: String, _a2: String, _a3: int, _a4: int, _r_width: Array[int], _r_height: Array[int], _r_texture: Array[Texture]) -> bool:
 	# Unimplemented and eventually unused in the original game code
 	return false
 

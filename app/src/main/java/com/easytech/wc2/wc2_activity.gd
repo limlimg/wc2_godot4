@@ -37,8 +37,8 @@ class _ReferenceToCallable:
 	var ref: Callable
 
 
-static var _m_game_view_width: float
-static var _m_game_view_height: float
+static var _m_game_view_width: int
+static var _m_game_view_height: int
 static var _m_gl_view: _ecGLSurfaceView
 static var _object_context: _Context
 static var _object_activity: _Wc2Activity
@@ -91,8 +91,10 @@ func _prepare_view_size(show_game_view: bool) -> void:
 
 func _show_game_view(_width: float, _height: float) -> void:
 	# NOTTODO: adjust view size according to build version and model
-	if _m_game_view_width > (_m_game_view_height * 16) / 9:
-		_m_game_view_width = (_m_game_view_height * 16) / 9
+	@warning_ignore("integer_division")
+	var height_16_9 := (_m_game_view_height * 16) / 9
+	if _m_game_view_width > height_16_9:
+		_m_game_view_width = height_16_9
 		get_viewport().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
 	else:
 		get_viewport().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_IGNORE
@@ -236,11 +238,11 @@ static func get_game_activity() -> _Wc2Activity:
 	return _object_activity
 
 
-static func get_view_width() -> float:
+static func get_view_width() -> int:
 	return _m_game_view_width
 
 
-static func get_view_height() -> float:
+static func get_view_height() -> int:
 	return _m_game_view_height
 
 
