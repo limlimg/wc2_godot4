@@ -4,7 +4,16 @@ extends EditorPlugin
 var IMPORTERS = [
 	preload("res://addons/assets_tools/fnt_importer.gd"),
 	preload("res://addons/assets_tools/raw_importer.gd"),
-	preload("res://addons/assets_tools/xml_importer.gd")
+	preload("res://addons/assets_tools/xml_importer.gd"),
+	preload("res://addons/assets_tools/xml_translation_importer.gd"),
+	preload("res://addons/assets_tools/xml_armies_importer.gd"),
+	preload("res://addons/assets_tools/xml_cards_importer.gd"),
+	preload("res://addons/assets_tools/xml_unit_motions_importer.gd"),
+	preload("res://addons/assets_tools/xml_unit_positions_importer.gd"),
+	preload("res://addons/assets_tools/xml_commanders_importer.gd"),
+	preload("res://addons/assets_tools/xml_generals_importer.gd"),
+	preload("res://addons/assets_tools/xml_battlelist_importer.gd"),
+	preload("res://addons/assets_tools/xml_conquestlist_importer.gd"),
 ]
 
 var LOADERS = [
@@ -18,6 +27,7 @@ var IMAGE_LOADERS = [
 
 var loaded_importers: Array[EditorImportPlugin]
 var loaded_loaders: Array[ResourceFormatLoader]
+var loader_image_loaders: Array[ImageFormatLoaderExtension]
 
 func _enter_tree() -> void:
 	for cls in IMPORTERS:
@@ -28,6 +38,10 @@ func _enter_tree() -> void:
 		var loader = cls.new()
 		ResourceLoader.add_resource_format_loader(loader)
 		loaded_loaders.push_back(loader)
+	for cls in IMAGE_LOADERS:
+		var loader = cls.new()
+		loader.add_format_loader()
+		loader_image_loaders.append(loader)
 
 
 func _exit_tree() -> void:
@@ -35,5 +49,8 @@ func _exit_tree() -> void:
 		remove_import_plugin(importer)
 	for loader in loaded_loaders:
 		ResourceLoader.remove_resource_format_loader(loader)
+	for loader in loader_image_loaders:
+		loader.remove_format_loader()
 	loaded_importers.clear()
 	loaded_loaders.clear()
+	loader_image_loaders.clear()

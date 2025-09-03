@@ -25,12 +25,12 @@ func get_view_tree_observer() -> _ViewTreeObserver:
 	return _view_tree_observer
 
 
-func get_measured_width() -> float:
-	return size.x
+func get_measured_width() -> int:
+	return size.x as int
 
 
-func get_measured_height() -> float:
-	return size.y
+func get_measured_height() -> int:
+	return size.y as int
 
 
 func _ready() -> void:

@@ -11,10 +11,18 @@ config_version=5
 [application]
 
 config/name="World Conqueror 2"
-run/main_scene="res://app/src/main/android_manifest.tscn"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+AndroidManifest="*res://app/src/main/android_manifest.tscn"
+
+[display]
+
+window/size/resizable=false
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 

@@ -1,3 +1,4 @@
+@tool
 extends TiXmlNode
 
 ## The top level class of this file is TiXmlDocument. Since writing methods are
@@ -9,20 +10,86 @@ extends TiXmlNode
 ## solution, the xml files are imported as resources defined in xml*.gd files,
 ## and tinyxml is built on top of them as iterators.
 
-const _TiXmlDocument = preload("res://app/src/main/cpp/tinyxml.gd")
+const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
 const _ecFile = preload("res://app/src/main/cpp/ec_file.gd")
+
+static var _regex_not_whitespace := RegEx.create_from_string(r"[^\s]+")
 
 func _init() -> void:
 	_type = NodeType.DOCUMENT
 
 
-func load_file(path: String) -> bool:
-	var xml := load(path) as XML
-	if xml == null:
-		return false
-	_value = path
-	_children_resrouce = xml.nodes
-	return true
+func load_file(source_file: String) -> Error:
+	var parser := XMLParser.new()
+	var err := parser.open(source_file)
+	if err != OK:
+		push_error("{0}: Failed to open {1}".format([error_string(err), source_file]))
+		return err
+	err = _parse_section(parser, _children_resrouce, source_file)
+	if err == OK:
+		var end_name := parser.get_node_name()
+		var line := parser.get_current_line()
+		if parser.read() != ERR_FILE_EOF:
+			push_error("Parse Error: Unexpected closing tag in {0}: {1} on line {2}".format([source_file, end_name, line]))
+			return ERR_PARSE_ERROR
+	elif err != ERR_FILE_EOF:
+		return err
+	return OK
+
+
+static func _parse_section(parser: XMLParser, section: Array[XMLNode], source_file: String) -> Error:
+	var err := parser.read()
+	var line := parser.get_current_line()
+	while err == OK:
+		match parser.get_node_type():
+			XMLParser.NODE_ELEMENT:
+				var element := XMLElement.new()
+				element.line = line
+				element.name = parser.get_node_name()
+				for i in parser.get_attribute_count():
+					element.attributes[parser.get_attribute_name(i)] = parser.get_attribute_value(i)
+				if not parser.is_empty():
+					err = _parse_section(parser, element.inner_nodes, source_file)
+					if err != OK:
+						if err == ERR_FILE_EOF:
+							push_error("Parse Error: Unclosed tag in {0}: {1} on line {2}".format([source_file, element.name, line]))
+							return ERR_PARSE_ERROR
+						else:
+							return err
+					var end_name := parser.get_node_name()
+					if end_name != element.name:
+						var end_line := parser.get_current_line()
+						push_error("Parse Error: Tag mismatch in {0}: between {1} on line {2} with {3} on line {4}".format([source_file, element.name, line, end_name, end_line]))
+						return ERR_PARSE_ERROR
+				section.append(element)
+			XMLParser.NODE_ELEMENT_END:
+				return OK
+			XMLParser.NODE_TEXT:
+				var text := XMLText.new()
+				text.line = line
+				text.data = parser.get_node_data()
+				if _regex_not_whitespace.search(text.data) != null:
+					section.append(text)
+			XMLParser.NODE_COMMENT:
+				var node := XMLComment.new()
+				node.line = line
+				node.name = parser.get_node_name()
+				section.append(node)
+			XMLParser.NODE_CDATA:
+				var node := XMLCData.new()
+				node.line = line
+				node.name = parser.get_node_name()
+				section.append(node)
+			XMLParser.NODE_UNKNOWN:
+				var node := XMLUnknown.new()
+				node.line = line
+				node.name = parser.get_node_name()
+				section.append(node)
+		err = parser.read()
+		line = parser.get_current_line()
+	if err != ERR_FILE_EOF:
+		push_error("{0}: Failed to parse {1} at line {2}".format([error_string(err), source_file, line]))
+	return err
 
 
 func root_element() -> TiXmlElement:
@@ -252,8 +319,8 @@ class TiXmlElement:
 		if name not in _resource.attributes:
 			return TIXML_NO_ATTRIBUTE
 		var s = _resource.attributes[name]
-		if not s.is_valid_int():
-			return TIXML_WRONG_TYPE
+		#if not s.is_valid_int():
+			#return TIXML_WRONG_TYPE
 		p.append(s.to_int())
 		return TIXML_SUCCESS
 	
@@ -262,8 +329,8 @@ class TiXmlElement:
 		if name not in _resource.attributes:
 			return TIXML_NO_ATTRIBUTE
 		var s = _resource.attributes[name]
-		if not s.is_valid_float():
-			return TIXML_WRONG_TYPE
+		#if not s.is_valid_float():
+			#return TIXML_WRONG_TYPE
 		p.append(s.to_float())
 		return TIXML_SUCCESS
 	
@@ -341,16 +408,16 @@ class TiXmlAttribute:
 	
 	func query_int_value(p: Array[int]) -> int:
 		var s := value()
-		if not s.is_valid_int():
-			return TIXML_WRONG_TYPE
+		#if not s.is_valid_int():
+			#return TIXML_WRONG_TYPE
 		p.append(s.to_int())
 		return TIXML_SUCCESS
 	
 	
 	func query_float_value(p: Array[float]) -> int:
 		var s := value()
-		if not s.is_valid_float():
-			return TIXML_WRONG_TYPE
+		#if not s.is_valid_float():
+			#return TIXML_WRONG_TYPE
 		p.append(s.to_float())
 		return TIXML_SUCCESS
 	

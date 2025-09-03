@@ -22,7 +22,10 @@ func _handles_type(type: StringName) -> bool:
 #
 #
 func _get_resource_type(path: String) -> String:
-	return "Resource"
+	if path.ends_with(".bin"):
+		return "Resource"
+	else:
+		return ""
 
 
 func _get_resource_script_class(path: String) -> String:

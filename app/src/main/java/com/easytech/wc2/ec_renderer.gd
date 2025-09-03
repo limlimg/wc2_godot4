@@ -24,7 +24,7 @@ func on_touch(touch_type: int, x: float, y: float, reset: int) -> void:
 	_native_touch(touch_type, x, y, reset)
 
 
-static func _native_init(game_view_width: float, game_view_height: float, _a3, _a4) -> void:
+static func _native_init(game_view_width: int, game_view_height: int, _a3, _a4) -> void:
 	_native.Java_com_easytech_wc2_ecRenderer_nativeInit(game_view_width, game_view_height, _a3, _a4)
 
 
