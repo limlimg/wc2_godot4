@@ -146,7 +146,7 @@ static func _ec_game_init(content_scale_width: int, content_scale_height: int, o
 		g_num3.init("num3_hd.fnt", true)
 		g_num4.init("num4_hd.fnt", true)
 		g_num5.init("num5_hd.fnt", true)
-		g_num8.init("num8_hd.fnt", true)
+		#g_num8.init("num8_hd.fnt", true) The original game code tries to load this font but it does not exist
 	else:
 		g_font2.init("font2_{0}.fnt".format([language]), false)
 		g_font3.init("font3_{0}.fnt".format([language]), false)
@@ -321,15 +321,18 @@ static func _ec_game_render() -> void:
 static var _paused_fade_node: ColorRect
 
 static func _update_paused_fade() -> void:
+	var scene := Engine.get_main_loop() as SceneTree
 	if _game_paused or _game_waiting:
+		scene.paused = true
 		if _paused_fade_node == null:
 			_paused_fade_node = ColorRect.new()
 			_paused_fade_node.set_anchors_preset(Control.PRESET_FULL_RECT)
 			_paused_fade_node.z_index = RenderingServer.CANVAS_ITEM_Z_MAX
 			_paused_fade_node.color = Color(0.0, 0.0, 0.0, 0.5)
-			(Engine.get_main_loop() as SceneTree).root.add_child(_paused_fade_node)
+			scene.root.add_child(_paused_fade_node)
 	else:
-		(Engine.get_main_loop() as SceneTree).root.remove_child(_paused_fade_node)
+		scene.paused = false
+		scene.root.remove_child(_paused_fade_node)
 		_paused_fade_node.queue_free()
 		_paused_fade_node = null
 
