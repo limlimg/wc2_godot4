@@ -3,25 +3,14 @@ extends Control
 const _ViewTreeObserver = preload("res://core/java/android/view/view_tree_observer.gd")
 const _MotionEvent = preload("res://core/java/android/view/motion_event.gd")
 
-var _view_tree_observer: _ViewTreeObserver
+var _view_tree_observer := _ViewTreeObserver.new()
 var _motion_event := _MotionEvent.new()
-
-signal _ready_deferred # This signal is supposed to trigger connections that have not made when ready is emitted, so ready.connect(CONNECT_DEFERRED) does not do the job.
 
 func _on_touch_event(_event: _MotionEvent) -> bool:
 	return false
 
 
 func get_view_tree_observer() -> _ViewTreeObserver:
-	if _view_tree_observer == null:
-		_view_tree_observer = _ViewTreeObserver.new()
-		var on_global_layout := Callable(_view_tree_observer, &"dispatch_on_global_layout")
-		resized.connect(on_global_layout, CONNECT_DEFERRED)
-		visibility_changed.connect(on_global_layout, CONNECT_DEFERRED)
-		child_entered_tree.connect(on_global_layout.unbind(1), CONNECT_DEFERRED)
-		child_exiting_tree.connect(on_global_layout.unbind(1), CONNECT_DEFERRED)
-		child_order_changed.connect(on_global_layout, CONNECT_DEFERRED)
-		_ready_deferred.connect(on_global_layout)
 	return _view_tree_observer
 
 
@@ -34,7 +23,13 @@ func get_measured_height() -> int:
 
 
 func _ready() -> void:
-	(func (): _ready_deferred.emit()).call_deferred()
+	var on_global_layout := Callable(_view_tree_observer, &"dispatch_on_global_layout")
+	on_global_layout.call()
+	resized.connect(on_global_layout)
+	visibility_changed.connect(on_global_layout)
+	child_entered_tree.connect(on_global_layout.unbind(1))
+	child_exiting_tree.connect(on_global_layout.unbind(1))
+	child_order_changed.connect(on_global_layout)
 
 
 func _gui_input(event: InputEvent) -> void:

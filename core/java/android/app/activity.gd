@@ -56,29 +56,30 @@ func finish() -> void:
 	get_tree().quit()
 
 
+func _init() -> void:
+	_on_create()
+	_state = 1
+
+
 func _enter_tree():
-	if is_inside_tree():
-		if _state == 0:
-			_on_create()
-		elif _state == 5:
-			_on_restart()
-		else:
-			push_error("Unexpected state when entering tree: {0}".format([_state]))
-			return
-		_on_start()
-		_on_resume()
-		_state = 3
+	if _state == 5:
+		_on_restart()
+	elif _state != 1:
+		push_error("Unexpected state when entering tree: {0}".format([_state]))
+		return
+	_on_start()
+	_on_resume()
+	_state = 3
 
 
 func _exit_tree():
-	if _state != 0:
-		if _state == 3:
-			_on_pause()
-		elif _state != 4:
-			push_error("Unexpected state when exiting tree: {0}".format([_state]))
-			return
-		_on_stop()
-		_state = 5
+	if _state == 3:
+		_on_pause()
+	elif _state != 4:
+		push_error("Unexpected state when exiting tree: {0}".format([_state]))
+		return
+	_on_stop()
+	_state = 5
 
 
 func _notification(what):

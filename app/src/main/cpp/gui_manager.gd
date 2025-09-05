@@ -7,7 +7,7 @@ extends Control
 ## 
 ## Additionally, GUIManager provides the following functionalities:
 ## 1) hold a ecTextureRes
-## 2) fade in and fade out
+## 2) fade in and fade out (initially faded out and immediately starts fading in)
 ## 3) safely (deferred) remove child
 ## 4) add simple child element
 ## 
@@ -17,56 +17,41 @@ extends Control
 ## replace the generated event. The other functionalities will be added if
 ## necessary.
 
-var _fade_node: ColorRect
 var _fading_tween: Tween
 
 signal faded_in(int)
 signal faded_out(int)
 
 func _ready() -> void:
-	_create_fade_node()
-	_fade_node.color = Color.BLACK
+	$Fade.visible = true # $Fade is invisible in the editor for previewing
+	fade_in(0)
 
 
-func _create_fade_node() -> void:
-	_fade_node = ColorRect.new()
-	_fade_node.set_anchors_preset(Control.PRESET_FULL_RECT)
-	_fade_node.z_index = 1
-	_fade_node.color = Color.BLACK
-	_fade_node.color.a = 0.0
-	add_child(_fade_node)
-
-
-func fade_in(param: int) -> void:
-	if _fade_node == null:
-		return
+func fade_in(cause: int) -> void:
 	if _fading_tween != null:
 		_fading_tween.kill()
 	_fading_tween = create_tween()
 	var c := Color.BLACK
 	c.a = 0.0
+	var _fade_node: ColorRect = $Fade
 	var t := _fade_node.color.a
 	_fading_tween.tween_property(_fade_node, ^"color", c, t)
 	_fading_tween.tween_callback(func():
-		remove_child(_fade_node)
-		_fade_node.queue_free()
-		_fade_node = null
 		_fading_tween = null
-		faded_in.emit(param)
+		faded_in.emit(cause)
 	)
 
 
-func fade_out(param: int, on_top: Control) -> void:
-	if _fade_node == null:
-		_create_fade_node()
+func fade_out(cause: int, on_top: Control) -> void:
 	if on_top != null:
 		add_child(on_top)
 	if _fading_tween != null:
 		_fading_tween.kill()
 	_fading_tween = create_tween()
+	var _fade_node: ColorRect = $Fade
 	var t = 1.0 - _fade_node.color.a
 	_fading_tween.tween_property(_fade_node, ^"color", Color.BLACK, t)
 	_fading_tween.tween_callback(func():
 		_fading_tween = null
-		faded_out.emit(param)
+		faded_out.emit(cause)
 	)

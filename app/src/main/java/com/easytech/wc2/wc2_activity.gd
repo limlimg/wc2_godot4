@@ -84,7 +84,7 @@ func _prepare_view_size(show_game_view: bool) -> void:
 				_m_game_view_height = width
 			if show_game_view:
 				_show_game_view(height, width)
-		).call_deferred()
+		).call()
 	)
 	view.get_view_tree_observer().add_on_global_layout_listener(listener.ref)
 
@@ -146,7 +146,7 @@ func _get_view_size() -> void:
 func _on_destroy() -> void:
 	super._on_destroy()
 	if _m_gl_view != null:
-		_native_done.call_deferred()
+		_native_done()
 
 
 static func _native_done() -> void:
@@ -166,7 +166,7 @@ func _on_resume() -> void:
 	if _m_gl_view != null:
 		_ecRenderer.is_app_running = true
 		resume_background_music()
-		_native_resume.call_deferred()
+		_native_resume()
 
 
 static func _native_resume() -> void:
@@ -177,7 +177,7 @@ func _on_pause() -> void:
 	super._on_pause()
 	if _m_gl_view != null:
 		pause_background_music()
-		_native_pause.call_deferred()
+		_native_pause()
 		_ecRenderer.is_app_running = false
 
 
@@ -189,7 +189,7 @@ func _on_key_down(key_code: int, event: InputEvent) -> bool:
 	if key_code != 4:
 		return super._on_key_down(key_code, event)
 	if _m_gl_view != null:
-		_call_native_exit.call_deferred()
+		_call_native_exit()
 	return true
 
 
