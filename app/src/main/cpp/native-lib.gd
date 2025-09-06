@@ -56,7 +56,7 @@ static func get_path(file_name: String, _a2: String) -> String:
 			return ""
 
 
-static var g_content_scale_factor := 1.0
+static var g_content_scale_factor := 2.0
 static var g_localizable_strings := _ecStringTable.new()
 static var g_string_table := _ecStringTable.new()
 static var g_commander := _CCommander.new()
@@ -94,7 +94,7 @@ static func Java_com_easytech_wc2_ecRenderer_nativeInit(game_view_width: int, ga
 	else:
 		content_scale_width = 1024
 		content_scale_height = 768
-	g_content_scale_factor = 2.0
+	#g_content_scale_factor = 2.0 # initialize g_content_scale_factor with the desired value because resource loading depends on it,
 	_ec_game_init(content_scale_width, content_scale_height, 0, game_view_width, game_view_height)
 	_s_time_offset = 0
 	_m_old_time = _get_time()
@@ -399,11 +399,8 @@ static func ec_texture_with_string(_a1: String, _a2: String, _a3: int, _a4: int,
 
 
 static func ec_texture_load(texture_name: String, r_width: Array[int], r_height: Array[int], r_texture: Array[Texture2D]) -> bool:
-	var path := ""
-	if g_content_scale_factor == 2.0:
-		path = get_2x_path(texture_name, "")
-	if path == "":
-		path = get_path(texture_name, "")
+	# code to load @2x variant is in "res://app/src/main/cpp/ec_texture_loader.gd"
+	var path := get_path(texture_name, "")
 	var texture := load(path) as Texture2D
 	if texture == null:
 		if not texture_name.ends_with(".png"):

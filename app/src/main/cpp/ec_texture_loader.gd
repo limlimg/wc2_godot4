@@ -2,6 +2,7 @@
 class_name ecTextureloader
 extends ResourceFormatLoader
 
+const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _ecTexture := preload("res://app/src/main/cpp/ec_texture.gd")
 
 func _init() -> void:
@@ -19,7 +20,7 @@ func _handles_type(type: StringName) -> bool:
 func _recognize_path(path: String, _type: StringName) -> bool:
 	for ext in _get_recognized_extensions():
 		if path.ends_with(ext):
-			return path.substr(path.rfind(".", path.rfind(".") - 1) - 3, 3) == "@2x"
+			return _native.g_content_scale_factor == 2.0 or _is_2x_path(path)
 	return false
 
 
@@ -34,7 +35,7 @@ func _get_resource_type(path: String) -> String:
 
 
 func _get_resource_script_class(path: String) -> String:
-	if _recognize_path(path, &"Texture2D"):
+	if _recognize_path(path, &"Texture2D") and _is_2x_path(path):
 		return "ecTexture"
 	return ""
 
@@ -56,13 +57,21 @@ func _get_resource_script_class(path: String) -> String:
 #
 #
 func _load(path: String, original_path: String, _use_sub_threads: bool, _cache_mode: int) -> Variant:
-	var texture := _ecTexture.new()
-	texture.texture = CompressedTexture2D.new()
-	var err: Error = texture.texture.load(path)
-	if err != OK:
-		return err
-	if original_path.substr(original_path.rfind(".") - 3, 3) == "@2x":
+	if _is_2x_path(path):
+		var texture := _ecTexture.new()
+		texture.texture = CompressedTexture2D.new()
+		var err: Error = texture.texture.load(path)
+		if err != OK:
+			return err
 		texture.size_override = texture.texture.get_size() / 2
+		return texture
 	else:
-		texture.size_override = texture.texture.get_size()
-	return texture
+		# Error in loading the @2x variant will make engine try another loader, which will be the default loader for loading the sd texture.
+		var new_path := original_path.insert(original_path.rfind("."), "@2x")
+		if not ResourceLoader.exists(new_path):
+			return FAILED
+		return load(new_path)
+
+
+func _is_2x_path(path: String) -> bool:
+	return path.substr(path.rfind(".", path.rfind(".") - 1) - 3, 3) == "@2x"

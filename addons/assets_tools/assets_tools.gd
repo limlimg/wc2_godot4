@@ -14,6 +14,7 @@ var IMPORTERS = [
 	preload("res://addons/assets_tools/xml_generals_importer.gd"),
 	preload("res://addons/assets_tools/xml_battlelist_importer.gd"),
 	preload("res://addons/assets_tools/xml_conquestlist_importer.gd"),
+	preload("res://addons/assets_tools/xml_texture_importer.gd"),
 ]
 
 var LOADERS = [
