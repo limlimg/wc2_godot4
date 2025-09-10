@@ -39,6 +39,12 @@ pointing/android/enable_pan_and_scale_gestures=true
 pointing/emulate_touch_from_mouse=true
 pointing/emulate_mouse_from_touch=false
 
+[internationalization]
+
+locale/translation_remaps={
+"res://app/src/main/assets/title_hd.xml": PackedStringArray("res://app/src/main/assets/title_cn_hd.xml:zh_Hans")
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

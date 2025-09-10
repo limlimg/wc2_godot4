@@ -22,6 +22,13 @@ var texture_res: _ecTextureRes:
 
 
 @export
+var ignore_texture_scale: bool:
+	set(value):
+		ignore_texture_scale = value
+		_set_from_res()
+
+
+@export
 var name: StringName:
 	set(value):
 		name = value
@@ -31,26 +38,23 @@ var name: StringName:
 @export_group("ecImageAttr")
 @export
 var texture: Texture2D:
-	get(): return _texture
 	set(value):
-		_texture = value
-		_validate_res()
+		texture = value
+		_set_from_attr()
 
 
 @export
 var region: Rect2:
-	get(): return _region
 	set(value):
-		_region = value
-		_validate_res()
+		region = value
+		_set_from_attr()
 
 
 @export
 var origin: Vector2:
-	get(): return _origin
 	set(value):
-		_origin = value
-		_validate_res()
+		origin = value
+		_set_from_attr()
 
 
 var _texture: Texture2D
@@ -61,77 +65,65 @@ var _origin: Vector2
 func _set_from_res() -> void:
 	if texture_res == null or name.is_empty():
 		return
+	texture = null
 	var attr: _ecImageAttr = texture_res.images.get(name)
 	if attr == null:
 		return
 	_texture = load(attr.texture_path) as Texture2D
-	if attr.scale != 1.0:
+	if attr.texture_scale != 1.0 and not ignore_texture_scale:
 		var ec_texture := _ecTexture.new()
-		ec_texture.size_override = _texture.get_size() / attr.scale
+		ec_texture.size_override = _texture.get_size() / attr.texture_scale
 		ec_texture.texture = _texture
 		_texture = ec_texture
-		var pos := Vector2(attr.x, attr.y) / attr.scale
-		var size := Vector2(attr.w, attr.h) / attr.scale
+		var pos := Vector2(attr.x, attr.y) / attr.texture_scale
+		var size := Vector2(attr.w, attr.h) / attr.texture_scale
 		_region = Rect2(pos, size)
-		_origin = Vector2(attr.refx, attr.refy) / attr.scale
+		_origin = Vector2(attr.refx, attr.refy) / attr.texture_scale
 	else:
 		_region = Rect2(attr.x, attr.y, attr.w, attr.h)
 		_origin = Vector2(attr.refx, attr.refy)
 
 
-func _validate_res() -> void:
-	if texture_res == null or name.is_empty():
-		name = &""
+func _set_from_attr() -> void:
+	if texture == null or not region.has_area():
 		return
-	var attr: _ecImageAttr = texture_res.images.get(name)
-	if attr == null:
-		name = &""
-		return
-	var expected_texture = load(attr.texture_path) as Texture2D
-	if attr.scale != 1.0:
-		var pos := Vector2(attr.x, attr.y) / attr.scale
-		var size := Vector2(attr.w, attr.h) / attr.scale
-		if _texture == null or _texture.texture != expected_texture\
-				or _region != Rect2(pos, size)\
-				or _origin != Vector2(attr.refx, attr.refy) / attr.scale:
-			name = &""
-	elif _texture != expected_texture\
-			or _region != Rect2(attr.x, attr.y, attr.w, attr.h)\
-			or _origin != Vector2(attr.refx, attr.refy):
-		name = &""
+	texture_res = null
+	_texture = texture
+	_region = region
+	_origin = origin
 
 
 func _draw(to_canvas_item: RID, pos: Vector2, modulate: Color, transpose: bool) -> void:
-	if texture == null:
+	if _texture == null:
 		return
-	var size := region.size
-	texture.draw_rect_region(to_canvas_item, Rect2(pos - origin, size), region, modulate, transpose)
+	var size := _region.size
+	_texture.draw_rect_region(to_canvas_item, Rect2(pos - _origin, size), _region, modulate, transpose)
 
 
 func _draw_rect(to_canvas_item: RID, rect: Rect2, _tile: bool, modulate: Color, transpose: bool) -> void:
-	if texture == null:
+	if _texture == null:
 		return
-	rect.position -= origin
-	texture.draw_rect_region(to_canvas_item, rect, region, modulate, transpose)
+	rect.position -= _origin
+	texture.draw_rect_region(to_canvas_item, rect, _region, modulate, transpose)
 
 
 func _draw_rect_region(to_canvas_item: RID, rect: Rect2, src_rect: Rect2, modulate: Color, transpose: bool, clip_uv: bool) -> void:
-	if texture == null:
+	if _texture == null:
 		return
-	rect.position -= origin
-	src_rect.position += region.position
-	texture.draw_rect_region(to_canvas_item, rect, src_rect, modulate, transpose, clip_uv)
+	rect.position -= _origin
+	src_rect.position += _region.position
+	_texture.draw_rect_region(to_canvas_item, rect, src_rect, modulate, transpose, clip_uv)
 
 
 func _get_width() -> int:
-	return region.size.x as int
+	return _region.size.x as int
 
 
 func _get_height() -> int:
-	return region.size.y as int
+	return _region.size.y as int
 
 
 func _has_alpha() -> bool:
-	if texture == null:
+	if _texture == null:
 		return false
-	return texture.has_alpha()
+	return _texture.has_alpha()

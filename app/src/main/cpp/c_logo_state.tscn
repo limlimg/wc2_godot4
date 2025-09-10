@@ -1,14 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://k1rddnv5q5m8"]
+[gd_scene load_steps=8 format=3 uid="uid://k1rddnv5q5m8"]
 
 [ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="1_0nah5"]
 [ext_resource type="Script" uid="uid://ch7sqxw3xpl8h" path="res://app/src/main/cpp/c_logo_state.gd" id="1_b54l6"]
 [ext_resource type="PackedScene" uid="uid://ch6fdy54ktb4a" path="res://app/src/main/cpp/gui_ipad.tscn" id="2_eecim"]
 [ext_resource type="Texture2D" uid="uid://o3ch2grd7yco" path="res://app/src/main/assets/logo@2x.webp" id="3_eecim"]
 [ext_resource type="PackedScene" uid="uid://c28xtwuvyw7h2" path="res://app/src/main/cpp/gui_ipad_else.tscn" id="4_b54l6"]
-[ext_resource type="Texture2D" uid="uid://df5gluttixx02" path="res://app/src/main/assets/logo_iPad@2x.webp" id="4_hjp6p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hjp6p"]
-atlas = ExtResource("4_hjp6p")
+atlas = ExtResource("3_eecim")
 region = Rect2(1, 1, 510, 510)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q6662"]

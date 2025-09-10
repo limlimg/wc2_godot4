@@ -9,7 +9,7 @@ extends Resource
 var texture_path: String
 
 @export
-var scale: float
+var texture_scale: float
 
 @export
 var x: float

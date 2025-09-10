@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4fcq7wy2b7qx"]
+
+[ext_resource type="Script" uid="uid://de3qu47el5fpj" path="res://app/src/main/cpp/gui_main_menu.gd" id="1_fciw5"]
+[ext_resource type="PackedScene" uid="uid://ch6fdy54ktb4a" path="res://app/src/main/cpp/gui_ipad.tscn" id="2_2yj7m"]
+[ext_resource type="Texture2D" uid="uid://bywpjkx4irqfd" path="res://app/src/main/assets/mainbg@2x.webp" id="2_fe0n5"]
+[ext_resource type="Script" uid="uid://hxnhfr5o5ixe" path="res://app/src/main/cpp/ec_image.gd" id="4_nhn6o"]
+[ext_resource type="Resource" uid="uid://bxdhk58pmip3e" path="res://app/src/main/assets/title_hd.xml" id="7_qwch1"]
+[ext_resource type="PackedScene" uid="uid://c28xtwuvyw7h2" path="res://app/src/main/cpp/gui_ipad_else.tscn" id="8_nhnkq"]
+
+[sub_resource type="Texture2D" id="Texture2D_wce6e"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_nhn6o")
+texture_res = ExtResource("7_qwch1")
+ignore_texture_scale = true
+name = &"title.png"
+region = Rect2(0, 0, 0, 0)
+origin = Vector2(0, 0)
+metadata/_custom_type_script = "uid://hxnhfr5o5ixe"
+
+[sub_resource type="Texture2D" id="Texture2D_tap4s"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_nhn6o")
+texture_res = ExtResource("7_qwch1")
+ignore_texture_scale = false
+name = &"title.png"
+region = Rect2(0, 0, 0, 0)
+origin = Vector2(0, 0)
+metadata/_custom_type_script = "uid://hxnhfr5o5ixe"
+
+[node name="GUIMainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fciw5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_fe0n5")
+centered = false
+
+[node name="GUIiPad" parent="." instance=ExtResource("2_2yj7m")]
+layout_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="GUIiPad"]
+position = Vector2(512, 324)
+texture = SubResource("Texture2D_wce6e")
+centered = false
+
+[node name="GUIipadElse" parent="." instance=ExtResource("8_nhnkq")]
+layout_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="GUIipadElse"]
+position = Vector2(240, 160)
+texture = SubResource("Texture2D_tap4s")
+centered = false

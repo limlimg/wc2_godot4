@@ -16,12 +16,15 @@ func release() -> void:
 	images.clear()
 
 
-func load_res(file_name: String) -> void:
+func load_res(file_name: String, hd: bool) -> void:
 	var path := _native.get_path(file_name, "")
 	var res := load(path) as _ecTextureRes
 	if res == null:
 		push_error("Failed to load {0}".format([file_name]))
 		return
+	if hd:
+		for i in res.images.values():
+			i.texture_scale = 2.0
 	images.merge(res.images, true)
 
 

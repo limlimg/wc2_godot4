@@ -109,7 +109,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 			refy = p.pop_back()
 		var res_image := _ecImageAttr.new()
 		res_image.texture_path = texture_path
-		res_image.scale = 2.0 if hd else 1.0
+		res_image.texture_scale = 2.0 if hd else 1.0
 		res_image.x = x
 		res_image.y = y
 		res_image.w = w
