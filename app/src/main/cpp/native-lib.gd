@@ -56,7 +56,7 @@ static func get_path(file_name: String, _a2: String) -> String:
 			return ""
 
 
-static var g_content_scale_factor := 2.0
+static var g_content_scale_factor := 1.0
 static var g_localizable_strings := _ecStringTable.new()
 static var g_string_table := _ecStringTable.new()
 static var g_commander := _CCommander.new()
@@ -76,25 +76,27 @@ static var _s_time_offset: int # in ms
 static var _m_old_time: int # in ms
 
 static func Java_com_easytech_wc2_ecRenderer_nativeInit(game_view_width: int, game_view_height: int, _a3, _a4) -> void:
-	var ratio = game_view_width as float / game_view_height as float
-	var content_scale_width: int
-	var content_scale_height: int
-	if ratio > 1.8875:
-		content_scale_width = 640
-		content_scale_height = 320
-	elif ratio > 1.7219:
-		content_scale_width = 568
-		content_scale_height = 320
-	elif ratio > 1.5844:
-		content_scale_width = 534
-		content_scale_height = 320
-	elif ratio >= 1.4062:
-		content_scale_width = 480
-		content_scale_height = 320
-	else:
-		content_scale_width = 1024
-		content_scale_height = 768
-	#g_content_scale_factor = 2.0 # initialize g_content_scale_factor with the desired value because resource loading depends on it,
+	#var ratio = game_view_width as float / game_view_height as float
+	var graphics := _ecGraphics.instance()
+	var content_scale_width := graphics._content_scale_width
+	var content_scale_height := graphics._content_scale_height
+	# moved to _init of "res://app/src/main/cpp/ec_graphics.gd"
+	#if ratio > 1.8875: # never used. The aspect ratio is capped at 16:9.
+		#content_scale_width = 640
+		#content_scale_height = 320
+	#elif ratio > 1.7219:
+		#content_scale_width = 568
+		#content_scale_height = 320
+	#elif ratio > 1.5844:
+		#content_scale_width = 534
+		#content_scale_height = 320
+	#elif ratio >= 1.4062:
+		#content_scale_width = 480
+		#content_scale_height = 320
+	#else:
+		#content_scale_width = 1024
+		#content_scale_height = 768
+	#g_content_scale_factor = 2.0
 	_ec_game_init(content_scale_width, content_scale_height, 0, game_view_width, game_view_height)
 	_s_time_offset = 0
 	_m_old_time = _get_time()
@@ -110,7 +112,7 @@ static func _ec_game_init(content_scale_width: int, content_scale_height: int, o
 	# TODO: register and set initial state
 	g_localizable_strings.load("Localizable.strings")
 	var string_table_key: StringName
-	if _ecGraphics.instance()._content_scale_size_mode == 3:
+	if _ecGraphics.instance().content_scale_size_mode == 3:
 		string_table_key = &"stringtable iPad"
 	else:
 		string_table_key = &"stringtable"
@@ -122,7 +124,7 @@ static func _ec_game_init(content_scale_width: int, content_scale_height: int, o
 	_CSoundBox.get_instance().load_se("btn.wav")
 	g_font1.init("font1.fnt", false)
 	var language := g_localizable_strings.get_string("language")
-	if _ecGraphics.instance()._content_scale_size_mode == 3:
+	if _ecGraphics.instance().content_scale_size_mode == 3:
 		g_font2.init("font2_{0}_hd.fnt".format([language]), false)
 		g_font3.init("font3_{0}_hd.fnt".format([language]), false)
 		if g_content_scale_factor == 2.0:
@@ -210,7 +212,7 @@ static func _ec_game_shutdown() -> void:
 	g_num1.release()
 	g_num3.release()
 	g_num4.release()
-	if _ecGraphics.instance()._content_scale_size_mode == 3:
+	if _ecGraphics.instance().content_scale_size_mode == 3:
 		g_num4b.release()
 	g_num5.release()
 	g_num8.release()

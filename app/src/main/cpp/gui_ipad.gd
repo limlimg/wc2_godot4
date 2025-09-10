@@ -6,7 +6,7 @@ extends Control
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 
 func _ready() -> void:
-	if _ecGraphics.instance()._content_scale_size_mode == 3:
+	if _ecGraphics.instance().content_scale_size_mode == 3:
 		visible = true
 	else:
 		queue_free()

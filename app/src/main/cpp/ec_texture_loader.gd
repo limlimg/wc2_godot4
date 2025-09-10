@@ -2,8 +2,39 @@
 class_name ecTextureloader
 extends ResourceFormatLoader
 
+## The original game code uses different variants of some textures according to
+## the aspect ratio and the value of g_contentscalefactor, which is not the
+## recommended practice in Godot. This loader wraps this by adding suffixes to
+## the name of the texture file to load, and loading the texture with the
+## modified name if it exists. The rules are as follows:
+## 
+## If the height of the view size (as selected by
+## Java_com_easytech_wc2_ecRenderer_nativeInit according to the aspect ratio) is
+## greater than 640, "_iPad" is added.
+## 
+## Otherwise (if the above condition is not satisfied or the texture with the
+## modified name does not exist), if the width is greater than 568, "-640h" is
+## added.
+## 
+## Otherwise, if the width is greater than 534, "-568h" is added.
+## 
+## Otherwise, if the width equals 534, "-534h" is added.
+## 
+## Otherwise, if the width equals 512 (never happens), "-512h" is added.
+##
+## (The above rules are best demostrated by GUITutorails::LoadScript)
+## 
+## On top of the above rules, if g_contentscalefactor equals 2.0, "@2x" is added
+## for high-resolution texture.
+## 
+## (The above rule is from ecTextureLoad in the original code.)
+## 
+## This loader is also responsible for wrapping "@2x" in ecTexture.
+
+const _HD_SUFFIX = "@2x"
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _ecTexture := preload("res://app/src/main/cpp/ec_texture.gd")
+const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 
 func _init() -> void:
 	ResourceLoader.add_resource_format_loader(self, true)
@@ -13,14 +44,14 @@ func _get_recognized_extensions() -> PackedStringArray:
 	return PackedStringArray(["ctex"])
 
 
-func _handles_type(type: StringName) -> bool:
-	return type == &"Texture2D" or type == &"Resource"
-
-
+#func _handles_type(type: StringName) -> bool:
+	#return type == &"Texture2D" or type == &"Resource"
+#
+#
 func _recognize_path(path: String, _type: StringName) -> bool:
 	for ext in _get_recognized_extensions():
 		if path.ends_with(ext):
-			return _native.g_content_scale_factor == 2.0 or _is_2x_path(path)
+			return true
 	return false
 
 
@@ -57,21 +88,71 @@ func _get_resource_script_class(path: String) -> String:
 #
 #
 func _load(path: String, original_path: String, _use_sub_threads: bool, _cache_mode: int) -> Variant:
-	if _is_2x_path(path):
-		var texture := _ecTexture.new()
-		texture.texture = CompressedTexture2D.new()
-		var err: Error = texture.texture.load(path)
-		if err != OK:
-			return err
-		texture.size_override = texture.texture.get_size() / 2
-		return texture
+	var s := original_path
+	var i := s.rfind('.')
+	if s.substr(i - 3, 3) == _HD_SUFFIX:
+		i -= 3
+		s = s.erase(i, 3)
+	if s.substr(i - 5, 5) in ["_iPad", "-640h", "-568h", "-534h", "-512h"]:
+		i -= 5
+		s = s.erase(i, 5)
+	if not Engine.is_editor_hint():
+		if _native.g_content_scale_factor == 2.0:
+			var path_2x = s.insert(i, _HD_SUFFIX)
+			var path_suffix_2x := insert_suffix(path_2x, i)
+			if path_suffix_2x == original_path:
+				return _load_2x(path)
+			elif ResourceLoader.exists(path_suffix_2x):
+				return load(path_suffix_2x)
+		var path_suffix := insert_suffix(s, i)
+		if path_suffix == original_path:
+			return _load_texture(path)
+		elif ResourceLoader.exists(path_suffix):
+			return load(path_suffix)
+	if _is_2x_path(original_path) or _native.g_content_scale_factor == 2.0:
+		var path_2x = s.insert(i, _HD_SUFFIX)
+		if path_2x == original_path:
+				return _load_2x(path)
+		elif ResourceLoader.exists(path_2x):
+				return load(path_2x)
+	return _load_texture(path)
+
+
+func _is_2x_path(original_path: String) -> bool:
+	return original_path.substr(original_path.rfind(".") - 3, 3) == _HD_SUFFIX
+
+
+static func insert_suffix(path: String, position: int) -> String:
+	var graphics := _ecGraphics.instance()
+	if graphics.content_scale_size_mode == 3:
+		return path.insert(position, "_iPad")
 	else:
-		# Error in loading the @2x variant will make engine try another loader, which will be the default loader for loading the sd texture.
-		var new_path := original_path.insert(original_path.rfind("."), "@2x")
-		if not ResourceLoader.exists(new_path):
-			return FAILED
-		return load(new_path)
+		var w := graphics.orientated_content_scale_width
+		if w > 568.0:
+			return path.insert(position, "-640h")
+		elif w > 534.0:
+			return path.insert(position, "-568h")
+		elif w == 534.0:
+			return path.insert(position, "-534h")
+		elif w == 512.0:
+			return path.insert(position, "-512h")
+		else:
+			return path
 
 
-func _is_2x_path(path: String) -> bool:
-	return path.substr(path.rfind(".", path.rfind(".") - 1) - 3, 3) == "@2x"
+func _load_2x(path: String) -> Variant:
+	var texture := _ecTexture.new()
+	texture.texture = CompressedTexture2D.new()
+	var err: Error = texture.texture.load(path)
+	if err != OK:
+		return err
+	texture.size_override = texture.texture.get_size() / 2
+	return texture
+
+
+func _load_texture(path: String) -> Variant:
+	var texture := CompressedTexture2D.new()
+	var err: Error = texture.load(path)
+	if err != OK:
+		return err
+	return texture

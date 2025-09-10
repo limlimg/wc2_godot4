@@ -17,7 +17,7 @@ const _ecLine = preload("res://app/src/main/cpp/ec_line.gd")
 const _ecTriple = preload("res://app/src/main/cpp/ec_line.gd")
 const _ecQuad = preload("res://app/src/main/cpp/ec_quad.gd")
 
-static var _instance := new()
+static var _instance: _ecGraphics
 
 #var _width_multiplier: float
 #var _height_multiplier: float
@@ -26,7 +26,7 @@ var _content_scale_height: int
 var orientated_content_scale_width: int
 var orientated_content_scale_height: int
 var orientation: int
-var _content_scale_size_mode: int
+var content_scale_size_mode: int
 var _blend_mode := 2
 var _render_shape := 3
 var _bound_texture: Texture2D
@@ -36,13 +36,55 @@ var _render_target: CanvasItem
 var _blend_material: Array[CanvasItemMaterial]
 
 static func instance() -> _ecGraphics:
+	if _instance == null:
+		_instance = new()
 	return _instance
 
 
+func _init() -> void:
+	# Loading of textures is dependent on the content size managed by
+	# ecGraphics::Instance(), so it is too late to initialize it in
+	# Java_com_easytech_wc2_ecRenderer_nativeInit.
+	var window_size := DisplayServer.window_get_size()
+	var ratio = window_size.x as float / window_size.y as float
+	if ratio > 1.8875: # never used. The aspect ratio is capped at 16:9.
+		_content_scale_width = 640
+		_content_scale_height = 320
+	elif ratio > 1.7219:
+		_content_scale_width = 568
+		_content_scale_height = 320
+	elif ratio > 1.5844:
+		_content_scale_width = 534
+		_content_scale_height = 320
+	elif ratio >= 1.4062:
+		_content_scale_width = 480
+		_content_scale_height = 320
+	else:
+		_content_scale_width = 1024
+		_content_scale_height = 768
+	g_content_scale_factor = 2.0
+	orientation = DisplayServer.screen_get_orientation()
+	if orientation <= 1:
+		orientated_content_scale_width = _content_scale_width
+		orientated_content_scale_height = _content_scale_height
+	else:
+		orientated_content_scale_width = _content_scale_height
+		orientated_content_scale_height = _content_scale_width
+	if _content_scale_width > 320:
+		if _content_scale_height > 640 :
+			content_scale_size_mode = 3
+		else:
+			content_scale_size_mode = 2
+	else:
+		content_scale_size_mode = 1
+
+
 func init(content_scale_width: int, content_scale_height: int, _orientation: int, _view_width: int, _view_height: int) -> void:
-	_content_scale_width = content_scale_width
-	_content_scale_height = content_scale_height
-	orientation = _orientation
+	# initialized early in _init
+	#_content_scale_width = content_scale_width
+	#_content_scale_height = content_scale_height
+	#orientation = _orientation
+	# scaling content to window is done by the root viewport
 	#if view_width == 1 and view_height == 1:
 		#_width_multiplier = 1.0
 		#_height_multiplier = 1.0
@@ -56,19 +98,20 @@ func init(content_scale_width: int, content_scale_height: int, _orientation: int
 	window.content_scale_size = Vector2i(window_content_x as int, window_content_y as int)
 	_Wc2Activity.get_game_view().size = Vector2(content_scale_width, content_scale_height)
 	_Wc2Activity.get_game_view().position = Vector2.ZERO
-	if orientation <= 1:
-		orientated_content_scale_width = content_scale_width
-		orientated_content_scale_height = content_scale_height
-	else:
-		orientated_content_scale_width = content_scale_height
-		orientated_content_scale_height = content_scale_width
-	if content_scale_width > 320:
-		if content_scale_height > 640 :
-			_content_scale_size_mode = 3
-		else:
-			_content_scale_size_mode = 2
-	else:
-		_content_scale_size_mode = 1
+	# initialized early in _init
+	#if orientation <= 1:
+		#orientated_content_scale_width = content_scale_width
+		#orientated_content_scale_height = content_scale_height
+	#else:
+		#orientated_content_scale_width = content_scale_height
+		#orientated_content_scale_height = content_scale_width
+	#if content_scale_width > 320:
+		#if content_scale_height > 640 :
+			#content_scale_size_mode = 3
+		#else:
+			#content_scale_size_mode = 2
+	#else:
+		#content_scale_size_mode = 1
 	var material_add := CanvasItemMaterial.new()
 	material_add.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
 	_blend_material.append(material_add)
