@@ -30,16 +30,20 @@ func _get_import_order() -> int:
 	return 1
 
 
-func _get_import_options(path: String, preset_index: int) -> Array[Dictionary]:
-	return []
+func _get_import_options(path: String, _preset_index: int) -> Array[Dictionary]:
+	var file := FileAccess.open(path, FileAccess.READ)
+	if file == null or file.get_length() < 8:
+		return []
+	file.seek(4)
+	return [ { "name": "fixed_size", "default_value": file.get_32() } ]
 
 
-func _get_option_visibility(_path: String, _option_name: StringName, _options: Dictionary) -> bool:
-	return true
+func _get_option_visibility(_path: String, _option_name: StringName, options: Dictionary) -> bool:
+	return options["fixed_size"] > 0
 
 
 func _get_preset_count() -> int:
-	return 0
+	return 1
 
 
 func _get_preset_name(preset_index: int) -> String:
@@ -78,7 +82,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	font.set_antialiasing(TextServer.FONT_ANTIALIASING_NONE)
 	font.set_generate_mipmaps(false)
 	font.set_multichannel_signed_distance_field(false)
-	font.set_fixed_size(chr_height)
+	font.set_fixed_size(options["fixed_size"])
 	font.set_subpixel_positioning(TextServer.SUBPIXEL_POSITIONING_DISABLED)
 	font.set_keep_rounding_remainders(true)
 	font.set_force_autohinter(false)
