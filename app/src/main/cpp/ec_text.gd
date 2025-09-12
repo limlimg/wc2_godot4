@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+extends Control
 
 const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")

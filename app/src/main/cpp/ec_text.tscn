@@ -2,5 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dlx68noi32hpb" path="res://app/src/main/cpp/ec_text.gd" id="1_tq6e4"]
 
-[node name="ecText" type="Node2D"]
+[node name="ecText" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_tq6e4")
