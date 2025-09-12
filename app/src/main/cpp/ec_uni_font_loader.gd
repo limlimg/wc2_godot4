@@ -1,14 +1,16 @@
-class_name ecTextureResloader
+class_name ecUniFontloader
 extends ResourceFormatLoader
 
-## "_hd" is the high-resolution suffix of ecTextureRes resources in the same
-## way "@2x" is to textures.
-## 
-## Hopefully this wouldn't significantly slow down the loading of all custom
-## reources.
+## It g_contentscalefactor == 2.0, "_hd" suffix is added to name of the font
+## file to load. If the content size is 1024x768, "num4.fnt" is a special
+## exception. This loader cannot tell if the font should be used in half the
+## size. Use the global ecUniFont in "res://app/src/main/cpp/native-lib.gd" when
+## setting font from code. The default size of imported fonts can be seen from
+## its import option. Refer to it when setting the fone_size of ecText in the
+## editor
 
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
-const _ecTexture := preload("res://app/src/main/cpp/ec_texture.gd")
+const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 
 func _init() -> void:
 	ResourceLoader.add_resource_format_loader(self, true)
@@ -28,7 +30,7 @@ func _recognize_path(path: String, _type: StringName) -> bool:
 	for ext in _get_recognized_extensions():
 		if path.ends_with(ext):
 			var i := path.rfind('.', path.rfind('.') - 1)
-			if i == -1 or path.substr(i, 4) != ".xml":
+			if i == -1 or path.substr(i, 4) != ".fnt":
 				return false
 			if path.substr(i - 3, 3) == "_hd":
 				return false
@@ -42,13 +44,11 @@ func _recognize_path(path: String, _type: StringName) -> bool:
 #
 func _get_resource_type(path: String) -> String:
 	if _recognize_path(path, &"Resource"):
-		return "Resource"
+		return "FontFile"
 	return ""
 
 
-func _get_resource_script_class(path: String) -> String:
-	if _recognize_path(path, &"Texture2D"):
-		return "ecTextureRes"
+func _get_resource_script_class(_path: String) -> String:
 	return ""
 
 
@@ -69,7 +69,9 @@ func _get_resource_script_class(path: String) -> String:
 #
 #
 func _load(_path: String, original_path: String, _use_sub_threads: bool, _cache_mode: int) -> Variant:
-	var new_path := original_path.insert(original_path.rfind('.xml'), "_hd")
+	if _ecGraphics.instance().content_scale_size_mode == 3 and original_path.ends_with("num4.fnt"):
+		return FAILED # The engine will try other loaders.
+	var new_path := original_path.insert(original_path.rfind('.fnt'), "_hd")
 	if not ResourceLoader.exists(new_path):
 		return FAILED # The engine will try other loaders.
 	return load(new_path)
