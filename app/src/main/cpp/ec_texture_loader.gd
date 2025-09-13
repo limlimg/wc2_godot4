@@ -35,6 +35,7 @@ const _HD_SUFFIX = "@2x"
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _ecTexture := preload("res://app/src/main/cpp/ec_texture.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
+const CONTENT_SIZE_SUFFIX = ["_iPad", "-640h", "-568h", "-534h", "-512h"]
 
 func _init() -> void:
 	ResourceLoader.add_resource_format_loader(self, true)
@@ -93,7 +94,7 @@ func _load(path: String, original_path: String, _use_sub_threads: bool, _cache_m
 	if s.substr(i - 3, 3) == _HD_SUFFIX:
 		i -= 3
 		s = s.erase(i, 3)
-	if s.substr(i - 5, 5) in ["_iPad", "-640h", "-568h", "-534h", "-512h"]:
+	if s.substr(i - 5, 5) in CONTENT_SIZE_SUFFIX:
 		i -= 5
 		s = s.erase(i, 5)
 	if not Engine.is_editor_hint():
@@ -125,17 +126,17 @@ func _is_2x_path(original_path: String) -> bool:
 static func insert_suffix(path: String, position: int) -> String:
 	var graphics := _ecGraphics.instance()
 	if graphics.content_scale_size_mode == 3:
-		return path.insert(position, "_iPad")
+		return path.insert(position, CONTENT_SIZE_SUFFIX[0])
 	else:
 		var w := graphics.orientated_content_scale_width
 		if w > 568.0:
-			return path.insert(position, "-640h")
+			return path.insert(position, CONTENT_SIZE_SUFFIX[1])
 		elif w > 534.0:
-			return path.insert(position, "-568h")
+			return path.insert(position, CONTENT_SIZE_SUFFIX[2])
 		elif w == 534.0:
-			return path.insert(position, "-534h")
+			return path.insert(position, CONTENT_SIZE_SUFFIX[3])
 		elif w == 512.0:
-			return path.insert(position, "-512h")
+			return path.insert(position, CONTENT_SIZE_SUFFIX[4])
 		else:
 			return path
 

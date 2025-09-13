@@ -118,7 +118,6 @@ static func _ec_game_init(content_scale_width: int, content_scale_height: int, o
 		string_table_key = &"stringtable"
 	var string_table_name := g_localizable_strings.get_string(string_table_key)
 	g_string_table.load(string_table_name)
-	TranslationServer.add_translation(g_string_table._translation)
 	_CObjectDef.instance().init()
 	g_commander.load()
 	_CSoundBox.get_instance().load_se("btn.wav")
