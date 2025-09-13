@@ -1,98 +1,38 @@
-@tool
-extends Control
+
+## Use Label node to show text in the scene system. It is not obvious, but the
+## font is in "Theme Overrides" group.
 
 const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 
-var _text: TextParagraph
+var _text: TextParagraph 
+var _text_string: String
+var _font: _ecUniFont
+var _color := Color.WHITE
 
-@export
-var text: String:
-	set = set_text
-
-@export
-var font: Font:
-	set(value):
-		if value != font:
-			var callable := Callable(self, "_text_changed")
-			if font != null:
-				font.changed.disconnect(callable)
-			font = value
-			if font != null:
-				font.changed.connect(callable)
-			_text_changed()
+func init(font: _ecUniFont) -> void:
+	_font = font
+	_color = Color.WHITE
 
 
-@export
-var font_size: int:
-	set(value):
-		if value != font_size:
-			font_size = value
-			_text_changed()
-
-
-@export
-var color := Color.WHITE:
-	set = set_color
-
-
-@export
-var alpha: float:
-	get = get_alpha,
-	set = set_alpha
-
-
-@export
-var alignment: HorizontalAlignment:
-	set(value):
-		if value != alignment:
-			alignment = value
-			_changed()
-
-
-func init(value: _ecUniFont) -> void:
-	font = value._font
-	font_size = value._font_size
-	color = Color.WHITE
-
-
-func set_text(value: String) -> void:
-	if value != text:
-		text = value
-		_text_changed()
-
-
-func _text_changed() -> void:
+func set_text(text: String) -> void:
 	_text.clear()
-	if font != null:
-		_text.add_string(text, font, font_size if font_size > 0 else 16)
-	_changed()
+	_text.add_string(text, _font._font, _font._font_size)
+	_text_string = text
 
 
-func set_color(value: Color) -> void:
-	if value != color:
-		color = value
-		_changed()
+func set_color(color: Color) -> void:
+	_color = color
 
 
-func get_alpha() -> float:
-	return color.a
+func set_alpha(alpha: float)-> void:
+	_color.a = alpha
 
 
-func set_alpha(value: float)-> void:
-	if value != color.a:
-		color.a = value
-		_changed()
-
-
-func _changed() -> void:
-	queue_redraw()
-
-
-func draw_text(x: float, y: float, override_alignment: HorizontalAlignment) -> void:
-	_text.alignment = override_alignment
+func draw_text(x: float, y: float, alignment: HorizontalAlignment) -> void:
+	_text.alignment = alignment
 	var rid := _ecGraphics.instance()._render_target.get_canvas_item()
-	_text.draw(rid, Vector2(x, y), color)
+	_text.draw(rid, Vector2(x, y), _color)
 
 
 ## In the original game code, this method can get partial width of a line (i.e.
@@ -116,8 +56,3 @@ func get_num_lines() -> int:
 func _init() -> void:
 	_text = TextParagraph.new()
 	_text.break_flags = TextServer.BREAK_MANDATORY
-
-
-func _draw() -> void:
-	_text.alignment = alignment
-	_text.draw(get_canvas_item(), Vector2.ZERO, color)
