@@ -1,6 +1,9 @@
 @tool
 extends EditorImportPlugin
 
+const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
+const _CardDef = preload("res://app/src/main/cpp/card_def.gd")
+const _CardDefList = preload("res://app/src/main/cpp/imported_containers/card_def_list.gd")
 const CARD_LIST_SIZE = 28
 const CARD_TYPE = [
 	"army",
@@ -8,9 +11,6 @@ const CARD_TYPE = [
 	"airforce",
 	"development"
 ]
-const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _CardDef = preload("res://app/src/main/cpp/imported/card_def.gd")
-const _CardDefList = preload("res://app/src/main/cpp/imported/card_def_list.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.cards"

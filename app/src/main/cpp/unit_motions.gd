@@ -1,7 +1,7 @@
 class_name UnitMotions
 extends Resource
 
-const _UnitMotion = preload("res://app/src/main/cpp/imported/unit_motion.gd")
+const _UnitMotion = preload("res://app/src/main/cpp/unit_motion.gd")
 
 @export
 var res: StringName

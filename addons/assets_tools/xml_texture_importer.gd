@@ -2,8 +2,8 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _ecImageAttr = preload("res://app/src/main/cpp/imported/ec_image_attr.gd")
-const _ecTextureRes = preload("res://app/src/main/cpp/imported/ec_texture_res.gd")
+const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
+const _ecTextureRes = preload("res://app/src/main/cpp/ec_texture_res.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.texture"

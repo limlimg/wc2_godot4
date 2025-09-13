@@ -1,7 +1,7 @@
 class_name BattleDef
 extends Resource
 
-const _FlagInfo = preload("res://app/src/main/cpp/imported/flag_info.gd")
+const _FlagInfo = preload("res://app/src/main/cpp/flag_info.gd")
 
 @export_storage
 var name: StringName

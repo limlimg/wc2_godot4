@@ -9,8 +9,8 @@ extends Texture2D
 ## texture, region and origin can be set directly, or by an entry in an
 ## ecTextureRes.
 
-const _ecTextureRes = preload("res://app/src/main/cpp/imported/ec_texture_res.gd")
-const _ecImageAttr = preload("res://app/src/main/cpp/imported/ec_image_attr.gd")
+const _ecTextureRes = preload("res://app/src/main/cpp/ec_texture_res.gd")
+const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
 
 @export_group("ecTextureRes")
@@ -22,7 +22,7 @@ var texture_res: _ecTextureRes:
 
 
 @export
-var ignore_texture_scale: bool:
+var ignore_texture_scale := false:
 	set(value):
 		ignore_texture_scale = value
 		_set_from_res()
@@ -82,6 +82,7 @@ func _set_from_res() -> void:
 	else:
 		_region = Rect2(attr.x, attr.y, attr.w, attr.h)
 		_origin = Vector2(attr.refx, attr.refy)
+	changed.emit()
 
 
 func _set_from_attr() -> void:
@@ -91,6 +92,7 @@ func _set_from_attr() -> void:
 	_texture = texture
 	_region = region
 	_origin = origin
+	changed.emit()
 
 
 func _draw(to_canvas_item: RID, pos: Vector2, modulate: Color, transpose: bool) -> void:

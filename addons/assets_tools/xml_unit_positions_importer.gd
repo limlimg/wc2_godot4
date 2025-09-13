@@ -3,8 +3,8 @@ extends EditorImportPlugin
 
 const UNIT_POSITIONS_SIZE = 5
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _UnitPositions = preload("res://app/src/main/cpp/imported/unit_positions.gd")
-const _UnitPositionsMap = preload("res://app/src/main/cpp/imported/unit_positions_map.gd")
+const _UnitPositions = preload("res://app/src/main/cpp/unit_positions.gd")
+const _UnitPositionsMap = preload("res://app/src/main/cpp/imported_containers/unit_positions_map.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.unitpositions"

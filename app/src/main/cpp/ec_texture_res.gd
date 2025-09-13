@@ -5,9 +5,9 @@ extends Resource
 ## the original game code often merges the entries from multiple files, so
 ## relavent methods are implemented here.
 
-const _ecImageAttr = preload("res://app/src/main/cpp/imported/ec_image_attr.gd")
+const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
-const _ecTextureRes = preload("res://app/src/main/cpp/imported/ec_texture_res.gd")
+const _ecTextureRes = preload("res://app/src/main/cpp/ec_texture_res.gd")
 
 @export
 var images: Dictionary[StringName, _ecImageAttr]
