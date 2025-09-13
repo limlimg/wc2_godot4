@@ -7,10 +7,10 @@ extends Node
 const _SoundPool = preload("res://core/java/android/media/sound_pool.gd")
 
 class _Promise:
-	var _fulfilled: bool
-	var _result: int
+	var fulfilled: bool
+	var result: int
 	
-	signal _settled
+	signal settled
 
 var _player_node: AudioStreamPlayer
 var _sound_path: Array[String]
@@ -96,10 +96,10 @@ func play(sound_id: int, left_volume: float, right_volume: float, loop: int) -> 
 		_stopping_stream_count += 1
 		var promise := _Promise.new()
 		_waiting_queue.append(promise)
-		await promise._settled
-		if not promise._fulfilled:
+		await promise.settled
+		if not promise.fulfilled:
 			return -1
-		position = promise._result
+		position = promise.result
 	if loop == -1:
 		var loop_stream := AudioStreamPlaylist.new()
 		loop_stream.fade_time = 0.0
@@ -129,14 +129,14 @@ func _update_stream_queue(playback: AudioStreamPlaybackPolyphonic, alloc: int) -
 	_stopping_stream_count -= stopping_complete_count
 	if _waiting_queue.size() == _player_node.stream.polyphony:
 		var promise: _Promise = _waiting_queue.pop_front()
-		promise._fulfilled = false
-		promise._settled.emit()
+		promise.fulfilled = false
+		promise.settled.emit()
 	_playing_stream_queue.resize(min(j + _waiting_queue.size() + alloc, _player_node.stream.polyphony))
 	while j < _player_node.stream.polyphony and _waiting_queue.size() > 0:
 		var promise: _Promise = _waiting_queue.pop_front()
-		promise._fulfilled = true
-		promise._result = j
-		promise._settled.emit()
+		promise.fulfilled = true
+		promise.result = j
+		promise.settled.emit()
 		j += 1
 	return j
 

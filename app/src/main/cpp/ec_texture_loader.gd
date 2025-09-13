@@ -6,35 +6,29 @@ extends ResourceFormatLoader
 ## the aspect ratio and the value of g_contentscalefactor, which is not the
 ## recommended practice in Godot. This loader wraps this by adding suffixes to
 ## the name of the texture file to load, and loading the texture with the
-## modified name if it exists. The rules are as follows:
+## modified name if it exists. 
 ## 
-## If the height of the view size (as selected by
-## Java_com_easytech_wc2_ecRenderer_nativeInit according to the aspect ratio) is
-## greater than 640, "_iPad" is added.
+## The following suffix is add according to the content size in
+## ecGraphics::Instance():
+## 1024x768	_iPad
+## 640x320	-640h
+## 568x320	-568h
+## 534x320	-534h
+## 512x320	-512h	(never used)
 ## 
-## Otherwise (if the above condition is not satisfied or the texture with the
-## modified name does not exist), if the width is greater than 568, "-640h" is
-## added.
+## (The above rule is best demostrated by GUITutorails::LoadScript)
 ## 
-## Otherwise, if the width is greater than 534, "-568h" is added.
-## 
-## Otherwise, if the width equals 534, "-534h" is added.
-## 
-## Otherwise, if the width equals 512 (never happens), "-512h" is added.
-##
-## (The above rules are best demostrated by GUITutorails::LoadScript)
-## 
-## On top of the above rules, if g_contentscalefactor equals 2.0, "@2x" is added
+## After the above suffix, if g_contentscalefactor equals 2.0, "@2x" is added
 ## for high-resolution texture.
 ## 
 ## (The above rule is from ecTextureLoad in the original code.)
 ## 
 ## This loader is also responsible for wrapping "@2x" in ecTexture.
 
-const _HD_SUFFIX = "@2x"
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _ecTexture := preload("res://app/src/main/cpp/ec_texture.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
+const _HD_SUFFIX = "@2x"
 const CONTENT_SIZE_SUFFIX = ["_iPad", "-640h", "-568h", "-534h", "-512h"]
 
 func _init() -> void:

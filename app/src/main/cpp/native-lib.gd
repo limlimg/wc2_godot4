@@ -78,8 +78,8 @@ static var _m_old_time: int # in ms
 static func Java_com_easytech_wc2_ecRenderer_nativeInit(game_view_width: int, game_view_height: int, _a3, _a4) -> void:
 	#var ratio = game_view_width as float / game_view_height as float
 	var graphics := _ecGraphics.instance()
-	var content_scale_width := graphics._content_scale_width
-	var content_scale_height := graphics._content_scale_height
+	var content_scale_width := graphics.orientated_content_scale_width
+	var content_scale_height := graphics.orientated_content_scale_height
 	# moved to _init of "res://app/src/main/cpp/ec_graphics.gd"
 	#if ratio > 1.8875: # never used. The aspect ratio is capped at 16:9.
 		#content_scale_width = 640
@@ -109,7 +109,8 @@ static func _ec_game_init(content_scale_width: int, content_scale_height: int, o
 	_ecGraphics.instance().init(content_scale_width, content_scale_height, orientation, game_view_width, game_view_height)
 	# GUIManager is no longer a singleton, can't initialize here
 	_CStateManager.instance().init()
-	# TODO: register and set initial state
+	# NOTTODO: register states
+	# set initial state as the main scene
 	g_localizable_strings.load("Localizable.strings")
 	var string_table_key: StringName
 	if _ecGraphics.instance().content_scale_size_mode == 3:

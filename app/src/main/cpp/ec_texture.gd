@@ -13,10 +13,18 @@ extends Texture2D
 ## ecGraphics.
 
 @export
-var size_override: Vector2i
+var size_override: Vector2i:
+	set(value):
+		size_override = value
+		changed.emit()
+
 
 @export
-var texture: Texture2D
+var texture: Texture2D:
+	set(value):
+		texture = value
+		changed.emit()
+
 
 func _draw(to_canvas_item: RID, pos: Vector2, modulate: Color, transpose: bool) -> void:
 	if texture == null:

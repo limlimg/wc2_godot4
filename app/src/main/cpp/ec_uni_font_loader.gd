@@ -3,11 +3,11 @@ extends ResourceFormatLoader
 
 ## It g_contentscalefactor == 2.0, "_hd" suffix is added to name of the font
 ## file to load. If the content size is 1024x768, "num4.fnt" is a special
-## exception. This loader cannot tell if the font should be used in half the
-## size. Use the global ecUniFont in "res://app/src/main/cpp/native-lib.gd" when
-## setting font from code. The default size of imported fonts can be seen from
-## its import option. Refer to it when setting the fone_size of ecText in the
-## editor
+## exception from such suffuxing. This loader cannot tell if the font should be
+## used in half the size. Use the global ecUniFont in
+## "res://app/src/main/cpp/native-lib.gd" when setting font from code. The
+## default size of imported fonts can be seen from its import option. Refer to
+## it when setting the fone_size of ecText in the editor.
 
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
@@ -70,8 +70,8 @@ func _get_resource_script_class(_path: String) -> String:
 #
 func _load(_path: String, original_path: String, _use_sub_threads: bool, _cache_mode: int) -> Variant:
 	if _ecGraphics.instance().content_scale_size_mode == 3 and original_path.ends_with("num4.fnt"):
-		return FAILED # The engine will try other loaders.
+		return FAILED # The engine will try other loaders, which will load this resource as-is.
 	var new_path := original_path.insert(original_path.rfind('.fnt'), "_hd")
 	if not ResourceLoader.exists(new_path):
-		return FAILED # The engine will try other loaders.
+		return FAILED # The engine will try other loaders, which will load this resource as-is.
 	return load(new_path)
