@@ -17,7 +17,7 @@ func init(font: _ecUniFont) -> void:
 
 func set_text(text: String) -> void:
 	_text.clear()
-	_text.add_string(text, _font._font, _font._font_size)
+	_text.add_string(text, _font.font, _font.font_size)
 	_text_string = text
 
 
@@ -30,8 +30,11 @@ func set_alpha(alpha: float)-> void:
 
 
 func draw_text(x: float, y: float, alignment: HorizontalAlignment) -> void:
+	var canvas_item := _ecGraphics.instance().get_rendering_canvas_item()
+	if canvas_item == null:
+		return
 	_text.alignment = alignment
-	var rid := _ecGraphics.instance()._render_target.get_canvas_item()
+	var rid := canvas_item.get_canvas_item()
 	_text.draw(rid, Vector2(x, y), _color)
 
 

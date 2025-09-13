@@ -32,7 +32,7 @@ var _render_shape := 3
 var _bound_texture: Texture2D
 var _occupied_buffer := 0
 var _fade_color := Color.BLACK
-var _render_target: CanvasItem
+var _rendering_canvas_item: CanvasItem
 var _blend_material: Array[CanvasItemMaterial]
 
 static func instance() -> _ecGraphics:
@@ -171,25 +171,29 @@ func free_texture(_texture_name: StringName) -> void:
 	pass
 
 
-func render_begin(target: CanvasItem = _Wc2Activity.get_game_view()):
-	_render_target = target
+func get_rendering_canvas_item() -> CanvasItem:
+	return _rendering_canvas_item
+
+
+func render_begin(canvas_item: CanvasItem = _Wc2Activity.get_game_view()):
+	_rendering_canvas_item = canvas_item
 	_bound_texture = null
 	if _blend_mode == 1:
-		target.material = _blend_material[0]
+		canvas_item.material = _blend_material[0]
 	elif _blend_mode == 3:
-		target.material = _blend_material[2]
+		canvas_item.material = _blend_material[2]
 	else:
-		target.material = _blend_material[1]
+		canvas_item.material = _blend_material[1]
 
 
 func render_end():
 	_flush()
-	_render_target = null
+	_rendering_canvas_item = null
 
 
 func set_view_point(x: float, y: float, scale: float):
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
-	if _render_target == null:
+	if _rendering_canvas_item == null:
 		return
 	_flush()
 	var transform = Transform2D.IDENTITY
@@ -202,25 +206,25 @@ func set_view_point(x: float, y: float, scale: float):
 	transform = transform.scaled_local(Vector2(scale, scale))
 	#transform = transform.scaled_local(Vector2(_width_multiplier, _height_multiplier))
 	transform = transform.translated_local(Vector2(-x, -y))
-	_render_target.draw_set_transform_matrix(transform)
+	_rendering_canvas_item.draw_set_transform_matrix(transform)
 
 
 func set_blend_mode(value: int):
-	if _render_target == null:
+	if _rendering_canvas_item == null:
 		return
 	if _blend_mode != value:
 		_flush()
 		if _blend_mode == 1:
-			_render_target.material = _blend_material[0]
+			_rendering_canvas_item.material = _blend_material[0]
 		elif _blend_mode == 3:
-			_render_target.material = _blend_material[2]
+			_rendering_canvas_item.material = _blend_material[2]
 		else:
-			_render_target.material = _blend_material[1]
+			_rendering_canvas_item.material = _blend_material[1]
 		_blend_mode = value
 
 
 func bind_texture(texture: _ecTexture):
-	if _render_target == null:
+	if _rendering_canvas_item == null:
 		return
 	if texture != _bound_texture:
 		_flush()
@@ -231,56 +235,56 @@ func bind_texture(texture: _ecTexture):
 
 
 func render_line(line: _ecLine):
-	if _render_target == null:
+	if _rendering_canvas_item == null:
 		return
 	if _render_shape != 2 or _occupied_buffer > 3998:
 		_flush()
 		_render_shape = 2
 	# Leave batching to be handled by the engine
-	_render_target.draw_primitive(line.points, line.colors, line.uvs, _bound_texture)
+	_rendering_canvas_item.draw_primitive(line.points, line.colors, line.uvs, _bound_texture)
 	_occupied_buffer += 2
 
 
 func render_triple(triple: _ecTriple):
-	if _render_target == null:
+	if _rendering_canvas_item == null:
 		return
 	if _render_shape != 3 or _occupied_buffer > 3997:
 		_flush()
 		_render_shape = 3
 	# Leave batching to be handled by the engine
-	_render_target.draw_primitive(triple.points, triple.colors, triple.uvs, _bound_texture)
+	_rendering_canvas_item.draw_primitive(triple.points, triple.colors, triple.uvs, _bound_texture)
 	_occupied_buffer += 3
 
 
 func render_quad(quad: _ecQuad):
-	if _render_target == null:
+	if _rendering_canvas_item == null:
 		return
 	if _render_shape != 3 or _occupied_buffer > 3994:
 		_flush()
 		_render_shape = 3
 	# Leave batching to be handled by the engine
-	_render_target.draw_primitive(quad.points, quad.colors, quad.uvs, _bound_texture)
+	_rendering_canvas_item.draw_primitive(quad.points, quad.colors, quad.uvs, _bound_texture)
 	_occupied_buffer += 6
 
 
 func render_rect(x: float, y: float, width: float, height: float, color: Color):
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
-	if _render_target == null:
+	if _rendering_canvas_item == null:
 		return
 	_flush()
-	_render_target.draw_rect(Rect2(x, y, width, height), color)
+	_rendering_canvas_item.draw_rect(Rect2(x, y, width, height), color)
 
 
 func render_circle(x: float, y: float, radius: float, color: Color):
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
-	if _render_target == null:
+	if _rendering_canvas_item == null:
 		return
 	_flush()
-	_render_target.draw_circle(Vector2(x, y), radius, color)
+	_rendering_canvas_item.draw_circle(Vector2(x, y), radius, color)
 
 
 func fade(alpha: float):
-	if _render_target == null:
+	if _rendering_canvas_item == null:
 		return
 	var color := _fade_color
 	color.a = alpha
