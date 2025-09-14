@@ -1,8 +1,7 @@
-extends Node
+@warning_ignore("empty_file")
 
-## CBaseState is the base class of states which are the primary controllers of
-## the game's behavour.
+## In the original game code, CBaseState is the base class of states which are
+## the primary controllers of the game's behavour.
 ##
-## This class extends Node instead of Node2D because it tends to have a 
-## GUIManager as a child. If this class extended Node2D the GUIManager wouldn't
-## fill the viewport automatically.
+## In this Godot port, states do not have to inherit this class, so this class
+## is unused.
