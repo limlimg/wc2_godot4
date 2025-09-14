@@ -100,7 +100,7 @@ func is_max_level() -> bool:
 	return rank > 13
 
 
-func buy_medel(value: int) -> void:
+func buy_medal(value: int) -> void:
 	bought_medal += value
 	medal += value
 	_CSoundBox.get_instance().play_se("buy.wav")
