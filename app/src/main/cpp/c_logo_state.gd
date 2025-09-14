@@ -3,17 +3,16 @@ extends Control
 class _CLogoState:
 	extends "res://app/src/main/cpp/native-lib.gd"
 	
-	func on_enter() -> void:
+	static func on_enter() -> void:
 		g_game_settings.load_settings()
 		var sound_box := _CSoundBox.get_instance()
 		sound_box.set_music_volume(g_game_settings.music_volume)
 		sound_box.set_se_volume(g_game_settings.se_volume)
 		# TODO: load textureres for uis
 
-var _state := _CLogoState.new()
 
 func _ready() -> void:
-	_state.on_enter()
+	_CLogoState.on_enter()
 	var tween := create_tween()
 	tween.tween_interval(2.1)
 	tween.tween_callback(func ():
