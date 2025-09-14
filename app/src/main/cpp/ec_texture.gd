@@ -25,22 +25,11 @@ var texture_res: _ecTextureResFile:
 
 
 @export
-var texture: Texture2D:
+var texture_scale_override: float:
 	set(value):
-		if value != texture:
-			texture = value
-			_set_from_attr()
-
-
-@export
-var texture_scale := 0.0:
-	set(value):
-		if value != texture_scale:
-			texture_scale = value
-			if texture_res != null:
-				_set_from_res()
-			elif texture != null:
-				_set_from_attr()
+		if value != texture_scale_override:
+			texture_scale_override = value
+			_set_from_res()
 
 
 @export
@@ -49,6 +38,22 @@ var name: StringName:
 		if value != name:
 			name = value
 			_set_from_res()
+
+
+@export
+var texture: Texture2D:
+	set(value):
+		if value != texture:
+			texture = value
+			_set_from_attr()
+
+
+@export
+var texture_scale: float:
+	set(value):
+		if value != texture_scale:
+			texture_scale = value
+			_set_from_attr()
 
 
 @export
@@ -84,7 +89,7 @@ func _set_from_res() -> void:
 	var res_path := texture_res.resource_path
 	var texture_path = res_path.substr(0, res_path.rfind('/') + 1) + texture_res.texture_name
 	_texture = load(texture_path) as Texture2D
-	_texture_scale = texture_res.texture_scale if texture_scale == 0.0 else texture_scale
+	_texture_scale = texture_res.texture_scale if texture_scale_override == 0.0 else texture_scale_override
 	_region = Rect2(attr.x, attr.y, attr.w, attr.h)
 	_origin = Vector2(attr.refx, attr.refy)
 	changed.emit()
@@ -144,12 +149,20 @@ func _validate_property(property: Dictionary) -> void:
 		if texture != null:
 			property["usage"] |= PROPERTY_USAGE_NO_EDITOR
 			property["usage"] &= ~PROPERTY_USAGE_EDITOR
-	elif property["name"] == "texture":
-		if texture_res != null:
+	elif property["name"] == "texture_scale_override":
+		if texture_res == null:
 			property["usage"] |= PROPERTY_USAGE_NO_EDITOR
 			property["usage"] &= ~PROPERTY_USAGE_EDITOR
 	elif property["name"] == "name":
 		if texture_res == null:
+			property["usage"] |= PROPERTY_USAGE_NO_EDITOR
+			property["usage"] &= ~PROPERTY_USAGE_EDITOR
+	elif property["name"] == "texture":
+		if texture_res != null:
+			property["usage"] |= PROPERTY_USAGE_NO_EDITOR
+			property["usage"] &= ~PROPERTY_USAGE_EDITOR
+	elif property["name"] == "texture_scale":
+		if texture == null:
 			property["usage"] |= PROPERTY_USAGE_NO_EDITOR
 			property["usage"] &= ~PROPERTY_USAGE_EDITOR
 	elif property["name"] == "region":
