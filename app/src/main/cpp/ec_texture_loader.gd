@@ -141,7 +141,7 @@ func _load_2x(path: String) -> Variant:
 	var err: Error = texture.texture.load(path)
 	if err != OK:
 		return err
-	texture.size_override = texture.texture.get_size() / 2
+	texture.texture_scale = 2.0
 	return texture
 
 
