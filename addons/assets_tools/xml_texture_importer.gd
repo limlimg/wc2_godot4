@@ -2,8 +2,8 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
-const _ecTextureRes = preload("res://app/src/main/cpp/ec_texture_res.gd")
+const _ecTextureResFile = preload("res://app/src/main/cpp/ec_texture_res_file.gd")
+const _ecTextureRect = preload("res://app/src/main/cpp/ec_texture_rect.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.texture"
@@ -68,7 +68,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if xml_root == null:
 		push_error("Parse Error: Failed to find <Texture> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
-	var res_texture := _ecTextureRes.new()
+	var res_texture := _ecTextureResFile.new()
 	var texture_name := xml_root.attribute("name")
 	if texture_name == "":
 		push_error("Parse Error: Element does not have valid \"name\" attibute on line {0} of {1}".format([xml_root.row() + 1, source_file]))
@@ -78,6 +78,8 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if load(texture_path) as Texture2D == null:
 		push_error("Error: failed to validate texture {0} for {1}".format([texture_name, source_file]))
 		return FAILED
+	res_texture.texture_name = texture_name
+	res_texture.texture_scale = 2.0 if hd else 1.0
 	var xml_images := doc.first_child_element("Images")
 	if xml_images == null:
 		push_error("Parse Error: Failed to find <Images> in {0}".format([source_file]))
@@ -107,9 +109,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		var refy := 0.0
 		if xml_image.query_float_attribute("refy", p) == xml_image.TIXML_SUCCESS:
 			refy = p.pop_back()
-		var res_image := _ecImageAttr.new()
-		res_image.texture_path = texture_path
-		res_image.texture_scale = 2.0 if hd else 1.0
+		var res_image := _ecTextureRect.new()
 		res_image.x = x
 		res_image.y = y
 		res_image.w = w
