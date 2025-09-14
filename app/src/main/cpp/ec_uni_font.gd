@@ -6,17 +6,18 @@ extends "res://app/src/main/cpp/native-lib.gd"
 ## GetCharImage is not implemented. In the original game code, it is only used
 ## by ecText to draw text. In this port, it looks like its implementation will
 ## either be complicated or put constraint on the type of Font to use.
-##
-## Theoretically, in the orignal game code, Init can be called multiple times to
-## get a combined font, which is not possible here.
 
 var font: Font
 var font_size: int
 
 func init(file_name: String, hd: bool) -> void:
+	var old_font = font
 	font = load(get_path(file_name, "")) as FontFile
 	if font == null:
+		font = old_font
 		return
+	if old_font != null:
+		font.fallbacks.append(old_font)# Theoretically, in the orignal game code, Init can be called multiple times to get a combined font.
 	if hd:
 		font_size = font.fixed_size / 2
 	else:
