@@ -9,7 +9,7 @@ extends ResourceFormatLoader
 ## this wouldn't cause problem.
 
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
-const _ecTextureLoader = preload("res://app/src/main/cpp/ec_texture_loader.gd")
+const _ecTextureLoader = preload("res://app/src/main/cpp/loaders/ec_texture_loader.gd")
 const _HD_SUFFIX = "@2x"
 
 func _init() -> void:

@@ -1,10 +1,22 @@
 extends "res://app/src/main/cpp/native-lib.gd"
-## Like many other kinds of Resource, loading code is in the importer. However,
-## the original game code often merges the entries from multiple files, so
-## relavent methods are implemented here.
+
+## ecTextureRes stores collections of texture atlas. Image definitions from
+## multiple .xml files can be merged by calling load_res multiple times.
+## 
+## Like with textures, an .xml file can define a standard or high-resolution
+## atlas. In the original game code the second patameter of load_res decides
+## whether a .xml file is regarded as standard or high-resolution. Generally,
+## high-resolution atlas has "_hd" suffix in the file name. However, many files
+## with the suffix are loaded as standard atlases when the content size is
+## 1024 x 768 to make it twice the size as its counterpart in other content
+## sizes.
+## 
+## To use images defined in ecTextureRes in the scene system, create ecImageAttr
+## as texture and specify the source ecTextureRes, the second patameter of
+## load_res and the name of the image.
 
 const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
-const _ecTextureResFile = preload("res://app/src/main/cpp/ec_texture_res_file.gd")
+const _ecTextureRes = preload("res://app/src/main/cpp/imported_containers/ec_texture_res.gd")
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
 
 var _textures: Dictionary[StringName, Texture2D]
@@ -21,7 +33,7 @@ func release() -> void:
 
 func load_res(file_name: String, hd: bool) -> void:
 	var path := get_path(file_name, "")
-	var res := load(path) as _ecTextureResFile
+	var res := load(path) as _ecTextureRes
 	if res == null:
 		push_error("Failed to load {0}".format([file_name]))
 		return
@@ -29,32 +41,17 @@ func load_res(file_name: String, hd: bool) -> void:
 	if texture == null:
 		push_error("Failed to load {0}".format([res.texture_name]))
 		return
-	if hd:
-		var ec_texture := _ecTexture.new()
-		ec_texture.texture = texture
-		ec_texture.texture_scale = 2.0
-		texture = ec_texture
 	for k in res.images.keys():
-		var rect := res.images[k]
-		var x = rect.x
-		var y = rect.y
-		var w = rect.w
-		var h = rect.h
-		var refx = rect.refx
-		var refy = rect.refy
-		if hd:
-			x /= 2.0
-			y /= 2.0
-			w /= 2.0
-			h /= 2.0
-			refx /= 2.0
-			refy /= 2.0
-		create_image_texture(k, texture, rect.x, rect.y, rect.w, rect.h, rect.refx, rect.refy)
+		var attr := _ecImageAttr.new()
+		attr.texture_res = res
+		attr.hd = hd
+		attr.name = k
+		_images[k] = attr
 
 
 func unload_res(file_name: String) -> void:
 	var path := get_path(file_name, "")
-	var res := load(path) as _ecTextureResFile
+	var res := load(path) as _ecTextureRes
 	if res == null:
 		push_error("Failed to load {0}".format([file_name]))
 		return

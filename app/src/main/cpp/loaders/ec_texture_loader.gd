@@ -8,10 +8,10 @@ extends ResourceFormatLoader
 ## the name of the texture file to load, and loading the texture with the
 ## modified name if it exists. 
 ## 
-## The following suffix is add according to the content size in
+## The following suffix is added according to the content size in
 ## ecGraphics::Instance():
 ## 1024x768	_iPad
-## 640x320	-640h
+## 640x320	-640h	(never used)
 ## 568x320	-568h
 ## 534x320	-534h
 ## 512x320	-512h	(never used)
@@ -141,7 +141,8 @@ func _load_2x(path: String) -> Variant:
 	var err: Error = texture.texture.load(path)
 	if err != OK:
 		return err
-	texture.texture_scale = 2.0
+	texture.size_override = texture.texture.get_size() / 2.0
+	texture.res_scale = 1.0
 	return texture
 
 
