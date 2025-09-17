@@ -1,6 +1,8 @@
 
 ## Use Label node to show text in the scene system. It is not obvious, but the
-## font is in "Theme Overrides" group.
+## font is in "Theme Overrides" group. The default font size is 16. Change the
+## font size in "Theme Overrides" to the fixed_size of the metadata of the
+## imported font, or half if the font is regarded as high-resolution.
 
 const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
