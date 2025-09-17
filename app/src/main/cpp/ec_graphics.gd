@@ -223,7 +223,7 @@ func set_blend_mode(value: int):
 		_blend_mode = value
 
 
-func bind_texture(texture: _ecTexture):
+func bind_texture(texture: Texture2D):
 	if _rendering_canvas_item == null:
 		return
 	if texture != _bound_texture:
