@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8ulkhao6n4aw"]
 
-[ext_resource type="Script" uid="uid://bppiy4vq27vjm" path="res://app/src/main/cpp/gui_manager.gd" id="1_o8ok3"]
+[ext_resource type="Script" uid="uid://bo63r12xqtvg7" path="res://app/src/main/cpp/gui_manager.gd" id="1_o8ok3"]
 
 [node name="GUIManager" type="Control"]
 layout_mode = 3

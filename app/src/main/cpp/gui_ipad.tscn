@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ch6fdy54ktb4a"]
 
-[ext_resource type="Script" uid="uid://23iwut35t56w" path="res://app/src/main/cpp/gui_ipad.gd" id="1_k0gxb"]
+[ext_resource type="Script" uid="uid://c57jrlftcmn2r" path="res://app/src/main/cpp/gui_ipad.gd" id="1_k0gxb"]
 
 [node name="GUIiPad" type="Control"]
 visible = false
