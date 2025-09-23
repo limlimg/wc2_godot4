@@ -30,12 +30,7 @@ func _get_import_order() -> int:
 
 
 func _get_import_options(path: String, preset_index: int) -> Array[Dictionary]:
-	var hd: bool
-	if preset_index == 0:
-		hd = path.substr(path.rfind('.') - 3, 3) == "_hd"
-	else:
-		hd = preset_index == 2
-	return [{"name": "hd", "default_value": hd}]
+	return []
 
 
 func _get_option_visibility(_path: String, _option_name: StringName, _options: Dictionary) -> bool:
@@ -43,11 +38,11 @@ func _get_option_visibility(_path: String, _option_name: StringName, _options: D
 
 
 func _get_preset_count() -> int:
-	return 3
+	return 0
 
 
 func _get_preset_name(preset_index: int) -> String:
-	return ["auto", "sd", "hd"][preset_index]
+	return ""
 
 
 func _get_resource_type() -> String:
@@ -59,7 +54,6 @@ func _get_save_extension() -> String:
 
 
 func _import(source_file: String, save_path: String, options: Dictionary, platform_variants: Array[String], gen_files: Array[String]) -> Error:
-	var hd: bool = options["hd"]
 	var doc := _TiXmlDocument.new()
 	var err := doc.load_file(source_file)
 	if err != OK:
@@ -79,7 +73,6 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		push_error("Error: failed to validate texture {0} for {1}".format([texture_name, source_file]))
 		return FAILED
 	res_texture.texture_name = texture_name
-	res_texture.hd = hd
 	var xml_images := doc.first_child_element("Images")
 	if xml_images == null:
 		push_error("Parse Error: Failed to find <Images> in {0}".format([source_file]))

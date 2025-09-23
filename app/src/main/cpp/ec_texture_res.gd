@@ -17,11 +17,9 @@ extends "res://app/src/main/cpp/native-lib.gd"
 
 const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
 const _ecTextureRes = preload("res://app/src/main/cpp/imported_containers/ec_texture_res.gd")
-const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
 
 var _textures: Dictionary[StringName, Texture2D]
 var _images: Dictionary[StringName, _ecImageAttr]
-
 
 func release() -> void:
 	var graphics := _ecGraphics.instance()
@@ -43,9 +41,11 @@ func load_res(file_name: String, hd: bool) -> void:
 		return
 	for k in res.images.keys():
 		var attr := _ecImageAttr.new()
-		attr.texture_res = res
-		attr.hd = hd
-		attr.name = k
+		if hd:
+			attr.set_texture_res_name_hd(res.texture_name)
+		else:
+			attr.set_texture_res_name(res.texture_name)
+		attr.set_image_name(k)
 		_images[k] = attr
 
 

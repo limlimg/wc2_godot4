@@ -8,33 +8,28 @@ extends Texture2D
 ## In this Godot port, this class can also be used as a Texture2D for unsing in
 ## the scene system.
 
+const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
+const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _ecTextureRes = preload("res://app/src/main/cpp/imported_containers/ec_texture_res.gd")
 const _ecTextureRect = preload("res://app/src/main/cpp/ec_texture_rect.gd")
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
+const _AssetManager = preload("res://core/java/android/content/res/asset_manager.gd")
 
 @export
-var texture_res: _ecTextureRes:
-	set(value):
-		if value != texture_res:
-			texture_res = value
-			_set_from_res()
-
+var texture_res_name: String:
+	set=set_texture_res_name
 
 @export
-var hd: bool:
-	set(value):
-		if value != hd:
-			hd = value
-			_set_from_res()
+var texture_res_name_hd: String:
+	set=set_texture_res_name_hd
 
+@export
+var texture_res_name_ipad: String:
+	set=set_texture_res_name_ipad
 
 @export
 var name: StringName:
-	set(value):
-		if value != name:
-			name = value
-			_set_from_res()
-
+	set=set_image_name
 
 var texture: Texture2D:
 	set(value):
@@ -43,117 +38,137 @@ var texture: Texture2D:
 			changed.emit()
 
 
-var x: float:
+var texture_scale: float:
 	set(value):
-		if value != x:
-			x = value
+		if value != texture_scale:
+			texture_scale = value
 			changed.emit()
 
 
-var y: float:
+var region: Rect2:
 	set(value):
-		if value != y:
-			y = value
+		if value != region:
+			region = value
 			changed.emit()
 
 
-var w: float:
+var ref: Vector2:
 	set(value):
-		if value != w:
-			w = value
+		if value != ref:
+			ref = value
 			changed.emit()
 
 
-var h: float:
-	set(value):
-		if value != h:
-			h = value
-			changed.emit()
+func set_texture_res_name(value: String) -> void:
+		if value != texture_res_name:
+			texture_res_name = value
+			_changed()
 
 
-var refx: float:
-	set(value):
-		if value != refx:
-			refx = value
-			changed.emit()
+func set_texture_res_name_hd(value: String) -> void:
+		if value != texture_res_name_hd:
+			texture_res_name_hd = value
+			_changed()
 
 
-var refy: float:
-	set(value):
-		if value != refy:
-			refy = value
-			changed.emit()
+func set_texture_res_name_ipad(value: String) -> void:
+		if value != texture_res_name:
+			texture_res_name = value
+			_changed()
 
 
-func _set_from_res() -> void:
-	if texture_res == null or name.is_empty():
+func set_image_name(value: StringName) -> void:
+		if value != name:
+			name = value
+			_changed()
+
+
+func _changed() -> void:
+	if name.is_empty():
+		texture = null
+		return
+	var selected_name: String
+	var is_hd := false
+	if not Engine.is_editor_hint():
+		if not texture_res_name_ipad.is_empty() and _ecGraphics.instance().content_scale_size_mode == 3:
+			selected_name = texture_res_name_ipad
+		elif not texture_res_name_hd.is_empty() and _native.g_content_scale_factor == 2.0:
+			selected_name = texture_res_name_hd
+			is_hd = true
+		else:
+			selected_name = texture_res_name
+	else:
+		selected_name = texture_res_name
+	if selected_name.is_empty():
+		texture = null
+		return
+	var texture_res: _ecTextureRes
+	var selected_path := _native.get_path_alias(selected_name, "")
+	if not selected_path.is_empty():
+		texture_res = load(_native.get_path_alias(selected_name, "")) as _ecTextureRes
+	if texture_res == null and Engine.is_editor_hint(): # in the editor, the situation is considered where only _hd variant exists
+		selected_path = _native.get_path_alias(texture_res_name_hd, "")
+		if not selected_path.is_empty():
+			texture_res = load(selected_path) as _ecTextureRes
+	if texture_res == null:
+		texture = null
 		return
 	var attr: _ecTextureRect = texture_res.images.get(name)
 	if attr == null:
+		texture = null
 		return
-	var texture_res_path := texture_res.resource_path
-	var texture_path := texture_res_path.substr(0, texture_res_path.rfind('/') + 1) + texture_res.texture_name
-	var loaded_texture := load(texture_path) as Texture2D
-	if loaded_texture == null:
-		return
-	texture = loaded_texture
-	var res_hd = texture_res_path.substr(texture_res_path.rfind('.') - 3, 3) == "_hd"
-	if hd or (not res_hd and texture_res.hd):
-		if texture is _ecTexture and texture.res_scale == 1.0:
-			texture.size_override /= 2.0
-			texture.res_scale = 2.0
-		else:
-			var ec_texture := _ecTexture.new()
-			ec_texture.texture = texture
-			ec_texture.size_override = texture.get_size() / 2.0
-			ec_texture.res_scale = 2.0
-			texture = ec_texture
-		x = attr.x / 2.0
-		y = attr.y / 2.0
-		w = attr.w / 2.0
-		h = attr.h / 2.0
-		refx = attr.refx / 2.0
-		refy = attr.refy / 2.0
+	var ec_texture := _ecTexture.new()
+	ec_texture.set_texture_name(texture_res.texture_name)
+	if ec_texture.texture != null:
+		texture = ec_texture
+		texture_scale = 2.0 if is_hd else 1.0
+		region = Rect2(attr.x, attr.y, attr.w, attr.h)
+		ref = Vector2(attr.refx, attr.refy)
 	else:
-		x = attr.x
-		y = attr.y
-		w = attr.w
-		h = attr.h
-		refx = attr.refx
-		refy = attr.refy
+		texture = null
 
 
 func _draw(to_canvas_item: RID, pos: Vector2, modulate: Color, transpose: bool) -> void:
 	if texture == null:
 		return
-	pos -= Vector2(refx, refy)
-	var size := Vector2(w, h)
-	var region = Rect2(x, y, w, h)
-	texture.draw_rect_region(to_canvas_item, Rect2(pos, size), region, modulate, transpose)
+	pos -= ref / texture_scale
+	var src_rect := region
+	src_rect.position /= texture_scale
+	src_rect.size /= texture_scale
+	texture.draw_rect_region(to_canvas_item, Rect2(pos, src_rect.size), src_rect, modulate, transpose)
 
 
 func _draw_rect(to_canvas_item: RID, rect: Rect2, tile: bool, modulate: Color, transpose: bool) -> void:
 	if texture == null:
 		return
-	rect.position -= Vector2(refx, refy)
-	var region = Rect2(x, y, w, h)
-	texture.draw_rect_region(to_canvas_item, rect, region, modulate, transpose)
+	rect.position -= ref / texture_scale
+	var src_rect := region
+	src_rect.position /= texture_scale
+	src_rect.size /= texture_scale
+	if tile:
+		src_rect.size *= rect.size / src_rect.size
+	texture.draw_rect_region(to_canvas_item, rect, src_rect, modulate, transpose, not tile)
 
 
 func _draw_rect_region(to_canvas_item: RID, rect: Rect2, src_rect: Rect2, modulate: Color, transpose: bool, clip_uv: bool) -> void:
 	if texture == null:
 		return
-	rect.position -= Vector2(refx, refy)
-	src_rect.position += Vector2(x, y)
+	rect.position -= ref / texture_scale
+	src_rect.position = src_rect.position * texture_scale + region.position
+	src_rect.size *= texture_scale
 	texture.draw_rect_region(to_canvas_item, rect, src_rect, modulate, transpose, clip_uv)
 
 
 func _get_width() -> int:
-	return w
+	if texture == null:
+		return 0
+	return region.size.x as int
 
 
 func _get_height() -> int:
-	return h
+	if texture == null:
+		return 0
+	return region.size.y as int
 
 
 func _has_alpha() -> bool:

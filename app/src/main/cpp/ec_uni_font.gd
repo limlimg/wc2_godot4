@@ -1,29 +1,99 @@
-extends "res://app/src/main/cpp/native-lib.gd"
+extends Theme
 
-## The .fnt files are imported as FontFile. Reimport if the coresponding image
-## changes (including when an @2x variant is added).
-##
-## GetCharImage is not implemented. In the original game code, it is only used
-## by ecText to draw text. In this port, it looks like its implementation will
-## either be complicated or put constraint on the type of Font to use.
+## THis class extends Theme because it hold both a font and a font size. The
+## .fnt files are imported as FontFile. @2x variant is not supported for the
+## associated images.
 
-var font: Font
-var font_size: int
+const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
+const _native = preload("res://app/src/main/cpp/native-lib.gd")
+
+@export
+var font_name: String:
+	set=set_font_name
+
+@export
+var font_name_hd: String:
+	set=set_font_name_hd
+
+@export
+var font_name_ipad: String:
+	set=set_font_name_ipad
+
+func set_font_name(value: String) -> void:
+		if value != font_name:
+			font_name = value
+			_changed()
+
+
+func set_font_name_hd(value: String) -> void:
+		if value != font_name_hd:
+			font_name_hd = value
+			_changed()
+
+
+func set_font_name_ipad(value: String) -> void:
+		if value != font_name:
+			font_name = value
+			_changed()
+
+
+func _changed() -> void:
+	var selected_name: String
+	var is_hd := false
+	if not Engine.is_editor_hint():
+		if not font_name_ipad.is_empty() and _ecGraphics.instance().content_scale_size_mode == 3:
+			selected_name = font_name_ipad
+		elif not font_name_hd.is_empty() and _native.g_content_scale_factor == 2.0:
+			selected_name = font_name_hd
+			is_hd = true
+		else:
+			selected_name = font_name
+	else:
+		selected_name = font_name
+	if selected_name.is_empty():
+		default_font = null
+		return
+	var selected_path := _native.get_path_alias(selected_name, "")
+	var font: FontFile
+	if not selected_path.is_empty():
+		font = load(selected_path) as FontFile
+	if font == null and Engine.is_editor_hint(): # in the editor, the situation is considered where only _hd variant exists
+		selected_path = _native.get_path_alias(font_name_hd, "")
+		if not selected_path.is_empty():
+			font = load(selected_path) as FontFile
+	if font == null:
+		default_font = null
+		return
+	default_font = font
+	if is_hd:
+		default_font_size = default_font.fixed_size / 2
+	else:
+		default_font_size = default_font.fixed_size
+
 
 func init(file_name: String, hd: bool) -> void:
-	var old_font = font
-	font = load(get_path(file_name, "")) as FontFile
-	if font == null:
-		font = old_font
-		return
-	if old_font != null:
-		font.fallbacks.append(old_font)# Theoretically, in the orignal game code, Init can be called multiple times to get a combined font.
-	var file_name_hd = file_name.substr(file_name.rfind('.') - 3, 3) == "_hd"
-	if hd or (not file_name_hd and font.get_meta("hd", false)):
-		font_size = font.fixed_size / 2
+	var old_font = default_font
+	if hd:
+		set_font_name_hd(file_name)
 	else:
-		font_size = font.fixed_size
+		set_font_name(file_name)
+	default_font.fallbacks.append(old_font)
 
 
 func release() -> void:
-	font = null
+	default_font = null
+
+
+func get_char_image(glyph: int) -> Image:
+	if not default_font.has_char(glyph):
+		return null
+	var font := default_font as FontFile
+	if font == null:
+		return null
+	var size := Vector2(default_font_size, 0)
+	var idx := font.get_glyph_texture_idx(0, size, glyph)
+	var image := font.get_texture_image(0, size, idx)
+	if image == null:
+		return null
+	var region := font.get_glyph_uv_rect(0, size, glyph)
+	return image.get_region(region)

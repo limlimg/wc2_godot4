@@ -1,17 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://k1rddnv5q5m8"]
+[gd_scene load_steps=9 format=3 uid="uid://k1rddnv5q5m8"]
 
 [ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="1_0nah5"]
-[ext_resource type="Script" uid="uid://ch7sqxw3xpl8h" path="res://app/src/main/cpp/c_logo_state.gd" id="1_b54l6"]
+[ext_resource type="Script" uid="uid://c2o7l5cd0x8vw" path="res://app/src/main/cpp/c_logo_state.gd" id="1_b54l6"]
 [ext_resource type="PackedScene" uid="uid://ch6fdy54ktb4a" path="res://app/src/main/cpp/gui_ipad.tscn" id="2_eecim"]
-[ext_resource type="Texture2D" uid="uid://o3ch2grd7yco" path="res://app/src/main/assets/logo@2x.webp" id="3_eecim"]
 [ext_resource type="PackedScene" uid="uid://c28xtwuvyw7h2" path="res://app/src/main/cpp/gui_ipad_else.tscn" id="4_b54l6"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="4_hjp6p"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hjp6p"]
-atlas = ExtResource("3_eecim")
+[sub_resource type="Texture2D" id="Texture2D_q6662"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_hjp6p")
+texture_name = "logo.webp"
+texture_name_ipad = "logo_iPad.webp"
+texture_name_640h = ""
+texture_name_568h = ""
+texture_name_534h = ""
+texture_name_512h = ""
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8gn5"]
+atlas = SubResource("Texture2D_q6662")
 region = Rect2(1, 1, 510, 510)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q6662"]
-atlas = ExtResource("3_eecim")
+[sub_resource type="AtlasTexture" id="AtlasTexture_in8jk"]
+atlas = SubResource("Texture2D_q6662")
 region = Rect2(1, 1, 254, 254)
 
 [node name="CLogoState" type="Control"]
@@ -37,20 +49,20 @@ layout_mode = 1
 [node name="GUIiPad" parent="GUIManager" instance=ExtResource("2_eecim")]
 layout_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="GUIManager/GUIiPad"]
+[node name="TextureRect3" type="TextureRect" parent="GUIManager/GUIiPad"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -255.0
-offset_top = -255.0
-offset_right = 255.0
-offset_bottom = 255.0
+offset_left = -127.0
+offset_top = -127.0
+offset_right = 127.0
+offset_bottom = 127.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_hjp6p")
+texture = SubResource("AtlasTexture_v8gn5")
 
 [node name="GUIipadElse" parent="GUIManager" instance=ExtResource("4_b54l6")]
 layout_mode = 1
@@ -68,4 +80,4 @@ offset_right = 127.0
 offset_bottom = 127.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("AtlasTexture_q6662")
+texture = SubResource("AtlasTexture_in8jk")

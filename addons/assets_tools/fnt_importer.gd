@@ -28,12 +28,7 @@ func _get_import_order() -> int:
 
 
 func _get_import_options(path: String, preset_index: int) -> Array[Dictionary]:
-	var hd: bool
-	if preset_index == 0:
-		hd = path.substr(path.rfind('.') - 3, 3) == "_hd"
-	else:
-		hd = preset_index == 2
-	return [ { "name": "hd", "default_value": hd } ]
+	return []
 
 
 func _get_option_visibility(_path: String, _option_name: StringName, options: Dictionary) -> bool:
@@ -41,11 +36,11 @@ func _get_option_visibility(_path: String, _option_name: StringName, options: Di
 
 
 func _get_preset_count() -> int:
-	return 3
+	return 0
 
 
 func _get_preset_name(preset_index: int) -> String:
-	return ["auto", "sd", "hd"][preset_index]
+	return ""
 
 
 func _get_resource_type() -> String:
@@ -106,8 +101,5 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		font.set_glyph_texture_idx(0, Vector2i(font_height, 0), idx, 0);
 	font.set_cache_ascent(0, font_height, 0.5 * font_height)
 	font.set_cache_descent(0, font_height, 0.5 * font_height)
-	#font.hd = options["hd"]
-	font.set_meta(&"fixed_size", font_height)
-	font.set_meta(&"hd", options["hd"])
 	var filename = save_path + "." + _get_save_extension()
 	return ResourceSaver.save(font, filename)

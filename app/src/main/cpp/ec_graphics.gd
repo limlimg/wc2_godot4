@@ -12,7 +12,6 @@ extends "res://app/src/main/cpp/native-lib.gd"
 ## _draw callback of the CanvasItem. For the local coordinate system, the root
 ## viewport is modified to achieve the same effect.
 
-const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
 const _ecLine = preload("res://app/src/main/cpp/ec_line.gd")
 const _ecTriple = preload("res://app/src/main/cpp/ec_line.gd")
 const _ecQuad = preload("res://app/src/main/cpp/ec_quad.gd")
@@ -159,11 +158,7 @@ func create_texture_with_string(a1: String, a2: String, a3: int, a4: int, width:
 ## Other varients of LoadTexture are omitted.
 func load_texture(texture_name: String) -> Texture2D:
 	# Caching of the texture is handled by ResourceLoader.
-	var r_texture:Array[Texture2D] = []
-	if ec_texture_load(texture_name, [], [], r_texture):
-		return r_texture[0]
-	else:
-		return null
+	return ec_texture_load(texture_name)
 
 
 func free_texture(_texture_name: StringName) -> void:

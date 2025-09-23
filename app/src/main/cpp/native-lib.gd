@@ -11,6 +11,7 @@ const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
 const _CGameSettings = preload("res://app/src/main/cpp/c_game_settings.gd")
 const _ecMultipleTouch = preload("res://app/src/main/cpp/ec_multiple_touch.gd")
+const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
 
 static var asset_mgr: _AssetManager
 static var _str_version_name: String
@@ -57,6 +58,11 @@ static func get_path(file_name: String, _a2: String) -> String:
 			return path
 		else:
 			return ""
+
+
+## get_path often get shadowed by Script
+static func get_path_alias(file_name: String, _a2: String) -> String:
+	return get_path(file_name, _a2)
 
 
 static var g_content_scale_factor := 1.0
@@ -403,19 +409,25 @@ static func ec_texture_with_string(_a1: String, _a2: String, _a3: int, _a4: int,
 	return false
 
 
-static func ec_texture_load(texture_name: String, r_width: Array[int], r_height: Array[int], r_texture: Array[Texture2D]) -> bool:
-	# code to load @2x variant is in "res://app/src/main/cpp/ec_texture_loader.gd"
-	var path := get_path(texture_name, "")
+static func ec_texture_load(texture_name: String) -> Texture2D:
+	var path := ""
+	if g_content_scale_factor == 2.0:
+		path = get_2x_path(texture_name, "")
+	var is_2x := not path.is_empty()
+	if not is_2x:
+		path = get_path(texture_name, "")
 	var texture := load(path) as Texture2D
 	if texture == null:
 		if not texture_name.ends_with(".png"):
 			texture_name = texture_name.substr(0, texture_name.rfind(".")) + ".png"
-			return ec_texture_load(texture_name, r_width, r_height, r_texture)
-		return false
-	r_texture.append(texture)
-	r_width.append(texture.get_width())
-	r_height.append(texture.get_height())
-	return true
+			return ec_texture_load(texture_name)
+		return null
+	if is_2x:
+		var ec_texture := _ecTexture.new()
+		ec_texture.texture = texture
+		ec_texture.size_override = texture.get_size() / 2.0
+		return ec_texture
+	return texture
 
 
 static func preload_background_music_jni(path: String) -> void:

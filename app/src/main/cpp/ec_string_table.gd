@@ -10,11 +10,15 @@ func load(file_name: String) -> bool:
 	_translation = load(path) as Translation
 	if _translation == null:
 		return false
+	if self == g_string_table:
+		TranslationServer.add_translation(_translation)
 	return true
 
 
 func clear() -> void:
 	_translation = null
+	if self == g_string_table:
+		TranslationServer.remove_translation(_translation)
 
 
 func get_string(key: StringName) -> StringName:
