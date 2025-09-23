@@ -125,15 +125,15 @@ func _set_package_name(context: _Context) -> void:
 	else:
 		lang_dir = "English.lproj"
 	var version:String = ProjectSettings.get_setting("application/config/version")
-	_native_set_path(context, ResourceLoader, data_dir, lang_dir, version)
+	_native_set_path(context, get_assets(), data_dir, lang_dir, version)
 
 
 func _hide_system_ui() -> void:
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 
 
-static func _native_set_path(context: _Context, resource_loader, data_dir: String, lang_dir: String, version: String) ->void:
-	_native.Java_com_easytech_wc2_Wc2Activity_nativeSetPaths(context, resource_loader, data_dir, lang_dir, version)
+static func _native_set_path(context: _Context, asset_manager: _AssetManager, data_dir: String, lang_dir: String, version: String) ->void:
+	_native.Java_com_easytech_wc2_Wc2Activity_nativeSetPaths(context, asset_manager, data_dir, lang_dir, version)
 
 
 func _get_view_size() -> void:

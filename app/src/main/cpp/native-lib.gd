@@ -1,5 +1,6 @@
 
 const _Context = preload("res://core/java/android/content/context.gd")
+const _AssetManager = preload("res://core/java/android/content/res/asset_manager.gd")
 const _Wc2Activity = preload("res://app/src/main/java/com/easytech/wc2/wc2_activity.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 const _CStateManager = preload("res://app/src/main/cpp/c_state_manager.gd")
@@ -11,12 +12,14 @@ const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
 const _CGameSettings = preload("res://app/src/main/cpp/c_game_settings.gd")
 const _ecMultipleTouch = preload("res://app/src/main/cpp/ec_multiple_touch.gd")
 
+static var asset_mgr: _AssetManager
 static var _str_version_name: String
 static var _document_file_path: String
 static var _lang_dir: String
 
-static func Java_com_easytech_wc2_Wc2Activity_nativeSetPaths(_context: _Context, _resource_loader, data_dir: String, lang_dir: String, version: String) -> void:
-	# NOTTODO: store reference to classloader and assetmanager
+static func Java_com_easytech_wc2_Wc2Activity_nativeSetPaths(_context: _Context, asset_manager: _AssetManager, data_dir: String, lang_dir: String, version: String) -> void:
+	# NOTTODO: store reference to classloader
+	asset_mgr = asset_manager
 	_str_version_name = version
 	_set_document_path(data_dir)
 	_set_lang_dir(lang_dir)
@@ -46,11 +49,11 @@ static func get_2x_path(file_name: String, _a2: String) -> String:
 
 static func get_path(file_name: String, _a2: String) -> String:
 	var path := file_name
-	if ResourceLoader.exists(path) or FileAccess.file_exists(path):
+	if asset_mgr._exists(path):
 		return path
 	else:
 		path = _lang_dir + '/' + file_name
-		if ResourceLoader.exists(path) or FileAccess.file_exists(path):
+		if asset_mgr._exists(path):
 			return path
 		else:
 			return ""
