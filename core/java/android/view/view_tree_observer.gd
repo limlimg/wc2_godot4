@@ -11,5 +11,4 @@ func remove_on_global_layout_listener(victim: Callable) -> void:
 
 
 func dispatch_on_global_layout() -> void:
-	# copy _listeners to allow listener to remove itself during iteration
 	_global_layout.emit()
