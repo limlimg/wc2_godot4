@@ -9,8 +9,6 @@ static var _instance: AssetManager
 
 func _init() -> void:
 	_instance = self
-	if Engine.is_editor_hint():
-		_native.asset_mgr = self
 
 
 func _recognize_path(path: String, _type: StringName) -> bool:
@@ -18,7 +16,7 @@ func _recognize_path(path: String, _type: StringName) -> bool:
 
 
 func _exists(path: String) -> bool:
-	return ResourceLoader.exists(_ASSETS_PATH + path)
+	return ResourceLoader.exists(_ASSETS_PATH + path.trim_prefix("res://"))
 
 
 func _load(path: String, original_path: String, _use_sub_threads: bool, cache_mode: int) -> Variant:

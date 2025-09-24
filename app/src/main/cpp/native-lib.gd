@@ -50,11 +50,11 @@ static func get_2x_path(file_name: String, _a2: String) -> String:
 
 static func get_path(file_name: String, _a2: String) -> String:
 	var path := file_name
-	if asset_mgr._exists(path):
+	if ResourceLoader.exists(path):
 		return path
 	else:
 		path = _lang_dir + '/' + file_name
-		if asset_mgr._exists(path):
+		if ResourceLoader.exists(path):
 			return path
 		else:
 			return ""
