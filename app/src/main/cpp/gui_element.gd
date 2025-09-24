@@ -16,9 +16,19 @@ extends Control
 ## base classes.
 ## 
 ## The original SetVisible method is unused and not implemented due to name
-## conflict with engine method. FindByHandle is unused and not implemented.
+## conflict with engine method.
 
+const _GUIElement = preload("res://app/src/main/cpp/gui_element.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
+
+static var _next_handle: int
+
+var _handle: int
+
+func _init() -> void:
+	_next_handle += 1
+	_handle = _next_handle
+
 
 func free_child(child: Node) -> void:
 	remove_child(child)
@@ -67,3 +77,14 @@ func check_in_rect(x: float, y: float, rect := get_abs_rect()) -> bool:
 func set_enable(value: bool) -> void:
 	if "enable" in self:
 		self.enable = value
+
+
+func _find_by_handle(handle: int) -> _GUIElement:
+	if _handle == handle:
+		return self
+	for child in get_children():
+		if child is _GUIElement:
+			var result = child._find_by_handle(handle)
+			if result != null:
+				return result
+	return null
