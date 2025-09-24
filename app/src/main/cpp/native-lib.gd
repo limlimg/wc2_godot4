@@ -85,27 +85,25 @@ static var _s_time_offset: int # in ms
 static var _m_old_time: int # in ms
 
 static func Java_com_easytech_wc2_ecRenderer_nativeInit(game_view_width: int, game_view_height: int, _a3, _a4) -> void:
-	#var ratio = game_view_width as float / game_view_height as float
-	var graphics := _ecGraphics.instance()
-	var content_scale_width := graphics.orientated_content_scale_width
-	var content_scale_height := graphics.orientated_content_scale_height
-	# moved to _init of "res://app/src/main/cpp/ec_graphics.gd"
-	#if ratio > 1.8875: # never used. The aspect ratio is capped at 16:9.
-		#content_scale_width = 640
-		#content_scale_height = 320
-	#elif ratio > 1.7219:
-		#content_scale_width = 568
-		#content_scale_height = 320
-	#elif ratio > 1.5844:
-		#content_scale_width = 534
-		#content_scale_height = 320
-	#elif ratio >= 1.4062:
-		#content_scale_width = 480
-		#content_scale_height = 320
-	#else:
-		#content_scale_width = 1024
-		#content_scale_height = 768
-	#g_content_scale_factor = 2.0
+	var ratio = game_view_width as float / game_view_height as float
+	var content_scale_width: int
+	var content_scale_height: int
+	if ratio > 1.8875: # never used. The aspect ratio is capped at 16:9.
+		content_scale_width = 640
+		content_scale_height = 320
+	elif ratio > 1.7219:
+		content_scale_width = 568
+		content_scale_height = 320
+	elif ratio > 1.5844:
+		content_scale_width = 534
+		content_scale_height = 320
+	elif ratio >= 1.4062:
+		content_scale_width = 480
+		content_scale_height = 320
+	else:
+		content_scale_width = 1024
+		content_scale_height = 768
+	g_content_scale_factor = 2.0
 	_ec_game_init(content_scale_width, content_scale_height, 0, game_view_width, game_view_height)
 	_s_time_offset = 0
 	_m_old_time = _get_time()
@@ -343,9 +341,10 @@ static func _update_paused_fade() -> void:
 			scene.root.add_child(_paused_fade_node)
 	else:
 		scene.paused = false
-		scene.root.remove_child(_paused_fade_node)
-		_paused_fade_node.queue_free()
-		_paused_fade_node = null
+		if _paused_fade_node != null:
+			scene.root.remove_child(_paused_fade_node)
+			_paused_fade_node.queue_free()
+			_paused_fade_node = null
 
 
 func _ec_game_waiting(value: bool) -> void:

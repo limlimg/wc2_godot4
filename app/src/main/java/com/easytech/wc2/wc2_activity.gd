@@ -68,36 +68,47 @@ func _on_create() -> void:
 
 
 func _prepare_view_size(show_game_view: bool) -> void:
-	var view := find_view_by_id(_R.id.main_layout)
-	var listener := _ReferenceToCallable.new()
-	listener.ref = (func ():
-		view.get_view_tree_observer().remove_on_global_layout_listener(listener.ref)
-		listener.free()
-		var width := view.get_measured_width()
-		var height := view.get_measured_height()
-		(func ():
-			if height <= width:
-				_m_game_view_width = width
-				_m_game_view_height = height
-			else:
-				_m_game_view_width = height
-				_m_game_view_height = width
-			if show_game_view:
-				_show_game_view(height, width)
-		).call()
-	)
-	view.get_view_tree_observer().add_on_global_layout_listener(listener.ref)
+	# fetch view_size from low level server for immediate initialization
+	var view_size := DisplayServer.window_get_size()
+	_m_game_view_width = max(view_size.x, view_size.y)
+	_m_game_view_height = min(view_size.x, view_size.y)
+	if show_game_view:
+		_show_game_view(view_size.y, view_size.x)
+	#var view := find_view_by_id(_R.id.main_layout)
+	#var listener := _ReferenceToCallable.new()
+	#listener.ref = (func ():
+		#view.get_view_tree_observer().remove_on_global_layout_listener(listener.ref)
+		#listener.free()
+		#var width := view.get_measured_width()
+		#var height := view.get_measured_height()
+		#(func ():
+			#if height <= width:
+				#_m_game_view_width = width
+				#_m_game_view_height = height
+			#else:
+				#_m_game_view_width = height
+				#_m_game_view_height = width
+			#if show_game_view:
+				#_show_game_view(height, width)
+		#).call()
+	#)
+	#view.get_view_tree_observer().add_on_global_layout_listener(listener.ref)
 
 
 func _show_game_view(_width: float, _height: float) -> void:
 	# NOTTODO: adjust view size according to build version and model
+	var root := (Engine.get_main_loop() as SceneTree).root
 	@warning_ignore("integer_division")
 	var height_16_9 := (_m_game_view_height * 16) / 9
 	if _m_game_view_width > height_16_9:
 		_m_game_view_width = height_16_9
-		get_viewport().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
+		root.ready.connect(func():
+			root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
+			, CONNECT_ONE_SHOT)
 	else:
-		get_viewport().content_scale_aspect = Window.CONTENT_SCALE_ASPECT_IGNORE
+		root.ready.connect(func():
+			root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_IGNORE
+			, CONNECT_ONE_SHOT)
 	_ecRenderer.is_app_running = true
 	_m_gl_view = _ecGLSurfaceView.new()
 	_m_gl_view.size = Vector2(_m_game_view_width, _m_game_view_height)
