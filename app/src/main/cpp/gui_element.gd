@@ -19,9 +19,11 @@ extends Control
 ## conflict with engine method.
 
 const _GUIElement = preload("res://app/src/main/cpp/gui_element.gd")
+const _ecTextureRes = preload("res://app/src/main/cpp/ec_texture_res.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 
 static var _next_handle: int
+static var _s_texture_res := _ecTextureRes.new()
 
 var _handle: int
 
