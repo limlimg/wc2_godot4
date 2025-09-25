@@ -7,7 +7,6 @@ var _m_renderer: _ecRenderer
 func _init():
 	_m_renderer = _ecRenderer.new()
 	set_renderer(Callable(_m_renderer, &"on_surface_created"), Callable(_m_renderer, &"on_surface_changed"), Callable(_m_renderer, &"on_draw_frame"))
-	_surface_created.emit() # added for immediate initialization
 
 
 func _on_touch_event(event: _MotionEvent) -> bool:
