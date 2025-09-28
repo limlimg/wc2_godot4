@@ -23,6 +23,7 @@ const _ecTextureRes = preload("res://app/src/main/cpp/ec_texture_res.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 
 static var _next_handle: int
+@warning_ignore("unused_private_class_variable")
 static var _s_texture_res := _ecTextureRes.new()
 
 var _handle: int

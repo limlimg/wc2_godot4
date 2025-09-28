@@ -73,7 +73,7 @@ func init(content_scale_width: int, content_scale_height: int, _orientation: int
 	material_mul.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
 	_blend_material.append(material_mul)
 	var window := (Engine.get_main_loop() as SceneTree).root
-	await window.ready
+	await window.tree_entered
 	window.content_scale_factor = g_content_scale_factor
 	var window_content_x := content_scale_width * g_content_scale_factor
 	var window_content_y := content_scale_height * g_content_scale_factor
