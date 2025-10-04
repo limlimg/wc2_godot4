@@ -316,7 +316,7 @@ static func _ec_game_update(delta: float) -> void:
 		# TODO: update PlayerManager
 		_CStateManager.instance().update(delta)
 		# no GUIManager
-		# no GUIMotionManager
+		# GUIMotionManager is updated by callback as an autoload node
 		_CSoundBox.get_instance().update_sound()
 
 

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 AndroidManifest="*res://app/src/main/android_manifest.tscn"
+GUIMotionManager="*res://app/src/main/cpp/gui_motion_manager.gd"
 
 [display]
 
