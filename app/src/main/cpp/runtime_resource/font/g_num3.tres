@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c8j0lx6apqda5"]
+
+[ext_resource type="Script" uid="uid://ckk2mqlehxynn" path="res://app/src/main/cpp/ec_uni_font.gd" id="1_2yyqc"]
+[ext_resource type="Script" uid="uid://cdwylvfy7h1t3" path="res://app/src/main/cpp/runtime_resource/ec_uni_font_profile.gd" id="1_8a82o"]
+
+[sub_resource type="Resource" id="Resource_ajjpc"]
+script = ExtResource("1_8a82o")
+name = "num3.fnt"
+name_hd = "num3_hd.fnt"
+name_ipad = ""
+metadata/_custom_type_script = "uid://cdwylvfy7h1t3"
+
+[resource]
+script = ExtResource("1_2yyqc")
+profile = SubResource("Resource_ajjpc")

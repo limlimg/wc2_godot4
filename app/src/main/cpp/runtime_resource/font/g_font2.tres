@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://duqavds7qrws2"]
+
+[ext_resource type="Script" uid="uid://cdwylvfy7h1t3" path="res://app/src/main/cpp/runtime_resource/ec_uni_font_profile.gd" id="1_04nru"]
+[ext_resource type="Script" uid="uid://ckk2mqlehxynn" path="res://app/src/main/cpp/ec_uni_font.gd" id="1_04u56"]
+
+[sub_resource type="Resource" id="Resource_xhref"]
+script = ExtResource("1_04nru")
+name = "font2_{0}.fnt"
+name_hd = "font2_{0}_hd.fnt"
+name_ipad = "font2_{0}_hd.fnt"
+metadata/_custom_type_script = "uid://cdwylvfy7h1t3"
+
+[resource]
+script = ExtResource("1_04u56")
+profile = SubResource("Resource_xhref")
