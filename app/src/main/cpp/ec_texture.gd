@@ -13,37 +13,21 @@ extends Texture2D
 ## a ResourceFormatLoader is implemented so that its usage is not limited to
 ## ecGraphics.
 
+const _Profile = preload("res://app/src/main/cpp/runtime_resource/ec_texture_profile.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
 
 @export
-var texture_name: String:
-	set = set_texture_name
-
-@export_group("content_scale_variant", "texture_name")
-@export
-var texture_name_ipad: String:
-	set = set_texture_name_ipad
-
-@export
-var texture_name_640h: String:
-	set = set_texture_name_640h
-
-@export
-var texture_name_568h: String:
-	set = set_texture_name_568h
-
-@export
-var texture_name_534h: String:
-	set = set_texture_name_534h
-
-@export
-var texture_name_512h: String:
+var profile: _Profile:
 	set(value):
-		if value != texture_name_512h:
-			texture_name_512h = value
-			_changed()
+		if value != profile:
+			if profile != null:
+				profile.changed.disconnect(_profile_changed)
+			profile = value
+			if profile != null:
+				_profile_changed()
+				profile.changed.connect(_profile_changed)
 
 
 var size_override: Vector2:
@@ -60,63 +44,27 @@ var texture: Texture2D:
 			changed.emit()
 
 
-func set_texture_name(value: String) -> void:
-	if value != texture_name:
-		texture_name = value
-		_changed()
-
-
-func set_texture_name_ipad(value: String) -> void:
-	if value != texture_name_ipad:
-		texture_name_ipad = value
-		_changed()
-
-
-func set_texture_name_640h(value: String) -> void:
-	if value != texture_name_640h:
-		texture_name_640h = value
-		_changed()
-
-
-func set_texture_name_568h(value: String) -> void:
-	if value != texture_name_568h:
-		texture_name_568h = value
-		_changed()
-
-
-func set_texture_name_534h(value: String) -> void:
-	if value != texture_name_534h:
-		texture_name_534h = value
-		_changed()
-
-
-func set_texture_name_512h(value: String) -> void:
-	if value != texture_name_512h:
-		texture_name_512h = value
-		_changed()
-
-
-func _changed() -> void:
-	if texture_name.is_empty():
+func _profile_changed() -> void:
+	if profile.name.is_empty():
 		texture = null
 		return
 	var selected_name: String
 	if not Engine.is_editor_hint():
 		var graphics := _ecGraphics.instance()
 		if graphics.content_scale_size_mode == 3:
-			selected_name = texture_name_ipad
+			selected_name = profile.name_ipad
 		else:
 			var w := graphics.orientated_content_scale_width
 			if w > 568.0:
-				selected_name = texture_name_640h
+				selected_name = profile.name_640h
 			elif w > 534.0:
-				selected_name = texture_name_568h
+				selected_name = profile.name_568h
 			elif w == 534.0:
-				selected_name = texture_name_534h
+				selected_name = profile.name_534h
 			elif w == 512.0:
-				selected_name = texture_name_512h
+				selected_name = profile.name_512h
 		if selected_name.is_empty():
-			selected_name = texture_name
+			selected_name = profile.name
 		var selected_texture := graphics.load_texture(selected_name)
 		if selected_texture is _ecTexture:
 			texture = selected_texture.texture
@@ -125,14 +73,14 @@ func _changed() -> void:
 			texture = selected_texture
 			size_override = selected_texture.get_size()
 	else:
-		selected_name = _native.get_path_alias(texture_name, "")
+		selected_name = _native.get_path_alias(profile.name, "")
 		if not selected_name.is_empty():
 			var selected_texture := load(selected_name) as Texture2D
 			texture = selected_texture
 			if texture != null:
 				size_override = selected_texture.get_size()
 		else: # in the editor, the situation is considered where only @2x variant exists
-			selected_name = _native.get_2x_path(texture_name, "")
+			selected_name = _native.get_2x_path(profile.name, "")
 			if selected_name.is_empty():
 				texture = null
 				return
