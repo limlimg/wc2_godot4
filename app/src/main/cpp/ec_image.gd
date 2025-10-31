@@ -5,7 +5,7 @@ const _ecTextureRect = preload("res://app/src/main/cpp/ec_texture_rect.gd")
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 
-var _texture: Texture2D
+var _texture: _ecTexture
 var _x: float
 var _y: float
 var _w: float
@@ -35,18 +35,15 @@ func _init(texture_or_attr, rect_or_x = null, y := 0.0, w := 0.0, h := 0.0) -> v
 		init_texture_xywh(texture_or_attr, rect_or_x, y, w, h)
 
 
-func init_texture_xywh(texture: Texture2D, x: float, y: float, w: float, h: float) -> void:
+func init_texture_xywh(texture: _ecTexture, x: float, y: float, w: float, h: float) -> void:
 	if texture == null:
 		_texture = null
 		_texture_w = 1.0
 		_texture_h = 1.0
 	else:
-		if texture is _ecTexture:
-			_texture = texture.texture
-		else:
-			_texture = texture
-		_texture_w = texture.get_width()
-		_texture_h = texture.get_height()
+		_texture = texture
+		_texture_w = texture.size_override.x
+		_texture_h = texture.size_override.y
 	_x = x
 	_y = y
 	_w = w
@@ -68,7 +65,7 @@ func init_attr(attr: _ecImageAttr) -> void:
 	_refy = attr.refy
 
 
-func set_texture(value: Texture2D) -> void:
+func set_texture(value: _ecTexture) -> void:
 	if value != _texture:
 		var old_w = _texture_w
 		var old_h = _texture_h
@@ -77,12 +74,9 @@ func set_texture(value: Texture2D) -> void:
 			_texture_w = 1.0
 			_texture_h = 1.0
 		else:
-			if value is _ecTexture:
-				_texture = value.texture
-			else:
-				_texture = value
-			_texture_w = value.get_width()
-			_texture_h = value.get_height()
+			_texture = value
+			_texture_w = value.size_override.x
+			_texture_h = value.size_override.y
 		var v := Vector2(old_w / _texture_w, old_h/ _texture_h)
 		_quad.uvs[0] *= v
 		_quad.uvs[1] *= v

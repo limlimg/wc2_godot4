@@ -18,7 +18,7 @@ extends "res://app/src/main/cpp/native-lib.gd"
 const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
 const _ecTextureRes = preload("res://app/src/main/cpp/imported_containers/ec_texture_res.gd")
 
-var _textures: Dictionary[StringName, Texture2D]
+var _textures: Dictionary[StringName, _ecTexture]
 var _images: Dictionary[StringName, _ecImageAttr]
 
 func release() -> void:
@@ -29,24 +29,44 @@ func release() -> void:
 	_images.clear()
 
 
-func load_res(file_name: String, hd: bool) -> void:
+func load_res(file_name: String, hd: bool) -> bool:
 	var path := get_path(file_name, "")
 	var res := load(path) as _ecTextureRes
 	if res == null:
 		push_error("Failed to load {0}".format([file_name]))
-		return
+		return false
 	var texture := create_texture(res.texture_name)
 	if texture == null:
 		push_error("Failed to load {0}".format([res.texture_name]))
-		return
+		return false
+	if hd and texture.res_scale == 1.0:
+		texture.size_override /= 2.0
+		texture.res_scale = 2.0
 	for k in res.images.keys():
-		var attr := _ecImageAttr.new()
+		var image := res.images[k]
+		var x: float
+		var y: float
+		var w: float
+		var h: float
+		var refx: float
+		var refy: float
 		if hd:
-			attr.set_texture_res_name_hd(res.texture_name)
+			x = image.x / 2.0
+			y = image.y / 2.0
+			w = image.w / 2.0
+			h = image.h / 2.0
+			refx = image.refx / 2.0
+			refy = image.refy / 2.0
 		else:
-			attr.set_texture_res_name(res.texture_name)
-		attr.set_image_name(k)
-		_images[k] = attr
+			x = image.x
+			y = image.y
+			w = image.w
+			h = image.h
+			refx = image.refx
+			refy = image.refy
+		create_image_texture(k, texture, image.x, image.y, image.w, image.h,
+				image.refx, image.refy)
+	return true
 
 
 func unload_res(file_name: String) -> void:
@@ -61,8 +81,8 @@ func unload_res(file_name: String) -> void:
 
 ## In the original game code, this method has more parameters to specify the
 ## format of the texture.
-func create_texture(texture_name: String) -> Texture2D:
-	var texture: Texture2D = _textures.get(texture_name)
+func create_texture(texture_name: String) -> _ecTexture:
+	var texture: _ecTexture = _textures.get(texture_name)
 	if texture == null:
 		texture = _ecGraphics.instance().load_texture(texture_name)
 		_textures[texture_name] = texture
@@ -76,7 +96,7 @@ func release_texture(texture_name: String) -> void:
 	_ecGraphics.instance().free_texture(texture_name)
 
 
-func get_texture(texture_name: String) -> Texture2D:
+func get_texture(texture_name: String) -> _ecTexture:
 	return _textures.get(texture_name)
 
 
@@ -102,7 +122,7 @@ func create_image_texture_name(image_name: StringName, texture_name: String, x: 
 	return image
 
 
-func create_image_texture(image_name: StringName, texture: Texture2D, x: float,
+func create_image_texture(image_name: StringName, texture: _ecTexture, x: float,
  		y: float, w: float, h: float, refx: float, refy: float) -> _ecImageAttr:
 	var image: _ecImageAttr = _images.get(image_name)
 	if image != null:

@@ -418,7 +418,7 @@ static func ec_texture_with_string(_a1: String, _a2: String, _a3: int, _a4: int,
 	return false
 
 
-static func ec_texture_load(texture_name: String) -> Texture2D:
+static func ec_texture_load(texture_name: String) -> _ecTexture:
 	var path := ""
 	if g_content_scale_factor == 2.0:
 		path = get_2x_path(texture_name, "")
@@ -431,12 +431,13 @@ static func ec_texture_load(texture_name: String) -> Texture2D:
 			texture_name = texture_name.substr(0, texture_name.rfind(".")) + ".png"
 			return ec_texture_load(texture_name)
 		return null
+	var ec_texture := _ecTexture.new()
+	ec_texture.texture = texture
 	if is_2x:
-		var ec_texture := _ecTexture.new()
-		ec_texture.texture = texture
 		ec_texture.size_override = texture.get_size() / 2.0
-		return ec_texture
-	return texture
+	else:
+		ec_texture.size_override = texture.get_size()
+	return ec_texture
 
 
 static func preload_background_music_jni(path: String) -> void:

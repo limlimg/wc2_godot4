@@ -116,9 +116,13 @@ func create_texture_with_string(a1: String, a2: String, a3: int, a4: int, width:
 
 
 ## Other varients of LoadTexture are omitted.
-func load_texture(texture_name: String) -> Texture2D:
-	# Caching of the texture is handled by ResourceLoader.
-	return ec_texture_load(texture_name)
+func load_texture(texture_name: String) -> _ecTexture:
+	if ResourceLoader.has_cached(texture_name):
+		return ResourceLoader.get_cached_ref(texture_name)
+	var ec_texture := ec_texture_load(texture_name)
+	ec_texture.res_scale = 1.0
+	ec_texture.take_over_path(texture_name) # Use the resource cache to cache ecTexture
+	return ec_texture
 
 
 func free_texture(_texture_name: StringName) -> void:
@@ -178,15 +182,13 @@ func set_blend_mode(value: int):
 		_blend_mode = value
 
 
-func bind_texture(texture: Texture2D):
+func bind_texture(ec_texture: _ecTexture):
 	if _rendering_canvas_item == null:
 		return
+	var texture = ec_texture.texture
 	if texture != _bound_texture:
 		_flush()
-		if texture is _ecTexture:
-			_bound_texture = texture.texture # reduce a layer of GDScript when drawing
-		else:
-			_bound_texture = texture
+		_bound_texture = texture
 
 
 func render_line(line: _ecLine):
