@@ -28,6 +28,8 @@ func get_res() -> _ecTextureRes:
 func _set_res_from_files() -> void:
 	_res.release()
 	for i in asset_names:
+		if i == null:
+			continue
 		var name_hd := i.get_hd_name()
 		if not name_hd.is_empty():
 			_res.load_res(name_hd, true)
