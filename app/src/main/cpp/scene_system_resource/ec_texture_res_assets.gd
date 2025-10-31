@@ -33,7 +33,8 @@ func _set_res_from_files() -> void:
 		var name_hd := i.get_hd_name()
 		if not name_hd.is_empty():
 			_res.load_res(name_hd, true)
-		var name := i.get_effective_name()
-		if not name.is_empty():
-			_res.load_res(name, false)
+		else:
+			var name := i.get_effective_name()
+			if not name.is_empty():
+				_res.load_res(name, false)
 	emit_changed()

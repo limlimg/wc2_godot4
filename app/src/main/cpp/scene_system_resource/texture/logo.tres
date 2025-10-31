@@ -1,4 +1,4 @@
-[gd_resource type="Texture2D" load_steps=6 format=3 uid="uid://xkr7cuawfg24"]
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" load_steps=6 format=3 uid="uid://xkr7cuawfg24"]
 
 [ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_r0ksv"]
 [ext_resource type="Script" uid="uid://c0fyh1xdns125" path="res://app/src/main/cpp/scene_system_resource/ec_texture_assets.gd" id="2_x2ur2"]

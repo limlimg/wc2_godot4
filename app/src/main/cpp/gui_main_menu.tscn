@@ -1,47 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://c4fcq7wy2b7qx"]
+[gd_scene load_steps=8 format=3 uid="uid://c4fcq7wy2b7qx"]
 
 [ext_resource type="Script" uid="uid://bpjgdshru2jnh" path="res://app/src/main/cpp/gui_main_menu.gd" id="1_fciw5"]
 [ext_resource type="PackedScene" uid="uid://ch6fdy54ktb4a" path="res://app/src/main/cpp/scene_system_resource/gui_ipad.tscn" id="2_2yj7m"]
-[ext_resource type="Texture2D" uid="uid://73dwwy4dk7kp" path="res://app/src/main/assets/mainbg@2x.webp" id="2_fe0n5"]
+[ext_resource type="Texture2D" uid="uid://i1akuqipfj3q" path="res://app/src/main/cpp/scene_system_resource/texture/mainbg.tres" id="2_xqjbv"]
 [ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="4_im54a"]
-[ext_resource type="Resource" uid="uid://cm5jcworlx52g" path="res://app/src/main/assets/mui_hd.xml" id="6_tap4s"]
-[ext_resource type="Resource" uid="uid://bbesinorwxtqq" path="res://app/src/main/assets/title_hd.xml" id="7_qwch1"]
+[ext_resource type="Texture2D" uid="uid://fihf26thtyq0" path="res://app/src/main/cpp/scene_system_resource/title_res/title.png.tres" id="4_wce6e"]
 [ext_resource type="PackedScene" uid="uid://c28xtwuvyw7h2" path="res://app/src/main/cpp/scene_system_resource/gui_ipad_else.tscn" id="8_nhnkq"]
-
-[sub_resource type="Texture2D" id="Texture2D_w158l"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("4_im54a")
-texture_res = ExtResource("7_qwch1")
-texture_scale_override = 1.0
-name = &"title.png"
-texture_scale = 0.0
-region = Rect2(0, 0, 0, 0)
-ref = Vector2(0, 0)
-metadata/_custom_type_script = "uid://b58t05cta03d0"
 
 [sub_resource type="Texture2D" id="Texture2D_tap4s"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("4_im54a")
-texture_res = ExtResource("6_tap4s")
-texture_scale_override = 1.0
-name = &"button_mainmenu"
-texture_scale = 1.0
-region = Rect2(0, 0, 0, 0)
-ref = Vector2(0, 0)
-metadata/_custom_type_script = "uid://b58t05cta03d0"
-
-[sub_resource type="Texture2D" id="Texture2D_qwch1"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("4_im54a")
-texture_res = ExtResource("7_qwch1")
-texture_scale_override = 0.0
-name = &"title.png"
-texture_scale = 0.0
-region = Rect2(0, 0, 0, 0)
-ref = Vector2(0, 0)
 metadata/_custom_type_script = "uid://b58t05cta03d0"
 
 [node name="GUIMainMenu" type="Control"]
@@ -53,16 +22,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fciw5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_fe0n5")
+[node name="MainBg" type="Sprite2D" parent="."]
+texture = ExtResource("2_xqjbv")
 centered = false
 
 [node name="GUIiPad" parent="." instance=ExtResource("2_2yj7m")]
 layout_mode = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="GUIiPad"]
+[node name="Title" type="Sprite2D" parent="GUIiPad"]
 position = Vector2(512, 324)
-texture = SubResource("Texture2D_w158l")
+texture = ExtResource("4_wce6e")
 centered = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUIiPad"]
@@ -85,7 +54,7 @@ ignore_texture_size = true
 [node name="GUIipadElse" parent="." instance=ExtResource("8_nhnkq")]
 layout_mode = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="GUIipadElse"]
+[node name="Title" type="Sprite2D" parent="GUIipadElse"]
 position = Vector2(240, 160)
-texture = SubResource("Texture2D_qwch1")
+texture = ExtResource("4_wce6e")
 centered = false

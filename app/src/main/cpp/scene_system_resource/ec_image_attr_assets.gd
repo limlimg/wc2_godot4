@@ -21,9 +21,11 @@ var res: _ecTextureResAssets:
 			res = value
 			emit_changed()
 			if res != null:
-				res.changed.disconnect(emit_changed)
+				res.changed.connect(emit_changed)
 
 
 func get_image() -> _ecImageAttr:
+	if res == null:
+		return null
 	var image := res.get_res().get_image(name)
 	return image
