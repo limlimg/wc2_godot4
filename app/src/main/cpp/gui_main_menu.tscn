@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://c4fcq7wy2b7qx"]
 
-[ext_resource type="Script" uid="uid://de3qu47el5fpj" path="res://app/src/main/cpp/gui_main_menu.gd" id="1_fciw5"]
-[ext_resource type="PackedScene" uid="uid://ch6fdy54ktb4a" path="res://app/src/main/cpp/gui_ipad.tscn" id="2_2yj7m"]
-[ext_resource type="Texture2D" uid="uid://bywpjkx4irqfd" path="res://app/src/main/assets/mainbg@2x.webp" id="2_fe0n5"]
-[ext_resource type="Script" uid="uid://b58t05cta03d0" path="res://app/src/main/cpp/ec_texture.gd" id="4_im54a"]
-[ext_resource type="Resource" uid="uid://bt4a1fjf388me" path="res://app/src/main/assets/mui_hd.xml" id="6_tap4s"]
-[ext_resource type="Resource" uid="uid://bxdhk58pmip3e" path="res://app/src/main/assets/title_hd.xml" id="7_qwch1"]
-[ext_resource type="PackedScene" uid="uid://c28xtwuvyw7h2" path="res://app/src/main/cpp/gui_ipad_else.tscn" id="8_nhnkq"]
+[ext_resource type="Script" uid="uid://bpjgdshru2jnh" path="res://app/src/main/cpp/gui_main_menu.gd" id="1_fciw5"]
+[ext_resource type="PackedScene" uid="uid://ch6fdy54ktb4a" path="res://app/src/main/cpp/scene_system_resource/gui_ipad.tscn" id="2_2yj7m"]
+[ext_resource type="Texture2D" uid="uid://73dwwy4dk7kp" path="res://app/src/main/assets/mainbg@2x.webp" id="2_fe0n5"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="4_im54a"]
+[ext_resource type="Resource" uid="uid://cm5jcworlx52g" path="res://app/src/main/assets/mui_hd.xml" id="6_tap4s"]
+[ext_resource type="Resource" uid="uid://bbesinorwxtqq" path="res://app/src/main/assets/title_hd.xml" id="7_qwch1"]
+[ext_resource type="PackedScene" uid="uid://c28xtwuvyw7h2" path="res://app/src/main/cpp/scene_system_resource/gui_ipad_else.tscn" id="8_nhnkq"]
 
 [sub_resource type="Texture2D" id="Texture2D_w158l"]
 resource_local_to_scene = false
