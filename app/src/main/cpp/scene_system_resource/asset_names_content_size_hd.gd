@@ -30,6 +30,14 @@ var name_ipad: String:
 
 
 @export
+var name_ipad_hd: String:
+	set(value):
+		if value != name_ipad_hd:
+			name_ipad_hd = value
+			emit_changed()
+
+
+@export
 var name_640h: String:
 	set(value):
 		if value != name_640h:
@@ -123,23 +131,32 @@ func get_hd_name() -> String:
 	var selected_name: String
 	var language: String
 	if not Engine.is_editor_hint():
+		language = _native.g_localizable_strings.get_string("language")
 		var graphics := _ecGraphics.instance()
 		if graphics.content_scale_size_mode == 3:
+			selected_name = name_ipad_hd
 			if not name_ipad.is_empty():
-				return ""
+				return selected_name.format([language])
 		else:
 			var w := graphics.orientated_content_scale_width
 			if w > 568.0:
 				selected_name = name_640hd
+				if not name_640h.is_empty():
+					return selected_name.format([language])
 			elif w > 534.0:
 				selected_name = name_568hd
+				if not name_568h.is_empty():
+					return selected_name.format([language])
 			elif w == 534.0:
 				selected_name = name_534hd
+				if not name_534h.is_empty():
+					return selected_name.format([language])
 			elif w == 512.0:
 				selected_name = name_512hd
+				if not name_512h.is_empty():
+					return selected_name.format([language])
 		if selected_name.is_empty():
 			selected_name = name_hd
-		language = _native.g_localizable_strings.get_string("language")
 	else:
 		selected_name = name_hd
 		language = "en"
