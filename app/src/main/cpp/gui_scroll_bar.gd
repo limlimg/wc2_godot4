@@ -1,5 +1,7 @@
 extends "res://app/src/main/cpp/gui_element.gd"
 
+const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
+
 @export
 var horizontal: bool:
 	get():
@@ -64,8 +66,8 @@ func init(rect: Rect2, normal_image_name: StringName,
 		is_horizontal: bool) -> void:
 	position = rect.position
 	size = rect.size
-	texture_normal = _s_texture_res.get_image(normal_image_name)
-	texture_pressed = _s_texture_res.get_image(pressed_image_name)
+	texture_normal = _ecImageTexture.from_ec_image_attr(_s_texture_res.get_image(normal_image_name))
+	texture_pressed = _ecImageTexture.from_ec_image_attr(_s_texture_res.get_image(pressed_image_name))
 	grabber_size = Vector2(grabber_size_w, grabber_size_h)
 	max_value = set_max_value
 	horizontal = is_horizontal

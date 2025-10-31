@@ -69,17 +69,17 @@ static var g_content_scale_factor := 1.0
 static var g_localizable_strings := _ecStringTable.new()
 static var g_string_table := _ecStringTable.new()
 static var g_commander := _CCommander.new()
-static var g_font1: Theme
-static var g_font2: Theme
-static var g_font3: Theme
-static var g_font6: Theme
-static var g_font7: Theme
-static var g_num1: Theme
-static var g_num3: Theme
-static var g_num4: Theme
-static var g_num4b: Theme
-static var g_num5: Theme
-static var g_num8: Theme
+static var g_font1: _ecUniFont
+static var g_font2: _ecUniFont
+static var g_font3: _ecUniFont
+static var g_font6: _ecUniFont
+static var g_font7: _ecUniFont
+static var g_num1: _ecUniFont
+static var g_num3: _ecUniFont
+static var g_num4: _ecUniFont
+static var g_num4b: _ecUniFont
+static var g_num5: _ecUniFont
+static var g_num8: _ecUniFont
 static var _game_initialized := false
 static var _s_time_offset: int # in ms
 static var _m_old_time: int # in ms
@@ -129,52 +129,52 @@ static func _ec_game_init(content_scale_width: int, content_scale_height: int, o
 	_CObjectDef.instance().init()
 	g_commander.load()
 	_CSoundBox.get_instance().load_se("btn.wav")
-	g_font1 = load("res://app/src/main/cpp/runtime_resource/font/g_font1.tres") as Theme
-	g_font2 = load("res://app/src/main/cpp/runtime_resource/font/g_font2.tres") as Theme
-	g_font3 = load("res://app/src/main/cpp/runtime_resource/font/g_font3.tres") as Theme
-	g_font6 = load("res://app/src/main/cpp/runtime_resource/font/g_font6.tres") as Theme
-	g_font7 = load("res://app/src/main/cpp/runtime_resource/font/g_font7.tres") as Theme
-	g_num1 = load("res://app/src/main/cpp/runtime_resource/font/g_num1.tres") as Theme
-	g_num3 = load("res://app/src/main/cpp/runtime_resource/font/g_num3.tres") as Theme
-	g_num4 = load("res://app/src/main/cpp/runtime_resource/font/g_num4.tres") as Theme
-	g_num4b = load("res://app/src/main/cpp/runtime_resource/font/g_num4b.tres") as Theme
-	g_num5 = load("res://app/src/main/cpp/runtime_resource/font/g_num5.tres") as Theme
-	g_font1.init("font1.fnt", false)
-	var language := g_localizable_strings.get_string("language")
-	if _ecGraphics.instance().content_scale_size_mode == 3:
-		g_font2.init("font2_{0}_hd.fnt".format([language]), false)
-		g_font3.init("font3_{0}_hd.fnt".format([language]), false)
-		if g_content_scale_factor == 2.0:
-			g_font6.init("font6_{0}_hd.fnt".format([language]), true)
-			g_num3.init("num3_hd.fnt", true)
-			g_num5.init("num5_hd.fnt", true)
-		else:
-			g_font6.init("font6_{0}.fnt".format([language]), false)
-			g_num3.init("num3.fnt", false)
-			g_num5.init("num5.fnt", false)
-		g_font7.init("font7_{0}_hd.fnt".format([language]), false)
-		g_num1.init("num1_hd.fnt", false)
-		g_num4.init("num4.fnt", false)
-		g_num4b.init("num4_hd.fnt", false)
-	elif g_content_scale_factor == 2.0:
-		g_font2.init("font2_{0}_hd.fnt".format([language]), true)
-		g_font3.init("font3_{0}_hd.fnt".format([language]), true)
-		g_font6.init("font6_{0}_hd.fnt".format([language]), true)
-		g_font7.init("font7_{0}_hd.fnt".format([language]), true)
-		g_num1.init("num1_hd.fnt", true)
-		g_num3.init("num3_hd.fnt", true)
-		g_num4.init("num4_hd.fnt", true)
-		g_num5.init("num5_hd.fnt", true)
-		 #g_num8.init("num8_hd.fnt", true) The original game code tries to load this font but it does not exist
-	else:
-		g_font2.init("font2_{0}.fnt".format([language]), false)
-		g_font3.init("font3_{0}.fnt".format([language]), false)
-		g_font6.init("font6_{0}.fnt".format([language]), false)
-		g_font7.init("font7_{0}.fnt".format([language]), false)
-		g_num1.init("num1.fnt", false)
-		g_num3.init("num3.fnt", false)
-		g_num4.init("num4.fnt", false)
-		g_num5.init("num5.fnt", false)
+	#g_font1.init("font1.fnt", false)
+	#var language := g_localizable_strings.get_string("language")
+	#if _ecGraphics.instance().content_scale_size_mode == 3:
+		#g_font2.init("font2_{0}_hd.fnt".format([language]), false)
+		#g_font3.init("font3_{0}_hd.fnt".format([language]), false)
+		#if g_content_scale_factor == 2.0:
+			#g_font6.init("font6_{0}_hd.fnt".format([language]), true)
+			#g_num3.init("num3_hd.fnt", true)
+			#g_num5.init("num5_hd.fnt", true)
+		#else:
+			#g_font6.init("font6_{0}.fnt".format([language]), false)
+			#g_num3.init("num3.fnt", false)
+			#g_num5.init("num5.fnt", false)
+		#g_font7.init("font7_{0}_hd.fnt".format([language]), false)
+		#g_num1.init("num1_hd.fnt", false)
+		#g_num4.init("num4.fnt", false)
+		#g_num4b.init("num4_hd.fnt", false)
+	#elif g_content_scale_factor == 2.0:
+		#g_font2.init("font2_{0}_hd.fnt".format([language]), true)
+		#g_font3.init("font3_{0}_hd.fnt".format([language]), true)
+		#g_font6.init("font6_{0}_hd.fnt".format([language]), true)
+		#g_font7.init("font7_{0}_hd.fnt".format([language]), true)
+		#g_num1.init("num1_hd.fnt", true)
+		#g_num3.init("num3_hd.fnt", true)
+		#g_num4.init("num4_hd.fnt", true)
+		#g_num5.init("num5_hd.fnt", true)
+		 ##g_num8.init("num8_hd.fnt", true) The original game code tries to load this font but it does not exist
+	#else:
+		#g_font2.init("font2_{0}.fnt".format([language]), false)
+		#g_font3.init("font3_{0}.fnt".format([language]), false)
+		#g_font6.init("font6_{0}.fnt".format([language]), false)
+		#g_font7.init("font7_{0}.fnt".format([language]), false)
+		#g_num1.init("num1.fnt", false)
+		#g_num3.init("num3.fnt", false)
+		#g_num4.init("num4.fnt", false)
+		#g_num5.init("num5.fnt", false)
+	g_font1 = load("res://app/src/main/cpp/scene_system_resource/font/g_font1.tres") as _ecUniFont
+	g_font2 = load("res://app/src/main/cpp/scene_system_resource/font/g_font2.tres") as _ecUniFont
+	g_font3 = load("res://app/src/main/cpp/scene_system_resource/font/g_font3.tres") as _ecUniFont
+	g_font6 = load("res://app/src/main/cpp/scene_system_resource/font/g_font6.tres") as _ecUniFont
+	g_font7 = load("res://app/src/main/cpp/scene_system_resource/font/g_font7.tres") as _ecUniFont
+	g_num1 = load("res://app/src/main/cpp/scene_system_resource/font/g_num1.tres") as _ecUniFont
+	g_num3 = load("res://app/src/main/cpp/scene_system_resource/font/g_num3.tres") as _ecUniFont
+	g_num4 = load("res://app/src/main/cpp/scene_system_resource/font/g_num4.tres") as _ecUniFont
+	g_num4b = load("res://app/src/main/cpp/scene_system_resource/font/g_num4b.tres") as _ecUniFont
+	g_num5 = load("res://app/src/main/cpp/scene_system_resource/font/g_num5.tres") as _ecUniFont
 	# NOTTODO: initialize iap items
 	_game_initialized = true
 

@@ -1,6 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ba2i3m3wqakcx"]
-
-[ext_resource type="Script" uid="uid://ckk2mqlehxynn" path="res://app/src/main/cpp/ec_uni_font.gd" id="1_lr4gu"]
-
-[resource]
-script = ExtResource("1_lr4gu")

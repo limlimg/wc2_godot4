@@ -1,0 +1,27 @@
+[gd_resource type="Texture2D" load_steps=6 format=3 uid="uid://xkr7cuawfg24"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_r0ksv"]
+[ext_resource type="Script" uid="uid://c0fyh1xdns125" path="res://app/src/main/cpp/scene_system_resource/ec_texture_assets.gd" id="2_x2ur2"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="3_uw6an"]
+
+[sub_resource type="Resource" id="Resource_dixvi"]
+script = ExtResource("1_r0ksv")
+name = "logo.webp"
+name_ipad = "logo_iPad.webp"
+name_640h = ""
+name_568h = ""
+name_534h = ""
+name_512h = ""
+metadata/_custom_type_script = "uid://wmgv5whydq62"
+
+[sub_resource type="Resource" id="Resource_jhdni"]
+script = ExtResource("2_x2ur2")
+name = SubResource("Resource_dixvi")
+metadata/_custom_type_script = "uid://c0fyh1xdns125"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_uw6an")
+preset = SubResource("Resource_jhdni")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

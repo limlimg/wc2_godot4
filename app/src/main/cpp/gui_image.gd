@@ -1,5 +1,6 @@
 extends "res://app/src/main/cpp/gui_element.gd"
 
+const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 const _ecTextureRect = preload("res://app/src/main/cpp/ec_texture_rect.gd")
 const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
 
@@ -30,7 +31,7 @@ func init_atlas(texture_name: String, attr: _ecTextureRect, rect: Rect2) -> bool
 
 
 func init(texture_name: String, rect: Rect2) -> bool:
-	texture = _ecGraphics.instance().load_texture(texture_name)
+	texture = _ecImageTexture.from_ec_texture(_ecGraphics.instance().load_texture(texture_name))
 	if texture == null:
 		return false
 	position = rect.position
@@ -44,8 +45,8 @@ func set_alpha(value: float) -> void:
 
 ## The original method has more parameter for specifying texture format.
 func set_image(texture_name: String, attr: _ecTextureRect) -> void:
-	var new_texture := _ecImageAttr.new()
-	new_texture.texture = _ecGraphics.instance().load_texture(texture_name)
-	new_texture.region = Rect2(attr.x, attr.y, attr.w, attr.h)
-	new_texture.ref = Vector2(attr.refx, attr.refy)
-	texture = new_texture
+	var new_image := _ecImageAttr.new()
+	new_image.texture = _ecGraphics.instance().load_texture(texture_name)
+	new_image.region = Rect2(attr.x, attr.y, attr.w, attr.h)
+	new_image.ref = Vector2(attr.refx, attr.refy)
+	texture = _ecImageTexture.from_ec_image_attr(new_image)
