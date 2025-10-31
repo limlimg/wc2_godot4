@@ -16,8 +16,8 @@ var name: String:
 @export
 var name_hd: String:
 	set(value):
-		if value != name:
-			name = value
+		if value != name_hd:
+			name_hd = value
 			emit_changed()
 
 
@@ -40,48 +40,48 @@ var name_640h: String:
 @export
 var name_640hd: String:
 	set(value):
-		if value != name_640h:
-			name_640h = value
+		if value != name_640hd:
+			name_640hd = value
 			emit_changed()
 
 
 @export
 var name_568h: String:
 	set(value):
-		if value != name_568h:
-			name_568h = value
+		if value != name_568hd:
+			name_568hd = value
 			emit_changed()
 
 
 @export
 var name_568hd: String:
 	set(value):
-		if value != name_568h:
-			name_568h = value
+		if value != name_568hd:
+			name_568hd = value
 			emit_changed()
 
 
 @export
 var name_534h: String:
 	set(value):
-		if value != name_534h:
-			name_534h = value
+		if value != name_534hd:
+			name_534hd = value
 			emit_changed()
 
 
 @export
 var name_534hd: String:
 	set(value):
-		if value != name_534h:
-			name_534h = value
+		if value != name_534hd:
+			name_534hd = value
 			emit_changed()
 
 
 @export
 var name_512h: String:
 	set(value):
-		if value != name_512h:
-			name_512h = value
+		if value != name_512hd:
+			name_512hd = value
 			emit_changed()
 
 
