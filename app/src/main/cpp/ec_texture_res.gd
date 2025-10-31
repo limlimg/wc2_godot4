@@ -64,8 +64,7 @@ func load_res(file_name: String, hd: bool) -> bool:
 			h = image.h
 			refx = image.refx
 			refy = image.refy
-		create_image_texture(k, texture, image.x, image.y, image.w, image.h,
-				image.refx, image.refy)
+		create_image_texture(k, texture, x, y, w, h, refx, refy)
 	return true
 
 
@@ -112,12 +111,8 @@ func create_image_texture_name(image_name: StringName, texture_name: String, x: 
 		return null
 	image = _ecImageAttr.new()
 	image.texture = texture
-	image.x = x
-	image.y = y
-	image.w = w
-	image.h = h
-	image.refx = refx
-	image.refy = refy
+	image.region = Rect2(x, y, w, h)
+	image.ref = Vector2(refx, refy)
 	_images[image_name] = image
 	return image
 
@@ -129,12 +124,8 @@ func create_image_texture(image_name: StringName, texture: _ecTexture, x: float,
 		return image
 	image = _ecImageAttr.new()
 	image.texture = texture
-	image.x = x
-	image.y = y
-	image.w = w
-	image.h = h
-	image.refx = refx
-	image.refy = refy
+	image.region = Rect2(x, y, w, h)
+	image.ref = Vector2(refx, refy)
 	_images[image_name] = image
 	return image
 
