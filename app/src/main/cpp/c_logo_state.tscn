@@ -15,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b54l6")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +29,7 @@ layout_mode = 1
 [node name="GUIiPad" parent="GUIManager" instance=ExtResource("2_eecim")]
 layout_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="GUIManager/GUIiPad"]
+[node name="Logo" type="TextureRect" parent="GUIManager/GUIiPad"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -47,7 +47,7 @@ texture = ExtResource("4_hjp6p")
 [node name="GUIipadElse" parent="GUIManager" instance=ExtResource("4_b54l6")]
 layout_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="GUIManager/GUIipadElse"]
+[node name="Logo" type="TextureRect" parent="GUIManager/GUIipadElse"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

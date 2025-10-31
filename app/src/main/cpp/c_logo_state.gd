@@ -8,7 +8,7 @@ class _CLogoState:
 		var sound_box := _CSoundBox.get_instance()
 		sound_box.set_music_volume(g_game_settings.music_volume)
 		sound_box.set_se_volume(g_game_settings.se_volume)
-		# TODO: load textureres for uis
+		# NOTTODO: load textureres for uis. Handled by ecTextureResAssets
 
 
 func _ready() -> void:
