@@ -1,0 +1,32 @@
+[gd_resource type="MeshTexture" script_class="ecImageTextureAssets" load_steps=7 format=3 uid="uid://djv0l4xdv58kd"]
+
+[ext_resource type="Texture2D" path="res://mui_hd.webp" id="1_7q5a3"]
+[ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/texture_res.tres" id="2_svu3r"]
+[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_q2yyn"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_xx30o"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_7q5a3"]
+_surfaces = [{
+"2d": true,
+"aabb": AABB(-1, -1, 0, 160, 54.5, 0),
+"attribute_data": PackedByteArray(0, 0, 128, 58, 0, 0, 93, 62, 0, 128, 160, 62, 0, 0, 93, 62, 0, 128, 160, 62, 0, 0, 165, 62, 0, 0, 128, 58, 0, 0, 93, 62, 0, 128, 160, 62, 0, 0, 165, 62, 0, 0, 128, 58, 0, 0, 165, 62),
+"format": 34393292817,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray(0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 31, 67, 0, 0, 128, 191, 0, 0, 31, 67, 0, 0, 86, 66, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 31, 67, 0, 0, 86, 66, 0, 0, 128, 191, 0, 0, 86, 66)
+}]
+
+[sub_resource type="Resource" id="Resource_fkjlg"]
+script = ExtResource("3_q2yyn")
+name = &"button_conquest3.png"
+res = ExtResource("2_svu3r")
+metadata/_custom_type_script = "uid://fs8gw6cxcp2u"
+
+[resource]
+mesh = SubResource("ArrayMesh_7q5a3")
+base_texture = ExtResource("1_7q5a3")
+image_size = Vector2(160, 54)
+script = ExtResource("4_xx30o")
+preset = SubResource("Resource_fkjlg")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

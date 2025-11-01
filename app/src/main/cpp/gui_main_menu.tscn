@@ -1,17 +1,49 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4fcq7wy2b7qx"]
+[gd_scene load_steps=45 format=3 uid="uid://c4fcq7wy2b7qx"]
 
 [ext_resource type="Script" uid="uid://bpjgdshru2jnh" path="res://app/src/main/cpp/gui_main_menu.gd" id="1_fciw5"]
 [ext_resource type="PackedScene" uid="uid://ch6fdy54ktb4a" path="res://app/src/main/cpp/scene_system_resource/gui_ipad.tscn" id="2_2yj7m"]
 [ext_resource type="Texture2D" uid="uid://i1akuqipfj3q" path="res://app/src/main/cpp/scene_system_resource/texture/mainbg.tres" id="2_xqjbv"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="4_im54a"]
 [ext_resource type="Texture2D" uid="uid://fihf26thtyq0" path="res://app/src/main/cpp/scene_system_resource/title_res/title.png.tres" id="4_wce6e"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="5_tap4s"]
+[ext_resource type="Texture2D" uid="uid://dlxydp1234pqu" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_mainmenu.png.tres" id="6_im54a"]
+[ext_resource type="Texture2D" uid="uid://uudsuxf0li8s" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_campaign.png.tres" id="7_im54a"]
 [ext_resource type="PackedScene" uid="uid://c28xtwuvyw7h2" path="res://app/src/main/cpp/scene_system_resource/gui_ipad_else.tscn" id="8_nhnkq"]
-
-[sub_resource type="Texture2D" id="Texture2D_tap4s"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("4_im54a")
-metadata/_custom_type_script = "uid://b58t05cta03d0"
+[ext_resource type="Texture2D" uid="uid://cerhcgluv0rbv" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_conquest.png.tres" id="8_w158l"]
+[ext_resource type="Texture2D" uid="uid://dya6bo3e6o6bv" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_tutorials.png.tres" id="9_qwch1"]
+[ext_resource type="Texture2D" uid="uid://m4pc8nso7ki1" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_commander.png.tres" id="10_nhnkq"]
+[ext_resource type="Texture2D" uid="uid://biq4afqpj3mb3" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_options.png.tres" id="11_ohl62"]
+[ext_resource type="Texture2D" uid="uid://cv8exuhsr0oc5" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_quitgame.png.tres" id="12_7tqsn"]
+[ext_resource type="Texture2D" uid="uid://c0btua4xgt0n4" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_axis.png.tres" id="12_lhawp"]
+[ext_resource type="Texture2D" uid="uid://c8pune68ckfts" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_axis.png.tres" id="13_573t0"]
+[ext_resource type="Texture2D" uid="uid://chve65iww54gx" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_allies.png.tres" id="14_wbdj6"]
+[ext_resource type="Texture2D" uid="uid://do8qhxpc6yin2" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_allies.png.tres" id="15_cqgsv"]
+[ext_resource type="Texture2D" uid="uid://ccufq3xp8e041" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_wto.png.tres" id="16_fnjh5"]
+[ext_resource type="Texture2D" uid="uid://cnleqa52niqlo" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_wto.png.tres" id="17_qlf27"]
+[ext_resource type="Texture2D" uid="uid://bwjop52kmmidf" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_nato.png.tres" id="18_u8inx"]
+[ext_resource type="Texture2D" uid="uid://rux3guea3ps6" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_nato.png.tres" id="19_uc35c"]
+[ext_resource type="Texture2D" uid="uid://c6nu4hf6wxn4k" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_load.png.tres" id="20_px05v"]
+[ext_resource type="Texture2D" uid="uid://ii180356lfg4" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_load_press.png.tres" id="21_a7s8b"]
+[ext_resource type="Texture2D" uid="uid://fjj81vkkrtuv" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/blue_big.png.tres" id="22_a7s8b"]
+[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back.png.tres" id="23_5je08"]
+[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back_press.png.tres" id="24_uhbjd"]
+[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttonboard_gray.png.tres" id="25_b5gij"]
+[ext_resource type="Texture2D" uid="uid://bv6m5tuoibveb" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_global.png.tres" id="26_51blv"]
+[ext_resource type="Texture2D" uid="uid://cmk2t3ecxkpc8" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_conquest1.png.tres" id="26_uhbjd"]
+[ext_resource type="Texture2D" uid="uid://cdnnc1q15nmhc" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_global.png.tres" id="27_7aaa6"]
+[ext_resource type="Texture2D" uid="uid://bwekrj57w86d0" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_conquest2.png.tres" id="27_b5gij"]
+[ext_resource type="Texture2D" uid="uid://b4q8hwfgvm4lf" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_local.png.tres" id="28_rqr4r"]
+[ext_resource type="Texture2D" uid="uid://djv0l4xdv58kd" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_conquest3.png.tres" id="28_s0254"]
+[ext_resource type="Texture2D" uid="uid://577u1oi0ixw1" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_local.png.tres" id="29_gy5jr"]
+[ext_resource type="Texture2D" uid="uid://8bbnmxav7nyj" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_conquest4.png.tres" id="29_o8knk"]
+[ext_resource type="Texture2D" uid="uid://dt74ljevxy4hg" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_conquest5.png.tres" id="30_1y5yh"]
+[ext_resource type="Texture2D" uid="uid://bgh6pp4bhtefg" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_host.png.tres" id="30_pegue"]
+[ext_resource type="Texture2D" uid="uid://drn3bxnp0vgdj" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_conquest6.png.tres" id="31_6kcka"]
+[ext_resource type="Texture2D" uid="uid://c7dh45igeupbp" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_host.png.tres" id="31_ct2c3"]
+[ext_resource type="Texture2D" uid="uid://cekbr8p1vjdl0" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_join.png.tres" id="32_md641"]
+[ext_resource type="Texture2D" uid="uid://b6h6uqwink62c" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_conquest7.png.tres" id="32_qeb2l"]
+[ext_resource type="Texture2D" uid="uid://yn2m28j0gqlr" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_conquest8.png.tres" id="33_03xyv"]
+[ext_resource type="Texture2D" uid="uid://c2hmmp88e3hxe" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_join.png.tres" id="33_7tqsn"]
+[ext_resource type="Texture2D" uid="uid://carm17vg5uwio" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/blue_normal.png.tres" id="43_md641"]
 
 [node name="GUIMainMenu" type="Control"]
 layout_mode = 3
@@ -34,7 +66,7 @@ position = Vector2(512, 324)
 texture = ExtResource("4_wce6e")
 centered = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GUIiPad"]
+[node name="MainButtonContainer" type="VBoxContainer" parent="GUIiPad"]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -45,11 +77,432 @@ grow_horizontal = 0
 grow_vertical = 2
 alignment = 2
 
-[node name="TextureButton" type="TextureButton" parent="GUIiPad/VBoxContainer"]
+[node name="ButtonCampaign" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(214, 66)
 layout_mode = 2
-texture_normal = SubResource("Texture2D_tap4s")
-ignore_texture_size = true
+play_sound_when_pressed = false
+grey_when_pressed = true
+texture_normal = ExtResource("6_im54a")
+texture_text_image = ExtResource("7_im54a")
+text_offset = Vector2(-402, -703)
+
+[node name="ButtonConquest" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
+custom_minimum_size = Vector2(214, 66)
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("6_im54a")
+texture_text_image = ExtResource("8_w158l")
+text_offset = Vector2(-402, -703)
+
+[node name="ButtonMultiPlayer" type="Node" parent="GUIiPad/MainButtonContainer"]
+
+[node name="ButtonTutorial" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
+custom_minimum_size = Vector2(214, 66)
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("6_im54a")
+texture_text_image = ExtResource("9_qwch1")
+text_offset = Vector2(-402, -703)
+
+[node name="ButtonCommander" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
+custom_minimum_size = Vector2(214, 66)
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("6_im54a")
+texture_text_image = ExtResource("10_nhnkq")
+text_offset = Vector2(-402, -703)
+
+[node name="ButtonOptions" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
+custom_minimum_size = Vector2(214, 66)
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("6_im54a")
+texture_text_image = ExtResource("11_ohl62")
+text_offset = Vector2(-402, -703)
+
+[node name="ButtonQuit" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
+custom_minimum_size = Vector2(214, 66)
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("6_im54a")
+texture_text_image = ExtResource("12_7tqsn")
+text_offset = Vector2(-402, -703)
+
+[node name="SelCampaigns" type="Control" parent="GUIiPad"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonAxis" parent="GUIiPad/SelCampaigns" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 80.0
+offset_top = 328.0
+offset_right = 490.0
+offset_bottom = 466.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("12_lhawp")
+texture_text_image = ExtResource("13_573t0")
+text_offset = Vector2(35, 91)
+
+[node name="ButtonAllies" parent="GUIiPad/SelCampaigns" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 530.0
+offset_top = 328.0
+offset_right = 940.0
+offset_bottom = 466.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("14_wbdj6")
+texture_text_image = ExtResource("15_cqgsv")
+text_offset = Vector2(35, 91)
+
+[node name="ButtonWto" parent="GUIiPad/SelCampaigns" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 80.0
+offset_top = 482.0
+offset_right = 490.0
+offset_bottom = 620.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("16_fnjh5")
+texture_text_image = ExtResource("17_qlf27")
+text_offset = Vector2(35, 91)
+
+[node name="ButtonNato" parent="GUIiPad/SelCampaigns" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 530.0
+offset_top = 482.0
+offset_right = 940.0
+offset_bottom = 620.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("18_u8inx")
+texture_text_image = ExtResource("19_uc35c")
+text_offset = Vector2(35, 91)
+
+[node name="ButtonLoad" parent="GUIiPad/SelCampaigns" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 448.0
+offset_top = 688.0
+offset_right = 576.0
+offset_bottom = 752.0
+grow_horizontal = 1
+grow_vertical = 1
+texture_normal = ExtResource("20_px05v")
+texture_pressed = ExtResource("21_a7s8b")
+texture_background = ExtResource("22_a7s8b")
+text_offset = Vector2(176, 128)
+
+[node name="ButtonBack" parent="GUIiPad/SelCampaigns" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -38.0
+offset_right = 40.0
+grow_horizontal = 1
+grow_vertical = 0
+play_sound_when_pressed = false
+texture_normal = ExtResource("23_5je08")
+texture_pressed = ExtResource("24_uhbjd")
+texture_background = ExtResource("25_b5gij")
+text_offset = Vector2(220, 141)
+
+[node name="SelMultiplayer" type="Control" parent="GUIiPad"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonGlobal" parent="GUIiPad/SelMultiplayer" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 307.0
+offset_top = 328.0
+offset_right = 717.0
+offset_bottom = 466.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("26_51blv")
+texture_text_image = ExtResource("27_7aaa6")
+text_offset = Vector2(35, 91)
+
+[node name="ButtonLocal" parent="GUIiPad/SelMultiplayer" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 307.0
+offset_top = 482.0
+offset_right = 717.0
+offset_bottom = 620.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("28_rqr4r")
+texture_text_image = ExtResource("29_gy5jr")
+text_offset = Vector2(35, 91)
+
+[node name="ButtonBack" parent="GUIiPad/SelMultiplayer" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -38.0
+offset_right = 40.0
+grow_horizontal = 1
+grow_vertical = 0
+texture_normal = ExtResource("23_5je08")
+texture_pressed = ExtResource("24_uhbjd")
+texture_background = ExtResource("25_b5gij")
+text_offset = Vector2(220, 141)
+
+[node name="SelLocal" type="Control" parent="GUIiPad"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonHost" parent="GUIiPad/SelLocal" instance=ExtResource("5_tap4s")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 307.0
+offset_top = 328.0
+offset_right = 717.0
+offset_bottom = 466.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("30_pegue")
+texture_text_image = ExtResource("31_ct2c3")
+text_offset = Vector2(35, 91)
+
+[node name="ButtonJoin" parent="GUIiPad/SelLocal" instance=ExtResource("5_tap4s")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 307.0
+offset_top = 482.0
+offset_right = 717.0
+offset_bottom = 620.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("32_md641")
+texture_text_image = ExtResource("33_7tqsn")
+text_offset = Vector2(35, 91)
+
+[node name="ButtonBack" parent="GUIiPad/SelLocal" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -38.0
+offset_right = 40.0
+grow_horizontal = 1
+grow_vertical = 0
+texture_normal = ExtResource("23_5je08")
+texture_pressed = ExtResource("24_uhbjd")
+texture_background = ExtResource("25_b5gij")
+text_offset = Vector2(220, 141)
+
+[node name="SelConquest" type="Control" parent="GUIiPad"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button1" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 130.0
+offset_top = 200.0
+offset_right = 438.0
+offset_bottom = 294.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("26_uhbjd")
+text_offset = Vector2(86, 113)
+
+[node name="Button2" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 582.0
+offset_top = 200.0
+offset_right = 890.0
+offset_bottom = 294.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("27_b5gij")
+text_offset = Vector2(86, 113)
+
+[node name="Button3" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 130.0
+offset_top = 320.0
+offset_right = 438.0
+offset_bottom = 414.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("28_s0254")
+text_offset = Vector2(86, 113)
+
+[node name="Button4" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 582.0
+offset_top = 320.0
+offset_right = 890.0
+offset_bottom = 414.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("29_o8knk")
+text_offset = Vector2(86, 113)
+
+[node name="Button5" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 130.0
+offset_top = 440.0
+offset_right = 438.0
+offset_bottom = 534.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("30_1y5yh")
+text_offset = Vector2(86, 113)
+
+[node name="Button6" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 582.0
+offset_top = 440.0
+offset_right = 890.0
+offset_bottom = 534.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("31_6kcka")
+text_offset = Vector2(86, 113)
+
+[node name="Button7" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 130.0
+offset_top = 560.0
+offset_right = 438.0
+offset_bottom = 654.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("32_qeb2l")
+text_offset = Vector2(86, 113)
+
+[node name="Button8" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 582.0
+offset_top = 560.0
+offset_right = 890.0
+offset_bottom = 654.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("33_03xyv")
+text_offset = Vector2(86, 113)
+
+[node name="ButtonLoad" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 448.0
+offset_top = 688.0
+offset_right = 576.0
+offset_bottom = 752.0
+grow_horizontal = 1
+grow_vertical = 1
+texture_normal = ExtResource("20_px05v")
+texture_pressed = ExtResource("21_a7s8b")
+texture_background = ExtResource("22_a7s8b")
+text_offset = Vector2(176, 128)
+
+[node name="ButtonBack" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -38.0
+offset_right = 40.0
+grow_horizontal = 1
+grow_vertical = 0
+texture_normal = ExtResource("23_5je08")
+texture_pressed = ExtResource("24_uhbjd")
+texture_background = ExtResource("25_b5gij")
+text_offset = Vector2(220, 141)
+
+[node name="NewGameTip" type="Node" parent="GUIiPad"]
+
+[node name="ButtonMail" type="Node" parent="GUIiPad"]
+
+[node name="ButtonMoreGame" type="Node" parent="GUIiPad"]
 
 [node name="GUIipadElse" parent="." instance=ExtResource("8_nhnkq")]
 layout_mode = 1
@@ -58,3 +511,449 @@ layout_mode = 1
 position = Vector2(240, 160)
 texture = ExtResource("4_wce6e")
 centered = false
+
+[node name="MainButtonContainer" type="VBoxContainer" parent="GUIipadElse"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 107.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2
+
+[node name="ButtonCampaign" parent="GUIipadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
+custom_minimum_size = Vector2(107, 33)
+layout_mode = 2
+play_sound_when_pressed = false
+grey_when_pressed = true
+texture_normal = ExtResource("6_im54a")
+texture_text_image = ExtResource("7_im54a")
+text_offset = Vector2(-241.5, 44.5)
+
+[node name="ButtonConquest" parent="GUIipadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
+custom_minimum_size = Vector2(107, 33)
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("6_im54a")
+texture_text_image = ExtResource("8_w158l")
+text_offset = Vector2(-241.5, 44.5)
+
+[node name="ButtonMultiPlayer" type="Node" parent="GUIipadElse/MainButtonContainer"]
+
+[node name="ButtonTutorial" parent="GUIipadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
+custom_minimum_size = Vector2(107, 33)
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("6_im54a")
+texture_text_image = ExtResource("9_qwch1")
+text_offset = Vector2(-241.5, 44.5)
+
+[node name="ButtonCommander" parent="GUIipadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
+custom_minimum_size = Vector2(107, 33)
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("6_im54a")
+texture_text_image = ExtResource("10_nhnkq")
+text_offset = Vector2(-241.5, 44.5)
+
+[node name="ButtonOptions" parent="GUIipadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
+custom_minimum_size = Vector2(107, 33)
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("6_im54a")
+texture_text_image = ExtResource("11_ohl62")
+text_offset = Vector2(-241.5, 44.5)
+
+[node name="ButtonQuit" parent="GUIipadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
+custom_minimum_size = Vector2(107, 33)
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("6_im54a")
+texture_text_image = ExtResource("12_7tqsn")
+text_offset = Vector2(-241.5, 44.5)
+
+[node name="SelCampaigns" type="Control" parent="GUIipadElse"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonAxis" parent="GUIipadElse/SelCampaigns" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -216.0
+offset_top = 113.0
+offset_right = -11.0
+offset_bottom = 182.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("12_lhawp")
+texture_text_image = ExtResource("13_573t0")
+text_offset = Vector2(137.5, 125.5)
+
+[node name="ButtonAllies" parent="GUIipadElse/SelCampaigns" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 9.0
+offset_top = 113.0
+offset_right = 214.0
+offset_bottom = 182.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("14_wbdj6")
+texture_text_image = ExtResource("15_cqgsv")
+text_offset = Vector2(137.5, 125.5)
+
+[node name="ButtonWto" parent="GUIipadElse/SelCampaigns" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -216.0
+offset_top = 190.0
+offset_right = -11.0
+offset_bottom = 259.0
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("16_fnjh5")
+texture_text_image = ExtResource("17_qlf27")
+text_offset = Vector2(137.5, 125.5)
+
+[node name="ButtonNato" parent="GUIipadElse/SelCampaigns" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 9.0
+offset_top = 190.0
+offset_right = 214.0
+offset_bottom = 259.0
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("18_u8inx")
+texture_text_image = ExtResource("19_uc35c")
+text_offset = Vector2(137.5, 125.5)
+
+[node name="ButtonLoad" parent="GUIipadElse/SelCampaigns" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -32.0
+offset_top = 280.0
+offset_right = 32.0
+offset_bottom = 312.0
+grow_vertical = 1
+texture_normal = ExtResource("20_px05v")
+texture_pressed = ExtResource("21_a7s8b")
+texture_background = ExtResource("43_md641")
+text_offset = Vector2(208, 144)
+
+[node name="ButtonBack" parent="GUIipadElse/SelCampaigns" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -30.0
+offset_right = 32.0
+grow_horizontal = 1
+grow_vertical = 0
+play_sound_when_pressed = false
+texture_normal = ExtResource("23_5je08")
+texture_pressed = ExtResource("24_uhbjd")
+texture_background = ExtResource("25_b5gij")
+text_offset = Vector2(224, 145)
+
+[node name="SelMultiplayer" type="Control" parent="GUIipadElse"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonGlobal" parent="GUIipadElse/SelMultiplayer" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -102.0
+offset_top = 113.0
+offset_right = 103.0
+offset_bottom = 182.0
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("26_51blv")
+texture_text_image = ExtResource("27_7aaa6")
+text_offset = Vector2(137.5, 125.5)
+
+[node name="ButtonLocal" parent="GUIipadElse/SelMultiplayer" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -102.0
+offset_top = 190.0
+offset_right = 103.0
+offset_bottom = 259.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("28_rqr4r")
+texture_text_image = ExtResource("29_gy5jr")
+text_offset = Vector2(137.5, 125.5)
+
+[node name="ButtonBack" parent="GUIipadElse/SelMultiplayer" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -30.0
+offset_right = 32.0
+grow_horizontal = 1
+grow_vertical = 0
+texture_normal = ExtResource("23_5je08")
+texture_pressed = ExtResource("24_uhbjd")
+texture_background = ExtResource("25_b5gij")
+text_offset = Vector2(224, 145)
+
+[node name="SelLocal" type="Control" parent="GUIipadElse"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonHost" parent="GUIipadElse/SelLocal" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -102.0
+offset_top = 113.0
+offset_right = 103.0
+offset_bottom = 182.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("30_pegue")
+texture_text_image = ExtResource("31_ct2c3")
+text_offset = Vector2(137.5, 125.5)
+
+[node name="ButtonJoin" parent="GUIipadElse/SelLocal" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -102.0
+offset_top = 190.0
+offset_right = 103.0
+offset_bottom = 259.0
+grow_horizontal = 1
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("32_md641")
+texture_text_image = ExtResource("33_7tqsn")
+text_offset = Vector2(137.5, 125.5)
+
+[node name="ButtonBack" parent="GUIipadElse/SelLocal" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -30.0
+offset_right = 32.0
+grow_horizontal = 1
+grow_vertical = 0
+texture_normal = ExtResource("23_5je08")
+texture_pressed = ExtResource("24_uhbjd")
+texture_background = ExtResource("25_b5gij")
+text_offset = Vector2(224, 145)
+
+[node name="SelConquest" type="Control" parent="GUIipadElse"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button1" parent="GUIipadElse/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -192.0
+offset_top = 87.0
+offset_right = -38.0
+offset_bottom = 134.0
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("26_uhbjd")
+text_offset = Vector2(163, 136.5)
+
+[node name="Button2" parent="GUIipadElse/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 38.0
+offset_top = 87.0
+offset_right = 192.0
+offset_bottom = 134.0
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("27_b5gij")
+text_offset = Vector2(163, 136.5)
+
+[node name="Button3" parent="GUIipadElse/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -192.0
+offset_top = 146.0
+offset_right = -38.0
+offset_bottom = 193.0
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("28_s0254")
+text_offset = Vector2(163, 136.5)
+
+[node name="Button4" parent="GUIipadElse/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 38.0
+offset_top = 146.0
+offset_right = 192.0
+offset_bottom = 193.0
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("29_o8knk")
+text_offset = Vector2(163, 136.5)
+
+[node name="Button5" parent="GUIipadElse/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -192.0
+offset_top = 204.0
+offset_right = -38.0
+offset_bottom = 251.0
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("30_1y5yh")
+text_offset = Vector2(163, 136.5)
+
+[node name="Button6" parent="GUIipadElse/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 38.0
+offset_top = 204.0
+offset_right = 192.0
+offset_bottom = 251.0
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("31_6kcka")
+text_offset = Vector2(163, 136.5)
+
+[node name="Button7" parent="GUIipadElse/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -192.0
+offset_top = 263.0
+offset_right = -38.0
+offset_bottom = 310.0
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("32_qeb2l")
+text_offset = Vector2(163, 136.5)
+
+[node name="Button8" parent="GUIipadElse/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 38.0
+offset_top = 263.0
+offset_right = 192.0
+offset_bottom = 310.0
+grow_vertical = 1
+grey_when_pressed = true
+texture_normal = ExtResource("33_03xyv")
+text_offset = Vector2(163, 136.5)
+
+[node name="ButtonLoad" parent="GUIipadElse/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -32.0
+offset_top = 280.0
+offset_right = 32.0
+offset_bottom = 312.0
+grow_vertical = 1
+texture_normal = ExtResource("20_px05v")
+texture_pressed = ExtResource("21_a7s8b")
+texture_background = ExtResource("43_md641")
+text_offset = Vector2(208, 144)
+
+[node name="ButtonBack" parent="GUIipadElse/SelConquest" instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -30.0
+offset_right = 32.0
+grow_horizontal = 1
+grow_vertical = 0
+texture_normal = ExtResource("23_5je08")
+texture_pressed = ExtResource("24_uhbjd")
+texture_background = ExtResource("25_b5gij")
+text_offset = Vector2(224, 145)
+
+[node name="NewGameTip" type="Node" parent="GUIipadElse"]
+
+[node name="ButtonMail" type="Node" parent="GUIipadElse"]
+
+[node name="ButtonMoreGame" type="Node" parent="GUIipadElse"]

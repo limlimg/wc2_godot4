@@ -1,0 +1,32 @@
+[gd_resource type="MeshTexture" script_class="ecImageTextureAssets" load_steps=7 format=3 uid="uid://do8qhxpc6yin2"]
+
+[ext_resource type="Texture2D" path="res://mui_en_hd.png" id="1_x0e3y"]
+[ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/texture_res.tres" id="2_t8h5h"]
+[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_2g2rq"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_tuuwq"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_x0e3y"]
+_surfaces = [{
+"2d": true,
+"aabb": AABB(7.5, 7.5, 0, 103, 21, 0),
+"attribute_data": PackedByteArray(0, 0, 161, 62, 0, 0, 202, 62, 0, 128, 55, 63, 0, 0, 202, 62, 0, 128, 55, 63, 0, 0, 244, 62, 0, 0, 161, 62, 0, 0, 202, 62, 0, 128, 55, 63, 0, 0, 244, 62, 0, 0, 161, 62, 0, 0, 244, 62),
+"format": 34393292817,
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 6,
+"vertex_data": PackedByteArray(0, 0, 240, 64, 0, 0, 240, 64, 0, 0, 221, 66, 0, 0, 240, 64, 0, 0, 221, 66, 0, 0, 228, 65, 0, 0, 240, 64, 0, 0, 240, 64, 0, 0, 221, 66, 0, 0, 228, 65, 0, 0, 240, 64, 0, 0, 228, 65)
+}]
+
+[sub_resource type="Resource" id="Resource_fkjlg"]
+script = ExtResource("3_2g2rq")
+name = &"m_buttontext_allies.png"
+res = ExtResource("2_t8h5h")
+metadata/_custom_type_script = "uid://fs8gw6cxcp2u"
+
+[resource]
+mesh = SubResource("ArrayMesh_x0e3y")
+base_texture = ExtResource("1_x0e3y")
+image_size = Vector2(103, 21)
+script = ExtResource("4_tuuwq")
+preset = SubResource("Resource_fkjlg")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"
