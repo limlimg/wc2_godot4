@@ -1,5 +1,7 @@
 extends Control
 
+const GUIManager = preload("res://app/src/main/cpp/gui_manager.gd")
+
 class _CLogoState:
 	extends "res://app/src/main/cpp/native-lib.gd"
 	
@@ -8,7 +10,7 @@ class _CLogoState:
 		var sound_box := _CSoundBox.get_instance()
 		sound_box.set_music_volume(g_game_settings.music_volume)
 		sound_box.set_se_volume(g_game_settings.se_volume)
-		# NOTTODO: load textureres for uis. Handled by ecTextureResAssets
+		GUIManager._s_texture_res = load("res://app/src/main/cpp/scene_system_resource/logo_gui_res/texture_res.tres").get_res()
 
 
 func _ready() -> void:
