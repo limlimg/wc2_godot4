@@ -1,4 +1,5 @@
 @tool
+class_name ecImageTextureAssets
 extends "res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd"
  
 const _ecImageAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_image_assets.gd")
@@ -16,11 +17,6 @@ var preset: _ecImageAssets:
 
 
 func _assets_changed() -> void:
-	texture = null
+	base_texture = null
 	if preset != null:
-		var attr = preset.get_image()
-		if attr != null:
-			texture = attr.texture.texture
-			texture_scale = attr.texture.texture.get_size() / attr.texture.size_override
-			region = attr.region
-			ref = attr.ref
+		set_ec_image_attr(preset.get_image())
