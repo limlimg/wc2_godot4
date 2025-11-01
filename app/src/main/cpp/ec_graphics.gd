@@ -15,6 +15,7 @@ extends "res://app/src/main/cpp/native-lib.gd"
 const _ecLine = preload("res://app/src/main/cpp/ec_line.gd")
 const _ecTriple = preload("res://app/src/main/cpp/ec_line.gd")
 const _ecQuad = preload("res://app/src/main/cpp/ec_quad.gd")
+const _Texture_Cache_Prefix = "res://app/src/main/cpp/scene_system_resource/texture_cache/"
 
 static var _instance := _ecGraphics.new()
 
@@ -117,11 +118,11 @@ func create_texture_with_string(a1: String, a2: String, a3: int, a4: int, width:
 
 ## Other varients of LoadTexture are omitted.
 func load_texture(texture_name: String) -> _ecTexture:
-	if ResourceLoader.has_cached(texture_name):
-		return ResourceLoader.get_cached_ref(texture_name)
+	if ResourceLoader.has_cached(_Texture_Cache_Prefix + texture_name):
+		return ResourceLoader.get_cached_ref(_Texture_Cache_Prefix + texture_name)
 	var ec_texture := ec_texture_load(texture_name)
 	ec_texture.res_scale = 1.0
-	ec_texture.take_over_path(texture_name) # Use the resource cache to cache ecTexture
+	ec_texture.take_over_path(_Texture_Cache_Prefix + texture_name) # Use the resource cache to cache ecTexture
 	return ec_texture
 
 
