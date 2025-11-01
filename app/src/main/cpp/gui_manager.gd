@@ -22,9 +22,12 @@ extends "res://app/src/main/cpp/gui_element.gd"
 
 const _ecTextureRect = preload("res://app/src/main/cpp/ec_texture_rect.gd")
 const _GUIImage = preload("res://app/src/main/cpp/gui_image.gd")
+const _GUI_IMAGE = preload("res://app/src/main/cpp/gui_image.tscn")
 const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
 const _GUIButton = preload("res://app/src/main/cpp/gui_button.gd")
+const _GUI_BUTTON = preload("res://app/src/main/cpp/gui_button.tscn")
 const _GUIScrollBar = preload("res://app/src/main/cpp/gui_scroll_bar.gd")
+const _GUI_SCROLL_BAR = preload("res://app/src/main/cpp/gui_scroll_bar.tscn")
 
 var _fading_tween: Tween
 
@@ -56,9 +59,9 @@ func safe_free_child(child: Node) -> void:
 
 
 ## The original method has more parameter for specifying texture format.
-func add_image_atlas(texture_name: String, attr: _ecTextureRect, rect: Rect2,
+func add_image_texture(texture_name: String, attr: _ecTextureRect, rect: Rect2,
 		parent:Node) -> _GUIImage:
-	var image := _GUIImage.new()
+	var image := _GUI_IMAGE.instantiate()
 	if not image.init_atlas(texture_name, attr, rect):
 		image.free()
 		return null
@@ -69,8 +72,8 @@ func add_image_atlas(texture_name: String, attr: _ecTextureRect, rect: Rect2,
 
 
 func add_image(texture_name: String, rect: Rect2, parent:Node) -> _GUIImage:
-	var image := _GUIImage.new()
-	if not image.init(texture_name, rect):
+	var image := _GUI_IMAGE.instantiate()
+	if not image.init_image_attr(texture_name, rect):
 		image.free()
 		return null
 	if parent == null:
@@ -81,7 +84,7 @@ func add_image(texture_name: String, rect: Rect2, parent:Node) -> _GUIImage:
 
 func add_button(normal_image_name: StringName, pressed_image_name: StringName,
 		rect: Rect2, parent:Node, font: _ecUniFont) -> _GUIButton:
-	var button := _GUIButton.new()
+	var button := _GUI_BUTTON.instantiate()
 	button.init(normal_image_name, pressed_image_name, rect, font)
 	if parent == null:
 		parent = self
@@ -93,7 +96,7 @@ func add_scroll_bar(rect: Rect2, parent:Node, normal_image_name: StringName,
 		pressed_image_name: StringName, grabber_size_w: int,
 		grabber_size_h: int, default_value: int, set_max_value: int,
 		is_horizontal: bool) -> _GUIScrollBar:
-	var scroll_bar := _GUIScrollBar.new()
+	var scroll_bar := _GUI_SCROLL_BAR.instantiate()
 	scroll_bar.init(rect, normal_image_name, pressed_image_name, grabber_size_w,
 		grabber_size_h, default_value, set_max_value, is_horizontal)
 	if parent == null:
