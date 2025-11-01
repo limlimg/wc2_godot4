@@ -16,6 +16,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+stretch_mode = 2
 
 [node name="Glow" type="TextureRect" parent="."]
 visible = false
@@ -23,6 +24,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+stretch_mode = 2
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 1
@@ -46,6 +48,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+stretch_mode = 2
 
 [connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]
 [connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]
