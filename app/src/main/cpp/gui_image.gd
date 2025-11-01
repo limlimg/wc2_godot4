@@ -21,22 +21,17 @@ var texture: Texture2D:
 
 
 ## The original method has more parameters for specifying texture format.
-func init_atlas(texture_name: String, attr: _ecTextureRect, rect: Rect2) -> bool:
-	set_image(texture_name, attr)
-	if texture == null:
-		return false
+func init_texture(texture_name: String, attr: _ecTextureRect, rect: Rect2) -> bool:
 	position = rect.position
 	size = rect.size
-	return true
+	return set_image(texture_name, attr)
 
 
-func init(texture_name: String, rect: Rect2) -> bool:
-	texture = _ecImageTexture.from_ec_texture(_ecGraphics.instance().load_texture(texture_name))
-	if texture == null:
-		return false
+func init_image_attr(image_name: StringName, rect: Rect2) -> bool:
 	position = rect.position
 	size = rect.size
-	return true
+	texture = _ecImageTexture.from_ec_image_attr(_s_texture_res.get_image(image_name))
+	return texture != null
 
 
 func set_alpha(value: float) -> void:
@@ -44,9 +39,10 @@ func set_alpha(value: float) -> void:
 
 
 ## The original method has more parameter for specifying texture format.
-func set_image(texture_name: String, attr: _ecTextureRect) -> void:
+func set_image(texture_name: String, attr: _ecTextureRect) -> bool:
 	var new_image := _ecImageAttr.new()
 	new_image.texture = _ecGraphics.instance().load_texture(texture_name)
 	new_image.region = Rect2(attr.x, attr.y, attr.w, attr.h)
 	new_image.ref = Vector2(attr.refx, attr.refy)
 	texture = _ecImageTexture.from_ec_image_attr(new_image)
+	return texture != null
