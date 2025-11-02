@@ -38,9 +38,10 @@ func _mesh_changed() -> void:
 	var uv3 := Vector2(uv0.x, uv2.y)
 	arrays[Mesh.ARRAY_VERTEX] = PackedVector2Array([v0, v1, v2, v0, v2, v3])
 	arrays[Mesh.ARRAY_TEX_UV] = PackedVector2Array([uv0, uv1, uv2, uv0, uv2, uv3])
-	var new_mesh = ArrayMesh.new()
-	new_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
-	mesh = new_mesh
+	if mesh == null or mesh is not ArrayMesh:
+		mesh = ArrayMesh.new()
+	mesh.clear_surfaces()
+	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
 	image_size = region.size
 
 
