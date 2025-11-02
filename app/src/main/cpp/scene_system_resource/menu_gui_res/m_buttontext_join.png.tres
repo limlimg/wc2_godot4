@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_0syiy"]
 [ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_1vqjp"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_wvmg5"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_viduq"]
 _surfaces = [{
 "2d": true,
 "aabb": AABB(9.5, 6.5, 0, 75.5, 21, 0),
@@ -24,7 +24,7 @@ res = ExtResource("2_wvmg5")
 metadata/_custom_type_script = "uid://fs8gw6cxcp2u"
 
 [resource]
-mesh = SubResource("ArrayMesh_wvmg5")
+mesh = SubResource("ArrayMesh_viduq")
 base_texture = ExtResource("1_viduq")
 image_size = Vector2(75, 21)
 script = ExtResource("4_1vqjp")

@@ -490,3 +490,39 @@ static func get_effects_volume_jni() -> float:
 
 static func set_effects_volume_jni(volume: float) -> void:
 	_Wc2Activity.set_effects_volume(volume)
+
+
+static var _dynamic_num_battles: Array[int]
+
+static func get_num_battles(campaign: int) -> int:
+	while _dynamic_num_battles.size() <= campaign:
+		var i = 0
+		while not get_path(get_battle_file_name(0, campaign, i), "").is_empty():
+			i += 1
+		_dynamic_num_battles.append(i)
+	return _dynamic_num_battles[campaign]
+
+
+static func get_battle_file_name(game_mode: int, campaign: int, battle: int) -> String:
+	match game_mode:
+		0:
+			match campaign:
+				1:
+					return "battle_allies{0}.xml".format([battle + 1])
+				2:
+					return "battle_wto{0}.xml".format([battle + 1])
+				3:
+					return "battle_nato{0}.xml".format([battle + 1])
+				_:
+					return "battle_axis{0}.xml".format([battle + 1])
+		2:
+			return "conquest_{0}.xml".format([battle + 1])
+		4:
+			return "multiplay_{0}.xml".format([battle + 1])
+		5:
+			return "tutorails.xml"
+	return ""
+
+
+static func main_menu_loaded_jni() -> void:
+	_Wc2Activity.main_menu_loaded()
