@@ -53,90 +53,83 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fciw5")
+
+[node name="MainBg" type="Sprite2D" parent="."]
+texture = ExtResource("2_xqjbv")
+centered = false
 
 [node name="GUIiPad" parent="." instance=ExtResource("2_2yj7m")]
 layout_mode = 1
 
-[node name="GUIMainMenu" type="Control" parent="GUIiPad"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_fciw5")
-button_moving_speed = 800
-
-[node name="MainBg" type="Sprite2D" parent="GUIiPad/GUIMainMenu"]
-texture = ExtResource("2_xqjbv")
-centered = false
-
-[node name="Title" type="Sprite2D" parent="GUIiPad/GUIMainMenu"]
+[node name="Title" type="Sprite2D" parent="GUIiPad"]
 position = Vector2(512, 324)
 texture = ExtResource("4_wce6e")
 centered = false
 
-[node name="MainButtonContainer" type="VBoxContainer" parent="GUIiPad/GUIMainMenu"]
+[node name="MainButtonContainer" type="VBoxContainer" parent="GUIiPad"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -96.0
+offset_right = 214.0
 grow_vertical = 0
 alignment = 2
 
-[node name="ButtonCampaign" parent="GUIiPad/GUIMainMenu/MainButtonContainer" instance=ExtResource("5_tap4s")]
+[node name="ButtonCampaign" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(214, 66)
 layout_mode = 2
 play_sound_when_pressed = false
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("7_im54a")
-text_offset = Vector2(-723, -1152)
+text_offset = Vector2(-1044, -1776)
 
-[node name="ButtonConquest" parent="GUIiPad/GUIMainMenu/MainButtonContainer" instance=ExtResource("5_tap4s")]
+[node name="ButtonConquest" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(214, 66)
 layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("8_w158l")
-text_offset = Vector2(-723, -1152)
+text_offset = Vector2(-1044, -1776)
 
-[node name="ButtonMultiPlayer" type="Node" parent="GUIiPad/GUIMainMenu/MainButtonContainer"]
+[node name="ButtonMultiPlayer" type="Node" parent="GUIiPad/MainButtonContainer"]
 
-[node name="ButtonTutorial" parent="GUIiPad/GUIMainMenu/MainButtonContainer" instance=ExtResource("5_tap4s")]
+[node name="ButtonTutorial" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(214, 66)
 layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("9_qwch1")
-text_offset = Vector2(-723, -1152)
+text_offset = Vector2(-1044, -1776)
 
-[node name="ButtonCommander" parent="GUIiPad/GUIMainMenu/MainButtonContainer" instance=ExtResource("5_tap4s")]
+[node name="ButtonCommander" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(214, 66)
 layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("10_nhnkq")
-text_offset = Vector2(-723, -1152)
+text_offset = Vector2(-1044, -1776)
 
-[node name="ButtonOptions" parent="GUIiPad/GUIMainMenu/MainButtonContainer" instance=ExtResource("5_tap4s")]
+[node name="ButtonOptions" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(214, 66)
 layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("11_ohl62")
-text_offset = Vector2(-723, -1152)
+text_offset = Vector2(-1044, -1776)
 
-[node name="ButtonQuit" parent="GUIiPad/GUIMainMenu/MainButtonContainer" instance=ExtResource("5_tap4s")]
+[node name="ButtonQuit" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(214, 66)
 layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("12_7tqsn")
-text_offset = Vector2(-723, -1152)
+text_offset = Vector2(-1044, -1776)
 
-[node name="SelCampaigns" type="Control" parent="GUIiPad/GUIMainMenu"]
+[node name="SelCampaigns" type="Control" parent="GUIiPad"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -145,7 +138,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonAxis" parent="GUIiPad/GUIMainMenu/SelCampaigns" instance=ExtResource("5_tap4s")]
+[node name="ButtonAxis" parent="GUIiPad/SelCampaigns" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -161,7 +154,7 @@ texture_normal = ExtResource("12_lhawp")
 texture_text_image = ExtResource("13_573t0")
 text_offset = Vector2(35, 91)
 
-[node name="ButtonAllies" parent="GUIiPad/GUIMainMenu/SelCampaigns" instance=ExtResource("5_tap4s")]
+[node name="ButtonAllies" parent="GUIiPad/SelCampaigns" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -177,7 +170,7 @@ texture_normal = ExtResource("14_wbdj6")
 texture_text_image = ExtResource("15_cqgsv")
 text_offset = Vector2(35, 91)
 
-[node name="ButtonWto" parent="GUIiPad/GUIMainMenu/SelCampaigns" instance=ExtResource("5_tap4s")]
+[node name="ButtonWto" parent="GUIiPad/SelCampaigns" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -193,7 +186,7 @@ texture_normal = ExtResource("16_fnjh5")
 texture_text_image = ExtResource("17_qlf27")
 text_offset = Vector2(35, 91)
 
-[node name="Locked" type="TextureRect" parent="GUIiPad/GUIMainMenu/SelCampaigns/ButtonWto"]
+[node name="Locked" type="TextureRect" parent="GUIiPad/SelCampaigns/ButtonWto"]
 layout_mode = 0
 offset_left = 300.0
 offset_top = 70.0
@@ -202,7 +195,7 @@ offset_bottom = 101.0
 texture = ExtResource("19_digt4")
 stretch_mode = 2
 
-[node name="ButtonNato" parent="GUIiPad/GUIMainMenu/SelCampaigns" instance=ExtResource("5_tap4s")]
+[node name="ButtonNato" parent="GUIiPad/SelCampaigns" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -218,7 +211,7 @@ texture_normal = ExtResource("18_u8inx")
 texture_text_image = ExtResource("19_uc35c")
 text_offset = Vector2(35, 91)
 
-[node name="Locked" type="TextureRect" parent="GUIiPad/GUIMainMenu/SelCampaigns/ButtonNato"]
+[node name="Locked" type="TextureRect" parent="GUIiPad/SelCampaigns/ButtonNato"]
 layout_mode = 0
 offset_left = 300.0
 offset_top = 70.0
@@ -227,7 +220,7 @@ offset_bottom = 101.0
 texture = ExtResource("19_digt4")
 stretch_mode = 2
 
-[node name="ButtonLoad" parent="GUIiPad/GUIMainMenu/SelCampaigns" instance=ExtResource("5_tap4s")]
+[node name="ButtonLoad" parent="GUIiPad/SelCampaigns" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -243,7 +236,7 @@ texture_pressed = ExtResource("21_a7s8b")
 texture_background = ExtResource("22_a7s8b")
 text_offset = Vector2(176, 128)
 
-[node name="ButtonBack" parent="GUIiPad/GUIMainMenu/SelCampaigns" instance=ExtResource("5_tap4s")]
+[node name="ButtonBack" parent="GUIiPad/SelCampaigns" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -258,7 +251,7 @@ texture_pressed = ExtResource("24_uhbjd")
 texture_background = ExtResource("25_b5gij")
 text_offset = Vector2(220, 141)
 
-[node name="SelMultiplayer" type="Control" parent="GUIiPad/GUIMainMenu"]
+[node name="SelMultiplayer" type="Control" parent="GUIiPad"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -267,7 +260,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonGlobal" parent="GUIiPad/GUIMainMenu/SelMultiplayer" instance=ExtResource("5_tap4s")]
+[node name="ButtonGlobal" parent="GUIiPad/SelMultiplayer" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -283,7 +276,7 @@ texture_normal = ExtResource("26_51blv")
 texture_text_image = ExtResource("27_7aaa6")
 text_offset = Vector2(35, 91)
 
-[node name="ButtonLocal" parent="GUIiPad/GUIMainMenu/SelMultiplayer" instance=ExtResource("5_tap4s")]
+[node name="ButtonLocal" parent="GUIiPad/SelMultiplayer" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -299,7 +292,7 @@ texture_normal = ExtResource("28_rqr4r")
 texture_text_image = ExtResource("29_gy5jr")
 text_offset = Vector2(35, 91)
 
-[node name="ButtonBack" parent="GUIiPad/GUIMainMenu/SelMultiplayer" instance=ExtResource("5_tap4s")]
+[node name="ButtonBack" parent="GUIiPad/SelMultiplayer" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -313,7 +306,7 @@ texture_pressed = ExtResource("24_uhbjd")
 texture_background = ExtResource("25_b5gij")
 text_offset = Vector2(220, 141)
 
-[node name="SelLocal" type="Control" parent="GUIiPad/GUIMainMenu"]
+[node name="SelLocal" type="Control" parent="GUIiPad"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -322,7 +315,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonHost" parent="GUIiPad/GUIMainMenu/SelLocal" instance=ExtResource("5_tap4s")]
+[node name="ButtonHost" parent="GUIiPad/SelLocal" instance=ExtResource("5_tap4s")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -337,7 +330,7 @@ texture_normal = ExtResource("30_pegue")
 texture_text_image = ExtResource("31_ct2c3")
 text_offset = Vector2(35, 91)
 
-[node name="ButtonJoin" parent="GUIiPad/GUIMainMenu/SelLocal" instance=ExtResource("5_tap4s")]
+[node name="ButtonJoin" parent="GUIiPad/SelLocal" instance=ExtResource("5_tap4s")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -352,7 +345,7 @@ texture_normal = ExtResource("32_md641")
 texture_text_image = ExtResource("33_7tqsn")
 text_offset = Vector2(35, 91)
 
-[node name="ButtonBack" parent="GUIiPad/GUIMainMenu/SelLocal" instance=ExtResource("5_tap4s")]
+[node name="ButtonBack" parent="GUIiPad/SelLocal" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -366,7 +359,7 @@ texture_pressed = ExtResource("24_uhbjd")
 texture_background = ExtResource("25_b5gij")
 text_offset = Vector2(220, 141)
 
-[node name="SelConquest" type="Control" parent="GUIiPad/GUIMainMenu"]
+[node name="SelConquest" type="Control" parent="GUIiPad"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -375,7 +368,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button1" parent="GUIiPad/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button1" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -390,7 +383,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("26_uhbjd")
 text_offset = Vector2(86, 113)
 
-[node name="Button2" parent="GUIiPad/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button2" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -405,7 +398,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("27_b5gij")
 text_offset = Vector2(86, 113)
 
-[node name="Button3" parent="GUIiPad/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button3" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -420,7 +413,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("28_s0254")
 text_offset = Vector2(86, 113)
 
-[node name="Button4" parent="GUIiPad/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button4" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -435,7 +428,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("29_o8knk")
 text_offset = Vector2(86, 113)
 
-[node name="Button5" parent="GUIiPad/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button5" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -450,7 +443,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("30_1y5yh")
 text_offset = Vector2(86, 113)
 
-[node name="Button6" parent="GUIiPad/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button6" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -465,7 +458,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("31_6kcka")
 text_offset = Vector2(86, 113)
 
-[node name="Button7" parent="GUIiPad/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button7" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -480,7 +473,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("32_qeb2l")
 text_offset = Vector2(86, 113)
 
-[node name="Button8" parent="GUIiPad/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button8" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -495,7 +488,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("33_03xyv")
 text_offset = Vector2(86, 113)
 
-[node name="ButtonLoad" parent="GUIiPad/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="ButtonLoad" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -510,7 +503,7 @@ texture_pressed = ExtResource("21_a7s8b")
 texture_background = ExtResource("22_a7s8b")
 text_offset = Vector2(176, 128)
 
-[node name="ButtonBack" parent="GUIiPad/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="ButtonBack" parent="GUIiPad/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -524,94 +517,82 @@ texture_pressed = ExtResource("24_uhbjd")
 texture_background = ExtResource("25_b5gij")
 text_offset = Vector2(220, 141)
 
-[node name="NewGameTip" type="Node" parent="GUIiPad/GUIMainMenu"]
+[node name="NewGameTip" type="Node" parent="GUIiPad"]
 
-[node name="ButtonMail" type="Node" parent="GUIiPad/GUIMainMenu"]
+[node name="ButtonMail" type="Node" parent="GUIiPad"]
 
-[node name="ButtonMoreGame" type="Node" parent="GUIiPad/GUIMainMenu"]
+[node name="ButtonMoreGame" type="Node" parent="GUIiPad"]
 
-[node name="GUIipadElse" parent="." instance=ExtResource("8_nhnkq")]
+[node name="GUIiPadElse" parent="." instance=ExtResource("8_nhnkq")]
 layout_mode = 1
 
-[node name="GUIMainMenu" type="Control" parent="GUIipadElse"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_fciw5")
-
-[node name="MainBg" type="Sprite2D" parent="GUIipadElse/GUIMainMenu"]
-texture = ExtResource("2_xqjbv")
-centered = false
-
-[node name="Title" type="Sprite2D" parent="GUIipadElse/GUIMainMenu"]
+[node name="Title" type="Sprite2D" parent="GUIiPadElse"]
 position = Vector2(240, 160)
 texture = ExtResource("4_wce6e")
 centered = false
 
-[node name="MainButtonContainer" type="VBoxContainer" parent="GUIipadElse/GUIMainMenu"]
+[node name="MainButtonContainer" type="VBoxContainer" parent="GUIiPadElse"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 107.0
 grow_vertical = 0
 alignment = 2
 
-[node name="ButtonCampaign" parent="GUIipadElse/GUIMainMenu/MainButtonContainer" instance=ExtResource("5_tap4s")]
+[node name="ButtonCampaign" parent="GUIiPadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(107, 33)
 layout_mode = 2
 play_sound_when_pressed = false
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("7_im54a")
-text_offset = Vector2(-402, -5)
+text_offset = Vector2(-562.5, -54.5)
 
-[node name="ButtonConquest" parent="GUIipadElse/GUIMainMenu/MainButtonContainer" instance=ExtResource("5_tap4s")]
+[node name="ButtonConquest" parent="GUIiPadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(107, 33)
 layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("8_w158l")
-text_offset = Vector2(-402, -5)
+text_offset = Vector2(-562.5, -54.5)
 
-[node name="ButtonMultiPlayer" type="Node" parent="GUIipadElse/GUIMainMenu/MainButtonContainer"]
+[node name="ButtonMultiPlayer" type="Node" parent="GUIiPadElse/MainButtonContainer"]
 
-[node name="ButtonTutorial" parent="GUIipadElse/GUIMainMenu/MainButtonContainer" instance=ExtResource("5_tap4s")]
+[node name="ButtonTutorial" parent="GUIiPadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(107, 33)
 layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("9_qwch1")
-text_offset = Vector2(-402, -5)
+text_offset = Vector2(-562.5, -54.5)
 
-[node name="ButtonCommander" parent="GUIipadElse/GUIMainMenu/MainButtonContainer" instance=ExtResource("5_tap4s")]
+[node name="ButtonCommander" parent="GUIiPadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(107, 33)
 layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("10_nhnkq")
-text_offset = Vector2(-402, -5)
+text_offset = Vector2(-562.5, -54.5)
 
-[node name="ButtonOptions" parent="GUIipadElse/GUIMainMenu/MainButtonContainer" instance=ExtResource("5_tap4s")]
+[node name="ButtonOptions" parent="GUIiPadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(107, 33)
 layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("11_ohl62")
-text_offset = Vector2(-402, -5)
+text_offset = Vector2(-562.5, -54.5)
 
-[node name="ButtonQuit" parent="GUIipadElse/GUIMainMenu/MainButtonContainer" instance=ExtResource("5_tap4s")]
+[node name="ButtonQuit" parent="GUIiPadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(107, 33)
 layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("12_7tqsn")
-text_offset = Vector2(-402, -5)
+text_offset = Vector2(-562.5, -54.5)
 
-[node name="SelCampaigns" type="Control" parent="GUIipadElse/GUIMainMenu"]
+[node name="SelCampaigns" type="Control" parent="GUIiPadElse"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -620,7 +601,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonAxis" parent="GUIipadElse/GUIMainMenu/SelCampaigns" instance=ExtResource("5_tap4s")]
+[node name="ButtonAxis" parent="GUIiPadElse/SelCampaigns" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -637,7 +618,7 @@ texture_normal = ExtResource("12_lhawp")
 texture_text_image = ExtResource("13_573t0")
 text_offset = Vector2(137.5, 125.5)
 
-[node name="ButtonAllies" parent="GUIipadElse/GUIMainMenu/SelCampaigns" instance=ExtResource("5_tap4s")]
+[node name="ButtonAllies" parent="GUIiPadElse/SelCampaigns" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -654,7 +635,7 @@ texture_normal = ExtResource("14_wbdj6")
 texture_text_image = ExtResource("15_cqgsv")
 text_offset = Vector2(137.5, 125.5)
 
-[node name="ButtonWto" parent="GUIipadElse/GUIMainMenu/SelCampaigns" instance=ExtResource("5_tap4s")]
+[node name="ButtonWto" parent="GUIiPadElse/SelCampaigns" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -670,7 +651,7 @@ texture_normal = ExtResource("16_fnjh5")
 texture_text_image = ExtResource("17_qlf27")
 text_offset = Vector2(137.5, 125.5)
 
-[node name="Locked" type="TextureRect" parent="GUIipadElse/GUIMainMenu/SelCampaigns/ButtonWto"]
+[node name="Locked" type="TextureRect" parent="GUIiPadElse/SelCampaigns/ButtonWto"]
 layout_mode = 0
 offset_left = 150.0
 offset_top = 35.0
@@ -679,7 +660,7 @@ offset_bottom = 36.0
 texture = ExtResource("19_digt4")
 stretch_mode = 2
 
-[node name="ButtonNato" parent="GUIipadElse/GUIMainMenu/SelCampaigns" instance=ExtResource("5_tap4s")]
+[node name="ButtonNato" parent="GUIiPadElse/SelCampaigns" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -695,7 +676,7 @@ texture_normal = ExtResource("18_u8inx")
 texture_text_image = ExtResource("19_uc35c")
 text_offset = Vector2(137.5, 125.5)
 
-[node name="Locked" type="TextureRect" parent="GUIipadElse/GUIMainMenu/SelCampaigns/ButtonNato"]
+[node name="Locked" type="TextureRect" parent="GUIiPadElse/SelCampaigns/ButtonNato"]
 layout_mode = 0
 offset_left = 150.0
 offset_top = 35.0
@@ -704,7 +685,7 @@ offset_bottom = 36.0
 texture = ExtResource("19_digt4")
 stretch_mode = 2
 
-[node name="ButtonLoad" parent="GUIipadElse/GUIMainMenu/SelCampaigns" instance=ExtResource("5_tap4s")]
+[node name="ButtonLoad" parent="GUIiPadElse/SelCampaigns" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -720,7 +701,7 @@ texture_pressed = ExtResource("21_a7s8b")
 texture_background = ExtResource("43_md641")
 text_offset = Vector2(208, 144)
 
-[node name="ButtonBack" parent="GUIipadElse/GUIMainMenu/SelCampaigns" instance=ExtResource("5_tap4s")]
+[node name="ButtonBack" parent="GUIiPadElse/SelCampaigns" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -735,7 +716,7 @@ texture_pressed = ExtResource("24_uhbjd")
 texture_background = ExtResource("25_b5gij")
 text_offset = Vector2(224, 145)
 
-[node name="SelMultiplayer" type="Control" parent="GUIipadElse/GUIMainMenu"]
+[node name="SelMultiplayer" type="Control" parent="GUIiPadElse"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -744,7 +725,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonGlobal" parent="GUIipadElse/GUIMainMenu/SelMultiplayer" instance=ExtResource("5_tap4s")]
+[node name="ButtonGlobal" parent="GUIiPadElse/SelMultiplayer" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -760,7 +741,7 @@ texture_normal = ExtResource("26_51blv")
 texture_text_image = ExtResource("27_7aaa6")
 text_offset = Vector2(137.5, 125.5)
 
-[node name="ButtonLocal" parent="GUIipadElse/GUIMainMenu/SelMultiplayer" instance=ExtResource("5_tap4s")]
+[node name="ButtonLocal" parent="GUIiPadElse/SelMultiplayer" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -777,7 +758,7 @@ texture_normal = ExtResource("28_rqr4r")
 texture_text_image = ExtResource("29_gy5jr")
 text_offset = Vector2(137.5, 125.5)
 
-[node name="ButtonBack" parent="GUIipadElse/GUIMainMenu/SelMultiplayer" instance=ExtResource("5_tap4s")]
+[node name="ButtonBack" parent="GUIiPadElse/SelMultiplayer" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -791,7 +772,7 @@ texture_pressed = ExtResource("24_uhbjd")
 texture_background = ExtResource("25_b5gij")
 text_offset = Vector2(224, 145)
 
-[node name="SelLocal" type="Control" parent="GUIipadElse/GUIMainMenu"]
+[node name="SelLocal" type="Control" parent="GUIiPadElse"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -800,7 +781,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonHost" parent="GUIipadElse/GUIMainMenu/SelLocal" instance=ExtResource("5_tap4s")]
+[node name="ButtonHost" parent="GUIiPadElse/SelLocal" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -817,7 +798,7 @@ texture_normal = ExtResource("30_pegue")
 texture_text_image = ExtResource("31_ct2c3")
 text_offset = Vector2(137.5, 125.5)
 
-[node name="ButtonJoin" parent="GUIipadElse/GUIMainMenu/SelLocal" instance=ExtResource("5_tap4s")]
+[node name="ButtonJoin" parent="GUIiPadElse/SelLocal" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -834,7 +815,7 @@ texture_normal = ExtResource("32_md641")
 texture_text_image = ExtResource("33_7tqsn")
 text_offset = Vector2(137.5, 125.5)
 
-[node name="ButtonBack" parent="GUIipadElse/GUIMainMenu/SelLocal" instance=ExtResource("5_tap4s")]
+[node name="ButtonBack" parent="GUIiPadElse/SelLocal" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -848,7 +829,7 @@ texture_pressed = ExtResource("24_uhbjd")
 texture_background = ExtResource("25_b5gij")
 text_offset = Vector2(224, 145)
 
-[node name="SelConquest" type="Control" parent="GUIipadElse/GUIMainMenu"]
+[node name="SelConquest" type="Control" parent="GUIiPadElse"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -857,7 +838,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Button1" parent="GUIipadElse/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button1" parent="GUIiPadElse/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -872,7 +853,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("26_uhbjd")
 text_offset = Vector2(163, 136.5)
 
-[node name="Button2" parent="GUIipadElse/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button2" parent="GUIiPadElse/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -887,7 +868,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("27_b5gij")
 text_offset = Vector2(163, 136.5)
 
-[node name="Button3" parent="GUIipadElse/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button3" parent="GUIiPadElse/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -902,7 +883,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("28_s0254")
 text_offset = Vector2(163, 136.5)
 
-[node name="Button4" parent="GUIipadElse/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button4" parent="GUIiPadElse/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -917,7 +898,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("29_o8knk")
 text_offset = Vector2(163, 136.5)
 
-[node name="Button5" parent="GUIipadElse/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button5" parent="GUIiPadElse/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -932,7 +913,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("30_1y5yh")
 text_offset = Vector2(163, 136.5)
 
-[node name="Button6" parent="GUIipadElse/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button6" parent="GUIiPadElse/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -947,7 +928,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("31_6kcka")
 text_offset = Vector2(163, 136.5)
 
-[node name="Button7" parent="GUIipadElse/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button7" parent="GUIiPadElse/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -962,7 +943,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("32_qeb2l")
 text_offset = Vector2(163, 136.5)
 
-[node name="Button8" parent="GUIipadElse/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="Button8" parent="GUIiPadElse/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -977,7 +958,7 @@ grey_when_pressed = true
 texture_normal = ExtResource("33_03xyv")
 text_offset = Vector2(163, 136.5)
 
-[node name="ButtonLoad" parent="GUIipadElse/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="ButtonLoad" parent="GUIiPadElse/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -993,7 +974,7 @@ texture_pressed = ExtResource("21_a7s8b")
 texture_background = ExtResource("43_md641")
 text_offset = Vector2(208, 144)
 
-[node name="ButtonBack" parent="GUIipadElse/GUIMainMenu/SelConquest" instance=ExtResource("5_tap4s")]
+[node name="ButtonBack" parent="GUIiPadElse/SelConquest" instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1007,24 +988,24 @@ texture_pressed = ExtResource("24_uhbjd")
 texture_background = ExtResource("25_b5gij")
 text_offset = Vector2(224, 145)
 
-[node name="NewGameTip" type="Node" parent="GUIipadElse/GUIMainMenu"]
+[node name="NewGameTip" type="Node" parent="GUIiPadElse"]
 
-[node name="ButtonMail" type="Node" parent="GUIipadElse/GUIMainMenu"]
+[node name="ButtonMail" type="Node" parent="GUIiPadElse"]
 
-[node name="ButtonMoreGame" type="Node" parent="GUIipadElse/GUIMainMenu"]
+[node name="ButtonMoreGame" type="Node" parent="GUIiPadElse"]
 
-[connection signal="pressed" from="GUIiPad/GUIMainMenu/MainButtonContainer/ButtonCampaign" to="GUIiPad/GUIMainMenu" method="_on_button_campaign_pressed"]
-[connection signal="pressed" from="GUIiPad/GUIMainMenu/MainButtonContainer/ButtonConquest" to="GUIiPad/GUIMainMenu" method="_on_button_conquest_pressed"]
-[connection signal="pressed" from="GUIiPad/GUIMainMenu/MainButtonContainer/ButtonQuit" to="GUIiPad/GUIMainMenu" method="_on_button_quit_pressed"]
-[connection signal="pressed" from="GUIiPad/GUIMainMenu/SelCampaigns/ButtonBack" to="GUIiPad/GUIMainMenu" method="_on_button_campaign_back_pressed"]
-[connection signal="pressed" from="GUIiPad/GUIMainMenu/SelMultiplayer/ButtonLocal" to="GUIiPad/GUIMainMenu" method="_on_button_local_pressed"]
-[connection signal="pressed" from="GUIiPad/GUIMainMenu/SelMultiplayer/ButtonBack" to="GUIiPad/GUIMainMenu" method="_on_button_multi_player_back_pressed"]
-[connection signal="pressed" from="GUIiPad/GUIMainMenu/SelLocal/ButtonBack" to="GUIiPad/GUIMainMenu" method="_on_button_local_back_pressed"]
-[connection signal="pressed" from="GUIiPad/GUIMainMenu/SelConquest/ButtonBack" to="GUIiPad/GUIMainMenu" method="_on_button_conquest_back_pressed"]
-[connection signal="pressed" from="GUIipadElse/GUIMainMenu/MainButtonContainer/ButtonCampaign" to="GUIipadElse/GUIMainMenu" method="_on_button_campaign_pressed"]
-[connection signal="pressed" from="GUIipadElse/GUIMainMenu/MainButtonContainer/ButtonConquest" to="GUIipadElse/GUIMainMenu" method="_on_button_conquest_pressed"]
-[connection signal="pressed" from="GUIipadElse/GUIMainMenu/MainButtonContainer/ButtonQuit" to="GUIipadElse/GUIMainMenu" method="_on_button_quit_pressed"]
-[connection signal="pressed" from="GUIipadElse/GUIMainMenu/SelCampaigns/ButtonBack" to="GUIipadElse/GUIMainMenu" method="_on_button_campaign_back_pressed"]
-[connection signal="pressed" from="GUIipadElse/GUIMainMenu/SelMultiplayer/ButtonBack" to="GUIipadElse/GUIMainMenu" method="_on_button_multi_player_back_pressed"]
-[connection signal="pressed" from="GUIipadElse/GUIMainMenu/SelLocal/ButtonBack" to="GUIipadElse/GUIMainMenu" method="_on_button_local_back_pressed"]
-[connection signal="pressed" from="GUIipadElse/GUIMainMenu/SelConquest/ButtonBack" to="GUIipadElse/GUIMainMenu" method="_on_button_conquest_back_pressed"]
+[connection signal="pressed" from="GUIiPad/MainButtonContainer/ButtonCampaign" to="." method="_on_button_campaign_pressed"]
+[connection signal="pressed" from="GUIiPad/MainButtonContainer/ButtonConquest" to="." method="_on_button_conquest_pressed"]
+[connection signal="pressed" from="GUIiPad/MainButtonContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="GUIiPad/SelCampaigns/ButtonBack" to="." method="_on_button_campaign_back_pressed"]
+[connection signal="pressed" from="GUIiPad/SelMultiplayer/ButtonLocal" to="." method="_on_button_local_pressed"]
+[connection signal="pressed" from="GUIiPad/SelMultiplayer/ButtonBack" to="." method="_on_button_multi_player_back_pressed"]
+[connection signal="pressed" from="GUIiPad/SelLocal/ButtonBack" to="." method="_on_button_local_back_pressed"]
+[connection signal="pressed" from="GUIiPad/SelConquest/ButtonBack" to="." method="_on_button_conquest_back_pressed"]
+[connection signal="pressed" from="GUIiPadElse/MainButtonContainer/ButtonCampaign" to="." method="_on_button_campaign_pressed"]
+[connection signal="pressed" from="GUIiPadElse/MainButtonContainer/ButtonConquest" to="." method="_on_button_conquest_pressed"]
+[connection signal="pressed" from="GUIiPadElse/MainButtonContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="GUIiPadElse/SelCampaigns/ButtonBack" to="." method="_on_button_campaign_back_pressed"]
+[connection signal="pressed" from="GUIiPadElse/SelMultiplayer/ButtonBack" to="." method="_on_button_multi_player_back_pressed"]
+[connection signal="pressed" from="GUIiPadElse/SelLocal/ButtonBack" to="." method="_on_button_local_back_pressed"]
+[connection signal="pressed" from="GUIiPadElse/SelConquest/ButtonBack" to="." method="_on_button_conquest_back_pressed"]
