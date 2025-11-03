@@ -44,10 +44,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_hjp6p")
 
-[node name="GUIipadElse" parent="GUIManager" instance=ExtResource("4_b54l6")]
+[node name="GUIiPadElse" parent="GUIManager" instance=ExtResource("4_b54l6")]
 layout_mode = 1
 
-[node name="Logo" type="TextureRect" parent="GUIManager/GUIipadElse"]
+[node name="Logo" type="TextureRect" parent="GUIManager/GUIiPadElse"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
