@@ -63,59 +63,68 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_button_campaign_pressed() -> void:
-	# NOTTODO: hide more game and mail button
-	_move_button(2)
-	_CSoundBox.get_instance().play_se("main_interface.wav")
+	if _button_moving == 0:
+		# NOTTODO: hide more game and mail button
+		_move_button(2)
+		_CSoundBox.get_instance().play_se("main_interface.wav")
 	button_campaign_pressed.emit()
 
 
 func _on_button_campaign_back_pressed() -> void:
-	_move_button(4)
-	_CSoundBox.get_instance().play_se("main_interface.wav")
+	if _button_moving == 0:
+		_move_button(4)
+		_CSoundBox.get_instance().play_se("main_interface.wav")
 	button_campaign_back_pressed.emit()
 
 
 func _on_button_conquest_pressed() -> void:
-	# NOTTODO: hide more game and mail button
-	_move_button(7)
-	_CSoundBox.get_instance().play_se("main_interface.wav")
+	if _button_moving == 0:
+		# NOTTODO: hide more game and mail button
+		_move_button(7)
+		_CSoundBox.get_instance().play_se("main_interface.wav")
 	button_conquest_pressed.emit()
 
 
 func _on_button_conquest_back_pressed() -> void:
-	_move_button(9)
-	_CSoundBox.get_instance().play_se("main_interface.wav")
+	if _button_moving == 0:
+		_move_button(9)
+		_CSoundBox.get_instance().play_se("main_interface.wav")
 	button_conquest_back_pressed.emit()
 
 
 func _on_button_multi_player_pressed() -> void:
-	# NOTTODO: hide more game and mail button
-	_move_button(6)
-	_CSoundBox.get_instance().play_se("main_interface.wav")
+	if _button_moving == 0:
+		# NOTTODO: hide more game and mail button
+		_move_button(6)
+		_CSoundBox.get_instance().play_se("main_interface.wav")
 	button_multi_player_pressed.emit()
 
 
 func _on_button_multi_player_back_pressed() -> void:
-	# NOTTODO: show more game button and mail button and refresh new highlight
-	_move_button(5)
-	_CSoundBox.get_instance().play_se("main_interface.wav")
+	if _button_moving == 0:
+		# NOTTODO: show more game button and mail button and refresh new highlight
+		_move_button(5)
+		_CSoundBox.get_instance().play_se("main_interface.wav")
 	button_multi_player_back_pressed.emit()
 
 
 func _on_button_local_pressed() -> void:
-	$GUIiPad/SelMultiplayer.hide()
-	$GUIiPad/SelLocal.show()
+	if _button_moving == 0:
+		$GUIiPad/SelMultiplayer.hide()
+		$GUIiPad/SelLocal.show()
 	button_local_pressed.emit()
 
 
 func _on_button_local_back_pressed() -> void:
-	$GUIiPad/SelMultiplayer.show()
-	$GUIiPad/SelLocal.hide()
+	if _button_moving == 0:
+		$GUIiPad/SelMultiplayer.show()
+		$GUIiPad/SelLocal.hide()
 	button_local_back_pressed.emit()
 
 
 func _on_button_quit_pressed() -> void:
-	quit_pressed.emit()
+	if _button_moving == 0:
+		quit_pressed.emit()
 
 
 # OnUpdate

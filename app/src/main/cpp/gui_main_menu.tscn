@@ -85,7 +85,7 @@ play_sound_when_pressed = false
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("7_im54a")
-text_offset = Vector2(-1044, -1776)
+text_offset = Vector2(-1151, -1984)
 
 [node name="ButtonConquest" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(214, 66)
@@ -93,7 +93,7 @@ layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("8_w158l")
-text_offset = Vector2(-1044, -1776)
+text_offset = Vector2(-1151, -1984)
 
 [node name="ButtonMultiPlayer" type="Node" parent="GUIiPad/MainButtonContainer"]
 
@@ -103,7 +103,7 @@ layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("9_qwch1")
-text_offset = Vector2(-1044, -1776)
+text_offset = Vector2(-1151, -1984)
 
 [node name="ButtonCommander" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(214, 66)
@@ -111,7 +111,7 @@ layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("10_nhnkq")
-text_offset = Vector2(-1044, -1776)
+text_offset = Vector2(-1151, -1984)
 
 [node name="ButtonOptions" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(214, 66)
@@ -119,7 +119,7 @@ layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("11_ohl62")
-text_offset = Vector2(-1044, -1776)
+text_offset = Vector2(-1151, -1984)
 
 [node name="ButtonQuit" parent="GUIiPad/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(214, 66)
@@ -127,7 +127,7 @@ layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("12_7tqsn")
-text_offset = Vector2(-1044, -1776)
+text_offset = Vector2(-1151, -1984)
 
 [node name="SelCampaigns" type="Control" parent="GUIiPad"]
 visible = false
@@ -548,7 +548,7 @@ play_sound_when_pressed = false
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("7_im54a")
-text_offset = Vector2(-562.5, -54.5)
+text_offset = Vector2(-616, -71)
 
 [node name="ButtonConquest" parent="GUIiPadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(107, 33)
@@ -556,7 +556,7 @@ layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("8_w158l")
-text_offset = Vector2(-562.5, -54.5)
+text_offset = Vector2(-616, -71)
 
 [node name="ButtonMultiPlayer" type="Node" parent="GUIiPadElse/MainButtonContainer"]
 
@@ -566,7 +566,7 @@ layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("9_qwch1")
-text_offset = Vector2(-562.5, -54.5)
+text_offset = Vector2(-616, -71)
 
 [node name="ButtonCommander" parent="GUIiPadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(107, 33)
@@ -574,7 +574,7 @@ layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("10_nhnkq")
-text_offset = Vector2(-562.5, -54.5)
+text_offset = Vector2(-616, -71)
 
 [node name="ButtonOptions" parent="GUIiPadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(107, 33)
@@ -582,7 +582,7 @@ layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("11_ohl62")
-text_offset = Vector2(-562.5, -54.5)
+text_offset = Vector2(-616, -71)
 
 [node name="ButtonQuit" parent="GUIiPadElse/MainButtonContainer" instance=ExtResource("5_tap4s")]
 custom_minimum_size = Vector2(107, 33)
@@ -590,7 +590,7 @@ layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("6_im54a")
 texture_text_image = ExtResource("12_7tqsn")
-text_offset = Vector2(-562.5, -54.5)
+text_offset = Vector2(-616, -71)
 
 [node name="SelCampaigns" type="Control" parent="GUIiPadElse"]
 visible = false
