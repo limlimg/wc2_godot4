@@ -6,10 +6,10 @@ class _CLogoState:
 	extends "res://app/src/main/cpp/native-lib.gd"
 	
 	static func on_enter() -> void:
-		g_game_settings.load_settings()
+		g_GameSettings.load_settings()
 		var sound_box := _CSoundBox.get_instance()
-		sound_box.set_music_volume(g_game_settings.music_volume)
-		sound_box.set_se_volume(g_game_settings.se_volume)
+		sound_box.set_music_volume(g_GameSettings.music_volume)
+		sound_box.set_se_volume(g_GameSettings.se_volume)
 		GUIManager._s_texture_res = load("res://app/src/main/cpp/scene_system_resource/logo_gui_res/texture_res.tres").get_res()
 
 
