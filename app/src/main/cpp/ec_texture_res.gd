@@ -83,7 +83,10 @@ func unload_res(file_name: String) -> void:
 func create_texture(texture_name: String) -> _ecTexture:
 	var texture: _ecTexture = _textures.get(texture_name)
 	if texture == null:
-		texture = _ecGraphics.instance().load_texture(texture_name)
+		if Engine.is_editor_hint():
+			texture = ec_texture_load(texture_name)
+		else:
+			texture = _ecGraphics.instance().load_texture(texture_name)
 		_textures[texture_name] = texture
 	return texture
 
@@ -92,7 +95,9 @@ func release_texture(texture_name: String) -> void:
 	var texture: Texture2D = _textures.get(texture_name)
 	if texture == null:
 		return
-	_ecGraphics.instance().free_texture(texture_name)
+	_textures.erase(texture_name)
+	if not Engine.is_editor_hint():
+		_ecGraphics.instance().free_texture(texture_name)
 
 
 func get_texture(texture_name: String) -> _ecTexture:
