@@ -20,6 +20,8 @@ config/icon="res://icon.svg"
 
 AndroidManifest="*res://app/src/main/android_manifest.tscn"
 GUIMotionManager="*res://app/src/main/cpp/gui_motion_manager.gd"
+g_Commander="*res://app/src/main/cpp/c_commander.gd"
+g_GameSettings="*res://app/src/main/cpp/c_game_settings.gd"
 
 [display]
 
