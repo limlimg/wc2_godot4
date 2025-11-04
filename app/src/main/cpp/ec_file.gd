@@ -27,7 +27,7 @@ func open(path: String, flags: FileAccess.ModeFlags) -> bool:
 	else:
 		_is_assets = false
 		_file = FileAccess.open(path, flags)
-	return true
+	return _file != null
 
 
 func close() -> void:
