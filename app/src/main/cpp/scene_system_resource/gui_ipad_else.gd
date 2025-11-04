@@ -9,6 +9,3 @@ func _ready() -> void:
 	if _ecGraphics.instance().content_scale_size_mode == 3:
 		visible = false
 		queue_free()
-	else:
-		if not has_node(^"../GUIiPad"):
-			name = "GUIiPad"
