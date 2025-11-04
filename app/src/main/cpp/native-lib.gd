@@ -68,7 +68,6 @@ static func get_path_alias(file_name: String, _a2: String) -> String:
 static var g_content_scale_factor := 1.0
 static var g_localizable_strings := _ecStringTable.new()
 static var g_string_table := _ecStringTable.new()
-static var g_commander := _CCommander.new()
 static var g_font1: _ecUniFont
 static var g_font2: _ecUniFont
 static var g_font3: _ecUniFont
@@ -127,7 +126,7 @@ static func _ec_game_init(content_scale_width: int, content_scale_height: int, o
 	var string_table_name := g_localizable_strings.get_string(string_table_key)
 	g_string_table.load(string_table_name)
 	_CObjectDef.instance().init()
-	g_commander.load()
+	#g_Commander.load() # moved to g_Commander._enter_tree()
 	_CSoundBox.get_instance().load_se("btn.wav")
 	#g_font1.init("font1.fnt", false)
 	#var language := g_localizable_strings.get_string("language")
@@ -277,7 +276,7 @@ static func Java_com_easytech_wc2_Wc2Activity_nativePause() -> void:
 
 
 static func _ec_game_did_enter_background() -> void:
-	g_commander.save()
+	#g_Commander.save() # moved to g_Commander._exit_tree()
 	_CStateManager.instance().enter_background()
 
 
@@ -302,8 +301,8 @@ static func Java_com_easytech_wc2_Wc2Activity_CallNativeError() -> void:
 
 
 static func Java_com_easytech_wc2_Wc2Activity_AddMedal(medal: int) -> void:
-	g_commander.buy_medel(medal)
-	g_commander.save()
+	g_Commander.buy_medel(medal)
+	g_Commander.save()
 
 
 static var _game_waiting := false:

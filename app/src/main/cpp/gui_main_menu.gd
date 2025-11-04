@@ -19,7 +19,7 @@ signal quit_pressed
 
 func _ready() -> void:
 	_GUIManager._s_texture_res = load("res://app/src/main/cpp/scene_system_resource/menu_gui_res/texture_res.tres").get_res()
-	var commander := _native.g_commander
+	var commander := g_Commander
 	if commander.get_num_played_battles(0) < _native.get_num_battles(0)\
 			and commander.get_num_played_battles(1) < _native.get_num_battles(1):
 		$GUIiPad/SelCampaigns/ButtonWto.grey_scale = 0.7
