@@ -1,8 +1,9 @@
-extends "res://app/src/main/cpp/native-lib.gd"
+extends Node
 
 const _MAGIC = "EASY"
 const _DOCUMENT_SIZE = 0x20
 const _ecFile = preload("res://app/src/main/cpp/ec_file.gd")
+const _native = preload("res://app/src/main/cpp/native-lib.gd")
 
 var speed := 2
 var music_volume := 50
@@ -12,7 +13,7 @@ var full_screen := true
 
 func load_settings() -> void:
 	var file := _ecFile.new()
-	if file.open(get_document_path("settings.cfg"), FileAccess.READ):
+	if file.open(_native.get_document_path("settings.cfg"), FileAccess.READ):
 		var buffer := PackedByteArray()
 		if file.read(buffer, _DOCUMENT_SIZE):
 			file.close()
@@ -37,6 +38,6 @@ func save_settings() -> void:
 	buffer.encode_u32(20, 1 if battle_animation else 0)
 	buffer.encode_u32(28, 1 if full_screen else 0)
 	var file := _ecFile.new()
-	if file.open(get_document_path("settings.cfg"), FileAccess.WRITE):
+	if file.open(_native.get_document_path("settings.cfg"), FileAccess.WRITE):
 		file.write(buffer, _DOCUMENT_SIZE)
 		file.close()

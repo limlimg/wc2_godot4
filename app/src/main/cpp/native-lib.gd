@@ -9,7 +9,6 @@ const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
 const _CCommander = preload("res://app/src/main/cpp/c_commander.gd")
 const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
-const _CGameSettings = preload("res://app/src/main/cpp/c_game_settings.gd")
 const _ecMultipleTouch = preload("res://app/src/main/cpp/ec_multiple_touch.gd")
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
 
@@ -246,7 +245,6 @@ static func end_jni() -> void:
 	_Wc2Activity.end()
 
 
-static var g_game_settings := _CGameSettings.new()
 static var _game_paused := false:
 	set(value):
 		_game_paused = value
@@ -260,8 +258,8 @@ static func Java_com_easytech_wc2_Wc2Activity_nativeResume() -> void:
 
 static func _ec_game_will_enter_foreground() -> void:
 	var sound_box := _CSoundBox.get_instance()
-	sound_box.set_music_volume(g_game_settings.music_volume)
-	sound_box.set_se_volume(g_game_settings.se_volume)
+	sound_box.set_music_volume(g_GameSettings.music_volume)
+	sound_box.set_se_volume(g_GameSettings.se_volume)
 	sound_box.resume_music()
 	_CStateManager.instance().enter_foreground()
 
