@@ -2,7 +2,6 @@
 class_name AssetManager
 extends ResourceFormatLoader
 
-const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _ASSETS_PATH = "res://app/src/main/assets/"
 
 static var _instance: AssetManager
