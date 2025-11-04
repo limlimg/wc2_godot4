@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d20oukqjjuchm"]
+
+[ext_resource type="Script" uid="uid://cp0rqwt3uf1t7" path="res://app/src/main/cpp/c_menu_state.gd" id="1_ehm5w"]
+[ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="1_nhdnm"]
+[ext_resource type="PackedScene" uid="uid://c4fcq7wy2b7qx" path="res://app/src/main/cpp/gui_main_menu.tscn" id="3_gvair"]
+
+[node name="CMenuState" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ehm5w")
+
+[node name="GUIManager" parent="." instance=ExtResource("1_nhdnm")]
+layout_mode = 1
+
+[node name="GUIMainMenu" parent="GUIManager" instance=ExtResource("3_gvair")]
+layout_mode = 1
+
+[connection signal="faded_in" from="GUIManager" to="." method="_on_gui_manager_faded_in"]

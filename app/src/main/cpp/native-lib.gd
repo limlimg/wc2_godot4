@@ -521,5 +521,20 @@ static func get_battle_file_name(game_mode: int, campaign: int, battle: int) -> 
 	return ""
 
 
+static func get_battle_key_name(campaign: int, battle: int) -> String:
+	match campaign:
+		0:
+			return "axis {0}".format([battle + 1])
+		1:
+			return "allies {0}".format([battle + 1])
+		2:
+			return "wto {0}".format([battle + 1])
+		3:
+			return "nato {0}".format([battle + 1])
+		4:
+			return "multiplay {0}".format([battle + 1])
+	return ""
+
+
 static func main_menu_loaded_jni() -> void:
 	_Wc2Activity.main_menu_loaded()
