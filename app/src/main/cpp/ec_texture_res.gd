@@ -35,7 +35,7 @@ func load_res(file_name: String, hd: bool) -> bool:
 	if res == null:
 		push_error("Failed to load {0}".format([file_name]))
 		return false
-	var texture := create_texture(res.texture_name)
+	var texture := _create_texture(res.texture_name)
 	if texture == null:
 		push_error("Failed to load {0}".format([res.texture_name]))
 		return false
@@ -64,7 +64,7 @@ func load_res(file_name: String, hd: bool) -> bool:
 			h = image.h
 			refx = image.refx
 			refy = image.refy
-		create_image_texture(k, texture, x, y, w, h, refx, refy)
+		_create_image_texture(k, texture, x, y, w, h, refx, refy)
 	return true
 
 
@@ -80,18 +80,19 @@ func unload_res(file_name: String) -> void:
 
 ## In the original game code, this method has more parameters to specify the
 ## format of the texture.
-func create_texture(texture_name: String) -> _ecTexture:
+func _create_texture(texture_name: String) -> _ecTexture:
 	var texture: _ecTexture = _textures.get(texture_name)
 	if texture == null:
 		if Engine.is_editor_hint():
 			texture = ec_texture_load(texture_name)
+			texture.res_scale = 1.0
 		else:
 			texture = _ecGraphics.instance().load_texture(texture_name)
 		_textures[texture_name] = texture
 	return texture
 
 
-func release_texture(texture_name: String) -> void:
+func _release_texture(texture_name: String) -> void:
 	var texture: Texture2D = _textures.get(texture_name)
 	if texture == null:
 		return
@@ -100,18 +101,18 @@ func release_texture(texture_name: String) -> void:
 		_ecGraphics.instance().free_texture(texture_name)
 
 
-func get_texture(texture_name: String) -> _ecTexture:
+func _get_texture(texture_name: String) -> _ecTexture:
 	return _textures.get(texture_name)
 
 
-func create_image_texture_name(image_name: StringName, texture_name: String, x: float,
+func _create_image_texture_name(image_name: StringName, texture_name: String, x: float,
  		y: float, w: float, h: float, refx: float, refy: float) -> _ecImageAttr:
 	var image: _ecImageAttr = _images.get(image_name)
 	if image != null:
 		return image
-	var texture := get_texture(texture_name)
+	var texture := _get_texture(texture_name)
 	if texture == null:
-		texture = create_texture(texture_name)
+		texture = _create_texture(texture_name)
 	if texture == null:
 		return null
 	image = _ecImageAttr.new()
@@ -122,7 +123,7 @@ func create_image_texture_name(image_name: StringName, texture_name: String, x: 
 	return image
 
 
-func create_image_texture(image_name: StringName, texture: _ecTexture, x: float,
+func _create_image_texture(image_name: StringName, texture: _ecTexture, x: float,
  		y: float, w: float, h: float, refx: float, refy: float) -> _ecImageAttr:
 	var image: _ecImageAttr = _images.get(image_name)
 	if image != null:

@@ -36,13 +36,13 @@ func clear_motion() -> void:
 	_frozen = false
 
 
-func add_motion(node: Control, start_x: float, start_y: float, target_x: float,
+func _add_motion(node: Control, start_x: float, start_y: float, target_x: float,
 		target_y: float, speed: float, delay: int) -> _GUIMotion:
 	if node == null:
 		return null
 	var motion := _GUIMotion.new()
 	motion.node = node
-	set_motion(motion, start_x, start_y, target_x, target_y, speed, delay)
+	_set_motion(motion, start_x, start_y, target_x, target_y, speed, delay)
 	motion.flag = 0
 	_motion.append(motion)
 	return motion
@@ -53,24 +53,24 @@ func add_motion_from_current_position(node: Control, target_x: float,
 	if node == null:
 		return null
 	var pos := node.position
-	return add_motion(node, pos.x, pos.y, target_x, target_y, speed, delay)
+	return _add_motion(node, pos.x, pos.y, target_x, target_y, speed, delay)
 
 
-func add_motion_x(node: Control, target_x: float, speed: float, delay: int) -> _GUIMotion:
+func _add_motion_x(node: Control, target_x: float, speed: float, delay: int) -> _GUIMotion:
 	if node == null:
 		return null
 	var pos := node.position
-	return add_motion(node, pos.x, pos.y, target_x, pos.y, speed, delay)
+	return _add_motion(node, pos.x, pos.y, target_x, pos.y, speed, delay)
 
 
-func add_motion_y(node: Control, target_y: float, speed: float, delay: int) -> _GUIMotion:
+func _add_motion_y(node: Control, target_y: float, speed: float, delay: int) -> _GUIMotion:
 	if node == null:
 		return null
 	var pos := node.position
-	return add_motion(node, pos.x, pos.y, pos.x, target_y, speed, delay)
+	return _add_motion(node, pos.x, pos.y, pos.x, target_y, speed, delay)
 
 
-func set_motion(motion: _GUIMotion, start_x: float, start_y: float,
+func _set_motion(motion: _GUIMotion, start_x: float, start_y: float,
 		target_x: float, target_y: float, speed: float, delay: int) -> void:
 	if motion == null:
 		return
@@ -98,7 +98,7 @@ func _get_motion_active(motion: _GUIMotion) -> bool:
 	return (motion.flag & 1) != 0
 
 
-func _proc_motion() -> bool:
+func proc_motion() -> bool:
 	if _frozen:
 		return false
 	if _active_motion.is_empty():
@@ -139,4 +139,4 @@ func _proc_motion() -> bool:
 
 
 func _physics_process(_delta: float) -> void:
-	_proc_motion()
+	proc_motion()

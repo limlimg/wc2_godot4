@@ -4,8 +4,8 @@ extends EditorImportPlugin
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
 const _CardDef = preload("res://app/src/main/cpp/card_def.gd")
 const _CardDefList = preload("res://app/src/main/cpp/imported_containers/card_def_list.gd")
-const CARD_LIST_SIZE = 28
-const CARD_TYPE = [
+const _CARD_LIST_SIZE = 28
+const _CARD_TYPE = [
 	"army",
 	"navy",
 	"airforce",
@@ -70,18 +70,18 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		push_error("Parse Error: Failed to find <cards> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
 	var res_cards := _CardDefList.new()
-	res_cards.cards.resize(CARD_LIST_SIZE)
+	res_cards.cards.resize(_CARD_LIST_SIZE)
 	var xml_card := xml_root.first_child_element()
 	while xml_card != null:
 		var p: Array[int] = []
-		if xml_card.query_int_attribute("id", p) != xml_card.TIXML_SUCCESS or p.back() < 0 or p.back() >= CARD_LIST_SIZE:
+		if xml_card.query_int_attribute("id", p) != xml_card.TIXML_SUCCESS or p.back() < 0 or p.back() >= _CARD_LIST_SIZE:
 			push_error("Parse Error: Element does not have valid \"id\" attibute on line {0} of {1}".format([xml_card.row() + 1, source_file]))
 			return ERR_PARSE_ERROR
 		var res_card := _CardDef.new()
 		var id := p.pop_back()
 		res_cards.cards[id] = res_card
 		res_card.id = id
-		var type := CARD_TYPE.find(xml_card.attribute("type"))
+		var type := _CARD_TYPE.find(xml_card.attribute("type"))
 		if type == -1:
 			type = 4
 		res_card.type = type

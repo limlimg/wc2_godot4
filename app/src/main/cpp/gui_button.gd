@@ -36,7 +36,7 @@ var grey_scale := 1.0:
 
 @export_range(0.0, 1.0, 1.0/255.0)
 var alpha := 1.0:
-	set = set_alpha
+	set = _set_alpha
 
 
 @export_group("Textures", "texture_")
@@ -83,7 +83,6 @@ var texture_text_image: Texture2D:
 @export_group("Text", "text_")
 @export
 var text: String:
-	get = get_text,
 	set = set_text
 
 @export
@@ -96,17 +95,14 @@ var text_font: Theme:
 
 @export
 var text_color: Color:
-	get = get_text_color,
 	set = set_text_color
 
 @export
 var text_offset: Vector2:
-	get = get_text_offset,
 	set = set_text_offset
 
 @export
 var text_align: HorizontalAlignment:
-	get = get_text_align,
 	set = set_text_align
 
 signal pressed
@@ -124,36 +120,20 @@ func set_background(image_name: StringName) -> void:
 	texture_background = _ecImageTexture.from_ec_image_attr(_s_texture_res.get_image(image_name))
 
 
-func set_glow(image_name: StringName) -> void:
+func _set_glow(image_name: StringName) -> void:
 	texture_glow = _ecImageTexture.from_ec_image_attr(_s_texture_res.get_image(image_name))
-
-
-func get_text() -> String:
-	return $Text.text
 
 
 func set_text(value: String) -> void:
 	$Text.text = value
 
 
-func get_text_color() -> Color:
-	return $Text.self_modulate
-
-
 func set_text_color(value: Color) -> void:
 	$Text.self_modulate = value
 
 
-func get_text_offset() -> Vector2:
-	return $Text.position - size / 2.0
-
-
 func set_text_offset(value: Vector2) -> void:
 	$Text.position = value + size / 2.0
-
-
-func get_text_align() -> HorizontalAlignment:
-	return $Text.horizontal_alignment
 
 
 func set_text_align(value: HorizontalAlignment) -> void:
@@ -164,7 +144,7 @@ func set_text_image(image_name: StringName) -> void:
 	texture_text_image = _ecImageTexture.from_ec_image_attr(_s_texture_res.get_image(image_name))
 
 
-func set_alpha(value: float) -> void:
+func _set_alpha(value: float) -> void:
 	if value != alpha:
 		alpha = value
 		_on_render()

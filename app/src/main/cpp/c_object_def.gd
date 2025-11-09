@@ -36,7 +36,7 @@ static func instance() -> _CObjectDef:
 
 func destroy() -> void:
 	if _m_instance != null:
-		_m_instance.release()
+		_m_instance._release()
 		_m_instance = null
 
 
@@ -51,7 +51,7 @@ func init() -> void:
 	_load_conquest_list()
 
 
-func release() -> void:
+func _release() -> void:
 	_release_army_def()
 	_release_unit_motions()
 	_release_unit_positions()

@@ -1,7 +1,7 @@
 @tool
 extends ImageFormatLoaderExtension
 
-const MAGIC = "PVR!"
+const _MAGIC = "PVR!"
 
 func _get_recognized_extensions() -> PackedStringArray:
 	return PackedStringArray(["pvr"])
@@ -12,7 +12,7 @@ func _load_image(image: Image, fileaccess: FileAccess, flags: int, scale: float)
 		push_error(".pvr file too small")
 		return ERR_PARSE_ERROR
 	var header := fileaccess.get_buffer(52)
-	if header.slice(44, 48).get_string_from_ascii() != MAGIC or header.decode_u8(16) != 16:
+	if header.slice(44, 48).get_string_from_ascii() != _MAGIC or header.decode_u8(16) != 16:
 		push_error(".pvr file invalid header")
 		return ERR_PARSE_ERROR
 	var width := header.decode_u32(8)

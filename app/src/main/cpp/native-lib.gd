@@ -109,8 +109,8 @@ static func Java_com_easytech_wc2_ecRenderer_nativeInit(game_view_width: int, ga
 
 
 static func _ec_game_init(content_scale_width: int, content_scale_height: int, orientation: int, game_view_width: int, game_view_height: int) -> void:
-	_set_ai_rand_seed(randi())
-	_set_rand_seed(randi())
+	set_ai_rand_seed(randi())
+	set_rand_seed(randi())
 	_ecGraphics.instance().init(content_scale_width, content_scale_height, orientation, game_view_width, game_view_height)
 	# GUIManager is no longer a singleton, can't initialize here
 	_CStateManager.instance().init()
@@ -179,11 +179,11 @@ static func _ec_game_init(content_scale_width: int, content_scale_height: int, o
 
 static var _ai_rand_seed: int
 
-static func _set_ai_rand_seed(value: int) -> void:
+static func set_ai_rand_seed(value: int) -> void:
 	_ai_rand_seed = value
 
 
-static func get_ai_rand_seed() -> int:
+static func _get_ai_rand_seed() -> int:
 	return _ai_rand_seed
 
 
@@ -194,7 +194,7 @@ static func get_ai_rand() -> int:
 
 static var _rand_seed: int
 
-static func _set_rand_seed(value: int) -> void:
+static func set_rand_seed(value: int) -> void:
 	_rand_seed = value
 
 
@@ -202,7 +202,7 @@ static func get_rand_seed() -> int:
 	return _rand_seed
 
 
-static func  get_rand() -> int:
+static func get_rand() -> int:
 	_rand_seed = 1103515245 * _rand_seed + 12345;
 	return (_rand_seed >> 16) & 0x7FFF;
 

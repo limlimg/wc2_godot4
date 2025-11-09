@@ -34,7 +34,7 @@ func init_image_attr(image_name: StringName, rect: Rect2) -> bool:
 	return texture != null
 
 
-func set_alpha(value: float) -> void:
+func _set_alpha(value: float) -> void:
 	alpha = value
 
 

@@ -87,7 +87,7 @@ func shutdown() -> void:
 	_blend_material.clear()
 
 
-func set_orientation(value: int) -> void:
+func _set_orientation(value: int) -> void:
 	orientation = value
 	if value > 1:
 		orientated_content_scale_width = _content_scale_height
@@ -95,11 +95,6 @@ func set_orientation(value: int) -> void:
 	else:
 		orientated_content_scale_width = _content_scale_width
 		orientated_content_scale_height = _content_scale_height
-
-
-func create_texture(_1: int, _2: int) -> _ecTexture:
-	# Unimplemented and unused in original code
-	return null
 
 
 func create_texture_with_string(a1: String, a2: String, a3: int, a4: int, width: int, height: int) -> _ecTexture:
@@ -192,7 +187,7 @@ func bind_texture(ec_texture: _ecTexture):
 		_bound_texture = texture
 
 
-func render_line(line: _ecLine):
+func _render_line(line: _ecLine):
 	if _rendering_canvas_item == null:
 		return
 	if _render_shape != 2 or _occupied_buffer > 3998:
@@ -203,7 +198,7 @@ func render_line(line: _ecLine):
 	_occupied_buffer += 2
 
 
-func render_triple(triple: _ecTriple):
+func _render_triple(triple: _ecTriple):
 	if _rendering_canvas_item == null:
 		return
 	if _render_shape != 3 or _occupied_buffer > 3997:

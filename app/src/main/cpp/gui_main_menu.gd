@@ -37,10 +37,10 @@ func move_in_main_buttons() -> void:
 
 func refresh_new_tip() -> void:
 	# Not implemented
-	is_show_new_tip()
+	_is_show_new_tip()
 
 
-func is_show_new_tip() -> bool:
+func _is_show_new_tip() -> bool:
 	# Not implemented
 	return false
 

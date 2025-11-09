@@ -1,7 +1,7 @@
 @tool
 extends EditorImportPlugin
 
-const MOTION_TYPE = [
+const _MOTION_TYPE = [
 	"standby",
 	"attack",
 	"destroyed"
@@ -88,7 +88,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		if xml_motions != null:
 			var xml_motion := xml_motions.first_child_element()
 			while xml_motion != null:
-				var type := MOTION_TYPE.find(xml_motion.attribute("type"))
+				var type := _MOTION_TYPE.find(xml_motion.attribute("type"))
 				if type == -1:
 					type = 0
 				var res_motion := _UnitMotion.new()

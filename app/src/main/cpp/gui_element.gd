@@ -54,7 +54,7 @@ func set_pos(x: float, y: float) -> void:
 	position = Vector2(x, y)
 
 
-func move(x: float, y: float) -> void:
+func _move(x: float, y: float) -> void:
 	position += Vector2(x, y)
 
 

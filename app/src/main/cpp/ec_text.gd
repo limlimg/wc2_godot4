@@ -12,6 +12,12 @@ var _text_string: String
 var _font: _ecUniFont
 var _color := Color.WHITE
 
+
+func _init() -> void:
+	_text = TextParagraph.new()
+	_text.break_flags = TextServer.BREAK_MANDATORY
+
+
 func init(font: _ecUniFont) -> void:
 	_font = font
 	_color = Color.WHITE
@@ -54,10 +60,5 @@ func get_height() -> float:
 	return _text.get_size().y
 
 
-func get_num_lines() -> int:
+func _get_num_lines() -> int:
 	return _text.get_line_count()
-
-
-func _init() -> void:
-	_text = TextParagraph.new()
-	_text.break_flags = TextServer.BREAK_MANDATORY

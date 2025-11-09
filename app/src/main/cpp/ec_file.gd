@@ -43,14 +43,14 @@ func get_size() -> int:
 		return 0
 
 
-func get_cur_pos() -> int:
+func _get_cur_pos() -> int:
 	if _file != null:
 		return _file.get_position()
 	else:
 		return 0
 
 
-func seek(position: int, whence: int) -> bool:
+func _seek(position: int, whence: int) -> bool:
 	if _file != null:
 		if whence == 0:
 			_file.seek(position)

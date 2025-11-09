@@ -65,7 +65,7 @@ func init_attr(attr: _ecImageAttr) -> void:
 	_refy = attr.refy
 
 
-func set_texture(value: _ecTexture) -> void:
+func _set_texture(value: _ecTexture) -> void:
 	if value != _texture:
 		var old_w = _texture_w
 		var old_h = _texture_h
@@ -99,7 +99,7 @@ func set_alpha(alpha: float, vertice: int) -> void:
 		_quad.colors[vertice].a = alpha
 
 
-func set_flip(flip_x: bool, flip_y: bool, flip_ref: bool) -> void:
+func _set_flip(flip_x: bool, flip_y: bool, flip_ref: bool) -> void:
 	if _flip_ref:
 		if _flip_x:
 			_refx = _w - _refx
@@ -129,7 +129,7 @@ func set_flip(flip_x: bool, flip_y: bool, flip_ref: bool) -> void:
 		_quad.uvs[1] = v2
 
 
-func set_texture_xywh(x: float, y: float, w: float, h: float) -> void:
+func _set_texture_xywh(x: float, y: float, w: float, h: float) -> void:
 	var flip_x := _flip_x
 	var flip_y := _flip_y
 	_flip_x = false
@@ -138,11 +138,11 @@ func set_texture_xywh(x: float, y: float, w: float, h: float) -> void:
 	_quad.uvs[1] = Vector2((x + w) / _texture_w, y / _texture_h)
 	_quad.uvs[2] = Vector2((x + w) / _texture_w, (y + h) / _texture_h)
 	_quad.uvs[3] = Vector2(x / _texture_w, (y + h) / _texture_h)
-	set_flip(flip_x, flip_y, _flip_ref)
+	_set_flip(flip_x, flip_y, _flip_ref)
 
 
-func set_texture_rect(rect: _ecTextureRect) -> void:
-	set_texture_xywh(rect.x, rect.y, rect.w, rect.h)
+func _set_texture_rect(rect: _ecTextureRect) -> void:
+	_set_texture_xywh(rect.x, rect.y, rect.w, rect.h)
 	_refx = rect.refx
 	_refy = rect.refy
 
@@ -197,7 +197,7 @@ func render_ex(x:float, y:float, rotation_rad: float, x_scale: float, y_scale: f
 	graphics.render_quad(_quad)
 
 
-func render_stretch(x1:float, y1:float, x2: float, y2:float) -> void:
+func _render_stretch(x1:float, y1:float, x2: float, y2:float) -> void:
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
 	var graphics := _ecGraphics.instance()
 	_quad.points[0] = Vector2(x1, y1)
@@ -209,7 +209,7 @@ func render_stretch(x1:float, y1:float, x2: float, y2:float) -> void:
 	graphics.render_quad(_quad)
 
 
-func render_4v(x0:float, y0:float, x1:float, y1:float, x2: float, y2:float, x3: float, y3:float) -> void:
+func _render_4v(x0:float, y0:float, x1:float, y1:float, x2: float, y2:float, x3: float, y3:float) -> void:
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
 	var graphics := _ecGraphics.instance()
 	_quad.points[0] = Vector2(x0, y0)
