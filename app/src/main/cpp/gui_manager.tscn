@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bo63r12xqtvg7" path="res://app/src/main/cpp/gui_manager.gd" id="1_o8ok3"]
 
-[node name="GUIManager" type="Control"]
+[node name="GUIManager" type="Control" groups=["GUIManagerInstance"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

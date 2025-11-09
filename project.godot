@@ -38,6 +38,10 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/assets_tools/plugin.cfg")
 
+[global_group]
+
+GUIManagerInstance=""
+
 [input_devices]
 
 pointing/android/enable_pan_and_scale_gestures=true

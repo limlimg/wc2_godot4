@@ -20,6 +20,7 @@ extends "res://app/src/main/cpp/gui_element.gd"
 ## PostEvent is not implemented because the original event system is not used
 ## any more.
 
+const _GUIManager = preload("res://app/src/main/cpp/gui_manager.gd")
 const _ecTextureRect = preload("res://app/src/main/cpp/ec_texture_rect.gd")
 const _GUIImage = preload("res://app/src/main/cpp/gui_image.gd")
 const _GUI_IMAGE = preload("res://app/src/main/cpp/gui_image.tscn")
@@ -31,8 +32,12 @@ const _GUI_SCROLL_BAR = preload("res://app/src/main/cpp/gui_scroll_bar.tscn")
 
 var _fading_tween: Tween
 
-signal faded_in(int)
-signal faded_out(int)
+signal faded_in(cause: int)
+signal faded_out(cause: int)
+
+static func instance() -> _GUIManager:
+	return (Engine.get_main_loop() as SceneTree).get_nodes_in_group("GUIManagerInstance")[0]
+
 
 func init(rect: Rect2) -> void:
 	position = rect.position
