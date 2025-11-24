@@ -1,48 +1,85 @@
-extends MeshTexture
+extends Texture2D
  
 const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
 const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
 
-var texture_size_override: Vector2:
+var texture: Texture2D:
 	set(value):
-		if value != texture_size_override:
-			texture_size_override = value
-			_mesh_changed()
+		if value != texture:
+			texture = value
+			changed.emit()
+
+
+var texture_scale: Vector2:
+	set(value):
+		if value != texture_scale:
+			texture_scale = value
+			changed.emit()
 
 
 var region: Rect2:
 	set(value):
 		if value != region:
 			region = value
-			_mesh_changed()
+			changed.emit()
 
 
 var ref: Vector2:
 	set(value):
 		if value != ref:
 			ref = value
-			_mesh_changed()
+			changed.emit()
 
 
-func _mesh_changed() -> void:
-	var arrays := []
-	arrays.resize(Mesh.ARRAY_MAX)
-	var v0 := -ref
-	var v2 := -ref + region.size
-	var v1 := Vector2(v2.x, v0.y)
-	var v3 := Vector2(v0.x, v2.y)
-	var uv0 := region.position / texture_size_override
-	var uv2 := region.end / texture_size_override
-	var uv1 := Vector2(uv2.x, uv0.y)
-	var uv3 := Vector2(uv0.x, uv2.y)
-	arrays[Mesh.ARRAY_VERTEX] = PackedVector2Array([v0, v1, v2, v0, v2, v3])
-	arrays[Mesh.ARRAY_TEX_UV] = PackedVector2Array([uv0, uv1, uv2, uv0, uv2, uv3])
-	if mesh == null or mesh is not ArrayMesh:
-		mesh = ArrayMesh.new()
-	mesh.clear_surfaces()
-	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
-	image_size = region.size
+func _draw(to_canvas_item: RID, pos: Vector2, modulate: Color, transpose: bool) -> void:
+	if texture == null:
+		return
+	var rect := Rect2(pos - ref, region.size)
+	var src_rect := region
+	src_rect.position *= texture_scale
+	src_rect.size *= texture_scale
+	texture.draw_rect_region(to_canvas_item, rect, src_rect, modulate, transpose)
+
+
+func _draw_rect(to_canvas_item: RID, rect: Rect2, tile: bool, modulate: Color, transpose: bool) -> void:
+	if texture == null:
+		return
+	rect.position -= ref
+	var src_rect := region
+	src_rect.position *= texture_scale
+	src_rect.size *= texture_scale
+	if tile:
+		src_rect.size *= rect.size / region.size
+	texture.draw_rect_region(to_canvas_item, rect, src_rect, modulate, transpose, not tile)
+
+
+func _draw_rect_region(to_canvas_item: RID, rect: Rect2, src_rect: Rect2, modulate: Color, transpose: bool, clip_uv: bool) -> void:
+	if texture == null:
+		return
+	rect.position -= ref
+	src_rect.position += region.position
+	src_rect.position *= texture_scale
+	src_rect.size *= texture_scale
+	texture.draw_rect_region(to_canvas_item, rect, src_rect, modulate, transpose, clip_uv)
+
+
+func _get_width() -> int:
+	if texture == null:
+		return 0
+	return region.size.x as int
+
+
+func _get_height() -> int:
+	if texture == null:
+		return 0
+	return region.size.y as int
+
+
+func _has_alpha() -> bool:
+	if texture == null:
+		return false
+	return texture.has_alpha()
 
 
 static func from_ec_texture(ec_texture: _ecTexture) -> _ecImageTexture:
@@ -53,12 +90,12 @@ static func from_ec_texture(ec_texture: _ecTexture) -> _ecImageTexture:
 
 func set_ec_texture(ec_texture: _ecTexture) -> void:
 	if ec_texture != null:
-		base_texture = ec_texture.texture
-		texture_size_override = ec_texture.size_override
+		texture = ec_texture.texture
+		texture_scale = ec_texture.texture.get_size() / ec_texture.size_override
 		region = Rect2(Vector2.ZERO, ec_texture.size_override)
 		ref = Vector2.ZERO
 	else:
-		base_texture = null
+		texture = null
 
 
 static func from_ec_image_attr(attr: _ecImageAttr) -> _ecImageTexture:
@@ -69,9 +106,9 @@ static func from_ec_image_attr(attr: _ecImageAttr) -> _ecImageTexture:
 
 func set_ec_image_attr(attr: _ecImageAttr) -> void:
 	if attr != null:
-		base_texture = attr.texture.texture
-		texture_size_override = attr.texture.size_override
+		texture = attr.texture.texture
+		texture_scale = attr.texture.texture.get_size() / attr.texture.size_override
 		region = attr.region
 		ref = attr.ref
 	else:
-		base_texture = null
+		texture = null
