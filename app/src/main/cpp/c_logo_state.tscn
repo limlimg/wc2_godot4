@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://k1rddnv5q5m8"]
+[gd_scene load_steps=4 format=3 uid="uid://k1rddnv5q5m8"]
 
 [ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="1_0nah5"]
 [ext_resource type="Script" uid="uid://c2o7l5cd0x8vw" path="res://app/src/main/cpp/c_logo_state.gd" id="1_b54l6"]
-[ext_resource type="PackedScene" uid="uid://ch6fdy54ktb4a" path="res://app/src/main/cpp/scene_system_resource/gui_ipad.tscn" id="2_eecim"]
-[ext_resource type="PackedScene" uid="uid://c28xtwuvyw7h2" path="res://app/src/main/cpp/scene_system_resource/gui_ipad_else.tscn" id="4_b54l6"]
 [ext_resource type="Texture2D" uid="uid://xkr7cuawfg24" path="res://app/src/main/cpp/scene_system_resource/texture/logo.tres" id="4_hjp6p"]
 
 [node name="CLogoState" type="Control"]
@@ -15,7 +13,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b54l6")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="GUIManager" parent="." instance=ExtResource("1_0nah5")]
+layout_mode = 1
+
+[node name="Background" type="ColorRect" parent="GUIManager"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,41 +24,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GUIManager" parent="." instance=ExtResource("1_0nah5")]
-layout_mode = 1
-
-[node name="GUIiPad" parent="GUIManager" instance=ExtResource("2_eecim")]
-layout_mode = 1
-
-[node name="Logo" type="TextureRect" parent="GUIManager/GUIiPad"]
+[node name="Logo" type="TextureRect" parent="GUIManager"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -127.0
-offset_top = -127.0
-offset_right = 127.0
-offset_bottom = 127.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_hjp6p")
-
-[node name="GUIiPadElse" parent="GUIManager" instance=ExtResource("4_b54l6")]
-layout_mode = 1
-
-[node name="Logo" type="TextureRect" parent="GUIManager/GUIiPadElse"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -127.0
-offset_top = -127.0
-offset_right = 127.0
-offset_bottom = 127.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_hjp6p")
