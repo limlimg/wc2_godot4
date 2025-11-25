@@ -1,21 +1,8 @@
-[gd_resource type="MeshTexture" script_class="ecImageTextureAssets" load_steps=7 format=3 uid="uid://ccufq3xp8e041"]
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" load_steps=5 format=3 uid="uid://ccufq3xp8e041"]
 
-[ext_resource type="Texture2D" path="res://mui_hd.webp" id="1_n2hpq"]
 [ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/texture_res.tres" id="2_emwtk"]
 [ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_em5iv"]
 [ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_yxpnx"]
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_n2hpq"]
-_surfaces = [{
-"2d": true,
-"aabb": AABB(-1.5, -1, 0, 212, 75.5, 0),
-"attribute_data": PackedByteArray(0, 0, 85, 62, 0, 64, 207, 62, 0, 128, 212, 62, 0, 64, 207, 62, 0, 128, 212, 62, 0, 0, 245, 62, 0, 0, 85, 62, 0, 64, 207, 62, 0, 128, 212, 62, 0, 0, 245, 62, 0, 0, 85, 62, 0, 0, 245, 62),
-"format": 34393292817,
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 6,
-"vertex_data": PackedByteArray(0, 0, 192, 191, 0, 0, 128, 191, 0, 128, 82, 67, 0, 0, 128, 191, 0, 128, 82, 67, 0, 0, 149, 66, 0, 0, 192, 191, 0, 0, 128, 191, 0, 128, 82, 67, 0, 0, 149, 66, 0, 0, 192, 191, 0, 0, 149, 66)
-}]
 
 [sub_resource type="Resource" id="Resource_fkjlg"]
 script = ExtResource("3_em5iv")
@@ -24,9 +11,8 @@ res = ExtResource("2_emwtk")
 metadata/_custom_type_script = "uid://fs8gw6cxcp2u"
 
 [resource]
-mesh = SubResource("ArrayMesh_n2hpq")
-base_texture = ExtResource("1_n2hpq")
-image_size = Vector2(212, 75)
+resource_local_to_scene = false
+resource_name = ""
 script = ExtResource("4_yxpnx")
 preset = SubResource("Resource_fkjlg")
 metadata/_custom_type_script = "uid://cr8ksgysprxjq"
