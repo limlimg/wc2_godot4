@@ -117,7 +117,7 @@ func load_texture(texture_name: String) -> _ecTexture:
 		return ResourceLoader.get_cached_ref(_Texture_Cache_Prefix + texture_name)
 	var ec_texture := ec_texture_load(texture_name)
 	ec_texture.res_scale = 1.0
-	ec_texture.take_over_path(_Texture_Cache_Prefix + texture_name) # Use the resource cache to cache ecTexture
+	#ec_texture.take_over_path(_Texture_Cache_Prefix + texture_name) # Use the resource cache to cache ecTexture
 	return ec_texture
 
 
