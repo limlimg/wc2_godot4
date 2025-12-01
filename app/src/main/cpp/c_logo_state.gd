@@ -1,6 +1,7 @@
 extends Control
 
-const GUIManager = preload("res://app/src/main/cpp/gui_manager.gd")
+const _GUIManager = preload("res://app/src/main/cpp/gui_manager.gd")
+const _CStateManager = preload("res://app/src/main/cpp/c_state_manager.gd")
 
 class _CLogoState:
 	extends "res://app/src/main/cpp/native-lib.gd"
@@ -10,7 +11,7 @@ class _CLogoState:
 		var sound_box := _CSoundBox.get_instance()
 		sound_box.set_music_volume(g_GameSettings.music_volume)
 		sound_box.set_se_volume(g_GameSettings.se_volume)
-		GUIManager._s_texture_res = load("res://app/src/main/cpp/scene_system_resource/logo_gui_res/texture_res.tres").get_res()
+		_GUIManager._s_texture_res = load("res://app/src/main/cpp/scene_system_resource/logo_gui_res/texture_res.tres").get_res()
 
 
 func _ready() -> void:
@@ -23,5 +24,5 @@ func _ready() -> void:
 		var tween2 := create_tween()
 		tween2.tween_interval(1.0)
 		# TODO: initialize player manager
-		# TODO: change to menu state
+		_CStateManager.instance().set_cur_state("res://app/src/main/cpp/c_menu_state.tscn")
 		)
