@@ -1,0 +1,18 @@
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" load_steps=5 format=3 uid="uid://cnleqa52niqlo"]
+
+[ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/texture_res.tres" id="2_sbmuy"]
+[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_uwh0b"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_tjtb5"]
+
+[sub_resource type="Resource" id="Resource_fkjlg"]
+script = ExtResource("3_uwh0b")
+name = &"m_buttontext_wto.png"
+res = ExtResource("2_sbmuy")
+metadata/_custom_type_script = "uid://fs8gw6cxcp2u"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_tjtb5")
+preset = SubResource("Resource_fkjlg")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

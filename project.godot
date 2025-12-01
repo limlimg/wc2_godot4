@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="World Conqueror 2"
+run/main_scene="uid://k1rddnv5q5m8"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
@@ -18,21 +19,40 @@ config/icon="res://icon.svg"
 [autoload]
 
 AndroidManifest="*res://app/src/main/android_manifest.tscn"
+GUIMotionManager="*res://app/src/main/cpp/gui_motion_manager.gd"
+g_Commander="*res://app/src/main/cpp/c_commander.gd"
+g_GameSettings="*res://app/src/main/cpp/c_game_settings.gd"
+g_GameManager="*res://app/src/main/cpp/c_game_manager.gd"
+g_Scene="*res://app/src/main/cpp/c_scene.gd"
 
 [display]
 
+window/size/viewport_width=480
+window/size/viewport_height=320
 window/size/resizable=false
+window/size/window_width_override=1024
+window/size/window_height_override=768
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/assets_tools/plugin.cfg")
 
+[global_group]
+
+GUIManagerInstance=""
+
 [input_devices]
 
 pointing/android/enable_pan_and_scale_gestures=true
 pointing/emulate_touch_from_mouse=true
 pointing/emulate_mouse_from_touch=false
+
+[internationalization]
+
+locale/translation_remaps={
+"res://app/src/main/assets/title_hd.xml": PackedStringArray("res://app/src/main/assets/title_cn_hd.xml:zh_Hans")
+}
 
 [rendering]
 

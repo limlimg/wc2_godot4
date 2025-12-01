@@ -4,8 +4,8 @@ const _NATIVE_LIB = preload("res://app/src/main/cpp/native-lib.gd")
 
 static var _m_instance: _CSoundBox
 
-var se_volume := 100
-var music_volume := 100
+var _se_volume := 100
+var _music_volume := 100
 
 static func get_instance() -> _CSoundBox:
 	if _m_instance == null:
@@ -51,12 +51,12 @@ func resume_music() -> void:
 	_NATIVE_LIB.resume_background_music_jni()
 
 
-func stop_music() -> void:
+func _stop_music() -> void:
 	_NATIVE_LIB.stop_background_music_jni()
 
 
 func set_music_volume(volume: int) -> void:
-	music_volume = volume
+	_music_volume = volume
 	_NATIVE_LIB.set_background_music_volume_jni(volume / 100.0)
 
 
@@ -72,10 +72,10 @@ func play_se(path: String) -> int:
 	return await _NATIVE_LIB.play_effect_jni(path)
 
 
-func stop_all_se() -> void:
+func _stop_all_se() -> void:
 	_NATIVE_LIB.stop_all_effects_jni()
 
 
 func set_se_volume(volume: int) -> void:
-	se_volume = volume
+	_se_volume = volume
 	_NATIVE_LIB.set_effects_volume_jni(volume / 100.0)

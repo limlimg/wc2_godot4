@@ -2,9 +2,9 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _ArmyDef = preload("res://app/src/main/cpp/imported/army_def.gd")
-const _ArmyDefList = preload("res://app/src/main/cpp/imported/army_def_list.gd")
-const _ArmyDefListMap = preload("res://app/src/main/cpp/imported/army_def_list_map.gd")
+const _ArmyDef = preload("res://app/src/main/cpp//army_def.gd")
+const _ArmyDefList = preload("res://app/src/main/cpp/imported_containers/army_def_list.gd")
+const _ArmyDefListMap = preload("res://app/src/main/cpp/imported_containers/army_def_list_map.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.armies"

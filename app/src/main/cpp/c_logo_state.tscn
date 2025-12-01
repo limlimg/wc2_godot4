@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://k1rddnv5q5m8"]
+
+[ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="1_0nah5"]
+[ext_resource type="Script" uid="uid://c2o7l5cd0x8vw" path="res://app/src/main/cpp/c_logo_state.gd" id="1_b54l6"]
+[ext_resource type="Texture2D" uid="uid://xkr7cuawfg24" path="res://app/src/main/cpp/scene_system_resource/texture/logo.tres" id="4_hjp6p"]
+
+[node name="CLogoState" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b54l6")
+
+[node name="GUIManager" parent="." instance=ExtResource("1_0nah5")]
+layout_mode = 1
+
+[node name="Background" type="ColorRect" parent="GUIManager"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Logo" type="TextureRect" parent="GUIManager"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_hjp6p")

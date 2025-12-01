@@ -3,12 +3,10 @@
 ## and save files which are accessed by AAssetManager and C FILE* respectively.
 ## It is involved in accessing all assets and save files.
 ##
-## In this Godot port, all assets files except .bin files are imported as
-## Resource. This detects format errors (e.g a tag mismatch in an .xml file)
-## in the editor and speed up their loading during runtime. The loading and
-## usage of Resource is too different and, as a result, they are not wrapped in
-## this class. The following functions and classes are affected: GetPath,
-## ecTextureLoad, ecUniFont, TiXMLDocument and CAreaMark.
+## In this Godot port, all assets files are imported as Resource. This detects
+## format errors (e.g a tag mismatch in an .xml file) in the editor and speed up
+## their loading during runtime. However, this also means they cannot be opened
+## as files or by this class.
 ## 
 ## Part of the original code can open zip files and thereby check the integrity
 ## of game files. They are unsused in the original code and not implemented.
@@ -29,7 +27,7 @@ func open(path: String, flags: FileAccess.ModeFlags) -> bool:
 	else:
 		_is_assets = false
 		_file = FileAccess.open(path, flags)
-	return true
+	return _file != null
 
 
 func close() -> void:
@@ -45,14 +43,14 @@ func get_size() -> int:
 		return 0
 
 
-func get_cur_pos() -> int:
+func _get_cur_pos() -> int:
 	if _file != null:
 		return _file.get_position()
 	else:
 		return 0
 
 
-func seek(position: int, whence: int) -> bool:
+func _seek(position: int, whence: int) -> bool:
 	if _file != null:
 		if whence == 0:
 			_file.seek(position)

@@ -19,7 +19,6 @@ const _CStateManager = preload("res://app/src/main/cpp/c_state_manager.gd")
 
 static var _instance := new()
 
-var _states: Array[PackedScene]
 var _cur_state: String
 
 static func instance() -> _CStateManager:
@@ -32,10 +31,7 @@ func init() -> void:
 
 
 func term() -> void:
-	var placeholder := Node.new()
-	var pack := PackedScene.new()
-	pack.pack(placeholder)
-	(Engine.get_main_loop() as SceneTree).change_scene_to_packed(pack)
+	(Engine.get_main_loop() as SceneTree).unload_current_scene()
 
 
 func update(_delta: float) -> void:
@@ -89,13 +85,9 @@ func enter_foreground() -> void:
 	pass
 
 
-# Used to cache the coressponding PackedScene in ResourceLoader
-func register_state(path: String) -> void:
-	var state := load(path) as PackedScene
-	if state == null:
-		push_error("Failed to load {0}".format([path]))
-		return
-	_states.append(state)
+func register_state(_path: String) -> void:
+	# nothing to do
+	pass
 
 
 func set_cur_state(path: String) -> void:

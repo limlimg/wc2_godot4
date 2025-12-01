@@ -7,8 +7,14 @@ static var is_app_running := false
 var _m_game_view_width := _Wc2Activity.get_view_width()
 var _m_game_view_height := _Wc2Activity.get_view_height()
 
-func on_surface_created() -> void:
+func _init() -> void:
 	_native_init(_m_game_view_width, _m_game_view_height, 1, 0)
+
+
+func on_surface_created() -> void:
+	# call earlier in _init()
+	#_native_init(_m_game_view_width, _m_game_view_height, 1, 0)
+	pass
 
 
 func on_surface_changed(width: int, height: int) -> void:

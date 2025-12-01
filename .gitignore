@@ -4,6 +4,7 @@
 /android/
 *.import
 *.uid
+*.tmp
 
 # Game Assets
 /app/src/main/assets

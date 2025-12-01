@@ -1,17 +1,16 @@
 @tool
 extends EditorImportPlugin
 
-# Reference: Godot source code of resource_importer_csv_translation (https://github.com/godotengine/godot/blob/master/editor/import/resource_importer_csv_translation.cpp)
-
-const _XmlImporter = preload("res://addons/assets_tools/xml_importer.gd")
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
+const _ecTextureRes = preload("res://app/src/main/cpp/imported_containers/ec_texture_res.gd")
+const _ecTextureRect = preload("res://app/src/main/cpp/ec_texture_rect.gd")
 
 func _get_importer_name() -> String:
-	return "wc2.assets.xml.plist"
+	return "wc2.assets.xml.texture"
 
 
 func _get_visible_name() -> String:
-	return "Translation"
+	return "ecTextureRes"
 
 
 func _get_format_version() -> int:
@@ -19,7 +18,7 @@ func _get_format_version() -> int:
 
 
 func _get_recognized_extensions() -> PackedStringArray:
-	return PackedStringArray(["xml", "strings"])
+	return PackedStringArray(["xml"])
 
 
 func _get_priority() -> float:
@@ -27,28 +26,11 @@ func _get_priority() -> float:
 
 
 func _get_import_order() -> int:
-	return 1
+	return 2
 
 
 func _get_import_options(path: String, preset_index: int) -> Array[Dictionary]:
-	var locale: String
-	if path.contains("English.lproj/") or path.contains("_en"):
-		locale = "en"
-	elif path.contains("ja.lproj/") or path.contains("_ja"):
-		locale = "ja"
-	elif path.contains("kr.lproj/") or path.contains("_kr"):
-		locale = "ko"
-	elif path.contains("ru.lproj/") or path.contains("_ru"):
-		locale = "ru"
-	elif path.contains("zh_CN.lproj/") or path.contains("_cn"):
-		locale = "zh_Hans"
-	elif path.contains("zh_TW.lproj/") or path.contains("_tw"):
-		locale = "zh_Hant"
-	return [{
-		"name": "locale",
-		"default_value": locale,
-		"hint_string": PROPERTY_HINT_LOCALE_ID
-	}]
+	return []
 
 
 func _get_option_visibility(_path: String, _option_name: StringName, _options: Dictionary) -> bool:
@@ -64,49 +46,70 @@ func _get_preset_name(preset_index: int) -> String:
 
 
 func _get_resource_type() -> String:
-	return "Translation"
+	return "Resource"
 
 
 func _get_save_extension() -> String:
-	return "translation"
+	return "res"
 
 
 func _import(source_file: String, save_path: String, options: Dictionary, platform_variants: Array[String], gen_files: Array[String]) -> Error:
-	var xml = _XmlImporter.static_load(source_file)
-	if xml is not XML:
-		return xml
 	var doc := _TiXmlDocument.new()
-	if not doc.load_resource(xml):
-		push_error("{0} is empty".format([source_file]))
+	var err := doc.load_file(source_file)
+	if err != OK:
+		return err
+	var xml_root := doc.first_child_element("Texture")
+	if xml_root == null:
+		push_error("Parse Error: Failed to find <Texture> in {0}".format([source_file]))
+		return ERR_PARSE_ERROR
+	var res_texture := _ecTextureRes.new()
+	var texture_name := xml_root.attribute("name")
+	if texture_name == "":
+		push_error("Parse Error: Element does not have valid \"name\" attibute on line {0} of {1}".format([xml_root.row() + 1, source_file]))
+		return ERR_PARSE_ERROR
+	var source_dict := source_file.substr(0, source_file.rfind('/') + 1) 
+	var texture_path := source_dict + texture_name
+	if load(texture_path) as Texture2D == null:
+		push_error("Error: failed to validate texture {0} for {1}".format([texture_name, source_file]))
 		return FAILED
-	var root := doc.root_element()
-	if root == null or root.value() != "plist":
-		push_error("{0}: Expected root node of type <plist> in {1}".format([error_string(ERR_PARSE_ERROR), source_file]))
+	res_texture.texture_name = texture_name
+	var xml_images := doc.first_child_element("Images")
+	if xml_images == null:
+		push_error("Parse Error: Failed to find <Images> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
-	var dict := root.first_child_element("dict")
-	if dict == null:
-		push_error("{0}: First child of <plist> should be <dict> in {1}".format([error_string(ERR_PARSE_ERROR), source_file]))
-		return ERR_PARSE_ERROR
-	var transltion := Translation.new()
-	transltion.locale = options["locale"]
-	var node := dict.first_child_element()
-	while node != null:
-		var key := node.get_text()
-		if key == "":
-			push_error("{0}: Node at line {1} should contain a text child as key in {2}".format([error_string(ERR_PARSE_ERROR), node.row() + 1, source_file]))
+	var xml_image := xml_images.first_child_element()
+	while xml_image != null:
+		var name := xml_image.attribute("name")
+		if name == "":
+			push_error("Parse Error: Element does not have valid \"name\" attibute on line {0} of {1}".format([xml_image.row() + 1, source_file]))
 			return ERR_PARSE_ERROR
-		var last_node_row := node.row() + 1
-		node = node.next_sibling_element()
-		if node == null:
-			push_error("{0}: Node at line {1} should be followed by a node containing string in {2}".format([error_string(ERR_PARSE_ERROR), last_node_row, source_file]))
-			return ERR_PARSE_ERROR
-		var value := node.get_text()
-		if value == "":
-			push_error("{0}: Node at line {1} should contain a text child as string in {2}".format([error_string(ERR_PARSE_ERROR), node.row() + 1, source_file]))
-			return ERR_PARSE_ERROR
-		transltion.add_message(key, value.c_unescape())
-		node = node.next_sibling_element()
-	var ot := OptimizedTranslation.new()
-	ot.generate(transltion)
+		var p: Array[float] = []
+		var x := 0.0
+		if xml_image.query_float_attribute("x", p) == xml_image.TIXML_SUCCESS:
+			x = p.pop_back()
+		var y := 0.0
+		if xml_image.query_float_attribute("y", p) == xml_image.TIXML_SUCCESS:
+			y = p.pop_back()
+		var w := 1.0
+		if xml_image.query_float_attribute("w", p) == xml_image.TIXML_SUCCESS:
+			w = p.pop_back()
+		var h := 1.0
+		if xml_image.query_float_attribute("h", p) == xml_image.TIXML_SUCCESS:
+			h = p.pop_back()
+		var refx := 0.0
+		if xml_image.query_float_attribute("refx", p) == xml_image.TIXML_SUCCESS:
+			refx = p.pop_back()
+		var refy := 0.0
+		if xml_image.query_float_attribute("refy", p) == xml_image.TIXML_SUCCESS:
+			refy = p.pop_back()
+		var res_image := _ecTextureRect.new()
+		res_image.x = x
+		res_image.y = y
+		res_image.w = w
+		res_image.h = h
+		res_image.refx = refx
+		res_image.refy = refy
+		res_texture.images[name] = res_image
+		xml_image = xml_image.next_sibling_element()
 	var filename = save_path + "." + _get_save_extension()
-	return ResourceSaver.save(ot, filename)
+	return ResourceSaver.save(res_texture, filename)

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ecTextureResAssets" load_steps=4 format=3 uid="uid://bopk0uwseootn"]
+
+[ext_resource type="Script" uid="uid://bbkwpdgd20wlc" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size_hd.gd" id="1_kv4al"]
+[ext_resource type="Script" uid="uid://c4lbjg3bsn26n" path="res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd" id="2_ssye3"]
+
+[sub_resource type="Resource" id="Resource_dcnp8"]
+script = ExtResource("1_kv4al")
+name = "title.xml"
+name_hd = "title_hd.xml"
+name_ipad = "title_hd.xml"
+name_ipad_hd = ""
+name_640h = ""
+name_640hd = ""
+name_568h = ""
+name_568hd = ""
+name_534h = ""
+name_534hd = ""
+name_512h = ""
+name_512hd = ""
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[resource]
+script = ExtResource("2_ssye3")
+asset_names = Array[ExtResource("1_kv4al")]([SubResource("Resource_dcnp8")])

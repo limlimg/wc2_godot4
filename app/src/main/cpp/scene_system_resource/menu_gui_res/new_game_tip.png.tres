@@ -1,0 +1,18 @@
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" load_steps=5 format=3 uid="uid://b2s5ay0hv2oj0"]
+
+[ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/texture_res.tres" id="2_4yn2w"]
+[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_2o6l0"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_7a4cd"]
+
+[sub_resource type="Resource" id="Resource_fkjlg"]
+script = ExtResource("3_2o6l0")
+name = &"new_game_tip.png"
+res = ExtResource("2_4yn2w")
+metadata/_custom_type_script = "uid://fs8gw6cxcp2u"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_7a4cd")
+preset = SubResource("Resource_fkjlg")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

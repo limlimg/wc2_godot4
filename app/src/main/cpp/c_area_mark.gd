@@ -5,7 +5,7 @@ extends "res://app/src/main/cpp/native-lib.gd"
 ## the color schema.
 
 var mark_size := Vector2i(8, 8)
-var pattern_size: Vector2i
+var _pattern_size: Vector2i
 var _pattern: Image
 
 func init(map: int) -> void:
@@ -13,7 +13,7 @@ func init(map: int) -> void:
 	_pattern = load(get_path("areamark{0}.raw".format([map]), "")) as Image
 	if _pattern == null:
 		return
-	pattern_size = _pattern.get_size()
+	_pattern_size = _pattern.get_size()
 
 
 func release() -> void:
@@ -23,7 +23,7 @@ func release() -> void:
 func get_mark(x: int, y: int) -> int:
 	x /= mark_size.x
 	y /= mark_size.y
-	if _pattern == null or x < 0 or x >= pattern_size.x or y < 0 or y >= pattern_size.y:
+	if _pattern == null or x < 0 or x >= _pattern_size.x or y < 0 or y >= _pattern_size.y:
 		return -1
 	return color_to_id(_pattern.get_pixel(x, y))
 

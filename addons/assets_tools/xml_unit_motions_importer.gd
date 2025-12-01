@@ -1,15 +1,15 @@
 @tool
 extends EditorImportPlugin
 
-const MOTION_TYPE = [
+const _MOTION_TYPE = [
 	"standby",
 	"attack",
 	"destroyed"
 ]
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _UnitMotion = preload("res://app/src/main/cpp/imported/unit_motion.gd")
-const _UnitMotions = preload("res://app/src/main/cpp/imported/unit_motions.gd")
-const _UnitMotionsMap = preload("res://app/src/main/cpp/imported/unit_motions_map.gd")
+const _UnitMotion = preload("res://app/src/main/cpp/unit_motion.gd")
+const _UnitMotions = preload("res://app/src/main/cpp/unit_motions.gd")
+const _UnitMotionsMap = preload("res://app/src/main/cpp/imported_containers/unit_motions_map.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.unitmotions"
@@ -88,7 +88,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		if xml_motions != null:
 			var xml_motion := xml_motions.first_child_element()
 			while xml_motion != null:
-				var type := MOTION_TYPE.find(xml_motion.attribute("type"))
+				var type := _MOTION_TYPE.find(xml_motion.attribute("type"))
 				if type == -1:
 					type = 0
 				var res_motion := _UnitMotion.new()

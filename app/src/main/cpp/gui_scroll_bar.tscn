@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://bc0r4i3w2pyf6"]
+
+[ext_resource type="Script" uid="uid://cbcq3gglh2gj1" path="res://app/src/main/cpp/gui_scroll_bar.gd" id="1_6akf1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_k36de"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_75ras"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vgsbn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6akf1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_icu0f"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6akf1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_shki2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_shki2"]
+
+[node name="GUIScrollBar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6akf1")
+
+[node name="VSlider" type="VSlider" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 2.0
+anchor_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 3.14159
+theme_override_icons/grabber = SubResource("PlaceholderTexture2D_k36de")
+theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_75ras")
+theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_vgsbn")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_6akf1")
+value = 50.0
+
+[node name="HSlider" type="HSlider" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_icons/grabber = SubResource("PlaceholderTexture2D_icu0f")
+theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_6akf1")
+theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_shki2")
+theme_override_styles/slider = SubResource("StyleBoxEmpty_shki2")
+value = 50.0
+
+[node name="Grabber" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+toggle_mode = true
+ignore_texture_size = true
+
+[connection signal="drag_ended" from="VSlider" to="." method="_on_drag_ended" unbinds=1]
+[connection signal="drag_started" from="VSlider" to="Grabber" method="set_pressed_no_signal" binds= [true]]
+[connection signal="value_changed" from="VSlider" to="." method="_on_value_changed"]
+[connection signal="drag_ended" from="HSlider" to="." method="_on_drag_ended" unbinds=1]
+[connection signal="drag_started" from="HSlider" to="Grabber" method="set_pressed" binds= [true]]
+[connection signal="value_changed" from="HSlider" to="." method="_on_value_changed"]

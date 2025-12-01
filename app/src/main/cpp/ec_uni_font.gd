@@ -1,27 +1,31 @@
-extends "res://app/src/main/cpp/native-lib.gd"
+extends Theme
 
-## The .fnt files are imported as FontFile and the importer does not use
-## ecGraphics::LoadTexture, which means the font images cannot have @2x suffix.
-##
-## GetCharImage is not implemented. In the original game code, it is only used
-## by ecText to draw text. In this port, it looks like its implementation will
-## either be complicated or put constraint on the type of Font to use.
-##
-## Theoretically, in the orignal game code, Init can be called multiple times to
-## get a combined font, which is not possible here.
-
-var _font: Font
-var _font_size: int
+## This class extends Theme because it hold both a font and a font size. The
+## .fnt files are imported as FontFile. @2x variant is not supported for the
+## associated images.
 
 func init(file_name: String, hd: bool) -> void:
-	_font = load(get_path(file_name, "")) as FontFile
-	if _font == null:
-		return
+	default_font = load(file_name) as FontFile
 	if hd:
-		_font_size = _font.fixed_size / 2
+		default_font_size = default_font.fixed_size / 2
 	else:
-		_font_size = _font.fixed_size
+		default_font_size = default_font.fixed_size
 
 
 func release() -> void:
-	_font = null
+	default_font = null
+
+
+func get_char_image(glyph: int) -> Image:
+	if not default_font.has_char(glyph):
+		return null
+	var font := default_font as FontFile
+	if font == null:
+		return null
+	var size := Vector2(default_font_size, 0)
+	var idx := font.get_glyph_texture_idx(0, size, glyph)
+	var image := font.get_texture_image(0, size, idx)
+	if image == null:
+		return null
+	var region := font.get_glyph_uv_rect(0, size, glyph)
+	return image.get_region(region)

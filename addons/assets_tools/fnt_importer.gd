@@ -1,9 +1,6 @@
 @tool
 extends EditorImportPlugin
 
-## Note: The image for the font is not loaded with ecGraphics::LoadTexture,
-## which means the @2x variant is not considered.
-
 # Reference: Godot source code of Image Font importer (https://github.com/godotengine/godot/blob/master/editor/import/resource_importer_imagefont.cpp)
 
 func _get_importer_name() -> String:
@@ -34,7 +31,7 @@ func _get_import_options(path: String, preset_index: int) -> Array[Dictionary]:
 	return []
 
 
-func _get_option_visibility(_path: String, _option_name: StringName, _options: Dictionary) -> bool:
+func _get_option_visibility(_path: String, _option_name: StringName, options: Dictionary) -> bool:
 	return true
 
 
@@ -73,12 +70,12 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		push_error("{0}: Failed to import font image {1}".format([error_string(err), img_path]))
 		return err
 	var img:Image = load(img_path)
-	var chr_height := file.get_32()
+	var font_height := file.get_32()
 	var font := FontFile.new()
 	font.set_antialiasing(TextServer.FONT_ANTIALIASING_NONE)
 	font.set_generate_mipmaps(false)
 	font.set_multichannel_signed_distance_field(false)
-	font.set_fixed_size(chr_height)
+	font.set_fixed_size(font_height)
 	font.set_subpixel_positioning(TextServer.SUBPIXEL_POSITIONING_DISABLED)
 	font.set_keep_rounding_remainders(true)
 	font.set_force_autohinter(false)
@@ -86,23 +83,23 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	font.set_allow_system_fallback(true)
 	font.set_hinting(TextServer.HINTING_NONE)
 	font.set_fallbacks([])
-	font.set_texture_image(0, Vector2i(chr_height, 0), 0, img)
+	font.set_texture_image(0, Vector2i(font_height, 0), 0, img)
 	font.set_fixed_size_scale_mode(TextServer.FIXED_SIZE_SCALE_ENABLED)
 	for i in glyph_count:
 		var idx := file.get_16()
 		var uv_x := file.get_16()
 		var uv_y := file.get_16()
 		var chr_width := file.get_8()
-		chr_height = file.get_8()
+		var chr_height := file.get_8()
 		var chr_off_x := -file.get_buffer(1).decode_s8(0)
 		var chr_off_y := -file.get_buffer(1).decode_s8(0)
 		var chr_adv := file.get_16()
-		font.set_glyph_advance(0, chr_height, idx, Vector2(chr_adv, 0));
-		font.set_glyph_offset(0, Vector2i(chr_height, 0), idx, Vector2i(chr_off_x, -0.5 * chr_height + chr_off_y));
-		font.set_glyph_size(0, Vector2i(chr_height, 0), idx, Vector2(chr_width, chr_height));
-		font.set_glyph_uv_rect(0, Vector2i(chr_height, 0), idx, Rect2(uv_x, uv_y, chr_width, chr_height));
-		font.set_glyph_texture_idx(0, Vector2i(chr_height, 0), idx, 0);
-	font.set_cache_ascent(0, chr_height, 0.5 * chr_height)
-	font.set_cache_descent(0, chr_height, 0.5 * chr_height)
+		font.set_glyph_advance(0, font_height, idx, Vector2(chr_adv, 0));
+		font.set_glyph_offset(0, Vector2i(font_height, 0), idx, Vector2i(chr_off_x, -0.5 * font_height + chr_off_y));
+		font.set_glyph_size(0, Vector2i(font_height, 0), idx, Vector2(chr_width, chr_height));
+		font.set_glyph_uv_rect(0, Vector2i(font_height, 0), idx, Rect2(uv_x, uv_y, chr_width, chr_height));
+		font.set_glyph_texture_idx(0, Vector2i(font_height, 0), idx, 0);
+	font.set_cache_ascent(0, font_height, 0.5 * font_height)
+	font.set_cache_descent(0, font_height, 0.5 * font_height)
 	var filename = save_path + "." + _get_save_extension()
 	return ResourceSaver.save(font, filename)

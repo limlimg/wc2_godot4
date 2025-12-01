@@ -1,0 +1,152 @@
+[gd_resource type="Resource" script_class="ecTextureResAssets" load_steps=12 format=3 uid="uid://drtonmphvvxyb"]
+
+[ext_resource type="Script" uid="uid://bbkwpdgd20wlc" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size_hd.gd" id="1_i063k"]
+[ext_resource type="Script" uid="uid://c4lbjg3bsn26n" path="res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd" id="2_7kvyg"]
+
+[sub_resource type="Resource" id="Resource_2fyn6"]
+script = ExtResource("1_i063k")
+name = ""
+name_hd = ""
+name_ipad = "ui_iPad.xml"
+name_ipad_hd = ""
+name_640h = ""
+name_640hd = ""
+name_568h = ""
+name_568hd = ""
+name_534h = ""
+name_534hd = ""
+name_512h = ""
+name_512hd = ""
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[sub_resource type="Resource" id="Resource_fsgsl"]
+script = ExtResource("1_i063k")
+name = "ui1.xml"
+name_hd = "ui1_hd.xml"
+name_ipad = ""
+name_ipad_hd = ""
+name_640h = ""
+name_640hd = ""
+name_568h = ""
+name_568hd = ""
+name_534h = ""
+name_534hd = ""
+name_512h = ""
+name_512hd = ""
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[sub_resource type="Resource" id="Resource_umjsr"]
+script = ExtResource("1_i063k")
+name = "ui2.xml"
+name_hd = "ui2_hd.xml"
+name_ipad = "ui2_hd.xml"
+name_ipad_hd = ""
+name_640h = ""
+name_640hd = ""
+name_568h = ""
+name_568hd = ""
+name_534h = ""
+name_534hd = ""
+name_512h = ""
+name_512hd = ""
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[sub_resource type="Resource" id="Resource_biaoo"]
+script = ExtResource("1_i063k")
+name = "text_{0}.xml"
+name_hd = "text_{0}_hd.xml"
+name_ipad = "text_{0}_iPad.xml"
+name_ipad_hd = ""
+name_640h = ""
+name_640hd = ""
+name_568h = ""
+name_568hd = ""
+name_534h = ""
+name_534hd = ""
+name_512h = ""
+name_512hd = ""
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[sub_resource type="Resource" id="Resource_h3tvq"]
+script = ExtResource("1_i063k")
+name = ""
+name_hd = ""
+name_ipad = ""
+name_ipad_hd = "text_{0}_iPad_hd.xml"
+name_640h = ""
+name_640hd = ""
+name_568h = ""
+name_568hd = ""
+name_534h = ""
+name_534hd = ""
+name_512h = ""
+name_512hd = ""
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[sub_resource type="Resource" id="Resource_i6fmg"]
+script = ExtResource("1_i063k")
+name = "image_newgame.xml"
+name_hd = "image_newgame_hd.xml"
+name_ipad = "image_newgame_hd.xml"
+name_ipad_hd = ""
+name_640h = ""
+name_640hd = ""
+name_568h = ""
+name_568hd = ""
+name_534h = ""
+name_534hd = ""
+name_512h = ""
+name_512hd = ""
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[sub_resource type="Resource" id="Resource_7kvyg"]
+script = ExtResource("1_i063k")
+name = "mui.xml"
+name_hd = "mui_hd.xml"
+name_ipad = "mui_hd.xml"
+name_ipad_hd = ""
+name_640h = ""
+name_640hd = ""
+name_568h = ""
+name_568hd = ""
+name_534h = ""
+name_534hd = ""
+name_512h = ""
+name_512hd = ""
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[sub_resource type="Resource" id="Resource_eh6s6"]
+script = ExtResource("1_i063k")
+name = "mui2.xml"
+name_hd = "mui2_hd.xml"
+name_ipad = "mui2_hd.xml"
+name_ipad_hd = ""
+name_640h = ""
+name_640hd = ""
+name_568h = ""
+name_568hd = ""
+name_534h = ""
+name_534hd = ""
+name_512h = ""
+name_512hd = ""
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[sub_resource type="Resource" id="Resource_wbit6"]
+script = ExtResource("1_i063k")
+name = "mui_{0}.xml"
+name_hd = "mui_{0}_hd.xml"
+name_ipad = "mui_{0}_hd.xml"
+name_ipad_hd = ""
+name_640h = ""
+name_640hd = ""
+name_568h = ""
+name_568hd = ""
+name_534h = ""
+name_534hd = ""
+name_512h = ""
+name_512hd = ""
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[resource]
+script = ExtResource("2_7kvyg")
+asset_names = Array[ExtResource("1_i063k")]([SubResource("Resource_2fyn6"), SubResource("Resource_fsgsl"), SubResource("Resource_umjsr"), SubResource("Resource_biaoo"), SubResource("Resource_h3tvq"), SubResource("Resource_i6fmg"), SubResource("Resource_7kvyg"), SubResource("Resource_eh6s6"), SubResource("Resource_wbit6")])
