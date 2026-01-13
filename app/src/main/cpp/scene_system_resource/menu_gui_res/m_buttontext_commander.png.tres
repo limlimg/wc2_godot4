@@ -1,12 +1,22 @@
-[gd_resource type="Texture2D" script_class="ecImageTextureAssets" load_steps=5 format=3 uid="uid://m4pc8nso7ki1"]
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" load_steps=7 format=3 uid="uid://m4pc8nso7ki1"]
 
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_mxqe0"]
 [ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/texture_res.tres" id="2_07ib4"]
 [ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_s4b87"]
 [ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_8ny0b"]
 
+[sub_resource type="Resource" id="Resource_mxqe0"]
+script = ExtResource("1_mxqe0")
+name = "m_buttontext_commander.png"
+name_ipad = ""
+name_640h = ""
+name_568h = ""
+name_534h = ""
+name_512h = ""
+
 [sub_resource type="Resource" id="Resource_fkjlg"]
 script = ExtResource("3_s4b87")
-name = &"m_buttontext_commander.png"
+name = SubResource("Resource_mxqe0")
 res = ExtResource("2_07ib4")
 metadata/_custom_type_script = "uid://fs8gw6cxcp2u"
 
