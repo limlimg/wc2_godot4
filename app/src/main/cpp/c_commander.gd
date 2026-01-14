@@ -24,10 +24,6 @@ func _init() -> void:
 		a.fill(0)
 
 
-func _enter_tree() -> void:
-	self.load()
-
-
 func load() -> void:
 	_loaded = true
 	var file := _ecFile.new()
@@ -52,10 +48,6 @@ func load() -> void:
 				for i in a.size():
 					a[i] = buffer.decode_u32(offset)
 					offset += 4
-
-
-func _exit_tree() -> void:
-	save()
 
 
 func save() -> void:

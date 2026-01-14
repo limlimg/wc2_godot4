@@ -125,7 +125,7 @@ static func _ec_game_init(content_scale_width: int, content_scale_height: int, o
 	var string_table_name := g_localizable_strings.get_string(string_table_key)
 	g_string_table.load(string_table_name)
 	_CObjectDef.instance().init()
-	#g_Commander.load() # moved to g_Commander._enter_tree()
+	g_Commander.load()
 	_CSoundBox.get_instance().load_se("btn.wav")
 	#g_font1.init("font1.fnt", false)
 	#var language := g_localizable_strings.get_string("language")
@@ -274,7 +274,7 @@ static func Java_com_easytech_wc2_Wc2Activity_nativePause() -> void:
 
 
 static func _ec_game_did_enter_background() -> void:
-	#g_Commander.save() # moved to g_Commander._exit_tree()
+	g_Commander.save()
 	_CStateManager.instance().enter_background()
 
 
