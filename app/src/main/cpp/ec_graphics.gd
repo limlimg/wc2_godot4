@@ -79,9 +79,6 @@ func init(content_scale_width: int, content_scale_height: int, _orientation: int
 	var window_content_x := content_scale_width * g_content_scale_factor
 	var window_content_y := content_scale_height * g_content_scale_factor
 	window.content_scale_size = Vector2i(window_content_x as int, window_content_y as int)
-	await _Wc2Activity.get_game_view().ready
-	_Wc2Activity.get_game_view().size = Vector2(content_scale_width, content_scale_height)
-	_Wc2Activity.get_game_view().position = Vector2.ZERO
 
 
 func shutdown() -> void:

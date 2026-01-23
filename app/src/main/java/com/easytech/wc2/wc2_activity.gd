@@ -108,9 +108,10 @@ func _show_game_view(_width: float, _height: float) -> void:
 			, CONNECT_ONE_SHOT)
 	_ecRenderer.is_app_running = true
 	_m_gl_view = _ecGLSurfaceView.new()
-	_m_gl_view.size = Vector2(_m_game_view_width, _m_game_view_height)
+	#_m_gl_view.size = Vector2(_m_game_view_width, _m_game_view_height)
 	(find_view_by_id(_R.id.main_layout) as _ViewGroup).add_view(_m_gl_view)
-	_m_gl_view.set_anchors_preset(Control.PRESET_CENTER)
+	#_m_gl_view.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	_m_gl_view.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	DisplayServer.screen_set_keep_on(true)
 	# NOTTODO: get promotion info from google play
 
