@@ -318,10 +318,10 @@ static func Java_com_easytech_wc2_ecRenderer_nativeRender() -> void:
 	_ec_game_render()
 
 
-static func _ec_game_update(delta: float) -> void:
+static func _ec_game_update(_delta: float) -> void:
 	if not _game_paused and not _game_waiting:
 		# TODO: update PlayerManager
-		_CStateManager.instance().update(delta)
+		# CStateManager is updated by callback as an autoload node
 		# no GUIManager
 		# GUIMotionManager is updated by callback as an autoload node
 		_CSoundBox.get_instance().update_sound()
