@@ -324,7 +324,8 @@ static func _ec_game_update(_delta: float) -> void:
 		# CStateManager is updated by callback as an autoload node
 		# no GUIManager
 		# GUIMotionManager is updated by callback as an autoload node
-		_CSoundBox.get_instance().update_sound()
+		# CSoundBox is updated by callback as an autoload node
+		pass
 
 
 static func _ec_game_render() -> void:

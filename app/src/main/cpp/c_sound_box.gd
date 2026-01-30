@@ -1,23 +1,23 @@
+extends Node
 
 const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 const _NATIVE_LIB = preload("res://app/src/main/cpp/native-lib.gd")
-
-static var _m_instance: _CSoundBox
 
 var _se_volume := 100
 var _music_volume := 100
 
 static func get_instance() -> _CSoundBox:
-	if _m_instance == null:
-		_m_instance = _CSoundBox.new()
-		_m_instance._init_sound_system()
-	return _m_instance
+	#if _m_instance == null:
+		#_m_instance = _CSoundBox.new()
+		#_m_instance._init_sound_system()
+	return CSoundBox
 
 
 static func destroy() -> void:
-	if _m_instance != null:
-		_m_instance._destroy_sound_system()
-		_m_instance = null
+	#if _m_instance != null:
+		#_m_instance._destroy_sound_system()
+		#_m_instance = null
+	CSoundBox._destroy_sound_system()
 
 
 func _init_sound_system() -> void:
@@ -79,3 +79,7 @@ func _stop_all_se() -> void:
 func set_se_volume(volume: int) -> void:
 	_se_volume = volume
 	_NATIVE_LIB.set_effects_volume_jni(volume / 100.0)
+
+
+func _process(_delta: float) -> void:
+	update_sound()
