@@ -18,8 +18,6 @@ extends Node
 
 const _CStateManager = preload("res://app/src/main/cpp/c_state_manager.gd")
 
-static var _instance := new()
-
 var _cur_state: Node
 var _cur_state_path: StringName
 var _next_state_path: StringName
