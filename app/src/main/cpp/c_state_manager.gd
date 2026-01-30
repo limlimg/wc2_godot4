@@ -35,7 +35,8 @@ func term() -> void:
 	if _cur_state!= null and &"_on_exit" in _cur_state:
 		_cur_state._on_exit()
 	_cur_state = null
-	get_tree().unload_current_scene()
+	# already out of tree, so cannot call get_tree() here
+	Engine.get_main_loop().unload_current_scene()
 
 
 func update(_delta: float) -> void:
@@ -43,7 +44,7 @@ func update(_delta: float) -> void:
 	# state transition is done in two frames.
 	var entering_state := _cur_state == null
 	if entering_state:
-		_cur_state = get_tree().root
+		_cur_state = get_tree().current_scene
 		if &"_on_enter" in _cur_state:
 			_cur_state._on_enter()
 	var exiting_state = _cur_state_path != _next_state_path
@@ -55,7 +56,7 @@ func update(_delta: float) -> void:
 	if exiting_state:
 		if _cur_state!= null and &"_on_exit" in _cur_state:
 			_cur_state._on_exit()
-		var err: Error =get_tree().change_scene_to_file(_next_state_path)
+		var err: Error = get_tree().change_scene_to_file(_next_state_path)
 		if err != OK:
 			push_error("{0}: Failed to change state to {1}".format([error_string(err), _next_state_path]))
 			_next_state_path = _cur_state_path
@@ -130,7 +131,7 @@ func get_cur_state() -> Node:
 
 
 func _enter_tree() -> void:
-	_cur_state = get_tree().root
+	_cur_state = get_tree().current_scene
 
 
 func _process(delta: float) -> void:
