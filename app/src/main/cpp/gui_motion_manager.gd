@@ -26,7 +26,7 @@ var _frozen: bool
 
 signal motion_finished(Control)
 
-func instance() -> _GUIMotionManager:
+static func instance() -> _GUIMotionManager:
 	return GUIMotionManager
 
 
