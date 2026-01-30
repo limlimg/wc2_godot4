@@ -45,15 +45,15 @@ func init(rect: Rect2) -> void:
 
 
 func load_texture_res(file_name: String, hd: bool) -> void:
-	_s_texture_res.load_res(file_name, hd)
+	s_texture_res.load_res(file_name, hd)
 
 
 func unload_texture_res(file_name: String) -> void:
-	_s_texture_res.unload_res(file_name)
+	s_texture_res.unload_res(file_name)
 
 
 func release_texture_res() -> void:
-	_s_texture_res.release()
+	s_texture_res.release()
 
 
 func safe_free_child(child: Node) -> void:

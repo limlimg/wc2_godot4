@@ -66,8 +66,8 @@ func init(rect: Rect2, normal_image_name: StringName,
 		is_horizontal: bool) -> void:
 	position = rect.position
 	size = rect.size
-	texture_normal = _ecImageTexture.from_ec_image_attr(_s_texture_res.get_image(normal_image_name))
-	texture_pressed = _ecImageTexture.from_ec_image_attr(_s_texture_res.get_image(pressed_image_name))
+	texture_normal = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(normal_image_name))
+	texture_pressed = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(pressed_image_name))
 	grabber_size = Vector2(grabber_size_w, grabber_size_h)
 	max_value = set_max_value
 	horizontal = is_horizontal

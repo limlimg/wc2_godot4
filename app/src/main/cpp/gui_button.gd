@@ -109,19 +109,19 @@ signal pressed
 
 func init(normal_image_name: StringName, pressed_image_name: StringName,
 		rect: Rect2, font: _ecUniFont) -> void:
-	texture_normal = _ecImageTexture.from_ec_image_attr(_s_texture_res.get_image(normal_image_name)) 
-	texture_pressed = _ecImageTexture.from_ec_image_attr(_s_texture_res.get_image(pressed_image_name))
+	texture_normal = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(normal_image_name)) 
+	texture_pressed = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(pressed_image_name))
 	position = rect.position
 	size = rect.size
 	text_font = font
 
 
 func set_background(image_name: StringName) -> void:
-	texture_background = _ecImageTexture.from_ec_image_attr(_s_texture_res.get_image(image_name))
+	texture_background = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(image_name))
 
 
 func _set_glow(image_name: StringName) -> void:
-	texture_glow = _ecImageTexture.from_ec_image_attr(_s_texture_res.get_image(image_name))
+	texture_glow = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(image_name))
 
 
 func set_text(value: String) -> void:
@@ -141,7 +141,7 @@ func set_text_align(value: HorizontalAlignment) -> void:
 
 
 func set_text_image(image_name: StringName) -> void:
-	texture_text_image = _ecImageTexture.from_ec_image_attr(_s_texture_res.get_image(image_name))
+	texture_text_image = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(image_name))
 
 
 func _set_alpha(value: float) -> void:
