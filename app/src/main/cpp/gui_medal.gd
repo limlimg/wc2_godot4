@@ -1,4 +1,4 @@
-extends Control
+extends "res://app/src/main/cpp/gui_element.gd"
 
 ## GUIMedal shows the number of medals the player has. The button for in-game
 ## purchasing is not added.
