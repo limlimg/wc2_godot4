@@ -10,7 +10,9 @@ extends "res://app/src/main/cpp/native-lib.gd"
 ## to provide the same interface as in the original game code. To use it, pass
 ## the CanvasItem to draw on to render_begin. Make sure to do this during the
 ## _draw callback of the CanvasItem. For the local coordinate system, the root
-## viewport is modified to achieve the same effect.
+## viewport is modified to achieve the same effect. SetBlendMode is not
+## implemented because it is unused in the original code and complicated to
+## implement using Godot's API (require multiple canvas items).
 
 const _ecLine = preload("res://app/src/main/cpp/ec_line.gd")
 const _ecTriple = preload("res://app/src/main/cpp/ec_line.gd")
@@ -27,13 +29,10 @@ var orientated_content_scale_width: int
 var orientated_content_scale_height: int
 var orientation: int
 var content_scale_size_mode: int
-var _blend_mode := 2
 var _render_shape := 3
 var _bound_texture: Texture2D
-var _occupied_buffer := 0
 var _fade_color := Color.BLACK
 var _rendering_canvas_item: CanvasItem
-var _blend_material: Array[CanvasItemMaterial]
 
 static func instance() -> _ecGraphics:
 	return _instance
@@ -64,15 +63,6 @@ func init(content_scale_width: int, content_scale_height: int, _orientation: int
 			content_scale_size_mode = 2
 	else:
 		content_scale_size_mode = 1
-	var material_add := CanvasItemMaterial.new()
-	material_add.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
-	_blend_material.append(material_add)
-	var material_mix := CanvasItemMaterial.new()
-	material_mix.blend_mode = CanvasItemMaterial.BLEND_MODE_MIX
-	_blend_material.append(material_mix)
-	var material_mul := CanvasItemMaterial.new()
-	material_mul.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
-	_blend_material.append(material_mul)
 	var window := (Engine.get_main_loop() as SceneTree).root
 	await window.tree_entered
 	window.content_scale_factor = g_content_scale_factor
@@ -82,7 +72,8 @@ func init(content_scale_width: int, content_scale_height: int, _orientation: int
 
 
 func shutdown() -> void:
-	_blend_material.clear()
+	# nothing to do
+	pass
 
 
 func _set_orientation(value: int) -> void:
@@ -131,12 +122,6 @@ func get_rendering_canvas_item() -> CanvasItem:
 func render_begin(canvas_item: CanvasItem = _Wc2Activity.get_game_view()):
 	_rendering_canvas_item = canvas_item
 	_bound_texture = null
-	if _blend_mode == 1:
-		canvas_item.material = _blend_material[0]
-	elif _blend_mode == 3:
-		canvas_item.material = _blend_material[2]
-	else:
-		canvas_item.material = _blend_material[1]
 
 
 func render_end():
@@ -162,20 +147,6 @@ func set_view_point(x: float, y: float, scale: float):
 	_rendering_canvas_item.draw_set_transform_matrix(transform)
 
 
-func set_blend_mode(value: int):
-	if _rendering_canvas_item == null:
-		return
-	if _blend_mode != value:
-		_flush()
-		if _blend_mode == 1:
-			_rendering_canvas_item.material = _blend_material[0]
-		elif _blend_mode == 3:
-			_rendering_canvas_item.material = _blend_material[2]
-		else:
-			_rendering_canvas_item.material = _blend_material[1]
-		_blend_mode = value
-
-
 func bind_texture(ec_texture: _ecTexture):
 	if _rendering_canvas_item == null:
 		return
@@ -188,34 +159,31 @@ func bind_texture(ec_texture: _ecTexture):
 func _render_line(line: _ecLine):
 	if _rendering_canvas_item == null:
 		return
-	if _render_shape != 2 or _occupied_buffer > 3998:
+	if _render_shape != 2:
 		_flush()
 		_render_shape = 2
 	# Leave batching to be handled by the engine
 	_rendering_canvas_item.draw_primitive(line.points, line.colors, line.uvs, _bound_texture)
-	_occupied_buffer += 2
 
 
 func _render_triple(triple: _ecTriple):
 	if _rendering_canvas_item == null:
 		return
-	if _render_shape != 3 or _occupied_buffer > 3997:
+	if _render_shape != 3:
 		_flush()
 		_render_shape = 3
 	# Leave batching to be handled by the engine
 	_rendering_canvas_item.draw_primitive(triple.points, triple.colors, triple.uvs, _bound_texture)
-	_occupied_buffer += 3
 
 
 func render_quad(quad: _ecQuad):
 	if _rendering_canvas_item == null:
 		return
-	if _render_shape != 3 or _occupied_buffer > 3994:
+	if _render_shape != 3:
 		_flush()
 		_render_shape = 3
 	# Leave batching to be handled by the engine
 	_rendering_canvas_item.draw_primitive(quad.points, quad.colors, quad.uvs, _bound_texture)
-	_occupied_buffer += 6
 
 
 func render_rect(x: float, y: float, width: float, height: float, color: Color):
@@ -244,5 +212,6 @@ func fade(alpha: float):
 
 
 func _flush():
-	# Leave batching to be handled by the engine
-	_occupied_buffer = 0
+	# The engine is too aggresive in batching that a second call to draw_primitive ignores the texture parameter.
+	# The following clams it down before changing texture. 
+	_rendering_canvas_item.draw_rect(Rect2(), Color.TRANSPARENT)

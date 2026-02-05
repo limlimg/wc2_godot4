@@ -1,4 +1,6 @@
 
+## SetBlendMode is not implemented as neither is it for ecGraphics.
+
 const _ecQuad = preload("res://app/src/main/cpp/ec_quad.gd")
 const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
 const _ecTextureRect = preload("res://app/src/main/cpp/ec_texture_rect.gd")
@@ -15,7 +17,6 @@ var _refy: float
 var _texture_w: float
 var _texture_h: float
 var _quad := _ecQuad.new()
-var _blend_mode: int
 var _flip_x: bool
 var _flip_y: bool
 var _flip_ref: bool
@@ -53,7 +54,6 @@ func init_texture_xywh(texture: _ecTexture, x: float, y: float, w: float, h: flo
 	_quad.uvs[1] = Vector2((x + w) / _texture_w, y / _texture_h)
 	_quad.uvs[2] = Vector2((x + w) / _texture_w, (y + h) / _texture_h)
 	_quad.uvs[3] = Vector2(x / _texture_w, (y + h) / _texture_h)
-	_blend_mode = 2
 	_flip_x = false
 	_flip_y = false
 	_flip_ref = false
@@ -155,7 +155,6 @@ func render(x:float, y:float) -> void:
 	_quad.points[2] = Vector2(x - _refx + _w, y - _refy + _h)
 	_quad.points[3] = Vector2(x - _refx, y - _refy + _h)
 	graphics.bind_texture(_texture)
-	graphics.set_blend_mode(_blend_mode)
 	graphics.render_quad(_quad)
 
 
@@ -167,17 +166,18 @@ func render_xywh(x:float, y:float, w: float, h:float) -> void:
 	_quad.points[2] = Vector2(x - _refx + w, y - _refy + h)
 	_quad.points[3] = Vector2(x - _refx, y - _refy + h)
 	graphics.bind_texture(_texture)
-	graphics.set_blend_mode(_blend_mode)
 	graphics.render_quad(_quad)
 
 
 func render_ex(x:float, y:float, rotation_rad: float, x_scale: float, y_scale: float) -> void:
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
 	var graphics := _ecGraphics.instance()
-	var w := _w / x_scale
-	var h := _h / y_scale
-	var refx := _refx / x_scale
-	var refy := _refy / y_scale
+	if y_scale == 0.0:
+		y_scale = x_scale
+	var w := _w * x_scale
+	var h := _h * y_scale
+	var refx := _refx * x_scale
+	var refy := _refy * y_scale
 	var pos := Vector2(x, y)
 	var v0 := Vector2( -refx, - refy)
 	var v1 := Vector2( -refx + w, - refy)
@@ -193,7 +193,6 @@ func render_ex(x:float, y:float, rotation_rad: float, x_scale: float, y_scale: f
 	_quad.points[2] = pos + v2
 	_quad.points[3] = pos + v3
 	graphics.bind_texture(_texture)
-	graphics.set_blend_mode(_blend_mode)
 	graphics.render_quad(_quad)
 
 
@@ -205,7 +204,6 @@ func _render_stretch(x1:float, y1:float, x2: float, y2:float) -> void:
 	_quad.points[2] = Vector2(x2, y2)
 	_quad.points[3] = Vector2(x1, y2)
 	graphics.bind_texture(_texture)
-	graphics.set_blend_mode(_blend_mode)
 	graphics.render_quad(_quad)
 
 
@@ -217,7 +215,6 @@ func _render_4v(x0:float, y0:float, x1:float, y1:float, x2: float, y2:float, x3:
 	_quad.points[2] = Vector2(x2, y2)
 	_quad.points[3] = Vector2(x3, y3)
 	graphics.bind_texture(_texture)
-	graphics.set_blend_mode(_blend_mode)
 	graphics.render_quad(_quad)
 
 
@@ -254,5 +251,4 @@ func render_4vc(x0:float, y0:float, x1:float, y1:float, x2: float, y2:float, x3:
 	_quad.points[2] = Vector2(x2, y2)
 	_quad.points[3] = Vector2(x3, y3)
 	graphics.bind_texture(_texture)
-	graphics.set_blend_mode(_blend_mode)
 	graphics.render_quad(_quad)
