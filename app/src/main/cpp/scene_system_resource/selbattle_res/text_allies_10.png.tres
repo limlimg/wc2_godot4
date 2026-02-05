@@ -1,0 +1,26 @@
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" load_steps=7 format=3 uid="uid://c7aj8hr6tccg2"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_28bgc"]
+[ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/texture_res.tres" id="2_l2253"]
+[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_fjxdj"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_waq4i"]
+
+[sub_resource type="Resource" id="Resource_o44er"]
+script = ExtResource("1_28bgc")
+name = "text_allies_10.png"
+name_ipad = ""
+name_640h = ""
+name_568h = ""
+name_534h = ""
+name_512h = ""
+
+[sub_resource type="Resource" id="Resource_7a4qi"]
+script = ExtResource("3_fjxdj")
+name = SubResource("Resource_o44er")
+res = ExtResource("2_l2253")
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_waq4i")
+preset = SubResource("Resource_7a4qi")

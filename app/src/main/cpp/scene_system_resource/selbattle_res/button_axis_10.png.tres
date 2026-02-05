@@ -1,0 +1,26 @@
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" load_steps=7 format=3 uid="uid://cq0vpfvuvrm2y"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_2bqyc"]
+[ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/texture_res.tres" id="2_icty4"]
+[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_qtl64"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_laumh"]
+
+[sub_resource type="Resource" id="Resource_6bews"]
+script = ExtResource("1_2bqyc")
+name = "button_axis_10.png"
+name_ipad = ""
+name_640h = ""
+name_568h = ""
+name_534h = ""
+name_512h = ""
+
+[sub_resource type="Resource" id="Resource_ctdjm"]
+script = ExtResource("3_qtl64")
+name = SubResource("Resource_6bews")
+res = ExtResource("2_icty4")
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_laumh")
+preset = SubResource("Resource_ctdjm")

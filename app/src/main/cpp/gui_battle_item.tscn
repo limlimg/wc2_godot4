@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch2b3x5003vtt"]
+
+[ext_resource type="Script" uid="uid://clxocy78xg4t4" path="res://app/src/main/cpp/gui_battle_item.gd" id="1_2poha"]
+
+[node name="GUIBattleItem" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2poha")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

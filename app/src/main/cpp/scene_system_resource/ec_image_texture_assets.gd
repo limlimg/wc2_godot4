@@ -19,4 +19,8 @@ var preset: _ecImageAssets:
 func _assets_changed() -> void:
 	texture = null
 	if preset != null:
-		set_ec_image_attr(preset.get_image())
+		set_ec_image_attr(get_image_attr())
+
+
+func get_image_attr() -> _ecImageAttr:
+	return preset.get_image()
