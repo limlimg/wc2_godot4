@@ -1,0 +1,26 @@
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" load_steps=7 format=3 uid="uid://fmdi35saanvh"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_cyac8"]
+[ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/texture_res.tres" id="2_0syfd"]
+[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_lg3sw"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_khkir"]
+
+[sub_resource type="Resource" id="Resource_83psb"]
+script = ExtResource("1_cyac8")
+name = "text_axis_01.png"
+name_ipad = ""
+name_640h = ""
+name_568h = ""
+name_534h = ""
+name_512h = ""
+
+[sub_resource type="Resource" id="Resource_j211h"]
+script = ExtResource("3_lg3sw")
+name = SubResource("Resource_83psb")
+res = ExtResource("2_0syfd")
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_khkir")
+preset = SubResource("Resource_j211h")
