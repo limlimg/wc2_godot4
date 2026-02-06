@@ -40,8 +40,13 @@ func get_image() -> _ecImageAttr:
 			if not selected_path.is_empty():
 				image = _ecImageAttr.new()
 				image.texture = _native.ec_texture_load(selected_path)
-				image.texture.size_override = image.texture.texture.get_size() / 2.0
+				image.texture.w = image.texture.texture.get_width() / 2.0
+				image.texture.h = image.texture.texture.get_height() / 2.0
 	if image != null:
-		image.region = Rect2(Vector2.ZERO, image.texture.size_override)
-		image.ref = Vector2.ZERO
+		image.x = 0.0
+		image.y = 0.0
+		image.w = image.texture.w
+		image.h = image.texture.h
+		image.refx = 0.0
+		image.refy = 0.0
 	return image

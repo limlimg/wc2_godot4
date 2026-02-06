@@ -432,9 +432,11 @@ static func ec_texture_load(texture_name: String) -> _ecTexture:
 	var ec_texture := _ecTexture.new()
 	ec_texture.texture = texture
 	if is_2x:
-		ec_texture.size_override = texture.get_size() / 2.0
+		ec_texture.w = texture.get_width() / 2.0
+		ec_texture.h = texture.get_height() / 2.0
 	else:
-		ec_texture.size_override = texture.get_size()
+		ec_texture.w = texture.get_width()
+		ec_texture.h = texture.get_height()
 	return ec_texture
 
 

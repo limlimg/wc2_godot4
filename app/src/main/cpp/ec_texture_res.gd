@@ -40,7 +40,8 @@ func load_res(file_name: String, hd: bool) -> bool:
 		push_error("Failed to load {0}".format([res.texture_name]))
 		return false
 	if hd and texture.res_scale == 1.0:
-		texture.size_override /= 2.0
+		texture.w /= 2.0
+		texture.h /= 2.0
 		texture.res_scale = 2.0
 	for k in res.images.keys():
 		var image := res.images[k]
@@ -117,8 +118,12 @@ func _create_image_texture_name(image_name: StringName, texture_name: String, x:
 		return null
 	image = _ecImageAttr.new()
 	image.texture = texture
-	image.region = Rect2(x, y, w, h)
-	image.ref = Vector2(refx, refy)
+	image.x = x
+	image.y = y
+	image.w = w
+	image.h = h
+	image.refx = refx
+	image.refy = refy
 	_images[image_name] = image
 	return image
 
@@ -130,8 +135,12 @@ func _create_image_texture(image_name: StringName, texture: _ecTexture, x: float
 		return image
 	image = _ecImageAttr.new()
 	image.texture = texture
-	image.region = Rect2(x, y, w, h)
-	image.ref = Vector2(refx, refy)
+	image.x = x
+	image.y = y
+	image.w = w
+	image.h = h
+	image.refx = refx
+	image.refy = refy
 	_images[image_name] = image
 	return image
 

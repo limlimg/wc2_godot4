@@ -107,8 +107,8 @@ static func from_ec_image_attr(attr: _ecImageAttr) -> _ecImageTexture:
 func set_ec_image_attr(attr: _ecImageAttr) -> void:
 	if attr != null:
 		texture = attr.texture.texture
-		texture_scale = attr.texture.texture.get_size() / attr.texture.size_override
-		region = attr.region
-		ref = attr.ref
+		texture_scale = attr.texture.texture.get_size() / Vector2(attr.texture.w, attr.texture.h) 
+		region = Rect2(attr.x, attr.y, attr.w, attr.h)
+		ref = Vector2(attr.refx, attr.refy)
 	else:
 		texture = null
