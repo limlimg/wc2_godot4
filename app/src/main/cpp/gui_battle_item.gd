@@ -28,12 +28,14 @@ var campaign: int:
 			campaign = value
 			init()
 
+
 @export
 var battle: int:
 	set(value):
 		if value != battle:
 			battle = value
 			init()
+
 
 @export
 var locked: bool:
@@ -42,6 +44,7 @@ var locked: bool:
 			locked = value
 			init()
 
+
 @export
 var star: int:
 	set(value):
@@ -49,12 +52,23 @@ var star: int:
 			star = value
 			init()
 
+
+var enable: bool:
+	get():
+		return not $MarginContainer/Control/Button.disabled
+	set(value):
+		$MarginContainer/Control/Button.disabled = not value
+
+
 var _button_image: _ecImage
 var _text_image: _ecImage
 var _star_image: _ecImage
 var _down: bool
 var _selected: bool:
 	set = set_selected
+
+@onready
+var button := $MarginContainer/Control/Button
 
 signal pressed(item: _GUIBattleItem)
 
@@ -96,23 +110,28 @@ func init() -> void:
 	else:
 		res = load(_RESOURCE_PATH + "small_rankstar.png.tres")
 		_star_image = _ecImage.new(res.get_image_attr())
-	queue_redraw()
+	button.queue_redraw()
 
 
 func set_selected(value: bool) -> void:
 	if value != _selected:
 		_selected = value
-		queue_redraw()
+		var ref := $SelectedOffset
+		if value:
+			button.position = ref.position - ref.size
+		else:
+			button.position = ref.position
+		button.queue_redraw()
 
 
 func _on_button_button_down() -> void:
 	_down = true
-	queue_redraw()
+	button.queue_redraw()
 
 
 func _on_button_button_up() -> void:
 	_down = false
-	queue_redraw()
+	button.queue_redraw()
 
 
 func _on_button_pressed() -> void:
@@ -120,11 +139,11 @@ func _on_button_pressed() -> void:
 	pressed.emit(self)
 
 
-func _draw() -> void:
+func _on_render() -> void:
 	if _button_image == null:
 		return
 	var graphics := _ecGraphics.instance()
-	graphics.render_begin(self)
+	graphics.render_begin(button)
 	var color := Color(1.0, 0.824, 0.824, 0.816)
 	if not locked and not _down:
 		color = Color.WHITE
