@@ -11,7 +11,11 @@ extends Control
 ## a Control node and should cover the area of the actual receiver.
 
 @export
+## per frame
 var accleration := -150.0
+
+@export
+var deadzone := 10.0
 
 var _speed := 0.0
 var _speed_cos: float
@@ -20,12 +24,14 @@ var _touching := false
 var _touch_index := 0
 var _track_point: PackedFloat32Array
 var _touch_time: float
+var _touch_moved := false
 
 signal touch_began(position: Vector2)
 signal touch_moved(relative: Vector2)
-signal touch_ended(position: Vector2)
+signal touch_ended(position: Vector2, moved: bool)
+signal inertia_ended()
 
-func _input(event: InputEvent) -> void:
+func _gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			if _touch_begin(event.position.x, event.position.y, event.index):
@@ -33,7 +39,7 @@ func _input(event: InputEvent) -> void:
 				accept_event()
 		else:
 			if _touch_end(event.position.x, event.position.y, event.index):
-				touch_ended.emit(event.position)
+				touch_ended.emit(event.position, _touch_moved)
 				accept_event()
 	elif event is InputEventScreenDrag:
 		if _touch_move(event.position.x, event.position.y, event.index):
@@ -48,6 +54,7 @@ func _touch_begin(x: float, y: float, index: int) -> bool:
 	_track_point.clear()
 	_touching = true
 	_touch_time = 0.0
+	_touch_moved = false
 	_add_track_point(x, y)
 	set_physics_process(true)
 	return true
@@ -69,6 +76,9 @@ func _add_track_point(x: float, y: float) -> void:
 func _touch_move(x: float, y: float, index: int) -> bool:
 	if not _touching or index != _touch_index:
 		return false
+	var start_point = _get_start_point()
+	if absf(x - start_point[0]) > deadzone or absf(y - start_point[1]) > deadzone:
+		_touch_moved = true
 	_add_track_point(x, y)
 	return true
 
@@ -109,11 +119,12 @@ func _update(delta: float) -> void:
 	if _touching:
 		_touch_time += delta
 	elif _speed > 0.0:
-		_speed += accleration * delta
+		_speed += accleration
 		if _speed > 0.0:
 			touch_moved.emit(_get_speed() * delta)
 		else:
 			_speed = 0.0
+			inertia_ended.emit()
 			set_physics_process(false)
 
 
