@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dilpumc03hfp0"]
+
+[ext_resource type="Script" uid="uid://bj88gkbpgi1jq" path="res://app/src/main/cpp/gui_battle_list.gd" id="1_scs3j"]
+[ext_resource type="PackedScene" uid="uid://dchd7a0cd1asv" path="res://app/src/main/cpp/c_touch_inertia.tscn" id="2_r5cn7"]
+
+[node name="GUIBattleList" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_scs3j")
+
+[node name="CTouchInertia" parent="." instance=ExtResource("2_r5cn7")]
+layout_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CTouchInertia"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CTouchInertia/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="inertia_ended" from="CTouchInertia" to="." method="_on_c_touch_inertia_inertia_ended"]
+[connection signal="touch_began" from="CTouchInertia" to="." method="_on_c_touch_inertia_touch_began"]
+[connection signal="touch_ended" from="CTouchInertia" to="." method="_on_c_touch_inertia_touch_ended"]
+[connection signal="touch_moved" from="CTouchInertia" to="." method="_on_c_touch_inertia_touch_moved"]
