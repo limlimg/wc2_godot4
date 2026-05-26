@@ -40,8 +40,9 @@ func _init_list() -> void:
 	var played_battles := num_battles
 	if num_battles != CAMPIAGN_MULTIPLAY:
 		played_battles = g_Commander.get_num_played_battles(campaign)
+	var item_scene = load("res://app/src/main/cpp/gui_battle_item.tscn")
 	for i in num_battles:
-		var item := _GUIBattleItem.SCENE.instantiate()
+		var item := item_scene.instantiate() as _GUIBattleItem
 		container.add_child(item)
 		item.battle = i
 		item.star = g_Commander.get_num_battle_stars(campaign, i)
