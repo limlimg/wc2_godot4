@@ -1,7 +1,7 @@
-[gd_resource type="Theme" script_class="ecUniFontAssets" load_steps=5 format=3 uid="uid://cwbjbqps0wawf"]
+[gd_resource type="Theme" script_class="ecUniFontAssets" format=3 uid="uid://cwbjbqps0wawf"]
 
 [ext_resource type="Script" uid="uid://bbkwpdgd20wlc" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size_hd.gd" id="1_8dl4m"]
-[ext_resource type="FontFile" path="res://num1.fnt" id="2_3wq21"]
+[ext_resource type="FontFile" path="res://num1_hd.fnt" id="2_3wq21"]
 [ext_resource type="Script" uid="uid://dynr8tgq0gv3y" path="res://app/src/main/cpp/scene_system_resource/ec_uni_font_assets.gd" id="2_ql473"]
 
 [sub_resource type="Resource" id="Resource_3wq21"]
@@ -9,15 +9,6 @@ script = ExtResource("1_8dl4m")
 name = "num1.fnt"
 name_hd = "num1_hd.fnt"
 name_ipad = "num1_hd.fnt"
-name_ipad_hd = ""
-name_640h = ""
-name_640hd = ""
-name_568h = ""
-name_568hd = ""
-name_534h = ""
-name_534hd = ""
-name_512h = ""
-name_512hd = ""
 metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
 
 [resource]
