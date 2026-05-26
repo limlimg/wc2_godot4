@@ -43,8 +43,8 @@ func init_texture_xywh(texture: _ecTexture, x: float, y: float, w: float, h: flo
 		_texture_h = 1.0
 	else:
 		_texture = texture
-		_texture_w = texture.size_override.x
-		_texture_h = texture.size_override.y
+		_texture_w = texture.w
+		_texture_h = texture.h
 	_x = x
 	_y = y
 	_w = w
