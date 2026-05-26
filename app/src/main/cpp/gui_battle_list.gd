@@ -15,7 +15,8 @@ var campaign: int:
 	set(value):
 		if value != campaign:
 			campaign = value
-			_init_list()
+			if is_node_ready():
+				init()
 
 
 var _selected_item := -1
@@ -28,10 +29,10 @@ var _scroll := $CTouchInertia/ScrollContainer as ScrollContainer
 var _list := $CTouchInertia/ScrollContainer/VBoxContainer as VBoxContainer
 
 func _ready() -> void:
-	_init_list()
+	init()
 
 
-func _init_list() -> void:
+func init() -> void:
 	var container := _list
 	for c in container.get_children():
 		container.remove_child(c)
