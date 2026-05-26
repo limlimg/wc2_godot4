@@ -26,7 +26,8 @@ var campaign: int:
 	set(value):
 		if value != campaign:
 			campaign = value
-			init()
+			if is_node_ready():
+				init()
 
 
 @export
@@ -34,7 +35,8 @@ var battle: int:
 	set(value):
 		if value != battle:
 			battle = value
-			init()
+			if is_node_ready():
+				init()
 
 
 @export
@@ -42,7 +44,8 @@ var locked: bool:
 	set(value):
 		if value != locked:
 			locked = value
-			init()
+			if is_node_ready():
+				init()
 
 
 @export
@@ -50,7 +53,8 @@ var star: int:
 	set(value):
 		if value != star:
 			star = value
-			init()
+			if is_node_ready():
+				init()
 
 
 var enable: bool:
@@ -60,12 +64,15 @@ var enable: bool:
 		$MarginContainer/Control/Button.disabled = not value
 
 
+@export
+var selected: bool:
+	set = set_selected
+
+
 var _button_image: _ecImage
 var _text_image: _ecImage
 var _star_image: _ecImage
 var _down: bool
-var _selected: bool:
-	set = set_selected
 
 @onready
 var button := $MarginContainer/Control/Button
@@ -74,6 +81,8 @@ signal pressed(item: _GUIBattleItem)
 
 func _ready() -> void:
 	init()
+	_move_button()
+	$SelectedOffset.resized.connect(_move_button)
 
 
 func init() -> void:
@@ -113,15 +122,20 @@ func init() -> void:
 	button.queue_redraw()
 
 
+func _move_button() -> void:
+	var ref := $SelectedOffset
+	if selected:
+		button.position = ref.position - ref.size
+	else:
+		button.position = ref.position
+
+
 func set_selected(value: bool) -> void:
-	if value != _selected:
-		_selected = value
-		var ref := $SelectedOffset
-		if value:
-			button.position = ref.position - ref.size
-		else:
-			button.position = ref.position
-		button.queue_redraw()
+	if value != selected:
+		selected = value
+		if is_node_ready():
+			_move_button()
+			button.queue_redraw()
 
 
 func _on_button_button_down() -> void:
@@ -150,7 +164,7 @@ func _on_render() -> void:
 	_button_image.set_color(color, -1)
 	if _text_image != null:
 		_text_image.set_color(color, -1)
-	if _selected:
+	if selected:
 		_button_image.render_ex(0.0, -size.y * 0.075, 0.0, 1.15, 0.0)
 		if _text_image != null and not locked:
 			_text_image.render_ex(0.0, size.y * 0.5, 0.0, 1.15, 0.0)

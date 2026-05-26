@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch2b3x5003vtt"]
+[gd_scene format=3 uid="uid://ch2b3x5003vtt"]
 
 [ext_resource type="Script" uid="uid://clxocy78xg4t4" path="res://app/src/main/cpp/gui_battle_item.gd" id="1_2poha"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_2mf3m"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mf3m"]
 
-[node name="GUIBattleItem" type="MarginContainer"]
+[node name="GUIBattleItem" type="MarginContainer" unique_id=1471834346]
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 1.0
@@ -13,32 +13,32 @@ offset_bottom = 46.0
 grow_horizontal = 2
 script = ExtResource("1_2poha")
 
-[node name="Minimum Height" parent="." instance=ExtResource("2_2mf3m")]
+[node name="Minimum Height" parent="." unique_id=1766981685 instance=ExtResource("2_2mf3m")]
 layout_mode = 2
 size_flags_vertical = 0
 rect_ipad = Rect2(0, 0, 0, 90)
 rect = Rect2(0, 0, 0, 45)
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=675035413]
 layout_mode = 2
 size_flags_stretch_ratio = 20.0
 mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2063213428]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Minimum Height" parent="MarginContainer" instance=ExtResource("2_2mf3m")]
+[node name="Minimum Height" parent="MarginContainer" unique_id=1666821508 instance=ExtResource("2_2mf3m")]
 layout_mode = 2
 size_flags_vertical = 0
 rect_ipad = Rect2(0, 0, 0, 80)
 rect = Rect2(0, 0, 0, 40)
 
-[node name="Control" type="Control" parent="MarginContainer"]
+[node name="Control" type="Control" parent="MarginContainer" unique_id=1745526202]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="MarginContainer/Control"]
+[node name="Button" type="Button" parent="MarginContainer/Control" unique_id=1812914262]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -49,7 +49,7 @@ mouse_filter = 1
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2mf3m")
 flat = true
 
-[node name="SelectedOffset" parent="." instance=ExtResource("2_2mf3m")]
+[node name="SelectedOffset" parent="." unique_id=568897213 instance=ExtResource("2_2mf3m")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
