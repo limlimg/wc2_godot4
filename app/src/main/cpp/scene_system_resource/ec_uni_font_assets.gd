@@ -11,8 +11,9 @@ var asset_names: _AssetNamesContentSizeHd:
 			if asset_names != null:
 				asset_names.changed.disconnect(_assets_changed)
 			asset_names = value
-			# Effect of the change must be deferred because otherwise it may be undone by ResourceLoader
-			call_deferred(&"_assets_changed")
+			_assets_changed()
+			if asset_names != null:
+				asset_names.changed.connect(_assets_changed)
 
 
 func _assets_changed() -> void:
@@ -25,5 +26,3 @@ func _assets_changed() -> void:
 		if not name.is_empty():
 			init(name, false)
 	emit_changed()
-	if asset_names != null:
-		asset_names.changed.connect(_assets_changed)
