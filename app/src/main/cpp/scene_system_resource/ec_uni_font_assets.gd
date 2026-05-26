@@ -20,9 +20,10 @@ func _assets_changed() -> void:
 	var name_hd := asset_names.get_hd_name()
 	if not name_hd.is_empty():
 		init(name_hd, true)
-	var name := asset_names.get_effective_name()
-	if not name.is_empty():
-		init(name, false)
+	else:
+		var name := asset_names.get_effective_name()
+		if not name.is_empty():
+			init(name, false)
 	emit_changed()
 	if asset_names != null:
 		asset_names.changed.connect(_assets_changed)
