@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c6nu4hf6wxn4k" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_load.png.tres" id="20_px05v"]
 [ext_resource type="Texture2D" uid="uid://ii180356lfg4" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/m_buttontext_load_press.png.tres" id="21_a7s8b"]
 [ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back.png.tres" id="23_5je08"]
-[ext_resource type="Texture2D" uid="uid://dcxrp3ba6cb43" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/blue.png.tres" id="24_fcluo"]
+[ext_resource type="Texture2D" uid="uid://ba50ns7my7rdn" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/blue.png.tres" id="24_md641"]
 [ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back_press.png.tres" id="24_uhbjd"]
 [ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttonboard_gray.png.tres" id="25_b5gij"]
 [ext_resource type="Texture2D" uid="uid://bv6m5tuoibveb" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_global.png.tres" id="26_51blv"]
@@ -317,7 +317,7 @@ rect = Rect2(0, -8, 64, 32)
 layout_mode = 2
 texture_normal = ExtResource("20_px05v")
 texture_pressed = ExtResource("21_a7s8b")
-texture_background = ExtResource("24_fcluo")
+texture_background = ExtResource("24_md641")
 
 [node name="ButtonBack" parent="SelCampaigns" instance=ExtResource("3_kov84")]
 layout_mode = 1
@@ -605,7 +605,7 @@ rect = Rect2(0, -8, 64, 32)
 layout_mode = 2
 texture_normal = ExtResource("20_px05v")
 texture_pressed = ExtResource("21_a7s8b")
-texture_background = ExtResource("24_fcluo")
+texture_background = ExtResource("24_md641")
 
 [node name="ButtonBack" parent="SelConquest" instance=ExtResource("3_kov84")]
 layout_mode = 1

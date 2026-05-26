@@ -1,9 +1,8 @@
-extends Control
+extends "res://app/src/main/cpp/gui_element.gd"
 
 const _GUIManager = preload("res://app/src/main/cpp/gui_manager.gd")
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
-const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 
 var _button_moving := 0
 
