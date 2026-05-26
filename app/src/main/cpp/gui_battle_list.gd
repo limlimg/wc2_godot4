@@ -79,6 +79,7 @@ func _on_c_touch_inertia_touch_began(_position: Vector2) -> void:
 
 func _on_c_touch_inertia_touch_ended(pos: Vector2, moved: bool) -> void:
 	if not moved:
+		pos = get_global_transform() * pos
 		var sel_item := _gel_sel_item(pos.x, pos.y)
 		if sel_item >= 0 and sel_item != _selected_item:
 			_reset_select()
