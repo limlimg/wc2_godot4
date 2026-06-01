@@ -28,6 +28,8 @@ var _scroll := $CTouchInertia/ScrollContainer as ScrollContainer
 @onready
 var _list := $CTouchInertia/ScrollContainer/VBoxContainer as VBoxContainer
 
+signal battle_selected(battle: int)
+
 func _ready() -> void:
 	init()
 
@@ -62,6 +64,7 @@ func set_select(index: int) -> void:
 	_selected_item = index
 	_list.get_children()[index].set_selected(true)
 	_list.get_children()[index].z_index = 1
+	battle_selected.emit(index)
 
 
 func select_last_unlocked() -> void:
