@@ -5,13 +5,15 @@ const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
 const _ecImage = preload("res://app/src/main/cpp/ec_image.gd")
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _GUIBattleList = preload("res://app/src/main/cpp/gui_battle_list.gd")
+const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
+const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 
-
+const _RES_PATH = "res://app/src/main/cpp/scene_system_resource/selbattle_res/"
 const _CAMPAIGN_LOGO = [
-	"res://app/src/main/cpp/scene_system_resource/selbattle_res/logo_axis.png.tres",
-	"res://app/src/main/cpp/scene_system_resource/selbattle_res/logo_allies.png.tres",
-	"res://app/src/main/cpp/scene_system_resource/selbattle_res/logo_wto.png.tres",
-	"res://app/src/main/cpp/scene_system_resource/selbattle_res/logo_nato.png.tres"
+	_RES_PATH + "logo_axis.png.tres",
+	_RES_PATH + "logo_allies.png.tres",
+	_RES_PATH + "logo_wto.png.tres",
+	_RES_PATH + "logo_nato.png.tres"
 ]
 
 @export
@@ -24,26 +26,92 @@ var game_mode: int:
 @export
 var campaign: int:
 	get():
-		return $GUIBattleList/GUIBattleList.campaign
+		return _battle_list.campaign
 	set(value):
 		if value != campaign:
-			$GUIBattleList/GUIBattleList.campaign = value
+			_battle_list.campaign = value
 			if is_node_ready():
 				init()
 
+
+var _battle := -1
+var _center_pos: Vector2
+@onready var _battle_list := $GUIBattleList/GUIBattleList
+@onready var _flag_proto := $Minimap/Elements/Flags/Flag
+@onready var _arrow_proto := $Minimap/Elements/Arrows/Arrow
 
 func _ready() -> void:
 	init()
 
 
 func init() -> void:
+	if _ecGraphics.instance().content_scale_size_mode == 3:
+		$Minimap.scale = Vector2(2.0, 2.0)
+		_flag_proto.scale = Vector2(0.5, 0.5)
+		_arrow_proto.scale = Vector2(0.5, 0.5)
+		$Minimap/Elements/CenterContainer.scale = Vector2(0.5, 0.5)
 	var logo: Texture2D = null
 	if campaign < _CAMPAIGN_LOGO.size():
 		logo = load(_CAMPAIGN_LOGO[campaign]) as Texture2D
 	$Logo/TextureRect.texture = logo
-	_GUIElement.s_texture_res = load("res://app/src/main/cpp/scene_system_resource/selbattle_res/texture_res.tres").get_res()
-	var _list := $GUIBattleList/GUIBattleList as _GUIBattleList
+	s_texture_res = load("res://app/src/main/cpp/scene_system_resource/selbattle_res/texture_res.tres").get_res()
 	if game_mode != 4 and g_Commander.get_num_played_battles(campaign) < _native.get_num_battles(campaign):
-		_list.select_last_unlocked()
+		_battle_list.select_last_unlocked()
 	else:
-		_list.set_select(0)
+		_battle_list.set_select(0)
+
+
+func _on_gui_battle_list_battle_selected(battle: int) -> void:
+	if _battle < 0:
+		_sel_battle(campaign, battle)
+
+
+func _sel_battle(sel_campaign: int, battle: int) -> void:
+	_release_image_list()
+	_load_image_list(sel_campaign, battle)
+
+
+func _release_image_list() -> void:
+	_clear_element_nodes($Minimap/Elements/Flags, _flag_proto)
+	_clear_element_nodes($Minimap/Elements/Arrows, _arrow_proto)
+
+
+func _clear_element_nodes(parent: Node, keep: Node) -> void:
+	parent.remove_child(keep)
+	for i in parent.get_children():
+		parent.remove_child(i)
+		i.queue_free()
+	parent.add_child(keep)
+
+
+func _load_image_list(sel_campaign: int, battle: int) -> void:
+	var key := _native.get_battle_key_name(sel_campaign, battle)
+	var def := _CObjectDef.instance().get_battle_def(key)
+	if def == null:
+		return
+	_create_element_nodes(def.flag, "sflag_", _flag_proto)
+	_create_element_nodes(def.arrow, "maparrow_", $Minimap/Elements/Arrows/Arrow)
+	$Minimap/Elements/CenterContainer/Label.text = def.age
+	$Minimap/Elements/CenterContainer.position = Vector2(def.agex, def.agey)
+	_center_pos = Vector2(def.centerx, def.centery)
+
+
+func _create_element_nodes(data: Array[FlagInfo], image_prefix: String, prototype: Sprite2D) -> void:
+	for i in data:
+		var image_name := image_prefix + i.name + ".png"
+		var image_attr := s_texture_res.get_image(image_name)
+		if image_attr == null:
+			continue
+		var image_path := _RES_PATH + image_name
+		var image: _ecImageTexture
+		if not ResourceLoader.has_cached(image_path):
+			image = _ecImageTexture.from_ec_image_attr(image_attr)
+			image.take_over_path(image_path)
+		else:
+			image = load(image_path)
+		var node: Sprite2D = prototype.duplicate()
+		node.texture = image
+		node.position = Vector2(i.x, i.y)
+		node.rotation = i.rot
+		node.scale *= i.scale
+		prototype.add_sibling(node)

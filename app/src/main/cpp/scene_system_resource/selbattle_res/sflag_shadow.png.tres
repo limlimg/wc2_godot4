@@ -1,4 +1,4 @@
-[gd_resource type="Texture2D" script_class="ecImageTextureAssets" load_steps=7 format=3 uid="uid://cd2xlypbsgglm"]
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://cd2xlypbsgglm"]
 
 [ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_v0skf"]
 [ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/texture_res.tres" id="2_kt105"]
@@ -8,11 +8,6 @@
 [sub_resource type="Resource" id="Resource_v0skf"]
 script = ExtResource("1_v0skf")
 name = "sflag_shadow.png"
-name_ipad = ""
-name_640h = ""
-name_568h = ""
-name_534h = ""
-name_512h = ""
 metadata/_custom_type_script = "uid://wmgv5whydq62"
 
 [sub_resource type="Resource" id="Resource_fkjlg"]

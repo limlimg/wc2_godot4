@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dkxjlqu0cnvq1" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_6.pkm.tres" id="8_3d3pv"]
 [ext_resource type="Texture2D" uid="uid://c3ti4j1qeff4t" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_7.pkm.tres" id="9_qjoee"]
 [ext_resource type="Texture2D" uid="uid://dnbbn81qmkd3b" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_8.pkm.tres" id="10_1kakj"]
+[ext_resource type="Texture2D" uid="uid://cd2xlypbsgglm" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/sflag_shadow.png.tres" id="11_w68dy"]
 [ext_resource type="Theme" uid="uid://l3oxkticxpdd" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/num6.tres" id="11_xpbc6"]
 [ext_resource type="Texture2D" uid="uid://cmvqgf8do8n86" path="res://app/src/main/cpp/scene_system_resource/texture/board_selbattle.tres" id="12_hb1pb"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="12_o5ukl"]
@@ -34,186 +35,174 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_22hmj")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=305631258]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Minimap" type="Control" parent="HBoxContainer" unique_id=7959550]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="GUIRect" parent="HBoxContainer/Minimap" unique_id=148555810 instance=ExtResource("1_yq104")]
-layout_mode = 0
+[node name="Minimap" type="Control" parent="." unique_id=7959550]
+clip_contents = true
 anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
 offset_right = 1715.0
 offset_bottom = 750.0
-grow_horizontal = 1
-grow_vertical = 1
-rect_ipad = Rect2(0, 0, 3430, 1500)
-rect = Rect2(0, 0, 1715, 750)
-
-[node name="Control" type="Control" parent="HBoxContainer/Minimap/GUIRect" unique_id=332070686]
-clip_contents = true
-layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Minimap" parent="HBoxContainer/Minimap/GUIRect/Control" unique_id=1055713110 instance=ExtResource("1_yq104")]
+[node name="Background" parent="Minimap" unique_id=1055713110 instance=ExtResource("1_yq104")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 2000.0
-offset_bottom = 1000.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 1994.0
+offset_bottom = 994.0
 grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(0, 0, 4000, 2000)
 rect = Rect2(0, 0, 2000, 1000)
 
-[node name="GridContainer" type="GridContainer" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap" unique_id=949496619]
+[node name="GridContainer" type="GridContainer" parent="Minimap/Background" unique_id=949496619]
 layout_mode = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 4
 
-[node name="GUIRect" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer" unique_id=589814550 instance=ExtResource("1_yq104")]
+[node name="MiniMap1" type="Control" parent="Minimap/Background/GridContainer" unique_id=1565078383]
 clip_contents = true
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-rect_ipad = Rect2(-12, -12, 0, 0)
-rect = Rect2(-6, -6, 0, 0)
 
-[node name="Minimap1" type="TextureRect" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer/GUIRect" unique_id=1049856453]
-layout_mode = 2
+[node name="Minimap1" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap1" unique_id=1049856453]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("3_73w7g")
-stretch_mode = 2
+expand_mode = 1
 
-[node name="GUIRect2" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer" unique_id=328827549 instance=ExtResource("1_yq104")]
+[node name="MiniMap2" type="Control" parent="Minimap/Background/GridContainer" unique_id=1562754531]
 clip_contents = true
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-rect_ipad = Rect2(-12, -12, 0, 0)
-rect = Rect2(-6, -6, 0, 0)
 
-[node name="Minimap2" type="TextureRect" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer/GUIRect2" unique_id=1755205146]
-layout_mode = 2
+[node name="Minimap2" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap2" unique_id=1755205146]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("4_xpbc6")
-stretch_mode = 2
+expand_mode = 1
 
-[node name="GUIRect3" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer" unique_id=2004508132 instance=ExtResource("1_yq104")]
+[node name="MiniMap3" type="Control" parent="Minimap/Background/GridContainer" unique_id=328019580]
 clip_contents = true
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-rect_ipad = Rect2(-12, -12, 0, 0)
-rect = Rect2(-6, -6, 0, 0)
 
-[node name="Minimap3" type="TextureRect" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer/GUIRect3" unique_id=788945221]
-layout_mode = 2
+[node name="Minimap3" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap3" unique_id=788945221]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("5_u4ky1")
-stretch_mode = 2
+expand_mode = 1
 
-[node name="GUIRect4" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer" unique_id=1755980330 instance=ExtResource("1_yq104")]
+[node name="MiniMap4" type="Control" parent="Minimap/Background/GridContainer" unique_id=1209178636]
 clip_contents = true
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-rect_ipad = Rect2(-12, -12, 0, 0)
-rect = Rect2(-6, -6, 0, 0)
 
-[node name="Minimap4" type="TextureRect" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer/GUIRect4" unique_id=1058084240]
-layout_mode = 2
+[node name="Minimap4" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap4" unique_id=1058084240]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("6_kcsg8")
-stretch_mode = 2
+expand_mode = 1
 
-[node name="GUIRect5" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer" unique_id=1460160472 instance=ExtResource("1_yq104")]
+[node name="MiniMap5" type="Control" parent="Minimap/Background/GridContainer" unique_id=1589693801]
 clip_contents = true
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-rect_ipad = Rect2(-12, -12, 0, 0)
-rect = Rect2(-6, -6, 0, 0)
 
-[node name="Minimap5" type="TextureRect" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer/GUIRect5" unique_id=584644764]
-layout_mode = 2
+[node name="Minimap5" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap5" unique_id=584644764]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("7_7j2ys")
-stretch_mode = 2
+expand_mode = 1
 
-[node name="GUIRect6" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer" unique_id=904333181 instance=ExtResource("1_yq104")]
+[node name="MiniMap6" type="Control" parent="Minimap/Background/GridContainer" unique_id=1522309563]
 clip_contents = true
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-rect_ipad = Rect2(-12, -12, 0, 0)
-rect = Rect2(-6, -6, 0, 0)
 
-[node name="Minimap6" type="TextureRect" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer/GUIRect6" unique_id=1492552840]
-layout_mode = 2
+[node name="Minimap6" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap6" unique_id=1492552840]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("8_3d3pv")
-stretch_mode = 2
+expand_mode = 1
 
-[node name="GUIRect7" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer" unique_id=379740237 instance=ExtResource("1_yq104")]
+[node name="MiniMap7" type="Control" parent="Minimap/Background/GridContainer" unique_id=1541080993]
 clip_contents = true
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-rect_ipad = Rect2(-12, -12, 0, 0)
-rect = Rect2(-6, -6, 0, 0)
 
-[node name="Minimap7" type="TextureRect" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer/GUIRect7" unique_id=369328162]
-layout_mode = 2
+[node name="Minimap7" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap7" unique_id=369328162]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("9_qjoee")
-stretch_mode = 2
+expand_mode = 1
 
-[node name="GUIRect8" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer" unique_id=1285344962 instance=ExtResource("1_yq104")]
+[node name="MiniMap8" type="Control" parent="Minimap/Background/GridContainer" unique_id=166602341]
 clip_contents = true
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-rect_ipad = Rect2(-12, -12, 0, 0)
-rect = Rect2(-6, -6, 0, 0)
 
-[node name="Minimap8" type="TextureRect" parent="HBoxContainer/Minimap/GUIRect/Control/Minimap/GridContainer/GUIRect8" unique_id=1669747958]
-layout_mode = 2
+[node name="Minimap8" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap8" unique_id=1669747958]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("10_1kakj")
-stretch_mode = 2
+expand_mode = 1
 
-[node name="Fade" type="Node2D" parent="HBoxContainer/Minimap/GUIRect/Control" unique_id=411524443]
+[node name="Elements" type="Node2D" parent="Minimap" unique_id=700036717]
 
-[node name="FlagShadow" type="Node2D" parent="HBoxContainer/Minimap/GUIRect/Control/Fade" unique_id=1871040764]
+[node name="Flags" type="Node2D" parent="Minimap/Elements" unique_id=411524443]
 
-[node name="Flag" type="Node2D" parent="HBoxContainer/Minimap/GUIRect/Control/Fade" unique_id=1706865198]
+[node name="Flag" type="Sprite2D" parent="Minimap/Elements/Flags" unique_id=844193794]
+editor_description = "As a prototype for dynamic flags"
+position = Vector2(-128, -128)
+centered = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer/Minimap/GUIRect/Control/Fade" unique_id=19010]
-z_index = 1
-offset_right = 393.0
+[node name="Shadow" type="Sprite2D" parent="Minimap/Elements/Flags/Flag" unique_id=1502195114]
+show_behind_parent = true
+texture = ExtResource("11_w68dy")
+centered = false
+
+[node name="Arrows" type="Node2D" parent="Minimap/Elements" unique_id=1570712730]
+
+[node name="Arrow" type="Sprite2D" parent="Minimap/Elements/Arrows" unique_id=2096712091]
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="Minimap/Elements" unique_id=364721976]
+offset_right = 40.0
 offset_bottom = 40.0
-theme = ExtResource("11_xpbc6")
+use_top_left = true
 
-[node name="Arrow" type="Node2D" parent="HBoxContainer/Minimap/GUIRect/Control" unique_id=1570712730]
+[node name="Label" type="Label" parent="Minimap/Elements/CenterContainer" unique_id=501752094]
+z_index = 1
+layout_mode = 2
+theme = ExtResource("11_xpbc6")
+horizontal_alignment = 3
 
 [node name="Logo" parent="." unique_id=533378508 instance=ExtResource("1_yq104")]
 layout_mode = 1
@@ -327,3 +316,5 @@ layout_mode = 2
 texture_normal = ExtResource("13_toqjd")
 texture_pressed = ExtResource("14_wfmoi")
 texture_background = ExtResource("15_aqcfa")
+
+[connection signal="battle_selected" from="GUIBattleList/GUIBattleList" to="." method="_on_gui_battle_list_battle_selected"]
