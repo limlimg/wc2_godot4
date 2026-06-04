@@ -8,10 +8,10 @@ const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 @export
 var enable := true:
 	get():
-		return not $TextureButton.disabled
+		return not _texture_button.disabled
 	set(value):
-		if value != not $TextureButton.disabled:
-			$TextureButton.disabled = not value
+		if value != not _texture_button.disabled:
+			_texture_button.disabled = not value
 			_on_render()
 
 
@@ -43,41 +43,41 @@ var alpha := 1.0:
 @export
 var texture_normal: Texture2D:
 	get():
-		return $TextureButton.texture_normal
+		return _texture_button.texture_normal
 	set(value):
-		$TextureButton.texture_normal = value
+		_texture_button.texture_normal = value
 
 
 @export
 var texture_pressed: Texture2D:
 	get():
-		return $TextureButton.texture_pressed
+		return _texture_button.texture_pressed
 	set(value):
-		$TextureButton.texture_pressed = value
+		_texture_button.texture_pressed = value
 
 
 @export
 var texture_background: Texture2D:
 	get():
-		return $Background.texture
+		return _background.texture
 	set(value):
-		$Background.texture = value
+		_background.texture = value
 
 
 @export
 var texture_glow: Texture2D:
 	get():
-		return $Glow.texture
+		return _glow.texture
 	set(value):
-		$Glow.texture = value
+		_glow.texture = value
 
 
 @export
 var texture_text_image: Texture2D:
 	get():
-		return $TextImage.texture
+		return _text_image.texture
 	set(value):
-		$TextImage.texture = value
+		_text_image.texture = value
 
 
 @export_group("Text", "text_")
@@ -88,9 +88,9 @@ var text: String:
 @export
 var text_font: Theme:
 	get():
-		return $Text.theme
+		return _text.theme
 	set(value):
-		$Text.theme = value
+		_text.theme = value
 
 
 @export
@@ -105,7 +105,35 @@ var text_offset: Vector2:
 var text_align: HorizontalAlignment:
 	set = set_text_align
 
+var _background: TextureRect
+var _glow: TextureRect
+var _texture_button: TextureButton
+var _text: Label
+var _text_image: TextureRect
+
 signal pressed
+
+func _init() -> void:
+	_background = TextureRect.new()
+	_background.stretch_mode = TextureRect.STRETCH_KEEP
+	add_child(_background, false, Node.INTERNAL_MODE_FRONT)
+	_glow = TextureRect.new()
+	_glow.stretch_mode = TextureRect.STRETCH_KEEP
+	_glow.visible = false
+	add_child(_glow, false, Node.INTERNAL_MODE_FRONT)
+	_texture_button = TextureButton.new()
+	_texture_button.ignore_texture_size = true
+	_texture_button.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_texture_button.button_down.connect(_on_texture_button_button_down)
+	_texture_button.button_up.connect(_on_texture_button_button_up)
+	_texture_button.pressed.connect(_on_texture_button_pressed)
+	add_child(_texture_button, false, Node.INTERNAL_MODE_FRONT)
+	_text = Label.new()
+	add_child(_text, false, Node.INTERNAL_MODE_FRONT)
+	_text_image = TextureRect.new()
+	_text_image.stretch_mode = TextureRect.STRETCH_KEEP
+	add_child(_text_image, false, Node.INTERNAL_MODE_FRONT)
+
 
 func init(normal_image_name: StringName, pressed_image_name: StringName,
 		rect: Rect2, font: _ecUniFont) -> void:
@@ -125,19 +153,19 @@ func _set_glow(image_name: StringName) -> void:
 
 
 func set_text(value: String) -> void:
-	$Text.text = value
+	_text.text = value
 
 
 func set_text_color(value: Color) -> void:
-	$Text.self_modulate = value
+	_text.self_modulate = value
 
 
 func set_text_offset(value: Vector2) -> void:
-	$Text.position = value + size / 2.0
+	_text.position = value + size / 2.0
 
 
 func set_text_align(value: HorizontalAlignment) -> void:
-	$Text.horizontal_alignment = value
+	_text.horizontal_alignment = value
 
 
 func set_text_image(image_name: StringName) -> void:
@@ -155,8 +183,6 @@ func _ready() -> void:
 
 
 func _on_render():
-	var _glow := $Glow
-	var _texture_button := $TextureButton
 	if _texture_button.button_pressed:
 		_glow.show()
 		_glow.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)
@@ -171,7 +197,6 @@ func _on_render():
 			_texture_button.self_modulate = Color(g210, g210, g210, alpha)
 		else:
 			_texture_button.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)
-	var _text_image := $TextImage
 	if grey_when_pressed and _texture_button.button_pressed:
 		var g210 := 210.0 * grey_scale / 255.0
 		_text_image.self_modulate = Color(g210, g210, g210, alpha)
