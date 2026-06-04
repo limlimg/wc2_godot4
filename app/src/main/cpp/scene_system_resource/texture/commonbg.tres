@@ -1,0 +1,25 @@
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://6yn1umela560"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_ngtqs"]
+[ext_resource type="Script" uid="uid://c0fyh1xdns125" path="res://app/src/main/cpp/scene_system_resource/ec_texture_assets.gd" id="2_be0jr"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="3_83mk2"]
+
+[sub_resource type="Resource" id="Resource_dixvi"]
+script = ExtResource("1_ngtqs")
+name = "commonbg.png"
+name_ipad = "commonbg_iPad.png"
+name_640h = "commonbg-640h.png"
+name_568h = "commonbg-568h.png"
+metadata/_custom_type_script = "uid://wmgv5whydq62"
+
+[sub_resource type="Resource" id="Resource_jhdni"]
+script = ExtResource("2_be0jr")
+name = SubResource("Resource_dixvi")
+metadata/_custom_type_script = "uid://c0fyh1xdns125"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_83mk2")
+preset = SubResource("Resource_jhdni")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"
