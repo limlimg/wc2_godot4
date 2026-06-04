@@ -31,8 +31,16 @@ var orientation: int
 var content_scale_size_mode: int
 var _render_shape := 3
 var _bound_texture: Texture2D
-var _fade_color := Color.BLACK
+var fade_color := Color.BLACK:
+	set(value):
+		if value != fade_color:
+			fade_color = value
+			fade_color_changed.emit(value)
+
+
 var _rendering_canvas_item: CanvasItem
+
+signal fade_color_changed(color: Color)
 
 static func instance() -> _ecGraphics:
 	return _instance
@@ -205,7 +213,7 @@ func render_circle(x: float, y: float, radius: float, color: Color):
 func fade(alpha: float):
 	if _rendering_canvas_item == null:
 		return
-	var color := _fade_color
+	var color := fade_color
 	color.a = alpha
 	# Note: fade is properly applied only if view_point is at 0.0, 0.0. This is bad but is consistent with the original game code.
 	render_rect(0.0, 0.0, orientated_content_scale_width, orientated_content_scale_height, color)
