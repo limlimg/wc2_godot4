@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bf2fxmmo5527o" path="res://app/src/main/cpp/gui_sel_battle.gd" id="1_22hmj"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_yq104"]
+[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://app/src/main/cpp/scene_system_resource/texture/commonbg.tres" id="2_uaqr2"]
 [ext_resource type="Texture2D" uid="uid://crietgngbpmjc" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_1.pkm.tres" id="3_73w7g"]
 [ext_resource type="Texture2D" uid="uid://twvebqix5p1p" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_2.pkm.tres" id="4_xpbc6"]
 [ext_resource type="Texture2D" uid="uid://2kosbyajq6kn" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_3.pkm.tres" id="5_u4ky1"]
@@ -35,7 +36,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_22hmj")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1254571716]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uaqr2")
+expand_mode = 1
+stretch_mode = 6
+
 [node name="Minimap" type="Control" parent="." unique_id=7959550]
+editor_description = "Defines total size of minimap"
 clip_contents = true
 anchors_preset = 0
 offset_right = 1715.0
@@ -317,4 +330,5 @@ texture_normal = ExtResource("13_toqjd")
 texture_pressed = ExtResource("14_wfmoi")
 texture_background = ExtResource("15_aqcfa")
 
+[connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="battle_selected" from="GUIBattleList/GUIBattleList" to="." method="_on_gui_battle_list_battle_selected"]
