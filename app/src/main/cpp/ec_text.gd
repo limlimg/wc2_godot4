@@ -1,64 +1,83 @@
+extends "res://app/src/main/cpp/gui_element.gd"
 
-## Use Label node to show text in the scene system. It is not obvious, but the
-## font is in "Theme Overrides" group. The default font size is 16. Change the
-## font size in "Theme Overrides" to the fixed_size of the metadata of the
-## imported font, or half if the font is regarded as high-resolution.
+## Assign ecUniFont to Theme property.
+##
+## DrawText and GetStringWidth are not implemented because they do not fit the
+## usage of this class in this project.
 
-const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
-const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
+@export
+var text: String:
+	set = set_text
 
-var _text: TextParagraph 
-var _text_string: String
-var _font: _ecUniFont
-var _color := Color.WHITE
+@export
+var color: Color = Color.WHITE:
+	set = set_color
 
-
-func _init() -> void:
-	_text = TextParagraph.new()
-	_text.break_flags = TextServer.BREAK_MANDATORY
-
-
-func init(font: _ecUniFont) -> void:
-	_font = font
-	_color = Color.WHITE
+@export
+var text_position: Vector2:
+	set(value):
+		text_position = value
+		if is_node_ready():
+			_label.position = value
 
 
-func set_text(text: String) -> void:
-	_text.clear()
-	_text.add_string(text, _font.font, _font.font_size)
-	_text_string = text
+@export
+var alignment: HorizontalAlignment:
+	set(value):
+		alignment = value
+		if is_node_ready():
+			_label.horizontal_alignment = value
+			match value:
+				HorizontalAlignment.HORIZONTAL_ALIGNMENT_LEFT:
+					_label.grow_horizontal = Control.GROW_DIRECTION_END
+				HorizontalAlignment.HORIZONTAL_ALIGNMENT_RIGHT:
+					_label.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+				_:
+					_label.grow_horizontal = Control.GROW_DIRECTION_BOTH
 
 
-func set_color(color: Color) -> void:
-	_color = color
+@onready var _label: Label = $Label
+
+func _ready() -> void:
+	init()
+
+
+func init():
+	set_color(color)
+	_draw_text()
+
+
+func set_color(value: Color) -> void:
+	color = value
+	if is_node_ready():
+		_label.remove_theme_color_override(&"font_color")
+		_label.add_theme_color_override(&"font_color", value)
+
+
+func _draw_text() -> void:
+	text_position = text_position
+	alignment = alignment
+
+
+func set_text(value: String) -> void:
+	text = value
+	if is_node_ready():
+		_label.text = value
 
 
 func set_alpha(alpha: float)-> void:
-	_color.a = alpha
-
-
-func draw_text(x: float, y: float, alignment: HorizontalAlignment) -> void:
-	var canvas_item := _ecGraphics.instance().get_rendering_canvas_item()
-	if canvas_item == null:
-		return
-	_text.alignment = alignment
-	var rid := canvas_item.get_canvas_item()
-	_text.draw(rid, Vector2(x, y), _color)
-
-
-## In the original game code, this method can get partial width of a line (i.e.
-## the first parameter is char_index instead of line), which is never used and 
-## not implemented here.
-func get_string_width(line: int, all_lines: bool) -> float:
-	if all_lines:
-		return _text.get_size().x
-	else:
-		return _text.get_line_size(line).x
+	set_color(Color(color, alpha))
 
 
 func get_height() -> float:
-	return _text.get_size().y
+	if is_node_ready():
+		return _label.size.y
+	else:
+		return 0.0
 
 
-func _get_num_lines() -> int:
-	return _text.get_line_count()
+func get_num_lines() -> int:
+	if is_node_ready():
+		return _label.get_line_count()
+	else:
+		return 0

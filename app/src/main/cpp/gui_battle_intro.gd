@@ -35,6 +35,9 @@ var battle: int:
 				_set_battle()
 
 
+@onready var _battle_intro: Control = $BattleIntro/ecText
+
+
 signal ok_pressed
 
 func _ready() -> void:
@@ -45,28 +48,28 @@ func _ready() -> void:
 
 
 func init() -> void:
-	var battle_intro: Label = $BattleIntro/Control/Label
+	var battle_intro = _battle_intro
 	if _ecGraphics.instance().content_scale_size_mode == 3:
 		battle_intro.add_theme_constant_override("line_spacing", -6)
 	else:
 		battle_intro.add_theme_constant_override("line_spacing", -3)
-	$Victory/Control/Label.text = _native.g_string_table.get_string("victory")
-	$GreatVictory/Control/Label.text = _native.g_string_table.get_string("great victory")
+	$Victory/ecText.text = _native.g_string_table.get_string("victory")
+	$GreatVictory/ecText.text = _native.g_string_table.get_string("great victory")
 	_set_battle()
 
 
 func _set_battle() -> void:
 	var string_table := _native.g_string_table
 	if campaign >= 0 and campaign < 4:
-		$BattleIntro/Control/Label.text = string_table.get_string(_BATTLE_INTRO_KEY_FORMAT[campaign]%[battle + 1])
-		$BattleName/Control/Label.text = string_table.get_string(_BATTLE_NAME_KEY_FORMAT[campaign]%[battle + 1])
+		_battle_intro.text = string_table.get_string(_BATTLE_INTRO_KEY_FORMAT[campaign]%[battle + 1])
+		$BattleName/ecText.text = string_table.get_string(_BATTLE_NAME_KEY_FORMAT[campaign]%[battle + 1])
 	var battle_key_name := _native.get_battle_key_name(campaign, battle)
 	var battle_def := _CObjectDef.instance().get_battle_def(battle_key_name)
-	$Age/Control/Label.text = battle_def.age
+	$Age/ecText.text = battle_def.age
 	var v1 := string_table.get_string("victory days1")
 	var v2 := string_table.get_string("victory days2")
-	var v := $VictoryDays/Control/Label
-	var gv := $GreatVictoryDays/Control/Label
+	var v := $VictoryDays/ecText
+	var gv := $GreatVictoryDays/ecText
 	if not v1.is_empty():
 		v.text = "%s %d %s"%[v1, battle_def.victory, v2]
 		gv.text = "%s %d %s"%[v1, battle_def.greatvictory, v2]
