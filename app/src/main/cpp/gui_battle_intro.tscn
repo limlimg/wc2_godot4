@@ -31,46 +31,53 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.49803922)
 
-[node name="BoardIntro" parent="." unique_id=69213855 instance=ExtResource("2_mp2r6")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=237056786]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BoardIntro" parent="CenterContainer" unique_id=69213855 instance=ExtResource("2_mp2r6")]
+layout_mode = 2
 rect_ipad = Rect2(0, 0, 960, 640)
 rect = Rect2(0, 0, 480, 320)
 
-[node name="TextureRect" type="TextureRect" parent="BoardIntro" unique_id=1315011930]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/BoardIntro" unique_id=1315011930]
 layout_mode = 2
 texture = ExtResource("1_ft5bo")
 expand_mode = 1
 
-[node name="TextCondition" parent="." unique_id=446430762 instance=ExtResource("2_mp2r6")]
+[node name="TextCondition" parent="CenterContainer/BoardIntro/TextureRect" unique_id=446430762 instance=ExtResource("2_mp2r6")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_right = 1.0
+offset_bottom = 1.0
 grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(480, 384, 1, 1)
 rect = Rect2(240, 192, 1, 1)
 
-[node name="TextureRect" type="TextureRect" parent="TextCondition" unique_id=1678927271]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/BoardIntro/TextureRect/TextCondition" unique_id=1678927271]
 layout_mode = 2
 texture = ExtResource("4_g2uog")
 
-[node name="ButtonOK" parent="." unique_id=40345469 instance=ExtResource("2_mp2r6")]
+[node name="ButtonOK" parent="CenterContainer/BoardIntro/TextureRect" unique_id=40345469 instance=ExtResource("2_mp2r6")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_right = 64.0
+offset_bottom = 32.0
 grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(420, 580, 64, 32)
 rect = Rect2(210, 283, 64, 32)
 
-[node name="GUIButtonEx" parent="ButtonOK" unique_id=493498822 instance=ExtResource("4_cl8ju")]
+[node name="GUIButtonEx" parent="CenterContainer/BoardIntro/TextureRect/ButtonOK" unique_id=493498822 instance=ExtResource("4_cl8ju")]
 layout_mode = 2
 texture_text_not_pressed = ExtResource("5_edqqk")
 texture_text_pressed = ExtResource("6_g2uog")
@@ -79,7 +86,7 @@ image_position = Vector2(13, 0)
 texture_normal = ExtResource("5_mxe0c")
 texture_pressed = ExtResource("5_mxe0c")
 
-[node name="BattleName" parent="." unique_id=189534227 instance=ExtResource("2_mp2r6")]
+[node name="BattleName" parent="CenterContainer/BoardIntro/TextureRect" unique_id=189534227 instance=ExtResource("2_mp2r6")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -89,12 +96,12 @@ grow_vertical = 1
 rect_ipad = Rect2(480, 76, 0, 0)
 rect = Rect2(240, 38, 0, 0)
 
-[node name="ecText" parent="BattleName" unique_id=448162067 instance=ExtResource("10_tekca")]
+[node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/BattleName" unique_id=448162067 instance=ExtResource("10_tekca")]
 layout_mode = 2
 theme = ExtResource("11_0gbd6")
 alignment = 1
 
-[node name="BattleIntro" parent="." unique_id=65639465 instance=ExtResource("2_mp2r6")]
+[node name="BattleIntro" parent="CenterContainer/BoardIntro/TextureRect" unique_id=65639465 instance=ExtResource("2_mp2r6")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -104,12 +111,12 @@ grow_vertical = 1
 rect_ipad = Rect2(140, 176, 0, 0)
 rect = Rect2(70, 88, 0, 0)
 
-[node name="ecText" parent="BattleIntro" unique_id=1397818642 instance=ExtResource("10_tekca")]
+[node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/BattleIntro" unique_id=1397818642 instance=ExtResource("10_tekca")]
 layout_mode = 2
 theme = ExtResource("10_0gbd6")
 color = Color(0.2, 0.19215687, 0.24313726, 1)
 
-[node name="Age" parent="." unique_id=1517116202 instance=ExtResource("2_mp2r6")]
+[node name="Age" parent="CenterContainer/BoardIntro/TextureRect" unique_id=1517116202 instance=ExtResource("2_mp2r6")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -119,12 +126,12 @@ grow_vertical = 1
 rect_ipad = Rect2(480, 130, 0, 0)
 rect = Rect2(240, 65, 0, 0)
 
-[node name="ecText" parent="Age" unique_id=593876101 instance=ExtResource("10_tekca")]
+[node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/Age" unique_id=593876101 instance=ExtResource("10_tekca")]
 layout_mode = 2
 theme = ExtResource("9_3lprt")
 alignment = 1
 
-[node name="Victory" parent="." unique_id=995341333 instance=ExtResource("2_mp2r6")]
+[node name="Victory" parent="CenterContainer/BoardIntro/TextureRect" unique_id=995341333 instance=ExtResource("2_mp2r6")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -134,12 +141,12 @@ grow_vertical = 1
 rect_ipad = Rect2(366, 410, 0, 0)
 rect = Rect2(183, 205, 0, 0)
 
-[node name="ecText" parent="Victory" unique_id=1805606566 instance=ExtResource("10_tekca")]
+[node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/Victory" unique_id=1805606566 instance=ExtResource("10_tekca")]
 layout_mode = 2
 theme = ExtResource("10_0gbd6")
 color = Color(0.2, 0.19215687, 0.24313726, 1)
 
-[node name="GreatVictory" parent="." unique_id=532892512 instance=ExtResource("2_mp2r6")]
+[node name="GreatVictory" parent="CenterContainer/BoardIntro/TextureRect" unique_id=532892512 instance=ExtResource("2_mp2r6")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -149,12 +156,12 @@ grow_vertical = 1
 rect_ipad = Rect2(366, 470, 0, 0)
 rect = Rect2(183, 235, 0, 0)
 
-[node name="ecText" parent="GreatVictory" unique_id=926402932 instance=ExtResource("10_tekca")]
+[node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/GreatVictory" unique_id=926402932 instance=ExtResource("10_tekca")]
 layout_mode = 2
 theme = ExtResource("10_0gbd6")
 color = Color(0.2, 0.19215687, 0.24313726, 1)
 
-[node name="VictoryDays" parent="." unique_id=1701368727 instance=ExtResource("2_mp2r6")]
+[node name="VictoryDays" parent="CenterContainer/BoardIntro/TextureRect" unique_id=1701368727 instance=ExtResource("2_mp2r6")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -164,12 +171,12 @@ grow_vertical = 1
 rect_ipad = Rect2(556, 410, 0, 0)
 rect = Rect2(278, 205, 0, 0)
 
-[node name="ecText" parent="VictoryDays" unique_id=1748894307 instance=ExtResource("10_tekca")]
+[node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/VictoryDays" unique_id=1748894307 instance=ExtResource("10_tekca")]
 layout_mode = 2
 theme = ExtResource("10_0gbd6")
 color = Color(0.2, 0.19215687, 0.24313726, 1)
 
-[node name="GreatVictoryDays" parent="." unique_id=2066649019 instance=ExtResource("2_mp2r6")]
+[node name="GreatVictoryDays" parent="CenterContainer/BoardIntro/TextureRect" unique_id=2066649019 instance=ExtResource("2_mp2r6")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -179,9 +186,9 @@ grow_vertical = 1
 rect_ipad = Rect2(556, 470, 0, 0)
 rect = Rect2(278, 235, 0, 0)
 
-[node name="ecText" parent="GreatVictoryDays" unique_id=450455429 instance=ExtResource("10_tekca")]
+[node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/GreatVictoryDays" unique_id=450455429 instance=ExtResource("10_tekca")]
 layout_mode = 2
 theme = ExtResource("10_0gbd6")
 color = Color(0.2, 0.19215687, 0.24313726, 1)
 
-[connection signal="pressed" from="ButtonOK/GUIButtonEx" to="." method="_on_gui_button_ex_pressed"]
+[connection signal="pressed" from="CenterContainer/BoardIntro/TextureRect/ButtonOK/GUIButtonEx" to="." method="_on_gui_button_ex_pressed"]
