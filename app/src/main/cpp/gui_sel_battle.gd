@@ -40,6 +40,8 @@ var _center_pos: Vector2
 @onready var _flag_proto := $Minimap/Elements/Flags/Flag
 @onready var _arrow_proto := $Minimap/Elements/Arrows/Arrow
 @onready var _minimap: Control = $Minimap
+@onready var _gui_battle_intro: Control = $GUIBattleIntro
+
 
 func _ready() -> void:
 	init()
@@ -66,6 +68,7 @@ func _on_gui_battle_list_battle_selected(battle: int) -> void:
 	if _battle < 0:
 		_sel_battle(campaign, battle)
 		_minimap.position = _clamp_pos(_center_pos)
+		_battle = battle
 
 
 func _sel_battle(sel_campaign: int, battle: int) -> void:
@@ -133,3 +136,13 @@ func _clamp_pos(center_pos: Vector2) -> Vector2:
 func _on_resized() -> void:
 	if is_node_ready():
 		_minimap.position = _clamp_pos(_center_pos)
+
+
+func _on_button_info_pressed() -> void:
+	_gui_battle_intro.campaign = campaign
+	_gui_battle_intro.battle = _battle
+	_gui_battle_intro.show()
+
+
+func _on_gui_battle_intro_ok_pressed() -> void:
+	_gui_battle_intro.hide()

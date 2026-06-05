@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://o3iota60r18e" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_intro.png.tres" id="21_nf5fh"]
 [ext_resource type="PackedScene" uid="uid://bp1f7if3s8vf4" path="res://app/src/main/cpp/gui_medal.tscn" id="22_wkiuu"]
 [ext_resource type="PackedScene" uid="uid://dilpumc03hfp0" path="res://app/src/main/cpp/gui_battle_list.tscn" id="23_nf5fh"]
+[ext_resource type="PackedScene" uid="uid://ciwlalt7fqwik" path="res://app/src/main/cpp/gui_battle_intro.tscn" id="27_aptrf"]
 
 [node name="GUISelBattle" type="Control" unique_id=961076300]
 layout_mode = 3
@@ -212,7 +213,6 @@ offset_bottom = 40.0
 use_top_left = true
 
 [node name="Label" type="Label" parent="Minimap/Elements/CenterContainer" unique_id=501752094]
-z_index = 1
 layout_mode = 2
 theme = ExtResource("11_xpbc6")
 horizontal_alignment = 3
@@ -330,5 +330,12 @@ texture_normal = ExtResource("13_toqjd")
 texture_pressed = ExtResource("14_wfmoi")
 texture_background = ExtResource("15_aqcfa")
 
+[node name="GUIBattleIntro" parent="." unique_id=2130276311 instance=ExtResource("27_aptrf")]
+visible = false
+z_index = 1
+layout_mode = 1
+
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="battle_selected" from="GUIBattleList/GUIBattleList" to="." method="_on_gui_battle_list_battle_selected"]
+[connection signal="pressed" from="ButtonInfo/GUIButton" to="." method="_on_button_info_pressed"]
+[connection signal="ok_pressed" from="GUIBattleIntro" to="." method="_on_gui_battle_intro_ok_pressed"]
