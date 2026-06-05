@@ -188,31 +188,31 @@ size_flags_vertical = 3
 texture = ExtResource("10_1kakj")
 expand_mode = 1
 
-[node name="Elements" type="Node2D" parent="Minimap" unique_id=700036717]
+[node name="ImageList" type="Node2D" parent="Minimap" unique_id=700036717]
 
-[node name="Flags" type="Node2D" parent="Minimap/Elements" unique_id=411524443]
+[node name="Flags" type="Node2D" parent="Minimap/ImageList" unique_id=411524443]
 
-[node name="Flag" type="Sprite2D" parent="Minimap/Elements/Flags" unique_id=844193794]
+[node name="Flag" type="Sprite2D" parent="Minimap/ImageList/Flags" unique_id=844193794]
 editor_description = "As a prototype for dynamic flags"
 position = Vector2(-128, -128)
 centered = false
 
-[node name="Shadow" type="Sprite2D" parent="Minimap/Elements/Flags/Flag" unique_id=1502195114]
+[node name="Shadow" type="Sprite2D" parent="Minimap/ImageList/Flags/Flag" unique_id=1502195114]
 show_behind_parent = true
 texture = ExtResource("11_w68dy")
 centered = false
 
-[node name="Arrows" type="Node2D" parent="Minimap/Elements" unique_id=1570712730]
+[node name="Arrows" type="Node2D" parent="Minimap/ImageList" unique_id=1570712730]
 
-[node name="Arrow" type="Sprite2D" parent="Minimap/Elements/Arrows" unique_id=2096712091]
+[node name="Arrow" type="Sprite2D" parent="Minimap/ImageList/Arrows" unique_id=2096712091]
 centered = false
 
-[node name="CenterContainer" type="CenterContainer" parent="Minimap/Elements" unique_id=364721976]
+[node name="Age" type="CenterContainer" parent="Minimap/ImageList" unique_id=364721976]
 offset_right = 40.0
 offset_bottom = 40.0
 use_top_left = true
 
-[node name="Label" type="Label" parent="Minimap/Elements/CenterContainer" unique_id=501752094]
+[node name="Label" type="Label" parent="Minimap/ImageList/Age" unique_id=501752094]
 layout_mode = 2
 theme = ExtResource("11_xpbc6")
 horizontal_alignment = 3
@@ -295,6 +295,7 @@ texture_pressed = ExtResource("20_wkiuu")
 texture_background = ExtResource("21_nf5fh")
 
 [node name="ButtonOk" parent="." unique_id=274679105 instance=ExtResource("1_yq104")]
+z_index = 1
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -313,6 +314,7 @@ texture_pressed = ExtResource("17_nf5fh")
 texture_background = ExtResource("18_hb1pb")
 
 [node name="ButtonBack" parent="." unique_id=2093422574 instance=ExtResource("1_yq104")]
+z_index = 1
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -338,4 +340,6 @@ layout_mode = 1
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="battle_selected" from="GUIBattleList/GUIBattleList" to="." method="_on_gui_battle_list_battle_selected"]
 [connection signal="pressed" from="ButtonInfo/GUIButton" to="." method="_on_button_info_pressed"]
+[connection signal="pressed" from="ButtonOk/GUIButton" to="." method="_on_gui_button_ok_pressed"]
+[connection signal="pressed" from="ButtonBack/GUIButton" to="." method="_on_gui_button_back_pressed"]
 [connection signal="ok_pressed" from="GUIBattleIntro" to="." method="_on_gui_battle_intro_ok_pressed"]
