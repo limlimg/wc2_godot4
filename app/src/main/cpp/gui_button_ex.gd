@@ -21,7 +21,7 @@ var texture_text_pressed: Texture2D:
 var image_position_ipad: Vector2:
 	set(value):
 		image_position_ipad = value
-		if _ecGraphics.instance().content_scale_size_mode == 3:
+		if not Engine.is_editor_hint() and _ecGraphics.instance().content_scale_size_mode == 3:
 			$TextureRect.position = value
 
 
@@ -29,7 +29,7 @@ var image_position_ipad: Vector2:
 var image_position: Vector2:
 	set(value):
 		image_position = value
-		if _ecGraphics.instance().content_scale_size_mode != 3:
+		if Engine.is_editor_hint() or _ecGraphics.instance().content_scale_size_mode != 3:
 			$TextureRect.position = value
 
 
