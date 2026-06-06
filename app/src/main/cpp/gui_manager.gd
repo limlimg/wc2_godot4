@@ -30,7 +30,11 @@ const _GUI_BUTTON = preload("res://app/src/main/cpp/gui_button.tscn")
 const _GUIScrollBar = preload("res://app/src/main/cpp/gui_scroll_bar.gd")
 const _GUI_SCROLL_BAR = preload("res://app/src/main/cpp/gui_scroll_bar.tscn")
 
+@export
+var start_faded_in: bool = false
 var _fading_tween: Tween
+
+@onready var _fade: ColorRect = $Fade
 
 signal faded_in(cause: int)
 signal faded_out(cause: int)
@@ -116,9 +120,8 @@ func fade_in(cause: int) -> void:
 	_fading_tween = create_tween()
 	var c := Color.BLACK
 	c.a = 0.0
-	var _fade_node: ColorRect = $Fade
-	var t := _fade_node.color.a
-	_fading_tween.tween_property(_fade_node, ^"color", c, t)
+	var t := _fade.color.a
+	_fading_tween.tween_property(_fade, ^"color", c, t)
 	_fading_tween.tween_callback(func():
 		_fading_tween = null
 		faded_in.emit(cause)
@@ -131,9 +134,8 @@ func fade_out(cause: int, on_top: Control) -> void:
 	if _fading_tween != null:
 		_fading_tween.kill()
 	_fading_tween = create_tween()
-	var _fade_node: ColorRect = $Fade
-	var t = 1.0 - _fade_node.color.a
-	_fading_tween.tween_property(_fade_node, ^"color", Color.BLACK, t)
+	var t = 1.0 - _fade.color.a
+	_fading_tween.tween_property(_fade, ^"color", Color.BLACK, t)
 	_fading_tween.tween_callback(func():
 		_fading_tween = null
 		faded_out.emit(cause)
@@ -141,5 +143,6 @@ func fade_out(cause: int, on_top: Control) -> void:
 
 
 func _ready() -> void:
-	$Fade.visible = true # $Fade is invisible in the editor for previewing
-	fade_in(0)
+	if start_faded_in:
+		_fade.color.a = 0.0
+	_fade.visible = true # $Fade is invisible in the editor for previewing
