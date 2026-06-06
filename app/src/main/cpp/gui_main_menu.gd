@@ -6,9 +6,9 @@ const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 
 var _button_moving := 0
 
-signal sel_campaign_pressed(int)
+signal sel_campaign_pressed(sel_campaign: int)
 signal load_campaign_pressed
-signal sel_conquest_pressed(int)
+signal sel_conquest_pressed(sel_conquest: int)
 signal load_conquest_pressed
 signal multi_player_global_pressed
 signal multi_player_host_pressed

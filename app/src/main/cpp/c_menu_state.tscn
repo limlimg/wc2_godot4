@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="1_nhdnm"]
 [ext_resource type="PackedScene" uid="uid://c4fcq7wy2b7qx" path="res://app/src/main/cpp/gui_main_menu.tscn" id="3_gvair"]
 [ext_resource type="PackedScene" uid="uid://cvfhyrru7g313" path="res://app/src/main/cpp/gui_sel_battle.tscn" id="4_5n4tp"]
+[ext_resource type="PackedScene" uid="uid://cavnvxqevbxqu" path="res://app/src/main/cpp/gui_locked_warning.tscn" id="5_cwp5t"]
 
 [node name="CMenuState" type="Control" unique_id=54523483]
 layout_mode = 3
@@ -24,4 +25,10 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[connection signal="faded_in" from="GUIManager" to="." method="_on_gui_manager_faded_in"]
+[node name="GUILockedWarning" parent="GUIManager" unique_id=131788446 instance=ExtResource("5_cwp5t")]
+visible = false
+layout_mode = 1
+
+[connection signal="sel_campaign_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_sel_campaign_pressed"]
+[connection signal="back_pressed" from="GUIManager/GUISelBattle" to="." method="_on_gui_sel_battle_back_pressed"]
+[connection signal="pressed" from="GUIManager/GUILockedWarning" to="." method="_on_gui_locked_warning_pressed"]
