@@ -47,6 +47,7 @@ func init() -> void:
 	for i in num_battles:
 		var item := item_scene.instantiate() as _GUIBattleItem
 		container.add_child(item)
+		item.campaign = campaign
 		item.battle = i
 		item.star = g_Commander.get_num_battle_stars(campaign, i)
 		if i > played_battles:
