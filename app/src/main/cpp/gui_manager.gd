@@ -34,7 +34,7 @@ const _GUI_SCROLL_BAR = preload("res://app/src/main/cpp/gui_scroll_bar.tscn")
 var start_faded_in: bool = false
 var _fading_tween: Tween
 
-@onready var _fade: ColorRect = $Fade
+@onready var _fade: Control = $GUIFade
 
 signal faded_in(cause: int)
 signal faded_out(cause: int)
@@ -118,31 +118,32 @@ func fade_in(cause: int) -> void:
 	if _fading_tween != null:
 		_fading_tween.kill()
 	_fading_tween = create_tween()
-	var c := Color.BLACK
-	c.a = 0.0
-	var t := _fade.color.a
-	_fading_tween.tween_property(_fade, ^"color", c, t)
+	var t: float = _fade.alpha
+	_fading_tween.tween_property(_fade, ^"alpha", 0.0, t)
 	_fading_tween.tween_callback(func():
 		_fading_tween = null
 		faded_in.emit(cause)
 	)
 
 
-func fade_out(cause: int, on_top: Control) -> void:
-	if on_top != null:
-		add_child(on_top)
+func fade_out(cause: int, overlay: Node) -> void:
+	if overlay != null:
+		_fade.add_child(overlay)
 	if _fading_tween != null:
 		_fading_tween.kill()
 	_fading_tween = create_tween()
-	var t = 1.0 - _fade.color.a
-	_fading_tween.tween_property(_fade, ^"color", Color.BLACK, t)
+	var t = 1.0 - _fade.alpha
+	_fading_tween.tween_property(_fade, ^"alpha", 1.0, t)
 	_fading_tween.tween_callback(func():
 		_fading_tween = null
+		if overlay != null:
+			_fade.remove_child(overlay)
+			overlay.queue_free()
 		faded_out.emit(cause)
 	)
 
 
 func _ready() -> void:
 	if start_faded_in:
-		_fade.color.a = 0.0
+		_fade.alpha = 0.0
 	_fade.visible = true # $Fade is invisible in the editor for previewing

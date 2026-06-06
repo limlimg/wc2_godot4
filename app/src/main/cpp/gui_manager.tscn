@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b8ulkhao6n4aw"]
 
 [ext_resource type="Script" uid="uid://bo63r12xqtvg7" path="res://app/src/main/cpp/gui_manager.gd" id="1_o8ok3"]
+[ext_resource type="PackedScene" uid="uid://df33p640anvad" path="res://app/src/main/cpp/gui_fade.tscn" id="2_dnrvd"]
 
 [node name="GUIManager" type="Control" unique_id=510783743 groups=["GUIManagerInstance"]]
 layout_mode = 3
@@ -11,13 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_o8ok3")
 
-[node name="Fade" type="ColorRect" parent="." unique_id=1490561614]
+[node name="GUIFade" parent="." unique_id=869114631 instance=ExtResource("2_dnrvd")]
 visible = false
-z_index = 1
+z_index = 2
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
