@@ -262,17 +262,14 @@ texture_normal = ExtResource("16_fnjh5")
 texture_text_image = ExtResource("17_qlf27")
 
 [node name="Locked" parent="SelCampaigns/ButtonWto/GUIButton" unique_id=1606354631 instance=ExtResource("3_kov84")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
+mouse_filter = 2
 rect_ipad = Rect2(300, 70, 26, 31)
 rect = Rect2(150, 35, 26, 31)
 
 [node name="TextureRect" type="TextureRect" parent="SelCampaigns/ButtonWto/GUIButton/Locked" unique_id=964577324]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("19_digt4")
 stretch_mode = 2
 
@@ -295,11 +292,13 @@ texture_text_image = ExtResource("19_uc35c")
 
 [node name="Locked" parent="SelCampaigns/ButtonNato/GUIButton" unique_id=1396232058 instance=ExtResource("3_kov84")]
 layout_mode = 1
+mouse_filter = 2
 rect_ipad = Rect2(300, 70, 26, 31)
 rect = Rect2(150, 35, 26, 31)
 
 [node name="TextureRect" type="TextureRect" parent="SelCampaigns/ButtonNato/GUIButton/Locked" unique_id=1436482190]
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("19_digt4")
 stretch_mode = 2
 
