@@ -58,7 +58,8 @@ pointing/emulate_mouse_from_touch=false
 [internationalization]
 
 locale/translation_remaps={
-"res://app/src/main/assets/title_hd.xml": PackedStringArray("res://app/src/main/assets/title_cn_hd.xml:zh_Hans")
+"res://app/src/main/assets/title_hd.xml": PackedStringArray("res://app/src/main/assets/title_cn_hd.xml:zh_Hans"),
+"res://app/src/main/cpp/scene_system_resource/texture/loading.tres": PackedStringArray("res://app/src/main/cpp/scene_system_resource/texture/loading_cn.tres:zh_Hans")
 }
 
 [rendering]
