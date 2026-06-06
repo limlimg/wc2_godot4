@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://cavnvxqevbxqu"]
+
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_1iitn"]
+[ext_resource type="Script" uid="uid://c0egpmfnonjbm" path="res://app/src/main/cpp/gui_locked_warning.gd" id="1_ccynw"]
+[ext_resource type="PackedScene" uid="uid://df33p640anvad" path="res://app/src/main/cpp/gui_fade.tscn" id="2_k7wgp"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="3_k7wgp"]
+[ext_resource type="Texture2D" uid="uid://ctj87p2f2ndcd" path="res://app/src/main/cpp/scene_system_resource/texture/board_locked.tres" id="4_k7wgp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7wgp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3gx5n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_flmrv"]
+
+[node name="GUILockedWarning" type="Control" unique_id=131788446]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ccynw")
+
+[node name="GUIFade" parent="." unique_id=869114631 instance=ExtResource("2_k7wgp")]
+layout_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1945613680]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GUIRect" parent="CenterContainer" unique_id=922545371 instance=ExtResource("1_1iitn")]
+layout_mode = 2
+rect_ipad = Rect2(0, 0, 444, 252)
+rect = Rect2(0, 0, 222, 126)
+
+[node name="Control" type="Control" parent="CenterContainer/GUIRect" unique_id=1763780]
+layout_mode = 2
+
+[node name="BoardLocked" parent="CenterContainer/GUIRect/Control" unique_id=1892596053 instance=ExtResource("1_1iitn")]
+layout_mode = 1
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-4, -4, 454, 262)
+rect = Rect2(-2, -2, 227, 131)
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/GUIRect/Control/BoardLocked" unique_id=1447175027]
+layout_mode = 2
+texture = ExtResource("4_k7wgp")
+
+[node name="GUIRect2" parent="CenterContainer/GUIRect/Control" unique_id=1643565686 instance=ExtResource("1_1iitn")]
+layout_mode = 1
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(32, 120, 0, 0)
+rect = Rect2(16, 60, 0, 0)
+
+[node name="ecText" parent="CenterContainer/GUIRect/Control/GUIRect2" unique_id=448162067 instance=ExtResource("3_k7wgp")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="." unique_id=286542659]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k7wgp")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3gx5n")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_flmrv")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
