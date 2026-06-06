@@ -42,14 +42,10 @@ var battle: int:
 
 @onready var _battle_intro: Control = $CenterContainer/BoardIntro/TextureRect/BattleIntro/ecText
 
-
 signal ok_pressed
 
 func _ready() -> void:
 	init()
-	var graphics := _ecGraphics.instance()
-	_set_fade_color(graphics.fade_color)
-	graphics.fade_color_changed.connect(_set_fade_color)
 
 
 func init() -> void:
@@ -81,11 +77,6 @@ func _set_battle() -> void:
 	else:
 		v.text = "%d%s"%[battle_def.victory, v2]
 		gv.text = "%d%s"%[battle_def.greatvictory, v2]
-
-
-func _set_fade_color(color: Color) -> void:
-	color.a = 0.5
-	$ColorRect.color = color
 
 
 func _on_gui_button_ex_pressed() -> void:

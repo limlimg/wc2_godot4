@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ci8373bocp2ax" path="res://app/src/main/cpp/gui_battle_intro.gd" id="1_56qfq"]
 [ext_resource type="Texture2D" uid="uid://fdsov0ivcmg8" path="res://app/src/main/cpp/scene_system_resource/texture/board_intro.tres" id="1_ft5bo"]
+[ext_resource type="PackedScene" uid="uid://df33p640anvad" path="res://app/src/main/cpp/gui_fade.tscn" id="2_gsb3j"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_mp2r6"]
 [ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://app/src/main/cpp/gui_button_ex.tscn" id="4_cl8ju"]
 [ext_resource type="Texture2D" uid="uid://x2oo4pcca42" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/text_conditon.png.tres" id="4_g2uog"]
@@ -9,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c5scjcg2j0bqx" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/green_normal.png.tres" id="5_mxe0c"]
 [ext_resource type="Texture2D" uid="uid://c3wwab5l8gutt" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/buttontext_ok_press.png.tres" id="6_g2uog"]
 [ext_resource type="Theme" uid="uid://cpnxetsssuv7j" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/num7.tres" id="9_3lprt"]
-[ext_resource type="Theme" uid="uid://kfde1dpf6pbh" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/font4.tres" id="10_0gbd6"]
+[ext_resource type="Theme" uid="uid://kfde1dpf6pbh" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/font4.tres" id="10_0gbd6"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="10_tekca"]
 [ext_resource type="Theme" uid="uid://b6mb1wkh5nrw1" path="res://app/src/main/cpp/scene_system_resource/font/g_font3.tres" id="11_0gbd6"]
 
@@ -22,14 +23,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_56qfq")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1849453398]
+[node name="GUIFade" parent="." unique_id=869114631 instance=ExtResource("2_gsb3j")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.49803922)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=237056786]
 layout_mode = 1

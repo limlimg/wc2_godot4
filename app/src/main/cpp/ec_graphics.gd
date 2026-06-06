@@ -35,12 +35,12 @@ var fade_color := Color.BLACK:
 	set(value):
 		if value != fade_color:
 			fade_color = value
-			fade_color_changed.emit(value)
+			fade_color_changed.emit()
 
 
 var _rendering_canvas_item: CanvasItem
 
-signal fade_color_changed(color: Color)
+signal fade_color_changed()
 
 static func instance() -> _ecGraphics:
 	return _instance

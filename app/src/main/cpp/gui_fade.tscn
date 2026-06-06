@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://df33p640anvad"]
+
+[ext_resource type="Script" uid="uid://cvu57cwqj27mi" path="res://app/src/main/cpp/gui_fade.gd" id="1_w5c76"]
+
+[node name="GUIFade" type="Control" unique_id=869114631]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w5c76")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=651929063]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
