@@ -132,6 +132,7 @@ func _init() -> void:
 	add_child(_text, false, Node.INTERNAL_MODE_FRONT)
 	_text_image = TextureRect.new()
 	_text_image.stretch_mode = TextureRect.STRETCH_KEEP
+	_text_image.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_text_image, false, Node.INTERNAL_MODE_FRONT)
 
 
