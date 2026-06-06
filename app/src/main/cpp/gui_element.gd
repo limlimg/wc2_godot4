@@ -9,11 +9,13 @@ extends Control
 ## usually reach the GUIManager which then send them to the current active state.
 ## OnUpdate method updates the element and OnRender renders the element.
 ##
-## In this projects, GUIElements inherits Control node class. Inputs should be
-## received via engine callbacks. Create events as signals that the actual
-## receiver connects. Updating should be handled by _process. Rendering should
-## be handled by children nodes. Many other methods are also provided by the
-## base classes.
+## In this projects, GUIElements inherits Control node class. Inputs are handled
+## by children nodes or _input callback if necessary. Up-spreading events are
+## replaced by signals. Time-based changes are handled by Tween or _process
+## callback if necessary. Rendering is implemented with children nodes or _draw
+## callback if necessary (remember to call queue_redraw in _process if using
+## this). Some of the original methods collide with the built-in methods of
+## Control and are therefore not coded in this file.
 ## 
 ## The original SetVisible method is unused and not implemented due to name
 ## conflict with engine method.
