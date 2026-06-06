@@ -8,7 +8,7 @@ extends Node
 ## in a duck-typed manner, so defining one of the following method is enough
 ## to allow it to be called, while it is not necessary to define all of them.
 
-func _enter_tree() -> void:
+func _ready() -> void:
 	_on_enter()
 
 
