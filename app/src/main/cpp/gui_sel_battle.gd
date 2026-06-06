@@ -66,6 +66,7 @@ func init() -> void:
 		logo = load(_CAMPAIGN_LOGO[campaign]) as Texture2D
 	$Logo/TextureRect.texture = logo
 	s_texture_res = load("res://app/src/main/cpp/scene_system_resource/selbattle_res/texture_res.tres").get_res()
+	_battle = -1
 	if game_mode != 4 and g_Commander.get_num_played_battles(campaign) < _native.get_num_battles(campaign):
 		_battle_list.select_last_unlocked()
 	else:
