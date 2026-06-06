@@ -16,7 +16,7 @@ var _conquest_player_country_id: String
 var _is_new_game: bool
 var _is_last_game_won: bool
 var should_show_next_battle: bool
-var _campaign: int
+var campaign: int
 var _battle: int
 var _victory_turn: int
 var _great_victory_turn: int
@@ -45,11 +45,11 @@ func set_conquest_player_country_id(value: String) -> void:
 	_conquest_player_country_id = value
 
 
-func new_game(game_mode: int, map_id_minus_1: int, campaign: int, battle: int) -> void:
+func new_game(game_mode: int, map_id_minus_1: int, new_campaign: int, battle: int) -> void:
 	_game_mode = game_mode
 	if map_id_minus_1 >= 0:
 		_map_id = map_id_minus_1 + 1
-	_campaign = campaign
+	campaign = new_campaign
 	_battle = battle
 	_victory_turn = 100000
 	_great_victory_turn = 10
@@ -72,7 +72,7 @@ func load_game(save_file_name: String) -> void:
 		_areas_enable = header.areas_enable
 		_player_country_name = header.player_country_name
 		_battle_file_name = header.battle_file_name
-		_campaign = header.campaign
+		campaign = header.campaign
 		_battle = header.battle
 		_save_file_name = save_file_name
 	_is_new_game = false
@@ -126,7 +126,7 @@ func retry_game() -> void:
 
 
 func is_last_battle() -> bool:
-	return _game_mode == 1 and _battle == _native.get_num_battles(_campaign) - 1
+	return _game_mode == 1 and _battle == _native.get_num_battles(campaign) - 1
 
 
 # TODO: _get_num_countries
@@ -174,8 +174,8 @@ func battle_victory() -> void:
 	var star := get_num_victory_stars()
 	if star == 0:
 		return
-	g_Commander.set_battle_played(_campaign, _battle)
-	var old_star := g_Commander.get_num_battle_stars(_campaign, _battle)
+	g_Commander.set_battle_played(campaign, _battle)
+	var old_star := g_Commander.get_num_battle_stars(campaign, _battle)
 	if old_star <= 0:
 		if star == 5:
 			_campaign_reward_medal = 50
@@ -189,7 +189,7 @@ func battle_victory() -> void:
 			_campaign_reward_medal = 0
 		g_Commander.medal += _campaign_reward_medal
 	if old_star < star:
-		g_Commander.set_num_battle_stars(_campaign, _battle, star)
+		g_Commander.set_num_battle_stars(campaign, _battle, star)
 
 
 func get_num_victory_stars() -> int:

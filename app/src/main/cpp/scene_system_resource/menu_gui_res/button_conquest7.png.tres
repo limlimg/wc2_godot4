@@ -1,4 +1,4 @@
-[gd_resource type="Texture2D" script_class="ecImageTextureAssets" load_steps=7 format=3 uid="uid://b6h6uqwink62c"]
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://b6h6uqwink62c"]
 
 [ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_v44nb"]
 [ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/texture_res.tres" id="2_13tsk"]
@@ -8,11 +8,6 @@
 [sub_resource type="Resource" id="Resource_v44nb"]
 script = ExtResource("1_v44nb")
 name = "button_conquest7.png"
-name_ipad = ""
-name_640h = ""
-name_568h = ""
-name_534h = ""
-name_512h = ""
 
 [sub_resource type="Resource" id="Resource_fkjlg"]
 script = ExtResource("3_0ap27")
