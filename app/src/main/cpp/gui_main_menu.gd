@@ -6,14 +6,16 @@ const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 
 var _button_moving := 0
 
-signal button_campaign_pressed
-signal button_campaign_back_pressed
-signal button_conquest_pressed
-signal button_conquest_back_pressed
-signal button_multi_player_pressed
-signal button_multi_player_back_pressed
-signal button_local_pressed
-signal button_local_back_pressed
+signal sel_campaign_pressed(int)
+signal load_campaign_pressed
+signal sel_conquest_pressed(int)
+signal load_conquest_pressed
+signal multi_player_global_pressed
+signal multi_player_host_pressed
+signal multi_player_join_pressed
+signal tutorial_pressed
+signal commander_pressed
+signal options_pressed
 signal quit_pressed
 
 func _ready() -> void:
@@ -66,14 +68,22 @@ func _on_button_campaign_pressed() -> void:
 		# NOTTODO: hide more game and mail button
 		_move_button(2)
 		_CSoundBox.get_instance().play_se("main_interface.wav")
-	button_campaign_pressed.emit()
+
+
+func _on_button_sel_campaign_pressed(sel_campaign: int) -> void:
+	if _button_moving == 0:
+		sel_campaign_pressed.emit(sel_campaign)
+
+
+func _on_button_load_campaign_pressed() -> void:
+	if _button_moving == 0:
+		load_campaign_pressed.emit()
 
 
 func _on_button_campaign_back_pressed() -> void:
 	if _button_moving == 0:
 		_move_button(4)
 		_CSoundBox.get_instance().play_se("main_interface.wav")
-	button_campaign_back_pressed.emit()
 
 
 func _on_button_conquest_pressed() -> void:
@@ -81,14 +91,22 @@ func _on_button_conquest_pressed() -> void:
 		# NOTTODO: hide more game and mail button
 		_move_button(7)
 		_CSoundBox.get_instance().play_se("main_interface.wav")
-	button_conquest_pressed.emit()
+
+
+func _on_button_sel_conquest_pressed(sel_conquest: int) -> void:
+	if _button_moving == 0:
+		sel_conquest_pressed.emit(sel_conquest)
+
+
+func _on_button_load_conquest_pressed() -> void:
+	if _button_moving == 0:
+		load_conquest_pressed.emit()
 
 
 func _on_button_conquest_back_pressed() -> void:
 	if _button_moving == 0:
 		_move_button(9)
 		_CSoundBox.get_instance().play_se("main_interface.wav")
-	button_conquest_back_pressed.emit()
 
 
 func _on_button_multi_player_pressed() -> void:
@@ -96,7 +114,33 @@ func _on_button_multi_player_pressed() -> void:
 		# NOTTODO: hide more game and mail button
 		_move_button(6)
 		_CSoundBox.get_instance().play_se("main_interface.wav")
-	button_multi_player_pressed.emit()
+
+
+func _on_button_multi_player_global_pressed() -> void:
+	if _button_moving == 0:
+		multi_player_global_pressed.emit()
+
+
+func _on_button_local_pressed() -> void:
+	if _button_moving == 0:
+		$SelMultiplayer.hide()
+		$SelLocal.show()
+
+
+func _on_button_multi_player_host_pressed() -> void:
+	if _button_moving == 0:
+		multi_player_host_pressed.emit()
+
+
+func _on_button_multi_player_join_pressed() -> void:
+	if _button_moving == 0:
+		multi_player_join_pressed.emit()
+
+
+func _on_button_local_back_pressed() -> void:
+	if _button_moving == 0:
+		$SelMultiplayer.show()
+		$SelLocal.hide()
 
 
 func _on_button_multi_player_back_pressed() -> void:
@@ -104,21 +148,21 @@ func _on_button_multi_player_back_pressed() -> void:
 		# NOTTODO: show more game button and mail button and refresh new highlight
 		_move_button(5)
 		_CSoundBox.get_instance().play_se("main_interface.wav")
-	button_multi_player_back_pressed.emit()
 
 
-func _on_button_local_pressed() -> void:
+func _on_button_tutorial_pressed() -> void:
 	if _button_moving == 0:
-		$SelMultiplayer.hide()
-		$SelLocal.show()
-	button_local_pressed.emit()
+		tutorial_pressed.emit()
 
 
-func _on_button_local_back_pressed() -> void:
+func _on_button_commander_pressed() -> void:
 	if _button_moving == 0:
-		$SelMultiplayer.show()
-		$SelLocal.hide()
-	button_local_back_pressed.emit()
+		commander_pressed.emit()
+
+
+func _on_button_options_pressed() -> void:
+	if _button_moving == 0:
+		options_pressed.emit()
 
 
 func _on_button_quit_pressed() -> void:
