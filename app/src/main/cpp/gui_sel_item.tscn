@@ -1,19 +1,19 @@
-[gd_scene format=3 uid="uid://ch2b3x5003vtt"]
+[gd_scene format=3 uid="uid://c1rdjdnbkq2v"]
 
-[ext_resource type="Script" uid="uid://clxocy78xg4t4" path="res://app/src/main/cpp/gui_battle_item.gd" id="1_2poha"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_2mf3m"]
+[ext_resource type="Script" uid="uid://dsb0y4ax1t1dh" path="res://app/src/main/cpp/gui_sel_item.gd" id="1_2s3h4"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_ogrdh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mf3m"]
 
-[node name="GUIBattleItem" type="MarginContainer" unique_id=1471834346]
+[node name="GUISelItem" type="MarginContainer" unique_id=1471834346]
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 1.0
 offset_bottom = 46.0
 grow_horizontal = 2
-script = ExtResource("1_2poha")
+script = ExtResource("1_2s3h4")
 
-[node name="Minimum Height" parent="." unique_id=1766981685 instance=ExtResource("2_2mf3m")]
+[node name="Minimum Height" parent="." unique_id=1766981685 instance=ExtResource("2_ogrdh")]
 layout_mode = 2
 size_flags_vertical = 0
 rect_ipad = Rect2(0, 0, 0, 90)
@@ -28,7 +28,7 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Minimum Height" parent="MarginContainer" unique_id=1666821508 instance=ExtResource("2_2mf3m")]
+[node name="Minimum Height" parent="MarginContainer" unique_id=1666821508 instance=ExtResource("2_ogrdh")]
 layout_mode = 2
 size_flags_vertical = 0
 rect_ipad = Rect2(0, 0, 0, 80)
@@ -49,7 +49,7 @@ mouse_filter = 1
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2mf3m")
 flat = true
 
-[node name="SelectedOffset" parent="." unique_id=568897213 instance=ExtResource("2_2mf3m")]
+[node name="SelectedOffset" parent="." unique_id=568897213 instance=ExtResource("2_ogrdh")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
