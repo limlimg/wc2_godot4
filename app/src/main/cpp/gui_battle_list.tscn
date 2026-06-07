@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://dilpumc03hfp0"]
 
 [ext_resource type="Script" uid="uid://bj88gkbpgi1jq" path="res://app/src/main/cpp/gui_battle_list.gd" id="1_scs3j"]
-[ext_resource type="PackedScene" uid="uid://dchd7a0cd1asv" path="res://app/src/main/cpp/c_touch_inertia.tscn" id="2_r5cn7"]
-[ext_resource type="PackedScene" uid="uid://ch2b3x5003vtt" path="res://app/src/main/cpp/gui_battle_item.tscn" id="3_r5cn7"]
+[ext_resource type="PackedScene" uid="uid://55bpjexr684x" path="res://app/src/main/cpp/gui_list.tscn" id="3_8la76"]
+[ext_resource type="PackedScene" uid="uid://c1rdjdnbkq2v" path="res://app/src/main/cpp/gui_sel_item.tscn" id="3_upee1"]
+[ext_resource type="Script" uid="uid://clxocy78xg4t4" path="res://app/src/main/cpp/gui_battle_item.gd" id="4_8la76"]
+[ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/texture_res.tres" id="4_t2nrp"]
 
 [node name="GUIBattleList" type="Control" unique_id=2059566917]
 layout_mode = 3
@@ -14,25 +16,8 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_scs3j")
 
-[node name="CTouchInertia" parent="." unique_id=2110494605 instance=ExtResource("2_r5cn7")]
+[node name="GUIList" parent="." unique_id=339150278 instance=ExtResource("3_8la76")]
 layout_mode = 1
-
-[node name="ScrollContainer" type="ScrollContainer" parent="CTouchInertia" unique_id=838240118]
-clip_contents = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-follow_focus = true
-horizontal_scroll_mode = 3
-vertical_scroll_mode = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CTouchInertia/ScrollContainer" unique_id=1096023560]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="Prototype" type="Control" parent="." unique_id=1172278810]
 visible = false
@@ -40,11 +25,16 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="GUIBattleItem" parent="Prototype" unique_id=1471834346 instance=ExtResource("3_r5cn7")]
+[node name="GUIBattleItem" parent="Prototype" unique_id=1471834346 instance=ExtResource("3_upee1")]
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+offset_top = 0.0
+offset_bottom = 45.0
+grow_horizontal = 1
+script = ExtResource("4_8la76")
+battle_res = ExtResource("4_t2nrp")
+campaign = 0
+battle = 0
 
-[connection signal="inertia_ended" from="CTouchInertia" to="." method="_on_c_touch_inertia_inertia_ended"]
-[connection signal="touch_began" from="CTouchInertia" to="." method="_on_c_touch_inertia_touch_began"]
-[connection signal="touch_ended" from="CTouchInertia" to="." method="_on_c_touch_inertia_touch_ended"]
-[connection signal="touch_moved" from="CTouchInertia" to="." method="_on_c_touch_inertia_touch_moved"]
+[connection signal="item_selected" from="GUIList" to="." method="_on_gui_list_item_selected"]
