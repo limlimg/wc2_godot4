@@ -2,29 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bf2fxmmo5527o" path="res://app/src/main/cpp/gui_sel_battle.gd" id="1_22hmj"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_yq104"]
-[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://app/src/main/cpp/scene_system_resource/texture/commonbg.tres" id="2_uaqr2"]
-[ext_resource type="Texture2D" uid="uid://crietgngbpmjc" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_1.tres" id="3_73w7g"]
-[ext_resource type="Texture2D" uid="uid://twvebqix5p1p" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_2.tres" id="4_xpbc6"]
-[ext_resource type="Texture2D" uid="uid://2kosbyajq6kn" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_3.tres" id="5_u4ky1"]
-[ext_resource type="Texture2D" uid="uid://5u82hkjbjvk6" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_4.tres" id="6_kcsg8"]
-[ext_resource type="Texture2D" uid="uid://bda1v753s45f6" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_5.tres" id="7_7j2ys"]
-[ext_resource type="Texture2D" uid="uid://dkxjlqu0cnvq1" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_6.tres" id="8_3d3pv"]
-[ext_resource type="Texture2D" uid="uid://c3ti4j1qeff4t" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_7.tres" id="9_qjoee"]
-[ext_resource type="Texture2D" uid="uid://dnbbn81qmkd3b" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_8.tres" id="10_1kakj"]
-[ext_resource type="Texture2D" uid="uid://cd2xlypbsgglm" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/sflag_shadow.png.tres" id="11_w68dy"]
-[ext_resource type="Theme" uid="uid://l3oxkticxpdd" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/num6.tres" id="11_xpbc6"]
-[ext_resource type="Texture2D" uid="uid://cmvqgf8do8n86" path="res://app/src/main/cpp/scene_system_resource/texture/board_selbattle.tres" id="12_hb1pb"]
+[ext_resource type="PackedScene" uid="uid://d21hy30ofd6pt" path="res://app/src/main/cpp/gui_sel_battle_common.tscn" id="2_bmoyp"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="12_o5ukl"]
-[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back.png.tres" id="13_toqjd"]
-[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back_press.png.tres" id="14_wfmoi"]
-[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttonboard_gray.png.tres" id="15_aqcfa"]
-[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok.png.tres" id="16_wkiuu"]
-[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok_press.png.tres" id="17_nf5fh"]
-[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttonboard_green.png.tres" id="18_hb1pb"]
 [ext_resource type="Texture2D" uid="uid://caodcbd5dmbee" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_intro.png.tres" id="19_aqcfa"]
 [ext_resource type="Texture2D" uid="uid://cvfycwvcl5rsr" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_intro_press.png.tres" id="20_wkiuu"]
 [ext_resource type="Texture2D" uid="uid://o3iota60r18e" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_intro.png.tres" id="21_nf5fh"]
-[ext_resource type="PackedScene" uid="uid://bp1f7if3s8vf4" path="res://app/src/main/cpp/gui_medal.tscn" id="22_wkiuu"]
 [ext_resource type="PackedScene" uid="uid://dilpumc03hfp0" path="res://app/src/main/cpp/gui_battle_list.tscn" id="23_nf5fh"]
 [ext_resource type="PackedScene" uid="uid://ciwlalt7fqwik" path="res://app/src/main/cpp/gui_battle_intro.tscn" id="27_aptrf"]
 
@@ -37,172 +19,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_22hmj")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1254571716]
+[node name="GUISelBattleCommon" parent="." unique_id=1447387296 instance=ExtResource("2_bmoyp")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_uaqr2")
-expand_mode = 1
-stretch_mode = 6
-
-[node name="Minimap" type="Control" parent="." unique_id=7959550]
-editor_description = "Defines total size of minimap"
-clip_contents = true
-anchors_preset = 0
-offset_right = 1715.0
-offset_bottom = 750.0
-size_flags_horizontal = 3
-
-[node name="Background" parent="Minimap" unique_id=1055713110 instance=ExtResource("1_yq104")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 1994.0
-offset_bottom = 994.0
-grow_horizontal = 1
-grow_vertical = 1
-rect_ipad = Rect2(0, 0, 4000, 2000)
-rect = Rect2(0, 0, 2000, 1000)
-
-[node name="GridContainer" type="GridContainer" parent="Minimap/Background" unique_id=949496619]
-layout_mode = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-columns = 4
-
-[node name="MiniMap1" type="Control" parent="Minimap/Background/GridContainer" unique_id=1565078383]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-
-[node name="Minimap1" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap1" unique_id=1049856453]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("3_73w7g")
-expand_mode = 1
-
-[node name="MiniMap2" type="Control" parent="Minimap/Background/GridContainer" unique_id=1562754531]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-
-[node name="Minimap2" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap2" unique_id=1755205146]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("4_xpbc6")
-expand_mode = 1
-
-[node name="MiniMap3" type="Control" parent="Minimap/Background/GridContainer" unique_id=328019580]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-
-[node name="Minimap3" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap3" unique_id=788945221]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("5_u4ky1")
-expand_mode = 1
-
-[node name="MiniMap4" type="Control" parent="Minimap/Background/GridContainer" unique_id=1209178636]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-
-[node name="Minimap4" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap4" unique_id=1058084240]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("6_kcsg8")
-expand_mode = 1
-
-[node name="MiniMap5" type="Control" parent="Minimap/Background/GridContainer" unique_id=1589693801]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-
-[node name="Minimap5" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap5" unique_id=584644764]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("7_7j2ys")
-expand_mode = 1
-
-[node name="MiniMap6" type="Control" parent="Minimap/Background/GridContainer" unique_id=1522309563]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-
-[node name="Minimap6" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap6" unique_id=1492552840]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("8_3d3pv")
-expand_mode = 1
-
-[node name="MiniMap7" type="Control" parent="Minimap/Background/GridContainer" unique_id=1541080993]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-
-[node name="Minimap7" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap7" unique_id=369328162]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("9_qjoee")
-expand_mode = 1
-
-[node name="MiniMap8" type="Control" parent="Minimap/Background/GridContainer" unique_id=166602341]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 2
-
-[node name="Minimap8" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap8" unique_id=1669747958]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("10_1kakj")
-expand_mode = 1
-
-[node name="ImageList" type="Node2D" parent="Minimap" unique_id=700036717]
-
-[node name="Flags" type="Node2D" parent="Minimap/ImageList" unique_id=411524443]
-
-[node name="Arrows" type="Node2D" parent="Minimap/ImageList" unique_id=1570712730]
-
-[node name="Age" type="CenterContainer" parent="Minimap/ImageList" unique_id=364721976]
-offset_right = 40.0
-offset_bottom = 40.0
-use_top_left = true
-
-[node name="Label" type="Label" parent="Minimap/ImageList/Age" unique_id=501752094]
-layout_mode = 2
-theme = ExtResource("11_xpbc6")
-horizontal_alignment = 3
 
 [node name="Logo" parent="." unique_id=533378508 instance=ExtResource("1_yq104")]
 layout_mode = 1
@@ -219,19 +37,6 @@ layout_mode = 2
 expand_mode = 1
 stretch_mode = 2
 
-[node name="BoardSelBattle" parent="." unique_id=232931586 instance=ExtResource("1_yq104")]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-offset_left = -144.0
-grow_horizontal = 0
-rect_ipad = Rect2(0, 0, 288, 768)
-rect = Rect2(0, 0, 144, 320)
-
-[node name="TextureRect" type="TextureRect" parent="BoardSelBattle" unique_id=2120988106]
-layout_mode = 2
-texture = ExtResource("12_hb1pb")
-
 [node name="GUIBattleList" parent="." unique_id=1463595848 instance=ExtResource("1_yq104")]
 layout_mode = 1
 anchors_preset = -1
@@ -246,21 +51,6 @@ rect_ipad = Rect2(-254, 0, 268, 728)
 rect = Rect2(-129, 0, 134, 300)
 
 [node name="GUIBattleList" parent="GUIBattleList" unique_id=171860356 instance=ExtResource("23_nf5fh")]
-layout_mode = 2
-
-[node name="GUIMedal" parent="." unique_id=838621552 instance=ExtResource("1_yq104")]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
-offset_top = -23.0
-offset_right = 70.0
-grow_horizontal = 1
-grow_vertical = 0
-rect_ipad = Rect2(55, 0, 146, 50)
-rect = Rect2(36, 0, 70, 23)
-
-[node name="GUIMedal" parent="GUIMedal" unique_id=1198964174 instance=ExtResource("22_wkiuu")]
 layout_mode = 2
 
 [node name="ButtonInfo" parent="." unique_id=457532143 instance=ExtResource("1_yq104")]
@@ -281,68 +71,14 @@ texture_normal = ExtResource("19_aqcfa")
 texture_pressed = ExtResource("20_wkiuu")
 texture_background = ExtResource("21_nf5fh")
 
-[node name="ButtonOk" parent="." unique_id=274679105 instance=ExtResource("1_yq104")]
-z_index = 1
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = -32.0
-offset_top = -30.0
-grow_horizontal = 0
-grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-
-[node name="GUIButton" parent="ButtonOk" unique_id=926299514 instance=ExtResource("12_o5ukl")]
-layout_mode = 2
-texture_normal = ExtResource("16_wkiuu")
-texture_pressed = ExtResource("17_nf5fh")
-texture_background = ExtResource("18_hb1pb")
-
-[node name="ButtonBack" parent="." unique_id=2093422574 instance=ExtResource("1_yq104")]
-z_index = 1
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
-offset_top = -30.0
-offset_right = 32.0
-grow_horizontal = 1
-grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-
-[node name="GUIButton" parent="ButtonBack" unique_id=535049000 instance=ExtResource("12_o5ukl")]
-layout_mode = 2
-texture_normal = ExtResource("13_toqjd")
-texture_pressed = ExtResource("14_wfmoi")
-texture_background = ExtResource("15_aqcfa")
-
 [node name="GUIBattleIntro" parent="." unique_id=2130276311 instance=ExtResource("27_aptrf")]
 visible = false
 z_index = 1
 layout_mode = 1
 
-[node name="Prototype" type="Node2D" parent="." unique_id=1382723592]
-visible = false
-
-[node name="Flag" type="Sprite2D" parent="Prototype" unique_id=844193794]
-editor_description = "As a prototype for dynamic flags"
-position = Vector2(-128, -128)
-centered = false
-
-[node name="Shadow" type="Sprite2D" parent="Prototype/Flag" unique_id=1502195114]
-show_behind_parent = true
-texture = ExtResource("11_w68dy")
-centered = false
-
-[node name="Arrow" type="Sprite2D" parent="Prototype" unique_id=2096712091]
-centered = false
-
 [connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="back_pressed" from="GUISelBattleCommon" to="." method="_on_button_back_pressed"]
+[connection signal="ok_pressed" from="GUISelBattleCommon" to="." method="_on_button_ok_pressed"]
 [connection signal="battle_selected" from="GUIBattleList/GUIBattleList" to="." method="_on_gui_battle_list_battle_selected"]
 [connection signal="pressed" from="ButtonInfo/GUIButton" to="." method="_on_button_info_pressed"]
-[connection signal="pressed" from="ButtonOk/GUIButton" to="." method="_on_gui_button_ok_pressed"]
-[connection signal="pressed" from="ButtonBack/GUIButton" to="." method="_on_gui_button_back_pressed"]
 [connection signal="ok_pressed" from="GUIBattleIntro" to="." method="_on_gui_battle_intro_ok_pressed"]

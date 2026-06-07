@@ -1,0 +1,286 @@
+[gd_scene format=3 uid="uid://d21hy30ofd6pt"]
+
+[ext_resource type="Script" uid="uid://dtwrl4dmbtg5n" path="res://app/src/main/cpp/gui_sel_battle_common.gd" id="1_ap38y"]
+[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://app/src/main/cpp/scene_system_resource/texture/commonbg.tres" id="1_euem8"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_ap38y"]
+[ext_resource type="Texture2D" uid="uid://crietgngbpmjc" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_1.tres" id="3_u6gr4"]
+[ext_resource type="Texture2D" uid="uid://twvebqix5p1p" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_2.tres" id="4_67bt0"]
+[ext_resource type="Texture2D" uid="uid://2kosbyajq6kn" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_3.tres" id="5_w8w5v"]
+[ext_resource type="Texture2D" uid="uid://5u82hkjbjvk6" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_4.tres" id="6_1dr5e"]
+[ext_resource type="Texture2D" uid="uid://bda1v753s45f6" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_5.tres" id="7_bnxjm"]
+[ext_resource type="Texture2D" uid="uid://dkxjlqu0cnvq1" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_6.tres" id="8_nt22e"]
+[ext_resource type="Texture2D" uid="uid://c3ti4j1qeff4t" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_7.tres" id="9_rv5wm"]
+[ext_resource type="Texture2D" uid="uid://dnbbn81qmkd3b" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_8.tres" id="10_y8pec"]
+[ext_resource type="Theme" uid="uid://l3oxkticxpdd" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/num6.tres" id="11_a5ym0"]
+[ext_resource type="Texture2D" uid="uid://cd2xlypbsgglm" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/sflag_shadow.png.tres" id="12_15bd2"]
+[ext_resource type="Texture2D" uid="uid://cmvqgf8do8n86" path="res://app/src/main/cpp/scene_system_resource/texture/board_selbattle.tres" id="13_cktq3"]
+[ext_resource type="PackedScene" uid="uid://bp1f7if3s8vf4" path="res://app/src/main/cpp/gui_medal.tscn" id="14_xi63f"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="15_31lcn"]
+[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok.png.tres" id="16_taf46"]
+[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok_press.png.tres" id="17_ysmif"]
+[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttonboard_green.png.tres" id="18_lxthn"]
+[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back.png.tres" id="19_jeet5"]
+[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back_press.png.tres" id="20_jogrt"]
+[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttonboard_gray.png.tres" id="21_csgyi"]
+
+[node name="GUISelBattleCommon" type="Control" unique_id=1447387296]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ap38y")
+
+[node name="CommonBackground" type="TextureRect" parent="." unique_id=1598357464]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_euem8")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Minimap" type="Control" parent="." unique_id=8535555]
+editor_description = "Defines total size of minimap"
+clip_contents = true
+anchors_preset = 0
+offset_right = 1715.0
+offset_bottom = 750.0
+size_flags_horizontal = 3
+
+[node name="Background" parent="Minimap" unique_id=2068186717 instance=ExtResource("2_ap38y")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 1994.0
+offset_bottom = 994.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(0, 0, 4000, 2000)
+rect = Rect2(0, 0, 2000, 1000)
+
+[node name="GridContainer" type="GridContainer" parent="Minimap/Background" unique_id=945798134]
+layout_mode = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 4
+
+[node name="MiniMap1" type="Control" parent="Minimap/Background/GridContainer" unique_id=211396206]
+clip_contents = true
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="Minimap1" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap1" unique_id=1612956961]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_u6gr4")
+expand_mode = 1
+
+[node name="MiniMap2" type="Control" parent="Minimap/Background/GridContainer" unique_id=1289506090]
+clip_contents = true
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="Minimap2" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap2" unique_id=2143372789]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("4_67bt0")
+expand_mode = 1
+
+[node name="MiniMap3" type="Control" parent="Minimap/Background/GridContainer" unique_id=1012242525]
+clip_contents = true
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="Minimap3" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap3" unique_id=2105644886]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("5_w8w5v")
+expand_mode = 1
+
+[node name="MiniMap4" type="Control" parent="Minimap/Background/GridContainer" unique_id=364616880]
+clip_contents = true
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="Minimap4" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap4" unique_id=1520657236]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_1dr5e")
+expand_mode = 1
+
+[node name="MiniMap5" type="Control" parent="Minimap/Background/GridContainer" unique_id=1261892310]
+clip_contents = true
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="Minimap5" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap5" unique_id=227474964]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("7_bnxjm")
+expand_mode = 1
+
+[node name="MiniMap6" type="Control" parent="Minimap/Background/GridContainer" unique_id=1387963843]
+clip_contents = true
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="Minimap6" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap6" unique_id=427001277]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("8_nt22e")
+expand_mode = 1
+
+[node name="MiniMap7" type="Control" parent="Minimap/Background/GridContainer" unique_id=937893266]
+clip_contents = true
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="Minimap7" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap7" unique_id=1251680486]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("9_rv5wm")
+expand_mode = 1
+
+[node name="MiniMap8" type="Control" parent="Minimap/Background/GridContainer" unique_id=1262104882]
+clip_contents = true
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+
+[node name="Minimap8" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap8" unique_id=573000560]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("10_y8pec")
+expand_mode = 1
+
+[node name="ImageList" type="Node2D" parent="Minimap" unique_id=600736883]
+
+[node name="Flags" type="Node2D" parent="Minimap/ImageList" unique_id=323837022]
+
+[node name="Arrows" type="Node2D" parent="Minimap/ImageList" unique_id=758524085]
+
+[node name="Age" type="CenterContainer" parent="Minimap/ImageList" unique_id=2106438542]
+offset_right = 40.0
+offset_bottom = 40.0
+use_top_left = true
+
+[node name="Label" type="Label" parent="Minimap/ImageList/Age" unique_id=1147939039]
+layout_mode = 2
+theme = ExtResource("11_a5ym0")
+horizontal_alignment = 3
+
+[node name="Prototype" type="Node2D" parent="Minimap" unique_id=1121306584]
+visible = false
+
+[node name="Flag" type="Sprite2D" parent="Minimap/Prototype" unique_id=121774581]
+editor_description = "As a prototype for dynamic flags"
+position = Vector2(-128, -128)
+centered = false
+
+[node name="Shadow" type="Sprite2D" parent="Minimap/Prototype/Flag" unique_id=2092388097]
+show_behind_parent = true
+texture = ExtResource("12_15bd2")
+centered = false
+
+[node name="Arrow" type="Sprite2D" parent="Minimap/Prototype" unique_id=1661421727]
+centered = false
+
+[node name="BoardSelBattle" parent="." unique_id=97146119 instance=ExtResource("2_ap38y")]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+offset_left = -144.0
+grow_horizontal = 0
+rect_ipad = Rect2(0, 0, 288, 768)
+rect = Rect2(0, 0, 144, 320)
+
+[node name="TextureRect" type="TextureRect" parent="BoardSelBattle" unique_id=2004284411]
+layout_mode = 2
+texture = ExtResource("13_cktq3")
+
+[node name="GUIMedal" parent="." unique_id=668390441 instance=ExtResource("2_ap38y")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -23.0
+offset_right = 70.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(55, 0, 146, 50)
+rect = Rect2(36, 0, 70, 23)
+
+[node name="GUIMedal" parent="GUIMedal" unique_id=439510704 instance=ExtResource("14_xi63f")]
+layout_mode = 2
+
+[node name="ButtonOk" parent="." unique_id=69178616 instance=ExtResource("2_ap38y")]
+z_index = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -32.0
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="GUIButton" parent="ButtonOk" unique_id=2034275630 instance=ExtResource("15_31lcn")]
+layout_mode = 2
+texture_normal = ExtResource("16_taf46")
+texture_pressed = ExtResource("17_ysmif")
+texture_background = ExtResource("18_lxthn")
+
+[node name="ButtonBack" parent="." unique_id=699078119 instance=ExtResource("2_ap38y")]
+z_index = 1
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -30.0
+offset_right = 32.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="GUIButton" parent="ButtonBack" unique_id=2013893066 instance=ExtResource("15_31lcn")]
+layout_mode = 2
+texture_normal = ExtResource("19_jeet5")
+texture_pressed = ExtResource("20_jogrt")
+texture_background = ExtResource("21_csgyi")
+
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="pressed" from="ButtonOk/GUIButton" to="." method="_on_button_ok_pressed"]
+[connection signal="pressed" from="ButtonBack/GUIButton" to="." method="_on_button_back_pressed"]
