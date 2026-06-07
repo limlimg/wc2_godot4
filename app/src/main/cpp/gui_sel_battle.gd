@@ -39,8 +39,8 @@ var _center_pos: Vector2
 var _cur_tween_state := 0
 var _cur_tween: Tween
 @onready var _battle_list := $GUIBattleList/GUIBattleList
-@onready var _flag_proto := $Minimap/ImageList/Flags/Flag
-@onready var _arrow_proto := $Minimap/ImageList/Arrows/Arrow
+@onready var _flag_proto := $Prototype/Flag
+@onready var _arrow_proto := $Prototype/Arrow
 @onready var _minimap: Control = $Minimap
 @onready var _gui_battle_intro: Control = $GUIBattleIntro
 @onready var _image_list: Node2D = $Minimap/ImageList
@@ -103,16 +103,14 @@ func _sel_battle(sel_campaign: int, battle: int) -> void:
 
 
 func _release_image_list() -> void:
-	_clear_element_nodes(_flags, _flag_proto)
-	_clear_element_nodes(_arrows, _arrow_proto)
+	_clear_element_nodes(_flags)
+	_clear_element_nodes(_arrows)
 
 
-func _clear_element_nodes(parent: Node, keep: Node) -> void:
-	parent.remove_child(keep)
+func _clear_element_nodes(parent: Node) -> void:
 	for i in parent.get_children():
 		parent.remove_child(i)
 		i.queue_free()
-	parent.add_child(keep)
 
 
 func _load_image_list(sel_campaign: int, battle: int) -> void:
@@ -120,14 +118,15 @@ func _load_image_list(sel_campaign: int, battle: int) -> void:
 	var def := _CObjectDef.instance().get_battle_def(key)
 	if def == null:
 		return
-	_create_element_nodes(def.flag, "sflag_", _flag_proto)
-	_create_element_nodes(def.arrow, "maparrow_", _arrow_proto)
+	_flags.add_child(_create_element_nodes(def.flag, "sflag_", _flag_proto))
+	_arrows.add_child(_create_element_nodes(def.arrow, "maparrow_", _arrow_proto))
 	$Minimap/ImageList/Age/Label.text = def.age
 	_age.position = Vector2(def.agex, def.agey)
 	_center_pos = Vector2(def.centerx, def.centery)
 
 
-func _create_element_nodes(data: Array[FlagInfo], image_prefix: String, prototype: Sprite2D) -> void:
+func _create_element_nodes(data: Array[FlagInfo], image_prefix: String, prototype: Sprite2D) -> Node2D:
+	var parent := Node2D.new()
 	for i in data:
 		var image_name := image_prefix + i.name + ".png"
 		var image_attr := s_texture_res.get_image(image_name)
@@ -145,7 +144,8 @@ func _create_element_nodes(data: Array[FlagInfo], image_prefix: String, prototyp
 		node.position = Vector2(i.x, i.y)
 		node.rotation = i.rot
 		node.scale *= i.scale
-		prototype.add_sibling(node)
+		parent.add_child(node)
+	return parent
 
 
 func _clamp_pos(center_pos: Vector2) -> Vector2:

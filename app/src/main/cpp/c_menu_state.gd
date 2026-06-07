@@ -38,8 +38,7 @@ func _on_gui_main_menu_sel_campaign_pressed(sel_campaign: int) -> void:
 		and g_Commander.get_num_played_battles(1) < _native.get_num_battles(1):
 		_gui_locked_warning.show()
 	else:
-		var loading: Node = load("res://app/src/main/cpp/gui_loading.tscn").instantiate()
-		_gui_manager.fade_out(3, loading)
+		_gui_manager.fade_out(3, $Prototype/GUILoading.duplicate())
 		_sel_campaign = sel_campaign
 		_gui_manager.faded_out.connect(func(cause: int):
 			if cause == 3:

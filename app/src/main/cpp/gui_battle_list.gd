@@ -43,11 +43,11 @@ func init() -> void:
 	var played_battles := num_battles
 	if num_battles != CAMPIAGN_MULTIPLAY:
 		played_battles = g_Commander.get_num_played_battles(campaign)
-	var item_scene = load("res://app/src/main/cpp/gui_battle_item.tscn")
+	var item_proto: MarginContainer = $Prototype/GUIBattleItem
+	item_proto.campaign = campaign
 	for i in num_battles:
-		var item := item_scene.instantiate() as _GUIBattleItem
+		var item := item_proto.duplicate()
 		container.add_child(item)
-		item.campaign = campaign
 		item.battle = i
 		item.star = g_Commander.get_num_battle_stars(campaign, i)
 		if i > played_battles:

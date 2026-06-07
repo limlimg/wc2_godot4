@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bj88gkbpgi1jq" path="res://app/src/main/cpp/gui_battle_list.gd" id="1_scs3j"]
 [ext_resource type="PackedScene" uid="uid://dchd7a0cd1asv" path="res://app/src/main/cpp/c_touch_inertia.tscn" id="2_r5cn7"]
+[ext_resource type="PackedScene" uid="uid://ch2b3x5003vtt" path="res://app/src/main/cpp/gui_battle_item.tscn" id="3_r5cn7"]
 
 [node name="GUIBattleList" type="Control" unique_id=2059566917]
 layout_mode = 3
@@ -32,6 +33,16 @@ vertical_scroll_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Prototype" type="Control" parent="." unique_id=1172278810]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GUIBattleItem" parent="Prototype" unique_id=1471834346 instance=ExtResource("3_r5cn7")]
+layout_mode = 0
+anchors_preset = 0
 
 [connection signal="inertia_ended" from="CTouchInertia" to="." method="_on_c_touch_inertia_inertia_ended"]
 [connection signal="touch_began" from="CTouchInertia" to="." method="_on_c_touch_inertia_touch_began"]

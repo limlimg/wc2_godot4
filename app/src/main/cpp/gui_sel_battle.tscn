@@ -192,20 +192,7 @@ expand_mode = 1
 
 [node name="Flags" type="Node2D" parent="Minimap/ImageList" unique_id=411524443]
 
-[node name="Flag" type="Sprite2D" parent="Minimap/ImageList/Flags" unique_id=844193794]
-editor_description = "As a prototype for dynamic flags"
-position = Vector2(-128, -128)
-centered = false
-
-[node name="Shadow" type="Sprite2D" parent="Minimap/ImageList/Flags/Flag" unique_id=1502195114]
-show_behind_parent = true
-texture = ExtResource("11_w68dy")
-centered = false
-
 [node name="Arrows" type="Node2D" parent="Minimap/ImageList" unique_id=1570712730]
-
-[node name="Arrow" type="Sprite2D" parent="Minimap/ImageList/Arrows" unique_id=2096712091]
-centered = false
 
 [node name="Age" type="CenterContainer" parent="Minimap/ImageList" unique_id=364721976]
 offset_right = 40.0
@@ -336,6 +323,22 @@ texture_background = ExtResource("15_aqcfa")
 visible = false
 z_index = 1
 layout_mode = 1
+
+[node name="Prototype" type="Node2D" parent="." unique_id=1382723592]
+visible = false
+
+[node name="Flag" type="Sprite2D" parent="Prototype" unique_id=844193794]
+editor_description = "As a prototype for dynamic flags"
+position = Vector2(-128, -128)
+centered = false
+
+[node name="Shadow" type="Sprite2D" parent="Prototype/Flag" unique_id=1502195114]
+show_behind_parent = true
+texture = ExtResource("11_w68dy")
+centered = false
+
+[node name="Arrow" type="Sprite2D" parent="Prototype" unique_id=2096712091]
+centered = false
 
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="battle_selected" from="GUIBattleList/GUIBattleList" to="." method="_on_gui_battle_list_battle_selected"]
