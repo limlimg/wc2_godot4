@@ -8,11 +8,12 @@ const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 @export
 var enable := true:
 	get():
-		return not _texture_button.disabled
+		return not $TextureButton.disabled
 	set(value):
-		if value != not _texture_button.disabled:
-			_texture_button.disabled = not value
-			_on_render()
+		if value != not $TextureButton.disabled:
+			$TextureButton.disabled = not value
+			if is_node_ready():
+				_on_render()
 
 
 @export
@@ -23,7 +24,8 @@ var grey_when_pressed := false:
 	set(value):
 		if value != grey_when_pressed:
 			grey_when_pressed = value
-			_on_render()
+			if is_node_ready():
+				_on_render()
 
 
 @export_range(0.0, 1.0, 1.0/255.0)
@@ -31,7 +33,8 @@ var grey_scale := 1.0:
 	set(value):
 		if value != grey_scale:
 			grey_scale = value
-			_on_render()
+			if is_node_ready():
+				_on_render()
 
 
 @export_range(0.0, 1.0, 1.0/255.0)
@@ -43,41 +46,41 @@ var alpha := 1.0:
 @export
 var texture_normal: Texture2D:
 	get():
-		return _texture_button.texture_normal
+		return $TextureButton.texture_normal
 	set(value):
-		_texture_button.texture_normal = value
+		$TextureButton.texture_normal = value
 
 
 @export
 var texture_pressed: Texture2D:
 	get():
-		return _texture_button.texture_pressed
+		return $TextureButton.texture_pressed
 	set(value):
-		_texture_button.texture_pressed = value
+		$TextureButton.texture_pressed = value
 
 
 @export
 var texture_background: Texture2D:
 	get():
-		return _background.texture
+		return $Background.texture
 	set(value):
-		_background.texture = value
+		$Background.texture = value
 
 
 @export
 var texture_glow: Texture2D:
 	get():
-		return _glow.texture
+		return $Glow.texture
 	set(value):
-		_glow.texture = value
+		$Glow.texture = value
 
 
 @export
 var texture_text_image: Texture2D:
 	get():
-		return _text_image.texture
+		return $TextImage.texture
 	set(value):
-		_text_image.texture = value
+		$TextImage.texture = value
 
 
 @export_group("Text", "text_")
@@ -88,9 +91,9 @@ var text: String:
 @export
 var text_font: Theme:
 	get():
-		return _text.theme
+		return $Text.theme
 	set(value):
-		_text.theme = value
+		$Text.theme = value
 
 
 @export
@@ -105,36 +108,11 @@ var text_offset: Vector2:
 var text_align: HorizontalAlignment:
 	set = set_text_align
 
-var _background: TextureRect
-var _glow: TextureRect
-var _texture_button: TextureButton
-var _text: Label
-var _text_image: TextureRect
+@onready var _glow: TextureRect = $Glow
+@onready var _texture_button: TextureButton = $TextureButton
+@onready var _text_image: TextureRect = $TextImage
 
 signal pressed
-
-func _init() -> void:
-	_background = TextureRect.new()
-	_background.stretch_mode = TextureRect.STRETCH_KEEP
-	add_child(_background, false, Node.INTERNAL_MODE_FRONT)
-	_glow = TextureRect.new()
-	_glow.stretch_mode = TextureRect.STRETCH_KEEP
-	_glow.visible = false
-	add_child(_glow, false, Node.INTERNAL_MODE_FRONT)
-	_texture_button = TextureButton.new()
-	_texture_button.ignore_texture_size = true
-	_texture_button.set_anchors_preset(Control.PRESET_FULL_RECT)
-	_texture_button.button_down.connect(_on_texture_button_button_down)
-	_texture_button.button_up.connect(_on_texture_button_button_up)
-	_texture_button.pressed.connect(_on_texture_button_pressed)
-	add_child(_texture_button, false, Node.INTERNAL_MODE_FRONT)
-	_text = Label.new()
-	add_child(_text, false, Node.INTERNAL_MODE_FRONT)
-	_text_image = TextureRect.new()
-	_text_image.stretch_mode = TextureRect.STRETCH_KEEP
-	_text_image.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	add_child(_text_image, false, Node.INTERNAL_MODE_FRONT)
-
 
 func init(normal_image_name: StringName, pressed_image_name: StringName,
 		rect: Rect2, font: _ecUniFont) -> void:
@@ -154,19 +132,19 @@ func _set_glow(image_name: StringName) -> void:
 
 
 func set_text(value: String) -> void:
-	_text.text = value
+	$Text.text = value
 
 
 func set_text_color(value: Color) -> void:
-	_text.self_modulate = value
+	$Text.self_modulate = value
 
 
 func set_text_offset(value: Vector2) -> void:
-	_text.position = value + size / 2.0
+	$Text.position = value + size / 2.0
 
 
 func set_text_align(value: HorizontalAlignment) -> void:
-	_text.horizontal_alignment = value
+	$Text.horizontal_alignment = value
 
 
 func set_text_image(image_name: StringName) -> void:

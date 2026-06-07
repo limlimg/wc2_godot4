@@ -6,7 +6,8 @@ var texture_text_not_pressed: Texture2D:
 	set(value):
 		if value != texture_text_not_pressed:
 			texture_text_not_pressed = value
-			_on_render()
+			if is_node_ready():
+				_on_render()
 
 
 @export
@@ -14,23 +15,26 @@ var texture_text_pressed: Texture2D:
 	set(value):
 		if value != texture_text_pressed:
 			texture_text_pressed = value
-			_on_render()
+			if is_node_ready():
+				_on_render()
 
 
 @export
 var image_position_ipad: Vector2:
 	set(value):
-		image_position_ipad = value
-		if not Engine.is_editor_hint() and _ecGraphics.instance().content_scale_size_mode == 3:
-			$TextureRect.position = value
+		if value != image_position_ipad:
+			image_position_ipad = value
+			if is_node_ready():
+				_on_render()
 
 
 @export
 var image_position: Vector2:
 	set(value):
-		image_position = value
-		if Engine.is_editor_hint() or _ecGraphics.instance().content_scale_size_mode != 3:
-			$TextureRect.position = value
+		if value != image_position:
+			image_position = value
+			if is_node_ready():
+				_on_render()
 
 
 func set_image_text(value_not_pressed: String, value_pressed: String) -> void:
@@ -45,6 +49,10 @@ func set_image_text(value_not_pressed: String, value_pressed: String) -> void:
 func _on_render():
 	super()
 	var texture_rect: TextureRect = $TextureRect
+	if not Engine.is_editor_hint() and _ecGraphics.instance().content_scale_size_mode == 3:
+		texture_rect.position = image_position_ipad
+	else:
+		texture_rect.position = image_position
 	if _texture_button.button_pressed:
 		texture_rect.texture = texture_text_pressed
 		texture_rect.self_modulate = Color(0xD2, 0xD2, 0xD2, alpha)
