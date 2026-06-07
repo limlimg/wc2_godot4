@@ -20,7 +20,7 @@ const _CAMPAIGN_LOGO = [
 var game_mode: int:
 	set(value):
 		game_mode = value
-		$ButtonInfo.visible = (value != 0)
+		$ButtonInfo.visible = (value == 0)
 
 
 @export
