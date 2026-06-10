@@ -4,7 +4,10 @@ const _GUIManager = preload("res://app/src/main/cpp/gui_manager.gd")
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 
-var _button_moving := 0
+var _state := 0
+
+@onready var _main_button: Control = $MainButton
+@onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
 signal sel_campaign_pressed(sel_campaign: int)
 signal load_campaign_pressed
@@ -55,7 +58,7 @@ func show_ad() -> void:
 # NOTTODO: more game button and mail button pressed
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"ui_cancel"):
-		if _button_moving == 0:
+		if _state == 0:
 			for button in [$SelCampaigns/ButtonBack/GUIButton, $SelConquest/GUIRect10/ButtonBack]:
 				if button.is_visible_in_tree():
 					button.pressed.emit()
@@ -64,204 +67,154 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_button_campaign_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		# NOTTODO: hide more game and mail button
 		_move_button(2)
 		_CSoundBox.get_instance().play_se("main_interface.wav")
 
 
 func _on_button_sel_campaign_pressed(sel_campaign: int) -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		sel_campaign_pressed.emit(sel_campaign)
 
 
 func _on_button_load_campaign_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		load_campaign_pressed.emit()
 
 
 func _on_button_campaign_back_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		_move_button(4)
 		_CSoundBox.get_instance().play_se("main_interface.wav")
 
 
 func _on_button_conquest_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		# NOTTODO: hide more game and mail button
 		_move_button(7)
 		_CSoundBox.get_instance().play_se("main_interface.wav")
 
 
 func _on_button_sel_conquest_pressed(sel_conquest: int) -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		sel_conquest_pressed.emit(sel_conquest)
 
 
 func _on_button_load_conquest_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		load_conquest_pressed.emit()
 
 
 func _on_button_conquest_back_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		_move_button(9)
 		_CSoundBox.get_instance().play_se("main_interface.wav")
 
 
 func _on_button_multi_player_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		# NOTTODO: hide more game and mail button
 		_move_button(6)
 		_CSoundBox.get_instance().play_se("main_interface.wav")
 
 
 func _on_button_multi_player_global_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		multi_player_global_pressed.emit()
 
 
 func _on_button_local_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		$SelMultiplayer.hide()
 		$SelLocal.show()
 
 
 func _on_button_multi_player_host_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		multi_player_host_pressed.emit()
 
 
 func _on_button_multi_player_join_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		multi_player_join_pressed.emit()
 
 
 func _on_button_local_back_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		$SelMultiplayer.show()
 		$SelLocal.hide()
 
 
 func _on_button_multi_player_back_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		# NOTTODO: show more game button and mail button and refresh new highlight
 		_move_button(5)
 		_CSoundBox.get_instance().play_se("main_interface.wav")
 
 
 func _on_button_tutorial_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		tutorial_pressed.emit()
 
 
 func _on_button_commander_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		commander_pressed.emit()
 
 
 func _on_button_options_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		options_pressed.emit()
 
 
 func _on_button_quit_pressed() -> void:
-	if _button_moving == 0:
+	if _state == 0:
 		quit_pressed.emit()
 
 
-# OnUpdate
-func _move_button(type: int) -> void:
-	_button_moving = type
-	var tween: Tween
-	var target: Vector2
-	var button_moving_speed: float
-	if _ecGraphics.instance().content_scale_size_mode == 3:
-		button_moving_speed = 800.0
-	else:
-		button_moving_speed = 400.0
-	var t: float
-	if type == 1:
-		var main_button: Control = $MainButton
-		target = Vector2(size.x - main_button.size.x, main_button.position.y)
-		t = main_button.size.x / button_moving_speed
-		tween = create_tween()
-		tween.tween_property(main_button, ^"position", target, t)
-		tween.tween_callback(_move_button.bind(0))
-	if type == 2 or type == 6 or type == 7:
-		var main_button: Control = $MainButton
-		target = Vector2(size.x, main_button.position.y)
-		t = (size.x - main_button.position.x) / button_moving_speed
-		tween = create_tween()
-		tween.tween_property(main_button, ^"position", target, t)
-		if type == 2:
-			tween.tween_callback(_move_button.bind(3))
-		elif type == 6:
-			tween.tween_callback($SelMultiplayer.show)
-			tween.tween_callback(_move_button.bind(0))
-		else:
-			tween.tween_callback(_move_button.bind(8))
-	elif type == 3:
-		$SelCampaigns.show()
-		tween = create_tween()
-		for button in [$SelCampaigns/ButtonAxis, $SelCampaigns/ButtonWto]:
-			t = (button.position.x + button.size.x) / button_moving_speed / 2
-			tween.parallel().tween_property(button, ^"position", button.position, t)
-			button.position = Vector2(-button.size.x, button.position.y)
-		for button in [$SelCampaigns/ButtonAllies, $SelCampaigns/ButtonNato]:
-			t = (size.x - button.position.x) / button_moving_speed / 2
-			tween.parallel().tween_property(button, ^"position", button.position, t)
-			button.position = Vector2(size.x, button.position.y)
-		tween.tween_callback(_move_button.bind(0))
-	elif type == 4:
-		tween = create_tween()
-		for button in [$SelCampaigns/ButtonAxis, $SelCampaigns/ButtonWto]:
-			target = Vector2(-button.size.x, button.position.y)
-			t = (button.position.x + button.size.x) / button_moving_speed / 2
-			tween.parallel().tween_property(button, ^"position", target, t)
-		for button in [$SelCampaigns/ButtonAllies, $SelCampaigns/ButtonNato]:
-			target = Vector2(size.x, button.position.y)
-			t = (size.x - button.position.x) / button_moving_speed / 2
-			tween.parallel().tween_property(button, ^"position", target, t)
-		tween.tween_callback(_move_button.bind(5))
-		# NOTTODO: show more game button and mail button and refresh new highlight
-		for button in [$SelCampaigns/ButtonAxis, $SelCampaigns/ButtonWto]:
-			tween.tween_property(button, ^"position", button.position, 0)
-		for button in [$SelCampaigns/ButtonAllies, $SelCampaigns/ButtonNato]:
-			tween.tween_property(button, ^"position", button.position, 0)
-		tween.tween_callback(_move_button.bind(0))
-	elif type == 5:
-		$SelCampaigns.hide()
-		$SelConquest.hide()
-		_move_button(1)
-	elif type == 8:
-		$SelConquest.show()
-		tween = create_tween()
-		tween.tween_interval(0)
-		for button in [$SelConquest/Button1, $SelConquest/Button3, $SelConquest/Button5, $SelConquest/Button7]:
-			t = (button.position.x + button.size.x) / button_moving_speed / 2
-			tween.parallel().tween_property(button, ^"position", button.position, t)
-			button.position = Vector2(-button.size.x, button.position.y)
-		for button in [$SelConquest/Button2, $SelConquest/Button4, $SelConquest/Button6, $SelConquest/Button8]:
-			t = (size.x - button.position.x) / button_moving_speed / 2
-			tween.parallel().tween_property(button, ^"position", button.position, t)
-			button.position = Vector2(size.x, button.position.y)
-		tween.tween_callback(_move_button.bind(0))
-	elif type == 9:
-		tween = create_tween()
-		tween.tween_interval(0)
-		for button in [$SelConquest/Button1, $SelConquest/Button3, $SelConquest/Button5, $SelConquest/Button7]:
-			target = Vector2(-button.size.x, button.position.y)
-			t = (button.position.x + button.size.x) / button_moving_speed / 2
-			tween.parallel().tween_property(button, ^"position", target, t)
-		for button in [$SelConquest/Button2, $SelConquest/Button4, $SelConquest/Button6, $SelConquest/Button8]:
-			target = Vector2(size.x, button.position.y)
-			t = (size.x - button.position.x) / button_moving_speed / 2
-			tween.parallel().tween_property(button, ^"position", target, t)
-		tween.tween_callback(_move_button.bind(5))
-		# NOTTODO: show more game button and mail button and refresh new highlight
-		for button in [$SelConquest/Button1, $SelConquest/Button3, $SelConquest/Button5, $SelConquest/Button7]:
-			tween.tween_property(button, ^"position", button.position, 0)
-		for button in [$SelConquest/Button2, $SelConquest/Button4, $SelConquest/Button6, $SelConquest/Button8]:
-			tween.tween_property(button, ^"position", button.position, 0)
-		tween.tween_callback(_move_button.bind(0))
+func _move_button(state: int) -> void:
+	_state = state
+	match state:
+		1:
+			_animation_player.speed_scale = 1.0
+			_animation_player.play(&"move_main")
+		2:
+			_animation_player.play_backwards(&"move_main")
+		3:
+			_animation_player.speed_scale = _main_button.size.x / size.x * 2.0
+			_animation_player.play(&"move_campaign")
+		4:
+			_animation_player.play_backwards(&"move_campaign")
+		5:
+			_move_button(1)
+		6:
+			_animation_player.play_backwards(&"move_main")
+		7:
+			_animation_player.play_backwards(&"move_main")
+		8:
+			_animation_player.speed_scale = _main_button.size.x / size.x * 2.0
+			_animation_player.play(&"move_conquest")
+		9:
+			_animation_player.play_backwards(&"move_conquest")
+
+
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
+	match _state:
+		1:
+			_move_button(0)
+		2:
+			_move_button(3)
+		3:
+			_move_button(0)
+		4:
+			_move_button(5)
+		6:
+			$SelMultiplayer.show()
+			_move_button(0)
+		7:
+			_move_button(8)
+		8:
+			_move_button(0)
+		9:
+			_move_button(5)

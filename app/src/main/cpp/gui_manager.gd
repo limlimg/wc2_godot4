@@ -23,29 +23,23 @@ extends "res://app/src/main/cpp/gui_element.gd"
 const _GUIManager = preload("res://app/src/main/cpp/gui_manager.gd")
 const _ecTextureRect = preload("res://app/src/main/cpp/ec_texture_rect.gd")
 const _GUIImage = preload("res://app/src/main/cpp/gui_image.gd")
-const _GUI_IMAGE = preload("res://app/src/main/cpp/gui_image.tscn")
 const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
 const _GUIButton = preload("res://app/src/main/cpp/gui_button.gd")
-const _GUI_BUTTON = preload("res://app/src/main/cpp/gui_button.tscn")
 const _GUIScrollBar = preload("res://app/src/main/cpp/gui_scroll_bar.gd")
-const _GUI_SCROLL_BAR = preload("res://app/src/main/cpp/gui_scroll_bar.tscn")
 
 @export
 var start_faded_in: bool = false
-var _fading_tween: Tween
+var _fading_cause: int
+var _overlay: Node
 
 @onready var _fade: Control = $GUIFade
+@onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
 signal faded_in(cause: int)
 signal faded_out(cause: int)
 
 static func instance() -> _GUIManager:
 	return (Engine.get_main_loop() as SceneTree).get_nodes_in_group("GUIManagerInstance")[0]
-
-
-func init(rect: Rect2) -> void:
-	position = rect.position
-	size = rect.size
 
 
 func load_texture_res(file_name: String, hd: bool) -> void:
@@ -70,7 +64,7 @@ func safe_free_child(child: Node) -> void:
 ## The original method has more parameter for specifying texture format.
 func add_image_texture(texture_name: String, attr: _ecTextureRect, rect: Rect2,
 		parent:Node) -> _GUIImage:
-	var image := _GUI_IMAGE.instantiate()
+	var image := $Prototype/GUIImage.duplicate()
 	if not image.init_atlas(texture_name, attr, rect):
 		image.free()
 		return null
@@ -81,7 +75,7 @@ func add_image_texture(texture_name: String, attr: _ecTextureRect, rect: Rect2,
 
 
 func add_image(texture_name: String, rect: Rect2, parent:Node) -> _GUIImage:
-	var image := _GUI_IMAGE.instantiate()
+	var image := $Prototype/GUIImage.duplicate()
 	if not image.init_image_attr(texture_name, rect):
 		image.free()
 		return null
@@ -93,7 +87,7 @@ func add_image(texture_name: String, rect: Rect2, parent:Node) -> _GUIImage:
 
 func add_button(normal_image_name: StringName, pressed_image_name: StringName,
 		rect: Rect2, parent:Node, font: _ecUniFont) -> _GUIButton:
-	var button := _GUI_BUTTON.instantiate()
+	var button := $Prototype/GUIButton.duplicate()
 	button.init(normal_image_name, pressed_image_name, rect, font)
 	if parent == null:
 		parent = self
@@ -105,7 +99,7 @@ func add_scroll_bar(rect: Rect2, parent:Node, normal_image_name: StringName,
 		pressed_image_name: StringName, grabber_size_w: int,
 		grabber_size_h: int, default_value: int, set_max_value: int,
 		is_horizontal: bool) -> _GUIScrollBar:
-	var scroll_bar := _GUI_SCROLL_BAR.instantiate()
+	var scroll_bar := $Prototype/GUIScrollBar.duplicate()
 	scroll_bar.init(rect, normal_image_name, pressed_image_name, grabber_size_w,
 		grabber_size_h, default_value, set_max_value, is_horizontal)
 	if parent == null:
@@ -115,35 +109,37 @@ func add_scroll_bar(rect: Rect2, parent:Node, normal_image_name: StringName,
 
 
 func fade_in(cause: int) -> void:
-	if _fading_tween != null:
-		_fading_tween.kill()
-	_fading_tween = create_tween()
-	var t: float = _fade.alpha
-	_fading_tween.tween_property(_fade, ^"alpha", 0.0, t)
-	_fading_tween.tween_callback(func():
-		_fading_tween = null
-		faded_in.emit(cause)
-	)
+	_fading_cause = cause
+	_remove_overlay()
+	_animation_player.play("fade_in")
 
 
 func fade_out(cause: int, overlay: Node) -> void:
+	_fading_cause = cause
+	_remove_overlay()
 	if overlay != null:
 		_fade.add_child(overlay)
-	if _fading_tween != null:
-		_fading_tween.kill()
-	_fading_tween = create_tween()
-	var t = 1.0 - _fade.alpha
-	_fading_tween.tween_property(_fade, ^"alpha", 1.0, t)
-	_fading_tween.tween_callback(func():
-		_fading_tween = null
-		if overlay != null:
-			_fade.remove_child(overlay)
-			overlay.queue_free()
-		faded_out.emit(cause)
-	)
+		_overlay = overlay
+	_animation_player.play("fade_out")
+
+
+func _remove_overlay() -> void:
+	if _overlay != null:
+		_fade.remove_child(_overlay)
+		_overlay.queue_free()
+		_overlay = null
 
 
 func _ready() -> void:
 	if start_faded_in:
 		_fade.alpha = 0.0
 	_fade.visible = true # $Fade is invisible in the editor for previewing
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	match anim_name:
+		&"fade_in":
+			faded_in.emit(_fading_cause)
+		&"fade_out":
+			_remove_overlay()
+			faded_out.emit(_fading_cause)

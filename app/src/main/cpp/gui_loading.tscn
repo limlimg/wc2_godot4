@@ -1,8 +1,27 @@
 [gd_scene format=3 uid="uid://bhdgsyd0pgf1d"]
 
-[ext_resource type="Script" uid="uid://c1gw1ukjqpjmc" path="res://app/src/main/cpp/gui_loading.gd" id="1_nap8k"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_2y8tv"]
 [ext_resource type="Texture2D" uid="uid://ces6dlv70o7bo" path="res://app/src/main/cpp/scene_system_resource/texture/loading.tres" id="3_2vxlu"]
+
+[sub_resource type="Animation" id="Animation_2vxlu"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y0t58"]
+_data = {
+&"fade_in": SubResource("Animation_2vxlu")
+}
 
 [node name="GUILoading" type="Control" unique_id=1979438320]
 modulate = Color(1, 1, 1, 0)
@@ -12,7 +31,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_nap8k")
 
 [node name="GUIRect" parent="." unique_id=2065346353 instance=ExtResource("2_2y8tv")]
 layout_mode = 1
@@ -27,3 +45,7 @@ rect = Rect2(-76, -20, 78, 11)
 [node name="TextureRect" type="TextureRect" parent="GUIRect" unique_id=412329058]
 layout_mode = 2
 texture = ExtResource("3_2vxlu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1734540431]
+libraries/ = SubResource("AnimationLibrary_y0t58")
+autoplay = &"fade_in"

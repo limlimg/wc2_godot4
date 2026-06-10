@@ -65,7 +65,6 @@ func _on_gui_battle_list_battle_selected(battle: int) -> void:
 
 
 func _sel_battle(sel_campaign: int, battle: int) -> void:
-	_gui_sel_battle_common.release_image_list()
 	_load_image_list(sel_campaign, battle)
 
 

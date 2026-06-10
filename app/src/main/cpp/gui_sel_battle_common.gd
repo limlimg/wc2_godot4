@@ -7,16 +7,16 @@ const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec
 const _RES_PATH = "res://app/src/main/cpp/scene_system_resource/selbattle_res/"
 
 var _center_pos: Vector2
-var _cur_tween_state := 0
-var _cur_tween: Tween
+var _on_animation_finished: Callable
+var _move_tween: Tween
 
 @onready var _minimap: Control = $Minimap
 @onready var _flag_proto := $Minimap/Prototype/Flag
 @onready var _arrow_proto := $Minimap/Prototype/Arrow
-@onready var _image_list: Node2D = $Minimap/ImageList
 @onready var _flags: Node2D = $Minimap/ImageList/Flags
 @onready var _age: CenterContainer = $Minimap/ImageList/Age
 @onready var _arrows: Node2D = $Minimap/ImageList/Arrows
+@onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
 signal ok_pressed
 signal back_pressed
@@ -33,7 +33,23 @@ func init() -> void:
 		_age.scale = Vector2(0.5, 0.5)
 
 
-func release_image_list() -> void:
+func set_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: String, age_pos: Vector2, center_pos: Vector2) -> void:
+	_release_image_list()
+	_flags.add_child(_create_element_nodes(flags, "sflag_", _flag_proto))
+	_arrows.add_child(_create_element_nodes(arrows, "maparrow_", _arrow_proto))
+	$Minimap/ImageList/Age/Label.text = age
+	_age.position = age_pos
+	_center_pos = center_pos
+	if $Minimap/ImageList.modulate.a == 0.0:
+		_move_tween = create_tween()
+		var dest := _clamp_pos(_center_pos)
+		_move_tween.tween_property(_minimap, "position", dest, dest.distance_to(_minimap.position) / 1000.0)
+		_move_tween.tween_callback(_on_moving_finished)
+	else:
+		_minimap.position = _clamp_pos(center_pos)
+
+
+func _release_image_list() -> void:
 	_clear_element_nodes(_flags)
 	_clear_element_nodes(_arrows)
 
@@ -42,22 +58,6 @@ func _clear_element_nodes(parent: Node) -> void:
 	for i in parent.get_children():
 		parent.remove_child(i)
 		i.queue_free()
-
-
-func set_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: String, age_pos: Vector2, center_pos: Vector2) -> void:
-	_flags.add_child(_create_element_nodes(flags, "sflag_", _flag_proto))
-	_arrows.add_child(_create_element_nodes(arrows, "maparrow_", _arrow_proto))
-	$Minimap/ImageList/Age/Label.text = age
-	_age.position = age_pos
-	_center_pos = center_pos
-	if _cur_tween_state == 1:
-		_cur_tween = create_tween()
-		var dest := _clamp_pos(_center_pos)
-		_cur_tween.tween_property(_minimap, "position", dest, dest.distance_to(_minimap.position) / 1000.0)
-		_cur_tween_state = 2
-		_cur_tween.tween_callback(_tween_fade_in_image)
-	else:
-		_minimap.position = _clamp_pos(center_pos)
 
 
 func _create_element_nodes(data: Array[FlagInfo], image_prefix: String, prototype: Sprite2D) -> Node2D:
@@ -95,37 +95,30 @@ func _clamp_pos(center_pos: Vector2) -> Vector2:
 
 
 func change_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: String, age_pos: Vector2, center_pos: Vector2) -> void:
-	if _cur_tween_state != 1 and _cur_tween != null and _cur_tween.is_valid():
-		_cur_tween.kill()
-	_image_list.modulate.a = 1.0
-	_arrows.modulate.a = 1.0
-	_cur_tween_state = 1
-	_cur_tween = create_tween()
-	_cur_tween.tween_property(_image_list, "modulate", Color(_image_list.modulate, 0.0), 0.4)
-	_cur_tween.tween_callback(func ():
-		_arrows.modulate.a = 0.0
-		set_image_list(flags, arrows, age, age_pos, center_pos)
-		)
+	if _move_tween != null and _move_tween.is_valid():
+		_move_tween.kill()
+	if _animation_player.current_animation != &"fade_out":
+		_animation_player.stop()
+		_animation_player.play(&"fade_out")
+	var sig := _animation_player.animation_finished
+	if not _on_animation_finished.is_null() and sig.is_connected(_on_animation_finished):
+		sig.disconnect(_on_animation_finished)
+	_on_animation_finished = func(anim_name: StringName):
+		if anim_name == &"fade_out":
+			set_image_list(flags, arrows, age, age_pos, center_pos)
+	sig.connect(_on_animation_finished, CONNECT_ONE_SHOT)
 
 
-func _tween_fade_in_image() -> void:
-	_cur_tween_state = 3
-	_cur_tween = create_tween()
-	_cur_tween.tween_property(_image_list, "modulate", Color(_image_list.modulate, 1.0), 0.5)
-	_cur_tween.tween_callback(func ():
-		_cur_tween_state = 4
-		)
-	_cur_tween.tween_property(_arrows, "modulate", Color(_arrows.modulate, 1.0), 1.0/1.5)
-	_cur_tween.tween_callback(func ():
-		_cur_tween_state = 0
-		)
+func _on_moving_finished() -> void:
+	_move_tween = null
+	_animation_player.play(&"fade_in")
 
 
 func _on_resized() -> void:
 	if is_node_ready():
-		if _cur_tween_state == 2:
-			_cur_tween.kill()
-			_tween_fade_in_image()
+		if _move_tween != null and _move_tween.is_valid() and _move_tween.is_running():
+			_move_tween.kill()
+			_on_moving_finished()
 		_minimap.position = _clamp_pos(_center_pos)
 
 
