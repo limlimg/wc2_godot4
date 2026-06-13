@@ -2,6 +2,10 @@
 extends EditorPlugin
 
 var _IMPORTERS = [
+	preload("res://addons/assets_tools/bin_adjoin_importer.gd"),
+	preload("res://addons/assets_tools/bin_area_enable_importer.gd"),
+	preload("res://addons/assets_tools/bin_area_importer.gd"),
+	preload("res://addons/assets_tools/bin_elib_importer.gd"),
 	preload("res://addons/assets_tools/fnt_importer.gd"),
 	preload("res://addons/assets_tools/raw_importer.gd"),
 	preload("res://addons/assets_tools/xml_importer.gd"),
@@ -18,7 +22,6 @@ var _IMPORTERS = [
 ]
 
 var _LOADERS = [
-	preload("res://addons/assets_tools/bin_loader.gd")
 ]
 
 var _IMAGE_LOADERS = [
