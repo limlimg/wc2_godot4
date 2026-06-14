@@ -27,11 +27,11 @@ func init_texture(texture_name: String, attr: _ecTextureRect, rect: Rect2) -> bo
 	return set_image(texture_name, attr)
 
 
-func init_image_attr(image_name: StringName, rect: Rect2) -> bool:
-	position = rect.position
-	size = rect.size
-	texture = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(image_name))
-	return texture != null
+#func init_image_attr(image_name: StringName, rect: Rect2) -> bool:
+	#position = rect.position
+	#size = rect.size
+	#texture = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(image_name))
+	#return texture != null
 
 
 func _set_alpha(value: float) -> void:

@@ -60,18 +60,18 @@ var texture_pressed: Texture2D:
 
 signal value_changed(value: float)
 
-func init(rect: Rect2, normal_image_name: StringName,
-		pressed_image_name: StringName, grabber_size_w: int,
-		grabber_size_h: int, default_value: int, set_max_value: int,
-		is_horizontal: bool) -> void:
-	position = rect.position
-	size = rect.size
-	texture_normal = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(normal_image_name))
-	texture_pressed = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(pressed_image_name))
-	grabber_size = Vector2(grabber_size_w, grabber_size_h)
-	max_value = set_max_value
-	horizontal = is_horizontal
-	set_scroll_pos(default_value)
+#func init(rect: Rect2, normal_image_name: StringName,
+		#pressed_image_name: StringName, grabber_size_w: int,
+		#grabber_size_h: int, default_value: int, set_max_value: int,
+		#is_horizontal: bool) -> void:
+	#position = rect.position
+	#size = rect.size
+	#texture_normal = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(normal_image_name))
+	#texture_pressed = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(pressed_image_name))
+	#grabber_size = Vector2(grabber_size_w, grabber_size_h)
+	#max_value = set_max_value
+	#horizontal = is_horizontal
+	#set_scroll_pos(default_value)
 
 
 func get_scroll_pos() -> float:

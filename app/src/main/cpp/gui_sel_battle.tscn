@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bf2fxmmo5527o" path="res://app/src/main/cpp/gui_sel_battle.gd" id="1_22hmj"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_yq104"]
 [ext_resource type="PackedScene" uid="uid://d21hy30ofd6pt" path="res://app/src/main/cpp/gui_sel_battle_common.tscn" id="2_bmoyp"]
+[ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/texture_res.tres" id="3_1kakj"]
 [ext_resource type="Texture2D" uid="uid://cmvqgf8do8n86" path="res://app/src/main/cpp/scene_system_resource/texture/board_selbattle.tres" id="4_73w7g"]
 [ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok.png.tres" id="10_qjoee"]
 [ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok_press.png.tres" id="11_1kakj"]
@@ -28,6 +29,7 @@ script = ExtResource("1_22hmj")
 
 [node name="GUISelBattleCommon" parent="." unique_id=1447387296 instance=ExtResource("2_bmoyp")]
 layout_mode = 1
+texture_res = ExtResource("3_1kakj")
 
 [node name="BoardSelBattle" parent="GUISelBattleCommon" unique_id=962552104 instance=ExtResource("1_yq104")]
 layout_mode = 1

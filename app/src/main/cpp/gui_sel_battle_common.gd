@@ -2,9 +2,13 @@ extends "res://app/src/main/cpp/gui_element.gd"
 
 ## Common component of GUISelBattle and GUISelCountry.
 
+const _ecTextureResAssets = preload("uid://c4lbjg3bsn26n")
 const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 
 const _RES_PATH = "res://app/src/main/cpp/scene_system_resource/selbattle_res/"
+
+@export
+var texture_res: _ecTextureResAssets
 
 var _center_pos: Vector2
 var _on_animation_finished: Callable
@@ -58,10 +62,11 @@ func _clear_element_nodes(parent: Node) -> void:
 
 
 func _create_element_nodes(data: Array[FlagInfo], image_prefix: String, prototype: Sprite2D) -> Node2D:
+	var res := texture_res.get_res()
 	var parent := Node2D.new()
 	for i in data:
 		var image_name := image_prefix + i.name + ".png"
-		var image_attr := s_texture_res.get_image(image_name)
+		var image_attr := res.get_image(image_name)
 		if image_attr == null:
 			continue
 		var image_path := _RES_PATH + image_name

@@ -33,7 +33,7 @@ func _ready() -> void:
 
 
 func init() -> void:
-	s_texture_res = load("res://app/src/main/cpp/scene_system_resource/selcountry_res/texture_res.tres").get_res()
+	#s_texture_res = load("res://app/src/main/cpp/scene_system_resource/selcountry_res/texture_res.tres").get_res()
 	_country = -1
 	_load_image_list(conquest)
 

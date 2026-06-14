@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://d21hy30ofd6pt" path="res://app/src/main/cpp/gui_sel_battle_common.tscn" id="1_kbsvi"]
 [ext_resource type="Script" uid="uid://dotfhchyclaym" path="res://app/src/main/cpp/gui_sel_country.gd" id="1_pdgie"]
+[ext_resource type="Resource" uid="uid://cas4w7q286tym" path="res://app/src/main/cpp/scene_system_resource/selcountry_res/texture_res.tres" id="3_1jcle"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="3_555th"]
 [ext_resource type="Texture2D" uid="uid://cmvqgf8do8n86" path="res://app/src/main/cpp/scene_system_resource/texture/board_selbattle.tres" id="4_5xtgw"]
 [ext_resource type="PackedScene" uid="uid://cn17i2r1lc2ki" path="res://app/src/main/cpp/gui_country_list.tscn" id="5_555th"]
@@ -24,6 +25,7 @@ script = ExtResource("1_pdgie")
 
 [node name="GUISelBattleCommon" parent="." unique_id=1447387296 instance=ExtResource("1_kbsvi")]
 layout_mode = 1
+texture_res = ExtResource("3_1jcle")
 
 [node name="BoardSelBattle" parent="GUISelBattleCommon" unique_id=93369881 instance=ExtResource("3_555th")]
 layout_mode = 1

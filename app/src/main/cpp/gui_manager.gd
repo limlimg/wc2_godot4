@@ -42,16 +42,16 @@ static func instance() -> _GUIManager:
 	return (Engine.get_main_loop() as SceneTree).get_nodes_in_group("GUIManagerInstance")[0]
 
 
-func load_texture_res(file_name: String, hd: bool) -> void:
-	s_texture_res.load_res(file_name, hd)
-
-
-func unload_texture_res(file_name: String) -> void:
-	s_texture_res.unload_res(file_name)
-
-
-func release_texture_res() -> void:
-	s_texture_res.release()
+#func load_texture_res(file_name: String, hd: bool) -> void:
+	#s_texture_res.load_res(file_name, hd)
+#
+#
+#func unload_texture_res(file_name: String) -> void:
+	#s_texture_res.unload_res(file_name)
+#
+#
+#func release_texture_res() -> void:
+	#s_texture_res.release()
 
 
 func safe_free_child(child: Node) -> void:

@@ -9,7 +9,7 @@ func _on_enter() -> void:
 	var sound_box := _CSoundBox.get_instance()
 	sound_box.set_music_volume(g_GameSettings.music_volume)
 	sound_box.set_se_volume(g_GameSettings.se_volume)
-	_GUIManager.s_texture_res = load("res://app/src/main/cpp/scene_system_resource/logo_gui_res/texture_res.tres").get_res()
+	#_GUIManager.s_texture_res = load("res://app/src/main/cpp/scene_system_resource/logo_gui_res/texture_res.tres").get_res()
 	var tween := create_tween()
 	tween.tween_interval(2.1)
 	tween.tween_callback(func ():
