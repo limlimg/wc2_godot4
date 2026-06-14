@@ -106,6 +106,7 @@ func init() -> void:
 
 
 func _move_button() -> void:
+	show_behind_parent = not selected
 	var offset := 0.0
 	if selected:
 		if _ecGraphics.instance().content_scale_size_mode == 3:

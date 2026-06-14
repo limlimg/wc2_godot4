@@ -50,7 +50,6 @@ func init() -> void:
 func _reset_select() -> void:
 	for i in _list.get_items():
 		i.set_selected(false)
-		i.z_index = 0
 
 
 func set_select(index: int) -> void:
