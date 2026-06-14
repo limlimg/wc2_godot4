@@ -2,8 +2,6 @@ extends "res://app/src/main/cpp/gui_element.gd"
 
 ## Common component of GUIBattleList, GUICountryList and GUICardList.
 
-const GuiElement = preload("uid://bgmws3vrhjfhx")
-
 @export
 var vertical := true:
 	get():
@@ -65,7 +63,7 @@ func _add_scroll_vertial(delta: float) -> void:
 		var overflow := _scroll.position.y
 		var scroll := _scroll.get_v_scroll_bar()
 		var scroll_min := scroll.min_value
-		var scroll_max := scroll.max_value - size.y
+		var scroll_max: float = max(scroll.max_value - size.y, scroll_min)
 		overflow = _calc_overflow(delta, overflow, scroll.value, scroll_min, scroll_max)
 		_scroll.position.y = overflow
 		scroll.value = _calc_scroll(overflow, scroll_min, scroll_max)
