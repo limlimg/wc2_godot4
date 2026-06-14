@@ -44,6 +44,24 @@ var star: int:
 				init()
 
 
+@export
+var selected_offset_ipad: float:
+	set(value):
+		if value != selected_offset_ipad:
+			selected_offset_ipad = value
+			if is_node_ready():
+				_move_button()
+
+
+@export
+var selected_offset: float:
+	set(value):
+		if value != selected_offset:
+			selected_offset = value
+			if is_node_ready():
+				_move_button()
+
+
 var enable: bool:
 	get():
 		return not $MarginContainer/Control/Button.disabled
@@ -66,7 +84,6 @@ var _button := $MarginContainer/Control/Button
 func _ready() -> void:
 	init()
 	_move_button()
-	$SelectedOffset.resized.connect(_move_button)
 
 
 func init() -> void:
@@ -89,11 +106,13 @@ func init() -> void:
 
 
 func _move_button() -> void:
-	var ref := $SelectedOffset
+	var offset := 0.0
 	if selected:
-		_button.position = ref.position - ref.size
-	else:
-		_button.position = ref.position
+		if _ecGraphics.instance().content_scale_size_mode == 3:
+			offset = selected_offset_ipad
+		else:
+			offset = selected_offset
+	_button.position = Vector2(offset, 0.0)
 
 
 func set_selected(value: bool) -> void:

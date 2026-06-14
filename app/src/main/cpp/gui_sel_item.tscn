@@ -19,11 +19,6 @@ size_flags_vertical = 0
 rect_ipad = Rect2(0, 0, 0, 90)
 rect = Rect2(0, 0, 0, 45)
 
-[node name="Control" type="Control" parent="." unique_id=675035413]
-layout_mode = 2
-size_flags_stretch_ratio = 20.0
-mouse_filter = 2
-
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2063213428]
 layout_mode = 2
 size_flags_vertical = 0
@@ -48,13 +43,6 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2mf3m")
 flat = true
-
-[node name="SelectedOffset" parent="." unique_id=568897213 instance=ExtResource("2_ogrdh")]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-rect_ipad = Rect2(-40, 0, 40, 0)
-rect = Rect2(-20, 0, 20, 0)
 
 [connection signal="button_down" from="MarginContainer/Control/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="MarginContainer/Control/Button" to="." method="_on_button_button_up"]

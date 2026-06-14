@@ -36,5 +36,7 @@ script = ExtResource("4_8la76")
 battle_res = ExtResource("4_t2nrp")
 campaign = 0
 battle = 0
+selected_offset_ipad = -40.0
+selected_offset = -20.0
 
 [connection signal="item_selected" from="GUIList" to="." method="_on_gui_list_item_selected"]
