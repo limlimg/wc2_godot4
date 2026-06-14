@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://d1hsefm6u7qim"]
+
+[ext_resource type="PackedScene" uid="uid://d21hy30ofd6pt" path="res://app/src/main/cpp/gui_sel_battle_common.tscn" id="1_kbsvi"]
+[ext_resource type="Script" uid="uid://dotfhchyclaym" path="res://app/src/main/cpp/gui_sel_country.gd" id="1_pdgie"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="3_555th"]
+[ext_resource type="Texture2D" uid="uid://cmvqgf8do8n86" path="res://app/src/main/cpp/scene_system_resource/texture/board_selbattle.tres" id="4_5xtgw"]
+[ext_resource type="PackedScene" uid="uid://cn17i2r1lc2ki" path="res://app/src/main/cpp/gui_country_list.tscn" id="5_555th"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="6_a2ovt"]
+[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok.png.tres" id="7_1jcle"]
+[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok_press.png.tres" id="8_bhoq2"]
+[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttonboard_green.png.tres" id="9_sbv8l"]
+[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back.png.tres" id="10_sxndy"]
+[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back_press.png.tres" id="11_xxgvg"]
+[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttonboard_gray.png.tres" id="12_iidk8"]
+
+[node name="GUISelCountry" type="Control" unique_id=949481072]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pdgie")
+
+[node name="GUISelBattleCommon" parent="." unique_id=1447387296 instance=ExtResource("1_kbsvi")]
+layout_mode = 1
+
+[node name="BoardSelBattle" parent="GUISelBattleCommon" unique_id=93369881 instance=ExtResource("3_555th")]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+offset_left = -81.0
+grow_horizontal = 0
+rect_ipad = Rect2(0, 0, 162, 768)
+rect = Rect2(0, 0, 81, 320)
+
+[node name="TextureRect" type="TextureRect" parent="GUISelBattleCommon/BoardSelBattle" unique_id=1584926920]
+layout_mode = 2
+texture = ExtResource("4_5xtgw")
+
+[node name="GUICountryList" parent="." unique_id=1630994738 instance=ExtResource("3_555th")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+offset_right = 71.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-132, 20, 142, 728)
+rect = Rect2(-66, 10, 71, 300)
+
+[node name="GUICountryList" parent="GUICountryList" unique_id=1324926271 instance=ExtResource("5_555th")]
+layout_mode = 2
+
+[node name="ButtonOk" parent="." unique_id=371620190 instance=ExtResource("3_555th")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -32.0
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="GUIButton" parent="ButtonOk" unique_id=2034275630 instance=ExtResource("6_a2ovt")]
+layout_mode = 2
+texture_normal = ExtResource("7_1jcle")
+texture_pressed = ExtResource("8_bhoq2")
+texture_background = ExtResource("9_sbv8l")
+
+[node name="ButtonBack" parent="." unique_id=197237804 instance=ExtResource("3_555th")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -30.0
+offset_right = 32.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="GUIButton" parent="ButtonBack" unique_id=1304652735 instance=ExtResource("6_a2ovt")]
+layout_mode = 2
+texture_normal = ExtResource("10_sxndy")
+texture_pressed = ExtResource("11_xxgvg")
+texture_background = ExtResource("12_iidk8")
+
+[connection signal="country_selected" from="GUICountryList/GUICountryList" to="." method="_on_gui_country_list_country_selected"]
+[connection signal="pressed" from="ButtonOk/GUIButton" to="." method="_on_button_ok_pressed"]
+[connection signal="pressed" from="ButtonBack/GUIButton" to="." method="_on_button_back_pressed"]

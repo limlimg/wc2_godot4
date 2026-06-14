@@ -4,12 +4,11 @@ const _GUIManager = preload("res://app/src/main/cpp/gui_manager.gd")
 const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 
-var _sel_campaign: int
-
 @onready var _gui_main_menu: Control = $GUIManager/GUIMainMenu
 @onready var _gui_manager: _GUIManager = $GUIManager
 @onready var _gui_sel_battle: Control = $GUIManager/GUISelBattle
 @onready var _gui_locked_warning: Control = $GUIManager/GUILockedWarning
+@onready var _gui_sel_country: Control = $GUIManager/GUISelCountry
 
 func _on_enter() -> void:
 	var sound_box := _CSoundBox.get_instance()
@@ -39,26 +38,37 @@ func _on_gui_main_menu_sel_campaign_pressed(sel_campaign: int) -> void:
 		_gui_locked_warning.show()
 	else:
 		_gui_manager.fade_out(3, $Prototype/GUILoading.duplicate())
-		_sel_campaign = sel_campaign
 		_gui_manager.faded_out.connect(func(cause: int):
 			if cause == 3:
 				_gui_main_menu.hide()
-				_gui_sel_battle.campaign = _sel_campaign
+				_gui_sel_battle.campaign = sel_campaign
 				_gui_sel_battle.game_mode = 0
 				_gui_sel_battle.show()
 				_gui_manager.fade_in(-1)
 			, ConnectFlags.CONNECT_ONE_SHOT)
 
 
-func _on_gui_sel_battle_back_pressed() -> void:
+func _on_gui_locked_warning_pressed() -> void:
+	_gui_locked_warning.hide()
+
+
+func _on_gui_main_menu_sel_conquest_pressed(sel_conquest: int) -> void:
+	_gui_manager.fade_out(4, $Prototype/GUILoading.duplicate())
+	_gui_manager.faded_out.connect(func(cause: int):
+		if cause == 4:
+			_gui_main_menu.hide()
+			_gui_sel_country.conquest = sel_conquest
+			_gui_sel_country.show()
+			_gui_manager.fade_in(-1)
+		, ConnectFlags.CONNECT_ONE_SHOT)
+
+
+func _fade_out_back() -> void:
 	_gui_manager.fade_out(9, null)
 	_gui_manager.faded_out.connect(func(cause: int):
 		if cause == 9:
 			_gui_main_menu.show()
 			_gui_sel_battle.hide()
+			_gui_sel_country.hide()
 			_gui_manager.fade_in(-1)
-		, ConnectFlags.CONNECT_ONE_SHOT)
-
-
-func _on_gui_locked_warning_pressed() -> void:
-	_gui_locked_warning.hide()
+		, CONNECT_ONE_SHOT)

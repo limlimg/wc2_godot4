@@ -11,6 +11,9 @@ const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
 const _ecMultipleTouch = preload("res://app/src/main/cpp/ec_multiple_touch.gd")
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
+const _Belligerent = preload("res://app/src/main/cpp/belligerent.gd")
+const _SaveHeader = preload("res://app/src/main/cpp/save_header.gd")
+const _SaveCountryInfo = preload("res://app/src/main/cpp/save_country_info.gd")
 
 static var asset_mgr: _AssetManager
 static var _str_version_name: String
@@ -537,6 +540,24 @@ static func get_battle_key_name(campaign: int, battle: int) -> String:
 		4:
 			return "multiplay {0}".format([battle + 1])
 	return ""
+
+
+static func get_conquest_key_name(conquest: int) -> String:
+	return "conquest {0}".format([conquest + 1])
+
+
+static func get_battle_belligerent_list(battle_file_name: String, include_ai: bool) -> Array[_Belligerent]:
+	var battle: SaveHeader = load(get_path(battle_file_name, ""))
+	var result: Array[_Belligerent]
+	for i in battle.country:
+		if i.alliance != 4 and (include_ai or not i.ai):
+			var b := _Belligerent.new()
+			b.id = i.id
+			b.name = i.name
+			b.commander = i.commander
+			b.alliance = i.alliance
+			result.append(b)
+	return result
 
 
 static func main_menu_loaded_jni() -> void:
