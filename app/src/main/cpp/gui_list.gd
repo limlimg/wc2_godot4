@@ -16,7 +16,7 @@ var _scorll_value := 0.0
 @onready var _scroll: ScrollContainer = $CTouchInertia/ScrollContainer
 @onready var _list: BoxContainer = $CTouchInertia/ScrollContainer/BoxContainer
 
-signal item_selected(item: int)
+signal item_touched(item: int)
 
 func _on_c_touch_inertia_touch_began(_position: Vector2) -> void:
 	set_physics_process(false)
@@ -27,7 +27,7 @@ func _on_c_touch_inertia_touch_ended(pos: Vector2, moved: bool) -> void:
 		pos = get_global_transform() * pos
 		var sel_item := _gel_sel_item(pos.x, pos.y)
 		if sel_item >= 0 and sel_item != _selected_item:
-			set_select(sel_item)
+			item_touched.emit(sel_item)
 
 
 func _gel_sel_item(x: float, y: float) -> int:
@@ -108,4 +108,3 @@ func get_items() -> Array[Node]:
 
 func set_select(index: int) -> void:
 	_selected_item = index
-	item_selected.emit(index)

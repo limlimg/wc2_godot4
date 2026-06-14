@@ -39,4 +39,4 @@ battle = 0
 selected_offset_ipad = -40.0
 selected_offset = -20.0
 
-[connection signal="item_selected" from="GUIList" to="." method="_on_gui_list_item_selected"]
+[connection signal="item_touched" from="GUIList" to="." method="_on_gui_list_item_touched"]

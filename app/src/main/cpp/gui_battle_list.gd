@@ -54,7 +54,11 @@ func _reset_select() -> void:
 
 
 func set_select(index: int) -> void:
+	_selected_item = index
 	_list.set_select(index)
+	_reset_select()
+	_list.get_items()[index].set_selected(true)
+	battle_selected.emit(index)
 
 
 func select_last_unlocked() -> void:
@@ -67,10 +71,8 @@ func select_last_unlocked() -> void:
 			return
 
 
-func _on_gui_list_item_selected(index: int) -> void:
-	_reset_select()
-	_selected_item = index
+func _on_gui_list_item_touched(index: int) -> void:
 	var item = _list.get_items()[index]
-	item.set_selected(true)
-	item.z_index = 1
-	battle_selected.emit(index)
+	if item is _GUIBattleItem and item.locked:
+		return
+	set_select(index)
