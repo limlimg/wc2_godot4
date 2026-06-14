@@ -3,12 +3,11 @@ extends TiXmlNode
 
 ## The top level class of this file is TiXmlDocument. Since writing methods are
 ## not implemented and GDScript features type inference, these is little reason
-## to refer to other classed explicitly.
+## to refer to other classes explicitly.
 ## 
 ## The bi-graph structure of the original tinyxml poorly fits the reference
-## counted memory management and the resource inspector of Godot. As the
-## solution, the xml files are imported as resources defined in xml*.gd files,
-## and tinyxml is built on top of them as iterators.
+## counted memory management of Godot. As the solution, the xml data are stored
+## as dictionaries, and tinyxml is built on top of them as iterators.
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
 const _ecFile = preload("res://app/src/main/cpp/ec_file.gd")
@@ -25,7 +24,7 @@ func load_file(source_file: String) -> Error:
 	if err != OK:
 		push_error("{0}: Failed to open {1}".format([error_string(err), source_file]))
 		return err
-	err = _parse_section(parser, _children_resrouce, source_file)
+	err = _parse_section(parser, _children_data, source_file)
 	if err == OK:
 		var end_name := parser.get_node_name()
 		var line := parser.get_current_line()
@@ -37,19 +36,23 @@ func load_file(source_file: String) -> Error:
 	return OK
 
 
-static func _parse_section(parser: XMLParser, section: Array[XMLNode], source_file: String) -> Error:
+static func _parse_section(parser: XMLParser, section: Array, source_file: String) -> Error:
 	var err := parser.read()
 	var line := parser.get_current_line()
 	while err == OK:
 		match parser.get_node_type():
 			XMLParser.NODE_ELEMENT:
-				var element := XMLElement.new()
-				element.line = line
-				element.name = parser.get_node_name()
+				var element := {
+					line = line,
+					type = XMLParser.NODE_ELEMENT,
+					name = parser.get_node_name(),
+					attributes = {},
+					children = []
+				}
 				for i in parser.get_attribute_count():
 					element.attributes[parser.get_attribute_name(i)] = parser.get_attribute_value(i)
 				if not parser.is_empty():
-					err = _parse_section(parser, element.inner_nodes, source_file)
+					err = _parse_section(parser, element.children, source_file)
 					if err != OK:
 						if err == ERR_FILE_EOF:
 							push_error("Parse Error: Unclosed tag in {0}: {1} on line {2}".format([source_file, element.name, line]))
@@ -65,25 +68,33 @@ static func _parse_section(parser: XMLParser, section: Array[XMLNode], source_fi
 			XMLParser.NODE_ELEMENT_END:
 				return OK
 			XMLParser.NODE_TEXT:
-				var text := XMLText.new()
-				text.line = line
-				text.data = parser.get_node_data()
+				var text := {
+					line = line,
+					type = XMLParser.NODE_TEXT,
+					data = parser.get_node_data()
+				}
 				if _regex_not_whitespace.search(text.data) != null:
 					section.append(text)
 			XMLParser.NODE_COMMENT:
-				var node := XMLComment.new()
-				node.line = line
-				node.name = parser.get_node_name()
+				var node := {
+					line = line,
+					type = XMLParser.NODE_COMMENT,
+					name = parser.get_node_name()
+				}
 				section.append(node)
 			XMLParser.NODE_CDATA:
-				var node := XMLCData.new()
-				node.line = line
-				node.name = parser.get_node_name()
+				var node := {
+					line = line,
+					type = XMLParser.NODE_CDATA,
+					name = parser.get_node_name()
+				}
 				section.append(node)
 			XMLParser.NODE_UNKNOWN:
-				var node := XMLUnknown.new()
-				node.line = line
-				node.name = parser.get_node_name()
+				var node := {
+					line = line,
+					type = XMLParser.NODE_UNKNOWN,
+					name = parser.get_node_name()
+				}
 				section.append(node)
 		err = parser.read()
 		line = parser.get_current_line()
@@ -135,7 +146,7 @@ class TiXmlNode:
 	var _value: String
 	var _parent: TiXmlNode
 	var _index_in_parent: int
-	var _children_resrouce: Array[XMLNode]
+	var _children_data: Array
 	var _type: NodeType
 	
 	func value() -> String:
@@ -148,7 +159,7 @@ class TiXmlNode:
 	
 	func first_child(find_value: String = "") -> TiXmlNode:
 		var i := 0
-		while i < _children_resrouce.size():
+		while i < _children_data.size():
 			if find_value == "" or find_value == _get_child_value(i):
 				return _create_child_node(i)
 			i += 1
@@ -156,7 +167,7 @@ class TiXmlNode:
 	
 	
 	func last_child(find_value: String = "") -> TiXmlNode:
-		var i := _children_resrouce.size()
+		var i := _children_data.size()
 		while i > 0:
 			i -= 1
 			if find_value == "" or find_value == _get_child_value(i):
@@ -168,7 +179,7 @@ class TiXmlNode:
 		var i := 0
 		if previous != null:
 			i = previous._index_in_parent
-		while i < _children_resrouce.size():
+		while i < _children_data.size():
 			if find_value == "" or find_value == _get_child_value(i):
 				return _create_child_node(i)
 			i += 1
@@ -186,7 +197,7 @@ class TiXmlNode:
 	
 	func next_sibling(find_value: String = "") -> TiXmlNode:
 		var i := _index_in_parent + 1
-		while i < _parent._children_resrouce.size():
+		while i < _parent._children_data.size():
 			if find_value == "" or find_value == _parent._get_child_value(i):
 				return _parent._create_child_node(i)
 			i += 1
@@ -195,8 +206,8 @@ class TiXmlNode:
 	
 	func next_sibling_element(find_value: String = "") -> TiXmlElement:
 		var i := _index_in_parent + 1
-		while i < _parent._children_resrouce.size():
-			if _parent._children_resrouce[i] is XMLElement and find_value == "" or find_value == _parent._get_child_value(i):
+		while i < _parent._children_data.size():
+			if _parent._children_data[i].type == XMLParser.NODE_ELEMENT and find_value == "" or find_value == _parent._get_child_value(i):
 				return _parent._create_child_node(i) as TiXmlElement
 			i += 1
 		return null
@@ -204,8 +215,8 @@ class TiXmlNode:
 	
 	func first_child_element(find_value: String = "") -> TiXmlElement:
 		var i := 0
-		while i < _children_resrouce.size():
-			if _children_resrouce[i] is XMLElement and find_value == "" or find_value == _get_child_value(i):
+		while i < _children_data.size():
+			if _children_data[i].type == XMLParser.NODE_ELEMENT and find_value == "" or find_value == _get_child_value(i):
 				return _create_child_node(i) as TiXmlElement
 			i += 1
 		return null
@@ -223,7 +234,7 @@ class TiXmlNode:
 	
 	
 	func no_children() -> bool:
-		return _children_resrouce.is_empty()
+		return _children_data.is_empty()
 	
 	
 	func to_document() -> _TiXmlDocument:
@@ -248,65 +259,65 @@ class TiXmlNode:
 	
 	# Avoid creating a node only to check its value
 	func _get_child_value(i: int) -> String:
-		var child_resource = _children_resrouce[i]
-		if child_resource is XMLElement:
-			return child_resource.name
-		elif child_resource is XMLComment:
-			return child_resource.name
-		elif child_resource is XMLCData:
-			return child_resource.name
-		elif child_resource is XMLUnknown:
-			return child_resource.name
-		elif child_resource is XMLText:
-			return child_resource.data
+		var child = _children_data[i]
+		if child.type == XMLParser.NODE_ELEMENT:
+			return child.name
+		elif child.type == XMLParser.NODE_COMMENT:
+			return child.name
+		elif child.type == XMLParser.NODE_CDATA:
+			return child.name
+		elif child.type == XMLParser.NODE_UNKNOWN:
+			return child.name
+		elif child.type == XMLParser.NODE_TEXT:
+			return child.data
 		else:
 			return ""
 	
 	
 	func _create_child_node(i: int) -> TiXmlNode:
-		var child: TiXmlNode = null
-		var child_resource = _children_resrouce[i]
-		if child_resource is XMLElement:
-			child = TiXmlElement.new()
-			child._value = child_resource.name
-			child._type = NodeType.ELEMENT
-			child._resource = child_resource
-			child._children_resrouce = child_resource.inner_nodes
-		elif child_resource is XMLComment:
-			child = TiXmlComment.new()
-			child._value = child_resource.name
-			child._type = NodeType.COMMENT
-		elif child_resource is XMLCData:
-			child = TiXmlText.new()
-			child._value = child_resource.name
-			child._type = NodeType.TEXT
-			child._is_cdata = true
-		elif child_resource is XMLUnknown:
-			child = TiXmlUnknown.new()
-			child._value = child_resource.name
-			child._type = NodeType.UNKNOWN
-		elif child_resource is XMLText:
-			child = TiXmlText.new()
-			child._value = child_resource.data
-			child._type = NodeType.TEXT
-			child._is_cdata = false
+		var child_node: TiXmlNode = null
+		var child = _children_data[i]
+		if child.type == XMLParser.NODE_ELEMENT:
+			child_node = TiXmlElement.new()
+			child_node._value = child.name
+			child_node._type = NodeType.ELEMENT
+			child_node._data = child
+			child_node._children_data = child.children
+		elif child.type == XMLParser.NODE_COMMENT:
+			child_node = TiXmlComment.new()
+			child_node._value = child.name
+			child_node._type = NodeType.COMMENT
+		elif child.type == XMLParser.NODE_CDATA:
+			child_node = TiXmlText.new()
+			child_node._value = child.name
+			child_node._type = NodeType.TEXT
+			child_node._is_cdata = true
+		elif child.type == XMLParser.NODE_UNKNOWN:
+			child_node = TiXmlUnknown.new()
+			child_node._value = child.name
+			child_node._type = NodeType.UNKNOWN
+		elif child.type == XMLParser.NODE_TEXT:
+			child_node = TiXmlText.new()
+			child_node._value = child.data
+			child_node._type = NodeType.TEXT
+			child_node._is_cdata = false
 		else:
 			return null
-		child._row = child_resource.line
-		child._parent = self
-		child._index_in_parent = i
-		return child
+		child_node._row = child.line
+		child_node._parent = self
+		child_node._index_in_parent = i
+		return child_node
 
 
 class TiXmlElement:
 	extends TiXmlNode
 	
-	var _resource: XMLElement
+	var _data: Dictionary
 	
 	func attribute(name: String, p: Array = []) -> String:
-		if name not in _resource.attributes:
+		if name not in _data.attributes:
 			return ""
-		var s = _resource.attributes[name]
+		var s = _data.attributes[name]
 		if p.size() != 0:
 			if p[0] is int and s.is_valid_int():
 				p[0] = s.to_int()
@@ -316,9 +327,9 @@ class TiXmlElement:
 	
 	
 	func query_int_attribute(name: String, p: Array[int]) -> int:
-		if name not in _resource.attributes:
+		if name not in _data.attributes:
 			return TIXML_NO_ATTRIBUTE
-		var s = _resource.attributes[name]
+		var s = _data.attributes[name]
 		#if not s.is_valid_int():
 			#return TIXML_WRONG_TYPE
 		p.append(s.to_int())
@@ -326,9 +337,9 @@ class TiXmlElement:
 	
 	
 	func query_float_attribute(name: String, p: Array[float]) -> int:
-		if name not in _resource.attributes:
+		if name not in _data.attributes:
 			return TIXML_NO_ATTRIBUTE
-		var s = _resource.attributes[name]
+		var s = _data.attributes[name]
 		#if not s.is_valid_float():
 			#return TIXML_WRONG_TYPE
 		p.append(s.to_float())
@@ -336,33 +347,33 @@ class TiXmlElement:
 	
 	
 	func first_attribute() -> TiXmlAttribute:
-		if _resource.attributes.size() == 0:
+		if _data.attributes.size() == 0:
 			return null
 		var attr := TiXmlAttribute.new()
 		attr._row = _row
-		attr._keys = _resource.attributes.keys()
-		attr._values = _resource.attributes
+		attr._keys = _data.attributes.keys()
+		attr._values = _data.attributes
 		attr._index = 0
 		return attr
 	
 	
 	func last_attribute() -> TiXmlAttribute:
-		if _resource.attributes.size() == 0:
+		if _data.attributes.size() == 0:
 			return null
 		var attr := TiXmlAttribute.new()
 		attr._row = _row
-		attr._keys = _resource.attributes.keys()
-		attr._values = _resource.attributes
-		attr._index = _resource.attributes.size() - 1
+		attr._keys = _data.attributes.keys()
+		attr._values = _data.attributes
+		attr._index = _data.attributes.size() - 1
 		return attr
 	
 	
 	func get_text() -> String:
-		if _children_resrouce.size() > 0:
-			if _children_resrouce[0] is XMLText:
-				return _children_resrouce[0].data
-			elif _children_resrouce[0] is XMLCData:
-				return _children_resrouce[0].name
+		if _children_data.size() > 0:
+			if _children_data[0].type == XMLParser.NODE_TEXT:
+				return _children_data[0].data
+			elif _children_data[0].type == XMLParser.NODE_CDATA:
+				return _children_data[0].name
 		return ""
 
 

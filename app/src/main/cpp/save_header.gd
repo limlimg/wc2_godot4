@@ -1,7 +1,18 @@
+class_name SaveHeader
+extends Resource
+
+const _SaveCountryInfo = preload("res://app/src/main/cpp/save_country_info.gd")
+const _SaveAreaInfo = preload("res://app/src/main/cpp/save_area_info.gd")
+const _DialogueDef = preload("res://app/src/main/cpp/dialogue_def.gd")
 
 var game_mode: int
-var map_id: int
+
+@export
+var map: int
+
+@export
 var areas_enable: String
+
 var player_country_name: Array[String]
 var battle_file_name: String
 var camera_x: float
@@ -11,7 +22,7 @@ var current_country_index: int
 var current_dialogue_index: int
 var country_count: int
 var area_count: int
-var current_turn_num_minus_1: int
+var current_round: int
 var random_reward_medal: int
 var save_time_year: int
 var save_time_month: int
@@ -20,8 +31,14 @@ var save_time_hour: int
 var save_time_min: int
 var campaign: int
 var battle: int
-var victory_turn: int
-var great_victory_turn: int
+var victory: int
+var great_victory: int
 
-func _init() -> void:
-	player_country_name.resize(4)
+@export
+var country: Array[_SaveCountryInfo]
+
+@export
+var area: Array[_SaveAreaInfo]
+
+@export
+var dialogue: Array[_DialogueDef]
