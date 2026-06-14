@@ -95,6 +95,7 @@ func clear_item() -> void:
 	for c in _list.get_children():
 		_list.remove_child(c)
 		c.queue_free()
+	_add_scroll_vertial(-_scorll_value)
 
 
 func add_item(item: Node) -> void:
