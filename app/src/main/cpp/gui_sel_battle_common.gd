@@ -18,9 +18,6 @@ var _move_tween: Tween
 @onready var _arrows: Node2D = $Minimap/ImageList/Arrows
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
-signal ok_pressed
-signal back_pressed
-
 func _ready() -> void:
 	init()
 
@@ -120,11 +117,3 @@ func _on_resized() -> void:
 			_move_tween.kill()
 			_on_moving_finished()
 		_minimap.position = _clamp_pos(_center_pos)
-
-
-func _on_button_ok_pressed() -> void:
-	ok_pressed.emit()
-
-
-func _on_button_back_pressed() -> void:
-	back_pressed.emit()

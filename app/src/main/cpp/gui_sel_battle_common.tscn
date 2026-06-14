@@ -13,15 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dnbbn81qmkd3b" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_8.tres" id="10_y8pec"]
 [ext_resource type="Theme" uid="uid://l3oxkticxpdd" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/num6.tres" id="11_a5ym0"]
 [ext_resource type="Texture2D" uid="uid://cd2xlypbsgglm" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/sflag_shadow.png.tres" id="12_15bd2"]
-[ext_resource type="Texture2D" uid="uid://cmvqgf8do8n86" path="res://app/src/main/cpp/scene_system_resource/texture/board_selbattle.tres" id="13_cktq3"]
 [ext_resource type="PackedScene" uid="uid://bp1f7if3s8vf4" path="res://app/src/main/cpp/gui_medal.tscn" id="14_xi63f"]
-[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="15_31lcn"]
-[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok.png.tres" id="16_taf46"]
-[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok_press.png.tres" id="17_ysmif"]
-[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttonboard_green.png.tres" id="18_lxthn"]
-[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back.png.tres" id="19_jeet5"]
-[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back_press.png.tres" id="20_jogrt"]
-[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttonboard_gray.png.tres" id="21_csgyi"]
 
 [sub_resource type="Animation" id="Animation_ap38y"]
 length = 0.001
@@ -250,12 +242,10 @@ texture = ExtResource("10_y8pec")
 expand_mode = 1
 
 [node name="ImageList" type="Node2D" parent="Minimap" unique_id=600736883]
-modulate = Color(1, 1, 1, 0)
 
 [node name="Flags" type="Node2D" parent="Minimap/ImageList" unique_id=323837022]
 
 [node name="Arrows" type="Node2D" parent="Minimap/ImageList" unique_id=758524085]
-modulate = Color(1, 1, 1, 0)
 
 [node name="Age" type="CenterContainer" parent="Minimap/ImageList" unique_id=2106438542]
 offset_right = 40.0
@@ -283,19 +273,6 @@ centered = false
 [node name="Arrow" type="Sprite2D" parent="Minimap/Prototype" unique_id=1661421727]
 centered = false
 
-[node name="BoardSelBattle" parent="." unique_id=97146119 instance=ExtResource("2_ap38y")]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-offset_left = -144.0
-grow_horizontal = 0
-rect_ipad = Rect2(0, 0, 288, 768)
-rect = Rect2(0, 0, 144, 320)
-
-[node name="TextureRect" type="TextureRect" parent="BoardSelBattle" unique_id=2004284411]
-layout_mode = 2
-texture = ExtResource("13_cktq3")
-
 [node name="GUIMedal" parent="." unique_id=668390441 instance=ExtResource("2_ap38y")]
 layout_mode = 1
 anchors_preset = 2
@@ -311,48 +288,8 @@ rect = Rect2(36, 0, 70, 23)
 [node name="GUIMedal" parent="GUIMedal" unique_id=439510704 instance=ExtResource("14_xi63f")]
 layout_mode = 2
 
-[node name="ButtonOk" parent="." unique_id=69178616 instance=ExtResource("2_ap38y")]
-z_index = 1
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = -32.0
-offset_top = -30.0
-grow_horizontal = 0
-grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-
-[node name="GUIButton" parent="ButtonOk" unique_id=2034275630 instance=ExtResource("15_31lcn")]
-layout_mode = 2
-texture_normal = ExtResource("16_taf46")
-texture_pressed = ExtResource("17_ysmif")
-texture_background = ExtResource("18_lxthn")
-
-[node name="ButtonBack" parent="." unique_id=699078119 instance=ExtResource("2_ap38y")]
-z_index = 1
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
-offset_top = -30.0
-offset_right = 32.0
-grow_horizontal = 1
-grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-
-[node name="GUIButton" parent="ButtonBack" unique_id=2013893066 instance=ExtResource("15_31lcn")]
-layout_mode = 2
-texture_normal = ExtResource("19_jeet5")
-texture_pressed = ExtResource("20_jogrt")
-texture_background = ExtResource("21_csgyi")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1407031096]
 root_node = NodePath("../Minimap/ImageList")
 libraries/ = SubResource("AnimationLibrary_w8w5v")
 
 [connection signal="resized" from="." to="." method="_on_resized"]
-[connection signal="pressed" from="ButtonOk/GUIButton" to="." method="_on_button_ok_pressed"]
-[connection signal="pressed" from="ButtonBack/GUIButton" to="." method="_on_button_back_pressed"]
