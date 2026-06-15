@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c5qvo6pghcxcm"]
+
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="1_ojhsv"]
+[ext_resource type="Script" uid="uid://dat50rt43lwih" path="res://app/src/main/cpp/gui_radio_button.gd" id="2_1i85k"]
+
+[node name="GUIRadioButton" unique_id=2034275630 instance=ExtResource("1_ojhsv")]
+script = ExtResource("2_1i85k")
+selected = false
+
+[node name="TextImage" parent="." index="4" unique_id=1243538427]
+visible = false
