@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5sbo8jrgp10g" path="res://app/src/main/cpp/gui_country_list.gd" id="1_yqiw1"]
 [ext_resource type="PackedScene" uid="uid://55bpjexr684x" path="res://app/src/main/cpp/gui_list.tscn" id="2_throx"]
-[ext_resource type="PackedScene" uid="uid://c1rdjdnbkq2v" path="res://app/src/main/cpp/gui_sel_item.tscn" id="3_uucwv"]
-[ext_resource type="Script" uid="uid://bbe60v53fglca" path="res://app/src/main/cpp/gui_country_item.gd" id="4_lxvs2"]
-[ext_resource type="Resource" uid="uid://cas4w7q286tym" path="res://app/src/main/cpp/scene_system_resource/selcountry_res/texture_res.tres" id="5_npuwv"]
+[ext_resource type="PackedScene" uid="uid://cf6c1jdg631ss" path="res://app/src/main/cpp/gui_country_item.tscn" id="3_i064q"]
 
 [node name="GUICountryList" type="Control" unique_id=1324926271]
 layout_mode = 3
@@ -24,17 +22,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="GUICountryItem" parent="Prototype" unique_id=1471834346 instance=ExtResource("3_uucwv")]
+[node name="GUICountryItem" parent="Prototype" unique_id=1471834346 instance=ExtResource("3_i064q")]
 layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-offset_top = 0.0
-offset_bottom = 45.0
-grow_horizontal = 1
-script = ExtResource("4_lxvs2")
-country_res = ExtResource("5_npuwv")
-country_name = ""
-selected_offset_ipad = -32.0
-selected_offset = -16.0
 
 [connection signal="item_touched" from="GUIList" to="." method="_on_gui_list_item_touched"]

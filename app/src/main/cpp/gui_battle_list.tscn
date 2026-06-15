@@ -2,9 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bj88gkbpgi1jq" path="res://app/src/main/cpp/gui_battle_list.gd" id="1_scs3j"]
 [ext_resource type="PackedScene" uid="uid://55bpjexr684x" path="res://app/src/main/cpp/gui_list.tscn" id="3_8la76"]
-[ext_resource type="PackedScene" uid="uid://c1rdjdnbkq2v" path="res://app/src/main/cpp/gui_sel_item.tscn" id="3_upee1"]
-[ext_resource type="Script" uid="uid://clxocy78xg4t4" path="res://app/src/main/cpp/gui_battle_item.gd" id="4_8la76"]
-[ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/texture_res.tres" id="4_t2nrp"]
+[ext_resource type="PackedScene" uid="uid://hqndxoi7i4j5" path="res://app/src/main/cpp/gui_battle_item.tscn" id="3_r5cn7"]
 
 [node name="GUIBattleList" type="Control" unique_id=2059566917]
 layout_mode = 3
@@ -25,18 +23,8 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="GUIBattleItem" parent="Prototype" unique_id=1471834346 instance=ExtResource("3_upee1")]
+[node name="GUIBattleItem" parent="Prototype" unique_id=1471834346 instance=ExtResource("3_r5cn7")]
 layout_mode = 0
 anchors_preset = 0
-anchor_right = 0.0
-offset_top = 0.0
-offset_bottom = 45.0
-grow_horizontal = 1
-script = ExtResource("4_8la76")
-battle_res = ExtResource("4_t2nrp")
-campaign = 0
-battle = 0
-selected_offset_ipad = -40.0
-selected_offset = -20.0
 
 [connection signal="item_touched" from="GUIList" to="." method="_on_gui_list_item_touched"]
