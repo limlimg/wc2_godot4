@@ -178,21 +178,21 @@ func _ready() -> void:
 func _on_render():
 	if $TextureButton.button_pressed:
 		$Glow.show()
-		$Glow.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)
+		$Glow.self_modulate = Color(Color.WHITE * grey_scale, alpha)
 	else:
 		$Glow.hide()
 	if not enable:
-		var g110 := 110.0 * grey_scale / 255.0
-		$TextureButton.self_modulate = Color(g110, g110, g110, alpha)
+		var color := Color(110, 110, 110) * grey_scale
+		$TextureButton.self_modulate = Color(color, alpha)
 	else:
 		if grey_when_pressed and $TextureButton.button_pressed:
-			var g210 := 210.0 * grey_scale / 255.0
-			$TextureButton.self_modulate = Color(g210, g210, g210, alpha)
+			var color := Color(210, 210, 210) * grey_scale
+			$TextureButton.self_modulate = Color(color, alpha)
 		else:
-			$TextureButton.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)
+			$TextureButton.self_modulate = Color(Color.WHITE * grey_scale, alpha)
 	if grey_when_pressed and $TextureButton.button_pressed:
-		var g210 := 210.0 * grey_scale / 255.0
-		$TextImage.self_modulate = Color(g210, g210, g210, alpha)
+		var color := Color(210, 210, 210) * grey_scale
+		$TextImage.self_modulate = Color(color, alpha)
 	else:
 		$TextImage.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)
 
