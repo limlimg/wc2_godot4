@@ -86,26 +86,30 @@ var texture_text_image: Texture2D:
 @export_group("Text", "text_")
 @export
 var text: String:
+	get = get_text,
 	set = set_text
 
 @export
 var text_font: Theme:
 	get():
-		return $Text.theme
+		return $ecText.theme
 	set(value):
-		$Text.theme = value
+		$ecText.theme = value
 
 
 @export
 var text_color: Color:
+	get = get_text_color,
 	set = set_text_color
 
 @export
 var text_offset: Vector2:
+	get = get_text_offset,
 	set = set_text_offset
 
 @export
 var text_align: HorizontalAlignment:
+	get = get_text_align,
 	set = set_text_align
 
 @onready var _glow: TextureRect = $Glow
@@ -131,20 +135,36 @@ signal pressed
 	#texture_glow = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(image_name))
 
 
+func get_text() -> String:
+	return $ecText.text
+
+
 func set_text(value: String) -> void:
-	$Text.text = value
+	$ecText.text = value
+
+
+func get_text_color() -> Color:
+	return $ecText.color
 
 
 func set_text_color(value: Color) -> void:
-	$Text.self_modulate = value
+	$ecText.color = value
+
+
+func get_text_offset() -> Vector2:
+	return $ecText.text_position
 
 
 func set_text_offset(value: Vector2) -> void:
-	$Text.position = value + size / 2.0
+	$ecText.text_position = value
+
+
+func get_text_align() -> HorizontalAlignment:
+	return $ecText.alignment
 
 
 func set_text_align(value: HorizontalAlignment) -> void:
-	$Text.horizontal_alignment = value
+	$ecText.alignment = value
 
 
 #func set_text_image(image_name: StringName) -> void:
