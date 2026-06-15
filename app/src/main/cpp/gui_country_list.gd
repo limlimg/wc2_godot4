@@ -15,13 +15,10 @@ var conquest: int:
 	set(value):
 		if value != conquest:
 			conquest = value
-			if is_node_ready():
-				init()
+			init()
 
 
 var _selected_item := -1
-
-@onready var _list: Control = $GUIList
 
 signal country_selected(country: int)
 
@@ -30,27 +27,27 @@ func _ready() -> void:
 
 
 func init() -> void:
-	_list.clear_item()
+	$GUIList.clear_item()
 	var battle_file_name := _native.get_battle_file_name(2, 0, conquest)
 	var belligerent_list := _native.get_battle_belligerent_list(battle_file_name, true)
 	var item_proto: MarginContainer = $Prototype/GUICountryItem
 	for belligerent in belligerent_list:
 		var item := item_proto.duplicate()
-		_list.add_item(item)
+		$GUIList.add_item(item)
 		item.country_name = belligerent.name
 	set_select(0)
 
 
 func _reset_select() -> void:
-	for i in _list.get_items():
+	for i in $GUIList.get_items():
 		i.set_selected(false)
 
 
 func set_select(index: int) -> void:
 	_selected_item = index
-	_list.set_select(index)
+	$GUIList.set_select(index)
 	_reset_select()
-	_list.get_items()[index].set_selected(true)
+	$GUIList.get_items()[index].set_selected(true)
 	country_selected.emit(index)
 
 

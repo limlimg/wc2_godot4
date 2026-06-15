@@ -12,18 +12,14 @@ const _FlagInfo = preload("uid://cc743pglja2sj")
 @export
 var conquest: int:
 	get():
-		return _gui_country_list.conquest
+		return $GUICountryList/GUICountryList.conquest
 	set(value):
 		if value != conquest:
-			_gui_country_list.conquest = value
-			if is_node_ready():
-				init()
+			$GUICountryList/GUICountryList.conquest = value
+			init()
 
 
 var _country := -1
-
-@onready var _gui_sel_battle_common: Control = $GUISelBattleCommon
-@onready var _gui_country_list: Control = $GUICountryList/GUICountryList
 
 signal ok_pressed
 signal back_pressed
@@ -44,7 +40,7 @@ func _load_image_list(sel_conquest: int) -> void:
 	if def == null:
 		return
 	var arrows: Array[_FlagInfo]
-	_gui_sel_battle_common.set_image_list(def.flag, arrows, "", Vector2.ZERO, Vector2(def.centerx, def.centery))
+	$GUISelBattleCommon.set_image_list(def.flag, arrows, "", Vector2.ZERO, Vector2(def.centerx, def.centery))
 
 
 func _on_gui_country_list_country_selected(country: int) -> void:

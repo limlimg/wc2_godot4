@@ -10,13 +10,6 @@ texture_text_pressed = null
 image_position_ipad = Vector2(0, 0)
 image_position = Vector2(0, 0)
 
-[node name="Text" parent="." index="3" unique_id=1553868738]
-self_modulate = Color(0, 0, 0, 1)
-offset_left = 240.0
-offset_top = 160.0
-offset_right = 280.0
-offset_bottom = 183.0
-
 [node name="TextureRect" type="TextureRect" parent="." index="5" unique_id=1439733902]
 self_modulate = Color(255, 255, 255, 1)
 layout_mode = 0

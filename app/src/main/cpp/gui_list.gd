@@ -13,9 +13,6 @@ var vertical := true:
 var _selected_item := -1
 var _scorll_value := 0.0
 
-@onready var _scroll: ScrollContainer = $CTouchInertia/ScrollContainer
-@onready var _list: BoxContainer = $CTouchInertia/ScrollContainer/BoxContainer
-
 signal item_touched(item: int)
 
 func _on_c_touch_inertia_touch_began(_position: Vector2) -> void:
@@ -31,7 +28,7 @@ func _on_c_touch_inertia_touch_ended(pos: Vector2, moved: bool) -> void:
 
 
 func _gel_sel_item(x: float, y: float) -> int:
-	var a := _list.get_children()
+	var a := $CTouchInertia/ScrollContainer/BoxContainer.get_children()
 	for i in a.size():
 		if a[i] is Control and (a[i].get_global_transform() * Rect2(Vector2.ZERO, a[i].size)).has_point(Vector2(x, y)):
 			return i
@@ -43,7 +40,7 @@ func _on_c_touch_inertia_inertia_ended() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var y := _scroll.position.y
+	var y: float = $CTouchInertia/ScrollContainer.position.y
 	if y < 0.0:
 		_add_scroll_vertial(min(y * delta * 5.0, -0.4))
 	elif y > 0.0:
@@ -60,12 +57,12 @@ func _add_scroll_vertial(delta: float) -> void:
 	if delta == 0.0:
 		return
 	if vertical:
-		var overflow := _scroll.position.y
-		var scroll := _scroll.get_v_scroll_bar()
+		var overflow: float = $CTouchInertia/ScrollContainer.position.y
+		var scroll: Range = $CTouchInertia/ScrollContainer.get_v_scroll_bar()
 		var scroll_min := scroll.min_value
 		var scroll_max: float = max(scroll.max_value - size.y, scroll_min)
 		overflow = _calc_overflow(delta, overflow, scroll.value, scroll_min, scroll_max)
-		_scroll.position.y = overflow
+		$CTouchInertia/ScrollContainer.position.y = overflow
 		scroll.value = _calc_scroll(overflow, scroll_min, scroll_max)
 
 
@@ -92,18 +89,18 @@ func _calc_scroll(overflow: float, scroll_min: float, scroll_max: float) -> floa
 
 
 func clear_item() -> void:
-	for c in _list.get_children():
-		_list.remove_child(c)
+	for c in $CTouchInertia/ScrollContainer/BoxContainer.get_children():
+		$CTouchInertia/ScrollContainer/BoxContainer.remove_child(c)
 		c.queue_free()
 	_add_scroll_vertial(-_scorll_value)
 
 
 func add_item(item: Node) -> void:
-	_list.add_child(item)
+	$CTouchInertia/ScrollContainer/BoxContainer.add_child(item)
 
 
 func get_items() -> Array[Node]:
-	return _list.get_children()
+	return $CTouchInertia/ScrollContainer/BoxContainer.get_children()
 
 
 func set_select(index: int) -> void:

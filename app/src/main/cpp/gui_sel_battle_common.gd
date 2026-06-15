@@ -14,45 +14,37 @@ var _center_pos: Vector2
 var _on_animation_finished: Callable
 var _move_tween: Tween
 
-@onready var _minimap: Control = $Minimap
-@onready var _flag_proto := $Minimap/Prototype/Flag
-@onready var _arrow_proto := $Minimap/Prototype/Arrow
-@onready var _flags: Node2D = $Minimap/ImageList/Flags
-@onready var _age: CenterContainer = $Minimap/ImageList/Age
-@onready var _arrows: Node2D = $Minimap/ImageList/Arrows
-@onready var _animation_player: AnimationPlayer = $AnimationPlayer
-
 func _ready() -> void:
 	init()
 
 
 func init() -> void:
 	if _ecGraphics.instance().content_scale_size_mode == 3:
-		_minimap.scale = Vector2(2.0, 2.0)
-		_flag_proto.scale = Vector2(0.5, 0.5)
-		_arrow_proto.scale = Vector2(0.5, 0.5)
-		_age.scale = Vector2(0.5, 0.5)
+		$Minimap.scale = Vector2(2.0, 2.0)
+		$Minimap/Prototype/Flag.scale = Vector2(0.5, 0.5)
+		$Minimap/Prototype/Arrow.scale = Vector2(0.5, 0.5)
+		$Minimap/ImageList/Age.scale = Vector2(0.5, 0.5)
 
 
 func set_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: String, age_pos: Vector2, center_pos: Vector2) -> void:
 	_release_image_list()
-	_flags.add_child(_create_element_nodes(flags, "sflag_", _flag_proto))
-	_arrows.add_child(_create_element_nodes(arrows, "maparrow_", _arrow_proto))
+	$Minimap/ImageList/Flags.add_child(_create_element_nodes(flags, "sflag_", $Minimap/Prototype/Flag))
+	$Minimap/ImageList/Arrows.add_child(_create_element_nodes(arrows, "maparrow_", $Minimap/Prototype/Arrow))
 	$Minimap/ImageList/Age/Label.text = age
-	_age.position = age_pos
+	$Minimap/ImageList/Age.position = age_pos
 	_center_pos = center_pos
 	if $Minimap/ImageList.modulate.a == 0.0:
 		_move_tween = create_tween()
 		var dest := _clamp_pos(_center_pos)
-		_move_tween.tween_property(_minimap, "position", dest, dest.distance_to(_minimap.position) / 1000.0)
+		_move_tween.tween_property($Minimap, "position", dest, dest.distance_to($Minimap.position) / 1000.0)
 		_move_tween.tween_callback(_on_moving_finished)
 	else:
-		_minimap.position = _clamp_pos(center_pos)
+		$Minimap.position = _clamp_pos(center_pos)
 
 
 func _release_image_list() -> void:
-	_clear_element_nodes(_flags)
-	_clear_element_nodes(_arrows)
+	_clear_element_nodes($Minimap/ImageList/Flags)
+	_clear_element_nodes($Minimap/ImageList/Arrows)
 
 
 func _clear_element_nodes(parent: Node) -> void:
@@ -86,8 +78,8 @@ func _create_element_nodes(data: Array[FlagInfo], image_prefix: String, prototyp
 
 
 func _clamp_pos(center_pos: Vector2) -> Vector2:
-	center_pos *= _minimap.scale
-	var minimap_size := _minimap.size * _minimap.scale
+	center_pos *= $Minimap.scale
+	var minimap_size: Vector2 = $Minimap.size * $Minimap.scale
 	var result := (center_pos - size / 2.0).max(Vector2.ZERO).min(minimap_size - size)
 	if result.x < 0.0:
 		result.x *= 0.5
@@ -99,10 +91,10 @@ func _clamp_pos(center_pos: Vector2) -> Vector2:
 func change_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: String, age_pos: Vector2, center_pos: Vector2) -> void:
 	if _move_tween != null and _move_tween.is_valid():
 		_move_tween.kill()
-	if _animation_player.current_animation != &"fade_out":
-		_animation_player.stop()
-		_animation_player.play(&"fade_out")
-	var sig := _animation_player.animation_finished
+	if $AnimationPlayer.current_animation != &"fade_out":
+		$AnimationPlayer.stop()
+		$AnimationPlayer.play(&"fade_out")
+	var sig: Signal = $AnimationPlayer.animation_finished
 	if not _on_animation_finished.is_null() and sig.is_connected(_on_animation_finished):
 		sig.disconnect(_on_animation_finished)
 	_on_animation_finished = func(anim_name: StringName):
@@ -113,12 +105,11 @@ func change_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: Strin
 
 func _on_moving_finished() -> void:
 	_move_tween = null
-	_animation_player.play(&"fade_in")
+	$AnimationPlayer.play(&"fade_in")
 
 
 func _on_resized() -> void:
-	if is_node_ready():
-		if _move_tween != null and _move_tween.is_valid() and _move_tween.is_running():
-			_move_tween.kill()
-			_on_moving_finished()
-		_minimap.position = _clamp_pos(_center_pos)
+	if _move_tween != null and _move_tween.is_valid() and _move_tween.is_running():
+		_move_tween.kill()
+		_on_moving_finished()
+	$Minimap.position = _clamp_pos(_center_pos)

@@ -4,26 +4,20 @@ const _GUIManager = preload("res://app/src/main/cpp/gui_manager.gd")
 const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 
-@onready var _gui_main_menu: Control = $GUIManager/GUIMainMenu
-@onready var _gui_manager: _GUIManager = $GUIManager
-@onready var _gui_sel_battle: Control = $GUIManager/GUISelBattle
-@onready var _gui_locked_warning: Control = $GUIManager/GUILockedWarning
-@onready var _gui_sel_country: Control = $GUIManager/GUISelCountry
-
 func _on_enter() -> void:
 	var sound_box := _CSoundBox.get_instance()
 	sound_box.load_music("battle1.mp3", "")
 	sound_box.play_music(true)
 	if g_GameManager.should_show_next_battle:
-		_gui_main_menu.hide()
-		_gui_sel_battle.campaign = g_GameManager.campaign
-		_gui_sel_battle.game_mode = 0
-		_gui_sel_battle.show()
+		$GUIManager/GUIMainMenu.hide()
+		$GUIManager/GUISelBattle.campaign = g_GameManager.campaign
+		$GUIManager/GUISelBattle.game_mode = 0
+		$GUIManager/GUISelBattle.show()
 		g_GameManager.should_show_next_battle = false
-	_gui_manager.fade_in(100)
-	_gui_manager.faded_in.connect(func(cause: int):
+	$GUIManager.fade_in(100)
+	$GUIManager.faded_in.connect(func(cause: int):
 		if cause == 100:
-			_gui_main_menu.move_in_main_buttons()
+			$GUIManager/GUIMainMenu.move_in_main_buttons()
 		, CONNECT_ONE_SHOT)
 
 
@@ -35,40 +29,40 @@ func _on_gui_main_menu_sel_campaign_pressed(sel_campaign: int) -> void:
 	if (sel_campaign == 2 or sel_campaign == 3)\
 		and g_Commander.get_num_played_battles(0) < _native.get_num_battles(0)\
 		and g_Commander.get_num_played_battles(1) < _native.get_num_battles(1):
-		_gui_locked_warning.show()
+		$GUIManager/GUILockedWarning.show()
 	else:
-		_gui_manager.fade_out(3, $Prototype/GUILoading.duplicate())
-		_gui_manager.faded_out.connect(func(cause: int):
+		$GUIManager.fade_out(3, $Prototype/GUILoading.duplicate())
+		$GUIManager.faded_out.connect(func(cause: int):
 			if cause == 3:
-				_gui_main_menu.hide()
-				_gui_sel_battle.campaign = sel_campaign
-				_gui_sel_battle.game_mode = 0
-				_gui_sel_battle.show()
-				_gui_manager.fade_in(-1)
+				$GUIManager/GUIMainMenu.hide()
+				$GUIManager/GUISelBattle.campaign = sel_campaign
+				$GUIManager/GUISelBattle.game_mode = 0
+				$GUIManager/GUISelBattle.show()
+				$GUIManager.fade_in(-1)
 			, ConnectFlags.CONNECT_ONE_SHOT)
 
 
 func _on_gui_locked_warning_pressed() -> void:
-	_gui_locked_warning.hide()
+	$GUIManager/GUILockedWarning.hide()
 
 
 func _on_gui_main_menu_sel_conquest_pressed(sel_conquest: int) -> void:
-	_gui_manager.fade_out(4, $Prototype/GUILoading.duplicate())
-	_gui_manager.faded_out.connect(func(cause: int):
+	$GUIManager.fade_out(4, $Prototype/GUILoading.duplicate())
+	$GUIManager.faded_out.connect(func(cause: int):
 		if cause == 4:
-			_gui_main_menu.hide()
-			_gui_sel_country.conquest = sel_conquest
-			_gui_sel_country.show()
-			_gui_manager.fade_in(-1)
+			$GUIManager/GUIMainMenu.hide()
+			$GUIManager/GUISelCountry.conquest = sel_conquest
+			$GUIManager/GUISelCountry.show()
+			$GUIManager.fade_in(-1)
 		, ConnectFlags.CONNECT_ONE_SHOT)
 
 
 func _fade_out_back() -> void:
-	_gui_manager.fade_out(9, null)
-	_gui_manager.faded_out.connect(func(cause: int):
+	$GUIManager.fade_out(9, null)
+	$GUIManager.faded_out.connect(func(cause: int):
 		if cause == 9:
-			_gui_main_menu.show()
-			_gui_sel_battle.hide()
-			_gui_sel_country.hide()
-			_gui_manager.fade_in(-1)
+			$GUIManager/GUIMainMenu.show()
+			$GUIManager/GUISelBattle.hide()
+			$GUIManager/GUISelCountry.hide()
+			$GUIManager.fade_in(-1)
 		, CONNECT_ONE_SHOT)

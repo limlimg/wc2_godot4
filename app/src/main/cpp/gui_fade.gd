@@ -6,8 +6,7 @@ extends "res://app/src/main/cpp/gui_element.gd"
 var alpha := 0.5:
 	set(value):
 		alpha = value
-		if is_node_ready():
-			_set_fade_color()
+		_set_fade_color()
 
 
 func _ready() -> void:

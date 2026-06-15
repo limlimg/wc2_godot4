@@ -22,16 +22,14 @@ var battle_res: _ecTextureResAssets:
 	set(value):
 		if value != battle_res:
 			battle_res = value
-			if is_node_ready():
-				init()
+			init()
 
 @export
 var campaign: int:
 	set(value):
 		if value != campaign:
 			campaign = value
-			if is_node_ready():
-				init()
+			init()
 
 
 @export
@@ -39,8 +37,7 @@ var battle: int:
 	set(value):
 		if value != battle:
 			battle = value
-			if is_node_ready():
-				init()
+			init()
 
 
 func init() -> void:

@@ -27,8 +27,7 @@ var campaign: int:
 	set(value):
 		if value != campaign:
 			campaign = value
-			if is_node_ready():
-				_set_battle()
+			_set_battle()
 
 
 @export
@@ -36,11 +35,8 @@ var battle: int:
 	set(value):
 		if value != battle:
 			battle = value
-			if is_node_ready():
-				_set_battle()
+			_set_battle()
 
-
-@onready var _battle_intro: Control = $CenterContainer/BoardIntro/TextureRect/BattleIntro/ecText
 
 signal ok_pressed
 
@@ -49,7 +45,7 @@ func _ready() -> void:
 
 
 func init() -> void:
-	var battle_intro = _battle_intro
+	var battle_intro = $CenterContainer/BoardIntro/TextureRect/BattleIntro/ecText
 	if _ecGraphics.instance().content_scale_size_mode == 3:
 		battle_intro.add_theme_constant_override("line_spacing", -6)
 	else:
@@ -62,7 +58,7 @@ func init() -> void:
 func _set_battle() -> void:
 	var string_table := _native.g_string_table
 	if campaign >= 0 and campaign < 4:
-		_battle_intro.text = string_table.get_string(_BATTLE_INTRO_KEY_FORMAT[campaign]%[battle + 1])
+		$CenterContainer/BoardIntro/TextureRect/BattleIntro/ecText.text = string_table.get_string(_BATTLE_INTRO_KEY_FORMAT[campaign]%[battle + 1])
 		$CenterContainer/BoardIntro/TextureRect/BattleName/ecText.text = string_table.get_string(_BATTLE_NAME_KEY_FORMAT[campaign]%[battle + 1])
 	var battle_key_name := _native.get_battle_key_name(campaign, battle)
 	var battle_def := _CObjectDef.instance().get_battle_def(battle_key_name)

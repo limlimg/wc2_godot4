@@ -7,36 +7,37 @@ extends "res://app/src/main/cpp/gui_element.gd"
 
 @export
 var text: String:
+	get = get_text,
 	set = set_text
 
 @export
 var color: Color = Color.WHITE:
+	get = get_color,
 	set = set_color
 
 @export
 var text_position: Vector2:
+	get():
+		return $Label.position
 	set(value):
-		text_position = value
-		if is_node_ready():
-			_label.position = value
+		$Label.position = value
 
 
 @export
 var alignment: HorizontalAlignment:
+	get():
+		return $Label.horizontal_alignment
 	set(value):
 		alignment = value
-		if is_node_ready():
-			_label.horizontal_alignment = value
-			match value:
-				HorizontalAlignment.HORIZONTAL_ALIGNMENT_LEFT:
-					_label.grow_horizontal = Control.GROW_DIRECTION_END
-				HorizontalAlignment.HORIZONTAL_ALIGNMENT_RIGHT:
-					_label.grow_horizontal = Control.GROW_DIRECTION_BEGIN
-				_:
-					_label.grow_horizontal = Control.GROW_DIRECTION_BOTH
+		$Label.horizontal_alignment = value
+		match value:
+			HorizontalAlignment.HORIZONTAL_ALIGNMENT_LEFT:
+				$Label.grow_horizontal = Control.GROW_DIRECTION_END
+			HorizontalAlignment.HORIZONTAL_ALIGNMENT_RIGHT:
+				$Label.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+			_:
+				$Label.grow_horizontal = Control.GROW_DIRECTION_BOTH
 
-
-@onready var _label: Label = $Label
 
 func _ready() -> void:
 	init()
@@ -44,25 +45,23 @@ func _ready() -> void:
 
 func init():
 	set_color(color)
-	_draw_text()
+
+
+func get_color() -> Color:
+	return $Label.get_theme_color(&"font_color")
 
 
 func set_color(value: Color) -> void:
-	color = value
-	if is_node_ready():
-		_label.remove_theme_color_override(&"font_color")
-		_label.add_theme_color_override(&"font_color", value)
+	$Label.remove_theme_color_override(&"font_color")
+	$Label.add_theme_color_override(&"font_color", value)
 
 
-func _draw_text() -> void:
-	text_position = text_position
-	alignment = alignment
+func get_text() -> String:
+	return $Label.text
 
 
 func set_text(value: String) -> void:
-	text = value
-	if is_node_ready():
-		_label.text = value
+	$Label.text = value
 
 
 func set_alpha(alpha: float)-> void:
@@ -70,14 +69,8 @@ func set_alpha(alpha: float)-> void:
 
 
 func get_height() -> float:
-	if is_node_ready():
-		return _label.size.y
-	else:
-		return 0.0
+	return $Label.size.y
 
 
 func get_num_lines() -> int:
-	if is_node_ready():
-		return _label.get_line_count()
-	else:
-		return 0
+	return $Label.get_line_count()

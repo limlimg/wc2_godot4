@@ -12,8 +12,7 @@ var enable := true:
 	set(value):
 		if value != not $TextureButton.disabled:
 			$TextureButton.disabled = not value
-			if is_node_ready():
-				_on_render()
+			_on_render()
 
 
 @export
@@ -24,8 +23,7 @@ var grey_when_pressed := false:
 	set(value):
 		if value != grey_when_pressed:
 			grey_when_pressed = value
-			if is_node_ready():
-				_on_render()
+			_on_render()
 
 
 @export_range(0.0, 1.0, 1.0/255.0)
@@ -33,8 +31,7 @@ var grey_scale := 1.0:
 	set(value):
 		if value != grey_scale:
 			grey_scale = value
-			if is_node_ready():
-				_on_render()
+			_on_render()
 
 
 @export_range(0.0, 1.0, 1.0/255.0)
@@ -98,7 +95,7 @@ var text_font: Theme:
 
 
 @export
-var text_color: Color:
+var text_color := Color.WHITE:
 	get = get_text_color,
 	set = set_text_color
 
@@ -112,9 +109,6 @@ var text_align: HorizontalAlignment:
 	get = get_text_align,
 	set = set_text_align
 
-@onready var _glow: TextureRect = $Glow
-@onready var _texture_button: TextureButton = $TextureButton
-@onready var _text_image: TextureRect = $TextImage
 
 signal pressed
 
@@ -182,25 +176,25 @@ func _ready() -> void:
 
 
 func _on_render():
-	if _texture_button.button_pressed:
-		_glow.show()
-		_glow.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)
+	if $TextureButton.button_pressed:
+		$Glow.show()
+		$Glow.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)
 	else:
-		_glow.hide()
+		$Glow.hide()
 	if not enable:
 		var g110 := 110.0 * grey_scale / 255.0
-		_texture_button.self_modulate = Color(g110, g110, g110, alpha)
+		$TextureButton.self_modulate = Color(g110, g110, g110, alpha)
 	else:
-		if grey_when_pressed and _texture_button.button_pressed:
+		if grey_when_pressed and $TextureButton.button_pressed:
 			var g210 := 210.0 * grey_scale / 255.0
-			_texture_button.self_modulate = Color(g210, g210, g210, alpha)
+			$TextureButton.self_modulate = Color(g210, g210, g210, alpha)
 		else:
-			_texture_button.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)
-	if grey_when_pressed and _texture_button.button_pressed:
+			$TextureButton.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)
+	if grey_when_pressed and $TextureButton.button_pressed:
 		var g210 := 210.0 * grey_scale / 255.0
-		_text_image.self_modulate = Color(g210, g210, g210, alpha)
+		$TextImage.self_modulate = Color(g210, g210, g210, alpha)
 	else:
-		_text_image.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)
+		$TextImage.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)
 
 
 func _on_texture_button_button_down() -> void:

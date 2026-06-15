@@ -6,8 +6,7 @@ var texture_text_not_pressed: Texture2D:
 	set(value):
 		if value != texture_text_not_pressed:
 			texture_text_not_pressed = value
-			if is_node_ready():
-				_on_render()
+			_on_render()
 
 
 @export
@@ -15,8 +14,7 @@ var texture_text_pressed: Texture2D:
 	set(value):
 		if value != texture_text_pressed:
 			texture_text_pressed = value
-			if is_node_ready():
-				_on_render()
+			_on_render()
 
 
 @export
@@ -24,8 +22,7 @@ var image_position_ipad: Vector2:
 	set(value):
 		if value != image_position_ipad:
 			image_position_ipad = value
-			if is_node_ready():
-				_on_render()
+			_on_render()
 
 
 @export
@@ -33,8 +30,7 @@ var image_position: Vector2:
 	set(value):
 		if value != image_position:
 			image_position = value
-			if is_node_ready():
-				_on_render()
+			_on_render()
 
 
 #func set_image_text(value_not_pressed: String, value_pressed: String) -> void:
@@ -53,7 +49,7 @@ func _on_render():
 		texture_rect.position = image_position_ipad
 	else:
 		texture_rect.position = image_position
-	if _texture_button.button_pressed:
+	if $TextureButton.button_pressed:
 		texture_rect.texture = texture_text_pressed
 		texture_rect.self_modulate = Color(0xD2, 0xD2, 0xD2, alpha)
 	else:

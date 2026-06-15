@@ -6,9 +6,6 @@ const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 
 var _state := 0
 
-@onready var _main_button: Control = $MainButton
-@onready var _animation_player: AnimationPlayer = $AnimationPlayer
-
 signal sel_campaign_pressed(sel_campaign: int)
 signal load_campaign_pressed
 signal sel_conquest_pressed(sel_conquest: int)
@@ -177,26 +174,26 @@ func _move_button(state: int) -> void:
 	_state = state
 	match state:
 		1:
-			_animation_player.speed_scale = 1.0
-			_animation_player.play(&"move_main")
+			$AnimationPlayer.speed_scale = 1.0
+			$AnimationPlayer.play(&"move_main")
 		2:
-			_animation_player.play_backwards(&"move_main")
+			$AnimationPlayer.play_backwards(&"move_main")
 		3:
-			_animation_player.speed_scale = _main_button.size.x / size.x * 2.0
-			_animation_player.play(&"move_campaign")
+			$AnimationPlayer.speed_scale = $MainButton.size.x / size.x * 2.0
+			$AnimationPlayer.play(&"move_campaign")
 		4:
-			_animation_player.play_backwards(&"move_campaign")
+			$AnimationPlayer.play_backwards(&"move_campaign")
 		5:
 			_move_button(1)
 		6:
-			_animation_player.play_backwards(&"move_main")
+			$AnimationPlayer.play_backwards(&"move_main")
 		7:
-			_animation_player.play_backwards(&"move_main")
+			$AnimationPlayer.play_backwards(&"move_main")
 		8:
-			_animation_player.speed_scale = _main_button.size.x / size.x * 2.0
-			_animation_player.play(&"move_conquest")
+			$AnimationPlayer.speed_scale = $MainButton.size.x / size.x * 2.0
+			$AnimationPlayer.play(&"move_conquest")
 		9:
-			_animation_player.play_backwards(&"move_conquest")
+			$AnimationPlayer.play_backwards(&"move_conquest")
 
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:

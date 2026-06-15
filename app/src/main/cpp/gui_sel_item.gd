@@ -13,8 +13,7 @@ var button_texture: Texture2D:
 	set(value):
 		if value != button_texture:
 			button_texture = value
-			if is_node_ready():
-				init()
+			init()
 
 
 @export
@@ -22,8 +21,7 @@ var text_texture: Texture2D:
 	set(value):
 		if value != text_texture:
 			text_texture = value
-			if is_node_ready():
-				init()
+			init()
 
 
 @export
@@ -31,8 +29,7 @@ var locked: bool:
 	set(value):
 		if value != locked:
 			locked = value
-			if is_node_ready():
-				init()
+			init()
 
 
 @export
@@ -40,8 +37,7 @@ var star: int:
 	set(value):
 		if value != star:
 			star = value
-			if is_node_ready():
-				init()
+			init()
 
 
 @export
@@ -49,8 +45,7 @@ var selected_offset_ipad: float:
 	set(value):
 		if value != selected_offset_ipad:
 			selected_offset_ipad = value
-			if is_node_ready():
-				_move_button()
+			_move_button()
 
 
 @export
@@ -58,8 +53,7 @@ var selected_offset: float:
 	set(value):
 		if value != selected_offset:
 			selected_offset = value
-			if is_node_ready():
-				_move_button()
+			_move_button()
 
 
 var enable: bool:
@@ -77,9 +71,6 @@ var _button_image: _ecImage
 var _text_image: _ecImage
 var _star_image: _ecImage
 var _down: bool
-
-@onready
-var _button := $MarginContainer/Control/Button
 
 func _ready() -> void:
 	init()
@@ -102,7 +93,7 @@ func init() -> void:
 	else:
 		res = load(_RESOURCE_PATH + "small_rankstar.png.tres")
 		_star_image = _ecImage.new(res.get_image_attr())
-	_button.queue_redraw()
+	$MarginContainer/Control/Button.queue_redraw()
 
 
 func _move_button() -> void:
@@ -113,25 +104,24 @@ func _move_button() -> void:
 			offset = selected_offset_ipad
 		else:
 			offset = selected_offset
-	_button.position = Vector2(offset, 0.0)
+	$MarginContainer/Control/Button.position = Vector2(offset, 0.0)
 
 
 func set_selected(value: bool) -> void:
 	if value != selected:
 		selected = value
-		if is_node_ready():
-			_move_button()
-			_button.queue_redraw()
+		_move_button()
+		$MarginContainer/Control/Button.queue_redraw()
 
 
 func _on_button_button_down() -> void:
 	_down = true
-	_button.queue_redraw()
+	$MarginContainer/Control/Button.queue_redraw()
 
 
 func _on_button_button_up() -> void:
 	_down = false
-	_button.queue_redraw()
+	$MarginContainer/Control/Button.queue_redraw()
 
 
 func _on_button_pressed() -> void:
@@ -142,7 +132,7 @@ func _on_render() -> void:
 	if _button_image == null:
 		return
 	var graphics := _ecGraphics.instance()
-	graphics.render_begin(_button)
+	graphics.render_begin($MarginContainer/Control/Button)
 	var color := Color(1.0, 0.824, 0.824, 0.816)
 	if not locked and not _down:
 		color = Color.WHITE

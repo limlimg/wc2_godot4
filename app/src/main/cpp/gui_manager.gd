@@ -32,9 +32,6 @@ var start_faded_in: bool = false
 var _fading_cause: int
 var _overlay: Node
 
-@onready var _fade: Control = $GUIFade
-@onready var _animation_player: AnimationPlayer = $AnimationPlayer
-
 signal faded_in(cause: int)
 signal faded_out(cause: int)
 
@@ -111,29 +108,29 @@ func add_scroll_bar(rect: Rect2, parent:Node, normal_image_name: StringName,
 func fade_in(cause: int) -> void:
 	_fading_cause = cause
 	_remove_overlay()
-	_animation_player.play("fade_in")
+	$AnimationPlayer.play("fade_in")
 
 
 func fade_out(cause: int, overlay: Node) -> void:
 	_fading_cause = cause
 	_remove_overlay()
 	if overlay != null:
-		_fade.add_child(overlay)
+		$GUIFade.add_child(overlay)
 		_overlay = overlay
-	_animation_player.play("fade_out")
+	$AnimationPlayer.play("fade_out")
 
 
 func _remove_overlay() -> void:
 	if _overlay != null:
-		_fade.remove_child(_overlay)
+		$GUIFade.remove_child(_overlay)
 		_overlay.queue_free()
 		_overlay = null
 
 
 func _ready() -> void:
 	if start_faded_in:
-		_fade.alpha = 0.0
-	_fade.visible = true # $Fade is invisible in the editor for previewing
+		$GUIFade.alpha = 0.0
+	$GUIFade.visible = true # $Fade is invisible in the editor for previewing
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

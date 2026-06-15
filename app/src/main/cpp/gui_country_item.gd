@@ -7,16 +7,14 @@ var country_res: _ecTextureResAssets:
 	set(value):
 		if value != country_res:
 			country_res = value
-			if is_node_ready():
-				init()
+			init()
 
 @export
 var country_name: String:
 	set(value):
 		if value != country_name:
 			country_name = value
-			if is_node_ready():
-				init()
+			init()
 
 
 func init() -> void:
