@@ -174,12 +174,10 @@ func _move_button(state: int) -> void:
 	_state = state
 	match state:
 		1:
-			$AnimationPlayer.speed_scale = 1.0
 			$AnimationPlayer.play(&"move_main")
 		2:
 			$AnimationPlayer.play_backwards(&"move_main")
 		3:
-			$AnimationPlayer.speed_scale = $MainButton.size.x / size.x * 2.0
 			$AnimationPlayer.play(&"move_campaign")
 		4:
 			$AnimationPlayer.play_backwards(&"move_campaign")
@@ -190,7 +188,6 @@ func _move_button(state: int) -> void:
 		7:
 			$AnimationPlayer.play_backwards(&"move_main")
 		8:
-			$AnimationPlayer.speed_scale = $MainButton.size.x / size.x * 2.0
 			$AnimationPlayer.play(&"move_conquest")
 		9:
 			$AnimationPlayer.play_backwards(&"move_conquest")

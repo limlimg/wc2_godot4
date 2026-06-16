@@ -49,7 +49,7 @@ length = 0.001
 
 [sub_resource type="Animation" id="Animation_7tqsn"]
 resource_name = "empty_to_campaign"
-length = 0.26666668
+length = 0.64
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -57,7 +57,7 @@ tracks/0/path = NodePath("SelCampaigns/ButtonAxis:anchor_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 0.64),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.5]
@@ -69,7 +69,7 @@ tracks/1/path = NodePath("SelCampaigns/ButtonAllies:anchor_left")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 0.64),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.5]
@@ -81,7 +81,7 @@ tracks/2/path = NodePath("SelCampaigns/ButtonWto:anchor_left")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 0.64),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.5]
@@ -93,7 +93,7 @@ tracks/3/path = NodePath("SelCampaigns/ButtonNato:anchor_left")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 0.64),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.5]
@@ -113,7 +113,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_kov84"]
 resource_name = "move_conquest"
-length = 0.26666668
+length = 0.64
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -121,7 +121,7 @@ tracks/0/path = NodePath("SelConquest/Button1:anchor_left")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 0.64),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.5]
@@ -133,7 +133,7 @@ tracks/1/path = NodePath("SelConquest/Button2:anchor_left")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 0.64),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.5]
@@ -145,7 +145,7 @@ tracks/2/path = NodePath("SelConquest/Button3:anchor_left")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 0.64),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.5]
@@ -157,7 +157,7 @@ tracks/3/path = NodePath("SelConquest/Button4:anchor_left")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 0.64),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.5]
@@ -169,7 +169,7 @@ tracks/4/path = NodePath("SelConquest/Button5:anchor_left")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 0.64),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.5]
@@ -181,7 +181,7 @@ tracks/5/path = NodePath("SelConquest/Button6:anchor_left")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 0.64),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.5]
@@ -193,7 +193,7 @@ tracks/6/path = NodePath("SelConquest/Button7:anchor_left")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 0.64),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.5]
@@ -205,7 +205,7 @@ tracks/7/path = NodePath("SelConquest/Button8:anchor_left")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
+"times": PackedFloat32Array(0, 0.64),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.5]
