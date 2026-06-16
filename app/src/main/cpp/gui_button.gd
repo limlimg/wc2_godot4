@@ -181,16 +181,16 @@ func _on_render():
 	else:
 		$Glow.hide()
 	if not enable:
-		var color := Color(110, 110, 110) * grey_scale
+		var color := Color8(110, 110, 110) * grey_scale
 		$TextureButton.self_modulate = Color(color, alpha)
 	else:
 		if grey_when_pressed and $TextureButton.button_pressed:
-			var color := Color(210, 210, 210) * grey_scale
+			var color := Color8(210, 210, 210) * grey_scale
 			$TextureButton.self_modulate = Color(color, alpha)
 		else:
 			$TextureButton.self_modulate = Color(Color.WHITE * grey_scale, alpha)
 	if grey_when_pressed and $TextureButton.button_pressed:
-		var color := Color(210, 210, 210) * grey_scale
+		var color := Color8(210, 210, 210) * grey_scale
 		$TextImage.self_modulate = Color(color, alpha)
 	else:
 		$TextImage.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)

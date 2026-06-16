@@ -50,9 +50,9 @@ func _on_render():
 		texture_rect.position = image_position
 	if $TextureButton.button_pressed:
 		texture_rect.texture = texture_text_pressed
-		texture_rect.self_modulate = Color(0xD2, 0xD2, 0xD2, alpha)
+		texture_rect.self_modulate = Color(Color8(0xD2, 0xD2, 0xD2), alpha)
 	else:
 		texture_rect.texture = texture_text_not_pressed
-		texture_rect.self_modulate = Color(0xFF, 0xFF, 0xFF, alpha)
+		texture_rect.self_modulate = Color(Color8(0xFF, 0xFF, 0xFF), alpha)
 	if not enable:
-		texture_rect.self_modulate = Color(0x6E, 0x6E, 0x6E, alpha)
+		texture_rect.self_modulate = Color(Color8(0x6E, 0x6E, 0x6E), alpha)
