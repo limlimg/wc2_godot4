@@ -1,4 +1,3 @@
-@tool
 extends "res://app/src/main/cpp/gui_button.gd"
 
 @export
@@ -45,7 +44,7 @@ var image_position: Vector2:
 func _on_render():
 	super()
 	var texture_rect: TextureRect = $TextureRect
-	if not Engine.is_editor_hint() and _ecGraphics.instance().content_scale_size_mode == 3:
+	if _ecGraphics.instance().content_scale_size_mode == 3:
 		texture_rect.position = image_position_ipad
 	else:
 		texture_rect.position = image_position

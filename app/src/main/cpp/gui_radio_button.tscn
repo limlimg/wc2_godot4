@@ -6,6 +6,10 @@
 [node name="GUIRadioButton" unique_id=2034275630 instance=ExtResource("1_ojhsv")]
 script = ExtResource("2_1i85k")
 selected = false
+text_align = 1
+
+[node name="ecText" parent="." index="3" unique_id=448162067]
+alignment = 1
 
 [node name="TextImage" parent="." index="4" unique_id=1243538427]
 visible = false

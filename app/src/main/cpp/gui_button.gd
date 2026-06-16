@@ -1,4 +1,3 @@
-@tool
 extends "res://app/src/main/cpp/gui_element.gd"
 
 const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
