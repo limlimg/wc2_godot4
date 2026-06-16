@@ -1,0 +1,228 @@
+[gd_scene format=3 uid="uid://b2tuhbhr3or2w"]
+
+[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://app/src/main/cpp/scene_system_resource/texture/commonbg.tres" id="1_4hx74"]
+[ext_resource type="Script" uid="uid://dl6e64ot5dyyj" path="res://app/src/main/cpp/gui_save.gd" id="1_h7uv5"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_3p75f"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="3_43u7i"]
+[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back.png.tres" id="4_mkn08"]
+[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_back_press.png.tres" id="5_elaf6"]
+[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttonboard_gray.png.tres" id="6_ddbjm"]
+[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok.png.tres" id="7_h7uv5"]
+[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok_press.png.tres" id="8_tyc1t"]
+[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttonboard_green.png.tres" id="9_ogghu"]
+[ext_resource type="PackedScene" uid="uid://bktnsnsbwc2q3" path="res://app/src/main/cpp/gui_save_item.tscn" id="10_elaf6"]
+[ext_resource type="Texture2D" uid="uid://dr8fdh2jlyc1t" path="res://app/src/main/cpp/scene_system_resource/menu_save_res/btnsaveback1.png.tres" id="11_ddbjm"]
+[ext_resource type="PackedScene" uid="uid://dbndqpxk2yyd1" path="res://app/src/main/cpp/gui_auto_save_item.tscn" id="12_h7uv5"]
+[ext_resource type="Texture2D" uid="uid://cam4s04ib1iku" path="res://app/src/main/cpp/scene_system_resource/menu_save_res/btnsaveback2.png.tres" id="13_ddbjm"]
+
+[node name="GUISave" type="Control" unique_id=1102808812]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h7uv5")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=938666361]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4hx74")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ButtonBack" parent="." unique_id=1909106129 instance=ExtResource("2_3p75f")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="GUIButton" parent="ButtonBack" unique_id=2034275630 instance=ExtResource("3_43u7i")]
+layout_mode = 2
+texture_normal = ExtResource("4_mkn08")
+texture_pressed = ExtResource("5_elaf6")
+texture_background = ExtResource("6_ddbjm")
+
+[node name="ButtonOk" parent="." unique_id=1603056165 instance=ExtResource("2_3p75f")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="GUIButton" parent="ButtonOk" unique_id=254315075 instance=ExtResource("3_43u7i")]
+layout_mode = 2
+texture_normal = ExtResource("7_h7uv5")
+texture_pressed = ExtResource("8_tyc1t")
+texture_background = ExtResource("9_ogghu")
+
+[node name="Control" type="Control" parent="." unique_id=1640727207]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SaveItem" parent="Control" unique_id=621397009 instance=ExtResource("2_3p75f")]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 180.0
+offset_bottom = 86.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-491, -303, 360, 173)
+rect = Rect2(-242, -148, 180, 86)
+
+[node name="GUISaveItem" parent="Control/SaveItem" unique_id=84813601 instance=ExtResource("10_elaf6")]
+layout_mode = 2
+texture_normal = ExtResource("11_ddbjm")
+texture_pressed = ExtResource("11_ddbjm")
+
+[node name="SaveItem2" parent="Control" unique_id=600227997 instance=ExtResource("2_3p75f")]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 180.0
+offset_bottom = 86.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-491, -117, 360, 173)
+rect = Rect2(-242, -55, 180, 86)
+
+[node name="GUISaveItem" parent="Control/SaveItem2" unique_id=864049145 instance=ExtResource("10_elaf6")]
+layout_mode = 2
+texture_normal = ExtResource("11_ddbjm")
+texture_pressed = ExtResource("11_ddbjm")
+
+[node name="SaveItem3" parent="Control" unique_id=1151305700 instance=ExtResource("2_3p75f")]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 180.0
+offset_bottom = 86.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-491, 69, 360, 173)
+rect = Rect2(-242, 38, 180, 86)
+
+[node name="GUISaveItem" parent="Control/SaveItem3" unique_id=205932105 instance=ExtResource("10_elaf6")]
+layout_mode = 2
+texture_normal = ExtResource("11_ddbjm")
+texture_pressed = ExtResource("11_ddbjm")
+
+[node name="SaveItem4" parent="Control" unique_id=909226541 instance=ExtResource("2_3p75f")]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 180.0
+offset_bottom = 86.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(122, -303, 360, 173)
+rect = Rect2(62, -148, 180, 86)
+
+[node name="GUISaveItem" parent="Control/SaveItem4" unique_id=936653722 instance=ExtResource("10_elaf6")]
+layout_mode = 2
+texture_normal = ExtResource("11_ddbjm")
+texture_pressed = ExtResource("11_ddbjm")
+
+[node name="SaveItem5" parent="Control" unique_id=1435155649 instance=ExtResource("2_3p75f")]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 180.0
+offset_bottom = 86.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(122, -117, 360, 173)
+rect = Rect2(62, -55, 180, 86)
+
+[node name="GUISaveItem" parent="Control/SaveItem5" unique_id=1460200486 instance=ExtResource("10_elaf6")]
+layout_mode = 2
+texture_normal = ExtResource("11_ddbjm")
+texture_pressed = ExtResource("11_ddbjm")
+
+[node name="SaveItem6" parent="Control" unique_id=715527059 instance=ExtResource("2_3p75f")]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 180.0
+offset_bottom = 86.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(122, 69, 360, 173)
+rect = Rect2(62, 38, 180, 86)
+
+[node name="GUISaveItem" parent="Control/SaveItem6" unique_id=2085961165 instance=ExtResource("10_elaf6")]
+layout_mode = 2
+texture_normal = ExtResource("11_ddbjm")
+texture_pressed = ExtResource("11_ddbjm")
+
+[node name="AutoSaveItem" parent="Control" unique_id=1731880358 instance=ExtResource("2_3p75f")]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 110.0
+offset_bottom = 206.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-112, -214, 220, 412)
+rect = Rect2(-60, -74, 110, 206)
+
+[node name="GUIAutoSaveItem" parent="Control/AutoSaveItem" unique_id=559276820 instance=ExtResource("12_h7uv5")]
+layout_mode = 2
+enable = false
+texture_normal = ExtResource("13_ddbjm")
+texture_pressed = ExtResource("13_ddbjm")
+
+[connection signal="pressed" from="ButtonBack/GUIButton" to="." method="_on_gui_button_back_pressed"]
+[connection signal="pressed" from="ButtonOk/GUIButton" to="." method="_on_gui_button_ok_pressed"]
+[connection signal="pressed" from="Control/SaveItem/GUISaveItem" to="." method="_on_gui_save_item_pressed" binds= [0]]
+[connection signal="pressed" from="Control/SaveItem2/GUISaveItem" to="." method="_on_gui_save_item_pressed" binds= [1]]
+[connection signal="pressed" from="Control/SaveItem3/GUISaveItem" to="." method="_on_gui_save_item_pressed" binds= [2]]
+[connection signal="pressed" from="Control/SaveItem4/GUISaveItem" to="." method="_on_gui_save_item_pressed" binds= [3]]
+[connection signal="pressed" from="Control/SaveItem5/GUISaveItem" to="." method="_on_gui_save_item_pressed" binds= [4]]
+[connection signal="pressed" from="Control/SaveItem6/GUISaveItem" to="." method="_on_gui_save_item_pressed" binds= [5]]
+[connection signal="pressed" from="Control/AutoSaveItem/GUIAutoSaveItem" to="." method="_on_gui_save_item_pressed" binds= [6]]

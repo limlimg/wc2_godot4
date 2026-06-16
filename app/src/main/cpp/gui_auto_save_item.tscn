@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dbndqpxk2yyd1"]
+
+[ext_resource type="PackedScene" uid="uid://bktnsnsbwc2q3" path="res://app/src/main/cpp/gui_save_item.tscn" id="1_cqbh5"]
+[ext_resource type="Script" uid="uid://b32fnamegjxat" path="res://app/src/main/cpp/gui_auto_save_item.gd" id="2_iafg2"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_ldgfg"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="3_ukf0l"]
+[ext_resource type="Theme" uid="uid://dmd4twdwradyn" path="res://app/src/main/cpp/scene_system_resource/font/g_font7.tres" id="5_rir1v"]
+
+[node name="GUIAutoSaveItem" unique_id=2034275630 instance=ExtResource("1_cqbh5")]
+script = ExtResource("2_iafg2")
+
+[node name="ecText" parent="." index="3" unique_id=448162067]
+alignment = 0
+
+[node name="Flag" parent="." index="5" unique_id=873500403]
+rect_ipad = Rect2(59, 79, 0, 0)
+rect = Rect2(31, 39, 0, 0)
+
+[node name="Time" parent="." index="6" unique_id=977391077]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+rect_ipad = Rect2(0, 248, 0, 0)
+rect = Rect2(0, 126, 0, 0)
+
+[node name="ecText" parent="Time" index="0" unique_id=528966076]
+text = "%02d:%02d
+%04d/%02d/%02d"
+alignment = 1
+
+[node name="Name" parent="." index="7" unique_id=1694919059]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+rect_ipad = Rect2(-8, 151, 0, 0)
+rect = Rect2(-4, 76, 0, 0)
+
+[node name="AutoSave" parent="Name" index="1" unique_id=579942111 instance=ExtResource("2_ldgfg")]
+layout_mode = 2
+rect_ipad = Rect2(0, -148, 0, 0)
+rect = Rect2(0, -74, 0, 0)
+
+[node name="ecText" parent="Name/AutoSave" index="0" unique_id=734953587 instance=ExtResource("3_ukf0l")]
+layout_mode = 2
+theme = ExtResource("5_rir1v")
+color = Color(0.8352941, 0.90588236, 0.9372549, 1)
+alignment = 1

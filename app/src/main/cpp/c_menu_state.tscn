@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cavnvxqevbxqu" path="res://app/src/main/cpp/gui_locked_warning.tscn" id="5_cwp5t"]
 [ext_resource type="PackedScene" uid="uid://bhdgsyd0pgf1d" path="res://app/src/main/cpp/gui_loading.tscn" id="6_d4yxi"]
 [ext_resource type="PackedScene" uid="uid://d1hsefm6u7qim" path="res://app/src/main/cpp/gui_sel_country.tscn" id="6_qq8xu"]
+[ext_resource type="PackedScene" uid="uid://b2tuhbhr3or2w" path="res://app/src/main/cpp/gui_save.tscn" id="7_fr7km"]
 
 [node name="CMenuState" type="Control" unique_id=54523483]
 layout_mode = 3
@@ -35,6 +36,10 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="GUISave" parent="GUIManager" unique_id=1102808812 instance=ExtResource("7_fr7km")]
+visible = false
+layout_mode = 1
+
 [node name="Prototype" type="Control" parent="." unique_id=1989673705]
 visible = false
 anchors_preset = 0
@@ -42,8 +47,11 @@ anchors_preset = 0
 [node name="GUILoading" parent="Prototype" unique_id=1979438320 instance=ExtResource("6_d4yxi")]
 layout_mode = 1
 
+[connection signal="load_campaign_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_load_campaign_pressed"]
+[connection signal="load_conquest_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_load_conquest_pressed"]
 [connection signal="sel_campaign_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_sel_campaign_pressed"]
 [connection signal="sel_conquest_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_sel_conquest_pressed"]
 [connection signal="back_pressed" from="GUIManager/GUISelBattle" to="." method="_fade_out_back"]
 [connection signal="pressed" from="GUIManager/GUILockedWarning" to="." method="_on_gui_locked_warning_pressed"]
 [connection signal="back_pressed" from="GUIManager/GUISelCountry" to="." method="_fade_out_back"]
+[connection signal="back_pressed" from="GUIManager/GUISave" to="." method="_fade_out_back"]
