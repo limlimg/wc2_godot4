@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ecEffectResAssets" format=3 uid="uid://cmua7q5sp3ccm"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_py2pr"]
+[ext_resource type="Script" uid="uid://dutn8t40au8eq" path="res://app/src/main/cpp/scene_system_resource/ec_effect_res_assets.gd" id="2_xcsr2"]
+
+[sub_resource type="Resource" id="Resource_xcsr2"]
+script = ExtResource("1_py2pr")
+name = "effect_strike3.xml"
+metadata/_custom_type_script = "uid://wmgv5whydq62"
+
+[resource]
+script = ExtResource("2_xcsr2")
+asset_name = SubResource("Resource_xcsr2")
+metadata/_custom_type_script = "uid://dutn8t40au8eq"

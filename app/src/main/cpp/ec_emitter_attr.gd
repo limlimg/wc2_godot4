@@ -77,13 +77,10 @@ var rot_speed_min: float
 var rot_speed_max: float
 
 @export
-var color_min: Color
+var color_range := Gradient.new()
 
 @export
-var color_max: Color
-
-@export
-var time_track_integerated := Curve.new()
+var time_track := Curve.new()
 
 @export
 var life_track_speed := Curve.new()

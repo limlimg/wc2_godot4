@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ecEffectResAssets" format=3 uid="uid://gg4ruu33todh"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_qjg6q"]
+[ext_resource type="Script" uid="uid://dutn8t40au8eq" path="res://app/src/main/cpp/scene_system_resource/ec_effect_res_assets.gd" id="2_dvu2r"]
+
+[sub_resource type="Resource" id="Resource_dvu2r"]
+script = ExtResource("1_qjg6q")
+name = "effect_exp.xml"
+metadata/_custom_type_script = "uid://wmgv5whydq62"
+
+[resource]
+script = ExtResource("2_dvu2r")
+asset_name = SubResource("Resource_dvu2r")
+metadata/_custom_type_script = "uid://dutn8t40au8eq"

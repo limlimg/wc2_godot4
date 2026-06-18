@@ -66,6 +66,8 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	var xml_emitter := xml_root.first_child_element()
 	while xml_emitter != null:
 		var res_emitter := _ecEmitterAttr.new()
+		var color_min := Color.WHITE
+		var color_max := Color.WHITE
 		var pf: Array[float]
 		var pi: Array[int]
 		if xml_emitter.query_float_attribute("life", pf) == xml_emitter.TIXML_SUCCESS:
@@ -144,64 +146,81 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 						res_emitter.rot_speed_max = pf.pop_back()
 				"r":
 					if xml_param.query_int_attribute("min", pi) == xml_param.TIXML_SUCCESS:
-						res_emitter.color_min.r8 = pi.pop_back()
+						color_min.r8 = pi.pop_back()
 					if xml_param.query_int_attribute("max", pi) == xml_param.TIXML_SUCCESS:
-						res_emitter.color_max.r8 = pi.pop_back()
+						color_max.r8 = pi.pop_back()
 				"g":
 					if xml_param.query_int_attribute("min", pi) == xml_param.TIXML_SUCCESS:
-						res_emitter.color_min.g8 = pi.pop_back()
+						color_min.g8 = pi.pop_back()
 					if xml_param.query_int_attribute("max", pi) == xml_param.TIXML_SUCCESS:
-						res_emitter.color_max.g8 = pi.pop_back()
+						color_max.g8 = pi.pop_back()
 				"b":
 					if xml_param.query_int_attribute("min", pi) == xml_param.TIXML_SUCCESS:
-						res_emitter.color_min.b8 = pi.pop_back()
+						color_min.b8 = pi.pop_back()
 					if xml_param.query_int_attribute("max", pi) == xml_param.TIXML_SUCCESS:
-						res_emitter.color_max.b8 = pi.pop_back()
+						color_max.b8 = pi.pop_back()
 				"a":
 					if xml_param.query_int_attribute("min", pi) == xml_param.TIXML_SUCCESS:
-						res_emitter.color_min.a8 = pi.pop_back()
+						color_min.a8 = pi.pop_back()
 					if xml_param.query_int_attribute("max", pi) == xml_param.TIXML_SUCCESS:
-						res_emitter.color_max.a8 = pi.pop_back()
+						color_max.a8 = pi.pop_back()
 				"timetrack":
-					var points: Array[Vector2]
 					var xml_track := xml_param.first_child_element()
+					var time_track := res_emitter.time_track
+					time_track.max_domain = 0.0
+					time_track.max_value = 0.0
 					while xml_track != null:
 						if xml_track.query_float_attribute("time", pf) == xml_track.TIXML_SUCCESS\
 								and xml_track.query_int_attribute("quantity", pi) == xml_track.TIXML_SUCCESS:
 							var time := pf.pop_back()
 							var quantity := pi.pop_back()
-							points.append(Vector2(time, quantity))
+							if time < time_track.min_domain:
+								time_track.min_domain = time
+							if time > time_track.max_domain:
+								time_track.max_domain = time
+							if quantity < time_track.min_value:
+								time_track.min_value = quantity
+							if quantity > time_track.max_value:
+								time_track.max_value = quantity
+							time_track.add_point(Vector2(time, quantity), 0, 0, Curve.TANGENT_LINEAR, Curve.TANGENT_LINEAR)
 						xml_track = xml_track.next_sibling_element()
-					if not points.is_empty():
-						points.sort()
-						res_emitter.time_track_integerated.min_domain = 0.0
-						res_emitter.time_track_integerated.max_domain = res_emitter.emitter_life
-						res_emitter.time_track_integerated.min_value = 0.0
-						var acc := 0.0
-						var last_time := points[0].x
-						var last_quantity := points[0].y
-						for i in points:
-							var time := i.x
-							var quantity := i.y
-							if time > last_time:
-								acc += 0.5 * (last_quantity + quantity) * (time - last_time)
-							res_emitter.time_track_integerated.max_value = acc
-							res_emitter.time_track_integerated.add_point(Vector2(time, acc), quantity, quantity)
-							last_time = time
-							last_quantity = quantity
 				"lifetrack":
 					var xml_track := xml_param.first_child_element()
+					var speed_track := res_emitter.life_track_speed
+					var gravity_track := res_emitter.life_track_gravity
+					var scale_track := res_emitter.life_track_scale
+					var rot_speed_track := res_emitter.life_track_rot_speed
 					while xml_track != null:
 						if xml_track.query_float_attribute("life", pf) == xml_track.TIXML_SUCCESS:
 							var life := pf.pop_back()
 							if xml_track.query_float_attribute("speed", pf) == xml_track.TIXML_SUCCESS:
-								res_emitter.life_track_speed.add_point(Vector2(life, pf.pop_back()), 0, 0, Curve.TANGENT_LINEAR, Curve.TANGENT_LINEAR)
+								var value := pf.pop_back()
+								if value < speed_track.min_value:
+									speed_track.min_value = value
+								if value > speed_track.max_value:
+									speed_track.max_value = value
+								speed_track.add_point(Vector2(life, value), 0, 0, Curve.TANGENT_LINEAR, Curve.TANGENT_LINEAR)
 							if xml_track.query_float_attribute("gravity", pf) == xml_track.TIXML_SUCCESS:
-								res_emitter.life_track_gravity.add_point(Vector2(life, pf.pop_back()), 0, 0, Curve.TANGENT_LINEAR, Curve.TANGENT_LINEAR)
+								var value := pf.pop_back()
+								if value < gravity_track.min_value:
+									gravity_track.min_value = value
+								if value > gravity_track.max_value:
+									gravity_track.max_value = value
+								gravity_track.add_point(Vector2(life, value), 0, 0, Curve.TANGENT_LINEAR, Curve.TANGENT_LINEAR)
 							if xml_track.query_float_attribute("scale", pf) == xml_track.TIXML_SUCCESS:
-								res_emitter.life_track_scale.add_point(Vector2(life, pf.pop_back()), 0, 0, Curve.TANGENT_LINEAR, Curve.TANGENT_LINEAR)
+								var value := pf.pop_back()
+								if value < scale_track.min_value:
+									scale_track.min_value = value
+								if value > scale_track.max_value:
+									scale_track.max_value = value
+								scale_track.add_point(Vector2(life, value), 0, 0, Curve.TANGENT_LINEAR, Curve.TANGENT_LINEAR)
 							if xml_track.query_float_attribute("rotspeed", pf) == xml_track.TIXML_SUCCESS:
-								res_emitter.life_track_rot_speed.add_point(Vector2(life, pf.pop_back()), 0, 0, Curve.TANGENT_LINEAR, Curve.TANGENT_LINEAR)
+								var value := pf.pop_back()
+								if value < rot_speed_track.min_value:
+									rot_speed_track.min_value = value
+								if value > rot_speed_track.max_value:
+									rot_speed_track.max_value = value
+								rot_speed_track.add_point(Vector2(life, value), 0, 0, Curve.TANGENT_LINEAR, Curve.TANGENT_LINEAR)
 							if xml_track.query_float_attribute("a", pf) == xml_track.TIXML_SUCCESS\
 									and xml_track.query_float_attribute("b", pf) == xml_track.TIXML_SUCCESS\
 									and xml_track.query_float_attribute("g", pf) == xml_track.TIXML_SUCCESS\
@@ -209,6 +228,12 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 								res_emitter.life_track_color.add_point(life, Color(pf.pop_back(), pf.pop_back(), pf.pop_back(), pf.pop_back()))
 						xml_track = xml_track.next_sibling_element()
 			xml_param = xml_param.next_sibling_element()
+		res_emitter.color_range.add_point(0.0, color_min)
+		res_emitter.color_range.add_point(1.0, color_max)
+		res_emitter.color_range.remove_point(1)
+		res_emitter.color_range.remove_point(0)
+		res_emitter.life_track_color.remove_point(1)
+		res_emitter.life_track_color.remove_point(0)
 		res_effect.emitter.append(res_emitter)
 		xml_emitter = xml_emitter.next_sibling_element()
 	var filename = save_path + "." + _get_save_extension()

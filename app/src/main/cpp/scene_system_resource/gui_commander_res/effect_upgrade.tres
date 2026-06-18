@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ecEffectResAssets" format=3 uid="uid://bef2rby8g6gtk"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_5ebpv"]
+[ext_resource type="Script" uid="uid://dutn8t40au8eq" path="res://app/src/main/cpp/scene_system_resource/ec_effect_res_assets.gd" id="2_4qytg"]
+
+[sub_resource type="Resource" id="Resource_5ebpv"]
+script = ExtResource("1_5ebpv")
+name = "effect_upgrade.xml"
+name_ipad = "effect_upgrade_iPad.xml"
+metadata/_custom_type_script = "uid://wmgv5whydq62"
+
+[resource]
+script = ExtResource("2_4qytg")
+asset_name = SubResource("Resource_5ebpv")
+metadata/_custom_type_script = "uid://dutn8t40au8eq"
