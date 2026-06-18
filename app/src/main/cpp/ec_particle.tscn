@@ -4,6 +4,7 @@
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wb0bu"]
 
-[node name="ecParticle" type="Node2D" unique_id=1239802628]
+[node name="ecParticle" type="Sprite2D" unique_id=1516979711]
 material = SubResource("CanvasItemMaterial_wb0bu")
+centered = false
 script = ExtResource("1_wb0bu")

@@ -99,22 +99,22 @@ func _process(delta: float) -> void:
 			particle.material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD if emitter_attr.image_blend == 1 else CanvasItemMaterial.BLEND_MODE_MIX
 		match emitter_attr.settings_type:
 			0:
-				particle.position.x = rng.randf_range(_last_position.x, position.x) + rng.randf_range(-2.0, 2.0)
-				particle.position.y = rng.randf_range(_last_position.y, position.y) + rng.randf_range(-2.0, 2.0)
+				particle.offset.x = rng.randf_range(_last_position.x, position.x) + rng.randf_range(-2.0, 2.0)
+				particle.offset.y = rng.randf_range(_last_position.y, position.y) + rng.randf_range(-2.0, 2.0)
 			2:
-				particle.position.x = rng.randf_range(_last_position.x, position.x) + rng.randf_range(-0.5, 0.5) * emitter_attr.settings_param_1
-				particle.position.y = rng.randf_range(_last_position.y, position.y) + rng.randf_range(-0.5, 0.5) * emitter_attr.settings_param_2
+				particle.offset.x = rng.randf_range(_last_position.x, position.x) + rng.randf_range(-0.5, 0.5) * emitter_attr.settings_param_1
+				particle.offset.y = rng.randf_range(_last_position.y, position.y) + rng.randf_range(-0.5, 0.5) * emitter_attr.settings_param_2
 		var speed_angle := _fire_at_angle + rng.randf_range(emitter_attr.angle_min, emitter_attr.angle_max)
 		particle.speed = Vector2.from_angle(particle.rotation) * rng.randf_range(emitter_attr.speed_min, emitter_attr.speed_max)
 		particle.speed_shift_curve = _speed_shift_curve
 		particle.gravity = rng.randf_range(emitter_attr.gravity_min, emitter_attr.gravity_max)
 		particle.gravity_shift_curve = _gravity_shift_curve
-		particle.scale = texture_scale * rng.randf_range(emitter_attr.scale_min, emitter_attr.scale_max)
+		particle.initial_scale = texture_scale * rng.randf_range(emitter_attr.scale_min, emitter_attr.scale_max)
 		particle.scale_curve = emitter_attr.life_track_scale
 		if emitter_attr.rot_angle_type == 1.0:
-			particle.rotation = _fire_at_angle + speed_angle
+			particle.initial_rot_angle = _fire_at_angle + speed_angle
 		else:
-			particle.rotation = _fire_at_angle + rng.randf_range(emitter_attr.rot_angle_min, emitter_attr.rot_angle_max)
+			particle.initial_rot_angle = _fire_at_angle + rng.randf_range(emitter_attr.rot_angle_min, emitter_attr.rot_angle_max)
 		particle.rot_speed = rng.randf_range(emitter_attr.rot_speed_min, emitter_attr.rot_speed_max)
 		particle.rot_shift_curve = _rot_shift_curve
 		particle.color = emitter_attr.color_range.sample(rng.randf_range(0.0, 1.0))
@@ -175,8 +175,9 @@ static func _integrate_curve(curve: Curve) -> Curve:
 
 
 func _sample_curve_extended(curve: Curve, offset: float) -> float:
-	if offset > curve.max_domain:
-		var index := curve.point_count - 1
-		return curve.get_point_position(index).y + curve.get_point_left_tangent(index) * (offset - curve.max_domain)
+	var index := curve.point_count - 1
+	var pm := curve.get_point_position(index)
+	if offset > pm.x:
+		return pm.y + curve.get_point_left_tangent(index) * (offset - pm.x)
 	else:
 		return curve.sample_baked(offset)
