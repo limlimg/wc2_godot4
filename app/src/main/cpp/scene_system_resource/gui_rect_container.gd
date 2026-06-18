@@ -11,6 +11,7 @@ var rect_ipad: Rect2:
 			update_minimum_size()
 			queue_sort()
 
+
 @export
 var rect: Rect2:
 	set(value):
@@ -18,6 +19,7 @@ var rect: Rect2:
 			rect = value
 			update_minimum_size()
 			queue_sort()
+
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_SORT_CHILDREN:
