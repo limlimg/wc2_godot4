@@ -10,7 +10,7 @@ const _WARMEDAL_ID = preload("res://app/src/main/cpp/war_medal_id.gd").WARMEDAL_
 const _CommanderData = preload("res://app/src/main/cpp/commander_data.gd")
 
 var _loaded := false
-var _rank: int
+var rank: int
 var medal := 50:
 	set(value):
 		if value != medal:
@@ -19,7 +19,7 @@ var medal := 50:
 
 
 var _bought_medal := 0
-var _war_medal: Array[int] = [0, 0, 0, 0, 0, 0]
+var war_medal: Array[int] = [0, 0, 0, 0, 0, 0]
 var _num_played_battles: Array[int] = [0, 0, 0, 0]
 var _num_battle_stars: Array[PackedInt32Array] = []
 
@@ -38,15 +38,15 @@ func load() -> void:
 	if file.open(_native.get_document_path("commander.sav"), FileAccess.READ):
 		var buffer := PackedByteArray()
 		if file.read(buffer, _DOCUMENT_SIZE) and buffer.slice(0, 4).get_string_from_ascii().reverse() == _MAGIC and buffer.decode_u32(4) == 1:
-			_rank = buffer.decode_u32(16)
+			rank = buffer.decode_u32(16)
 			medal = buffer.decode_u32(12)
 			_bought_medal = buffer.decode_u32(8)
-			_war_medal[0] = buffer.decode_u32(20)
-			_war_medal[1] = buffer.decode_u32(24)
-			_war_medal[2] = buffer.decode_u32(28)
-			_war_medal[3] = buffer.decode_u32(32)
-			_war_medal[4] = buffer.decode_u32(36)
-			_war_medal[5] = buffer.decode_u32(40)
+			war_medal[0] = buffer.decode_u32(20)
+			war_medal[1] = buffer.decode_u32(24)
+			war_medal[2] = buffer.decode_u32(28)
+			war_medal[3] = buffer.decode_u32(32)
+			war_medal[4] = buffer.decode_u32(36)
+			war_medal[5] = buffer.decode_u32(40)
 			_num_played_battles[0] = buffer.decode_u32(44)
 			_num_played_battles[1] = buffer.decode_u32(48)
 			_num_played_battles[2] = buffer.decode_u32(52)
@@ -66,13 +66,13 @@ func save() -> void:
 		buffer.encode_u32(4, 1)
 		buffer.encode_u32(8, _bought_medal)
 		buffer.encode_u32(12, medal)
-		buffer.encode_u32(16, _rank)
-		buffer.encode_u32(20, _war_medal[0])
-		buffer.encode_u32(24, _war_medal[1])
-		buffer.encode_u32(28, _war_medal[2])
-		buffer.encode_u32(32, _war_medal[3])
-		buffer.encode_u32(36, _war_medal[4])
-		buffer.encode_u32(40, _war_medal[5])
+		buffer.encode_u32(16, rank)
+		buffer.encode_u32(20, war_medal[0])
+		buffer.encode_u32(24, war_medal[1])
+		buffer.encode_u32(28, war_medal[2])
+		buffer.encode_u32(32, war_medal[3])
+		buffer.encode_u32(36, war_medal[4])
+		buffer.encode_u32(40, war_medal[5])
 		buffer.encode_u32(44, _num_played_battles[0])
 		buffer.encode_u32(48, _num_played_battles[1])
 		buffer.encode_u32(52, _num_played_battles[2])
@@ -91,7 +91,7 @@ func save() -> void:
 func upgrade() -> void:
 	if check_upgrade():
 		medal -= get_upgrade_medal()
-		_rank += 1
+		rank += 1
 
 
 func check_upgrade() -> bool:
@@ -102,11 +102,11 @@ func get_upgrade_medal() -> int:
 	if is_max_level():
 		return 0
 	else:
-		return _UPGRADE_MEDAL[_rank]
+		return _UPGRADE_MEDAL[rank]
 
 
 func is_max_level() -> bool:
-	return _rank > 13
+	return rank > 13
 
 
 func buy_medal(value: int) -> void:
@@ -116,7 +116,7 @@ func buy_medal(value: int) -> void:
 
 
 func get_war_medal_level(id: _WARMEDAL_ID) -> int:
-	return _war_medal[id]
+	return war_medal[id]
 
 
 func get_need_upgrade_medal(id: _WARMEDAL_ID) -> int:
@@ -134,7 +134,7 @@ func check_upgrade_war_medal(id: _WARMEDAL_ID) -> bool:
 func upgrade_war_medal(id: _WARMEDAL_ID) -> void:
 	if check_upgrade_war_medal(id):
 		medal -= get_need_upgrade_medal(id)
-		_war_medal[id] += 1
+		war_medal[id] += 1
 
 
 func get_num_played_battles(campaign: int) -> int:
@@ -159,10 +159,10 @@ func set_num_battle_stars(campaign: int, battle: int, value: int) -> void:
 
 
 func get_commander_data(data: _CommanderData) -> void:
-	data._rank = _rank
-	data.infantry = _war_medal[0]
-	data.airforce = _war_medal[1]
-	data.artillery = _war_medal[2]
-	data.armour = _war_medal[3]
-	data.navy = _war_medal[4]
-	data.honour = _war_medal[5]
+	data.rank = rank
+	data.infantry = war_medal[0]
+	data.airforce = war_medal[1]
+	data.artillery = war_medal[2]
+	data.armour = war_medal[3]
+	data.navy = war_medal[4]
+	data.honour = war_medal[5]

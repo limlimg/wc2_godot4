@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://bjcmxuu6rr2wj"]
+
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_ii04l"]
+[ext_resource type="Script" uid="uid://chnmvdul8k8d4" path="res://app/src/main/cpp/gui_adorn_medal.gd" id="1_ps31k"]
+[ext_resource type="PackedScene" uid="uid://cdca5xgwncvi1" path="res://app/src/main/cpp/gui_war_medal.tscn" id="3_dr252"]
+[ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/texture_res.tres" id="4_7xwpa"]
+[ext_resource type="PackedScene" uid="uid://doku7gcg4y44n" path="res://app/src/main/cpp/gui_commander_medal.tscn" id="5_sshlh"]
+
+[node name="GUIAdornMedal" type="Control" unique_id=1776806515]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_ps31k")
+
+[node name="Medal" parent="." unique_id=1576520916 instance=ExtResource("1_ii04l")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(262, 461, 0, 0)
+rect = Rect2(91, 205, 0, 0)
+
+[node name="Control" type="Control" parent="Medal" unique_id=518044244]
+layout_mode = 2
+
+[node name="GUIWarMedal" parent="Medal/Control" unique_id=2034275630 instance=ExtResource("3_dr252")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.7, 0.7)
+texture_res = ExtResource("4_7xwpa")
+
+[node name="Medal2" parent="." unique_id=1976581747 instance=ExtResource("1_ii04l")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(262, 461, 0, 0)
+rect = Rect2(107, 205, 0, 0)
+
+[node name="Control" type="Control" parent="Medal2" unique_id=1821546425]
+layout_mode = 2
+
+[node name="GUIWarMedal" parent="Medal2/Control" unique_id=1984168857 instance=ExtResource("3_dr252")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.7, 0.7)
+texture_res = ExtResource("4_7xwpa")
+medal = 1
+
+[node name="Medal3" parent="." unique_id=38224776 instance=ExtResource("1_ii04l")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(294, 461, 0, 0)
+rect = Rect2(123, 205, 0, 0)
+
+[node name="Control" type="Control" parent="Medal3" unique_id=309932417]
+layout_mode = 2
+
+[node name="GUIWarMedal" parent="Medal3/Control" unique_id=761955669 instance=ExtResource("3_dr252")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.7, 0.7)
+texture_res = ExtResource("4_7xwpa")
+medal = 2
+
+[node name="Medal4" parent="." unique_id=1234900882 instance=ExtResource("1_ii04l")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(262, 521, 0, 0)
+rect = Rect2(91, 235, 0, 0)
+
+[node name="Control" type="Control" parent="Medal4" unique_id=614715422]
+layout_mode = 2
+
+[node name="GUIWarMedal" parent="Medal4/Control" unique_id=263646414 instance=ExtResource("3_dr252")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.7, 0.7)
+texture_res = ExtResource("4_7xwpa")
+medal = 3
+
+[node name="Medal5" parent="." unique_id=227815308 instance=ExtResource("1_ii04l")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(262, 521, 0, 0)
+rect = Rect2(107, 235, 0, 0)
+
+[node name="Control" type="Control" parent="Medal5" unique_id=1061131827]
+layout_mode = 2
+
+[node name="GUIWarMedal" parent="Medal5/Control" unique_id=304063090 instance=ExtResource("3_dr252")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.7, 0.7)
+texture_res = ExtResource("4_7xwpa")
+medal = 4
+
+[node name="Medal6" parent="." unique_id=667337627 instance=ExtResource("1_ii04l")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(294, 521, 0, 0)
+rect = Rect2(123, 235, 0, 0)
+
+[node name="Control" type="Control" parent="Medal6" unique_id=677217546]
+layout_mode = 2
+
+[node name="GUIWarMedal" parent="Medal6/Control" unique_id=1148235475 instance=ExtResource("3_dr252")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.7, 0.7)
+texture_res = ExtResource("4_7xwpa")
+medal = 5
+
+[node name="CommanderLevel" parent="." unique_id=1409090571 instance=ExtResource("1_ii04l")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(187, 422, 0, 0)
+rect = Rect2(70, 185, 0, 0)
+
+[node name="Control" type="Control" parent="CommanderLevel" unique_id=618897096]
+layout_mode = 2
+
+[node name="GUICommanderMedal" parent="CommanderLevel/Control" unique_id=2126108883 instance=ExtResource("5_sshlh")]
+layout_mode = 1
+texture_res = ExtResource("4_7xwpa")

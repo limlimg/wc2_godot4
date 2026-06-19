@@ -47,7 +47,7 @@ func _on_gui_locked_warning_pressed() -> void:
 
 
 func _on_gui_main_menu_load_campaign_pressed() -> void:
-	$GUIManager.fade_out(2, $Prototype/GUILoading.duplicate())
+	$GUIManager.fade_out(2, null)
 	$GUIManager.faded_out.connect(func(cause: int):
 		if cause == 2:
 			$GUIManager/GUIMainMenu.hide()
@@ -70,13 +70,30 @@ func _on_gui_main_menu_sel_conquest_pressed(sel_conquest: int) -> void:
 
 
 func _on_gui_main_menu_load_conquest_pressed() -> void:
-	$GUIManager.fade_out(21, $Prototype/GUILoading.duplicate())
+	$GUIManager.fade_out(21, null)
 	$GUIManager.faded_out.connect(func(cause: int):
 		if cause == 21:
 			$GUIManager/GUIMainMenu.hide()
 			$GUIManager/GUISave.game_mode = 2
 			$GUIManager/GUISave.loading = true
 			$GUIManager/GUISave.show()
+			$GUIManager.fade_in(-1)
+		, ConnectFlags.CONNECT_ONE_SHOT)
+
+
+func _on_gui_main_menu_tutorial_pressed() -> void:
+	$GUIManager.fade_out(14, null)
+	$GUIManager.faded_out.connect(func(cause: int):
+		if cause == 14:
+			pass
+		, ConnectFlags.CONNECT_ONE_SHOT)
+
+
+func _on_gui_main_menu_commander_pressed() -> void:
+	$GUIManager.fade_out(11, null)
+	$GUIManager.faded_out.connect(func(cause: int):
+		if cause == 11:
+			$GUIManager/GUICommander.show()
 			$GUIManager.fade_in(-1)
 		, ConnectFlags.CONNECT_ONE_SHOT)
 
@@ -89,5 +106,6 @@ func _fade_out_back() -> void:
 			$GUIManager/GUISelBattle.hide()
 			$GUIManager/GUISelCountry.hide()
 			$GUIManager/GUISave.hide()
+			$GUIManager/GUICommander.hide()
 			$GUIManager.fade_in(-1)
 		, CONNECT_ONE_SHOT)

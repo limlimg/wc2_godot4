@@ -39,6 +39,29 @@ var alignment: HorizontalAlignment:
 				$Label.grow_horizontal = Control.GROW_DIRECTION_BOTH
 
 
+@export
+var spacing: Vector2i:
+	set(value):
+		if value != spacing:
+			spacing = value
+			$Label.remove_theme_constant_override(&"line_spacing")
+			$Label.add_theme_constant_override(&"line_spacing", spacing.y)
+			$Label.remove_theme_font_override(&"font")
+			if spacing.x != 0.0:
+				var font := FontVariation.new()
+				font.base_font = theme.default_font
+				font.spacing_glyph = spacing.x
+				$Label.add_theme_font_override(&"font", font)
+
+
+@export
+var fit_minimun_size: bool:
+	set(value):
+		if value != fit_minimun_size:
+			fit_minimun_size = value
+			update_minimum_size()
+
+
 func _ready() -> void:
 	init()
 
@@ -62,6 +85,14 @@ func get_text() -> String:
 
 func set_text(value: String) -> void:
 	$Label.text = value
+	update_minimum_size()
+
+
+func _get_minimum_size() -> Vector2:
+	if fit_minimun_size:
+		return $Label.size
+	else:
+		return Vector2.ZERO
 
 
 func set_alpha(alpha: float)-> void:
