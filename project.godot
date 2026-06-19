@@ -49,6 +49,15 @@ enabled=PackedStringArray("res://addons/assets_tools/plugin.cfg")
 
 GUIManagerInstance=""
 
+[input]
+
+ui_cancel={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194305,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+
 [input_devices]
 
 pointing/android/enable_pan_and_scale_gestures=true
@@ -58,8 +67,9 @@ pointing/emulate_mouse_from_touch=false
 [internationalization]
 
 locale/translation_remaps={
-"res://app/src/main/assets/title_hd.xml": PackedStringArray("res://app/src/main/assets/title_cn_hd.xml:zh_Hans"),
-"res://app/src/main/cpp/scene_system_resource/texture/loading.tres": PackedStringArray("res://app/src/main/cpp/scene_system_resource/texture/loading_cn.tres:zh_Hans")
+"res://app/src/main/assets/board_exit@2x.png": PackedStringArray("res://app/src/main/assets/board_exit_cn@2x.png:zh_Hans"),
+"res://app/src/main/assets/loading@2x.png": PackedStringArray("res://app/src/main/assets/loading_cn@2x.png:zh_Hans"),
+"res://app/src/main/assets/title_hd.xml": PackedStringArray("res://app/src/main/assets/title_cn_hd.xml:zh_Hans")
 }
 
 [rendering]

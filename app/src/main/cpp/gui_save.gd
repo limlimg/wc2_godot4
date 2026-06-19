@@ -87,8 +87,19 @@ func _sel_item(item: int) -> void:
 
 
 func _on_gui_button_ok_pressed() -> void:
-	ok_pressed.emit()
+	if loading:
+		if _selected <= 6:
+			var save := "conquest{0}.sav" if game_mode == 2 else "game{0}.sav"
+			save = save.format([_selected])
+			if g_GameManager.get_save_header(save) != null:
+				g_GameManager.load_game(save)
+				ok_pressed.emit()
 
 
 func _on_gui_button_back_pressed() -> void:
 	back_pressed.emit()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"ui_cancel"):
+		back_pressed.emit()

@@ -29,6 +29,7 @@ script = ExtResource("1_22hmj")
 
 [node name="GUISelBattleCommon" parent="." unique_id=1447387296 instance=ExtResource("2_bmoyp")]
 layout_mode = 1
+mouse_filter = 2
 texture_res = ExtResource("3_1kakj")
 
 [node name="BoardSelBattle" parent="GUISelBattleCommon" unique_id=962552104 instance=ExtResource("1_yq104")]

@@ -32,12 +32,22 @@ var value: float:
 
 
 @export
+var grabber_size_ipad: Vector2:
+	get():
+		return $GrabberRect.rect_ipad.size
+	set(value):
+		if value != $GrabberRect.rect_ipad.size:
+			$GrabberRect.rect_ipad.size = value
+			_on_render()
+
+
+@export
 var grabber_size: Vector2:
 	get():
-		return $Grabber.size
+		return $GrabberRect.rect.size
 	set(value):
-		if value != $Grabber.size:
-			$Grabber.size = value
+		if value != $GrabberRect.rect.size:
+			$GrabberRect.rect.size = value
 			_on_render()
 
 
@@ -45,17 +55,17 @@ var grabber_size: Vector2:
 @export
 var texture_normal: Texture2D:
 	get():
-		return $Grabber.texture_normal
+		return $GrabberRect/Grabber.texture_normal
 	set(value):
-		$Grabber.texture_normal = value
+		$GrabberRect/Grabber.texture_normal = value
 
 
 @export
 var texture_pressed: Texture2D:
 	get():
-		return $Grabber.texture_pressed
+		return $GrabberRect/Grabber.texture_pressed
 	set(value):
-		$Grabber.texture_pressed = value
+		$GrabberRect/Grabber.texture_pressed = value
 
 
 signal value_changed(value: float)
@@ -90,14 +100,14 @@ func _ready() -> void:
 
 
 func _on_render() -> void:
-	var range_size := size - grabber_size
+	var range_size = size - $GrabberRect/Grabber.size
 	var proportion := Vector2($HSlider.value / $HSlider.max_value, $VSlider.value / $VSlider.max_value)
-	$Grabber.position = range_size * proportion
+	$GrabberRect.position = range_size * proportion
 
 
 # inspector connection cannot bind and unbind arguments at the same time
 func _on_drag_ended() -> void:
-	$Grabber.set_pressed_no_signal(false)
+	$GrabberRect/Grabber.set_pressed_no_signal(false)
 
 
 func _on_value_changed(_value: float) -> void:

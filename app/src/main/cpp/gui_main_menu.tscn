@@ -278,6 +278,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_fciw5")
 
 [node name="MainBg" type="TextureRect" parent="." unique_id=1497552438]
@@ -435,6 +436,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ButtonAxis" parent="SelCampaigns" unique_id=1889349210 instance=ExtResource("3_kov84")]
 layout_mode = 1
@@ -484,7 +486,6 @@ texture_text_image = ExtResource("17_qlf27")
 
 [node name="Locked" parent="SelCampaigns/ButtonWto/GUIButton" unique_id=1606354631 instance=ExtResource("3_kov84")]
 layout_mode = 1
-mouse_filter = 2
 rect_ipad = Rect2(300, 70, 26, 31)
 rect = Rect2(150, 35, 26, 31)
 
@@ -512,7 +513,6 @@ texture_text_image = ExtResource("19_uc35c")
 
 [node name="Locked" parent="SelCampaigns/ButtonNato/GUIButton" unique_id=1396232058 instance=ExtResource("3_kov84")]
 layout_mode = 1
-mouse_filter = 2
 rect_ipad = Rect2(300, 70, 26, 31)
 rect = Rect2(150, 35, 26, 31)
 
@@ -563,6 +563,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ButtonGlobal" parent="SelMultiplayer" unique_id=1129692864 instance=ExtResource("3_kov84")]
 layout_mode = 1
@@ -622,6 +623,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ButtonHost" parent="SelLocal" unique_id=271080435 instance=ExtResource("3_kov84")]
 layout_mode = 1
@@ -681,6 +683,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Button1" parent="SelConquest" unique_id=378189712 instance=ExtResource("3_kov84")]
 layout_mode = 1

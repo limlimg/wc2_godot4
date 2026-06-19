@@ -5,7 +5,7 @@ const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
 const _ecFile = preload("res://app/src/main/cpp/ec_file.gd")
 const _SaveHeader = preload("res://app/src/main/cpp/save_header.gd")
 
-var _current_turn_num_minus_1: int
+var _current_round: int
 var _game_mode: int
 var _map_id: int
 var _areas_enable: String
@@ -45,10 +45,10 @@ func set_conquest_player_country_id(value: String) -> void:
 	_conquest_player_country_id = value
 
 
-func new_game(game_mode: int, map_id_minus_1: int, new_campaign: int, battle: int) -> void:
+func new_game(game_mode: int, map_index: int, new_campaign: int, battle: int) -> void:
 	_game_mode = game_mode
-	if map_id_minus_1 >= 0:
-		_map_id = map_id_minus_1 + 1
+	if map_index >= 0:
+		_map_id = map_index + 1
 	campaign = new_campaign
 	_battle = battle
 	_victory_turn = 100000
@@ -195,7 +195,7 @@ func battle_victory() -> void:
 func get_num_victory_stars() -> int:
 	if not _is_last_game_won:
 		return 0
-	var turn := _current_turn_num_minus_1 + 1
+	var turn := _current_round + 1
 	if turn <= _great_victory_turn:
 		return 5
 	elif turn >= _victory_turn:

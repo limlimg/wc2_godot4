@@ -77,3 +77,9 @@ func _set_battle() -> void:
 
 func _on_gui_button_ex_pressed() -> void:
 	ok_pressed.emit()
+
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"ui_cancel"):
+		ok_pressed.emit()

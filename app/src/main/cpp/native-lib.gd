@@ -287,7 +287,7 @@ static func _ec_game_pause() -> void:
 
 static func Java_com_easytech_wc2_Wc2Activity_CallNativeExit() -> void:
 	if not _ec_back_pressed():
-		# TODO: Show exit game popup
+		# Show exit handled by GUIMainMenu
 		pass
 
 
@@ -562,3 +562,7 @@ static func get_battle_belligerent_list(battle_file_name: String, include_ai: bo
 
 static func main_menu_loaded_jni() -> void:
 	_Wc2Activity.main_menu_loaded()
+
+
+static func app_java_exit() -> void:
+	_Wc2Activity.java_exit()

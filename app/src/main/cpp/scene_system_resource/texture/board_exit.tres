@@ -1,0 +1,23 @@
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://bi4s1a8uua7dp"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_nh1ww"]
+[ext_resource type="Script" uid="uid://c0fyh1xdns125" path="res://app/src/main/cpp/scene_system_resource/ec_texture_assets.gd" id="2_fgcgs"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="3_ecxho"]
+
+[sub_resource type="Resource" id="Resource_nh1ww"]
+script = ExtResource("1_nh1ww")
+name = "board_exit.png"
+name_ipad = "board_exit@2x.png"
+metadata/_custom_type_script = "uid://wmgv5whydq62"
+
+[sub_resource type="Resource" id="Resource_fgcgs"]
+script = ExtResource("2_fgcgs")
+name = SubResource("Resource_nh1ww")
+metadata/_custom_type_script = "uid://c0fyh1xdns125"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_ecxho")
+preset = SubResource("Resource_fgcgs")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://d1hsefm6u7qim" path="res://app/src/main/cpp/gui_sel_country.tscn" id="6_qq8xu"]
 [ext_resource type="PackedScene" uid="uid://b2tuhbhr3or2w" path="res://app/src/main/cpp/gui_save.tscn" id="7_fr7km"]
 [ext_resource type="PackedScene" uid="uid://bvnt22n6q73li" path="res://app/src/main/cpp/gui_commander.tscn" id="8_j0nwu"]
+[ext_resource type="PackedScene" uid="uid://ug2i6qxj113x" path="res://app/src/main/cpp/gui_options.tscn" id="9_c0nea"]
+[ext_resource type="PackedScene" uid="uid://ca03jr48w1uws" path="res://app/src/main/cpp/gui_exit_warning.tscn" id="10_yw2jp"]
 
 [node name="CMenuState" type="Control" unique_id=54523483]
 layout_mode = 3
@@ -45,6 +47,14 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[node name="GUIOptions" parent="GUIManager" unique_id=707334202 instance=ExtResource("9_c0nea")]
+visible = false
+layout_mode = 1
+
+[node name="GUIExitWarning" parent="GUIManager" unique_id=986775281 instance=ExtResource("10_yw2jp")]
+visible = false
+layout_mode = 1
+
 [node name="Prototype" type="Control" parent="." unique_id=1989673705]
 visible = false
 anchors_preset = 0
@@ -55,11 +65,18 @@ layout_mode = 1
 [connection signal="commander_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_commander_pressed"]
 [connection signal="load_campaign_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_load_campaign_pressed"]
 [connection signal="load_conquest_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_load_conquest_pressed"]
+[connection signal="options_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_options_pressed"]
+[connection signal="quit_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_quit_pressed"]
 [connection signal="sel_campaign_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_sel_campaign_pressed"]
 [connection signal="sel_conquest_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_sel_conquest_pressed"]
 [connection signal="tutorial_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_tutorial_pressed"]
 [connection signal="back_pressed" from="GUIManager/GUISelBattle" to="." method="_fade_out_back"]
+[connection signal="ok_pressed" from="GUIManager/GUISelBattle" to="." method="_fade_out_load_state"]
 [connection signal="pressed" from="GUIManager/GUILockedWarning" to="." method="_on_gui_locked_warning_pressed"]
 [connection signal="back_pressed" from="GUIManager/GUISelCountry" to="." method="_fade_out_back"]
+[connection signal="ok_pressed" from="GUIManager/GUISelCountry" to="." method="_fade_out_load_state"]
 [connection signal="back_pressed" from="GUIManager/GUISave" to="." method="_fade_out_back"]
+[connection signal="ok_pressed" from="GUIManager/GUISave" to="." method="_fade_out_load_state"]
 [connection signal="back_pressed" from="GUIManager/GUICommander" to="." method="_fade_out_back"]
+[connection signal="closed" from="GUIManager/GUIOptions" to="." method="_fade_out_back"]
+[connection signal="cancled" from="GUIManager/GUIExitWarning" to="." method="_on_gui_exit_warning_cancled"]

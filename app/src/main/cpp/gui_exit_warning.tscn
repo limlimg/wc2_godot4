@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://ca03jr48w1uws"]
+
+[ext_resource type="Script" uid="uid://clsohyo5himsx" path="res://app/src/main/cpp/gui_exit_warning.gd" id="1_6ytht"]
+[ext_resource type="PackedScene" uid="uid://df33p640anvad" path="res://app/src/main/cpp/gui_fade.tscn" id="2_t33kj"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="3_5avr6"]
+[ext_resource type="Texture2D" uid="uid://bi4s1a8uua7dp" path="res://app/src/main/cpp/scene_system_resource/texture/board_exit.tres" id="4_5avr6"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="5_kjn2k"]
+[ext_resource type="Texture2D" uid="uid://stjpuq26l3gi" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_cancleexit.png.tres" id="6_l4im6"]
+[ext_resource type="Texture2D" uid="uid://cgm24k31skmn" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_confirmexit.png.tres" id="7_ctosj"]
+
+[node name="GUIExitWarning" type="Control" unique_id=986775281]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6ytht")
+
+[node name="GUIFade" parent="." unique_id=869114631 instance=ExtResource("2_t33kj")]
+layout_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=259745477]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GUIRect" parent="CenterContainer" unique_id=1576520916 instance=ExtResource("3_5avr6")]
+layout_mode = 2
+rect_ipad = Rect2(0, 0, 444, 252)
+rect = Rect2(0, 0, 222, 126)
+
+[node name="BoardExit" parent="CenterContainer/GUIRect" unique_id=808960343 instance=ExtResource("3_5avr6")]
+layout_mode = 2
+rect_ipad = Rect2(-4, -4, 0, 0)
+rect = Rect2(-2, -2, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/GUIRect/BoardExit" unique_id=1493583902]
+layout_mode = 2
+texture = ExtResource("4_5avr6")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="CancleExit" parent="CenterContainer/GUIRect" unique_id=681392948 instance=ExtResource("3_5avr6")]
+layout_mode = 2
+rect_ipad = Rect2(10, 190, 80, 76)
+rect = Rect2(5, 95, 40, 38)
+
+[node name="GUIButton" parent="CenterContainer/GUIRect/CancleExit" unique_id=2034275630 instance=ExtResource("5_kjn2k")]
+layout_mode = 2
+texture_normal = ExtResource("6_l4im6")
+texture_pressed = ExtResource("6_l4im6")
+
+[node name="CancleConfirm" parent="CenterContainer/GUIRect" unique_id=91618747 instance=ExtResource("3_5avr6")]
+layout_mode = 2
+rect_ipad = Rect2(350, 190, 80, 76)
+rect = Rect2(175, 95, 40, 38)
+
+[node name="GUIButton" parent="CenterContainer/GUIRect/CancleConfirm" unique_id=1850582139 instance=ExtResource("5_kjn2k")]
+layout_mode = 2
+texture_normal = ExtResource("7_ctosj")
+texture_pressed = ExtResource("7_ctosj")
+
+[connection signal="pressed" from="CenterContainer/GUIRect/CancleExit/GUIButton" to="." method="_on_gui_button_cancle_pressed"]
+[connection signal="pressed" from="CenterContainer/GUIRect/CancleConfirm/GUIButton" to="." method="_on_gui_button_confirm_pressed"]

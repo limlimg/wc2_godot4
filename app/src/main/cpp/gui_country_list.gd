@@ -19,6 +19,7 @@ var conquest: int:
 
 
 var _selected_item := -1
+var _id_list: Array[String]
 
 signal country_selected(country: int)
 
@@ -28,6 +29,7 @@ func _ready() -> void:
 
 func init() -> void:
 	$GUIList.clear_item()
+	_id_list.clear()
 	var battle_file_name := _native.get_battle_file_name(2, 0, conquest)
 	var belligerent_list := _native.get_battle_belligerent_list(battle_file_name, true)
 	var item_proto: MarginContainer = $Prototype/GUICountryItem
@@ -35,6 +37,7 @@ func init() -> void:
 		var item := item_proto.duplicate()
 		$GUIList.add_item(item)
 		item.country_name = belligerent.name
+		_id_list.append(belligerent.id)
 	set_select(0)
 
 
@@ -49,6 +52,13 @@ func set_select(index: int) -> void:
 	_reset_select()
 	$GUIList.get_items()[index].set_selected(true)
 	country_selected.emit(index)
+
+
+func get_sel_country_id() -> String:
+	if _selected_item < 0:
+		return ""
+	else:
+		return _id_list[_selected_item]
 
 
 func _on_gui_list_item_touched(index: int) -> void:

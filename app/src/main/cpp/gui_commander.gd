@@ -95,3 +95,8 @@ func _on_gui_upgrade_button_pressed() -> void:
 		var pos = medal.global_position - global_position + medal.size / 2
 		$ecEffect.fire_at(pos.x, pos.y, 0.0)
 		_set_commander_info()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"ui_cancel"):
+		back_pressed.emit()

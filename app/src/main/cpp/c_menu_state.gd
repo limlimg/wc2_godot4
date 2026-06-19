@@ -3,6 +3,7 @@ extends "res://app/src/main/cpp/c_base_state.gd"
 const _GUIManager = preload("res://app/src/main/cpp/gui_manager.gd")
 const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
+const _CStateManager = preload("res://app/src/main/cpp/c_state_manager.gd")
 
 func _on_enter() -> void:
 	var sound_box := _CSoundBox.get_instance()
@@ -23,6 +24,15 @@ func _on_enter() -> void:
 
 func _on_exit() -> void:
 	_CSoundBox.get_instance().unload_music()
+
+
+func _back_pressed() -> bool:
+	show_exit()
+	return true
+
+
+func show_exit() -> void:
+	$GUIManager/GUIExitWarning.show()
 
 
 func _on_gui_main_menu_sel_campaign_pressed(sel_campaign: int) -> void:
@@ -82,10 +92,15 @@ func _on_gui_main_menu_load_conquest_pressed() -> void:
 
 
 func _on_gui_main_menu_tutorial_pressed() -> void:
+	g_GameManager.new_game(5, 0, 0, 0)
+	_fade_out_load_state()
+
+
+func _fade_out_load_state() -> void:
 	$GUIManager.fade_out(14, null)
 	$GUIManager.faded_out.connect(func(cause: int):
 		if cause == 14:
-			pass
+			_CStateManager.instance().set_cur_state("res://app/src/main/cpp/c_load_state.tscn")
 		, ConnectFlags.CONNECT_ONE_SHOT)
 
 
@@ -93,9 +108,24 @@ func _on_gui_main_menu_commander_pressed() -> void:
 	$GUIManager.fade_out(11, null)
 	$GUIManager.faded_out.connect(func(cause: int):
 		if cause == 11:
+			$GUIManager/GUIMainMenu.hide()
 			$GUIManager/GUICommander.show()
 			$GUIManager.fade_in(-1)
 		, ConnectFlags.CONNECT_ONE_SHOT)
+
+
+func _on_gui_main_menu_options_pressed() -> void:
+	$GUIManager.fade_out(12, null)
+	$GUIManager.faded_out.connect(func(cause: int):
+		if cause == 12:
+			$GUIManager/GUIMainMenu.hide()
+			$GUIManager/GUIOptions.show()
+			$GUIManager.fade_in(-1)
+		, ConnectFlags.CONNECT_ONE_SHOT)
+
+
+func _on_gui_main_menu_quit_pressed() -> void:
+	show_exit()
 
 
 func _fade_out_back() -> void:
@@ -107,5 +137,10 @@ func _fade_out_back() -> void:
 			$GUIManager/GUISelCountry.hide()
 			$GUIManager/GUISave.hide()
 			$GUIManager/GUICommander.hide()
+			$GUIManager/GUIOptions.hide()
 			$GUIManager.fade_in(-1)
 		, CONNECT_ONE_SHOT)
+
+
+func _on_gui_exit_warning_cancled() -> void:
+	$GUIManager/GUIExitWarning.hide()

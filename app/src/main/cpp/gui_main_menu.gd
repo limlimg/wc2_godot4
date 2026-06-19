@@ -53,16 +53,6 @@ func show_ad() -> void:
 
 # OnEvent
 # NOTTODO: more game button and mail button pressed
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"ui_cancel"):
-		if _state == 0:
-			for button in [$SelCampaigns/ButtonBack/GUIButton, $SelConquest/GUIRect10/ButtonBack]:
-				if button.is_visible_in_tree():
-					button.pressed.emit()
-					break
-		get_viewport().set_input_as_handled()
-
-
 func _on_button_campaign_pressed() -> void:
 	if _state == 0:
 		# NOTTODO: hide more game and mail button
@@ -212,3 +202,15 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 			_move_button(0)
 		9:
 			_move_button(5)
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"ui_cancel"):
+		if _state == 0:
+			for button in [$SelCampaigns/ButtonBack/GUIButton, $SelConquest/ButtonBack/GUIButton]:
+				if button.is_visible_in_tree():
+					button.pressed.emit()
+					accept_event()
+					return
+			quit_pressed.emit()
+			accept_event()

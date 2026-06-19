@@ -48,9 +48,15 @@ func _on_gui_country_list_country_selected(country: int) -> void:
 
 
 func _on_button_ok_pressed() -> void:
-	#g_GameManager.new_game(1, -1, campaign, _battle)
+	g_GameManager.new_game(2, -1, 0, conquest)
+	g_GameManager.set_conquest_player_country_id($GUICountryList/GUICountryList.get_sel_country_id())
 	ok_pressed.emit()
 
 
 func _on_button_back_pressed() -> void:
 	back_pressed.emit()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"ui_cancel"):
+		back_pressed.emit()
