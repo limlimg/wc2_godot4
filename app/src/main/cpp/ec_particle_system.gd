@@ -27,6 +27,12 @@ var emitter_attr: _ecEmitterAttr:
 @export
 var texture_res: _ecTextureResAssets
 
+var _live := false:
+	set(value):
+		_live = value
+		set_process(value)
+
+
 var _speed_shift_curve: Curve
 var _gravity_shift_curve: Curve
 var _rot_shift_curve: Curve
@@ -39,7 +45,7 @@ var _fire_at_angle: float
 func _ready() -> void:
 	_emitted_time = 0.0
 	_emitted_quantity = 0
-	set_process(false)
+	_live = false
 
 
 func fire_at(x: float, y: float, angle: float) -> void:
@@ -51,11 +57,12 @@ func fire_at(x: float, y: float, angle: float) -> void:
 
 func fire() -> void:
 	_emitted_time = 0.0
-	set_process(true)
+	_emitted_quantity = 0
+	_live = true
 
 
 func stop(stop_existing) -> void:
-	set_process(false)
+	_live = false
 	if stop_existing:
 		for i in $LiveParticles.get_children():
 			$LiveParticles.remove_child(i)
@@ -67,7 +74,7 @@ func move_to(x: float, y: float, move_existing: bool) -> void:
 	if not move_existing:
 		for i in $LiveParticles.get_children():
 			i.position -= target - position
-	if move_existing or can_process():
+	if move_existing or _live:
 		_last_position = position
 	else:
 		_last_position = target
@@ -75,7 +82,7 @@ func move_to(x: float, y: float, move_existing: bool) -> void:
 
 
 func is_live() -> bool:
-	return $LiveParticles.get_child_count() > 0 or can_process()
+	return $LiveParticles.get_child_count() > 0 or _live
 
 
 func _process(delta: float) -> void:
@@ -86,7 +93,7 @@ func _process(delta: float) -> void:
 	if _emitted_time >= emitter_life:
 		if emitter_attr.settings_mode != 0:
 			_emitted_time = emitter_life
-			set_process(false)
+			_live = false
 	var target_quantity := _sample_curve_extended(_emission_curve, _emitted_time)
 	while _emitted_quantity < target_quantity - 1:
 		var particle := $Prototype/ecParticle.duplicate()
@@ -99,13 +106,13 @@ func _process(delta: float) -> void:
 			particle.material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD if emitter_attr.image_blend == 1 else CanvasItemMaterial.BLEND_MODE_MIX
 		match emitter_attr.settings_type:
 			0:
-				particle.offset.x = rng.randf_range(_last_position.x, position.x) + rng.randf_range(-2.0, 2.0)
-				particle.offset.y = rng.randf_range(_last_position.y, position.y) + rng.randf_range(-2.0, 2.0)
+				particle.offset.x = rng.randf_range(_last_position.x - position.x, 0.0) + rng.randf_range(-2.0, 2.0)
+				particle.offset.y = rng.randf_range(_last_position.y - position.y, 0.0) + rng.randf_range(-2.0, 2.0)
 			2:
-				particle.offset.x = rng.randf_range(_last_position.x, position.x) + rng.randf_range(-0.5, 0.5) * emitter_attr.settings_param_1
-				particle.offset.y = rng.randf_range(_last_position.y, position.y) + rng.randf_range(-0.5, 0.5) * emitter_attr.settings_param_2
+				particle.offset.x = rng.randf_range(_last_position.x - position.x, 0.0) + rng.randf_range(-0.5, 0.5) * emitter_attr.settings_param_1
+				particle.offset.y = rng.randf_range(_last_position.y - position.y, 0.0) + rng.randf_range(-0.5, 0.5) * emitter_attr.settings_param_2
 		var speed_angle := _fire_at_angle + rng.randf_range(emitter_attr.angle_min, emitter_attr.angle_max)
-		particle.speed = Vector2.from_angle(particle.rotation) * rng.randf_range(emitter_attr.speed_min, emitter_attr.speed_max)
+		particle.speed = Vector2.from_angle(speed_angle) * rng.randf_range(emitter_attr.speed_min, emitter_attr.speed_max)
 		particle.speed_shift_curve = _speed_shift_curve
 		particle.gravity = rng.randf_range(emitter_attr.gravity_min, emitter_attr.gravity_max)
 		particle.gravity_shift_curve = _gravity_shift_curve
@@ -120,7 +127,6 @@ func _process(delta: float) -> void:
 		particle.color = emitter_attr.color_range.sample(rng.randf_range(0.0, 1.0))
 		particle.color_gradient = emitter_attr.life_track_color
 		$LiveParticles.add_child(particle)
-		particle.set_process(true)
 		_emitted_quantity += 1
 
 
