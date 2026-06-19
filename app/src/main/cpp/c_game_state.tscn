@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cyteip1ai4gjt"]
+
+[ext_resource type="Script" uid="uid://r8i8smosqhsx" path="res://app/src/main/cpp/c_game_state.gd" id="1_i7u21"]
+
+[node name="CGameState" type="Control" unique_id=1645819512]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i7u21")

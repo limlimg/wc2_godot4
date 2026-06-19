@@ -1,5 +1,13 @@
 [gd_scene format=3 uid="uid://bine2n80jql7t"]
 
+[ext_resource type="Script" uid="uid://vf8r4wsfv76c" path="res://app/src/main/cpp/c_load_state.gd" id="1_oa3nl"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_olp3u"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="2_hrq8u"]
+[ext_resource type="Texture2D" uid="uid://ces6dlv70o7bo" path="res://app/src/main/cpp/scene_system_resource/texture/loading.tres" id="2_nhydb"]
+[ext_resource type="Texture2D" uid="uid://cda51cjweoibn" path="res://app/src/main/cpp/scene_system_resource/texture/loading_title.tres" id="4_5uj21"]
+[ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="4_krfvt"]
+[ext_resource type="Theme" uid="uid://duqavds7qrws2" path="res://app/src/main/cpp/scene_system_resource/font/g_font2.tres" id="4_oa3nl"]
+
 [node name="CLoadState" type="Control" unique_id=1642615460]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +15,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_oa3nl")
+
+[node name="Loading" parent="." unique_id=1576520916 instance=ExtResource("1_olp3u")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+grow_horizontal = 1
+rect_ipad = Rect2(-174, 730, 0, 0)
+rect = Rect2(-86, 300, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Loading" unique_id=116623192]
+layout_mode = 2
+texture = ExtResource("2_nhydb")
+
+[node name="LoadingTitle" type="TextureRect" parent="." unique_id=997851547]
+layout_mode = 0
+texture = ExtResource("4_5uj21")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Tip" parent="." unique_id=1352659599 instance=ExtResource("1_olp3u")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-462, 370, 0, 0)
+rect = Rect2(-210, 150, 0, 0)
+
+[node name="ecText" parent="Tip" unique_id=448162067 instance=ExtResource("2_hrq8u")]
+layout_mode = 2
+theme = ExtResource("4_oa3nl")
+
+[node name="GUIManager" parent="." unique_id=510783743 instance=ExtResource("4_krfvt")]
+layout_mode = 1
+
+[connection signal="faded_in" from="GUIManager" to="." method="_on_gui_manager_faded_in"]
+[connection signal="faded_out" from="GUIManager" to="." method="_on_gui_manager_faded_out"]
