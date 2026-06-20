@@ -28,6 +28,8 @@ CSoundBox="*res://app/src/main/cpp/c_sound_box.gd"
 g_Commander="*res://app/src/main/cpp/c_commander.gd"
 g_GameSettings="*res://app/src/main/cpp/c_game_settings.gd"
 g_GameManager="*res://app/src/main/cpp/c_game_manager.gd"
+g_SoundRes="*uid://csrlpeqpqytkc"
+g_GameRes="*uid://b6nay46iirkmq"
 g_Scene="*res://app/src/main/cpp/c_scene.gd"
 AndroidManifest="*res://app/src/main/android_manifest.tscn"
 

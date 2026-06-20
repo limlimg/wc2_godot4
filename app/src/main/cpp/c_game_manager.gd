@@ -1,11 +1,16 @@
 extends Node
 
+const _CCountry = preload("res://app/src/main/cpp/c_country.gd")
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
 const _ecFile = preload("res://app/src/main/cpp/ec_file.gd")
 const _SaveHeader = preload("res://app/src/main/cpp/save_header.gd")
 
+var _all_country: Array[_CCountry]
+var _belligerent_country: Array[_CCountry]
+var _current_dialogue: int
 var _current_round: int
+var _random_reward_medal: int
 var _game_mode: int
 var _map_id: int
 var _areas_enable: String
@@ -14,7 +19,9 @@ var _save_file_name: String
 var _player_country_name: Array[String]
 var _conquest_player_country_id: String
 var _is_new_game: bool
-var _is_last_game_won: bool
+var _local_game: bool
+var _game_ended: bool
+var _game_won: bool
 var should_show_next_battle: bool
 var campaign: int
 var _battle: int
@@ -30,11 +37,6 @@ func _get_player_country_name(player_no: int) -> String:
 	if player_no > 3:
 		return ""
 	return _player_country_name[player_no]
-
-
-func _set_player_country_name(player_no: int, value: String) -> void:
-	if player_no <= 3:
-		_player_country_name[player_no] = value
 
 
 func _get_player_no(country_name: String) -> int:
@@ -141,9 +143,6 @@ func is_last_battle() -> bool:
 # TODO: get_cur_country
 
 
-# TODO: _init_camera_pos
-
-
 # TODO: get_player_country
 
 
@@ -193,7 +192,7 @@ func battle_victory() -> void:
 
 
 func get_num_victory_stars() -> int:
-	if not _is_last_game_won:
+	if not _game_won:
 		return 0
 	var turn := _current_round + 1
 	if turn <= _great_victory_turn:
@@ -228,13 +227,57 @@ func get_num_victory_stars() -> int:
 # TODO: _game_update
 
 
-# TODO: _move_player_country_to_front
+func init_battle() -> void:
+	if _is_new_game:
+		_load_battle(_battle_file_name)
+		_current_dialogue = 0
+		_current_round = 0
+		_random_reward_medal = 0
+		if _game_mode != 4:
+			_move_player_country_to_front()
+			var player_country := _get_player_country()
+			if player_country != null:
+				_set_player_country_name(0, player_country.name)
+				if _game_mode == 2:
+					for i in _all_country:
+						if i.alliance == player_country.alliance:
+							i.tax_factor = 1.0
+		else:
+			pass # TODO: initialze multiplayer game
+		_init_camera_pos()
+	else:
+		_real_load_game(_save_file_name)
+	_game_ended = false
+	_campaign_reward_medal = 0
+	_local_game = _game_mode != 4
 
 
-# TODO: _real_load_game
+func _load_battle(file_name: String) -> void:
+	pass
 
 
-# TODO: _load_battle
+func _move_player_country_to_front() -> void:
+	var c := _get_player_country()
+	if c != null:
+		_all_country.erase(c)
+		_all_country.push_front(c)
 
 
-# TODO: init_battle
+func _get_player_country() -> _CCountry:
+	for c in _all_country:
+		if not c.ai:
+			return c
+	return null
+
+
+func _set_player_country_name(player_no: int, value: String) -> void:
+	if player_no <= 3:
+		_player_country_name[player_no] = value
+
+
+func _init_camera_pos() -> void:
+	pass
+
+
+func _real_load_game(file_name: String) -> void:
+	pass

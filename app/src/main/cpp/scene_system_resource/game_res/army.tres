@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ecTextureResAssets" format=3 uid="uid://5nio3rrdptta"]
+
+[ext_resource type="Script" uid="uid://bbkwpdgd20wlc" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size_hd.gd" id="1_arx5y"]
+[ext_resource type="Script" uid="uid://c4lbjg3bsn26n" path="res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd" id="2_0yfio"]
+
+[sub_resource type="Resource" id="Resource_nf45k"]
+script = ExtResource("1_arx5y")
+name = "army.xml"
+name_hd = "army_hd.xml"
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[resource]
+script = ExtResource("2_0yfio")
+asset_names = Array[ExtResource("1_arx5y")]([SubResource("Resource_nf45k")])
+metadata/_custom_type_script = "uid://c4lbjg3bsn26n"
