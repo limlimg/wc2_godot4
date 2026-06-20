@@ -6,7 +6,7 @@ extends "res://app/src/main/cpp/gui_save_item.gd"
 func _set_info() -> void:
 	super()
 	if not empty:
-		$Name/AutoSave/ecText.text = _native.g_string_table.get_string("AutoSave")
+		$Name/AutoSave/ecText.text = "AutoSave"
 	else:
 		$Name/AutoSave/ecText.text = ""
 

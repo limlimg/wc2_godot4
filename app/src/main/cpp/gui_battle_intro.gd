@@ -10,16 +10,16 @@ const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
 
 
 const _BATTLE_INTRO_KEY_FORMAT = [
-	"axis battle intro %d",
-	"allies battle intro %d",
-	"wto battle intro %d",
-	"nato battle intro %d"
+	"axis battle intro {0}",
+	"allies battle intro {0}",
+	"wto battle intro {0}",
+	"nato battle intro {0}"
 ]
 const _BATTLE_NAME_KEY_FORMAT = [
-	"axis battle name %d",
-	"allies battle name %d",
-	"wto battle name %d",
-	"nato battle name %d"
+	"axis battle name {0}",
+	"allies battle name {0}",
+	"wto battle name {0}",
+	"nato battle name {0}"
 ]
 
 @export
@@ -50,16 +50,16 @@ func init() -> void:
 		battle_intro.add_theme_constant_override("line_spacing", -6)
 	else:
 		battle_intro.add_theme_constant_override("line_spacing", -3)
-	$CenterContainer/BoardIntro/TextureRect/Victory/ecText.text = _native.g_string_table.get_string("victory")
-	$CenterContainer/BoardIntro/TextureRect/GreatVictory/ecText.text = _native.g_string_table.get_string("great victory")
+	$CenterContainer/BoardIntro/TextureRect/Victory/ecText.text = "victory"
+	$CenterContainer/BoardIntro/TextureRect/GreatVictory/ecText.text = "great victory"
 	_set_battle()
 
 
 func _set_battle() -> void:
 	var string_table := _native.g_string_table
 	if campaign >= 0 and campaign < 4:
-		$CenterContainer/BoardIntro/TextureRect/BattleIntro/ecText.text = string_table.get_string(_BATTLE_INTRO_KEY_FORMAT[campaign]%[battle + 1])
-		$CenterContainer/BoardIntro/TextureRect/BattleName/ecText.text = string_table.get_string(_BATTLE_NAME_KEY_FORMAT[campaign]%[battle + 1])
+		$CenterContainer/BoardIntro/TextureRect/BattleIntro/ecText.text = _BATTLE_INTRO_KEY_FORMAT[campaign].format([battle + 1])
+		$CenterContainer/BoardIntro/TextureRect/BattleName/ecText.text = _BATTLE_NAME_KEY_FORMAT[campaign].format([battle + 1])
 	var battle_key_name := _native.get_battle_key_name(campaign, battle)
 	var battle_def := _CObjectDef.instance().get_battle_def(battle_key_name)
 	$CenterContainer/BoardIntro/TextureRect/Age/ecText.text = battle_def.age

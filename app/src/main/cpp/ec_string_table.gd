@@ -5,7 +5,7 @@ extends "res://app/src/main/cpp/native-lib.gd"
 
 var _translation: Translation
 
-func load(file_name: String) -> bool:
+func load_table(file_name: String) -> bool:
 	var path := get_path(file_name, "")
 	_translation = load(path) as Translation
 	if _translation == null:

@@ -6,9 +6,9 @@
 
 [sub_resource type="Resource" id="Resource_8f3fq"]
 script = ExtResource("1_qd4dd")
-name = "font4_{0}.fnt"
-name_hd = "font4_{0}_hd.fnt"
-name_ipad = "font4_{0}_hd.fnt"
+name = "font4_en.fnt"
+name_hd = "font4_en_hd.fnt"
+name_ipad = "font4_en_hd.fnt"
 metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
 
 [resource]

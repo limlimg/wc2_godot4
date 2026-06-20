@@ -55,7 +55,6 @@ var name_512h: String:
 
 func get_effective_name() -> String:
 	var selected_name: String
-	var language: String
 	if not Engine.is_editor_hint():
 		var graphics := _ecGraphics.instance()
 		if graphics.content_scale_size_mode == 3:
@@ -72,8 +71,6 @@ func get_effective_name() -> String:
 				selected_name = name_512h
 		if selected_name.is_empty():
 			selected_name = name
-		language = _native.g_localizable_strings.get_string("language")
 	else:
 		selected_name = name
-		language = "en"
-	return selected_name.format([language])
+	return selected_name

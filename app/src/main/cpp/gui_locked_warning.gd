@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func init() -> void:
-	$CenterContainer/GUIRect/Control/GUIRect2/ecText.set_text(_native.g_string_table.get_string(&"locked warning"))
+	$CenterContainer/GUIRect/Control/GUIRect2/ecText.set_text("locked warning")
 
 
 func _on_button_pressed() -> void:

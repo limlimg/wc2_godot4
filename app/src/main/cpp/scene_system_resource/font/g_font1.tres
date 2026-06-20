@@ -7,17 +7,6 @@
 [sub_resource type="Resource" id="Resource_e21jh"]
 script = ExtResource("1_52vl8")
 name = "font1.fnt"
-name_hd = ""
-name_ipad = ""
-name_ipad_hd = ""
-name_640h = ""
-name_640hd = ""
-name_568h = ""
-name_568hd = ""
-name_534h = ""
-name_534hd = ""
-name_512h = ""
-name_512hd = ""
 metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
 
 [resource]

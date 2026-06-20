@@ -119,14 +119,14 @@ static func _ec_game_init(content_scale_width: int, content_scale_height: int, o
 	_CStateManager.instance().init()
 	# NOTTODO: register states
 	# set initial state as the main scene
-	g_localizable_strings.load("Localizable.strings")
+	g_localizable_strings.load_table("Localizable.strings")
 	var string_table_key: StringName
 	if _ecGraphics.instance().content_scale_size_mode == 3:
 		string_table_key = &"stringtable iPad"
 	else:
 		string_table_key = &"stringtable"
 	var string_table_name := g_localizable_strings.get_string(string_table_key)
-	g_string_table.load(string_table_name)
+	g_string_table.load_table(string_table_name)
 	_CObjectDef.instance().init()
 	g_Commander.load()
 	_CSoundBox.get_instance().load_se("btn.wav")

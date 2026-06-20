@@ -1,6 +1,5 @@
 extends "res://app/src/main/cpp/c_base_state.gd"
 
-const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _CGameState = preload("res://app/src/main/cpp/c_game_state.gd")
 const _CStateManager = preload("res://app/src/main/cpp/c_state_manager.gd")
 
@@ -12,7 +11,7 @@ signal _game_initialized
 
 func _on_enter() -> void:
 	var tip_index := _rng.randi_range(1, 11)
-	$Tip/ecText.text = _native.g_string_table.get_string("tip {0}".format([tip_index]))
+	$Tip/ecText.text = "tip {0}".format([tip_index])
 	$GUIManager.fade_in(-1)
 	_load_thread.start(func():
 		_CGameState.init_game()
