@@ -54,7 +54,7 @@ func _gui_input(event: InputEvent) -> void:
 			else:
 				_motion_event._action = _MotionEvent.ACTION_POINTER_UP | ((pointer_index << _MotionEvent.ACTION_POINTER_INDEX_SHIFT) & _MotionEvent.ACTION_POINTER_INDEX_MASK)
 			_motion_event._events[pointer_index] = event
-			if _on_touch_event(_motion_event.duplicate()):
+			if _on_touch_event(_motion_event.duplicate(true)):
 				accept_event()
 			_motion_event._events[pointer_index] = _motion_event._events.back()
 			_motion_event._events.pop_back()
@@ -62,7 +62,7 @@ func _gui_input(event: InputEvent) -> void:
 		var pointer_index := _motion_event._events.find_custom(func (past_event: InputEvent): return past_event.index == event.index)
 		_motion_event._action = _MotionEvent.ACTION_MOVE
 		_motion_event._events[pointer_index] = event
-		if _on_touch_event(_motion_event.duplicate()):
+		if _on_touch_event(_motion_event.duplicate(true)):
 			accept_event()
 
 
