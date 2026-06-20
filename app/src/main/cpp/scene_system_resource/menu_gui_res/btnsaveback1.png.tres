@@ -1,0 +1,24 @@
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://dr8fdh2jlyc1t"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_6qv64"]
+[ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/texture_res.tres" id="2_60f00"]
+[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_qunod"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_jq30j"]
+
+[sub_resource type="Resource" id="Resource_uo6gt"]
+script = ExtResource("1_6qv64")
+name = "btnsaveback1.png"
+metadata/_custom_type_script = "uid://wmgv5whydq62"
+
+[sub_resource type="Resource" id="Resource_fkjlg"]
+script = ExtResource("3_qunod")
+name = SubResource("Resource_uo6gt")
+res = ExtResource("2_60f00")
+metadata/_custom_type_script = "uid://fs8gw6cxcp2u"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_jq30j")
+preset = SubResource("Resource_fkjlg")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

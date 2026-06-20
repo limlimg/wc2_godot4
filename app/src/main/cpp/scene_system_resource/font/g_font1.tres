@@ -1,4 +1,4 @@
-[gd_resource type="Theme" script_class="ecUniFontAssets" load_steps=5 format=3 uid="uid://bwk3qhdj7kf1w"]
+[gd_resource type="Theme" script_class="ecUniFontAssets" format=3 uid="uid://bwk3qhdj7kf1w"]
 
 [ext_resource type="Script" uid="uid://bbkwpdgd20wlc" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size_hd.gd" id="1_52vl8"]
 [ext_resource type="FontFile" path="res://font1.fnt" id="2_e21jh"]

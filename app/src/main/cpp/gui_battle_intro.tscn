@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://df33p640anvad" path="res://app/src/main/cpp/gui_fade.tscn" id="2_gsb3j"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_mp2r6"]
 [ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://app/src/main/cpp/gui_button_ex.tscn" id="4_cl8ju"]
-[ext_resource type="Texture2D" uid="uid://x2oo4pcca42" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/text_conditon.png.tres" id="4_g2uog"]
-[ext_resource type="Texture2D" uid="uid://bpn7exdqwi4ir" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/buttontext_ok.png.tres" id="5_edqqk"]
-[ext_resource type="Texture2D" uid="uid://c5scjcg2j0bqx" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/green_normal.png.tres" id="5_mxe0c"]
-[ext_resource type="Texture2D" uid="uid://c3wwab5l8gutt" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/buttontext_ok_press.png.tres" id="6_g2uog"]
-[ext_resource type="Theme" uid="uid://cpnxetsssuv7j" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/num7.tres" id="9_3lprt"]
-[ext_resource type="Theme" uid="uid://kfde1dpf6pbh" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/font4.tres" id="10_0gbd6"]
+[ext_resource type="Texture2D" uid="uid://x2oo4pcca42" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/text_conditon.png.tres" id="4_g2uog"]
+[ext_resource type="Texture2D" uid="uid://c5scjcg2j0bqx" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/green_normal.png.tres" id="5_mxe0c"]
+[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok.png.tres" id="7_gsb3j"]
+[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok_press.png.tres" id="8_qr5bd"]
+[ext_resource type="Theme" uid="uid://cpnxetsssuv7j" path="res://app/src/main/cpp/scene_system_resource/menu_gui_selbattle_res/num7.tres" id="9_3lprt"]
+[ext_resource type="Theme" uid="uid://kfde1dpf6pbh" path="res://app/src/main/cpp/scene_system_resource/menu_gui_selbattle_res/font4.tres" id="10_0gbd6"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="10_tekca"]
 [ext_resource type="Theme" uid="uid://b6mb1wkh5nrw1" path="res://app/src/main/cpp/scene_system_resource/font/g_font3.tres" id="11_0gbd6"]
 
@@ -74,8 +74,8 @@ rect = Rect2(210, 283, 64, 32)
 
 [node name="GUIButtonEx" parent="CenterContainer/BoardIntro/TextureRect/ButtonOK" unique_id=493498822 instance=ExtResource("4_cl8ju")]
 layout_mode = 2
-texture_text_not_pressed = ExtResource("5_edqqk")
-texture_text_pressed = ExtResource("6_g2uog")
+texture_text_not_pressed = ExtResource("7_gsb3j")
+texture_text_pressed = ExtResource("8_qr5bd")
 image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
 texture_normal = ExtResource("5_mxe0c")

@@ -7,7 +7,7 @@ const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _GUIBattleList = preload("res://app/src/main/cpp/gui_battle_list.gd")
 const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
 const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
-const _FlagInfo = preload("uid://cc743pglja2sj")
+const _FlagInfo = preload("res://app/src/main/cpp/flag_info.gd")
 
 @export
 var conquest: int:

@@ -54,15 +54,15 @@ layout_mode = 2
 texture_normal = ExtResource("6_l4im6")
 texture_pressed = ExtResource("6_l4im6")
 
-[node name="CancleConfirm" parent="CenterContainer/GUIRect" unique_id=91618747 instance=ExtResource("3_5avr6")]
+[node name="ConfirmExit" parent="CenterContainer/GUIRect" unique_id=91618747 instance=ExtResource("3_5avr6")]
 layout_mode = 2
 rect_ipad = Rect2(350, 190, 80, 76)
 rect = Rect2(175, 95, 40, 38)
 
-[node name="GUIButton" parent="CenterContainer/GUIRect/CancleConfirm" unique_id=1850582139 instance=ExtResource("5_kjn2k")]
+[node name="GUIButton" parent="CenterContainer/GUIRect/ConfirmExit" unique_id=1850582139 instance=ExtResource("5_kjn2k")]
 layout_mode = 2
 texture_normal = ExtResource("7_ctosj")
 texture_pressed = ExtResource("7_ctosj")
 
-[connection signal="pressed" from="CenterContainer/GUIRect/CancleExit/GUIButton" to="." method="_on_gui_button_cancle_pressed"]
-[connection signal="pressed" from="CenterContainer/GUIRect/CancleConfirm/GUIButton" to="." method="_on_gui_button_confirm_pressed"]
+[connection signal="pressed" from="CenterContainer/GUIRect/CancleExit/GUIButton" to="." method="_on_gui_button_cancel_pressed"]
+[connection signal="pressed" from="CenterContainer/GUIRect/ConfirmExit/GUIButton" to="." method="_on_gui_button_confirm_pressed"]

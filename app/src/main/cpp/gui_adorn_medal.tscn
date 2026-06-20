@@ -23,7 +23,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(262, 461, 0, 0)
+rect_ipad = Rect2(230, 461, 0, 0)
 rect = Rect2(91, 205, 0, 0)
 
 [node name="Control" type="Control" parent="Medal" unique_id=518044244]
@@ -94,7 +94,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(262, 521, 0, 0)
+rect_ipad = Rect2(230, 521, 0, 0)
 rect = Rect2(91, 235, 0, 0)
 
 [node name="Control" type="Control" parent="Medal4" unique_id=614715422]
@@ -173,5 +173,11 @@ rect = Rect2(70, 185, 0, 0)
 layout_mode = 2
 
 [node name="GUICommanderMedal" parent="CommanderLevel/Control" unique_id=2126108883 instance=ExtResource("5_sshlh")]
-layout_mode = 1
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.7, 0.7)
 texture_res = ExtResource("4_7xwpa")

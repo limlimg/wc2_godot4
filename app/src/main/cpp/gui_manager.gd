@@ -115,7 +115,7 @@ func fade_out(cause: int, overlay: Node) -> void:
 	_fading_cause = cause
 	_remove_overlay()
 	if overlay != null:
-		$GUIFade.add_child(overlay)
+		overlay.reparent($GUIFade, false)
 		_overlay = overlay
 	$AnimationPlayer.play("fade_out")
 

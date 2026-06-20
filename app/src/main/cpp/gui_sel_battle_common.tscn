@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://c3ti4j1qeff4t" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_7.tres" id="9_rv5wm"]
 [ext_resource type="Texture2D" uid="uid://dnbbn81qmkd3b" path="res://app/src/main/cpp/scene_system_resource/texture/minimap1_8.tres" id="10_y8pec"]
 [ext_resource type="Theme" uid="uid://l3oxkticxpdd" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/num6.tres" id="11_a5ym0"]
-[ext_resource type="Texture2D" uid="uid://cd2xlypbsgglm" path="res://app/src/main/cpp/scene_system_resource/selbattle_res/sflag_shadow.png.tres" id="12_15bd2"]
+[ext_resource type="Texture2D" uid="uid://cd2xlypbsgglm" path="res://app/src/main/cpp/scene_system_resource/menu_gui_selbattle_res/sflag_shadow.png.tres" id="12_15bd2"]
 [ext_resource type="PackedScene" uid="uid://bp1f7if3s8vf4" path="res://app/src/main/cpp/gui_medal.tscn" id="14_xi63f"]
 
 [sub_resource type="Animation" id="Animation_ap38y"]

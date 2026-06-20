@@ -1,5 +1,6 @@
 extends "res://app/src/main/cpp/gui_element.gd"
 
+const _ecTextureResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd")
 const _GUIManager = preload("res://app/src/main/cpp/gui_manager.gd")
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
 const _ecImage = preload("res://app/src/main/cpp/ec_image.gd")
@@ -9,11 +10,18 @@ const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
 const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 
 const _CAMPAIGN_LOGO = [
-	"res://app/src/main/cpp/scene_system_resource/selbattle_res/logo_axis.png.tres",
-	"res://app/src/main/cpp/scene_system_resource/selbattle_res/logo_allies.png.tres",
-	"res://app/src/main/cpp/scene_system_resource/selbattle_res/logo_wto.png.tres",
-	"res://app/src/main/cpp/scene_system_resource/selbattle_res/logo_nato.png.tres"
+	"logo_axis.png",
+	"logo_allies.png",
+	"logo_wto.png",
+	"logo_nato.png"
 ]
+
+@export
+var texture_res: _ecTextureResAssets:
+	set(value):
+		if value != texture_res:
+			texture_res = value
+			init()
 
 @export
 var game_mode: int:
@@ -43,8 +51,8 @@ func _ready() -> void:
 
 func init() -> void:
 	var logo: Texture2D = null
-	if campaign < _CAMPAIGN_LOGO.size():
-		logo = load(_CAMPAIGN_LOGO[campaign]) as Texture2D
+	if texture_res != null and campaign < _CAMPAIGN_LOGO.size():
+		logo = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image(_CAMPAIGN_LOGO[campaign]))
 	$Logo/TextureRect.texture = logo
 	#s_texture_res = load("res://app/src/main/cpp/scene_system_resource/selbattle_res/texture_res.tres").get_res()
 	_battle = -1

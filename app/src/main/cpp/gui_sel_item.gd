@@ -6,8 +6,6 @@ const _ecImageTextureAssets = preload("res://app/src/main/cpp/scene_system_resou
 const _ecImage = preload("res://app/src/main/cpp/ec_image.gd")
 const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 
-const _RESOURCE_PATH = "res://app/src/main/cpp/scene_system_resource/selbattle_res/"
-
 @export
 var button_texture: Texture2D:
 	set(value):
@@ -88,10 +86,10 @@ func init() -> void:
 		_text_image = null
 	var res: _ecImageTextureAssets
 	if locked:
-		res = load(_RESOURCE_PATH + "mark_locked.png.tres")
+		res = load("res://app/src/main/cpp/scene_system_resource/menu_gui_res/mark_locked.png.tres")
 		_star_image = _ecImage.new(res.get_image_attr())
 	else:
-		res = load(_RESOURCE_PATH + "small_rankstar.png.tres")
+		res = load("res://app/src/main/cpp/scene_system_resource/menu_gui_res/small_rankstar.png.tres")
 		_star_image = _ecImage.new(res.get_image_attr())
 	$MarginContainer/Control/Button.queue_redraw()
 

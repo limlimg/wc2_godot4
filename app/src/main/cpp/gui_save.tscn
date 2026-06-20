@@ -11,9 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttontext_ok_press.png.tres" id="8_tyc1t"]
 [ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/buttonboard_green.png.tres" id="9_ogghu"]
 [ext_resource type="PackedScene" uid="uid://bktnsnsbwc2q3" path="res://app/src/main/cpp/gui_save_item.tscn" id="10_elaf6"]
-[ext_resource type="Texture2D" uid="uid://dr8fdh2jlyc1t" path="res://app/src/main/cpp/scene_system_resource/menu_save_res/btnsaveback1.png.tres" id="11_ddbjm"]
+[ext_resource type="Texture2D" uid="uid://dr8fdh2jlyc1t" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/btnsaveback1.png.tres" id="11_ddbjm"]
 [ext_resource type="PackedScene" uid="uid://dbndqpxk2yyd1" path="res://app/src/main/cpp/gui_auto_save_item.tscn" id="12_h7uv5"]
-[ext_resource type="Texture2D" uid="uid://cam4s04ib1iku" path="res://app/src/main/cpp/scene_system_resource/menu_save_res/btnsaveback2.png.tres" id="13_ddbjm"]
+[ext_resource type="Resource" uid="uid://cpadhmrva5yu8" path="res://app/src/main/cpp/scene_system_resource/menu_gui_save_res/texture_res.tres" id="12_tyc1t"]
+[ext_resource type="Texture2D" uid="uid://cam4s04ib1iku" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/btnsaveback2.png.tres" id="13_ddbjm"]
 
 [node name="GUISave" type="Control" unique_id=1102808812]
 layout_mode = 3
@@ -93,6 +94,7 @@ rect = Rect2(-242, -148, 180, 86)
 
 [node name="GUISaveItem" parent="Control/SaveItem" unique_id=84813601 instance=ExtResource("10_elaf6")]
 layout_mode = 2
+country_res = ExtResource("12_tyc1t")
 texture_normal = ExtResource("11_ddbjm")
 texture_pressed = ExtResource("11_ddbjm")
 
@@ -113,6 +115,7 @@ rect = Rect2(-242, -55, 180, 86)
 
 [node name="GUISaveItem" parent="Control/SaveItem2" unique_id=864049145 instance=ExtResource("10_elaf6")]
 layout_mode = 2
+country_res = ExtResource("12_tyc1t")
 texture_normal = ExtResource("11_ddbjm")
 texture_pressed = ExtResource("11_ddbjm")
 
@@ -133,6 +136,7 @@ rect = Rect2(-242, 38, 180, 86)
 
 [node name="GUISaveItem" parent="Control/SaveItem3" unique_id=205932105 instance=ExtResource("10_elaf6")]
 layout_mode = 2
+country_res = ExtResource("12_tyc1t")
 texture_normal = ExtResource("11_ddbjm")
 texture_pressed = ExtResource("11_ddbjm")
 
@@ -153,6 +157,7 @@ rect = Rect2(62, -148, 180, 86)
 
 [node name="GUISaveItem" parent="Control/SaveItem4" unique_id=936653722 instance=ExtResource("10_elaf6")]
 layout_mode = 2
+country_res = ExtResource("12_tyc1t")
 texture_normal = ExtResource("11_ddbjm")
 texture_pressed = ExtResource("11_ddbjm")
 
@@ -173,6 +178,7 @@ rect = Rect2(62, -55, 180, 86)
 
 [node name="GUISaveItem" parent="Control/SaveItem5" unique_id=1460200486 instance=ExtResource("10_elaf6")]
 layout_mode = 2
+country_res = ExtResource("12_tyc1t")
 texture_normal = ExtResource("11_ddbjm")
 texture_pressed = ExtResource("11_ddbjm")
 
@@ -193,6 +199,7 @@ rect = Rect2(62, 38, 180, 86)
 
 [node name="GUISaveItem" parent="Control/SaveItem6" unique_id=2085961165 instance=ExtResource("10_elaf6")]
 layout_mode = 2
+country_res = ExtResource("12_tyc1t")
 texture_normal = ExtResource("11_ddbjm")
 texture_pressed = ExtResource("11_ddbjm")
 
@@ -213,6 +220,7 @@ rect = Rect2(-60, -74, 110, 206)
 
 [node name="GUIAutoSaveItem" parent="Control/AutoSaveItem" unique_id=559276820 instance=ExtResource("12_h7uv5")]
 layout_mode = 2
+country_res = ExtResource("12_tyc1t")
 enable = false
 texture_normal = ExtResource("13_ddbjm")
 texture_pressed = ExtResource("13_ddbjm")

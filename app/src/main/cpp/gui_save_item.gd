@@ -122,6 +122,7 @@ func _set_info() -> void:
 		$Time/ecText.text = ""
 		$Name/ecText.text = ""
 
+
 func _make_time_string() -> String:
 	return "%02d:%02d %04d/%02d/%02d"%[hour, minute, year, month, day]
 

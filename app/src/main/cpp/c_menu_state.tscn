@@ -3,14 +3,7 @@
 [ext_resource type="Script" uid="uid://cp0rqwt3uf1t7" path="res://app/src/main/cpp/c_menu_state.gd" id="1_ehm5w"]
 [ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="1_nhdnm"]
 [ext_resource type="PackedScene" uid="uid://c4fcq7wy2b7qx" path="res://app/src/main/cpp/gui_main_menu.tscn" id="3_gvair"]
-[ext_resource type="PackedScene" uid="uid://cvfhyrru7g313" path="res://app/src/main/cpp/gui_sel_battle.tscn" id="4_5n4tp"]
-[ext_resource type="PackedScene" uid="uid://cavnvxqevbxqu" path="res://app/src/main/cpp/gui_locked_warning.tscn" id="5_cwp5t"]
-[ext_resource type="PackedScene" uid="uid://bhdgsyd0pgf1d" path="res://app/src/main/cpp/gui_loading.tscn" id="6_d4yxi"]
-[ext_resource type="PackedScene" uid="uid://d1hsefm6u7qim" path="res://app/src/main/cpp/gui_sel_country.tscn" id="6_qq8xu"]
-[ext_resource type="PackedScene" uid="uid://b2tuhbhr3or2w" path="res://app/src/main/cpp/gui_save.tscn" id="7_fr7km"]
-[ext_resource type="PackedScene" uid="uid://bvnt22n6q73li" path="res://app/src/main/cpp/gui_commander.tscn" id="8_j0nwu"]
-[ext_resource type="PackedScene" uid="uid://ug2i6qxj113x" path="res://app/src/main/cpp/gui_options.tscn" id="9_c0nea"]
-[ext_resource type="PackedScene" uid="uid://ca03jr48w1uws" path="res://app/src/main/cpp/gui_exit_warning.tscn" id="10_yw2jp"]
+[ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://app/src/main/cpp/scene_system_resource/menu_gui_selbattle_res/texture_res.tres" id="5_mwydp"]
 
 [node name="CMenuState" type="Control" unique_id=54523483]
 layout_mode = 3
@@ -27,31 +20,32 @@ layout_mode = 1
 [node name="GUIMainMenu" parent="GUIManager" unique_id=1094483503 instance=ExtResource("3_gvair")]
 layout_mode = 1
 
-[node name="GUISelBattle" parent="GUIManager" unique_id=961076300 instance=ExtResource("4_5n4tp")]
+[node name="GUISelBattle" parent="GUIManager" unique_id=961076300 instance_placeholder="res://app/src/main/cpp/gui_sel_battle.tscn"]
+visible = false
+layout_mode = 1
+texture_res = ExtResource("5_mwydp")
+
+[node name="GUILockedWarning" parent="GUIManager" unique_id=131788446 instance_placeholder="res://app/src/main/cpp/gui_locked_warning.tscn"]
 visible = false
 layout_mode = 1
 
-[node name="GUILockedWarning" parent="GUIManager" unique_id=131788446 instance=ExtResource("5_cwp5t")]
+[node name="GUISelCountry" parent="GUIManager" unique_id=949481072 instance_placeholder="res://app/src/main/cpp/gui_sel_country.tscn"]
 visible = false
 layout_mode = 1
 
-[node name="GUISelCountry" parent="GUIManager" unique_id=949481072 instance=ExtResource("6_qq8xu")]
+[node name="GUISave" parent="GUIManager" unique_id=1102808812 instance_placeholder="res://app/src/main/cpp/gui_save.tscn"]
 visible = false
 layout_mode = 1
 
-[node name="GUISave" parent="GUIManager" unique_id=1102808812 instance=ExtResource("7_fr7km")]
+[node name="GUICommander" parent="GUIManager" unique_id=466496609 instance_placeholder="res://app/src/main/cpp/gui_commander.tscn"]
 visible = false
 layout_mode = 1
 
-[node name="GUICommander" parent="GUIManager" unique_id=466496609 instance=ExtResource("8_j0nwu")]
+[node name="GUIOptions" parent="GUIManager" unique_id=707334202 instance_placeholder="res://app/src/main/cpp/gui_options.tscn"]
 visible = false
 layout_mode = 1
 
-[node name="GUIOptions" parent="GUIManager" unique_id=707334202 instance=ExtResource("9_c0nea")]
-visible = false
-layout_mode = 1
-
-[node name="GUIExitWarning" parent="GUIManager" unique_id=986775281 instance=ExtResource("10_yw2jp")]
+[node name="GUIExitWarning" parent="GUIManager" unique_id=986775281 instance_placeholder="res://app/src/main/cpp/gui_exit_warning.tscn"]
 visible = false
 layout_mode = 1
 
@@ -59,7 +53,7 @@ layout_mode = 1
 visible = false
 anchors_preset = 0
 
-[node name="GUILoading" parent="Prototype" unique_id=1979438320 instance=ExtResource("6_d4yxi")]
+[node name="GUILoading" parent="Prototype" unique_id=1979438320 instance_placeholder="res://app/src/main/cpp/gui_loading.tscn"]
 layout_mode = 1
 
 [connection signal="commander_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_commander_pressed"]
@@ -70,13 +64,3 @@ layout_mode = 1
 [connection signal="sel_campaign_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_sel_campaign_pressed"]
 [connection signal="sel_conquest_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_sel_conquest_pressed"]
 [connection signal="tutorial_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_tutorial_pressed"]
-[connection signal="back_pressed" from="GUIManager/GUISelBattle" to="." method="_fade_out_back"]
-[connection signal="ok_pressed" from="GUIManager/GUISelBattle" to="." method="_fade_out_load_state"]
-[connection signal="pressed" from="GUIManager/GUILockedWarning" to="." method="_on_gui_locked_warning_pressed"]
-[connection signal="back_pressed" from="GUIManager/GUISelCountry" to="." method="_fade_out_back"]
-[connection signal="ok_pressed" from="GUIManager/GUISelCountry" to="." method="_fade_out_load_state"]
-[connection signal="back_pressed" from="GUIManager/GUISave" to="." method="_fade_out_back"]
-[connection signal="ok_pressed" from="GUIManager/GUISave" to="." method="_fade_out_load_state"]
-[connection signal="back_pressed" from="GUIManager/GUICommander" to="." method="_fade_out_back"]
-[connection signal="closed" from="GUIManager/GUIOptions" to="." method="_fade_out_back"]
-[connection signal="cancled" from="GUIManager/GUIExitWarning" to="." method="_on_gui_exit_warning_cancled"]
