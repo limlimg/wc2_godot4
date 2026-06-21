@@ -2,27 +2,62 @@ class_name AreaData
 extends Resource
 
 @export_storage
-var _data: PackedInt32Array
+var _mem: PackedByteArray
 
-func get_area_position(id: int) -> Vector2:
-	return Vector2(_data[11 * id], _data[11 * id + 1])
+@export_storage
+var _offset: int
 
-
-func get_area_size(id: int) -> Vector2:
-	return Vector2(_data[11 * id + 2], _data[11 * id + 3])
-
-
-func get_army_position(id: int) -> Vector2:
-	return Vector2(_data[11 * id + 4], _data[11 * id + 5])
-
-
-func get_construction_position(id: int) -> Vector2:
-	return Vector2(_data[11 * id + 6], _data[11 * id + 7])
-
-
-func get_installation_position(id: int) -> Vector2:
-	return Vector2(_data[11 * id + 8], _data[11 * id + 9])
+@export
+var area_rect: Rect2i:
+	get():
+		return Rect2i(
+			_mem.decode_u32(_offset),
+			_mem.decode_u32(_offset + 4),
+			_mem.decode_u32(_offset + 8),
+			_mem.decode_u32(_offset + 12))
+	set(value):
+		_mem.encode_u32(_offset, value.position.x)
+		_mem.encode_u32(_offset + 4, value.position.y)
+		_mem.encode_u32(_offset + 8, value.size.x)
+		_mem.encode_u32(_offset + 12, value.size.y)
 
 
-func get_area_sea(id: int) -> int:
-	return _data[11 * id + 10]
+@export
+var army_position: Vector2i:
+	get():
+		return Vector2i(
+			_mem.decode_u32(_offset + 16),
+			_mem.decode_u32(_offset + 20))
+	set(value):
+		_mem.encode_u32(_offset + 16, value.x)
+		_mem.encode_u32(_offset + 20, value.y)
+
+
+@export
+var construction_position: Vector2i:
+	get():
+		return Vector2i(
+			_mem.decode_u32(_offset + 24),
+			_mem.decode_u32(_offset + 28))
+	set(value):
+		_mem.encode_u32(_offset + 24, value.x)
+		_mem.encode_u32(_offset + 28, value.y)
+
+
+@export
+var installation_position: Vector2i:
+	get():
+		return Vector2i(
+			_mem.decode_u32(_offset + 32),
+			_mem.decode_u32(_offset + 36))
+	set(value):
+		_mem.encode_u32(_offset + 32, value.x)
+		_mem.encode_u32(_offset + 36, value.y)
+
+
+@export
+var sea: int:
+	get():
+		return _mem.decode_u32(_offset + 40)
+	set(value):
+		_mem.encode_u32(_offset + 40, value)

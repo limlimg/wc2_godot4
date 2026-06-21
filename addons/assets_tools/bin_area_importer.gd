@@ -1,10 +1,11 @@
 @tool
 extends EditorImportPlugin
 
-const _AreaData = preload("uid://bnliq357i8cqf")
+const _AreaDataList = preload("res://app/src/main/cpp/imported_containers/area_data_list.gd")
+const _AreaData = preload("res://app/src/main/cpp/imported_containers/area_data.gd")
 
 func _get_importer_name() -> String:
-	return "wc2.assets.bin.areadata"
+	return "wc2.assets.bin.area"
 
 
 func _get_visible_name() -> String:
@@ -67,8 +68,12 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if file.get_length() != 4 + 4 * 11 * size:
 		push_error("Failed to import {0}: Unexpected file length: expected {1}, got {2}".format([source_file, 4 + 4 * 11 * size, file.get_length()]))
 		return ERR_PARSE_ERROR
-	var res := _AreaData.new()
+	var res := _AreaDataList.new()
+	var buf = file.get_buffer(4 * 11 * size)
 	for i in size:
-		res._data.append(file.get_32())
+		var data := _AreaData.new()
+		data._mem = buf
+		data._offset = 4 * 11 * i
+		res.data.append(data)
 	var filename = save_path + "." + _get_save_extension()
 	return ResourceSaver.save(res, filename)
