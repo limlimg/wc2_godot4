@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cmnci1ox4l6s1"]
+
+[ext_resource type="Script" uid="uid://x3sy0a0ph62w" path="res://app/src/main/cpp/c_area.gd" id="1_0tvyd"]
+
+[node name="CArea" type="TextureRect" unique_id=1240455242]
+y_sort_enabled = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 2
+script = ExtResource("1_0tvyd")
+
+[node name="Flag" type="Sprite2D" parent="." unique_id=402239010]
+
+[node name="Construction" type="Sprite2D" parent="Flag" unique_id=1191482551]
+show_behind_parent = true
+
+[node name="Installation" type="Sprite2D" parent="." unique_id=201397588]
+
+[node name="Army" type="Node2D" parent="." unique_id=398251219]

@@ -1,7 +1,5 @@
 extends "res://app/src/main/cpp/gui_sel_item.gd"
 
-const _ecTextureResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd")
-
 const _MULTIPLAY_BATTLE = [
 	"text_axis_01.png",
 	"text_axis_02.png",
@@ -16,13 +14,6 @@ const _MULTIPLAY_BATTLE = [
 	"text_axis_06.png",
 	"text_allies_08.png"
 ]
-
-@export
-var battle_res: _ecTextureResAssets:
-	set(value):
-		if value != battle_res:
-			battle_res = value
-			init()
 
 @export
 var campaign: int:
@@ -42,9 +33,9 @@ var battle: int:
 
 func init() -> void:
 	super()
-	if battle_res == null:
+	if texture_res == null:
 		return
-	var res := battle_res.get_res()
+	var res := texture_res.get_res()
 	var attr
 	match campaign:
 		0:

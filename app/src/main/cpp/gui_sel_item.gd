@@ -2,9 +2,18 @@ extends "res://app/src/main/cpp/gui_element.gd"
 
 ## Common base class for GUIBattleItem and GUICountryItem.
 
-const _ecImageTextureAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd")
+const _ecTextureResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd")
+const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
 const _ecImage = preload("res://app/src/main/cpp/ec_image.gd")
 const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
+
+@export
+var texture_res: _ecTextureResAssets:
+	set(value):
+		if value != texture_res:
+			texture_res = value
+			init()
+
 
 @export
 var button_texture: Texture2D:
@@ -84,13 +93,13 @@ func init() -> void:
 		_text_image = _ecImage.new(text_texture, 0.0, 0.0, text_texture.get_width(), text_texture.get_height())
 	else:
 		_text_image = null
-	var res: _ecImageTextureAssets
+	var attr: _ecImageAttr
 	if locked:
-		res = load("res://app/src/main/cpp/scene_system_resource/menu_gui_res/mark_locked.png.tres")
-		_star_image = _ecImage.new(res.get_image_attr())
+		attr = texture_res.get_res().get_image("mark_locked.png")
 	else:
-		res = load("res://app/src/main/cpp/scene_system_resource/menu_gui_res/small_rankstar.png.tres")
-		_star_image = _ecImage.new(res.get_image_attr())
+		attr = texture_res.get_res().get_image("small_rankstar.png")
+	if attr != null:
+		_star_image = _ecImage.new(attr)
 	$MarginContainer/Control/Button.queue_redraw()
 
 

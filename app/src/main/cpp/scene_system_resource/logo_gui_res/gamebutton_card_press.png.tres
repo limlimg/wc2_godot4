@@ -1,0 +1,24 @@
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://cgcdqjqcyk235"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_qvqle"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/texture_res.tres" id="2_p0f57"]
+[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_rut7y"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_i3dvm"]
+
+[sub_resource type="Resource" id="Resource_v0skf"]
+script = ExtResource("1_qvqle")
+name = "gamebutton_card_press.png"
+metadata/_custom_type_script = "uid://wmgv5whydq62"
+
+[sub_resource type="Resource" id="Resource_fkjlg"]
+script = ExtResource("3_rut7y")
+name = SubResource("Resource_v0skf")
+res = ExtResource("2_p0f57")
+metadata/_custom_type_script = "uid://fs8gw6cxcp2u"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_i3dvm")
+preset = SubResource("Resource_fkjlg")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

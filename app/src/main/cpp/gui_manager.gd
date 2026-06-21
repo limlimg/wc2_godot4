@@ -36,7 +36,7 @@ signal faded_in(cause: int)
 signal faded_out(cause: int)
 
 static func instance() -> _GUIManager:
-	return (Engine.get_main_loop() as SceneTree).get_nodes_in_group("GUIManagerInstance")[0]
+	return (Engine.get_main_loop() as SceneTree).get_nodes_in_group("GUIManagerInstance")[-1]
 
 
 #func load_texture_res(file_name: String, hd: bool) -> void:

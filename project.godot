@@ -31,6 +31,8 @@ g_GameManager="*res://app/src/main/cpp/c_game_manager.gd"
 g_SoundRes="*uid://csrlpeqpqytkc"
 g_GameRes="*uid://b6nay46iirkmq"
 g_Scene="*res://app/src/main/cpp/c_scene.gd"
+CActionAI="*uid://bjcor7a8i4mlv"
+CActionAssist="*uid://6n107koaw8pt"
 AndroidManifest="*res://app/src/main/android_manifest.tscn"
 
 [display]
@@ -50,6 +52,7 @@ enabled=PackedStringArray("res://addons/assets_tools/plugin.cfg")
 [global_group]
 
 GUIManagerInstance=""
+ecEffectManagerInstance=""
 
 [input]
 

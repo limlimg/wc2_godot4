@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="3_5avr6"]
 [ext_resource type="Texture2D" uid="uid://bi4s1a8uua7dp" path="res://app/src/main/cpp/scene_system_resource/texture/board_exit.tres" id="4_5avr6"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="5_kjn2k"]
-[ext_resource type="Texture2D" uid="uid://stjpuq26l3gi" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_cancleexit.png.tres" id="6_l4im6"]
-[ext_resource type="Texture2D" uid="uid://cgm24k31skmn" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/button_confirmexit.png.tres" id="7_ctosj"]
+[ext_resource type="Texture2D" uid="uid://stjpuq26l3gi" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/button_cancleexit.png.tres" id="6_l4im6"]
+[ext_resource type="Texture2D" uid="uid://cgm24k31skmn" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/button_confirmexit.png.tres" id="7_ctosj"]
 
 [node name="GUIExitWarning" type="Control" unique_id=986775281]
 layout_mode = 3

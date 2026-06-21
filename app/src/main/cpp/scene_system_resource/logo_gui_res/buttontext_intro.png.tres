@@ -1,0 +1,23 @@
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://caodcbd5dmbee"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_hcepd"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/texture_res.tres" id="2_k44ll"]
+[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_kbxnv"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_fiv4v"]
+
+[sub_resource type="Resource" id="Resource_hcepd"]
+script = ExtResource("1_hcepd")
+name = "buttontext_intro.png"
+
+[sub_resource type="Resource" id="Resource_fkjlg"]
+script = ExtResource("3_kbxnv")
+name = SubResource("Resource_hcepd")
+res = ExtResource("2_k44ll")
+metadata/_custom_type_script = "uid://fs8gw6cxcp2u"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_fiv4v")
+preset = SubResource("Resource_fkjlg")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

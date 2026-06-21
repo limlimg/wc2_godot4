@@ -21,6 +21,8 @@ var texture_res: _ecTextureResAssets:
 				init()
 
 
+signal stopped
+
 func _ready() -> void:
 	init()
 
@@ -47,14 +49,15 @@ func fire() -> void:
 		i.fire()
 
 
-func stop(stop_existing) -> void:
+func stop(stop_existing: bool) -> void:
 	for i in $LiveParticles.get_children():
 		i.stop(stop_existing)
+	_on_stopped()
 
 
-func move_to(x: float, y: float, move_existing: bool) -> void:
-	for i in $LiveParticles.get_children():
-		i.move_to(x, y, move_existing)
+func _on_stopped() -> void:
+	if not is_live():
+		stopped.emit()
 
 
 func is_live() -> bool:
@@ -62,3 +65,8 @@ func is_live() -> bool:
 		if i.is_live():
 			return true
 	return false
+
+
+func move_to(x: float, y: float, move_existing: bool) -> void:
+	for i in $LiveParticles.get_children():
+		i.move_to(x, y, move_existing)

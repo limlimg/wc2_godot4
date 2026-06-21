@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dns73sowod14i" path="res://app/src/main/cpp/gui_level_sel.gd" id="1_3bgbm"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_ymlgf"]
-[ext_resource type="Texture2D" uid="uid://ew3mmy7kab3j" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/block.png.tres" id="3_33hhi"]
+[ext_resource type="Texture2D" uid="uid://ew3mmy7kab3j" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/block.png.tres" id="3_33hhi"]
 
 [node name="GUILevelSel" type="Control" unique_id=528832786]
 layout_mode = 3

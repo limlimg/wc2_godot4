@@ -6,8 +6,8 @@
 
 [node name="GUIBattleItem" unique_id=1471834346 instance=ExtResource("1_2mf3m")]
 script = ExtResource("2_0esls")
-battle_res = ExtResource("3_0esls")
 campaign = 0
 battle = 0
+texture_res = ExtResource("3_0esls")
 selected_offset_ipad = -40.0
 selected_offset = -20.0

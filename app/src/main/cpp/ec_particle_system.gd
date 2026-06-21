@@ -42,6 +42,8 @@ var _emitted_quantity := 0
 var _last_position: Vector2
 var _fire_at_angle: float
 
+signal stopped
+
 func _ready() -> void:
 	_emitted_time = 0.0
 	_emitted_quantity = 0
@@ -61,12 +63,22 @@ func fire() -> void:
 	_live = true
 
 
-func stop(stop_existing) -> void:
+func stop(stop_existing: bool) -> void:
 	_live = false
 	if stop_existing:
 		for i in $LiveParticles.get_children():
 			$LiveParticles.remove_child(i)
 			i.queue_free()
+	_on_stopped()
+
+
+func _on_stopped() -> void:
+	if not is_live():
+		stopped.emit()
+
+
+func is_live() -> bool:
+	return $LiveParticles.get_child_count() > 0 or _live
 
 
 func move_to(x: float, y: float, move_existing: bool) -> void:
@@ -79,10 +91,6 @@ func move_to(x: float, y: float, move_existing: bool) -> void:
 	else:
 		_last_position = target
 	position = target
-
-
-func is_live() -> bool:
-	return $LiveParticles.get_child_count() > 0 or _live
 
 
 func _process(delta: float) -> void:
@@ -127,6 +135,7 @@ func _process(delta: float) -> void:
 		particle.color = emitter_attr.color_range.sample(rng.randf_range(0.0, 1.0))
 		particle.color_gradient = emitter_attr.life_track_color
 		$LiveParticles.add_child(particle)
+		particle.stopped.connect(_on_stopped)
 		_emitted_quantity += 1
 
 

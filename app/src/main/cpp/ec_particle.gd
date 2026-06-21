@@ -38,6 +38,8 @@ var lifespam: float
 
 var _life := 0.0
 
+signal stopped
+
 func _ready() -> void:
 	speed_shift_curve.bake()
 	gravity_shift_curve.bake()
@@ -50,6 +52,7 @@ func _process(delta: float) -> void:
 	_life += delta
 	if _life > lifespam:
 		get_parent().remove_child(self)
+		stopped.emit()
 		queue_free()
 		return
 	var t1 := _life / lifespam

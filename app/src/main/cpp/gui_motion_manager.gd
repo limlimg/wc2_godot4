@@ -104,7 +104,7 @@ func proc_motion() -> bool:
 	if _active_motion.is_empty():
 		return false
 	var report_any := false
-	for motion: _GUIMotion in _active_motion.duplicate(): # will remove element in the loop
+	for motion: _GUIMotion in _active_motion:
 		if motion.delay_remaining > 0:
 			motion.delay_remaining -= 1
 		else:

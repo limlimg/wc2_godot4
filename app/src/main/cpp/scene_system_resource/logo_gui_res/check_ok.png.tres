@@ -1,0 +1,24 @@
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://da3seh6qshw8f"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_0i0yp"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/texture_res.tres" id="2_4hjyk"]
+[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_p2hi0"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_g286r"]
+
+[sub_resource type="Resource" id="Resource_0i0yp"]
+script = ExtResource("1_0i0yp")
+name = "buttontext_ok.png"
+name_ipad = "check_ok.png"
+
+[sub_resource type="Resource" id="Resource_tjtui"]
+script = ExtResource("3_p2hi0")
+name = SubResource("Resource_0i0yp")
+res = ExtResource("2_4hjyk")
+metadata/_custom_type_script = "uid://fs8gw6cxcp2u"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_g286r")
+preset = SubResource("Resource_tjtui")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

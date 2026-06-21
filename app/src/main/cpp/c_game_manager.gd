@@ -1,18 +1,27 @@
 extends Node
 
 const _CCountry = preload("res://app/src/main/cpp/c_country.gd")
+const _DialogueDef = preload("res://app/src/main/cpp/dialogue_def.gd")
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
 const _ecFile = preload("res://app/src/main/cpp/ec_file.gd")
 const _SaveHeader = preload("res://app/src/main/cpp/save_header.gd")
+const _CActionAI = preload("res://app/src/main/cpp/c_action_ai.gd")
+const _CActionAssist = preload("res://app/src/main/cpp/c_action_assist.gd")
+const _CArmy = preload("res://app/src/main/cpp/c_army.gd")
+const _SaveCountryInfo = preload("res://app/src/main/cpp/save_country_info.gd")
+const _SaveAreaInfo = preload("res://app/src/main/cpp/save_area_info.gd")
+const _SaveArmyInfo = preload("res://app/src/main/cpp/save_army_info.gd")
 
 var _all_country: Array[_CCountry]
 var _belligerent_country: Array[_CCountry]
+var _dialogue: Array[_DialogueDef]
+var _current_country: int
 var _current_dialogue: int
 var _current_round: int
 var _random_reward_medal: int
 var _game_mode: int
-var _map_id: int
+var _map: int
 var _areas_enable: String
 var _battle_file_name: String
 var _save_file_name: String
@@ -25,8 +34,8 @@ var _game_won: bool
 var should_show_next_battle: bool
 var campaign: int
 var _battle: int
-var _victory_turn: int
-var _great_victory_turn: int
+var _victory: int
+var _great_victory: int
 var _campaign_reward_medal: int
 
 func _init() -> void:
@@ -50,17 +59,17 @@ func set_conquest_player_country_id(value: String) -> void:
 func new_game(game_mode: int, map_index: int, new_campaign: int, battle: int) -> void:
 	_game_mode = game_mode
 	if map_index >= 0:
-		_map_id = map_index + 1
+		_map = map_index + 1
 	campaign = new_campaign
 	_battle = battle
-	_victory_turn = 100000
-	_great_victory_turn = 10
+	_victory = 100000
+	_great_victory = 10
 	if game_mode == 1:
 		var battle_key_name := _native.get_battle_key_name(campaign, battle)
 		var battle_def := _CObjectDef.instance().get_battle_def(battle_key_name)
 		if battle_def != null:
-			_victory_turn = battle_def.victory
-			_great_victory_turn = battle_def.greatvictory
+			_victory = battle_def.victory
+			_great_victory = battle_def.greatvictory
 	_battle_file_name = _native.get_battle_file_name(game_mode, campaign, battle)
 	_player_country_name.fill("")
 	_is_new_game = true
@@ -70,7 +79,7 @@ func load_game(save_file_name: String) -> void:
 	var header := get_save_header(save_file_name)
 	if header != null:
 		_game_mode = header.game_mode
-		_map_id = header.map_id
+		_map = header.map_id
 		_areas_enable = header.areas_enable
 		_player_country_name = header.player_country_name
 		_battle_file_name = header.battle_file_name
@@ -85,35 +94,12 @@ func get_save_header(save_file_name: String) -> _SaveHeader:
 	var file := _ecFile.new()
 	if not file.open(path, FileAccess.READ):
 		return null
-	var buffer: PackedByteArray
-	file.read(buffer, 0xBC)
+	return _get_save_header_from_file(file)
+
+
+func _get_save_header_from_file(file: _ecFile) -> _SaveHeader:
 	var header := _SaveHeader.new()
-	header.game_mode = buffer.decode_s32(8)
-	header.map_id = buffer.decode_s32(16)
-	header.areas_enable = buffer.slice(20, buffer.find(0, 20)).get_string_from_ascii()
-	header.player_country_name[0] = buffer.slice(52, buffer.find(0, 52)).get_string_from_ascii()
-	header.player_country_name[1] = buffer.slice(60, buffer.find(0, 60)).get_string_from_ascii()
-	header.player_country_name[2] = buffer.slice(68, buffer.find(0, 68)).get_string_from_ascii()
-	header.player_country_name[3] = buffer.slice(76, buffer.find(0, 76)).get_string_from_ascii()
-	header.battle_file_name = buffer.slice(84, buffer.find(0, 84)).get_string_from_ascii()
-	header.camera_x = buffer.decode_float(116)
-	header.camera_y = buffer.decode_float(120)
-	header.camera_scale = buffer.decode_float(124)
-	header.current_country_index = buffer.decode_u32(128)
-	header.current_dialogue_index = buffer.decode_u32(132)
-	header.country_count = buffer.decode_u32(136)
-	header.area_count = buffer.decode_u32(140)
-	header.current_turn_num_minus_1 = buffer.decode_u32(144)
-	header.random_reward_medal = buffer.decode_u32(148)
-	header.save_time_year = buffer.decode_u32(152)
-	header.save_time_month = buffer.decode_u32(156)
-	header.save_time_day = buffer.decode_u32(160)
-	header.save_time_hour = buffer.decode_u32(164)
-	header.save_time_min = buffer.decode_u32(168)
-	header.campaign = buffer.decode_s32(172)
-	header.battle = buffer.decode_s32(176)
-	header.victory_turn = buffer.decode_s32(180)
-	header.great_victory_turn = buffer.decode_s32(184)
+	file.read(header._mem, 0xBC)
 	return header
 
 
@@ -124,9 +110,6 @@ func retry_game() -> void:
 # TODO: save_game
 
 
-# TODO: _clear_battle
-
-
 func is_last_battle() -> bool:
 	return _game_mode == 1 and _battle == _native.get_num_battles(campaign) - 1
 
@@ -135,12 +118,6 @@ func is_last_battle() -> bool:
 
 
 # TODO: get_country_by_index
-
-
-# TODO: find_country
-
-
-# TODO: get_cur_country
 
 
 # TODO: get_player_country
@@ -195,12 +172,12 @@ func get_num_victory_stars() -> int:
 	if not _game_won:
 		return 0
 	var turn := _current_round + 1
-	if turn <= _great_victory_turn:
+	if turn <= _great_victory:
 		return 5
-	elif turn >= _victory_turn:
+	elif turn >= _victory:
 		return 1
 	@warning_ignore("integer_division")
-	var star := 4 * (_victory_turn - turn) / (_victory_turn - _great_victory_turn) + 1
+	var star := 4 * (_victory - turn) / (_victory - _great_victory) + 1
 	if star < 2:
 		star = 2
 	return star
@@ -250,10 +227,85 @@ func init_battle() -> void:
 	_game_ended = false
 	_campaign_reward_medal = 0
 	_local_game = _game_mode != 4
+	g_Scene.all_areas_encirclement()
+	var ai_area_with_army_count := 0
+	var sea_area_count := 0
+	for i in g_Scene.get_num_areas():
+		var area := g_Scene.get_area(i)
+		if area.enable:
+			if area.country != null and area.country.ai and area.army.size() > 0:
+				ai_area_with_army_count += 1
+			if area.sea != 0:
+				sea_area_count += 1
+	_CActionAI.instance().ai_area_with_army_count = ai_area_with_army_count
+	_CActionAssist.instance().sea_area_count = sea_area_count
+	_CActionAI.instance().ai_progress_percentage = 1
 
 
 func _load_battle(file_name: String) -> void:
-	pass
+	_clear_battle()
+	var battle: _SaveHeader = load(_native.get_path(file_name, ""))
+	g_Scene.init(battle.areas_enable, battle.map)
+	for i in battle.country:
+		var country := _CCountry.new()
+		country.init(i.id, i.name)
+		country.color = i.color
+		country.alliance = i.alliance
+		country.tax_factor = i.tax_factor
+		country.ai = i.ai
+		if _game_mode == 4:
+			# TODO: set up country for multiplayer
+			pass
+		elif _game_mode == 2:
+			country.ai = country.id == _conquest_player_country_id
+		country.set_commander(i.commander)
+		country.money = i.money
+		country.techlevel = clampi(i.techlevel, 1, 5)
+		country.industry = i.industry
+		_all_country.append(country)
+		if country.alliance != 4:
+			_belligerent_country.append(country)
+	for i in battle.area:
+		var id := i.id
+		var area := g_Scene.get_area(id)
+		if area.enable:
+			var country := _find_country(i.country)
+			g_Scene.set_area_country(id, country)
+			if country != null:
+				country.add_area(id)
+			var construction = i.construction
+			var level = i.level
+			if area.sea == 0:
+				area.set_construction(construction, level)
+			area.installation = i.installation
+			for j in i.army:
+				if country != null:
+					var army_def := _CObjectDef.instance().get_army_def(j.type, country.name)
+					var army := _CArmy.new()
+					army.init(army_def, country)
+					army.cards = j.cards
+					army.level = j.level
+					if area.sea != 0 and army.movement > 1:
+						army.movement = 1
+					area.add_army(army, true)
+					if army.cards & (1 << 3) != 0:
+						country.commander_alive = true
+					army.reset_max_strength(false)
+	_dialogue = battle.dialogue.duplicate()
+	_current_country = 0
+
+
+func _clear_battle() -> void:
+	_all_country.clear()
+	_belligerent_country.clear()
+	_dialogue.clear()
+
+
+func _find_country(id: StringName) -> _CCountry:
+	for i in _all_country:
+		if i.id == id:
+			return i
+	return null
 
 
 func _move_player_country_to_front() -> void:
@@ -276,8 +328,54 @@ func _set_player_country_name(player_no: int, value: String) -> void:
 
 
 func _init_camera_pos() -> void:
-	pass
+	var country := _get_cur_country()
+	if country != null:
+		var area := country.get_highest_value_area()
+		if area >= 0:
+			g_Scene.set_camera_to_area(area)
+
+
+func _get_cur_country() -> _CCountry:
+	return _all_country.get(_current_country)
 
 
 func _real_load_game(file_name: String) -> void:
-	pass
+	_clear_battle()
+	g_Scene.init(_areas_enable, _map)
+	var path := _native.get_document_path(file_name)
+	var file := _ecFile.new()
+	if file.open(path, FileAccess.READ):
+		var save := _get_save_header_from_file(file)
+		var buf_country: PackedByteArray
+		file.read(buf_country, 276 * save.country_count)
+		var buf_area: PackedByteArray
+		file.read(buf_country, 200 * save.area_count)
+		file.close()
+		for i in save.country_count:
+			var info := _SaveCountryInfo.new()
+			info._mem = buf_country
+			info._offset = 276 * i
+			var country := _CCountry.new()
+			country.init(info.id, info.name)
+			country.load_country(info)
+			_all_country.append(country)
+			if country.alliance != 4:
+				_belligerent_country.append(country)
+		for i in save.area_count:
+			var info := _SaveAreaInfo.new()
+			info._mem = buf_area
+			info._offset = 200 * i
+			var area := g_Scene.get_area(info.id)
+			area.country = _all_country[info.country_index]
+			area.load_area(info)
+			_all_country[info.country_index].add_area(info.id)
+		campaign = save.campaign
+		_current_country = save.current_country
+		_current_dialogue = save.current_dialogue
+		_battle = save.battle
+		_great_victory = save.great_victory
+		_victory = save.victory
+		_current_round = save.current_round
+		_random_reward_medal = save.random_reward_medal
+		g_Scene.camera.set_pos(save.camera_x, save.camera_y, false)
+		g_Scene.camera.scale = save.camera_scale
