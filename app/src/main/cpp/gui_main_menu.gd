@@ -204,13 +204,11 @@ func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 			_move_button(5)
 
 
-func _gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"ui_cancel"):
-		if _state == 0:
-			for button in [$SelCampaigns/ButtonBack/GUIButton, $SelConquest/ButtonBack/GUIButton]:
-				if button.is_visible_in_tree():
-					button.pressed.emit()
-					accept_event()
-					return
-			quit_pressed.emit()
-			accept_event()
+func _on_back_pressed() -> void:
+	if _state == 0:
+		for button in [$SelCampaigns/ButtonBack/GUIButton, $SelConquest/ButtonBack/GUIButton]:
+			if button.is_visible_in_tree():
+				button.pressed.emit()
+				accept_event()
+				return
+		quit_pressed.emit()

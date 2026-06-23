@@ -1,5 +1,21 @@
 [gd_scene format=3 uid="uid://u7akx8jrxvgd"]
 
+[ext_resource type="PackedScene" uid="uid://df33p640anvad" path="res://app/src/main/cpp/gui_fade.tscn" id="1_0n2vx"]
+[ext_resource type="Texture2D" uid="uid://77e3wq3t3fnh" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/menubox.png.tres" id="2_vlbgk"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="3_8j7p4"]
+[ext_resource type="Texture2D" uid="uid://ttcjjtawxjq" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_resume.png.tres" id="4_q3jdi"]
+[ext_resource type="Texture2D" uid="uid://clr3qip78xxra" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_resume_press.png.tres" id="5_syxno"]
+[ext_resource type="Texture2D" uid="uid://dqimo80in1j4v" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/longgreen_normal.png.tres" id="6_kxtgr"]
+[ext_resource type="Texture2D" uid="uid://82luefhofd8a" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/longred_normal.png.tres" id="7_0qn8m"]
+[ext_resource type="Texture2D" uid="uid://poh8204mdpcs" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_save.png.tres" id="7_syxno"]
+[ext_resource type="Texture2D" uid="uid://sloktn0cdbkk" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_save_press.png.tres" id="8_kxtgr"]
+[ext_resource type="Texture2D" uid="uid://dfkyde62q4ili" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_options.png.tres" id="9_0qn8m"]
+[ext_resource type="Texture2D" uid="uid://dythmpcj77ad7" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_options_press.png.tres" id="10_typod"]
+[ext_resource type="Texture2D" uid="uid://cmy0yuy6augy3" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_restart.png.tres" id="11_7tnnw"]
+[ext_resource type="Texture2D" uid="uid://dnubyy1opjro1" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_restart_press.png.tres" id="12_cvph5"]
+[ext_resource type="Texture2D" uid="uid://bmvimarnhup3j" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_quit.png.tres" id="14_8nnqx"]
+[ext_resource type="Texture2D" uid="uid://j3awhodwyqn0" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_quit_press.png.tres" id="15_defxw"]
+
 [node name="GUIPauseBox" type="Control" unique_id=1648966608]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +23,96 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GUIFade" parent="." unique_id=869114631 instance=ExtResource("1_0n2vx")]
+layout_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1245003462]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBox" type="TextureRect" parent="CenterContainer" unique_id=2064478520]
+custom_minimum_size = Vector2(166, 262)
+layout_mode = 2
+texture = ExtResource("2_vlbgk")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="ButtonResume" parent="CenterContainer/MenuBox" unique_id=2034275630 instance=ExtResource("3_8j7p4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 32.0
+offset_top = 52.0
+offset_right = 130.0
+offset_bottom = 86.0
+grow_horizontal = 1
+grow_vertical = 1
+texture_normal = ExtResource("4_q3jdi")
+texture_pressed = ExtResource("5_syxno")
+texture_background = ExtResource("6_kxtgr")
+
+[node name="ButtonSave" parent="CenterContainer/MenuBox" unique_id=1469333668 instance=ExtResource("3_8j7p4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 32.0
+offset_top = 90.0
+offset_right = 134.0
+offset_bottom = 124.0
+grow_horizontal = 1
+grow_vertical = 1
+texture_normal = ExtResource("7_syxno")
+texture_pressed = ExtResource("8_kxtgr")
+texture_background = ExtResource("6_kxtgr")
+
+[node name="ButtonOptions" parent="CenterContainer/MenuBox" unique_id=1376197446 instance=ExtResource("3_8j7p4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 32.0
+offset_top = 128.0
+offset_right = 130.0
+offset_bottom = 162.0
+grow_horizontal = 1
+grow_vertical = 1
+texture_normal = ExtResource("9_0qn8m")
+texture_pressed = ExtResource("10_typod")
+texture_background = ExtResource("6_kxtgr")
+
+[node name="ButtonRestart" parent="CenterContainer/MenuBox" unique_id=1543952111 instance=ExtResource("3_8j7p4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 32.0
+offset_top = 166.0
+offset_right = 130.0
+offset_bottom = 200.0
+grow_horizontal = 1
+grow_vertical = 1
+texture_normal = ExtResource("11_7tnnw")
+texture_pressed = ExtResource("12_cvph5")
+texture_background = ExtResource("7_0qn8m")
+
+[node name="ButtonQuit" parent="CenterContainer/MenuBox" unique_id=547275675 instance=ExtResource("3_8j7p4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 32.0
+offset_top = 204.0
+offset_right = 130.0
+offset_bottom = 238.0
+grow_horizontal = 1
+grow_vertical = 1
+texture_normal = ExtResource("14_8nnqx")
+texture_pressed = ExtResource("15_defxw")
+texture_background = ExtResource("7_0qn8m")

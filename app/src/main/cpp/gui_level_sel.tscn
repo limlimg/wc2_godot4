@@ -28,11 +28,20 @@ offset_bottom = 40.0
 [node name="GUIRect" parent="Prototype" unique_id=1576520916 instance=ExtResource("2_ymlgf")]
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 rect_ipad = Rect2(0, 0, 40, 0)
 rect = Rect2(0, 5, 20, 0)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="TextureRect" type="TextureRect" parent="Prototype/GUIRect" unique_id=698801839]
 layout_mode = 2
 texture = ExtResource("3_33hhi")
 expand_mode = 1
 stretch_mode = 2
+
+[connection signal="touch_began" from="." to="." method="_on_touch"]
+[connection signal="touch_moved" from="." to="." method="_on_touch"]

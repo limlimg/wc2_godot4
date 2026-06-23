@@ -49,3 +49,23 @@ func add_army(army: _CArmy, at_bottom: bool) -> void:
 
 func load_area(info: _SaveAreaInfo) -> void:
 	pass
+
+
+func get_real_tax() -> int:
+	return 0
+
+
+func get_industry() -> int:
+	return 0
+
+
+func has_army_card(card: int) -> bool:
+	return false
+
+
+func get_army(index: int) -> _CArmy:
+	return null
+
+
+func move_army_to_front(index: int, animated: bool) -> void:
+	pass

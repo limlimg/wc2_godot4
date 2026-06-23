@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://451ls38c1bf8"]
 
+[ext_resource type="Script" uid="uid://b8ms3wfxb8xd0" path="res://app/src/main/cpp/gui_ai_progress.gd" id="1_nynuk"]
+[ext_resource type="Texture2D" uid="uid://cr341ld5q73ud" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/aiprogress.png.tres" id="1_om3wt"]
+[ext_resource type="Texture2D" uid="uid://dmwp04e85e0b6" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/progressbar.png.tres" id="2_pd72s"]
+
 [node name="GUIAIProgress" type="Control" unique_id=191726262]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +11,35 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nynuk")
+
+[node name="AIProgress" type="Sprite2D" parent="." unique_id=317490966]
+position = Vector2(114, 272)
+texture = ExtResource("1_om3wt")
+centered = false
+
+[node name="ProgressBar" type="HBoxContainer" parent="." unique_id=719218314]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 286.0
+offset_right = 170.0
+offset_bottom = 286.0
+theme_override_constants/separation = 0
+
+[node name="Flag" type="Sprite2D" parent="." unique_id=733766145]
+position = Vector2(118, 275)
+centered = false
+
+[node name="Prototype" type="Control" parent="." unique_id=409380574]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Prototype" unique_id=2110916742]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 0
+offset_right = 20.0
+texture = ExtResource("2_pd72s")
+expand_mode = 1
+stretch_mode = 2

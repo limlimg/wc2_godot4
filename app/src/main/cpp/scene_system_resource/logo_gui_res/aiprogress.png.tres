@@ -1,0 +1,21 @@
+[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://cr341ld5q73ud"]
+
+[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_rmxq4"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/texture_res.tres" id="2_0dtss"]
+[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_pcit8"]
+[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_2bs45"]
+
+[sub_resource type="Resource" id="Resource_8kvfc"]
+script = ExtResource("1_rmxq4")
+name = "aiprogress.png"
+
+[sub_resource type="Resource" id="Resource_f6xog"]
+script = ExtResource("3_pcit8")
+name = SubResource("Resource_8kvfc")
+res = ExtResource("2_0dtss")
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_2bs45")
+preset = SubResource("Resource_f6xog")

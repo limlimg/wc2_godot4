@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bvd1rulqn5q7a"]
+
+[ext_resource type="Script" uid="uid://crdu2sxx57men" path="res://app/src/main/cpp/gui_card_list.gd" id="1_n3f07"]
+[ext_resource type="PackedScene" uid="uid://55bpjexr684x" path="res://app/src/main/cpp/gui_list.tscn" id="1_v5t7c"]
+[ext_resource type="PackedScene" uid="uid://5ts0efddgis5" path="res://app/src/main/cpp/gui_card.tscn" id="4_835vt"]
+[ext_resource type="Resource" uid="uid://dfe0w1ve8iqjk" path="res://app/src/main/cpp/scene_system_resource/game_gui_res/texture_res.tres" id="4_n3f07"]
+
+[node name="GUICardList" type="Control" unique_id=1866886249]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n3f07")
+
+[node name="GUIList" parent="." unique_id=339150278 instance=ExtResource("1_v5t7c")]
+layout_mode = 1
+
+[node name="Prototype" type="Control" parent="." unique_id=890431410]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GUICard" parent="Prototype" unique_id=1045311831 instance=ExtResource("4_835vt")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 113.0
+grow_horizontal = 1
+grow_vertical = 1
+texture_res = ExtResource("4_n3f07")
+
+[connection signal="item_touched" from="GUIList" to="." method="_on_gui_list_item_touched"]

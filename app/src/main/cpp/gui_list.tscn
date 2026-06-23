@@ -31,6 +31,7 @@ vertical_scroll_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 4
 vertical = true
 
 [connection signal="inertia_ended" from="CTouchInertia" to="." method="_on_c_touch_inertia_inertia_ended"]

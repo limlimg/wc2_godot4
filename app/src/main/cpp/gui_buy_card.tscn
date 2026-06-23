@@ -1,5 +1,26 @@
 [gd_scene format=3 uid="uid://cse56b6hg7yjm"]
 
+[ext_resource type="Texture2D" uid="uid://c2hc2xw8tbdjk" path="res://app/src/main/cpp/scene_system_resource/texture/buycardbg.tres" id="1_mj0ox"]
+[ext_resource type="PackedScene" uid="uid://caf0v7eqneb01" path="res://app/src/main/cpp/scene_system_resource/gui_rect_4_container.tscn" id="1_pwt1f"]
+[ext_resource type="Script" uid="uid://dducl552p8o1q" path="res://app/src/main/cpp/gui_buy_card.gd" id="1_rm3xk"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="3_pwt1f"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="4_ijj02"]
+[ext_resource type="Texture2D" uid="uid://cyf614mjen5ie" path="res://app/src/main/cpp/scene_system_resource/texture/board_leather_up.tres" id="4_pwt1f"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="6_kap0g"]
+[ext_resource type="Theme" uid="uid://cthcurv4u6ctt" path="res://app/src/main/cpp/scene_system_resource/font/g_font6.tres" id="6_pc1ec"]
+[ext_resource type="Theme" uid="uid://jjobdimdjvc1" path="res://app/src/main/cpp/scene_system_resource/game_gui_res/font5.tres" id="6_wygf6"]
+[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_back.png.tres" id="7_g0g5x"]
+[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_back_press.png.tres" id="8_go81l"]
+[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttonboard_gray.png.tres" id="9_vdx00"]
+[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_ok.png.tres" id="10_vdx00"]
+[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_ok_press.png.tres" id="11_y08fe"]
+[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttonboard_green.png.tres" id="12_wygf6"]
+[ext_resource type="PackedScene" uid="uid://dpsfyw86jcr6b" path="res://app/src/main/cpp/gui_card_tab.tscn" id="14_pc1ec"]
+[ext_resource type="PackedScene" uid="uid://bvd1rulqn5q7a" path="res://app/src/main/cpp/gui_card_list.tscn" id="15_p3fxn"]
+[ext_resource type="PackedScene" uid="uid://c5ire5b7or3k5" path="res://app/src/main/cpp/gui_tech.tscn" id="17_iypsr"]
+[ext_resource type="Resource" uid="uid://dfe0w1ve8iqjk" path="res://app/src/main/cpp/scene_system_resource/game_gui_res/texture_res.tres" id="18_iypsr"]
+[ext_resource type="PackedScene" uid="uid://bp1f7if3s8vf4" path="res://app/src/main/cpp/gui_medal.tscn" id="18_rm3xk"]
+
 [node name="GUIBuyCard" type="Control" unique_id=595511499]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +28,294 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rm3xk")
+
+[node name="GUIRect" parent="." unique_id=1576520916 instance=ExtResource("1_pwt1f")]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+rect_640h = Rect2(0, 0, 640, 320)
+rect_568h = Rect2(0, 0, 568, 320)
+gui_scale_640h = Vector2(1, 1)
+gui_scale_568h = Vector2(1, 1)
+rect_ipad = Rect2(0, 0, 1024, 300)
+rect = Rect2(0, 0, 480, 320)
+
+[node name="BuyCardBg" type="TextureRect" parent="GUIRect" unique_id=2018834412]
+layout_mode = 2
+texture = ExtResource("1_mj0ox")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Name" parent="GUIRect/BuyCardBg" unique_id=1734484569 instance=ExtResource("1_pwt1f")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 480.0
+offset_bottom = 320.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_640h = Rect2(273, 222, 0, 0)
+rect_568h = Rect2(273, 222, 0, 0)
+gui_scale_640h = Vector2(1, 1)
+gui_scale_568h = Vector2(1, 1)
+rect_ipad = Rect2(552, 222, 0, 0)
+rect = Rect2(268, 240, 0, 0)
+
+[node name="ecText" parent="GUIRect/BuyCardBg/Name" unique_id=448162067 instance=ExtResource("4_ijj02")]
+layout_mode = 2
+theme = ExtResource("6_pc1ec")
+color = Color(0.043137256, 0.12156863, 0.19215687, 1)
+alignment = 1
+
+[node name="Intro" parent="GUIRect/BuyCardBg" unique_id=481540715 instance=ExtResource("1_pwt1f")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 480.0
+offset_bottom = 320.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_640h = Rect2(157, 258, 0, 0)
+rect_568h = Rect2(157, 258, 0, 0)
+gui_scale_640h = Vector2(1, 1)
+gui_scale_568h = Vector2(1, 1)
+rect_ipad = Rect2(428, 238, 0, 0)
+rect = Rect2(152, 258, 0, 0)
+
+[node name="ecText" parent="GUIRect/BuyCardBg/Intro" unique_id=535083132 instance=ExtResource("4_ijj02")]
+layout_mode = 2
+theme = ExtResource("6_wygf6")
+color = Color(0.043137256, 0.12156863, 0.19215687, 1)
+
+[node name="GUICardTab" parent="GUIRect/BuyCardBg" unique_id=1481582815 instance=ExtResource("14_pc1ec")]
+layout_mode = 1
+
+[node name="ButtonBack" parent="GUIRect/BuyCardBg" unique_id=2075060118 instance=ExtResource("3_pwt1f")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -30.0
+offset_right = 32.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="GUIButton" parent="GUIRect/BuyCardBg/ButtonBack" unique_id=2034275630 instance=ExtResource("6_kap0g")]
+layout_mode = 2
+texture_normal = ExtResource("7_g0g5x")
+texture_pressed = ExtResource("8_go81l")
+texture_background = ExtResource("9_vdx00")
+
+[node name="ButtonOk" parent="GUIRect/BuyCardBg" unique_id=1551325720 instance=ExtResource("3_pwt1f")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -32.0
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="GUIButton" parent="GUIRect/BuyCardBg/ButtonOk" unique_id=455475689 instance=ExtResource("6_kap0g")]
+layout_mode = 2
+texture_normal = ExtResource("10_vdx00")
+texture_pressed = ExtResource("11_y08fe")
+texture_background = ExtResource("12_wygf6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GUIRect/BuyCardBg" unique_id=1877630628]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 181.0
+grow_horizontal = 2
+
+[node name="Padding" parent="GUIRect/BuyCardBg/VBoxContainer" unique_id=1350046474 instance=ExtResource("3_pwt1f")]
+layout_mode = 2
+rect_ipad = Rect2(0, 0, 0, 43)
+rect = Rect2(0, 0, 0, 27)
+
+[node name="Control" type="Control" parent="GUIRect/BuyCardBg/VBoxContainer" unique_id=1703119002]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CardList" type="HBoxContainer" parent="GUIRect/BuyCardBg/VBoxContainer/Control" unique_id=1699602208]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PaddingLeft" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList" unique_id=1924783133 instance=ExtResource("3_pwt1f")]
+layout_mode = 2
+rect_ipad = Rect2(0, 0, 21, 0)
+rect = Rect2(0, 0, 21, 0)
+
+[node name="GUICardList" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList" unique_id=1866886249 instance=ExtResource("15_p3fxn")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PaddingRight" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList" unique_id=938636361 instance=ExtResource("3_pwt1f")]
+layout_mode = 2
+rect = Rect2(0, 0, 20, 0)
+
+[node name="CardList2" type="HBoxContainer" parent="GUIRect/BuyCardBg/VBoxContainer/Control" unique_id=214493259]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PaddingLeft" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList2" unique_id=116652579 instance=ExtResource("3_pwt1f")]
+layout_mode = 2
+rect_ipad = Rect2(0, 0, 21, 0)
+rect = Rect2(0, 0, 21, 0)
+
+[node name="GUICardList" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList2" unique_id=206605086 instance=ExtResource("15_p3fxn")]
+layout_mode = 2
+size_flags_horizontal = 3
+tab = 1
+
+[node name="PaddingRight" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList2" unique_id=530040517 instance=ExtResource("3_pwt1f")]
+layout_mode = 2
+rect = Rect2(0, 0, 20, 0)
+
+[node name="CardList3" type="HBoxContainer" parent="GUIRect/BuyCardBg/VBoxContainer/Control" unique_id=1907085827]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PaddingLeft" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList3" unique_id=1715701303 instance=ExtResource("3_pwt1f")]
+layout_mode = 2
+rect_ipad = Rect2(0, 0, 21, 0)
+rect = Rect2(0, 0, 21, 0)
+
+[node name="GUICardList" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList3" unique_id=517062042 instance=ExtResource("15_p3fxn")]
+layout_mode = 2
+size_flags_horizontal = 3
+tab = 2
+
+[node name="PaddingRight" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList3" unique_id=245505585 instance=ExtResource("3_pwt1f")]
+layout_mode = 2
+rect = Rect2(0, 0, 20, 0)
+
+[node name="CardList4" type="HBoxContainer" parent="GUIRect/BuyCardBg/VBoxContainer/Control" unique_id=1925879293]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PaddingLeft" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList4" unique_id=1238582352 instance=ExtResource("3_pwt1f")]
+layout_mode = 2
+rect_ipad = Rect2(0, 0, 21, 0)
+rect = Rect2(0, 0, 21, 0)
+
+[node name="GUICardList" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList4" unique_id=916938754 instance=ExtResource("15_p3fxn")]
+layout_mode = 2
+size_flags_horizontal = 3
+tab = 3
+
+[node name="PaddingRight" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList4" unique_id=1616510530 instance=ExtResource("3_pwt1f")]
+layout_mode = 2
+rect = Rect2(0, 0, 20, 0)
+
+[node name="CardList5" type="HBoxContainer" parent="GUIRect/BuyCardBg/VBoxContainer/Control" unique_id=563495622]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PaddingLeft" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList5" unique_id=301230956 instance=ExtResource("3_pwt1f")]
+layout_mode = 2
+rect_ipad = Rect2(0, 0, 21, 0)
+rect = Rect2(0, 0, 21, 0)
+
+[node name="GUICardList" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList5" unique_id=557164017 instance=ExtResource("15_p3fxn")]
+layout_mode = 2
+size_flags_horizontal = 3
+tab = 4
+
+[node name="PaddingRight" parent="GUIRect/BuyCardBg/VBoxContainer/Control/CardList5" unique_id=968791541 instance=ExtResource("3_pwt1f")]
+layout_mode = 2
+rect = Rect2(0, 0, 20, 0)
+
+[node name="BoardUp" parent="GUIRect/BuyCardBg" unique_id=206953457 instance=ExtResource("3_pwt1f")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 480.0
+offset_bottom = 320.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(0, -1, 0, 44)
+rect = Rect2(0, 0, 0, 16)
+
+[node name="TextureRect" type="TextureRect" parent="GUIRect/BuyCardBg/BoardUp" unique_id=1631939222]
+layout_mode = 2
+texture = ExtResource("4_pwt1f")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="GUITech" parent="GUIRect/BuyCardBg" unique_id=1999729026 instance=ExtResource("3_pwt1f")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_right = 80.0
+offset_bottom = 30.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-40, 1, 80, 30)
+rect = Rect2(-40, 0, 80, 30)
+
+[node name="GUITech" parent="GUIRect/BuyCardBg/GUITech" unique_id=895432528 instance=ExtResource("17_iypsr")]
+layout_mode = 2
+texture_res = ExtResource("18_iypsr")
+
+[node name="GUIMedal" parent="GUIRect/BuyCardBg" unique_id=798255306 instance=ExtResource("3_pwt1f")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -23.0
+offset_right = 70.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(0, 24, 0, 0)
+rect = Rect2(36, 0, 70, 23)
+
+[node name="GUIMedal" parent="GUIRect/BuyCardBg/GUIMedal" unique_id=642182575 instance=ExtResource("18_rm3xk")]
+layout_mode = 2
+
+[connection signal="tab_selected" from="GUIRect/BuyCardBg/GUICardTab" to="." method="_on_gui_card_tab_tab_selected"]
+[connection signal="pressed" from="GUIRect/BuyCardBg/ButtonBack/GUIButton" to="." method="_on_gui_button_back_pressed"]
+[connection signal="pressed" from="GUIRect/BuyCardBg/ButtonOk/GUIButton" to="." method="_on_gui_button_ok_pressed"]
+[connection signal="card_selected" from="GUIRect/BuyCardBg/VBoxContainer/Control/CardList/GUICardList" to="." method="_on_gui_card_list_card_selected" binds= [0]]
+[connection signal="card_selected" from="GUIRect/BuyCardBg/VBoxContainer/Control/CardList2/GUICardList" to="." method="_on_gui_card_list_card_selected" binds= [1]]
+[connection signal="card_selected" from="GUIRect/BuyCardBg/VBoxContainer/Control/CardList3/GUICardList" to="." method="_on_gui_card_list_card_selected" binds= [2]]
+[connection signal="card_selected" from="GUIRect/BuyCardBg/VBoxContainer/Control/CardList4/GUICardList" to="." method="_on_gui_card_list_card_selected" binds= [3]]
+[connection signal="card_selected" from="GUIRect/BuyCardBg/VBoxContainer/Control/CardList5/GUICardList" to="." method="_on_gui_card_list_card_selected" binds= [4]]

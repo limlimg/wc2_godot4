@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://caf0v7eqneb01"]
+
+[ext_resource type="Script" uid="uid://dw6vhddja5ign" path="res://app/src/main/cpp/scene_system_resource/gui_rect_4_container.gd" id="1_at8im"]
+
+[node name="GUIRect" type="Container" unique_id=1576520916]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_at8im")
+rect_640h = null
+rect_568h = null
+gui_scale_640h = null
+gui_scale_568h = null

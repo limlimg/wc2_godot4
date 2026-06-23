@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dcxrp3ba6cb43" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/player_medal.png.tres" id="1_ev6no"]
 [ext_resource type="Script" uid="uid://6hflc5uqjdd2" path="res://app/src/main/cpp/gui_medal.gd" id="1_gytc2"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_gytc2"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="5_yxuvh"]
 
-[node name="GUIMedal" type="Control"]
+[node name="GUIMedal" type="Control" unique_id=642182575]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,11 +16,11 @@ grow_vertical = 2
 theme = ExtResource("1_3qmw3")
 script = ExtResource("1_gytc2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=75674681]
 texture = ExtResource("1_ev6no")
 centered = false
 
-[node name="GUIRect" parent="." instance=ExtResource("2_gytc2")]
+[node name="GUIRect" parent="." unique_id=1971445256 instance=ExtResource("2_gytc2")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -29,13 +30,9 @@ grow_vertical = 1
 rect_ipad = Rect2(40, 1, 0, 0)
 rect = Rect2(23, 1, 0, 0)
 
-[node name="Control" type="Control" parent="GUIRect"]
+[node name="ecText" parent="GUIRect" unique_id=448162067 instance=ExtResource("5_yxuvh")]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="GUIRect/Control"]
-layout_mode = 0
-offset_right = 1.0
-offset_bottom = 19.0
 theme = ExtResource("1_3qmw3")
+text = "0"
 
-[node name="ButtonBuyMedal" type="Node" parent="."]
+[node name="ButtonBuyMedal" type="Node" parent="." unique_id=876432403]

@@ -844,6 +844,7 @@ texture_background = ExtResource("25_b5gij")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1491924843]
 libraries/ = SubResource("AnimationLibrary_kov84")
 
+[connection signal="back_pressed" from="." to="." method="_on_back_pressed"]
 [connection signal="pressed" from="MainButton/Control/VBoxContainer/ButtonCampaign/GUIRect/GUIButton" to="." method="_on_button_campaign_pressed"]
 [connection signal="pressed" from="MainButton/Control/VBoxContainer/ButtonConquest/GUIRect/GUIButton" to="." method="_on_button_conquest_pressed"]
 [connection signal="pressed" from="MainButton/Control/VBoxContainer/ButtonTutorial/GUIRect/GUIButton" to="." method="_on_button_tutorial_pressed"]

@@ -28,3 +28,11 @@ func set_area_country(id: int, country: _CCountry) -> void:
 
 func set_camera_to_area(id: int) -> void:
 	pass
+
+
+func clear_targets() -> void:
+	pass
+
+
+func reset_target() -> void:
+	pass

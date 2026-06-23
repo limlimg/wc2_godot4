@@ -21,7 +21,6 @@ var _selected := -1
 @onready var _list := [$Control/SaveItem/GUISaveItem, $Control/SaveItem2/GUISaveItem, $Control/SaveItem3/GUISaveItem, $Control/SaveItem4/GUISaveItem, $Control/SaveItem5/GUISaveItem, $Control/SaveItem6/GUISaveItem, $Control/AutoSaveItem/GUIAutoSaveItem]
 
 signal ok_pressed
-signal back_pressed
 
 func _ready() -> void:
 	_update_items()
@@ -98,8 +97,3 @@ func _on_gui_button_ok_pressed() -> void:
 
 func _on_gui_button_back_pressed() -> void:
 	back_pressed.emit()
-
-
-func _gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed(&"ui_cancel"):
-		back_pressed.emit()

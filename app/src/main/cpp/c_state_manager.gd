@@ -40,8 +40,6 @@ func init() -> void:
 
 
 func term() -> void:
-	if _cur_state!= null and &"_on_exit" in _cur_state:
-		_cur_state._on_exit()
 	_cur_state = null
 	# self already out of tree, so cannot call get_tree() here
 	Engine.get_main_loop().unload_current_scene()

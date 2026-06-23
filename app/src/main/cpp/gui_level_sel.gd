@@ -19,8 +19,5 @@ var value: int:
 				c.queue_free()
 
 
-func _gui_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		var pos = event.position
-		if Rect2(Vector2.ZERO, size).has_point(pos):
-			value = floori(pos.x / size.x * max_value) + 1
+func _on_touch(pos: Vector2, _index: int) -> void:
+	value = clampi(floori(pos.x / size.x * max_value) + 1, 1, max_value)

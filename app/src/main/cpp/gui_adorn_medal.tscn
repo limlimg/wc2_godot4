@@ -25,18 +25,11 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(230, 461, 0, 0)
 rect = Rect2(91, 205, 0, 0)
+gui_scale_ipad = Vector2(0.7, 0.7)
+gui_scale = Vector2(0.7, 0.7)
 
-[node name="Control" type="Control" parent="Medal" unique_id=518044244]
+[node name="GUIWarMedal" parent="Medal" unique_id=2034275630 instance=ExtResource("3_dr252")]
 layout_mode = 2
-
-[node name="GUIWarMedal" parent="Medal/Control" unique_id=2034275630 instance=ExtResource("3_dr252")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-scale = Vector2(0.7, 0.7)
 texture_res = ExtResource("4_7xwpa")
 
 [node name="Medal2" parent="." unique_id=1976581747 instance=ExtResource("1_ii04l")]
@@ -48,18 +41,11 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(262, 461, 0, 0)
 rect = Rect2(107, 205, 0, 0)
+gui_scale_ipad = Vector2(0.7, 0.7)
+gui_scale = Vector2(0.7, 0.7)
 
-[node name="Control" type="Control" parent="Medal2" unique_id=1821546425]
+[node name="GUIWarMedal" parent="Medal2" unique_id=1984168857 instance=ExtResource("3_dr252")]
 layout_mode = 2
-
-[node name="GUIWarMedal" parent="Medal2/Control" unique_id=1984168857 instance=ExtResource("3_dr252")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-scale = Vector2(0.7, 0.7)
 texture_res = ExtResource("4_7xwpa")
 medal = 1
 
@@ -72,18 +58,11 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(294, 461, 0, 0)
 rect = Rect2(123, 205, 0, 0)
+gui_scale_ipad = Vector2(0.7, 0.7)
+gui_scale = Vector2(0.7, 0.7)
 
-[node name="Control" type="Control" parent="Medal3" unique_id=309932417]
+[node name="GUIWarMedal" parent="Medal3" unique_id=761955669 instance=ExtResource("3_dr252")]
 layout_mode = 2
-
-[node name="GUIWarMedal" parent="Medal3/Control" unique_id=761955669 instance=ExtResource("3_dr252")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-scale = Vector2(0.7, 0.7)
 texture_res = ExtResource("4_7xwpa")
 medal = 2
 
@@ -96,18 +75,11 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(230, 521, 0, 0)
 rect = Rect2(91, 235, 0, 0)
+gui_scale_ipad = Vector2(0.7, 0.7)
+gui_scale = Vector2(0.7, 0.7)
 
-[node name="Control" type="Control" parent="Medal4" unique_id=614715422]
+[node name="GUIWarMedal" parent="Medal4" unique_id=263646414 instance=ExtResource("3_dr252")]
 layout_mode = 2
-
-[node name="GUIWarMedal" parent="Medal4/Control" unique_id=263646414 instance=ExtResource("3_dr252")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-scale = Vector2(0.7, 0.7)
 texture_res = ExtResource("4_7xwpa")
 medal = 3
 
@@ -120,18 +92,11 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(262, 521, 0, 0)
 rect = Rect2(107, 235, 0, 0)
+gui_scale_ipad = Vector2(0.7, 0.7)
+gui_scale = Vector2(0.7, 0.7)
 
-[node name="Control" type="Control" parent="Medal5" unique_id=1061131827]
+[node name="GUIWarMedal" parent="Medal5" unique_id=304063090 instance=ExtResource("3_dr252")]
 layout_mode = 2
-
-[node name="GUIWarMedal" parent="Medal5/Control" unique_id=304063090 instance=ExtResource("3_dr252")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-scale = Vector2(0.7, 0.7)
 texture_res = ExtResource("4_7xwpa")
 medal = 4
 
@@ -144,18 +109,11 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(294, 521, 0, 0)
 rect = Rect2(123, 235, 0, 0)
+gui_scale_ipad = Vector2(0.7, 0.7)
+gui_scale = Vector2(0.7, 0.7)
 
-[node name="Control" type="Control" parent="Medal6" unique_id=677217546]
+[node name="GUIWarMedal" parent="Medal6" unique_id=1148235475 instance=ExtResource("3_dr252")]
 layout_mode = 2
-
-[node name="GUIWarMedal" parent="Medal6/Control" unique_id=1148235475 instance=ExtResource("3_dr252")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-scale = Vector2(0.7, 0.7)
 texture_res = ExtResource("4_7xwpa")
 medal = 5
 
@@ -168,16 +126,9 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(187, 422, 0, 0)
 rect = Rect2(70, 185, 0, 0)
+gui_scale_ipad = Vector2(0.7, 0.7)
+gui_scale = Vector2(0.7, 0.7)
 
-[node name="Control" type="Control" parent="CommanderLevel" unique_id=618897096]
+[node name="GUICommanderMedal" parent="CommanderLevel" unique_id=2126108883 instance=ExtResource("5_sshlh")]
 layout_mode = 2
-
-[node name="GUICommanderMedal" parent="CommanderLevel/Control" unique_id=2126108883 instance=ExtResource("5_sshlh")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-scale = Vector2(0.7, 0.7)
 texture_res = ExtResource("4_7xwpa")

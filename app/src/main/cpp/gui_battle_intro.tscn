@@ -38,6 +38,8 @@ grow_vertical = 2
 layout_mode = 2
 rect_ipad = Rect2(0, 0, 960, 640)
 rect = Rect2(0, 0, 480, 320)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/BoardIntro" unique_id=1315011930]
 layout_mode = 2
@@ -55,6 +57,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(480, 384, 1, 1)
 rect = Rect2(240, 192, 1, 1)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/BoardIntro/TextureRect/TextCondition" unique_id=1678927271]
 layout_mode = 2
@@ -71,6 +75,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(420, 580, 64, 32)
 rect = Rect2(210, 283, 64, 32)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="GUIButtonEx" parent="CenterContainer/BoardIntro/TextureRect/ButtonOK" unique_id=493498822 instance=ExtResource("4_cl8ju")]
 layout_mode = 2
@@ -90,6 +96,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(480, 76, 0, 0)
 rect = Rect2(240, 38, 0, 0)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/BattleName" unique_id=448162067 instance=ExtResource("10_tekca")]
 layout_mode = 2
@@ -105,6 +113,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(140, 176, 0, 0)
 rect = Rect2(70, 88, 0, 0)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/BattleIntro" unique_id=1397818642 instance=ExtResource("10_tekca")]
 layout_mode = 2
@@ -120,6 +130,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(480, 130, 0, 0)
 rect = Rect2(240, 65, 0, 0)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/Age" unique_id=593876101 instance=ExtResource("10_tekca")]
 layout_mode = 2
@@ -135,6 +147,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(366, 410, 0, 0)
 rect = Rect2(183, 205, 0, 0)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/Victory" unique_id=1805606566 instance=ExtResource("10_tekca")]
 layout_mode = 2
@@ -150,6 +164,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(366, 470, 0, 0)
 rect = Rect2(183, 235, 0, 0)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/GreatVictory" unique_id=926402932 instance=ExtResource("10_tekca")]
 layout_mode = 2
@@ -165,6 +181,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(556, 410, 0, 0)
 rect = Rect2(278, 205, 0, 0)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/VictoryDays" unique_id=1748894307 instance=ExtResource("10_tekca")]
 layout_mode = 2
@@ -180,10 +198,13 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(556, 470, 0, 0)
 rect = Rect2(278, 235, 0, 0)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="ecText" parent="CenterContainer/BoardIntro/TextureRect/GreatVictoryDays" unique_id=450455429 instance=ExtResource("10_tekca")]
 layout_mode = 2
 theme = ExtResource("10_0gbd6")
 color = Color(0.2, 0.19215687, 0.24313726, 1)
 
+[connection signal="back_pressed" from="." to="." method="_on_gui_button_ex_pressed"]
 [connection signal="pressed" from="CenterContainer/BoardIntro/TextureRect/ButtonOK/GUIButtonEx" to="." method="_on_gui_button_ex_pressed"]

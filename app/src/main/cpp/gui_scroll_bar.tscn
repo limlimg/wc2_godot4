@@ -61,6 +61,12 @@ value = 50.0
 [node name="GrabberRect" parent="." unique_id=1576520916 instance=ExtResource("2_icu0f")]
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="Grabber" type="TextureButton" parent="GrabberRect" unique_id=375730084]
 layout_mode = 2

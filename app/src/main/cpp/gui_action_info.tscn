@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bnrmqpxbn6rtm"]
 
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_y5of8"]
+[ext_resource type="Script" uid="uid://co872n5xu7il2" path="res://app/src/main/cpp/gui_action_info.gd" id="1_d0jld"]
+[ext_resource type="PackedScene" uid="uid://cgnurbokkckv2" path="res://app/src/main/cpp/ec_label_text.tscn" id="1_y5of8"]
 
 [node name="GUIActionInfo" type="Control" unique_id=2027985913]
 layout_mode = 3
@@ -9,14 +10,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_d0jld")
 
-[node name="GUIRect" parent="." unique_id=1576520916 instance=ExtResource("1_y5of8")]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1890636832]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-rect_ipad = Rect2(-280, 0, 560, 28)
-rect = Rect2(-140, 0, 280, 14)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="ecLabelText" parent="." unique_id=197943408 instance=ExtResource("1_y5of8")]
+layout_mode = 1
+font_name = "Arial"
+font_size_ipad = 24
+font_size = 12
+alignement = 1

@@ -94,11 +94,11 @@ func _set_orientation(value: int) -> void:
 		orientated_content_scale_height = _content_scale_height
 
 
-func create_texture_with_string(a1: String, a2: String, a3: int, a4: int, width: int, height: int) -> _ecTexture:
+func create_texture_with_string(string: String, font_name: String, font_size: int, alignment: int, width: int, height: int) -> _ecTexture:
 	var r_width:Array[int] = [width]
 	var r_height:Array[int] = [height]
 	var r_texture:Array[Texture] = []
-	if ec_texture_with_string(a1, a2, a3, a4, r_width, r_height, r_texture):
+	if ec_texture_with_string(string, font_name, font_size, alignment, width, height):
 		var ec_texture := _ecTexture.new()
 		ec_texture.size_override = Vector2i(r_width[0], r_height[0])
 		ec_texture.texture = r_texture[0]

@@ -414,9 +414,9 @@ static func _ec_touch_end(x: float, y: float, index: int) -> void:
 		_CStateManager.instance().touch_end(x, y, index)
 
 
-static func ec_texture_with_string(_a1: String, _a2: String, _a3: int, _a4: int, _r_width: Array[int], _r_height: Array[int], _r_texture: Array[Texture]) -> bool:
-	# Unimplemented and eventually unused in the original game code
-	return false
+static func ec_texture_with_string(string: String, font_name: String, font_size: int, alignment: int, width: int, height: int) -> _ecTexture:
+	# Implemented by Label node
+	return null
 
 
 static func ec_texture_load(texture_name: String) -> _ecTexture:
@@ -500,7 +500,7 @@ static var _dynamic_num_battles: Array[int]
 static func get_num_battles(campaign: int) -> int:
 	while _dynamic_num_battles.size() <= campaign:
 		var i = 0
-		while not get_path(get_battle_file_name(0, campaign, i), "").is_empty():
+		while not get_path(get_battle_file_name(1, campaign, i), "").is_empty():
 			i += 1
 		_dynamic_num_battles.append(i)
 	return _dynamic_num_battles[campaign]
@@ -508,7 +508,7 @@ static func get_num_battles(campaign: int) -> int:
 
 static func get_battle_file_name(game_mode: int, campaign: int, battle: int) -> String:
 	match game_mode:
-		0:
+		1:
 			match campaign:
 				1:
 					return "battle_allies{0}.xml".format([battle + 1])

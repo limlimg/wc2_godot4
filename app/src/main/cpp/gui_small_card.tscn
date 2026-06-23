@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://bcdwdidc5e6kk"]
 
+[ext_resource type="Script" uid="uid://ddcomkq3if8ni" path="res://app/src/main/cpp/gui_small_card.gd" id="1_6smyl"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_m5ll4"]
+[ext_resource type="Texture2D" uid="uid://bdyptcoqfrlnm" path="res://app/src/main/cpp/scene_system_resource/game_res/card_common.png.tres" id="3_kdruj"]
+
 [node name="GUISmallCard" type="Control" unique_id=485651445]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +11,37 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6smyl")
+
+[node name="CardCommon?" parent="." unique_id=1576520916 instance=ExtResource("1_m5ll4")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -70.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(70, 0, 0, 110)
+rect = Rect2(50, 0, 0, 70)
+gui_scale_ipad = Vector2(0.7, 0.7)
+gui_scale = Vector2(0.42, 0.42)
+
+[node name="TextureRect" type="TextureRect" parent="CardCommon?" unique_id=1704674898]
+layout_mode = 2
+texture = ExtResource("3_kdruj")
+
+[node name="Card" parent="." unique_id=1537015811 instance=ExtResource("1_m5ll4")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -70.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(70, 7, 0, 110)
+rect = Rect2(50, 7, 0, 70)
+gui_scale_ipad = Vector2(0.7, 0.7)
+gui_scale = Vector2(0.42, 0.42)
+
+[node name="TextureRect" type="TextureRect" parent="Card" unique_id=1339344562]
+layout_mode = 2

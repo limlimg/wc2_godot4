@@ -50,13 +50,11 @@ layout_mode = 1
 
 [node name="ButtonRound" parent="GUIManager" unique_id=1576520916 instance=ExtResource("5_iy5bs")]
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
-offset_left = -32.0
-offset_top = -30.0
-grow_horizontal = 0
-grow_vertical = 0
+grow_horizontal = 1
+grow_vertical = 1
 rect_ipad = Rect2(0, 0, 40, 38)
 rect = Rect2(0, 0, 32, 30)
 
@@ -68,13 +66,11 @@ texture_background = ExtResource("9_ob33k")
 
 [node name="ButtonCard" parent="GUIManager" unique_id=2040298773 instance=ExtResource("5_iy5bs")]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 0.0
-offset_top = -30.0
-offset_right = 32.0
-grow_horizontal = 1
-grow_vertical = 0
+grow_horizontal = 0
+grow_vertical = 1
 rect_ipad = Rect2(0, 0, 40, 38)
 rect = Rect2(0, 0, 32, 30)
 
@@ -87,13 +83,11 @@ texture_background = ExtResource("12_xitlk")
 
 [node name="ButtonPause" parent="GUIManager" unique_id=1233548209 instance=ExtResource("5_iy5bs")]
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_bottom = 0.0
-offset_left = -32.0
-offset_bottom = 30.0
-grow_horizontal = 0
-grow_vertical = 1
+grow_horizontal = 1
+grow_vertical = 0
 rect_ipad = Rect2(0, 0, 40, 38)
 rect = Rect2(0, 0, 32, 30)
 
@@ -161,18 +155,9 @@ grow_vertical = 2
 custom_minimum_size = Vector2(258, 186)
 layout_mode = 2
 
-[node name="GUIPauseBox" type="CenterContainer" parent="GUIManager" unique_id=2004946949]
+[node name="GUIPauseBox" parent="GUIManager" unique_id=1648966608 instance=ExtResource("22_ennrn")]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GUIPauseBox" parent="GUIManager/GUIPauseBox" unique_id=1648966608 instance=ExtResource("22_ennrn")]
-custom_minimum_size = Vector2(166, 262)
-layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUIManager" unique_id=845837158]
 visible = false
@@ -183,7 +168,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GUIRect" parent="GUIManager/VBoxContainer" unique_id=143842892 instance=ExtResource("5_iy5bs")]
+[node name="Padding" parent="GUIManager/VBoxContainer" unique_id=143842892 instance=ExtResource("5_iy5bs")]
 layout_mode = 2
 rect_ipad = Rect2(0, 0, 0, 468)
 
@@ -230,9 +215,22 @@ grow_vertical = 2
 custom_minimum_size = Vector2(184, 258)
 layout_mode = 2
 
-[node name="GUIActionInfo" parent="GUIManager" unique_id=2027985913 instance_placeholder="res://app/src/main/cpp/gui_action_info.tscn"]
+[node name="GUIActionInfo" parent="GUIManager" unique_id=1593274674 instance=ExtResource("5_iy5bs")]
 visible = false
 layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_right = 280.0
+offset_bottom = 14.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-280, 0, 560, 28)
+rect = Rect2(-140, 0, 280, 14)
+
+[node name="GUIActionInfo" parent="GUIManager/GUIActionInfo" unique_id=2027985913 instance_placeholder="res://app/src/main/cpp/gui_action_info.tscn"]
+layout_mode = 2
 
 [node name="GUIDefeated" type="CenterContainer" parent="GUIManager" unique_id=833270288]
 layout_mode = 1

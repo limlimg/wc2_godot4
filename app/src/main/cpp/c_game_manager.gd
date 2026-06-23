@@ -18,9 +18,9 @@ var _belligerent_country: Array[_CCountry]
 var _dialogue: Array[_DialogueDef]
 var _current_country: int
 var _current_dialogue: int
-var _current_round: int
+var current_round: int
 var _random_reward_medal: int
-var _game_mode: int
+var game_mode: int
 var _map: int
 var _areas_enable: String
 var _battle_file_name: String
@@ -34,7 +34,7 @@ var _game_won: bool
 var should_show_next_battle: bool
 var campaign: int
 var _battle: int
-var _victory: int
+var victory: int
 var _great_victory: int
 var _campaign_reward_medal: int
 
@@ -56,19 +56,19 @@ func set_conquest_player_country_id(value: String) -> void:
 	_conquest_player_country_id = value
 
 
-func new_game(game_mode: int, map_index: int, new_campaign: int, battle: int) -> void:
-	_game_mode = game_mode
+func new_game(new_game_mode: int, map_index: int, new_campaign: int, battle: int) -> void:
+	game_mode = new_game_mode
 	if map_index >= 0:
 		_map = map_index + 1
 	campaign = new_campaign
 	_battle = battle
-	_victory = 100000
+	victory = 100000
 	_great_victory = 10
 	if game_mode == 1:
 		var battle_key_name := _native.get_battle_key_name(campaign, battle)
 		var battle_def := _CObjectDef.instance().get_battle_def(battle_key_name)
 		if battle_def != null:
-			_victory = battle_def.victory
+			victory = battle_def.victory
 			_great_victory = battle_def.greatvictory
 	_battle_file_name = _native.get_battle_file_name(game_mode, campaign, battle)
 	_player_country_name.fill("")
@@ -78,7 +78,7 @@ func new_game(game_mode: int, map_index: int, new_campaign: int, battle: int) ->
 func load_game(save_file_name: String) -> void:
 	var header := get_save_header(save_file_name)
 	if header != null:
-		_game_mode = header.game_mode
+		game_mode = header.game_mode
 		_map = header.map_id
 		_areas_enable = header.areas_enable
 		_player_country_name = header.player_country_name
@@ -111,7 +111,7 @@ func retry_game() -> void:
 
 
 func is_last_battle() -> bool:
-	return _game_mode == 1 and _battle == _native.get_num_battles(campaign) - 1
+	return game_mode == 1 and _battle == _native.get_num_battles(campaign) - 1
 
 
 # TODO: _get_num_countries
@@ -121,9 +121,6 @@ func is_last_battle() -> bool:
 
 
 # TODO: get_player_country
-
-
-# TODO: get_local_player_country
 
 
 # TODO: _get_num_dialogue
@@ -145,7 +142,7 @@ func is_last_battle() -> bool:
 
 
 func battle_victory() -> void:
-	if _game_mode != 1:
+	if game_mode != 1:
 		return
 	var star := get_num_victory_stars()
 	if star == 0:
@@ -171,13 +168,13 @@ func battle_victory() -> void:
 func get_num_victory_stars() -> int:
 	if not _game_won:
 		return 0
-	var turn := _current_round + 1
+	var turn := current_round + 1
 	if turn <= _great_victory:
 		return 5
-	elif turn >= _victory:
+	elif turn >= victory:
 		return 1
 	@warning_ignore("integer_division")
-	var star := 4 * (_victory - turn) / (_victory - _great_victory) + 1
+	var star := 4 * (victory - turn) / (victory - _great_victory) + 1
 	if star < 2:
 		star = 2
 	return star
@@ -208,14 +205,14 @@ func init_battle() -> void:
 	if _is_new_game:
 		_load_battle(_battle_file_name)
 		_current_dialogue = 0
-		_current_round = 0
+		current_round = 0
 		_random_reward_medal = 0
-		if _game_mode != 4:
+		if game_mode != 4:
 			_move_player_country_to_front()
 			var player_country := _get_player_country()
 			if player_country != null:
 				_set_player_country_name(0, player_country.name)
-				if _game_mode == 2:
+				if game_mode == 2:
 					for i in _all_country:
 						if i.alliance == player_country.alliance:
 							i.tax_factor = 1.0
@@ -226,7 +223,7 @@ func init_battle() -> void:
 		_real_load_game(_save_file_name)
 	_game_ended = false
 	_campaign_reward_medal = 0
-	_local_game = _game_mode != 4
+	_local_game = game_mode != 4
 	g_Scene.all_areas_encirclement()
 	var ai_area_with_army_count := 0
 	var sea_area_count := 0
@@ -244,7 +241,7 @@ func init_battle() -> void:
 
 func _load_battle(file_name: String) -> void:
 	_clear_battle()
-	var battle: _SaveHeader = load(_native.get_path(file_name, ""))
+	var battle: _SaveHeader = load(_native.get_path_alias(file_name, ""))
 	g_Scene.init(battle.areas_enable, battle.map)
 	for i in battle.country:
 		var country := _CCountry.new()
@@ -253,10 +250,10 @@ func _load_battle(file_name: String) -> void:
 		country.alliance = i.alliance
 		country.tax_factor = i.tax_factor
 		country.ai = i.ai
-		if _game_mode == 4:
+		if game_mode == 4:
 			# TODO: set up country for multiplayer
 			pass
-		elif _game_mode == 2:
+		elif game_mode == 2:
 			country.ai = country.id == _conquest_player_country_id
 		country.set_commander(i.commander)
 		country.money = i.money
@@ -328,15 +325,17 @@ func _set_player_country_name(player_no: int, value: String) -> void:
 
 
 func _init_camera_pos() -> void:
-	var country := _get_cur_country()
+	var country := get_cur_country()
 	if country != null:
 		var area := country.get_highest_value_area()
 		if area >= 0:
 			g_Scene.set_camera_to_area(area)
 
 
-func _get_cur_country() -> _CCountry:
-	return _all_country.get(_current_country)
+func get_cur_country() -> _CCountry:
+	if _current_country < 0 or _current_country >= _all_country.size():
+		return null
+	return _all_country[_current_country]
 
 
 func _real_load_game(file_name: String) -> void:
@@ -374,8 +373,12 @@ func _real_load_game(file_name: String) -> void:
 		_current_dialogue = save.current_dialogue
 		_battle = save.battle
 		_great_victory = save.great_victory
-		_victory = save.victory
-		_current_round = save.current_round
+		victory = save.victory
+		current_round = save.current_round
 		_random_reward_medal = save.random_reward_medal
 		g_Scene.camera.set_pos(save.camera_x, save.camera_y, false)
 		g_Scene.camera.scale = save.camera_scale
+
+
+func get_local_player_country() -> _CCountry:
+	return null

@@ -1,5 +1,10 @@
 [gd_scene format=3 uid="uid://duidx7fccd24k"]
 
+[ext_resource type="Script" uid="uid://dqrrdid4hwf8t" path="res://app/src/main/cpp/gui_gold.gd" id="1_oqevq"]
+[ext_resource type="Texture2D" uid="uid://dvv46qmkmke7j" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/asset_board.png.tres" id="1_qd3tg"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="2_oqevq"]
+[ext_resource type="Theme" uid="uid://c8j0lx6apqda5" path="res://app/src/main/cpp/scene_system_resource/font/g_num3.tres" id="3_w5fvc"]
+
 [node name="GUIGold" type="Control" unique_id=1663737891]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +12,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_oqevq")
+
+[node name="AssetBoard" type="Sprite2D" parent="." unique_id=183242673]
+texture = ExtResource("1_qd3tg")
+centered = false
+
+[node name="Money" parent="." unique_id=448162067 instance=ExtResource("2_oqevq")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 15.0
+offset_top = 3.0
+offset_right = 15.0
+offset_bottom = 3.0
+grow_horizontal = 1
+grow_vertical = 1
+theme = ExtResource("3_w5fvc")
+text = "0"
+color = Color(0.05882353, 0.14901961, 0.19607843, 1)
+spacing = Vector2i(-1, 0)
+
+[node name="Industry" parent="." unique_id=2125406580 instance=ExtResource("2_oqevq")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 60.0
+offset_top = 3.0
+offset_right = 60.0
+offset_bottom = 3.0
+grow_horizontal = 1
+grow_vertical = 1
+theme = ExtResource("3_w5fvc")
+text = "0"
+color = Color(0.05882353, 0.14901961, 0.19607843, 1)
+spacing = Vector2i(-1, 0)

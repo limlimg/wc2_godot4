@@ -147,3 +147,7 @@ func _create_image_texture(image_name: StringName, texture: _ecTexture, x: float
 
 func get_image(image_name: StringName) -> _ecImageAttr:
 	return _images.get(image_name)
+
+
+func get_keys() -> Array[StringName]:
+	return _images.keys()

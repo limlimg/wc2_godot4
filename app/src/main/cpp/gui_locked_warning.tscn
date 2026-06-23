@@ -36,6 +36,8 @@ grow_vertical = 2
 layout_mode = 2
 rect_ipad = Rect2(0, 0, 444, 252)
 rect = Rect2(0, 0, 222, 126)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="Control" type="Control" parent="CenterContainer/GUIRect" unique_id=1763780]
 layout_mode = 2
@@ -48,6 +50,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(-4, -4, 454, 262)
 rect = Rect2(-2, -2, 227, 131)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/GUIRect/Control/BoardLocked" unique_id=1447175027]
 layout_mode = 2
@@ -59,6 +63,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(32, 120, 0, 0)
 rect = Rect2(16, 60, 0, 0)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="ecText" parent="CenterContainer/GUIRect/Control/GUIRect2" unique_id=448162067 instance=ExtResource("3_k7wgp")]
 layout_mode = 2
@@ -75,4 +81,5 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_k7wgp")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3gx5n")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_flmrv")
 
+[connection signal="back_pressed" from="." to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

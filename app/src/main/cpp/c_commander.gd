@@ -11,19 +11,11 @@ const _CommanderData = preload("res://app/src/main/cpp/commander_data.gd")
 
 var _loaded := false
 var rank: int
-var medal := 50:
-	set(value):
-		if value != medal:
-			medal = value
-			medal_changed.emit(value)
-
-
+var medal := 50
 var _bought_medal := 0
 var war_medal: Array[int] = [0, 0, 0, 0, 0, 0]
 var _num_played_battles: Array[int] = [0, 0, 0, 0]
 var _num_battle_stars: Array[PackedInt32Array] = []
-
-signal medal_changed(medal: int)
 
 func _init() -> void:
 	_num_battle_stars.resize(4)

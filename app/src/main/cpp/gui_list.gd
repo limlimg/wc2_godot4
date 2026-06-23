@@ -64,6 +64,14 @@ func _add_scroll_vertial(delta: float) -> void:
 		overflow = _calc_overflow(delta, overflow, scroll.value, scroll_min, scroll_max)
 		$CTouchInertia/ScrollContainer.position.y = overflow
 		scroll.value = _calc_scroll(overflow, scroll_min, scroll_max)
+	else:
+		var overflow: float = $CTouchInertia/ScrollContainer.position.x
+		var scroll: Range = $CTouchInertia/ScrollContainer.get_h_scroll_bar()
+		var scroll_min := scroll.min_value
+		var scroll_max: float = max(scroll.max_value - size.x, scroll_min)
+		overflow = _calc_overflow(delta, overflow, scroll.value, scroll_min, scroll_max)
+		$CTouchInertia/ScrollContainer.position.x = overflow
+		scroll.value = _calc_scroll(overflow, scroll_min, scroll_max)
 
 
 func _calc_overflow(delta: float, cur_overflow: float, cur_scroll: float, scroll_min: float, scroll_max: float) -> float:

@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://dpsfyw86jcr6b"]
+
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_7qe7a"]
+[ext_resource type="Script" uid="uid://bejnfxf3l6swn" path="res://app/src/main/cpp/gui_card_tab.gd" id="1_v0u3k"]
+[ext_resource type="PackedScene" uid="uid://c5qvo6pghcxcm" path="res://app/src/main/cpp/gui_radio_button.tscn" id="2_u1whf"]
+[ext_resource type="Texture2D" uid="uid://ccwdb1amkkmjp" path="res://app/src/main/cpp/scene_system_resource/game_gui_res/label_groundforces.png.tres" id="3_v0u3k"]
+[ext_resource type="Texture2D" uid="uid://qbiq677q3gas" path="res://app/src/main/cpp/scene_system_resource/game_gui_res/label_navy.png.tres" id="4_kwj1r"]
+[ext_resource type="Texture2D" uid="uid://b088kga3l2p6k" path="res://app/src/main/cpp/scene_system_resource/game_gui_res/label_airforces.png.tres" id="5_16ddy"]
+[ext_resource type="Texture2D" uid="uid://p05ei6jsaxpi" path="res://app/src/main/cpp/scene_system_resource/game_gui_res/label_development.png.tres" id="6_nt8to"]
+[ext_resource type="Texture2D" uid="uid://0mcl7x85pdo7" path="res://app/src/main/cpp/scene_system_resource/game_gui_res/label_strategy.png.tres" id="7_u4bcw"]
+[ext_resource type="Texture2D" uid="uid://b8oufvok5xvg3" path="res://app/src/main/cpp/scene_system_resource/texture/board_paper.tres" id="8_u1whf"]
+
+[node name="GUICardTab" type="Control" unique_id=1481582815]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v0u3k")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=997040410]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 6
+
+[node name="Label" parent="HBoxContainer" unique_id=1576520916 instance=ExtResource("1_7qe7a")]
+layout_mode = 2
+rect_ipad = Rect2(75, 32, 60, 233)
+rect = Rect2(27, -8, 60, 233)
+
+[node name="Control" type="Control" parent="HBoxContainer/Label" unique_id=1340338748]
+layout_mode = 2
+
+[node name="GUIRadioButton" parent="HBoxContainer/Label/Control" unique_id=2034275630 instance=ExtResource("2_u1whf")]
+layout_mode = 1
+offset_top = -12.0
+offset_bottom = -12.0
+texture_normal = ExtResource("3_v0u3k")
+texture_pressed = ExtResource("3_v0u3k")
+
+[node name="Label2" parent="HBoxContainer" unique_id=1454037979 instance=ExtResource("1_7qe7a")]
+show_behind_parent = true
+layout_mode = 2
+rect_ipad = Rect2(75, 32, 60, 233)
+rect = Rect2(27, -8, 60, 233)
+
+[node name="Control" type="Control" parent="HBoxContainer/Label2" unique_id=725714055]
+layout_mode = 2
+
+[node name="GUIRadioButton" parent="HBoxContainer/Label2/Control" unique_id=311383481 instance=ExtResource("2_u1whf")]
+layout_mode = 1
+texture_normal = ExtResource("4_kwj1r")
+texture_pressed = ExtResource("4_kwj1r")
+
+[node name="Label3" parent="HBoxContainer" unique_id=1808712259 instance=ExtResource("1_7qe7a")]
+show_behind_parent = true
+layout_mode = 2
+rect_ipad = Rect2(75, 32, 60, 233)
+rect = Rect2(27, -8, 60, 233)
+
+[node name="Control" type="Control" parent="HBoxContainer/Label3" unique_id=913105062]
+layout_mode = 2
+
+[node name="GUIRadioButton" parent="HBoxContainer/Label3/Control" unique_id=478404264 instance=ExtResource("2_u1whf")]
+layout_mode = 1
+texture_normal = ExtResource("5_16ddy")
+texture_pressed = ExtResource("5_16ddy")
+
+[node name="Label4" parent="HBoxContainer" unique_id=1639855962 instance=ExtResource("1_7qe7a")]
+show_behind_parent = true
+layout_mode = 2
+rect_ipad = Rect2(75, 32, 60, 233)
+rect = Rect2(27, -8, 60, 233)
+
+[node name="Control" type="Control" parent="HBoxContainer/Label4" unique_id=353659524]
+layout_mode = 2
+
+[node name="GUIRadioButton" parent="HBoxContainer/Label4/Control" unique_id=116557806 instance=ExtResource("2_u1whf")]
+layout_mode = 1
+texture_normal = ExtResource("6_nt8to")
+texture_pressed = ExtResource("6_nt8to")
+
+[node name="Label5" parent="HBoxContainer" unique_id=131143633 instance=ExtResource("1_7qe7a")]
+show_behind_parent = true
+layout_mode = 2
+rect_ipad = Rect2(75, 32, 60, 233)
+rect = Rect2(27, -8, 60, 233)
+
+[node name="Control" type="Control" parent="HBoxContainer/Label5" unique_id=725394332]
+layout_mode = 2
+
+[node name="GUIRadioButton" parent="HBoxContainer/Label5/Control" unique_id=494849362 instance=ExtResource("2_u1whf")]
+layout_mode = 1
+selected = true
+texture_normal = ExtResource("7_u4bcw")
+texture_pressed = ExtResource("7_u4bcw")
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer" unique_id=1510180055]
+show_behind_parent = true
+texture = ExtResource("8_u1whf")
+centered = false
+
+[connection signal="pressed" from="HBoxContainer/Label/Control/GUIRadioButton" to="." method="_select_tab" binds= [0]]
+[connection signal="pressed" from="HBoxContainer/Label2/Control/GUIRadioButton" to="." method="_select_tab" binds= [1]]
+[connection signal="pressed" from="HBoxContainer/Label3/Control/GUIRadioButton" to="." method="_select_tab" binds= [2]]
+[connection signal="pressed" from="HBoxContainer/Label4/Control/GUIRadioButton" to="." method="_select_tab" binds= [3]]
+[connection signal="pressed" from="HBoxContainer/Label5/Control/GUIRadioButton" to="." method="_select_tab" binds= [4]]

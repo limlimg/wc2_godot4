@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d257pj86yi20b"]
+
+[ext_resource type="Script" uid="uid://del0kifu8jug0" path="res://app/src/main/cpp/scene_system_resource/game_res/ui_attack_army.gd" id="1_omnuu"]
+
+[node name="UIAttackArmy" type="Node2D" unique_id=1549378055]
+script = ExtResource("1_omnuu")

@@ -45,6 +45,8 @@ grow_horizontal = 1
 grow_vertical = 0
 rect_ipad = Rect2(0, 0, 40, 38)
 rect = Rect2(0, 0, 32, 30)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="GUIButton" parent="ButtonBack" unique_id=2034275630 instance=ExtResource("3_43u7i")]
 layout_mode = 2
@@ -61,6 +63,8 @@ grow_horizontal = 0
 grow_vertical = 0
 rect_ipad = Rect2(0, 0, 40, 38)
 rect = Rect2(0, 0, 32, 30)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="GUIButton" parent="ButtonOk" unique_id=254315075 instance=ExtResource("3_43u7i")]
 layout_mode = 2
@@ -91,6 +95,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(-491, -303, 360, 173)
 rect = Rect2(-242, -148, 180, 86)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="GUISaveItem" parent="Control/SaveItem" unique_id=84813601 instance=ExtResource("10_elaf6")]
 layout_mode = 2
@@ -112,6 +118,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(-491, -117, 360, 173)
 rect = Rect2(-242, -55, 180, 86)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="GUISaveItem" parent="Control/SaveItem2" unique_id=864049145 instance=ExtResource("10_elaf6")]
 layout_mode = 2
@@ -133,6 +141,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(-491, 69, 360, 173)
 rect = Rect2(-242, 38, 180, 86)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="GUISaveItem" parent="Control/SaveItem3" unique_id=205932105 instance=ExtResource("10_elaf6")]
 layout_mode = 2
@@ -154,6 +164,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(122, -303, 360, 173)
 rect = Rect2(62, -148, 180, 86)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="GUISaveItem" parent="Control/SaveItem4" unique_id=936653722 instance=ExtResource("10_elaf6")]
 layout_mode = 2
@@ -175,6 +187,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(122, -117, 360, 173)
 rect = Rect2(62, -55, 180, 86)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="GUISaveItem" parent="Control/SaveItem5" unique_id=1460200486 instance=ExtResource("10_elaf6")]
 layout_mode = 2
@@ -196,6 +210,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(122, 69, 360, 173)
 rect = Rect2(62, 38, 180, 86)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="GUISaveItem" parent="Control/SaveItem6" unique_id=2085961165 instance=ExtResource("10_elaf6")]
 layout_mode = 2
@@ -217,6 +233,8 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(-112, -214, 220, 412)
 rect = Rect2(-60, -74, 110, 206)
+gui_scale_ipad = Vector2(1, 1)
+gui_scale = Vector2(1, 1)
 
 [node name="GUIAutoSaveItem" parent="Control/AutoSaveItem" unique_id=559276820 instance=ExtResource("12_h7uv5")]
 layout_mode = 2
@@ -227,10 +245,3 @@ texture_pressed = ExtResource("13_ddbjm")
 
 [connection signal="pressed" from="ButtonBack/GUIButton" to="." method="_on_gui_button_back_pressed"]
 [connection signal="pressed" from="ButtonOk/GUIButton" to="." method="_on_gui_button_ok_pressed"]
-[connection signal="pressed" from="Control/SaveItem/GUISaveItem" to="." method="_on_gui_save_item_pressed" binds= [0]]
-[connection signal="pressed" from="Control/SaveItem2/GUISaveItem" to="." method="_on_gui_save_item_pressed" binds= [1]]
-[connection signal="pressed" from="Control/SaveItem3/GUISaveItem" to="." method="_on_gui_save_item_pressed" binds= [2]]
-[connection signal="pressed" from="Control/SaveItem4/GUISaveItem" to="." method="_on_gui_save_item_pressed" binds= [3]]
-[connection signal="pressed" from="Control/SaveItem5/GUISaveItem" to="." method="_on_gui_save_item_pressed" binds= [4]]
-[connection signal="pressed" from="Control/SaveItem6/GUISaveItem" to="." method="_on_gui_save_item_pressed" binds= [5]]
-[connection signal="pressed" from="Control/AutoSaveItem/GUIAutoSaveItem" to="." method="_on_gui_save_item_pressed" binds= [6]]

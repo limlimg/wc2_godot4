@@ -37,9 +37,10 @@ func _back_pressed() -> bool:
 
 
 func show_exit() -> void:
-	_displayed_menu = $GUIManager/GUIExitWarning.create_instance()
-	_displayed_menu.show()
-	_displayed_menu.cancelled.connect(_on_gui_exit_warning_cancelled)
+	if _displayed_menu == null:
+		_displayed_menu = $GUIManager/GUIExitWarning.create_instance()
+		_displayed_menu.show()
+		_displayed_menu.cancelled.connect(_on_gui_exit_warning_cancelled)
 
 
 func _on_gui_main_menu_sel_campaign_pressed(sel_campaign: int) -> void:
@@ -165,3 +166,4 @@ func _fade_out_back() -> void:
 
 func _on_gui_exit_warning_cancelled() -> void:
 	_displayed_menu.hide()
+	$GUIManager.safe_free_child(_displayed_menu)
