@@ -1,23 +1,16 @@
-[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://crietgngbpmjc"]
+[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://crietgngbpmjc"]
 
-[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_b8r7t"]
-[ext_resource type="Script" uid="uid://c0fyh1xdns125" path="res://app/src/main/cpp/scene_system_resource/ec_texture_assets.gd" id="2_dss62"]
-[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="3_huyud"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/scene_system_resource/asset_registry.gd" id="1_b8r7t"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="3_huyud"]
 
 [sub_resource type="Resource" id="Resource_dixvi"]
 script = ExtResource("1_b8r7t")
 name = "minimap1_1.pkm"
 name_ipad = "minimap1_1@2x.pkm"
-metadata/_custom_type_script = "uid://wmgv5whydq62"
-
-[sub_resource type="Resource" id="Resource_jhdni"]
-script = ExtResource("2_dss62")
-name = SubResource("Resource_dixvi")
-metadata/_custom_type_script = "uid://c0fyh1xdns125"
 
 [resource]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("3_huyud")
-preset = SubResource("Resource_jhdni")
+asset = SubResource("Resource_dixvi")
 metadata/_custom_type_script = "uid://cr8ksgysprxjq"

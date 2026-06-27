@@ -1,5 +1,5 @@
-
-## SetBlendMode is not implemented as neither is it for ecGraphics.
+@tool
+extends Node2D
 
 const _ecQuad = preload("res://app/src/main/cpp/ec_quad.gd")
 const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
@@ -7,220 +7,316 @@ const _ecTextureRect = preload("res://app/src/main/cpp/ec_texture_rect.gd")
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 
-var _texture: _ecTexture
-var _x: float
-var _y: float
-var _w: float
-var _h: float
-var _refx: float
-var _refy: float
-var _texture_w: float
-var _texture_h: float
+@export
+var texture: Texture2D:
+	set = set_texture
+
+
+@export
+var colors: PackedColorArray = [Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE]:
+	get():
+		colors.resize(4)
+		return colors
+	set(value):
+		if value != colors:
+			colors = value.duplicate()
+			colors.resize(4)
+			queue_redraw()
+
+
+@export
+var flip_h: bool:
+	set(value):
+		if value != flip_h:
+			flip_h = value
+			if flip_relative_to_origin:
+				_point_rect = _flip_points(_point_rect, true, false, true)
+			_uv_rect = _flip_points(_uv_rect, true, false, false)
+			queue_redraw()
+
+
+@export
+var flip_v: bool:
+	set(value):
+		if value != flip_v:
+			flip_v = value
+			if flip_relative_to_origin:
+				_point_rect = _flip_points(_point_rect, false, true, true)
+			_uv_rect = _flip_points(_uv_rect, false, true, false)
+			queue_redraw()
+
+
+@export
+var flip_relative_to_origin: bool:
+	set(value):
+		if value != flip_relative_to_origin:
+			flip_relative_to_origin = value
+			if flip_h:
+				_point_rect = _flip_points(_point_rect, true, false, true)
+			if flip_v:
+				_point_rect = _flip_points(_point_rect, false, true, true)
+			queue_redraw()
+
+
+@export
+var _point_rect: Rect2
+@export
+var _uv_rect: Rect2
 var _quad := _ecQuad.new()
-var _flip_x: bool
-var _flip_y: bool
-var _flip_ref: bool
 
-func _init(texture_or_attr, rect_or_x = null, y := 0.0, w := 0.0, h := 0.0) -> void:
-	if texture_or_attr is _ecImageAttr:
-		init_texture_xywh(texture_or_attr.texture, texture_or_attr.x,
-				texture_or_attr.y, texture_or_attr.w, texture_or_attr.h)
-		_refx = texture_or_attr.refx
-		_refy = texture_or_attr.refy
-	elif rect_or_x is _ecTextureRect:
-		init_texture_xywh(texture_or_attr, rect_or_x.x, rect_or_x.y,
-				rect_or_x.w, rect_or_x.h)
-		_refx = texture_or_attr.refx
-		_refy = texture_or_attr.refy
-	else:
-		init_texture_xywh(texture_or_attr, rect_or_x, y, w, h)
-
-
-func init_texture_xywh(texture: _ecTexture, x: float, y: float, w: float, h: float) -> void:
-	if texture == null:
-		_texture = null
-		_texture_w = 1.0
-		_texture_h = 1.0
-	else:
-		_texture = texture
-		_texture_w = texture.w
-		_texture_h = texture.h
-	_x = x
-	_y = y
-	_w = w
-	_h = h
-	_quad.colors.fill(Color.WHITE)
-	_quad.uvs[0] = Vector2(x / _texture_w, y / _texture_h)
-	_quad.uvs[1] = Vector2((x + w) / _texture_w, y / _texture_h)
-	_quad.uvs[2] = Vector2((x + w) / _texture_w, (y + h) / _texture_h)
-	_quad.uvs[3] = Vector2(x / _texture_w, (y + h) / _texture_h)
-	_flip_x = false
-	_flip_y = false
-	_flip_ref = false
-
-
-func init_attr(attr: _ecImageAttr) -> void:
-	init_texture_xywh(attr.texture, attr.x, attr.y, attr.w, attr.h)
-	_refx = attr.refx
-	_refy = attr.refy
-
-
-func _set_texture(value: _ecTexture) -> void:
-	if value != _texture:
-		var old_w = _texture_w
-		var old_h = _texture_h
-		if value == null:
-			_texture = null
-			_texture_w = 1.0
-			_texture_h = 1.0
+func init():
+	var x: float
+	var y: float
+	var w: float
+	var h: float
+	var refx: float
+	var refy: float
+	var texture_w: float
+	var texture_h: float
+	if texture is _ecImageAttr:
+		x = texture.region.position.x
+		y = texture.region.position.y
+		w = texture.region.size.x
+		h = texture.region.size.y
+		refx = texture.origin.x
+		refy = texture.origin.y
+		if texture.texture != null:
+			texture_w = texture.texture.get_width()
+			texture_h = texture.texture.get_height()
 		else:
-			_texture = value
-			_texture_w = value.size_override.x
-			_texture_h = value.size_override.y
-		var v := Vector2(old_w / _texture_w, old_h/ _texture_h)
-		_quad.uvs[0] *= v
-		_quad.uvs[1] *= v
-		_quad.uvs[2] *= v
-		_quad.uvs[3] *= v
+			texture_w = 1.0
+			texture_h = 1.0
+	else:
+		x = 0.0
+		y = 0.0
+		if texture != null:
+			w = texture.get_width()
+			texture_w = w
+			h = texture.get_height()
+			texture_h = h
+		else:
+			w = 1.0
+			h = 1.0
+			texture_w = 1.0
+			texture_h = 1.0
+		refx = 0.0
+		refy = 0.0
+	if texture != null:
+		_point_rect = Rect2(-refx, -refy, w, h)
+		_uv_rect = Rect2(x / texture_w, y / texture_h, w / texture_w, h / texture_h)
+		if flip_h:
+			if flip_relative_to_origin:
+				_flip_points(_point_rect, true, false, true)
+			_flip_points(_uv_rect, true, false, false)
+		if flip_v:
+			if flip_relative_to_origin:
+				_flip_points(_point_rect, false, true, true)
+			_flip_points(_uv_rect, false, true, false)
+	else:
+		_point_rect.size = Vector2.ZERO
+	queue_redraw()
+
+
+func set_texture(value: Texture2D) -> void:
+	if value != texture:
+		if texture != null:
+			texture.changed.disconnect(init)
+		texture = value
+		init()
+		if value != null:
+			value.changed.connect(init)
 
 
 func set_color(color: Color, vertice: int) -> void:
 	if vertice == -1:
-		_quad.colors.fill(color)
+		colors.fill(color)
 	else:
-		_quad.colors[vertice] = color
+		colors[vertice] = color
 
 
 func set_alpha(alpha: float, vertice: int) -> void:
 	if vertice == -1:
 		for i in 4:
-			_quad.colors[i].a = alpha
+			colors[i].a = alpha
 	else:
-		_quad.colors[vertice].a = alpha
+		colors[vertice].a = alpha
 
 
-func _set_flip(flip_x: bool, flip_y: bool, flip_ref: bool) -> void:
-	if _flip_ref:
-		if _flip_x:
-			_refx = _w - _refx
-		if _flip_y:
-			_refy = _h - _refy
-	_flip_ref = flip_ref
-	if flip_ref:
-		if flip_x:
-			_refx = _w - _refx
-		if flip_y:
-			_refy = _h - _refy
-	if flip_x != _flip_x:
-		_flip_x = flip_x
-		var v0 = _quad.uvs[0]
-		_quad.uvs[0] = _quad.uvs[1]
-		_quad.uvs[1] = v0
-		var v2 = _quad.uvs[2]
-		_quad.uvs[2] = _quad.uvs[3]
-		_quad.uvs[3] = v2
-	if flip_y != _flip_y:
-		_flip_y = flip_y
-		var v0 = _quad.uvs[0]
-		_quad.uvs[0] = _quad.uvs[3]
-		_quad.uvs[3] = v0
-		var v2 = _quad.uvs[2]
-		_quad.uvs[2] = _quad.uvs[1]
-		_quad.uvs[1] = v2
+func set_flip(flip_x: bool, flip_y: bool, flip_ref: bool) -> void:
+	flip_h = flip_x
+	flip_v = flip_y
+	flip_relative_to_origin = flip_ref
+
+
+func _flip_points(points: Rect2, flip_x: bool, flip_y: bool, flip_ref: bool) -> Rect2:
+	if flip_x:
+		var x := points.position.x
+		points.position.x = -points.end.x if flip_ref else points.end.x
+		points.end.x = -x if flip_ref else x
+	if flip_y:
+		var y := points.position.y
+		points.position.y = -points.end.y if flip_ref else points.end.y
+		points.end.y = -y if flip_ref else y
+	return points
 
 
 func _set_texture_xywh(x: float, y: float, w: float, h: float) -> void:
-	var flip_x := _flip_x
-	var flip_y := _flip_y
-	_flip_x = false
-	_flip_y = false
-	_quad.uvs[0] = Vector2(x / _texture_w, y / _texture_h)
-	_quad.uvs[1] = Vector2((x + w) / _texture_w, y / _texture_h)
-	_quad.uvs[2] = Vector2((x + w) / _texture_w, (y + h) / _texture_h)
-	_quad.uvs[3] = Vector2(x / _texture_w, (y + h) / _texture_h)
-	_set_flip(flip_x, flip_y, _flip_ref)
+	var new_attr := _ecImageAttr.new()
+	new_attr.texture = texture.texture if texture is _ecImageAttr else texture
+	new_attr.region.position.x = x
+	new_attr.region.position.y = y
+	new_attr.region.size.x = w
+	new_attr.region.size.y = h
+	texture = new_attr
 
 
 func _set_texture_rect(rect: _ecTextureRect) -> void:
-	_set_texture_xywh(rect.x, rect.y, rect.w, rect.h)
-	_refx = rect.refx
-	_refy = rect.refy
+	var new_attr := _ecImageAttr.new()
+	new_attr.texture = texture.texture if texture is _ecImageAttr else texture
+	new_attr.region = rect.region
+	new_attr.origin = rect.origin
+	texture = new_attr
+
+
+func _draw() -> void:
+	_ecGraphics.instance().render_begin(self)
+	render(0.0, 0.0)
+	_ecGraphics.instance().render_end()
 
 
 func render(x:float, y:float) -> void:
+	if texture == null:
+		return
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
+	_quad.points[0] = _point_rect.position + Vector2(x, y)
+	_quad.points[1] = Vector2(_point_rect.end.x, _point_rect.position.y) + Vector2(x, y)
+	_quad.points[2] = _point_rect.end + Vector2(x, y)
+	_quad.points[3] = Vector2(_point_rect.position.x, _point_rect.end.y) + Vector2(x, y)
+	_quad.colors[0] = colors[0]
+	_quad.colors[1] = colors[1]
+	_quad.colors[2] = colors[2]
+	_quad.colors[3] = colors[3]
+	_quad.uvs[0] = _uv_rect.position
+	_quad.uvs[1] = Vector2(_uv_rect.end.x, _uv_rect.position.y)
+	_quad.uvs[2] = _uv_rect.end
+	_quad.uvs[3] = Vector2(_uv_rect.position.x, _uv_rect.end.y)
 	var graphics := _ecGraphics.instance()
-	_quad.points[0] = Vector2(x - _refx, y - _refy)
-	_quad.points[1] = Vector2(x - _refx + _w, y - _refy)
-	_quad.points[2] = Vector2(x - _refx + _w, y - _refy + _h)
-	_quad.points[3] = Vector2(x - _refx, y - _refy + _h)
-	graphics.bind_texture(_texture)
+	graphics.bind_texture(texture.texture if texture is _ecImageAttr else texture)
 	graphics.render_quad(_quad)
 
 
-func render_xywh(x:float, y:float, w: float, h:float) -> void:
+func render_rect(x:float, y:float, w: float, h:float) -> void:
+	if texture == null:
+		return
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
+	_quad.points[0] = _point_rect.position + Vector2(x, y)
+	_quad.points[1] = _point_rect.position + Vector2(x + w, y)
+	_quad.points[2] = _point_rect.position + Vector2(x + w, y + h)
+	_quad.points[3] = _point_rect.position + Vector2(x, y + h)
+	_quad.colors[0] = colors[0]
+	_quad.colors[1] = colors[1]
+	_quad.colors[2] = colors[2]
+	_quad.colors[3] = colors[3]
+	_quad.uvs[0] = _uv_rect.position
+	_quad.uvs[1] = Vector2(_uv_rect.end.x, _uv_rect.position.y)
+	_quad.uvs[2] = _uv_rect.end
+	_quad.uvs[3] = Vector2(_uv_rect.position.x, _uv_rect.end.y)
 	var graphics := _ecGraphics.instance()
-	_quad.points[0] = Vector2(x - _refx, y - _refy)
-	_quad.points[1] = Vector2(x - _refx + w, y - _refy)
-	_quad.points[2] = Vector2(x - _refx + w, y - _refy + h)
-	_quad.points[3] = Vector2(x - _refx, y - _refy + h)
-	graphics.bind_texture(_texture)
+	graphics.bind_texture(texture.texture if texture is _ecImageAttr else texture)
+	graphics.render_quad(_quad)
+
+
+func render_tile(x:float, y:float, w: float, h:float) -> void:
+	if texture == null:
+		return
+	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
+	_quad.points[0] = _point_rect.position + Vector2(x, y)
+	_quad.points[1] = _point_rect.position + Vector2(x + w, y)
+	_quad.points[2] = _point_rect.position + Vector2(x + w, y + h)
+	_quad.points[3] = _point_rect.position + Vector2(x, y + h)
+	_quad.colors[0] = colors[0]
+	_quad.colors[1] = colors[1]
+	_quad.colors[2] = colors[2]
+	_quad.colors[3] = colors[3]
+	_quad.uvs[0] = _uv_rect.position
+	_quad.uvs[1] = Vector2(_uv_rect.end.x, _uv_rect.position.y)
+	_quad.uvs[2] = _uv_rect.end
+	_quad.uvs[3] = Vector2(_uv_rect.position.x, _uv_rect.end.y)
+	var graphics := _ecGraphics.instance()
+	graphics.bind_texture(texture.texture if texture is _ecImageAttr else texture)
 	graphics.render_quad(_quad)
 
 
 func render_ex(x:float, y:float, rotation_rad: float, x_scale: float, y_scale: float) -> void:
+	if texture == null:
+		return
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
-	var graphics := _ecGraphics.instance()
 	if y_scale == 0.0:
 		y_scale = x_scale
-	var w := _w * x_scale
-	var h := _h * y_scale
-	var refx := _refx * x_scale
-	var refy := _refy * y_scale
-	var pos := Vector2(x, y)
-	var v0 := Vector2( -refx, - refy)
-	var v1 := Vector2( -refx + w, - refy)
-	var v2 := Vector2( -refx + w, - refy + h)
-	var v3 := Vector2( -refx, - refy + h)
-	if rotation_rad != 0.0:
-		v0 = v0.rotated(rotation_rad)
-		v1 = v1.rotated(rotation_rad)
-		v2 = v2.rotated(rotation_rad)
-		v3 = v3.rotated(rotation_rad)
-	_quad.points[0] = pos + v0
-	_quad.points[1] = pos + v1
-	_quad.points[2] = pos + v2
-	_quad.points[3] = pos + v3
-	graphics.bind_texture(_texture)
+	var ex_transform := Transform2D.IDENTITY.scaled(Vector2(x_scale, y_scale)).rotated(rotation_rad).translated(Vector2(x, y))
+	_quad.points[0] = ex_transform * _point_rect.position
+	_quad.points[1] = ex_transform * Vector2(_point_rect.end.x, _point_rect.position.y)
+	_quad.points[2] = ex_transform * _point_rect.end
+	_quad.points[3] = ex_transform * Vector2(_point_rect.position.x, _point_rect.end.y)
+	_quad.colors[0] = colors[0]
+	_quad.colors[1] = colors[1]
+	_quad.colors[2] = colors[2]
+	_quad.colors[3] = colors[3]
+	_quad.uvs[0] = _uv_rect.position
+	_quad.uvs[1] = Vector2(_uv_rect.end.x, _uv_rect.position.y)
+	_quad.uvs[2] = _uv_rect.end
+	_quad.uvs[3] = Vector2(_uv_rect.position.x, _uv_rect.end.y)
+	var graphics := _ecGraphics.instance()
+	graphics.bind_texture(texture.texture if texture is _ecImageAttr else texture)
 	graphics.render_quad(_quad)
 
 
-func _render_stretch(x1:float, y1:float, x2: float, y2:float) -> void:
+func render_stretch(x1:float, y1:float, x2: float, y2:float) -> void:
+	if texture == null:
+		return
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
-	var graphics := _ecGraphics.instance()
 	_quad.points[0] = Vector2(x1, y1)
 	_quad.points[1] = Vector2(x2, y1)
 	_quad.points[2] = Vector2(x2, y2)
 	_quad.points[3] = Vector2(x1, y2)
-	graphics.bind_texture(_texture)
+	_quad.colors[0] = colors[0]
+	_quad.colors[1] = colors[1]
+	_quad.colors[2] = colors[2]
+	_quad.colors[3] = colors[3]
+	_quad.uvs[0] = _uv_rect.position
+	_quad.uvs[1] = Vector2(_uv_rect.end.x, _uv_rect.position.y)
+	_quad.uvs[2] = _uv_rect.end
+	_quad.uvs[3] = Vector2(_uv_rect.position.x, _uv_rect.end.y)
+	var graphics := _ecGraphics.instance()
+	graphics.bind_texture(texture.texture if texture is _ecImageAttr else texture)
 	graphics.render_quad(_quad)
 
 
-func _render_4v(x0:float, y0:float, x1:float, y1:float, x2: float, y2:float, x3: float, y3:float) -> void:
+func render_4v(x0:float, y0:float, x1:float, y1:float, x2: float, y2:float, x3: float, y3:float) -> void:
+	if texture == null:
+		return
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
-	var graphics := _ecGraphics.instance()
 	_quad.points[0] = Vector2(x0, y0)
 	_quad.points[1] = Vector2(x1, y1)
 	_quad.points[2] = Vector2(x2, y2)
 	_quad.points[3] = Vector2(x3, y3)
-	graphics.bind_texture(_texture)
+	_quad.colors[0] = colors[0]
+	_quad.colors[1] = colors[1]
+	_quad.colors[2] = colors[2]
+	_quad.colors[3] = colors[3]
+	_quad.uvs[0] = _uv_rect.position
+	_quad.uvs[1] = Vector2(_uv_rect.end.x, _uv_rect.position.y)
+	_quad.uvs[2] = _uv_rect.end
+	_quad.uvs[3] = Vector2(_uv_rect.position.x, _uv_rect.end.y)
+	var graphics := _ecGraphics.instance()
+	graphics.bind_texture(texture.texture if texture is _ecImageAttr else texture)
 	graphics.render_quad(_quad)
 
 
 func render_4vc(x0:float, y0:float, x1:float, y1:float, x2: float, y2:float, x3: float, y3:float, b: int, c: float) -> void:
+	if texture == null:
+		return
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
-	var graphics := _ecGraphics.instance()
 	if c < 1.0:
 		_quad.points[0] = Vector2(x3, y3) + (Vector2(x0, y0) - Vector2(x3, y3)) * c
 		_quad.points[1] = Vector2(x2, y2) + (Vector2(x1, y1) -  Vector2(x2, y2)) * c
@@ -229,8 +325,8 @@ func render_4vc(x0:float, y0:float, x1:float, y1:float, x2: float, y2:float, x3:
 			_quad.colors[2].a = 0.0
 			_quad.colors[3].a = 0.0
 		elif b == 1:
-			_quad.colors[0] = Color.from_rgba8(0x77, 0, 0, 0)
-			_quad.colors[1] = Color.from_rgba8(0x77, 0, 0, 0)
+			_quad.colors[0] = Color.from_rgba8(0, 0, 0, 0x77)
+			_quad.colors[1] = Color.from_rgba8(0, 0, 0, 0x77)
 			_quad.colors[2] = Color.from_rgba8(0, 0, 0, 0)
 			_quad.colors[3] = Color.from_rgba8(0, 0, 0, 0)
 	else:
@@ -238,17 +334,22 @@ func render_4vc(x0:float, y0:float, x1:float, y1:float, x2: float, y2:float, x3:
 		_quad.points[1] = Vector2(x1, y1)
 		var a := absf(1.0 - 2 * (c - 1.0))
 		if b == 0:
-			_quad.colors[0] = Color(a, 1.0, 1.0, 1.0)
-			_quad.colors[1] = Color(a, 1.0, 1.0, 1.0)
-			_quad.colors[2] = Color(0.0, 1.0, 1.0, 1.0)
-			_quad.colors[3] = Color(0.0, 1.0, 1.0, 1.0)
+			_quad.colors[0] = Color(1.0, 1.0, 1.0, a)
+			_quad.colors[1] = Color(1.0, 1.0, 1.0, a)
+			_quad.colors[2] = Color(1.0, 1.0, 1.0, 0.0)
+			_quad.colors[3] = Color(1.0, 1.0, 1.0, 0.0)
 		elif b == 1:
 			var a8 = (0x77 * a) as int
-			_quad.colors[0] = Color.from_rgba8(a8, 0, 0, 0)
-			_quad.colors[1] = Color.from_rgba8(a8, 0, 0, 0)
+			_quad.colors[0] = Color.from_rgba8(0, 0, 0, a8)
+			_quad.colors[1] = Color.from_rgba8(0, 0, 0, a8)
 			_quad.colors[2] = Color.from_rgba8(0, 0, 0, 0)
 			_quad.colors[3] = Color.from_rgba8(0, 0, 0, 0)
 	_quad.points[2] = Vector2(x2, y2)
 	_quad.points[3] = Vector2(x3, y3)
-	graphics.bind_texture(_texture)
+	_quad.uvs[0] = _uv_rect.position
+	_quad.uvs[1] = Vector2(_uv_rect.end.x, _uv_rect.position.y)
+	_quad.uvs[2] = _uv_rect.end
+	_quad.uvs[3] = Vector2(_uv_rect.position.x, _uv_rect.end.y)
+	var graphics := _ecGraphics.instance()
+	graphics.bind_texture(texture.texture if texture is _ecImageAttr else texture)
 	graphics.render_quad(_quad)

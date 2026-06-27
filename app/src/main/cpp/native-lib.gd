@@ -1,3 +1,4 @@
+extends Node
 
 const _Context = preload("res://core/java/android/content/context.gd")
 const _AssetManager = preload("res://core/java/android/content/res/asset_manager.gd")
@@ -15,18 +16,18 @@ const _Belligerent = preload("res://app/src/main/cpp/belligerent.gd")
 const _SaveHeader = preload("res://app/src/main/cpp/save_header.gd")
 const _SaveCountryInfo = preload("res://app/src/main/cpp/save_country_info.gd")
 
-static var asset_mgr: _AssetManager
+static var _asset_mgr: _AssetManager
 static var _str_version_name: String
 static var _document_file_path: String
 static var _lang_dir: String
 
 static func Java_com_easytech_wc2_Wc2Activity_nativeSetPaths(_context: _Context, asset_manager: _AssetManager, data_dir: String, lang_dir: String, version: String) -> void:
 	# NOTTODO: store reference to classloader
-	asset_mgr = asset_manager
+	_asset_mgr = asset_manager
 	_str_version_name = version
 	_set_document_path(data_dir)
 	_set_lang_dir(lang_dir)
-	get_path("Localizable.strings", "") # Part of the original game code but I don't think it does anything
+	get_asset_path("Localizable.strings", "") # Part of the original game code but I don't think it does anything
 
 
 static func _set_document_path(path: String) -> void:
@@ -47,29 +48,29 @@ static func get_2x_path(file_name: String, _a2: String) -> String:
 	while i != -1:
 		file_2x_name = file_name.insert(i, "@2x")
 		i = file_name.find('.', i + 1)
-	return get_path(file_2x_name, _a2)
+	return get_asset_path(file_2x_name, _a2)
 
-
-static func get_path(file_name: String, _a2: String) -> String:
-	var path := file_name
-	if ResourceLoader.exists(path):
-		return path
-	else:
-		path = _lang_dir + '/' + file_name
-		if ResourceLoader.exists(path):
-			return path
+## renamed from get_path due to conflict with Engine method
+static func get_asset_path(asset_name: String, extension: String) -> String:
+	if not asset_name.is_empty():
+		if not extension.is_empty():
+			asset_name = asset_name + "." + extension
+		if ResourceLoader.exists(asset_name):
+			return asset_name
 		else:
-			return ""
-
-
-## get_path often get shadowed by Script
-static func get_path_alias(file_name: String, _a2: String) -> String:
-	return get_path(file_name, _a2)
+			var path := _lang_dir + '/' + asset_name
+			if ResourceLoader.exists(path):
+				return path
+			else:
+				return ""
+	elif not extension.is_empty():
+		for i in _asset_mgr.list(""):
+			if i.get_extension() == extension:
+				return i
+	return ""
 
 
 static var g_content_scale_factor := 1.0
-static var g_localizable_strings := _ecStringTable.new()
-static var g_string_table := _ecStringTable.new()
 static var g_font1: _ecUniFont
 static var g_font2: _ecUniFont
 static var g_font3: _ecUniFont
@@ -119,19 +120,19 @@ static func _ec_game_init(content_scale_width: int, content_scale_height: int, o
 	_CStateManager.instance().init()
 	# NOTTODO: register states
 	# set initial state as the main scene
-	g_localizable_strings.load_table("Localizable.strings")
+	g_LocalizableStrings.load_table("Localizable.strings")
 	var string_table_key: StringName
 	if _ecGraphics.instance().content_scale_size_mode == 3:
 		string_table_key = &"stringtable iPad"
 	else:
 		string_table_key = &"stringtable"
-	var string_table_name := g_localizable_strings.get_string(string_table_key)
-	g_string_table.load_table(string_table_name)
+	var string_table_name := g_LocalizableStrings.get_string(string_table_key)
+	g_StringTable.load_table(string_table_name)
 	_CObjectDef.instance().init()
 	g_Commander.load()
 	_CSoundBox.get_instance().load_se("btn.wav")
 	#g_font1.init("font1.fnt", false)
-	#var language := g_localizable_strings.get_string("language")
+	#var language := g_LocalizableStrings.get_string("language")
 	#if _ecGraphics.instance().content_scale_size_mode == 3:
 		#g_font2.init("font2_{0}_hd.fnt".format([language]), false)
 		#g_font3.init("font3_{0}_hd.fnt".format([language]), false)
@@ -240,8 +241,8 @@ static func _ec_game_shutdown() -> void:
 	_ecGraphics.instance().shutdown()
 	_CSoundBox.destroy()
 	_CObjectDef.instance().destroy()
-	g_string_table.clear()
-	g_localizable_strings.clear()
+	g_StringTable.clear()
+	g_LocalizableStrings.clear()
 
 
 static func end_jni() -> void:
@@ -414,18 +415,62 @@ static func _ec_touch_end(x: float, y: float, index: int) -> void:
 		_CStateManager.instance().touch_end(x, y, index)
 
 
+static var _texture_with_string_queue: Array[Callable]
+static var _texture_with_string_viewport: SubViewport
+static var _texture_with_string_label: Label
+
 static func ec_texture_with_string(string: String, font_name: String, font_size: int, alignment: int, width: int, height: int) -> _ecTexture:
-	# Implemented by Label node
-	return null
+	if _texture_with_string_viewport == null:
+		_texture_with_string_viewport = SubViewport.new()
+		_texture_with_string_label = Label.new()
+		_texture_with_string_label.autowrap_mode = TextServer.AUTOWRAP_WORD
+		_texture_with_string_viewport.add_child(_texture_with_string_label)
+		(Engine.get_main_loop() as SceneTree).root.add_child(_texture_with_string_viewport)
+	var texture := ImageTexture.new()
+	_texture_with_string_queue.push_back(func ():
+		_texture_with_string_viewport.size = Vector2i(width, height)
+		_texture_with_string_label.text = string
+		_texture_with_string_label.get_theme_font(&"font").font_names = [font_name]
+		_texture_with_string_label.remove_theme_font_size_override(&"font_size")
+		_texture_with_string_label.add_theme_font_size_override(&"font_size", font_size)
+		match alignment:
+			1:
+				_texture_with_string_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+			2:
+				_texture_with_string_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			_:
+				_texture_with_string_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+		_texture_with_string_label.draw.connect(func ():
+			texture.set_image(_texture_with_string_viewport.get_texture().get_image())
+			if not _texture_with_string_queue.is_empty():
+				_texture_with_string_queue.pop_front().call()
+			, CONNECT_DEFERRED | CONNECT_ONE_SHOT)
+		)
+	if _texture_with_string_queue.is_empty():
+		_texture_with_string_queue.pop_front().call()
+	var _ec_texture := _ecTexture.new()
+	_ec_texture.texture = texture
+	_ec_texture.w = width
+	_ec_texture.h = height
+	return _ec_texture
 
 
 static func ec_texture_load(texture_name: String) -> _ecTexture:
 	var path := ""
-	if g_content_scale_factor == 2.0:
-		path = get_2x_path(texture_name, "")
-	var is_2x := not path.is_empty()
-	if not is_2x:
-		path = get_path(texture_name, "")
+	var is_2x: bool
+	if not Engine.is_editor_hint():
+		if g_content_scale_factor == 2.0:
+			path = get_2x_path(texture_name, "")
+		is_2x = not path.is_empty()
+		if not is_2x:
+			path = get_asset_path(texture_name, "")
+	else:
+		path = get_asset_path(texture_name, "")
+		is_2x = path.is_empty()
+		if is_2x:
+			path = get_2x_path(texture_name, "")
+	if not ResourceLoader.exists(path):
+		return null
 	var texture := load(path) as Texture2D
 	if texture == null:
 		if not texture_name.ends_with(".png"):
@@ -435,11 +480,11 @@ static func ec_texture_load(texture_name: String) -> _ecTexture:
 	var ec_texture := _ecTexture.new()
 	ec_texture.texture = texture
 	if is_2x:
-		ec_texture.w = texture.get_width() / 2.0
-		ec_texture.h = texture.get_height() / 2.0
+		ec_texture.size_override.x = texture.get_width() / 2.0
+		ec_texture.size_override.y = texture.get_height() / 2.0
 	else:
-		ec_texture.w = texture.get_width()
-		ec_texture.h = texture.get_height()
+		ec_texture.size_override.x = texture.get_width()
+		ec_texture.size_override.y = texture.get_height()
 	return ec_texture
 
 
@@ -500,7 +545,7 @@ static var _dynamic_num_battles: Array[int]
 static func get_num_battles(campaign: int) -> int:
 	while _dynamic_num_battles.size() <= campaign:
 		var i = 0
-		while not get_path(get_battle_file_name(1, campaign, i), "").is_empty():
+		while not get_asset_path(get_battle_file_name(1, campaign, i), "").is_empty():
 			i += 1
 		_dynamic_num_battles.append(i)
 	return _dynamic_num_battles[campaign]
@@ -547,7 +592,7 @@ static func get_conquest_key_name(conquest: int) -> String:
 
 
 static func get_battle_belligerent_list(battle_file_name: String, include_ai: bool) -> Array[_Belligerent]:
-	var battle: SaveHeader = load(get_path(battle_file_name, ""))
+	var battle: SaveHeader = load(get_asset_path(battle_file_name, ""))
 	var result: Array[_Belligerent]
 	for i in battle.country:
 		if i.alliance != 4 and (include_ai or not i.ai):

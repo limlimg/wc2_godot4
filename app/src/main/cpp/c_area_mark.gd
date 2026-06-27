@@ -1,8 +1,10 @@
-extends "res://app/src/main/cpp/native-lib.gd"
+extends Resource
 
 ## The .raw file is imported as Image and it is also possible to use an actual
 ## image. Open raw_color_calculator.tres in assets tools in the inspector to see
 ## the color schema.
+
+const _lib = preload("res://app/src/main/cpp/native-lib.gd")
 
 var mark_size := Vector2i(8, 8)
 var _pattern_size: Vector2i
@@ -10,7 +12,7 @@ var _pattern: Image
 
 func init(map: int) -> void:
 	release()
-	_pattern = load(get_path("areamark{0}.raw".format([map]), "")) as Image
+	_pattern = load(_lib.get_asset_path("areamark{0}.raw".format([map]), "")) as Image
 	if _pattern == null:
 		return
 	_pattern_size = _pattern.get_size()

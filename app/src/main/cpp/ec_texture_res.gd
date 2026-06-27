@@ -1,4 +1,6 @@
-extends "res://app/src/main/cpp/native-lib.gd"
+@tool
+class_name ecTextureRes
+extends Resource
 
 ## ecTextureRes stores collections of texture atlas. Image definitions from
 ## multiple .xml files can be merged by calling load_res multiple times.
@@ -15,139 +17,77 @@ extends "res://app/src/main/cpp/native-lib.gd"
 ## as texture and specify the source ecTextureRes, the second patameter of
 ## load_res and the name of the image.
 
+const _AssetRegistry = preload("res://app/src/main/cpp/scene_system_resource/asset_registry.gd")
 const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
-const _ecTextureRes = preload("res://app/src/main/cpp/imported_containers/ec_texture_res.gd")
+const _lib = preload("res://app/src/main/cpp/native-lib.gd")
 
-var _textures: Dictionary[StringName, _ecTexture]
-var _images: Dictionary[StringName, _ecImageAttr]
+@export
+var assets: Array[_AssetRegistry]:
+	set(value):
+		#if value != assets:
+			var _cache_images = images
+			images = {}
+			assets = value
+			for i in value:
+				if i == null:
+					continue
+				if Engine.is_editor_hint():
+					if not load_res(i.name, false):
+						load_res(i.name_hd, true)
+				else:
+					var name := i.get_resolved_name()
+					if not name.is_empty():
+						load_res(name, i.is_hd())
+			notify_property_list_changed()
+
+
+@export
+var images: Dictionary[StringName, _ecImageAttr]:
+	set(value):
+		if value != images:
+			images = value
+			emit_changed()
+
+
+func _validate_property(property: Dictionary) -> void:
+	if not assets.is_empty() and property.name == "images":
+		property.usage &= ~PROPERTY_USAGE_STORAGE
+		property.usage |= PROPERTY_USAGE_READ_ONLY
+
 
 func release() -> void:
-	var graphics := _ecGraphics.instance()
-	for i in _textures.keys():
-		graphics.free_texture(i)
-	_textures.clear()
-	_images.clear()
+	images.clear()
 
 
 func load_res(file_name: String, hd: bool) -> bool:
-	var path := get_path(file_name, "")
-	var res := load(path) as _ecTextureRes
+	var path := _lib.get_asset_path(file_name, "")
+	if path.is_empty():
+		return false
+	var res := load(path) as ecTextureRes
 	if res == null:
 		push_error("Failed to load {0}".format([file_name]))
 		return false
-	var texture := _create_texture(res.texture_name)
-	if texture == null:
-		push_error("Failed to load {0}".format([res.texture_name]))
-		return false
-	if hd and texture.res_scale == 1.0:
-		texture.w /= 2.0
-		texture.h /= 2.0
-		texture.res_scale = 2.0
-	for k in res.images.keys():
-		var image := res.images[k]
-		var x: float
-		var y: float
-		var w: float
-		var h: float
-		var refx: float
-		var refy: float
-		if hd:
-			x = image.x / 2.0
-			y = image.y / 2.0
-			w = image.w / 2.0
-			h = image.h / 2.0
-			refx = image.refx / 2.0
-			refy = image.refy / 2.0
-		else:
-			x = image.x
-			y = image.y
-			w = image.w
-			h = image.h
-			refx = image.refx
-			refy = image.refy
-		_create_image_texture(k, texture, x, y, w, h, refx, refy)
+	var add_images := res.images
+	if hd:
+		for k in res.images.keys():
+			if k in images:
+				continue
+			var hd_attr := res.images[k].duplicate()
+			if hd_attr.texture.res_scale == 1.0:
+				hd_attr.texture.size_override /= 2.0
+				hd_attr.texture.res_scale = 2.0
+			hd_attr.region.position /= 2
+			hd_attr.region.size /= 2
+			hd_attr.origin /= 2
+			images[k] = hd_attr
+	else:
+		images.merge(add_images)
 	return true
 
 
-func unload_res(file_name: String) -> void:
-	var path := get_path(file_name, "")
-	var res := load(path) as _ecTextureRes
-	if res == null:
-		push_error("Failed to load {0}".format([file_name]))
-		return
-	for k in res.images.keys():
-		_images.erase(k)
-
-
-## In the original game code, this method has more parameters to specify the
-## format of the texture.
-func _create_texture(texture_name: String) -> _ecTexture:
-	var texture: _ecTexture = _textures.get(texture_name)
-	if texture == null:
-		if Engine.is_editor_hint():
-			texture = ec_texture_load(texture_name)
-			texture.res_scale = 1.0
-		else:
-			texture = _ecGraphics.instance().load_texture(texture_name)
-		_textures[texture_name] = texture
-	return texture
-
-
-func _release_texture(texture_name: String) -> void:
-	var texture: Texture2D = _textures.get(texture_name)
-	if texture == null:
-		return
-	_textures.erase(texture_name)
-	if not Engine.is_editor_hint():
-		_ecGraphics.instance().free_texture(texture_name)
-
-
-func _get_texture(texture_name: String) -> _ecTexture:
-	return _textures.get(texture_name)
-
-
-func _create_image_texture_name(image_name: StringName, texture_name: String, x: float,
- 		y: float, w: float, h: float, refx: float, refy: float) -> _ecImageAttr:
-	var image: _ecImageAttr = _images.get(image_name)
-	if image != null:
-		return image
-	var texture := _get_texture(texture_name)
-	if texture == null:
-		texture = _create_texture(texture_name)
-	if texture == null:
-		return null
-	image = _ecImageAttr.new()
-	image.texture = texture
-	image.x = x
-	image.y = y
-	image.w = w
-	image.h = h
-	image.refx = refx
-	image.refy = refy
-	_images[image_name] = image
-	return image
-
-
-func _create_image_texture(image_name: StringName, texture: _ecTexture, x: float,
- 		y: float, w: float, h: float, refx: float, refy: float) -> _ecImageAttr:
-	var image: _ecImageAttr = _images.get(image_name)
-	if image != null:
-		return image
-	image = _ecImageAttr.new()
-	image.texture = texture
-	image.x = x
-	image.y = y
-	image.w = w
-	image.h = h
-	image.refx = refx
-	image.refy = refy
-	_images[image_name] = image
-	return image
-
-
 func get_image(image_name: StringName) -> _ecImageAttr:
-	return _images.get(image_name)
+	return images.get(image_name)
 
 
 func get_keys() -> Array[StringName]:
-	return _images.keys()
+	return images.keys()

@@ -1,6 +1,5 @@
-extends Node
+extends "res://app/src/main/cpp/native-lib.gd"
 
-const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 const _SndEffect = preload("res://app/src/main/cpp/snd_effect.gd").SND_EFFECT
 
 const _SND_FILE = [

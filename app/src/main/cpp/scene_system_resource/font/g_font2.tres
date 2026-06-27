@@ -1,8 +1,7 @@
-[gd_resource type="Theme" script_class="ecUniFontAssets" format=3 uid="uid://duqavds7qrws2"]
+[gd_resource type="Theme" script_class="ecUniFont" format=3 uid="uid://duqavds7qrws2"]
 
-[ext_resource type="Script" uid="uid://bbkwpdgd20wlc" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size_hd.gd" id="1_vlwor"]
-[ext_resource type="FontFile" path="res://font2_en_hd.fnt" id="2_4ev0y"]
-[ext_resource type="Script" uid="uid://dynr8tgq0gv3y" path="res://app/src/main/cpp/scene_system_resource/ec_uni_font_assets.gd" id="2_gi13x"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/scene_system_resource/asset_registry.gd" id="1_vlwor"]
+[ext_resource type="Script" uid="uid://ckk2mqlehxynn" path="res://app/src/main/cpp/ec_uni_font.gd" id="2_gi13x"]
 
 [sub_resource type="Resource" id="Resource_4ev0y"]
 script = ExtResource("1_vlwor")
@@ -12,7 +11,5 @@ name_ipad = "font2_en_hd.fnt"
 metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
 
 [resource]
-default_font = ExtResource("2_4ev0y")
-default_font_size = 13
 script = ExtResource("2_gi13x")
-asset_names = SubResource("Resource_4ev0y")
+asset = SubResource("Resource_4ev0y")

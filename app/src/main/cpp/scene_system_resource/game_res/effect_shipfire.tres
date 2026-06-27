@@ -1,14 +1,12 @@
-[gd_resource type="Resource" script_class="ecEffectResAssets" format=3 uid="uid://s4ltj382igco"]
+[gd_resource type="Resource" script_class="ecEffectRes" format=3 uid="uid://s4ltj382igco"]
 
-[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_m0mbx"]
-[ext_resource type="Script" uid="uid://dutn8t40au8eq" path="res://app/src/main/cpp/scene_system_resource/ec_effect_res_assets.gd" id="2_u5wbh"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/scene_system_resource/asset_registry.gd" id="1_m0mbx"]
+[ext_resource type="Script" uid="uid://db5ial1i1vdli" path="res://app/src/main/cpp/ec_effect_res.gd" id="2_u5wbh"]
 
 [sub_resource type="Resource" id="Resource_u5wbh"]
 script = ExtResource("1_m0mbx")
 name = "effect_shipfire.xml"
-metadata/_custom_type_script = "uid://wmgv5whydq62"
 
 [resource]
 script = ExtResource("2_u5wbh")
-asset_name = SubResource("Resource_u5wbh")
-metadata/_custom_type_script = "uid://dutn8t40au8eq"
+asset = SubResource("Resource_u5wbh")

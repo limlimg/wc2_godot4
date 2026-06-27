@@ -1,7 +1,5 @@
 extends "res://app/src/main/cpp/gui_element.gd"
 
-const _ecTextureResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd")
-const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
 
 const _INSTALLATION_STAMP = [
@@ -12,7 +10,7 @@ const _INSTALLATION_STAMP = [
 ]
 
 @export
-var texture_res: _ecTextureResAssets
+var texture_res: _ecTextureRes
 
 @export
 var money := 0:
@@ -28,7 +26,7 @@ func set_area(id: int) -> void:
 	set_industry(area.get_industry())
 	var installation = area.installation
 	if installation > 0:
-		$Installation.texture = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image(_INSTALLATION_STAMP[installation]))
+		$Installation.texture = texture_res.get_res().get_image(_INSTALLATION_STAMP[installation])
 	else:
 		$Installation.texture = null
 	if area.has_army_card(3):
@@ -45,13 +43,13 @@ func set_area(id: int) -> void:
 				if photo != null:
 					photo_name = photo.filename
 					photo_name = photo_name.substr(0, photo_name.rfind(".")) + ".png"
-				$WithCommander/Commander.texture = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image(photo_name))
+				$WithCommander/Commander.texture = texture_res.get_image(photo_name)
 				$WithCommander/IsAI/AICommanderMedal.country = country.name
 				$WithCommander/IsAI/AICommanderMedal.common = country.alliance
 		else:
 			$WithCommander/IsAI.visible = false
 			$WithCommander/NotAI.visible = true
-			$WithCommander/Commander.texture = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image("general_player.png"))
+			$WithCommander/Commander.texture = texture_res.get_image("general_player.png")
 			$WithCommander/NotAI/CommanderMedal.commander_level = country.get_commander_level()
 	else:
 		$WithCommander.visible = false

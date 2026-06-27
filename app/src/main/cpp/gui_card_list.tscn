@@ -16,21 +16,21 @@ script = ExtResource("1_n3f07")
 
 [node name="GUIList" parent="." unique_id=339150278 instance=ExtResource("1_v5t7c")]
 layout_mode = 1
+vertical = false
+separation_ipad = 10
+separation = 13
 
-[node name="Prototype" type="Control" parent="." unique_id=890431410]
+[node name="Factory" type="Control" parent="." unique_id=890431410]
 visible = false
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
-[node name="GUICard" parent="Prototype" unique_id=1045311831 instance=ExtResource("4_835vt")]
+[node name="GUICard" parent="Factory" unique_id=1045311831 instance=ExtResource("4_835vt")]
+custom_minimum_size = Vector2(100, 150)
 layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 113.0
-grow_horizontal = 1
-grow_vertical = 1
+offset_right = 100.0
+offset_bottom = 150.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 texture_res = ExtResource("4_n3f07")
 
 [connection signal="item_touched" from="GUIList" to="." method="_on_gui_list_item_touched"]

@@ -32,25 +32,23 @@ func init() -> void:
 	_id_list.clear()
 	var battle_file_name := _native.get_battle_file_name(2, 0, conquest)
 	var belligerent_list := _native.get_battle_belligerent_list(battle_file_name, true)
-	var item_proto: MarginContainer = $Prototype/GUICountryItem
 	for belligerent in belligerent_list:
-		var item := item_proto.duplicate()
-		$GUIList.add_item(item)
-		item.country_name = belligerent.name
+		$Factory/MarginContainer/GUICountryItem.country_name = belligerent.name
+		$GUIList.add_item($Factory/MarginContainer.duplicate())
 		_id_list.append(belligerent.id)
 	set_select(0)
 
 
 func _reset_select() -> void:
 	for i in $GUIList.get_items():
-		i.set_selected(false)
+		i.get_node(^"GUICountryItem").set_selected(false)
 
 
 func set_select(index: int) -> void:
 	_selected_item = index
 	$GUIList.set_select(index)
 	_reset_select()
-	$GUIList.get_items()[index].set_selected(true)
+	$GUIList.get_items()[index].get_node(^"GUICountryItem").set_selected(true)
 	country_selected.emit(index)
 
 

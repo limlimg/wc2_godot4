@@ -1,3 +1,4 @@
+@tool
 extends "res://app/src/main/cpp/native-lib.gd"
 
 ## In the original game code, ecGraphics is responsible for loading textures and
@@ -17,9 +18,6 @@ extends "res://app/src/main/cpp/native-lib.gd"
 const _ecLine = preload("res://app/src/main/cpp/ec_line.gd")
 const _ecTriple = preload("res://app/src/main/cpp/ec_line.gd")
 const _ecQuad = preload("res://app/src/main/cpp/ec_quad.gd")
-const _Texture_Cache_Prefix = "res://app/src/main/cpp/scene_system_resource/texture_cache/"
-
-static var _instance := _ecGraphics.new()
 
 #var _width_multiplier: float
 #var _height_multiplier: float
@@ -29,21 +27,15 @@ var orientated_content_scale_width: int
 var orientated_content_scale_height: int
 var orientation: int
 var content_scale_size_mode: int
+var _blend_mode := 2
 var _render_shape := 3
 var _bound_texture: Texture2D
-var fade_color := Color.BLACK:
-	set(value):
-		if value != fade_color:
-			fade_color = value
-			fade_color_changed.emit()
-
-
+var fade_color: Color
+var _texture_cache: Dictionary[String, WeakRef]
 var _rendering_canvas_item: CanvasItem
 
-signal fade_color_changed()
-
 static func instance() -> _ecGraphics:
-	return _instance
+	return ecGraphics
 
 
 func init(content_scale_width: int, content_scale_height: int, _orientation: int, _view_width: int, _view_height: int) -> void:
@@ -95,32 +87,26 @@ func _set_orientation(value: int) -> void:
 
 
 func create_texture_with_string(string: String, font_name: String, font_size: int, alignment: int, width: int, height: int) -> _ecTexture:
-	var r_width:Array[int] = [width]
-	var r_height:Array[int] = [height]
-	var r_texture:Array[Texture] = []
-	if ec_texture_with_string(string, font_name, font_size, alignment, width, height):
-		var ec_texture := _ecTexture.new()
-		ec_texture.size_override = Vector2i(r_width[0], r_height[0])
-		ec_texture.texture = r_texture[0]
-		bind_texture(ec_texture)
-		return ec_texture
+	var texture = ec_texture_with_string(string, font_name, font_size, alignment, width, height)
+	if texture != null:
+		return texture
 	else:
 		return null
 
 
 ## Other varients of LoadTexture are omitted.
 func load_texture(texture_name: String) -> _ecTexture:
-	if ResourceLoader.has_cached(_Texture_Cache_Prefix + texture_name):
-		return ResourceLoader.get_cached_ref(_Texture_Cache_Prefix + texture_name)
+	if _texture_cache.has(texture_name) and _texture_cache[texture_name].get_ref() != null:
+		return _texture_cache[texture_name].get_ref()
 	var ec_texture := ec_texture_load(texture_name)
-	ec_texture.res_scale = 1.0
-	#ec_texture.take_over_path(_Texture_Cache_Prefix + texture_name) # Use the resource cache to cache ecTexture
+	if ec_texture != null:
+		_texture_cache[texture_name] = weakref(ec_texture)
 	return ec_texture
 
 
-func free_texture(_texture_name: StringName) -> void:
-	# nothing to do
-	pass
+func free_texture(texture_name: StringName) -> void:
+	if _texture_cache.has(texture_name) and _texture_cache[texture_name].get_ref() == null:
+		_texture_cache.erase(texture_name)
 
 
 func get_rendering_canvas_item() -> CanvasItem:
@@ -130,6 +116,16 @@ func get_rendering_canvas_item() -> CanvasItem:
 func render_begin(canvas_item: CanvasItem = _Wc2Activity.get_game_view()):
 	_rendering_canvas_item = canvas_item
 	_bound_texture = null
+	if _blend_mode != 2:
+		if canvas_item.material == null:
+			canvas_item.material = CanvasItemMaterial.new()
+		match _blend_mode:
+			1:
+				canvas_item.material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+			3:
+				canvas_item.material.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
+			_:
+				canvas_item.material.blend_mode = CanvasItemMaterial.BLEND_MODE_MIX
 
 
 func render_end():
@@ -155,16 +151,33 @@ func set_view_point(x: float, y: float, scale: float):
 	_rendering_canvas_item.draw_set_transform_matrix(transform)
 
 
-func bind_texture(ec_texture: _ecTexture):
+func bind_texture(texture: Texture2D):
 	if _rendering_canvas_item == null:
 		return
-	var texture = ec_texture.texture
+	if texture is _ecTexture:
+		texture = texture.texture
 	if texture != _bound_texture:
 		_flush()
 		_bound_texture = texture
 
 
-func _render_line(line: _ecLine):
+func set_blend_mode(value: int) -> void:
+	if _rendering_canvas_item == null:
+		return
+	if _rendering_canvas_item.material == null:
+		_rendering_canvas_item.material = CanvasItemMaterial.new()
+	if value != _blend_mode:
+		_blend_mode = value
+		match value:
+			1:
+				_rendering_canvas_item.material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+			3:
+				_rendering_canvas_item.material.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
+			_:
+				_rendering_canvas_item.material.blend_mode = CanvasItemMaterial.BLEND_MODE_MIX
+
+
+func render_line(line: _ecLine):
 	if _rendering_canvas_item == null:
 		return
 	if _render_shape != 2:
@@ -174,7 +187,7 @@ func _render_line(line: _ecLine):
 	_rendering_canvas_item.draw_primitive(line.points, line.colors, line.uvs, _bound_texture)
 
 
-func _render_triple(triple: _ecTriple):
+func render_triple(triple: _ecTriple):
 	if _rendering_canvas_item == null:
 		return
 	if _render_shape != 3:
@@ -210,13 +223,26 @@ func render_circle(x: float, y: float, radius: float, color: Color):
 	_rendering_canvas_item.draw_circle(Vector2(x, y), radius, color)
 
 
+func render_text(text: TextParagraph, x: float, y: float, color: Color) -> void:
+	if _rendering_canvas_item == null:
+		return
+	_flush()
+	text.draw(_rendering_canvas_item.get_canvas_item(), Vector2(x, y), color)
+
+
 func fade(alpha: float):
 	if _rendering_canvas_item == null:
 		return
-	var color := fade_color
-	color.a = alpha
-	# Note: fade is properly applied only if view_point is at 0.0, 0.0. This is bad but is consistent with the original game code.
-	render_rect(0.0, 0.0, orientated_content_scale_width, orientated_content_scale_height, color)
+	var color := Color(fade_color, alpha)
+	var trans_inv := _rendering_canvas_item.get_global_transform_with_canvas().affine_inverse()
+	var view_size := get_viewport().get_visible_rect().size
+	var v0 := trans_inv * Vector2.ZERO
+	var v1 := trans_inv * Vector2(view_size.x, 0.0)
+	var v2 := trans_inv * Vector2(view_size.x, view_size.y)
+	var v3 := trans_inv * Vector2(0.0, view_size.y)
+	var pos := Vector2(min(v0.x, v1.x, v2.x, v3.x), min(v0.y, v1.y, v2.y, v3.y))
+	var size := Vector2(max(v0.x, v1.x, v2.x, v3.x), max(v0.y, v1.y, v2.y, v3.y)) - pos
+	render_rect(pos.x, pos.y, size.x, size.y, color)
 
 
 func _flush():

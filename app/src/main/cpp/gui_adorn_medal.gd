@@ -1,7 +1,5 @@
 extends "res://app/src/main/cpp/gui_element.gd"
 
-const _ecTextureResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd")
-const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 const _WarMedalId = preload("res://app/src/main/cpp/war_medal_id.gd").WARMEDAL_ID
 
 func _ready() -> void:

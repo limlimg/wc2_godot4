@@ -3,13 +3,21 @@
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="1_nnjf7"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_i1ylu"]
 [ext_resource type="Script" uid="uid://d3d5m7n8xkevo" path="res://app/src/main/cpp/gui_upgrade_button.gd" id="2_muesp"]
-[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="3_muesp"]
 [ext_resource type="Texture2D" uid="uid://cbkryo0h38jlh" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/medal.png.tres" id="4_e8pok"]
 [ext_resource type="Theme" uid="uid://cwbjbqps0wawf" path="res://app/src/main/cpp/scene_system_resource/font/g_num1.tres" id="5_wcrlx"]
 
 [node name="GUIUpgradeButton" unique_id=2034275630 instance=ExtResource("1_nnjf7")]
 script = ExtResource("2_muesp")
 need_medal = 0
+text_offset = Vector2(240, 160)
+
+[node name="Label" parent="." index="3" unique_id=1317756632]
+offset_left = 240.0
+offset_top = 160.0
+offset_right = 240.0
+offset_bottom = 160.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="Medal" parent="." index="5" unique_id=1576520916 instance=ExtResource("2_i1ylu")]
 layout_mode = 1
@@ -75,10 +83,10 @@ texture = ExtResource("4_e8pok")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="NeedMedal" parent="GUIRect/Control/HBoxContainer" index="1" unique_id=448162067 instance=ExtResource("3_muesp")]
+[node name="NeedMedal" type="Label" parent="GUIRect/Control/HBoxContainer" index="1" unique_id=1333125560]
 layout_mode = 2
+size_flags_vertical = 0
 theme = ExtResource("5_wcrlx")
-fit_minimun_size = true
 
 [node name="PaddingRight" parent="GUIRect/Control/HBoxContainer" index="2" unique_id=933333579 instance=ExtResource("2_i1ylu")]
 layout_mode = 2

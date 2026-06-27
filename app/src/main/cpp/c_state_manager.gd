@@ -1,4 +1,4 @@
-extends Node
+extends "res://app/src/main/cpp/native-lib.gd"
 
 ## In the original game code, several states are defined as the primary
 ## controller of the game's behavour (i.e. rendering and responding to time
@@ -15,8 +15,6 @@ extends Node
 ## instead of this class. The states are only created when entered and are not
 ## registered in advance. Scene paths specify which state to create and enter,
 ## which means every scene can be used, not just subclasses of CBaseState.
-
-const _CStateManager = preload("res://app/src/main/cpp/c_state_manager.gd")
 
 var _cur_state: Node
 var _cur_state_path: StringName

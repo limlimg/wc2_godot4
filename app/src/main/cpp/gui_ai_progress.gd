@@ -1,7 +1,5 @@
 extends "res://app/src/main/cpp/gui_element.gd"
 
-const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
-
 @export
 var cur_country_name: String:
 	set = set_cur_country_name
@@ -24,6 +22,6 @@ func set_cur_country_name(value):
 		cur_country_name = value
 		var image := g_GameRes.get_flag_image("flag_{0}.png".format([value]))
 		if image != null:
-			$Flag.texture = _ecImageTexture.from_ec_image_attr(image)
+			$Flag.texture = image
 		else:
 			$Flag.texture = null

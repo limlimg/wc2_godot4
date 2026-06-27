@@ -32,28 +32,26 @@ func init() -> void:
 	var played_battles := num_battles
 	if campaign != CAMPIAGN_MULTIPLAY:
 		played_battles = g_Commander.get_num_played_battles(campaign)
-	var item_proto: MarginContainer = $Prototype/GUIBattleItem
-	item_proto.campaign = campaign
+	$Factory/MarginContainer/GUIBattleItem.campaign = campaign
 	for i in num_battles:
-		var item := item_proto.duplicate()
-		$GUIList.add_item(item)
-		item.battle = i
-		item.star = g_Commander.get_num_battle_stars(campaign, i)
+		$Factory/MarginContainer/GUIBattleItem.battle = i
+		$Factory/MarginContainer/GUIBattleItem.star = g_Commander.get_num_battle_stars(campaign, i)
 		if i > played_battles:
-			item.set_enable(false)
-			item.locked = true
+			$Factory/MarginContainer/GUIBattleItem.set_enable(false)
+			$Factory/MarginContainer/GUIBattleItem.locked = true
+		$GUIList.add_item($Factory/MarginContainer.duplicate())
 
 
 func _reset_select() -> void:
 	for i in $GUIList.get_items():
-		i.set_selected(false)
+		i.get_node(^"GUIBattleItem").set_selected(false)
 
 
 func set_select(index: int) -> void:
 	_selected_item = index
 	$GUIList.set_select(index)
 	_reset_select()
-	$GUIList.get_items()[index].set_selected(true)
+	$GUIList.get_items()[index].get_node(^"GUIBattleItem").set_selected(true)
 	battle_selected.emit(index)
 
 
@@ -62,13 +60,14 @@ func select_last_unlocked() -> void:
 	var i = a.size()
 	while i > 0:
 		i -= 1
-		if a[i] is _GUIBattleItem and not a[i].locked:
+		var node := a[i].get_node(^"GUIBattleItem") as _GUIBattleItem
+		if node != null and not node.locked:
 			set_select(i)
 			return
 
 
 func _on_gui_list_item_touched(index: int) -> void:
-	var item = $GUIList.get_items()[index]
+	var item = $GUIList.get_items()[index].get_node(^"GUIBattleItem")
 	if item is _GUIBattleItem and item.locked:
 		return
 	set_select(index)

@@ -39,7 +39,6 @@ var gui_scale := Vector2.ONE:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_SORT_CHILDREN:
-		var graphics := _ecGraphics.instance()
 		var selected_rect := _select_rect()
 		var selected_scale := _select_scale()
 		for c in get_children():
@@ -67,8 +66,8 @@ func _get_minimum_size() -> Vector2:
 
 
 func _get_allowed_size_flags_horizontal() -> PackedInt32Array:
-	return [SIZE_FILL]
+	return [SIZE_FILL, SIZE_SHRINK_BEGIN, SIZE_SHRINK_CENTER, SIZE_SHRINK_END]
 
 
 func _get_allowed_size_flags_vertical() -> PackedInt32Array:
-	return [SIZE_FILL]
+	return [SIZE_FILL, SIZE_SHRINK_BEGIN, SIZE_SHRINK_CENTER, SIZE_SHRINK_END]

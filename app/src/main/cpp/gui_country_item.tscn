@@ -7,9 +7,10 @@
 [node name="GUICountryItem" unique_id=1471834346 instance=ExtResource("1_wrptv")]
 anchors_preset = 0
 anchor_right = 0.0
-offset_top = 0.0
+anchor_bottom = 0.0
 offset_bottom = 45.0
 grow_horizontal = 1
+grow_vertical = 1
 script = ExtResource("2_vo2hu")
 country_name = ""
 texture_res = ExtResource("3_vo2hu")

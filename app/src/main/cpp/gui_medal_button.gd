@@ -1,3 +1,4 @@
+@tool
 extends "res://app/src/main/cpp/gui_button.gd"
 
 ## Common base class for GUICommanderMedal and GUIWarMedal.

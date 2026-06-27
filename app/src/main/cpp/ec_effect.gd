@@ -1,24 +1,18 @@
 extends Node2D
 
-const _ecEffectResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_effect_res_assets.gd")
-const _ecTextureResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd")
+const _ecEffectRes = preload("res://app/src/main/cpp/ec_effect_res.gd")
 
 @export
-var effect_res: _ecEffectResAssets:
+var effect_res: _ecEffectRes:
 	set(value):
 		if value != effect_res:
+			if effect_res != null:
+				effect_res.changed.disconnect(init)
 			effect_res = value
 			if is_node_ready():
 				init()
-
-
-@export
-var texture_res: _ecTextureResAssets:
-	set(value):
-		if value != texture_res:
-			texture_res = value
-			if is_node_ready():
-				init()
+			if value != null:
+				value.changed.connect(init)
 
 
 signal stopped
@@ -31,11 +25,11 @@ func init() -> void:
 	for i in $LiveParticles.get_children():
 		$LiveParticles.remove_child(i)
 		i.queue_free()
-	if effect_res != null and texture_res != null:
-		for i in effect_res.get_res().emitter:
+	if effect_res != null and effect_res.texture_res != null:
+		for i in effect_res.emitter:
 			var particle := $Prototype/ecParticleSystem.duplicate()
 			particle.emitter_attr = i
-			particle.texture_res = texture_res
+			particle.texture_res = effect_res.texture_res
 			$LiveParticles.add_child(particle)
 
 

@@ -1,13 +1,12 @@
 [gd_scene format=3 uid="uid://ts6golphrfh2"]
 
-[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="2_l7lto"]
-
-[sub_resource type="Animation" id="Animation_l7lto"]
+[sub_resource type="Animation" id="Animation_atrwe"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:color:a")
+tracks/0/path = NodePath(".:self_modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -19,7 +18,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:text_position:y")
+tracks/1/path = NodePath(".:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -41,13 +40,13 @@ tracks/2/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_kvp3a"]
+[sub_resource type="Animation" id="Animation_gubay"]
 resource_name = "float_away"
 length = 1.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:color:a")
+tracks/0/path = NodePath(".:self_modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,7 +58,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:text_position:y")
+tracks/1/path = NodePath(".:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -81,14 +80,19 @@ tracks/2/keys = {
 "values": [false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nhyde"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l7lto"]
 _data = {
-&"RESET": SubResource("Animation_l7lto"),
-&"float_away": SubResource("Animation_kvp3a")
+&"RESET": SubResource("Animation_atrwe"),
+&"float_away": SubResource("Animation_gubay")
 }
 
-[node name="CFightText" unique_id=448162067 instance=ExtResource("2_l7lto")]
+[node name="CFightText" type="Label" unique_id=2058877283]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1220509285]
-libraries/ = SubResource("AnimationLibrary_nhyde")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=993061154]
+libraries/ = SubResource("AnimationLibrary_l7lto")
 autoplay = &"float_away"

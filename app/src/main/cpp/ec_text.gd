@@ -1,42 +1,41 @@
-extends "res://app/src/main/cpp/gui_element.gd"
+@tool
+extends Node2D
 
-## Assign ecUniFont to Theme property.
-##
-## DrawText and GetStringWidth are not implemented because they do not fit the
-## usage of this class in this project.
+const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
+const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
+
+@export
+var font: _ecUniFont:
+	set(value):
+		if value != font:
+			if font != null:
+				font.changed.disconnect(init)
+			font = value
+			init()
+			if value != null:
+				value.changed.connect(init)
+
 
 @export
 var text: String:
-	get = get_text,
 	set = set_text
 
 @export
 var color: Color = Color.WHITE:
-	get = get_color,
 	set = set_color
 
 @export
-var text_position: Vector2:
-	get():
-		return $Label.position
-	set(value):
-		$Label.position = value
+var alpha: float:
+	get = get_alpha,
+	set = set_alpha
 
 
 @export
 var alignment: HorizontalAlignment:
-	get():
-		return $Label.horizontal_alignment
 	set(value):
-		alignment = value
-		$Label.horizontal_alignment = value
-		match value:
-			HorizontalAlignment.HORIZONTAL_ALIGNMENT_LEFT:
-				$Label.grow_horizontal = Control.GROW_DIRECTION_END
-			HorizontalAlignment.HORIZONTAL_ALIGNMENT_RIGHT:
-				$Label.grow_horizontal = Control.GROW_DIRECTION_BEGIN
-			_:
-				$Label.grow_horizontal = Control.GROW_DIRECTION_BOTH
+		if value != alignment:
+			alignment = value
+			queue_redraw()
 
 
 @export
@@ -44,64 +43,85 @@ var spacing: Vector2i:
 	set(value):
 		if value != spacing:
 			spacing = value
-			$Label.remove_theme_constant_override(&"line_spacing")
-			$Label.add_theme_constant_override(&"line_spacing", spacing.y)
-			$Label.remove_theme_font_override(&"font")
-			if spacing.x != 0.0:
-				var font := FontVariation.new()
-				font.base_font = theme.default_font
-				font.spacing_glyph = spacing.x
-				$Label.add_theme_font_override(&"font", font)
+			queue_redraw()
 
 
-@export
-var fit_minimun_size: bool:
-	set(value):
-		if value != fit_minimun_size:
-			fit_minimun_size = value
-			update_minimum_size()
-
-
-func _ready() -> void:
-	init()
-
+var _text_paragraph := TextParagraph.new()
+var _font_with_spacing: FontVariation
 
 func init():
-	set_color(color)
-
-
-func get_color() -> Color:
-	return $Label.get_theme_color(&"font_color")
-
-
-func set_color(value: Color) -> void:
-	$Label.remove_theme_color_override(&"font_color")
-	$Label.add_theme_color_override(&"font_color", value)
-
-
-func get_text() -> String:
-	return $Label.text
+	_text_paragraph.clear()
+	if font == null or font.default_font == null:
+		return
+	if spacing != Vector2i.ZERO:
+		if _font_with_spacing == null:
+			_font_with_spacing = FontVariation.new()
+			_font_with_spacing.base_font = font.default_font
+		_font_with_spacing.spacing_glyph = spacing.x
+		_font_with_spacing.spacing_bottom = spacing.y
+		_text_paragraph.add_string(text, _font_with_spacing, font.default_font_size)
+	else:
+		_text_paragraph.add_string(text, font.default_font, font.default_font_size)
+	if _font_with_spacing != null:
+		_font_with_spacing.base_font = font.default_font
+	queue_redraw()
 
 
 func set_text(value: String) -> void:
-	$Label.text = value
-	update_minimum_size()
+	if value != text:
+		text = value
+		init()
 
 
-func _get_minimum_size() -> Vector2:
-	if fit_minimun_size:
-		return $Label.size
-	else:
-		return Vector2.ZERO
+func set_color(value: Color) -> void:
+	if value != color:
+		color = value
+		queue_redraw()
 
 
-func set_alpha(alpha: float)-> void:
-	set_color(Color(color, alpha))
+func get_alpha() -> float:
+	return color.a
+
+
+func set_alpha(value: float) -> void:
+	set_color(Color(color, value))
 
 
 func get_height() -> float:
-	return $Label.size.y
+	return _text_paragraph.get_size().y
+
+
+func get_string_width(line: int, max_remaining: bool) -> float:
+	var num_lines = get_num_lines()
+	var width := 0.0
+	while line < num_lines:
+		var next_width := _text_paragraph.get_line_width(line)
+		if next_width > width:
+			width = next_width
+		if not max_remaining:
+			break
+		line += 1
+	return width
 
 
 func get_num_lines() -> int:
-	return $Label.get_line_count()
+	return _text_paragraph.get_line_count()
+
+
+func draw_text(x: float, y: float, draw_alignment: int) -> void:
+	match draw_alignment:
+		1:
+			x -= _text_paragraph.get_size().x
+			_text_paragraph.alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		2:
+			x -= _text_paragraph.get_size().x / 2.0
+			_text_paragraph.alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_:
+			_text_paragraph.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	_ecGraphics.instance().render_text(_text_paragraph, x, y, color)
+
+
+func _draw() -> void:
+	_ecGraphics.instance().render_begin(self)
+	draw_text(0.0, 0.0, alignment)
+	_ecGraphics.instance().render_end()

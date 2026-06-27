@@ -10,6 +10,26 @@ var vertical := true:
 		$CTouchInertia/ScrollContainer/BoxContainer.vertical = value
 
 
+@export
+var separation_ipad: int:
+	set(value):
+		if value != separation_ipad:
+			separation_ipad = value
+			if _ecGraphics.instance().content_scale_size_mode == 3:
+				$CTouchInertia/ScrollContainer/BoxContainer.remove_theme_constant_override(&"separation")
+				$CTouchInertia/ScrollContainer/BoxContainer.add_theme_constant_override(&"separation", value)
+
+
+@export
+var separation: int:
+	set(value):
+		if value != separation:
+			separation = value
+			if _ecGraphics.instance().content_scale_size_mode != 3:
+				$CTouchInertia/ScrollContainer/BoxContainer.remove_theme_constant_override(&"separation")
+				$CTouchInertia/ScrollContainer/BoxContainer.add_theme_constant_override(&"separation", value)
+
+
 var _selected_item := -1
 var _scorll_value := 0.0
 

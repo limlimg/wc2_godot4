@@ -38,7 +38,7 @@ func _back_pressed() -> bool:
 
 func show_exit() -> void:
 	if _displayed_menu == null:
-		_displayed_menu = $GUIManager/GUIExitWarning.create_instance()
+		_displayed_menu = $GUIManager/Warning/GUIExitWarning.create_instance()
 		_displayed_menu.show()
 		_displayed_menu.cancelled.connect(_on_gui_exit_warning_cancelled)
 
@@ -47,7 +47,7 @@ func _on_gui_main_menu_sel_campaign_pressed(sel_campaign: int) -> void:
 	if (sel_campaign == 2 or sel_campaign == 3)\
 		and g_Commander.get_num_played_battles(0) < _native.get_num_battles(0)\
 		and g_Commander.get_num_played_battles(1) < _native.get_num_battles(1):
-		_displayed_menu = $GUIManager/GUILockedWarning.create_instance()
+		_displayed_menu = $GUIManager/Warning/GUILockedWarning.create_instance()
 		_displayed_menu.pressed.connect(_on_gui_locked_warning_pressed)
 		_displayed_menu.show()
 	else:

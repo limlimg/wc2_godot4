@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cp0rqwt3uf1t7" path="res://app/src/main/cpp/c_menu_state.gd" id="1_ehm5w"]
 [ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="1_nhdnm"]
 [ext_resource type="PackedScene" uid="uid://c4fcq7wy2b7qx" path="res://app/src/main/cpp/gui_main_menu.tscn" id="3_gvair"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="5_cwp5t"]
 [ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://app/src/main/cpp/scene_system_resource/menu_gui_selbattle_res/texture_res.tres" id="5_mwydp"]
 
 [node name="CMenuState" type="Control" unique_id=54523483]
@@ -25,10 +26,6 @@ visible = false
 layout_mode = 1
 texture_res = ExtResource("5_mwydp")
 
-[node name="GUILockedWarning" parent="GUIManager" unique_id=131788446 instance_placeholder="res://app/src/main/cpp/gui_locked_warning.tscn"]
-visible = false
-layout_mode = 1
-
 [node name="GUISelCountry" parent="GUIManager" unique_id=949481072 instance_placeholder="res://app/src/main/cpp/gui_sel_country.tscn"]
 visible = false
 layout_mode = 1
@@ -45,9 +42,27 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="GUIExitWarning" parent="GUIManager" unique_id=986775281 instance_placeholder="res://app/src/main/cpp/gui_exit_warning.tscn"]
-visible = false
+[node name="Warning" parent="GUIManager" unique_id=1576520916 instance=ExtResource("5_cwp5t")]
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -63.0
+offset_right = 111.0
+offset_bottom = 63.0
+rect_ipad = Rect2(0, 0, 444, 252)
+rect = Rect2(0, 0, 222, 126)
+
+[node name="GUILockedWarning" parent="GUIManager/Warning" unique_id=131788446 instance_placeholder="res://app/src/main/cpp/gui_locked_warning.tscn"]
+visible = false
+layout_mode = 2
+
+[node name="GUIExitWarning" parent="GUIManager/Warning" unique_id=986775281 instance_placeholder="res://app/src/main/cpp/gui_exit_warning.tscn"]
+visible = false
+layout_mode = 2
 
 [node name="Prototype" type="Control" parent="." unique_id=1989673705]
 visible = false

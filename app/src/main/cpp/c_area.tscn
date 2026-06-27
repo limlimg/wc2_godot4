@@ -12,6 +12,10 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 2
 script = ExtResource("1_0tvyd")
+army_position = null
+construction_position = null
+installation_position = null
+sea = null
 
 [node name="Flag" type="Sprite2D" parent="." unique_id=402239010]
 

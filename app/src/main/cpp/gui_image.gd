@@ -1,6 +1,5 @@
 extends "res://app/src/main/cpp/gui_element.gd"
 
-const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 const _ecTextureRect = preload("res://app/src/main/cpp/ec_texture_rect.gd")
 const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
 
@@ -44,5 +43,5 @@ func set_image(texture_name: String, attr: _ecTextureRect) -> bool:
 	new_image.texture = _ecGraphics.instance().load_texture(texture_name)
 	new_image.region = Rect2(attr.x, attr.y, attr.w, attr.h)
 	new_image.ref = Vector2(attr.refx, attr.refy)
-	texture = _ecImageTexture.from_ec_image_attr(new_image)
+	texture = new_image
 	return texture != null

@@ -9,9 +9,19 @@ script = ExtResource("1_5w5kv")
 
 [node name="Live" type="Node2D" parent="." unique_id=498092697]
 
-[node name="Prototype" type="Node2D" parent="." unique_id=995357389]
+[node name="Prototype" type="Control" parent="." unique_id=1279194844]
 process_mode = 4
 visible = false
+layout_mode = 3
+anchors_preset = 0
 
 [node name="CFightText" parent="Prototype" unique_id=448162067 instance=ExtResource("1_r0upc")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1.0
+offset_bottom = 73.0
+grow_horizontal = 1
+grow_vertical = 1
 theme = ExtResource("2_5w5kv")

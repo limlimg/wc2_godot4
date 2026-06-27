@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cr754csw241vl"]
+
+[ext_resource type="Script" uid="uid://ya2jc0rvq83o" path="res://app/src/main/cpp/ec_image.gd" id="1_6aky0"]
+
+[node name="ecImage" type="Node2D" unique_id=1117931184]
+script = ExtResource("1_6aky0")
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)

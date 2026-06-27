@@ -11,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_3bgbm")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1824448873]
@@ -34,8 +35,6 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(0, 0, 40, 0)
 rect = Rect2(0, 5, 20, 0)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="TextureRect" type="TextureRect" parent="Prototype/GUIRect" unique_id=698801839]
 layout_mode = 2

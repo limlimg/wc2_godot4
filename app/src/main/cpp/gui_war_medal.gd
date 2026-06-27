@@ -1,6 +1,5 @@
 extends "res://app/src/main/cpp/gui_medal_button.gd"
 
-const _ecTextureResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd")
 const _WarMedalId = preload("res://app/src/main/cpp/war_medal_id.gd").WARMEDAL_ID
 
 const _WAR_MEDAL_NAME = [
@@ -13,7 +12,7 @@ const _WAR_MEDAL_NAME = [
 ]
 
 @export
-var texture_res: _ecTextureResAssets:
+var texture_res: _ecTextureRes:
 	set(value):
 		if value != texture_res:
 			texture_res = value
@@ -45,7 +44,7 @@ func init() -> void:
 func set_level(value: int) -> void:
 	level = value
 	if texture_res != null:
-		$Medal.texture = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image("medal_{0}_{1}.png".format([_WAR_MEDAL_NAME[medal], level])))
+		$Medal.texture = texture_res.get_image("medal_{0}_{1}.png".format([_WAR_MEDAL_NAME[medal], level]))
 		_on_render()
 	else:
 		$Medal.texture = null

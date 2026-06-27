@@ -2,11 +2,9 @@ extends "res://app/src/main/cpp/gui_element.gd"
 
 const _GUIManager = preload("res://app/src/main/cpp/gui_manager.gd")
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
-const _ecImage = preload("res://app/src/main/cpp/ec_image.gd")
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _GUIBattleList = preload("res://app/src/main/cpp/gui_battle_list.gd")
 const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
-const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 const _FlagInfo = preload("res://app/src/main/cpp/flag_info.gd")
 
 @export

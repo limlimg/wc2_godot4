@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bw36wnr8tqwkd"]
+
+[ext_resource type="Script" uid="uid://dbda4lvx3hq5t" path="res://app/src/main/cpp/scene_system_resource/fade.gd" id="1_owpuu"]
+
+[node name="Fade" type="Control" unique_id=741495168]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+script = ExtResource("1_owpuu")

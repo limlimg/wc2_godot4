@@ -1,4 +1,4 @@
-extends Node
+extends "res://app/src/main/cpp/native-lib.gd"
 
 const _CCamera = preload("res://app/src/main/cpp/c_camera.gd")
 const _CArea = preload("res://app/src/main/cpp/c_area.gd")

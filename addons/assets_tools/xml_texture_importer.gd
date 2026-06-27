@@ -2,8 +2,10 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _ecTextureRes = preload("res://app/src/main/cpp/imported_containers/ec_texture_res.gd")
-const _ecTextureRect = preload("res://app/src/main/cpp/ec_texture_rect.gd")
+const _ecTextureRes = preload("res://app/src/main/cpp/ec_texture_res.gd")
+const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
+const _AssetRegistry = preload("res://app/src/main/cpp/scene_system_resource/asset_registry.gd")
+const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.texture"
@@ -72,7 +74,9 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if load(texture_path) as Texture2D == null:
 		push_error("Error: failed to validate texture {0} for {1}".format([texture_name, source_file]))
 		return FAILED
-	res_texture.texture_name = texture_name
+	var ec_texture := _ecTexture.new()
+	ec_texture.asset = _AssetRegistry.new()
+	ec_texture.asset.name = texture_name
 	var xml_images := doc.first_child_element("Images")
 	if xml_images == null:
 		push_error("Parse Error: Failed to find <Images> in {0}".format([source_file]))
@@ -102,13 +106,10 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		var refy := 0.0
 		if xml_image.query_float_attribute("refy", p) == xml_image.TIXML_SUCCESS:
 			refy = p.pop_back()
-		var res_image := _ecTextureRect.new()
-		res_image.x = x
-		res_image.y = y
-		res_image.w = w
-		res_image.h = h
-		res_image.refx = refx
-		res_image.refy = refy
+		var res_image := _ecImageAttr.new()
+		res_image.texture = ec_texture
+		res_image.region = Rect2(x, y, w, h)
+		res_image.origin = Vector2(refx, refy)
 		res_texture.images[name] = res_image
 		xml_image = xml_image.next_sibling_element()
 	var filename = save_path + "." + _get_save_extension()

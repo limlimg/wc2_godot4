@@ -19,8 +19,8 @@ func init() -> void:
 	for i in 28:
 		var card := _CObjectDef.instance().get_card_def(i)
 		if card.type == tab:
-			var node = $Prototype/GUICard.duplicate()
-			node.def = card
+			$Factory/GUICard.def = card
+			var node = $Factory/GUICard.duplicate()
 			$GUIList.add_item(node)
 
 

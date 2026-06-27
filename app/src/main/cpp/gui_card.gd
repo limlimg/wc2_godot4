@@ -1,13 +1,11 @@
 extends "res://app/src/main/cpp/gui_element.gd"
 
-const _ecTextureResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd")
 const _CardDef = preload("res://app/src/main/cpp/card_def.gd")
-const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
 const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 
 @export
-var texture_res: _ecTextureResAssets:
+var texture_res: _ecTextureRes:
 	set(value):
 		if value != texture_res:
 			texture_res = value
@@ -98,8 +96,8 @@ func init() -> void:
 	if def == null:
 		return
 	if texture_res != null:
-		$Card.texture = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image(def.image))
-		$TechRequest.texture = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image("technology_{0}.png".format([tech_request])))
+		$Card.texture = texture_res.get_image(def.image)
+		$TechRequest.texture = texture_res.get_image("technology_{0}.png".format([tech_request]))
 	else:
 		$Card.texture = null
 	set_price(def.price)

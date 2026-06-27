@@ -35,41 +35,41 @@ func init() -> void:
 	super()
 	if texture_res == null:
 		return
-	var res := texture_res.get_res()
+	var res := texture_res
 	var attr
 	match campaign:
 		0:
 			attr = res.get_image("button_axis_%02d.png"%(battle + 1))
 			if attr != null:
-				_button_image = _ecImage.new(attr)
+				$Control/ButtonImage.texture = attr
 			attr = res.get_image("text_axis_%02d.png"%(battle + 1))
 			if attr != null:
-				_text_image = _ecImage.new(attr)
+				$Control/TextImage.texture = attr
 		1:
 			attr = res.get_image("button_allies_%02d.png"%(battle + 1))
 			if attr != null:
-				_button_image = _ecImage.new(attr)
+				$Control/ButtonImage.texture = attr
 			attr = res.get_image("text_allies_%02d.png"%(battle + 1))
 			if attr != null:
-				_text_image = _ecImage.new(attr)
+				$Control/TextImage.texture = attr
 		2:
 			attr = res.get_image("button_wto_%02d.png"%(battle + 1))
 			if attr != null:
-				_button_image = _ecImage.new(attr)
+				$Control/ButtonImage.texture = attr
 			attr = res.get_image("text_wto_%02d.png"%(battle + 1))
 			if attr != null:
-				_text_image = _ecImage.new(attr)
+				$Control/TextImage.texture = attr
 		3:
 			attr = res.get_image("button_nato_%02d.png"%(battle + 1))
 			if attr != null:
-				_button_image = _ecImage.new(attr)
+				$Control/ButtonImage.texture = attr
 			attr = res.get_image("text_nato_%02d.png"%(battle + 1))
 			if attr != null:
-				_text_image = _ecImage.new(attr)
+				$Control/TextImage.texture = attr
 		4:
 			attr = res.get_image("button_multiplay_%02d.png"%(battle + 1))
 			if attr != null:
-				_button_image = _ecImage.new(attr)
+				$Control/ButtonImage.texture = attr
 			attr = res.get_image(_MULTIPLAY_BATTLE[battle + 1])
 			if attr != null:
-				_text_image = _ecImage.new(attr)
+				$Control/TextImage.texture = attr

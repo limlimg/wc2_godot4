@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ecTextureResAssets" format=3 uid="uid://cas4w7q286tym"]
+[gd_resource type="Resource" script_class="ecTextureRes" format=3 uid="uid://cas4w7q286tym"]
 
-[ext_resource type="Script" uid="uid://bbkwpdgd20wlc" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size_hd.gd" id="1_wj7sj"]
-[ext_resource type="Script" uid="uid://c4lbjg3bsn26n" path="res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd" id="2_36rw0"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/scene_system_resource/asset_registry.gd" id="1_wj7sj"]
+[ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://app/src/main/cpp/ec_texture_res.gd" id="2_36rw0"]
 
 [sub_resource type="Resource" id="Resource_2fyn6"]
 script = ExtResource("1_wj7sj")
@@ -70,4 +70,4 @@ metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
 
 [resource]
 script = ExtResource("2_36rw0")
-asset_names = Array[ExtResource("1_wj7sj")]([SubResource("Resource_2fyn6"), SubResource("Resource_fsgsl"), SubResource("Resource_umjsr"), SubResource("Resource_biaoo"), SubResource("Resource_h3tvq"), SubResource("Resource_i6fmg"), SubResource("Resource_7kvyg"), SubResource("Resource_eh6s6"), SubResource("Resource_wbit6"), SubResource("Resource_r1h6v")])
+assets = Array[ExtResource("1_wj7sj")]([SubResource("Resource_2fyn6"), SubResource("Resource_fsgsl"), SubResource("Resource_umjsr"), SubResource("Resource_biaoo"), SubResource("Resource_h3tvq"), SubResource("Resource_i6fmg"), SubResource("Resource_7kvyg"), SubResource("Resource_eh6s6"), SubResource("Resource_wbit6"), SubResource("Resource_r1h6v")])

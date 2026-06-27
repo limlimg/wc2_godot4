@@ -2,38 +2,83 @@
 
 [ext_resource type="Script" uid="uid://dsb0y4ax1t1dh" path="res://app/src/main/cpp/gui_sel_item.gd" id="1_2s3h4"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_ogrdh"]
+[ext_resource type="Texture2D" uid="uid://dg6hbf8mwqrwq" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/mark_locked.png.tres" id="3_2asny"]
+[ext_resource type="Texture2D" uid="uid://6mcfqarlnark" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/small_rankstar.png.tres" id="4_p240s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mf3m"]
 
-[node name="GUISelItem" type="MarginContainer" unique_id=1471834346]
-anchors_preset = 10
+[node name="GUISelItem" type="Control" unique_id=1745526202]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
-offset_top = 1.0
-offset_bottom = 46.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_2s3h4")
 
-[node name="Minimum Height" parent="." unique_id=1766981685 instance=ExtResource("2_ogrdh")]
-layout_mode = 2
-size_flags_vertical = 0
-rect_ipad = Rect2(0, 0, 0, 90)
-rect = Rect2(0, 0, 0, 45)
-
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2063213428]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="Minimum Height" parent="MarginContainer" unique_id=1666821508 instance=ExtResource("2_ogrdh")]
-layout_mode = 2
-size_flags_vertical = 0
-rect_ipad = Rect2(0, 0, 0, 80)
-rect = Rect2(0, 0, 0, 40)
-
-[node name="Control" type="Control" parent="MarginContainer" unique_id=1745526202]
-layout_mode = 2
+[node name="Control" type="Control" parent="." unique_id=549121636]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 
-[node name="Button" type="Button" parent="MarginContainer/Control" unique_id=1812914262]
+[node name="ButtonImage" type="Sprite2D" parent="Control" unique_id=328503851]
+centered = false
+
+[node name="TextImage" type="TextureRect" parent="Control" unique_id=833545168]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+expand_mode = 1
+stretch_mode = 2
+
+[node name="MarkLocked" parent="Control" unique_id=1576520916 instance=ExtResource("2_ogrdh")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(134, 44, 0, 0)
+rect = Rect2(67, 22, 0, 0)
+gui_scale_ipad = Vector2(0.8, 0.8)
+gui_scale = Vector2(0.8, 0.8)
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarkLocked" unique_id=521815329]
+layout_mode = 2
+texture = ExtResource("3_2asny")
+
+[node name="SmallRankStar" type="Sprite2D" parent="Control" unique_id=1368077084]
+visible = false
+texture = ExtResource("4_p240s")
+centered = false
+
+[node name="SmallRankStar2" type="Sprite2D" parent="Control" unique_id=1100168597]
+visible = false
+texture = ExtResource("4_p240s")
+centered = false
+
+[node name="SmallRankStar3" type="Sprite2D" parent="Control" unique_id=2141047870]
+visible = false
+texture = ExtResource("4_p240s")
+centered = false
+
+[node name="SmallRankStar4" type="Sprite2D" parent="Control" unique_id=1457376136]
+visible = false
+texture = ExtResource("4_p240s")
+centered = false
+
+[node name="SmallRankStar5" type="Sprite2D" parent="Control" unique_id=992292052]
+visible = false
+texture = ExtResource("4_p240s")
+centered = false
+
+[node name="Button" type="Button" parent="Control" unique_id=1812914262]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,7 +89,6 @@ mouse_filter = 1
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2mf3m")
 flat = true
 
-[connection signal="button_down" from="MarginContainer/Control/Button" to="." method="_on_button_button_down"]
-[connection signal="button_up" from="MarginContainer/Control/Button" to="." method="_on_button_button_up"]
-[connection signal="draw" from="MarginContainer/Control/Button" to="." method="_on_render"]
-[connection signal="pressed" from="MarginContainer/Control/Button" to="." method="_on_button_pressed"]
+[connection signal="button_down" from="Control/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Control/Button" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

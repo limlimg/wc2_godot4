@@ -1,0 +1,14 @@
+[gd_resource type="Theme" script_class="ecUniFont" format=3 uid="uid://cab3dy1sgbude"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/scene_system_resource/asset_registry.gd" id="1_s1usm"]
+[ext_resource type="Script" uid="uid://ckk2mqlehxynn" path="res://app/src/main/cpp/ec_uni_font.gd" id="2_3bniw"]
+
+[sub_resource type="Resource" id="Resource_8f3fq"]
+script = ExtResource("1_s1usm")
+name = "num5_hd.fnt"
+name_hd = "num5_hd.fnt"
+
+[resource]
+script = ExtResource("2_3bniw")
+asset = SubResource("Resource_8f3fq")
+spacing = Vector2i(-1, 0)

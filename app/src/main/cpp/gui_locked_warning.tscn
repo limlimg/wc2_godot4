@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_1iitn"]
 [ext_resource type="Script" uid="uid://c0egpmfnonjbm" path="res://app/src/main/cpp/gui_locked_warning.gd" id="1_ccynw"]
-[ext_resource type="PackedScene" uid="uid://df33p640anvad" path="res://app/src/main/cpp/gui_fade.tscn" id="2_k7wgp"]
-[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="3_k7wgp"]
+[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://app/src/main/cpp/scene_system_resource/fade.tscn" id="2_k7wgp"]
 [ext_resource type="Texture2D" uid="uid://ctj87p2f2ndcd" path="res://app/src/main/cpp/scene_system_resource/texture/board_locked.tres" id="4_k7wgp"]
+[ext_resource type="Theme" uid="uid://kfde1dpf6pbh" path="res://app/src/main/cpp/scene_system_resource/menu_gui_selbattle_res/font4.tres" id="5_k7wgp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7wgp"]
 
@@ -21,8 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ccynw")
 
-[node name="GUIFade" parent="." unique_id=869114631 instance=ExtResource("2_k7wgp")]
-layout_mode = 1
+[node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_k7wgp")]
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1945613680]
 layout_mode = 1
@@ -36,8 +35,6 @@ grow_vertical = 2
 layout_mode = 2
 rect_ipad = Rect2(0, 0, 444, 252)
 rect = Rect2(0, 0, 222, 126)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="Control" type="Control" parent="CenterContainer/GUIRect" unique_id=1763780]
 layout_mode = 2
@@ -50,8 +47,6 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(-4, -4, 454, 262)
 rect = Rect2(-2, -2, 227, 131)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="TextureRect" type="TextureRect" parent="CenterContainer/GUIRect/Control/BoardLocked" unique_id=1447175027]
 layout_mode = 2
@@ -63,11 +58,13 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(32, 120, 0, 0)
 rect = Rect2(16, 60, 0, 0)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
-[node name="ecText" parent="CenterContainer/GUIRect/Control/GUIRect2" unique_id=448162067 instance=ExtResource("3_k7wgp")]
+[node name="Label" type="Label" parent="CenterContainer/GUIRect/Control/GUIRect2" unique_id=187493172]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("5_k7wgp")
+text = "locked warning"
 
 [node name="Button" type="Button" parent="." unique_id=286542659]
 layout_mode = 1

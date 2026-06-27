@@ -157,7 +157,17 @@ layout_mode = 2
 
 [node name="GUIPauseBox" parent="GUIManager" unique_id=1648966608 instance=ExtResource("22_ennrn")]
 visible = false
+custom_minimum_size = Vector2(166, 262)
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -131.0
+offset_right = 83.0
+offset_bottom = 131.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GUIManager" unique_id=845837158]
 visible = false
@@ -202,18 +212,19 @@ offset_top = -120.0
 offset_bottom = 120.0
 grow_horizontal = 0
 
-[node name="GUIBegin" type="CenterContainer" parent="GUIManager" unique_id=2086645197]
+[node name="GUIBegin" parent="GUIManager" unique_id=276795201 instance=ExtResource("26_ema4c")]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GUIBegin" parent="GUIManager/GUIBegin" unique_id=276795201 instance=ExtResource("26_ema4c")]
 custom_minimum_size = Vector2(184, 258)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -129.0
+offset_right = 92.0
+offset_bottom = 129.0
 
 [node name="GUIActionInfo" parent="GUIManager" unique_id=1593274674 instance=ExtResource("5_iy5bs")]
 visible = false

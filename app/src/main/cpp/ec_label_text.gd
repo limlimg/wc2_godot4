@@ -1,3 +1,4 @@
+@tool
 extends Control
 
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
@@ -7,14 +8,7 @@ var font_name: String:
 	set(value):
 		if value != font_name:
 			font_name = value
-			init()
-
-
-@export
-var font_size_ipad: int:
-	set(value):
-		if value != font_size_ipad:
-			font_size_ipad = value
+			_font.font_names = [value]
 			init()
 
 
@@ -27,51 +21,70 @@ var font_size: int:
 
 
 @export
-var alignement: HorizontalAlignment:
-	get():
-		return $Label.horizontal_alignment
+var alignment: HorizontalAlignment:
 	set(value):
-		$Label.horizontal_alignment = value
+		if value != alignment:
+			alignment = value
+			init()
 
 
 @export
 var text: String:
-	get = get_text,
 	set = set_text
 
 @export
 var color: Color = Color.WHITE:
-	get = get_color,
 	set = set_color
 
-func init() -> void:
-	$Label.remove_theme_font_override(&"font")
-	$Label.remove_theme_font_size_override(&"font_size")
-	var font := SystemFont.new()
-	font.font_names = [font_name]
-	$Label.add_theme_font_override(&"font", font)
-	if _ecGraphics.instance().content_scale_size_mode == 3:
-		$Label.add_theme_font_size_override(&"font_size", font_size_ipad)
-	else:
-		$Label.add_theme_font_size_override(&"font_size", font_size)
+@export
+var alpha: float:
+	get = get_alpha,
+	set = set_alpha
 
+var _text_paragraph := TextParagraph.new()
+var _font := SystemFont.new()
 
-func get_color() -> Color:
-	return $Label.get_theme_color(&"font_color")
-
-
-func set_color(value: Color) -> void:
-	$Label.remove_theme_color_override(&"font_color")
-	$Label.add_theme_color_override(&"font_color", value)
-
-
-func get_text() -> String:
-	return $Label.text
+func init():
+	_text_paragraph.clear()
+	match alignment:
+		HorizontalAlignment.HORIZONTAL_ALIGNMENT_RIGHT:
+			_text_paragraph.alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		HorizontalAlignment.HORIZONTAL_ALIGNMENT_CENTER:
+			_text_paragraph.alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_:
+			_text_paragraph.alignment = HORIZONTAL_ALIGNMENT_LEFT
+	_text_paragraph.width = size.y
+	if not text.is_empty():
+		@warning_ignore("integer_division")
+		_text_paragraph.add_string(text, _font, font_size)
+	queue_redraw()
 
 
 func set_text(value: String) -> void:
-	$Label.text = value
+	if value != text:
+		text = value
+		init()
 
 
-func set_alpha(alpha: float)-> void:
-	set_color(Color(color, alpha))
+func set_color(value: Color) -> void:
+	if value != color:
+		color = value
+		queue_redraw()
+
+
+func get_alpha() -> float:
+	return color.a
+
+
+func set_alpha(value: float) -> void:
+	set_color(Color(color, value))
+
+
+func draw_text(x: float, y: float) -> void:
+	_ecGraphics.instance().render_text(_text_paragraph, x, y, color)
+
+
+func _draw() -> void:
+	_ecGraphics.instance().render_begin(self)
+	draw_text(0.0, 0.0)
+	_ecGraphics.instance().render_end()

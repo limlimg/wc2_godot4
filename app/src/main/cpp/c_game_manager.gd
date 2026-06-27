@@ -1,15 +1,11 @@
-extends Node
+extends "res://app/src/main/cpp/native-lib.gd"
 
 const _CCountry = preload("res://app/src/main/cpp/c_country.gd")
 const _DialogueDef = preload("res://app/src/main/cpp/dialogue_def.gd")
-const _native = preload("res://app/src/main/cpp/native-lib.gd")
-const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
 const _ecFile = preload("res://app/src/main/cpp/ec_file.gd")
-const _SaveHeader = preload("res://app/src/main/cpp/save_header.gd")
 const _CActionAI = preload("res://app/src/main/cpp/c_action_ai.gd")
 const _CActionAssist = preload("res://app/src/main/cpp/c_action_assist.gd")
 const _CArmy = preload("res://app/src/main/cpp/c_army.gd")
-const _SaveCountryInfo = preload("res://app/src/main/cpp/save_country_info.gd")
 const _SaveAreaInfo = preload("res://app/src/main/cpp/save_area_info.gd")
 const _SaveArmyInfo = preload("res://app/src/main/cpp/save_army_info.gd")
 
@@ -65,12 +61,12 @@ func new_game(new_game_mode: int, map_index: int, new_campaign: int, battle: int
 	victory = 100000
 	_great_victory = 10
 	if game_mode == 1:
-		var battle_key_name := _native.get_battle_key_name(campaign, battle)
+		var battle_key_name := get_battle_key_name(campaign, battle)
 		var battle_def := _CObjectDef.instance().get_battle_def(battle_key_name)
 		if battle_def != null:
 			victory = battle_def.victory
 			_great_victory = battle_def.greatvictory
-	_battle_file_name = _native.get_battle_file_name(game_mode, campaign, battle)
+	_battle_file_name = get_battle_file_name(game_mode, campaign, battle)
 	_player_country_name.fill("")
 	_is_new_game = true
 
@@ -90,7 +86,7 @@ func load_game(save_file_name: String) -> void:
 
 
 func get_save_header(save_file_name: String) -> _SaveHeader:
-	var path := _native.get_document_path(save_file_name)
+	var path := get_document_path(save_file_name)
 	var file := _ecFile.new()
 	if not file.open(path, FileAccess.READ):
 		return null
@@ -111,7 +107,7 @@ func retry_game() -> void:
 
 
 func is_last_battle() -> bool:
-	return game_mode == 1 and _battle == _native.get_num_battles(campaign) - 1
+	return game_mode == 1 and _battle == get_num_battles(campaign) - 1
 
 
 # TODO: _get_num_countries
@@ -241,7 +237,7 @@ func init_battle() -> void:
 
 func _load_battle(file_name: String) -> void:
 	_clear_battle()
-	var battle: _SaveHeader = load(_native.get_path_alias(file_name, ""))
+	var battle: _SaveHeader = load(get_asset_path(file_name, ""))
 	g_Scene.init(battle.areas_enable, battle.map)
 	for i in battle.country:
 		var country := _CCountry.new()
@@ -341,7 +337,7 @@ func get_cur_country() -> _CCountry:
 func _real_load_game(file_name: String) -> void:
 	_clear_battle()
 	g_Scene.init(_areas_enable, _map)
-	var path := _native.get_document_path(file_name)
+	var path := get_document_path(file_name)
 	var file := _ecFile.new()
 	if file.open(path, FileAccess.READ):
 		var save := _get_save_header_from_file(file)

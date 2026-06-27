@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 
 const _ArmyDef = preload("res://app/src/main/cpp/army_def.gd")
 const _CCountry = preload("res://app/src/main/cpp/c_country.gd")

@@ -1,8 +1,7 @@
-[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://b8oufvok5xvg3"]
+[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://b8oufvok5xvg3"]
 
-[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_bfdwb"]
-[ext_resource type="Script" uid="uid://c0fyh1xdns125" path="res://app/src/main/cpp/scene_system_resource/ec_texture_assets.gd" id="2_f573k"]
-[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="3_y5sgd"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/scene_system_resource/asset_registry.gd" id="1_bfdwb"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="3_y5sgd"]
 
 [sub_resource type="Resource" id="Resource_bfdwb"]
 script = ExtResource("1_bfdwb")
@@ -10,16 +9,10 @@ name = "board_paper.webp"
 name_ipad = "board_paper_iPad.webp"
 name_640h = "board_paper-640h.webp"
 name_568h = "board_paper-568h.webp"
-metadata/_custom_type_script = "uid://wmgv5whydq62"
-
-[sub_resource type="Resource" id="Resource_f573k"]
-script = ExtResource("2_f573k")
-name = SubResource("Resource_bfdwb")
-metadata/_custom_type_script = "uid://c0fyh1xdns125"
 
 [resource]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("3_y5sgd")
-preset = SubResource("Resource_f573k")
+asset = SubResource("Resource_bfdwb")
 metadata/_custom_type_script = "uid://cr8ksgysprxjq"

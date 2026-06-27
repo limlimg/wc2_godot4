@@ -1,3 +1,4 @@
+@tool
 extends "res://app/src/main/cpp/gui_button.gd"
 
 @export

@@ -2,9 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bs5s8d044hv4a" path="res://app/src/main/cpp/ec_effect.gd" id="1_7ijto"]
 [ext_resource type="PackedScene" uid="uid://b4kec6mksgg5n" path="res://app/src/main/cpp/ec_particle_system.tscn" id="2_3hmcq"]
+[ext_resource type="Script" uid="uid://csg3b5wvj6jja" path="res://app/src/main/cpp/ec_emitter_attr.gd" id="2_qu6e8"]
+[ext_resource type="Script" uid="uid://db5ial1i1vdli" path="res://app/src/main/cpp/ec_effect_res.gd" id="3_8vsw3"]
+
+[sub_resource type="Resource" id="Resource_l5s5w"]
+script = ExtResource("3_8vsw3")
+metadata/_custom_type_script = "uid://db5ial1i1vdli"
 
 [node name="ecEffect" type="Node2D" unique_id=1633173356]
 script = ExtResource("1_7ijto")
+effect_res = SubResource("Resource_l5s5w")
 
 [node name="LiveParticles" type="Node2D" parent="." unique_id=1657761693]
 

@@ -22,10 +22,14 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+ecGraphics="*uid://bgqo85u3r33x3"
 CStateManager="*res://app/src/main/cpp/c_state_manager.gd"
-GUIMotionManager="*res://app/src/main/cpp/gui_motion_manager.gd"
-CSoundBox="*res://app/src/main/cpp/c_sound_box.gd"
+g_LocalizableStrings="*uid://rbwcuj5sihmy"
+g_StringTable="*uid://rbwcuj5sihmy"
+CObjectDef="*uid://chppiklcc4q7g"
 g_Commander="*res://app/src/main/cpp/c_commander.gd"
+CSoundBox="*res://app/src/main/cpp/c_sound_box.gd"
+GUIMotionManager="*res://app/src/main/cpp/gui_motion_manager.gd"
 g_GameSettings="*res://app/src/main/cpp/c_game_settings.gd"
 g_GameManager="*res://app/src/main/cpp/c_game_manager.gd"
 g_SoundRes="*uid://csrlpeqpqytkc"

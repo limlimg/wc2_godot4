@@ -7,8 +7,8 @@ var info: String:
 
 
 func get_info() -> String:
-	return $ecLabelText.text
+	return $RichTextLabel.text
 
 
 func set_info(value: String) -> void:
-	$ecLabelText.text = value
+	$RichTextLabel.text = value

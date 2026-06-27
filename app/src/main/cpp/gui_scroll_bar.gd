@@ -1,6 +1,5 @@
 extends "res://app/src/main/cpp/gui_element.gd"
 
-const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 
 @export
 var horizontal: bool:
@@ -8,21 +7,21 @@ var horizontal: bool:
 		return $HSlider.visible
 	set(value):
 		$HSlider.visible = value
-		$VSlider.visible = not value
+		$HSlider/VSlider.visible = not value
 
 
 @export
 var max_value: float:
 	get():
-		return $HSlider.max_value if horizontal else $VSlider.max_value
+		return $HSlider.max_value if horizontal else $HSlider/VSlider.max_value
 	set(value):
 		var f: float
-		f = $VSlider.value * (value / $VSlider.max_value)
-		$VSlider.max_value = value
-		$VSlider.set_value_no_signal(f)
+		f = $HSlider/VSlider.value * (value / $HSlider/VSlider.max_value)
+		$HSlider/VSlider.max_value = value
+		$HSlider/VSlider.set_value_no_signal(f)
 		f = $HSlider.value * (value / $HSlider.max_value)
 		$HSlider.max_value = value
-		$VSlider.set_value_no_signal(f)
+		$HSlider/VSlider.set_value_no_signal(f)
 
 
 @export
@@ -85,14 +84,14 @@ signal value_changed(value: float)
 
 
 func get_scroll_pos() -> float:
-	return $HSlider.value if horizontal else $VSlider.value
+	return $HSlider.value if horizontal else $HSlider/VSlider.value
 
 
 func set_scroll_pos(pos: float) -> void:
 	if horizontal:
 		$HSlider.set_value_no_signal(pos)
 	else:
-		$VSlider.set_value_no_signal(pos)
+		$HSlider/VSlider.set_value_no_signal(pos)
 
 
 func _ready() -> void:
@@ -101,7 +100,7 @@ func _ready() -> void:
 
 func _on_render() -> void:
 	var range_size = size - $GrabberRect/Grabber.size
-	var proportion := Vector2($HSlider.value / $HSlider.max_value, $VSlider.value / $VSlider.max_value)
+	var proportion := Vector2($HSlider.value / $HSlider.max_value, $HSlider/VSlider.value / $HSlider/VSlider.max_value)
 	$GrabberRect.position = range_size * proportion
 
 

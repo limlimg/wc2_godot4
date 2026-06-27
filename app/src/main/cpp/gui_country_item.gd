@@ -12,7 +12,7 @@ func init() -> void:
 	super()
 	if texture_res == null:
 		return
-	var res := texture_res.get_res()
+	var res := texture_res
 	var attr := res.get_image("button_%s.png"%(country_name))
 	if attr != null:
-		_button_image = _ecImage.new(attr)
+		$Control/ButtonImage.texture = attr

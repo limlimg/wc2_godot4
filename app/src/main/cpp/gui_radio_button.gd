@@ -1,3 +1,4 @@
+@tool
 extends "res://app/src/main/cpp/gui_button.gd"
 
 @export
@@ -22,4 +23,3 @@ func _on_render():
 				color = Color8(210, 210, 210)
 	color.a = alpha
 	$TextureButton.self_modulate = color
-	$ecText.alignment = HORIZONTAL_ALIGNMENT_CENTER

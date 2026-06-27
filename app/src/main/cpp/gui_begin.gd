@@ -1,11 +1,9 @@
 extends "res://app/src/main/cpp/gui_element.gd"
 
-const _ecTextureResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd")
 const _WarMedalId = preload("res://app/src/main/cpp/war_medal_id.gd").WARMEDAL_ID
-const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 
 @export
-var texture_res: _ecTextureResAssets:
+var texture_res: _ecTextureRes:
 	set(value):
 		if value != texture_res:
 			texture_res = value
@@ -95,9 +93,9 @@ func _on_update(_delta: float) -> void:
 func _on_render() -> void:
 	if texture_res == null:
 		return
-	$CenterContainer/RoundStartBoard/MedalSoldiers/TextureRect.texture = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_soldiers])))
-	$CenterContainer/RoundStartBoard/MedalAirforce/TextureRect.texture = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_airforce])))
-	$CenterContainer/RoundStartBoard/MedalCannon/TextureRect.texture = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_cannon])))
-	$CenterContainer/RoundStartBoard/MedalPanzer/TextureRect.texture = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_panzer])))
-	$CenterContainer/RoundStartBoard/MedalNavy/TextureRect.texture = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_navy])))
-	$CenterContainer/RoundStartBoard/MedalHonor/TextureRect.texture = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_honor])))
+	$CenterContainer/RoundStartBoard/MedalSoldiers/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_soldiers]))
+	$CenterContainer/RoundStartBoard/MedalAirforce/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_airforce]))
+	$CenterContainer/RoundStartBoard/MedalCannon/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_cannon]))
+	$CenterContainer/RoundStartBoard/MedalPanzer/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_panzer]))
+	$CenterContainer/RoundStartBoard/MedalNavy/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_navy]))
+	$CenterContainer/RoundStartBoard/MedalHonor/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_honor]))

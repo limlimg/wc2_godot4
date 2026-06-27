@@ -1,19 +1,17 @@
+class_name ecTextureRect
 extends Resource
 
 @export
-var x: float
+var region: Rect2:
+	set(value):
+		if value != region:
+			region = value
+			emit_changed()
+
 
 @export
-var y: float
-
-@export
-var w: float
-
-@export
-var h: float
-
-@export
-var refx: float
-
-@export
-var refy: float
+var origin: Vector2:
+	set(value):
+		if value != origin:
+			origin = value
+			emit_changed()

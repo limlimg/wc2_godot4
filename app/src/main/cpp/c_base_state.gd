@@ -1,4 +1,4 @@
-extends Node
+extends Control
 
 ## In the original game code, CBaseState is the base class of states which are
 ## the primary controllers of the game's behavour.

@@ -115,22 +115,22 @@ func fade_out(cause: int, overlay: Node) -> void:
 	_fading_cause = cause
 	_remove_overlay()
 	if overlay != null:
-		overlay.reparent($GUIFade, false)
+		overlay.reparent($Fade, false)
 		_overlay = overlay
 	$AnimationPlayer.play("fade_out")
 
 
 func _remove_overlay() -> void:
 	if _overlay != null:
-		$GUIFade.remove_child(_overlay)
+		$Fade.remove_child(_overlay)
 		_overlay.queue_free()
 		_overlay = null
 
 
 func _ready() -> void:
 	if start_faded_in:
-		$GUIFade.alpha = 0.0
-	$GUIFade.visible = true # $Fade is invisible in the editor for previewing
+		$Fade.alpha = 0.0
+	$Fade.visible = true # $Fade is invisible in the editor for previewing
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

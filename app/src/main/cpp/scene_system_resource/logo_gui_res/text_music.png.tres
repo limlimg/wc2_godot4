@@ -1,23 +1,17 @@
-[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://bai8qomltrv7r"]
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://bai8qomltrv7r"]
 
-[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_f4y6f"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/scene_system_resource/asset_registry.gd" id="1_f4y6f"]
 [ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/texture_res.tres" id="2_0kpmm"]
-[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_pgwxx"]
-[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_5bwqy"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://app/src/main/cpp/ec_image_attr.gd" id="4_5bwqy"]
 
 [sub_resource type="Resource" id="Resource_f4y6f"]
 script = ExtResource("1_f4y6f")
 name = "text_music.png"
 
-[sub_resource type="Resource" id="Resource_jrkm4"]
-script = ExtResource("3_pgwxx")
-name = SubResource("Resource_f4y6f")
-res = ExtResource("2_0kpmm")
-metadata/_custom_type_script = "uid://fs8gw6cxcp2u"
-
 [resource]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("4_5bwqy")
-preset = SubResource("Resource_jrkm4")
+texture_res = ExtResource("2_0kpmm")
+image = SubResource("Resource_f4y6f")
 metadata/_custom_type_script = "uid://cr8ksgysprxjq"

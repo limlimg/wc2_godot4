@@ -1,6 +1,6 @@
+@tool
 extends "res://app/src/main/cpp/gui_element.gd"
 
-const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 const _ecUniFont = preload("res://app/src/main/cpp/ec_uni_font.gd")
 const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 
@@ -35,8 +35,7 @@ var grey_scale := 1.0:
 
 @export_range(0.0, 1.0, 1.0/255.0)
 var alpha := 1.0:
-	set = _set_alpha
-
+	set = set_alpha
 
 @export_group("Textures", "texture_")
 @export
@@ -88,9 +87,9 @@ var text: String:
 @export
 var text_font: Theme:
 	get():
-		return $ecText.theme
+		return $Label.theme
 	set(value):
-		$ecText.theme = value
+		$Label.theme = value
 
 
 @export
@@ -129,42 +128,53 @@ signal pressed
 
 
 func get_text() -> String:
-	return $ecText.text
+	return $Label.text
 
 
 func set_text(value: String) -> void:
-	$ecText.text = value
+	$Label.text = value
 
 
 func get_text_color() -> Color:
-	return $ecText.color
+	return $Label.get_theme_color(&"font_color")
 
 
 func set_text_color(value: Color) -> void:
-	$ecText.color = value
+	$Label.remove_theme_color_override(&"font_color")
+	$Label.add_theme_color_override(&"font_color", value)
 
 
 func get_text_offset() -> Vector2:
-	return $ecText.text_position
+	return Vector2($Label.offset_left, $Label.offset_top)
 
 
 func set_text_offset(value: Vector2) -> void:
-	$ecText.text_position = value
+	$Label.offset_left = value.x
+	$Label.offset_right = value.x
+	$Label.offset_top = value.y
+	$Label.offset_bottom = value.y
 
 
 func get_text_align() -> HorizontalAlignment:
-	return $ecText.alignment
+	return $Label.horizontal_alignment
 
 
 func set_text_align(value: HorizontalAlignment) -> void:
-	$ecText.alignment = value
+	$Label.horizontal_alignment = value
+	match value:
+		HORIZONTAL_ALIGNMENT_RIGHT:
+			$Label.grow_horizontal = GROW_DIRECTION_END
+		HORIZONTAL_ALIGNMENT_CENTER:
+			$Label.grow_horizontal = GROW_DIRECTION_BOTH
+		_:
+			$Label.grow_horizontal = GROW_DIRECTION_BEGIN
 
 
 #func set_text_image(image_name: StringName) -> void:
 	#texture_text_image = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(image_name))
 
 
-func _set_alpha(value: float) -> void:
+func set_alpha(value: float) -> void:
 	if value != alpha:
 		alpha = value
 		_on_render()

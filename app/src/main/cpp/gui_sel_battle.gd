@@ -1,13 +1,10 @@
 extends "res://app/src/main/cpp/gui_element.gd"
 
-const _ecTextureResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd")
 const _GUIManager = preload("res://app/src/main/cpp/gui_manager.gd")
 const _ecTexture = preload("res://app/src/main/cpp/ec_texture.gd")
-const _ecImage = preload("res://app/src/main/cpp/ec_image.gd")
 const _native = preload("res://app/src/main/cpp/native-lib.gd")
 const _GUIBattleList = preload("res://app/src/main/cpp/gui_battle_list.gd")
 const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
-const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
 
 const _CAMPAIGN_LOGO = [
 	"logo_axis.png",
@@ -17,7 +14,7 @@ const _CAMPAIGN_LOGO = [
 ]
 
 @export
-var texture_res: _ecTextureResAssets:
+var texture_res: _ecTextureRes:
 	set(value):
 		if value != texture_res:
 			texture_res = value
@@ -51,7 +48,7 @@ func _ready() -> void:
 func init() -> void:
 	var logo: Texture2D = null
 	if texture_res != null and campaign < _CAMPAIGN_LOGO.size():
-		logo = _ecImageTexture.from_ec_image_attr(texture_res.get_res().get_image(_CAMPAIGN_LOGO[campaign]))
+		logo = texture_res.get_image(_CAMPAIGN_LOGO[campaign])
 	$Logo/TextureRect.texture = logo
 	#s_texture_res = load("res://app/src/main/cpp/scene_system_resource/selbattle_res/texture_res.tres").get_res()
 	_battle = -1
@@ -82,13 +79,13 @@ func _load_image_list(sel_campaign: int, battle: int) -> void:
 
 
 func _on_button_info_pressed() -> void:
-	$GUIBattleIntro.campaign = campaign
-	$GUIBattleIntro.battle = _battle
-	$GUIBattleIntro.show()
+	$GUIBattleIntro/GUIBattleIntro.campaign = campaign
+	$GUIBattleIntro/GUIBattleIntro.battle = _battle
+	$GUIBattleIntro/GUIBattleIntro.show()
 
 
 func _on_gui_battle_intro_ok_pressed() -> void:
-	$GUIBattleIntro.hide()
+	$GUIBattleIntro/GUIBattleIntro.hide()
 
 
 func _on_button_ok_pressed() -> void:

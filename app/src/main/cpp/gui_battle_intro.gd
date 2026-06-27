@@ -5,9 +5,8 @@ extends "res://app/src/main/cpp/gui_element.gd"
 ## element should occupy the whole screen (for the fading out of elements below)
 ## and put the board in the center by itself.
 
-const _native = preload("res://app/src/main/cpp/native-lib.gd")
+const _lib = preload("res://app/src/main/cpp/native-lib.gd")
 const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
-
 
 const _BATTLE_INTRO_KEY_FORMAT = [
 	"axis battle intro {0}",
@@ -45,28 +44,28 @@ func _ready() -> void:
 
 
 func init() -> void:
-	var battle_intro = $CenterContainer/BoardIntro/TextureRect/BattleIntro/ecText
+	var battle_intro = $BattleIntro/Label
 	if _ecGraphics.instance().content_scale_size_mode == 3:
 		battle_intro.add_theme_constant_override("line_spacing", -6)
 	else:
 		battle_intro.add_theme_constant_override("line_spacing", -3)
-	$CenterContainer/BoardIntro/TextureRect/Victory/ecText.text = "victory"
-	$CenterContainer/BoardIntro/TextureRect/GreatVictory/ecText.text = "great victory"
+	$Victory/Label.text = "victory"
+	$GreatVictory/Label.text = "great victory"
 	_set_battle()
 
 
 func _set_battle() -> void:
-	var string_table := _native.g_string_table
+	var string_table := g_StringTable
 	if campaign >= 0 and campaign < 4:
-		$CenterContainer/BoardIntro/TextureRect/BattleIntro/ecText.text = _BATTLE_INTRO_KEY_FORMAT[campaign].format([battle + 1])
-		$CenterContainer/BoardIntro/TextureRect/BattleName/ecText.text = _BATTLE_NAME_KEY_FORMAT[campaign].format([battle + 1])
-	var battle_key_name := _native.get_battle_key_name(campaign, battle)
+		$BattleIntro/Label.text = _BATTLE_INTRO_KEY_FORMAT[campaign].format([battle + 1])
+		$BattleName/Label.text = _BATTLE_NAME_KEY_FORMAT[campaign].format([battle + 1])
+	var battle_key_name := _lib.get_battle_key_name(campaign, battle)
 	var battle_def := _CObjectDef.instance().get_battle_def(battle_key_name)
-	$CenterContainer/BoardIntro/TextureRect/Age/ecText.text = battle_def.age
+	$Age/Label.text = battle_def.age
 	var v1 := string_table.get_string("victory days1")
 	var v2 := string_table.get_string("victory days2")
-	var v := $CenterContainer/BoardIntro/TextureRect/VictoryDays/ecText
-	var gv := $CenterContainer/BoardIntro/TextureRect/GreatVictoryDays/ecText
+	var v := $VictoryDays/Label
+	var gv := $GreatVictoryDays/Label
 	if not v1.is_empty():
 		v.text = "%s %d %s"%[v1, battle_def.victory, v2]
 		gv.text = "%s %d %s"%[v1, battle_def.greatvictory, v2]

@@ -1,30 +1,26 @@
-extends Node
+extends "res://app/src/main/cpp/native-lib.gd"
 
-const _ecTextureResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd")
-const _ecEffectResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_effect_res_assets.gd")
-const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
 const _ecTextureRes = preload("res://app/src/main/cpp/ec_texture_res.gd")
-const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
+const _ecEffectRes = preload("res://app/src/main/cpp/ec_effect_res.gd")
+const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
 
-var _army_res: _ecTextureResAssets
-var _cardtex_res: _ecTextureResAssets
-var _battlebg_res: _ecTextureResAssets
-var _flag_res: _ecTextureResAssets
-var _eff_res: _ecTextureResAssets
-var _effect_cache: Array[_ecEffectResAssets]
+var _army_res: _ecTextureRes
+var _cardtex_res: _ecTextureRes
+var _battlebg_res: _ecTextureRes
+var _flag_res: _ecTextureRes
+var _eff_res: _ecTextureRes
+var _effect_cache: Array[_ecEffectRes]
 var card_d_research: Dictionary[int, Texture2D]
 
 func load_res() -> void:
-	var res: _ecTextureRes
 	_army_res = load("res://app/src/main/cpp/scene_system_resource/game_res/army.tres")
 	_cardtex_res = load("res://app/src/main/cpp/scene_system_resource/game_res/cardtex.tres")
-	res = _cardtex_res.get_res()
 	var regex_card_d_research := RegEx.create_from_string("card_d_research_([0-9]+).png")
-	for i in res.get_keys():
+	for i in _cardtex_res.get_keys():
 		var regex_match: RegExMatch
 		regex_match = regex_card_d_research.search(i)
 		if regex_match.get_group_count() > 0:
-			card_d_research[regex_match.get_string(1).to_int()] = _ecImageTexture.from_ec_image_attr(res.get_image(i))
+			card_d_research[regex_match.get_string(1).to_int()] = _cardtex_res.get_image(i)
 	_battlebg_res = load("res://app/src/main/cpp/scene_system_resource/game_res/battlebg.tres")
 	_flag_res = load("res://app/src/main/cpp/scene_system_resource/game_res/flag.tres")
 	_eff_res = load("res://app/src/main/cpp/scene_system_resource/game_res/eff.tres")

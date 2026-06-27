@@ -1,11 +1,9 @@
-extends Node
+extends "res://app/src/main/cpp/native-lib.gd"
 
 const _MAGIC = "EASY"
 const _DOCUMENT_SIZE = 0x17C
 const _UPGRADE_MEDAL = [5, 8, 12, 19, 30, 48, 75, 120, 190, 300, 480, 760, 1200, 2000]
 const _ecFile = preload("res://app/src/main/cpp/ec_file.gd")
-const _native = preload("res://app/src/main/cpp/native-lib.gd")
-const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
 const _WARMEDAL_ID = preload("res://app/src/main/cpp/war_medal_id.gd").WARMEDAL_ID
 const _CommanderData = preload("res://app/src/main/cpp/commander_data.gd")
 
@@ -27,7 +25,7 @@ func _init() -> void:
 func load() -> void:
 	_loaded = true
 	var file := _ecFile.new()
-	if file.open(_native.get_document_path("commander.sav"), FileAccess.READ):
+	if file.open(get_document_path("commander.sav"), FileAccess.READ):
 		var buffer := PackedByteArray()
 		if file.read(buffer, _DOCUMENT_SIZE) and buffer.slice(0, 4).get_string_from_ascii().reverse() == _MAGIC and buffer.decode_u32(4) == 1:
 			rank = buffer.decode_u32(16)
@@ -75,7 +73,7 @@ func save() -> void:
 				buffer.encode_u32(offset, x)
 				offset += 4
 		var file := _ecFile.new()
-		if file.open(_native.get_document_path("commander.sav"), FileAccess.WRITE):
+		if file.open(get_document_path("commander.sav"), FileAccess.WRITE):
 			file.write(buffer, _DOCUMENT_SIZE)
 			file.close()
 

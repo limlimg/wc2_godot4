@@ -1,8 +1,7 @@
-[gd_resource type="Theme" script_class="ecUniFontAssets" format=3 uid="uid://cthcurv4u6ctt"]
+[gd_resource type="Theme" script_class="ecUniFont" format=3 uid="uid://cthcurv4u6ctt"]
 
-[ext_resource type="Script" uid="uid://bbkwpdgd20wlc" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size_hd.gd" id="1_1jwej"]
-[ext_resource type="Script" uid="uid://dynr8tgq0gv3y" path="res://app/src/main/cpp/scene_system_resource/ec_uni_font_assets.gd" id="2_a1342"]
-[ext_resource type="FontFile" path="res://font6_en_hd.fnt" id="2_dd2af"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/scene_system_resource/asset_registry.gd" id="1_1jwej"]
+[ext_resource type="Script" uid="uid://ckk2mqlehxynn" path="res://app/src/main/cpp/ec_uni_font.gd" id="2_a1342"]
 
 [sub_resource type="Resource" id="Resource_dd2af"]
 script = ExtResource("1_1jwej")
@@ -11,7 +10,5 @@ name_hd = "font6_en_hd.fnt"
 metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
 
 [resource]
-default_font = ExtResource("2_dd2af")
-default_font_size = 18
 script = ExtResource("2_a1342")
-asset_names = SubResource("Resource_dd2af")
+asset = SubResource("Resource_dd2af")

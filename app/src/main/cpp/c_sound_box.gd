@@ -1,7 +1,4 @@
-extends Node
-
-const _CSoundBox = preload("res://app/src/main/cpp/c_sound_box.gd")
-const _NATIVE_LIB = preload("res://app/src/main/cpp/native-lib.gd")
+extends "res://app/src/main/cpp/native-lib.gd"
 
 var _se_volume := 100
 var _music_volume := 100
@@ -26,7 +23,7 @@ func _init_sound_system() -> void:
 
 
 func _destroy_sound_system() -> void:
-	_NATIVE_LIB.end_jni()
+	end_jni()
 
 
 func update_sound() -> void:
@@ -35,7 +32,7 @@ func update_sound() -> void:
 
 
 func load_music(path: String, _a2: String) -> void:
-	_NATIVE_LIB.preload_background_music_jni(path)
+	preload_background_music_jni(path)
 
 
 func unload_music() -> void:
@@ -44,41 +41,41 @@ func unload_music() -> void:
 
 
 func play_music(looping: bool) -> void:
-	_NATIVE_LIB.play_background_music_jni(looping)
+	play_background_music_jni(looping)
 
 
 func resume_music() -> void:
-	_NATIVE_LIB.resume_background_music_jni()
+	resume_background_music_jni()
 
 
 func _stop_music() -> void:
-	_NATIVE_LIB.stop_background_music_jni()
+	stop_background_music_jni()
 
 
 func set_music_volume(volume: int) -> void:
 	_music_volume = volume
-	_NATIVE_LIB.set_background_music_volume_jni(volume / 100.0)
+	set_background_music_volume_jni(volume / 100.0)
 
 
 func load_se(path: String) -> void:
-	_NATIVE_LIB.preload_effect_jni(path)
+	preload_effect_jni(path)
 
 
 func unload_se(path: String) -> void:
-	_NATIVE_LIB.unload_effect_jni(path)
+	unload_effect_jni(path)
 
 
 func play_se(path: String) -> int:
-	return await _NATIVE_LIB.play_effect_jni(path)
+	return await play_effect_jni(path)
 
 
 func _stop_all_se() -> void:
-	_NATIVE_LIB.stop_all_effects_jni()
+	stop_all_effects_jni()
 
 
 func set_se_volume(volume: int) -> void:
 	_se_volume = volume
-	_NATIVE_LIB.set_effects_volume_jni(volume / 100.0)
+	set_effects_volume_jni(volume / 100.0)
 
 
 func _process(_delta: float) -> void:

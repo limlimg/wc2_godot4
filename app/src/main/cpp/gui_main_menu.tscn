@@ -318,6 +318,7 @@ rect = Rect2(0, 0, 107, 0)
 
 [node name="Control" type="Control" parent="MainButton" unique_id=1070809499]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainButton/Control" unique_id=1378940527]
 layout_mode = 1
@@ -738,7 +739,7 @@ grow_vertical = 0
 rect_ipad = Rect2(70, -354, 308, 94)
 rect = Rect2(38, -127, 154, 47)
 
-[node name="Button" parent="SelConquest/Button4" unique_id=649060181 instance=ExtResource("5_tap4s")]
+[node name="GUIButton" parent="SelConquest/Button4" unique_id=649060181 instance=ExtResource("5_tap4s")]
 layout_mode = 2
 grey_when_pressed = true
 texture_normal = ExtResource("29_o8knk")
@@ -866,7 +867,7 @@ libraries/ = SubResource("AnimationLibrary_kov84")
 [connection signal="pressed" from="SelConquest/Button1/GUIButton" to="." method="_on_button_sel_conquest_pressed" binds= [0]]
 [connection signal="pressed" from="SelConquest/Button2/GUIButton" to="." method="_on_button_sel_conquest_pressed" binds= [1]]
 [connection signal="pressed" from="SelConquest/Button3/GUIButton" to="." method="_on_button_sel_conquest_pressed" binds= [2]]
-[connection signal="pressed" from="SelConquest/Button4/Button" to="." method="_on_button_sel_conquest_pressed" binds= [3]]
+[connection signal="pressed" from="SelConquest/Button4/GUIButton" to="." method="_on_button_sel_conquest_pressed" binds= [3]]
 [connection signal="pressed" from="SelConquest/Button5/GUIButton" to="." method="_on_button_sel_conquest_pressed" binds= [4]]
 [connection signal="pressed" from="SelConquest/Button6/GUIButton" to="." method="_on_button_sel_conquest_pressed" binds= [5]]
 [connection signal="pressed" from="SelConquest/Button7/GUIButton" to="." method="_on_button_sel_conquest_pressed" binds= [6]]

@@ -1,24 +1,17 @@
-[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://cgm24k31skmn"]
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://cgm24k31skmn"]
 
-[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_fg6kk"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/scene_system_resource/asset_registry.gd" id="1_fg6kk"]
 [ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/texture_res.tres" id="2_75o2j"]
-[ext_resource type="Script" uid="uid://fs8gw6cxcp2u" path="res://app/src/main/cpp/scene_system_resource/ec_image_attr_assets.gd" id="3_quu66"]
-[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="4_02qgh"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://app/src/main/cpp/ec_image_attr.gd" id="4_02qgh"]
 
 [sub_resource type="Resource" id="Resource_fg6kk"]
 script = ExtResource("1_fg6kk")
 name = "button_confirmexit.png"
-metadata/_custom_type_script = "uid://wmgv5whydq62"
-
-[sub_resource type="Resource" id="Resource_1vhi4"]
-script = ExtResource("3_quu66")
-name = SubResource("Resource_fg6kk")
-res = ExtResource("2_75o2j")
-metadata/_custom_type_script = "uid://fs8gw6cxcp2u"
 
 [resource]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("4_02qgh")
-preset = SubResource("Resource_1vhi4")
+texture_res = ExtResource("2_75o2j")
+image = SubResource("Resource_fg6kk")
 metadata/_custom_type_script = "uid://cr8ksgysprxjq"

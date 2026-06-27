@@ -1,3 +1,4 @@
+@tool
 extends "res://app/src/main/cpp/gui_button.gd"
 
 @export
@@ -43,16 +44,15 @@ var image_position: Vector2:
 
 func _on_render():
 	super()
-	var texture_rect: TextureRect = $TextureRect
 	if _ecGraphics.instance().content_scale_size_mode == 3:
-		texture_rect.position = image_position_ipad
+		$ExText.position = image_position_ipad
 	else:
-		texture_rect.position = image_position
+		$ExText.position = image_position
 	if $TextureButton.button_pressed:
-		texture_rect.texture = texture_text_pressed
-		texture_rect.self_modulate = Color(Color8(0xD2, 0xD2, 0xD2), alpha)
+		$ExText.texture = texture_text_pressed
+		$ExText.self_modulate = Color(Color8(0xD2, 0xD2, 0xD2), alpha)
 	else:
-		texture_rect.texture = texture_text_not_pressed
-		texture_rect.self_modulate = Color(Color8(0xFF, 0xFF, 0xFF), alpha)
+		$ExText.texture = texture_text_not_pressed
+		$ExText.self_modulate = Color(Color8(0xFF, 0xFF, 0xFF), alpha)
 	if not enable:
-		texture_rect.self_modulate = Color(Color8(0x6E, 0x6E, 0x6E), alpha)
+		$ExText.self_modulate = Color(Color8(0x6E, 0x6E, 0x6E), alpha)

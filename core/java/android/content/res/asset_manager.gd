@@ -23,3 +23,9 @@ func _load(path: String, original_path: String, _use_sub_threads: bool, cache_mo
 		path = original_path
 	path = path.trim_prefix("res://")
 	return ResourceLoader.load(_ASSETS_PATH + path, "", cache_mode)
+
+
+func list(path: String) -> Array[String]:
+	var li := ResourceLoader.list_directory("res://" + path)
+	li.append_array(ResourceLoader.list_directory(_ASSETS_PATH + path))
+	return li

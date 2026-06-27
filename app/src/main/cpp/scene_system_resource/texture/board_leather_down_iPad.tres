@@ -1,22 +1,15 @@
-[gd_resource type="Texture2D" script_class="ecImageTextureAssets" format=3 uid="uid://4looippukuqd"]
+[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://4looippukuqd"]
 
-[ext_resource type="Script" uid="uid://wmgv5whydq62" path="res://app/src/main/cpp/scene_system_resource/asset_names_content_size.gd" id="1_hiofh"]
-[ext_resource type="Script" uid="uid://c0fyh1xdns125" path="res://app/src/main/cpp/scene_system_resource/ec_texture_assets.gd" id="2_3tksr"]
-[ext_resource type="Script" uid="uid://chtsqwlyanvyq" path="res://app/src/main/cpp/scene_system_resource/ec_image_texture_assets.gd" id="3_ch424"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/scene_system_resource/asset_registry.gd" id="1_hiofh"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="3_ch424"]
 
 [sub_resource type="Resource" id="Resource_0hx2v"]
 script = ExtResource("1_hiofh")
 name_ipad = "board_leather_down_iPad.webp"
-metadata/_custom_type_script = "uid://wmgv5whydq62"
-
-[sub_resource type="Resource" id="Resource_k5v0o"]
-script = ExtResource("2_3tksr")
-name = SubResource("Resource_0hx2v")
-metadata/_custom_type_script = "uid://c0fyh1xdns125"
 
 [resource]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("3_ch424")
-preset = SubResource("Resource_k5v0o")
+asset = SubResource("Resource_0hx2v")
 metadata/_custom_type_script = "uid://cr8ksgysprxjq"

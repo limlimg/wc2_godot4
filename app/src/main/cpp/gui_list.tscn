@@ -10,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_u6nvb")
 
 [node name="CTouchInertia" parent="." unique_id=861780580 instance=ExtResource("2_st7b2")]
@@ -31,7 +32,7 @@ vertical_scroll_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 4
+theme_override_constants/separation = 0
 vertical = true
 
 [connection signal="inertia_ended" from="CTouchInertia" to="." method="_on_c_touch_inertia_inertia_ended"]

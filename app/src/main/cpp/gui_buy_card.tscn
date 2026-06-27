@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://caf0v7eqneb01" path="res://app/src/main/cpp/scene_system_resource/gui_rect_4_container.tscn" id="1_pwt1f"]
 [ext_resource type="Script" uid="uid://dducl552p8o1q" path="res://app/src/main/cpp/gui_buy_card.gd" id="1_rm3xk"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="3_pwt1f"]
-[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="4_ijj02"]
 [ext_resource type="Texture2D" uid="uid://cyf614mjen5ie" path="res://app/src/main/cpp/scene_system_resource/texture/board_leather_up.tres" id="4_pwt1f"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="6_kap0g"]
 [ext_resource type="Theme" uid="uid://cthcurv4u6ctt" path="res://app/src/main/cpp/scene_system_resource/font/g_font6.tres" id="6_pc1ec"]
@@ -65,11 +64,12 @@ gui_scale_568h = Vector2(1, 1)
 rect_ipad = Rect2(552, 222, 0, 0)
 rect = Rect2(268, 240, 0, 0)
 
-[node name="ecText" parent="GUIRect/BuyCardBg/Name" unique_id=448162067 instance=ExtResource("4_ijj02")]
+[node name="Label" type="Label" parent="GUIRect/BuyCardBg/Name" unique_id=1094338418]
 layout_mode = 2
+size_flags_vertical = 0
 theme = ExtResource("6_pc1ec")
-color = Color(0.043137256, 0.12156863, 0.19215687, 1)
-alignment = 1
+theme_override_colors/font_color = Color(0.043137256, 0.12156863, 0.19215687, 1)
+horizontal_alignment = 1
 
 [node name="Intro" parent="GUIRect/BuyCardBg" unique_id=481540715 instance=ExtResource("1_pwt1f")]
 layout_mode = 0
@@ -87,10 +87,11 @@ gui_scale_568h = Vector2(1, 1)
 rect_ipad = Rect2(428, 238, 0, 0)
 rect = Rect2(152, 258, 0, 0)
 
-[node name="ecText" parent="GUIRect/BuyCardBg/Intro" unique_id=535083132 instance=ExtResource("4_ijj02")]
+[node name="Label" type="Label" parent="GUIRect/BuyCardBg/Intro" unique_id=1040134274]
 layout_mode = 2
+size_flags_vertical = 0
 theme = ExtResource("6_wygf6")
-color = Color(0.043137256, 0.12156863, 0.19215687, 1)
+theme_override_colors/font_color = Color(0.043137256, 0.12156863, 0.19215687, 1)
 
 [node name="GUICardTab" parent="GUIRect/BuyCardBg" unique_id=1481582815 instance=ExtResource("14_pc1ec")]
 layout_mode = 1

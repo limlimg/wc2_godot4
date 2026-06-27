@@ -6,12 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c25787jdsu6ot" path="res://app/src/main/cpp/scene_system_resource/texture/commander_woodenbox.tres" id="3_j1tcj"]
 [ext_resource type="Texture2D" uid="uid://bh246sh0bhmcb" path="res://app/src/main/cpp/scene_system_resource/texture/board_commander_intro.tres" id="4_j1tcj"]
 [ext_resource type="Texture2D" uid="uid://cekghbbruv1hp" path="res://app/src/main/cpp/scene_system_resource/texture/commander.tres" id="5_0qww0"]
-[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="6_crajo"]
-[ext_resource type="Theme" uid="uid://dmd4twdwradyn" path="res://app/src/main/cpp/scene_system_resource/font/g_font7.tres" id="7_lgd67"]
+[ext_resource type="Theme" uid="uid://bnqvnefwxys0c" path="res://app/src/main/cpp/scene_system_resource/font/g_font7+1.tres" id="7_n37v4"]
 [ext_resource type="PackedScene" uid="uid://clvmjkktsv3mo" path="res://app/src/main/cpp/ec_effect.tscn" id="7_y3l8f"]
 [ext_resource type="Theme" uid="uid://duqavds7qrws2" path="res://app/src/main/cpp/scene_system_resource/font/g_font2.tres" id="8_2m5x3"]
 [ext_resource type="Resource" uid="uid://bef2rby8g6gtk" path="res://app/src/main/cpp/scene_system_resource/menu_gui_commander_res/effect_upgrade.tres" id="8_qwcpk"]
-[ext_resource type="Resource" uid="uid://bukq4yhh88ly1" path="res://app/src/main/cpp/scene_system_resource/menu_gui_commander_res/eff.tres" id="9_q38hj"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="10_osaeu"]
 [ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_back.png.tres" id="11_ifc11"]
 [ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_back_press.png.tres" id="12_sdtrk"]
@@ -50,8 +48,6 @@ anchors_preset = -1
 anchor_left = 0.625
 rect_ipad = Rect2(-244, 390, 0, 0)
 rect = Rect2(-129, 158, 0, 0)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="TextureRect" type="TextureRect" parent="WoddenBox" unique_id=445454815]
 layout_mode = 2
@@ -65,8 +61,6 @@ anchors_preset = -1
 anchor_left = 1.0
 rect_ipad = Rect2(-684, 0, 0, 0)
 rect = Rect2(-360, 0, 0, 0)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="TextureRect" type="TextureRect" parent="BoardCommanderIntro" unique_id=1002724380]
 layout_mode = 2
@@ -83,8 +77,6 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(0, 60, 0, 0)
 rect = Rect2(0, 5, 0, 0)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="TextureRect" type="TextureRect" parent="Commander" unique_id=1601312815]
 layout_mode = 2
@@ -98,17 +90,13 @@ anchors_preset = -1
 anchor_left = 1.0
 rect_ipad = Rect2(-350, 0, 0, 0)
 rect = Rect2(-175, 0, 0, 0)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
-[node name="ecText" parent="Medal" unique_id=448162067 instance=ExtResource("6_crajo")]
+[node name="Label" type="Label" parent="Medal" unique_id=2032206419]
 layout_mode = 2
-size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource("7_lgd67")
-color = Color(0.7647059, 0.9019608, 0.9529412, 1)
-alignment = 1
-spacing = Vector2i(1, 0)
+theme = ExtResource("7_n37v4")
+theme_override_colors/font_color = Color(0.7647059, 0.9019608, 0.9529412, 1)
+horizontal_alignment = 1
 
 [node name="MedalIntro" parent="." unique_id=1903074849 instance=ExtResource("2_cywcc")]
 layout_mode = 1
@@ -116,19 +104,16 @@ anchors_preset = -1
 anchor_left = 1.0
 rect_ipad = Rect2(-592, 80, 0, 0)
 rect = Rect2(-298, 40, 0, 0)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
-[node name="ecText" parent="MedalIntro" unique_id=2064871972 instance=ExtResource("6_crajo")]
+[node name="Label" type="Label" parent="MedalIntro" unique_id=861717611]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme = ExtResource("8_2m5x3")
-color = Color(0.02745098, 0.19215687, 0.24313726, 1)
+theme_override_colors/font_color = Color(0.02745098, 0.19215687, 0.24313726, 1)
 
 [node name="ecEffect" parent="." unique_id=1633173356 instance=ExtResource("7_y3l8f")]
 effect_res = ExtResource("8_qwcpk")
-texture_res = ExtResource("9_q38hj")
 
 [node name="ButtonBack" parent="." unique_id=232607346 instance=ExtResource("2_cywcc")]
 layout_mode = 1
@@ -141,14 +126,13 @@ grow_horizontal = 1
 grow_vertical = 0
 rect_ipad = Rect2(0, 0, 40, 38)
 rect = Rect2(0, 0, 32, 30)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="GUIButton" parent="ButtonBack" unique_id=2034275630 instance=ExtResource("10_osaeu")]
 layout_mode = 2
 texture_normal = ExtResource("11_ifc11")
 texture_pressed = ExtResource("12_sdtrk")
 texture_background = ExtResource("13_sl03c")
+text_offset = Vector2(16, 15)
 
 [node name="GUIMedal" parent="." unique_id=893062727 instance=ExtResource("2_cywcc")]
 layout_mode = 1
@@ -161,8 +145,6 @@ grow_horizontal = 1
 grow_vertical = 0
 rect_ipad = Rect2(55, 0, 146, 50)
 rect = Rect2(36, 0, 70, 23)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="GUIMedal" parent="GUIMedal" unique_id=509522628 instance=ExtResource("14_q38hj")]
 layout_mode = 2
@@ -175,14 +157,13 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(-167, 212, 128, 64)
 rect = Rect2(-75, 103, 64, 32)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="GUIUpgradeButton" parent="UpgradeButton" unique_id=418308926 instance=ExtResource("15_osaeu")]
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("18_n37v4")
 texture_pressed = ExtResource("18_n37v4")
+text_offset = Vector2(272, 176)
 
 [node name="CommanderMedal" parent="." unique_id=2065887925 instance=ExtResource("2_cywcc")]
 layout_mode = 1
@@ -192,8 +173,6 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(-136, 454, 100, 160)
 rect = Rect2(-80, 192, 50, 80)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="GUICommanderMedal" parent="CommanderMedal" unique_id=1972906417 instance=ExtResource("16_sdtrk")]
 layout_mode = 2
@@ -208,8 +187,6 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(8, 430, 62, 96)
 rect = Rect2(-8, 178, 31, 48)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="GUIWarMedal" parent="WarMedal" unique_id=2042339179 instance=ExtResource("17_sl03c")]
 layout_mode = 2
@@ -224,8 +201,6 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(112, 430, 62, 96)
 rect = Rect2(44, 178, 31, 48)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="GUIWarMedal" parent="WarMedal2" unique_id=348816353 instance=ExtResource("17_sl03c")]
 layout_mode = 2
@@ -241,8 +216,6 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(216, 430, 62, 96)
 rect = Rect2(96, 178, 31, 48)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="GUIWarMedal" parent="WarMedal3" unique_id=1360530764 instance=ExtResource("17_sl03c")]
 layout_mode = 2
@@ -258,8 +231,6 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(60, 530, 62, 96)
 rect = Rect2(18, 228, 31, 48)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="GUIWarMedal" parent="WarMedal4" unique_id=1416468943 instance=ExtResource("17_sl03c")]
 layout_mode = 2
@@ -275,8 +246,6 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(164, 530, 62, 96)
 rect = Rect2(70, 228, 31, 48)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="GUIWarMedal" parent="WarMedal5" unique_id=1335906854 instance=ExtResource("17_sl03c")]
 layout_mode = 2
@@ -292,8 +261,6 @@ grow_horizontal = 1
 grow_vertical = 1
 rect_ipad = Rect2(268, 530, 62, 96)
 rect = Rect2(122, 228, 31, 48)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
 
 [node name="GUIWarMedal" parent="WarMedal6" unique_id=1850257452 instance=ExtResource("17_sl03c")]
 layout_mode = 2

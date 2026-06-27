@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://u7akx8jrxvgd"]
 
-[ext_resource type="PackedScene" uid="uid://df33p640anvad" path="res://app/src/main/cpp/gui_fade.tscn" id="1_0n2vx"]
+[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://app/src/main/cpp/scene_system_resource/fade.tscn" id="1_7tnnw"]
 [ext_resource type="Texture2D" uid="uid://77e3wq3t3fnh" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/menubox.png.tres" id="2_vlbgk"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="3_8j7p4"]
 [ext_resource type="Texture2D" uid="uid://ttcjjtawxjq" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttontext_resume.png.tres" id="4_q3jdi"]
@@ -24,25 +24,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GUIFade" parent="." unique_id=869114631 instance=ExtResource("1_0n2vx")]
-layout_mode = 1
+[node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("1_7tnnw")]
+layout_mode = 0
+offset_right = 1209.0
+offset_bottom = 511.0
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1245003462]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MenuBox" type="TextureRect" parent="CenterContainer" unique_id=2064478520]
-custom_minimum_size = Vector2(166, 262)
-layout_mode = 2
+[node name="MenuBox" type="TextureRect" parent="." unique_id=2064478520]
+layout_mode = 0
 texture = ExtResource("2_vlbgk")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="ButtonResume" parent="CenterContainer/MenuBox" unique_id=2034275630 instance=ExtResource("3_8j7p4")]
+[node name="ButtonResume" parent="." unique_id=2034275630 instance=ExtResource("3_8j7p4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -56,8 +49,9 @@ grow_vertical = 1
 texture_normal = ExtResource("4_q3jdi")
 texture_pressed = ExtResource("5_syxno")
 texture_background = ExtResource("6_kxtgr")
+text_offset = Vector2(49, 17)
 
-[node name="ButtonSave" parent="CenterContainer/MenuBox" unique_id=1469333668 instance=ExtResource("3_8j7p4")]
+[node name="ButtonSave" parent="." unique_id=1469333668 instance=ExtResource("3_8j7p4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -71,8 +65,9 @@ grow_vertical = 1
 texture_normal = ExtResource("7_syxno")
 texture_pressed = ExtResource("8_kxtgr")
 texture_background = ExtResource("6_kxtgr")
+text_offset = Vector2(51, 17)
 
-[node name="ButtonOptions" parent="CenterContainer/MenuBox" unique_id=1376197446 instance=ExtResource("3_8j7p4")]
+[node name="ButtonOptions" parent="." unique_id=1376197446 instance=ExtResource("3_8j7p4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -86,8 +81,9 @@ grow_vertical = 1
 texture_normal = ExtResource("9_0qn8m")
 texture_pressed = ExtResource("10_typod")
 texture_background = ExtResource("6_kxtgr")
+text_offset = Vector2(49, 17)
 
-[node name="ButtonRestart" parent="CenterContainer/MenuBox" unique_id=1543952111 instance=ExtResource("3_8j7p4")]
+[node name="ButtonRestart" parent="." unique_id=1543952111 instance=ExtResource("3_8j7p4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -101,8 +97,9 @@ grow_vertical = 1
 texture_normal = ExtResource("11_7tnnw")
 texture_pressed = ExtResource("12_cvph5")
 texture_background = ExtResource("7_0qn8m")
+text_offset = Vector2(49, 17)
 
-[node name="ButtonQuit" parent="CenterContainer/MenuBox" unique_id=547275675 instance=ExtResource("3_8j7p4")]
+[node name="ButtonQuit" parent="." unique_id=547275675 instance=ExtResource("3_8j7p4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -116,3 +113,4 @@ grow_vertical = 1
 texture_normal = ExtResource("14_8nnqx")
 texture_pressed = ExtResource("15_defxw")
 texture_background = ExtResource("7_0qn8m")
+text_offset = Vector2(49, 17)

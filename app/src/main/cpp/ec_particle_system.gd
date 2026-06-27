@@ -1,8 +1,7 @@
 extends Node2D
 
 const _ecEmitterAttr = preload("res://app/src/main/cpp/ec_emitter_attr.gd")
-const _ecTextureResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd")
-const _ecImageTexture = preload("res://app/src/main/cpp/scene_system_resource/ec_image_texture.gd")
+const _ecTextureRes = preload("res://app/src/main/cpp/ec_texture_res.gd")
 
 static var rng := RandomNumberGenerator.new()
 
@@ -13,26 +12,15 @@ var emitter_attr: _ecEmitterAttr:
 			if emitter_attr != null:
 				emitter_attr.changed.disconnect(_on_emitter_attr_changed)
 			emitter_attr = value
-			if emitter_attr != null:
-				_on_emitter_attr_changed()
-				emitter_attr.changed.connect(_on_emitter_attr_changed)
-			else:
-				var curve := Curve.new()
-				_speed_shift_curve = curve
-				_gravity_shift_curve = curve
-				_rot_shift_curve = curve
-				_emission_curve = curve
+			_on_emitter_attr_changed()
+			if value != null:
+				value.changed.connect(_on_emitter_attr_changed)
 
 
 @export
-var texture_res: _ecTextureResAssets
+var texture_res: _ecTextureRes
 
-var _live := false:
-	set(value):
-		_live = value
-		set_process(value)
-
-
+var _live := false
 var _speed_shift_curve: Curve
 var _gravity_shift_curve: Curve
 var _rot_shift_curve: Curve
@@ -48,6 +36,7 @@ func _ready() -> void:
 	_emitted_time = 0.0
 	_emitted_quantity = 0
 	_live = false
+	set_process(false)
 
 
 func fire_at(x: float, y: float, angle: float) -> void:
@@ -61,10 +50,12 @@ func fire() -> void:
 	_emitted_time = 0.0
 	_emitted_quantity = 0
 	_live = true
+	set_process(true)
 
 
 func stop(stop_existing: bool) -> void:
 	_live = false
+	set_process(false)
 	if stop_existing:
 		for i in $LiveParticles.get_children():
 			$LiveParticles.remove_child(i)
@@ -102,14 +93,15 @@ func _process(delta: float) -> void:
 		if emitter_attr.settings_mode != 0:
 			_emitted_time = emitter_life
 			_live = false
+			set_process(false)
 	var target_quantity := _sample_curve_extended(_emission_curve, _emitted_time)
 	while _emitted_quantity < target_quantity - 1:
 		var particle := $Prototype/ecParticle.duplicate()
 		particle.lifespam = rng.randf_range(emitter_attr.particle_life_min, emitter_attr.particle_life_max)
-		var texture = texture_res.get_res().get_image(emitter_attr.image_file)
+		var texture = texture_res.get_image(emitter_attr.image_file)
 		var texture_scale := Vector2.ONE
 		if texture != null:
-			particle.texture = _ecImageTexture.from_ec_image_attr(texture)
+			particle.texture = texture
 			texture_scale = Vector2(emitter_attr.image_width, emitter_attr.image_height) / particle.texture.get_size()
 			particle.material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD if emitter_attr.image_blend == 1 else CanvasItemMaterial.BLEND_MODE_MIX
 		match emitter_attr.settings_type:
@@ -140,7 +132,14 @@ func _process(delta: float) -> void:
 
 
 func _on_emitter_attr_changed() -> void:
-	var speed_curve :=emitter_attr.life_track_speed
+	if emitter_attr == null:
+		var curve := Curve.new()
+		_speed_shift_curve = curve
+		_gravity_shift_curve = curve
+		_rot_shift_curve = curve
+		_emission_curve = curve
+		return
+	var speed_curve := emitter_attr.life_track_speed
 	_speed_shift_curve = _integrate_curve(speed_curve)
 	var gravity_v_curve := _integrate_curve(emitter_attr.life_track_gravity)
 	var gravity_kv_curve := Curve.new()

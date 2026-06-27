@@ -10,8 +10,11 @@ texture_text_pressed = null
 image_position_ipad = Vector2(0, 0)
 image_position = Vector2(0, 0)
 
-[node name="TextureRect" type="TextureRect" parent="." index="5" unique_id=1439733902]
-self_modulate = Color(255, 255, 255, 1)
+[node name="Label" parent="." index="3" unique_id=1317756632]
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="ExText" type="TextureRect" parent="." index="5" unique_id=1439733902]
 layout_mode = 0
 mouse_filter = 2
 stretch_mode = 2

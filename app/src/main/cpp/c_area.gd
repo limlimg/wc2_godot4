@@ -1,31 +1,18 @@
-extends TextureRect
 
 const _CCountry = preload("res://app/src/main/cpp/c_country.gd")
 const _CArmy = preload("res://app/src/main/cpp/c_army.gd")
 const _SaveAreaInfo = preload("res://app/src/main/cpp/save_area_info.gd")
 
 @export
-var army_position: Vector2:
-	get():
-		return $Army.position
-	set(value):
-		$Army.position = value
+var army_position: Vector2
 
 
 @export
-var construction_position: Vector2:
-	get():
-		return $Flag.position
-	set(value):
-		$Flag.position = value
+var construction_position: Vector2
 
 
 @export
-var installation_position: Vector2:
-	get():
-		return $Installation.position
-	set(value):
-		$Installation.position = value
+var installation_position: Vector2
 
 
 var enable: bool

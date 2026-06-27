@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dmysnlqa41guv"]
 
 [ext_resource type="Script" uid="uid://cfykx5f1m6cjg" path="res://app/src/main/cpp/gui_button.gd" id="1_0hq7w"]
-[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://app/src/main/cpp/ec_text.tscn" id="2_7que6"]
 
 [node name="GUIButton" type="Control" unique_id=2034275630]
 layout_mode = 3
@@ -10,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_0hq7w")
 
 [node name="Background" type="TextureRect" parent="." unique_id=902263730]
@@ -32,17 +32,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 ignore_texture_size = true
 
-[node name="ecText" parent="." unique_id=448162067 instance=ExtResource("2_7que6")]
+[node name="Label" type="Label" parent="." unique_id=1317756632]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-grow_horizontal = 1
-grow_vertical = 1
+grow_vertical = 2
 
 [node name="TextImage" type="TextureRect" parent="." unique_id=1243538427]
 layout_mode = 0

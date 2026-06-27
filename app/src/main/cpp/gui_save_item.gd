@@ -1,7 +1,6 @@
 extends "res://app/src/main/cpp/gui_radio_button.gd"
 
-const _ecTextureResAssets = preload("res://app/src/main/cpp/scene_system_resource/ec_texture_res_assets.gd")
-const _native = preload("res://app/src/main/cpp/native-lib.gd")
+const _lib = preload("res://app/src/main/cpp/native-lib.gd")
 
 
 @export
@@ -12,7 +11,7 @@ var empty := true:
 			_set_info()
 
 @export
-var country_res: _ecTextureResAssets:
+var country_res: _ecTextureRes:
 	set(value):
 		if value != country_res:
 			country_res = value
@@ -98,7 +97,7 @@ func _ready() -> void:
 
 
 func init() -> void:
-	if _native.g_localizable_strings.get_string("language") != "en":
+	if g_LocalizableStrings.get_string("language") != "en":
 		if _ecGraphics.instance().content_scale_size_mode == 3:
 			$Name.position.y = -4.0
 		else:
@@ -108,19 +107,18 @@ func init() -> void:
 func _set_info() -> void:
 	if not empty:
 		if country_res != null:
-			var flag_attr := country_res.get_res().get_image("flag_{0}.png".format([country]))
-			$Flag/TextureRect.texture = _ecImageTexture.from_ec_image_attr(flag_attr)
-		$Time/ecText.text = _make_time_string()
+			$Flag/TextureRect.texture = country_res.get_image("flag_{0}.png".format([country]))
+		$Time/Label.text = _make_time_string()
 		if game_mode != 2:
 			var campaign_key := "alliance name {0}".format([campaign + 1])
-			var campaign_name := _native.g_string_table.get_string(campaign_key)
-			$Name/ecText.text = "{0} {1}".format([campaign_name, battle + 1])
+			var campaign_name := g_StringTable.get_string(campaign_key)
+			$Name/Label.text = "{0} {1}".format([campaign_name, battle + 1])
 		else:
-			$Name/ecText.text = "conquest name {0}".format([battle + 1])
+			$Name/Label.text = "conquest name {0}".format([battle + 1])
 	else:
 		$Flag/TextureRect.texture = null
-		$Time/ecText.text = ""
-		$Name/ecText.text = ""
+		$Time/Label.text = ""
+		$Name/Label.text = ""
 
 
 func _make_time_string() -> String:
