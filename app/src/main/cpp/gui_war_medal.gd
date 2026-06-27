@@ -1,3 +1,4 @@
+@tool
 extends "res://app/src/main/cpp/gui_medal_button.gd"
 
 const _WarMedalId = preload("res://app/src/main/cpp/war_medal_id.gd").WARMEDAL_ID

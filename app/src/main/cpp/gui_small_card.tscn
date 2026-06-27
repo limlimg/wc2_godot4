@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bcdwdidc5e6kk"]
 
 [ext_resource type="Script" uid="uid://ddcomkq3if8ni" path="res://app/src/main/cpp/gui_small_card.gd" id="1_6smyl"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_m5ll4"]
-[ext_resource type="Texture2D" uid="uid://bdyptcoqfrlnm" path="res://app/src/main/cpp/scene_system_resource/game_res/card_common.png.tres" id="3_kdruj"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="1_m5ll4"]
+[ext_resource type="Texture2D" uid="uid://bdyptcoqfrlnm" path="res://app/src/main/cpp/resources/assets/game_res/card_common.png.tres" id="3_kdruj"]
 
 [node name="GUISmallCard" type="Control" unique_id=485651445]
 layout_mode = 3

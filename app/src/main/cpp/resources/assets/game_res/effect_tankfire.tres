@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ecEffectRes" format=3 uid="uid://cm8xv6i8bo0h0"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_suvbw"]
+[ext_resource type="Script" uid="uid://db5ial1i1vdli" path="res://app/src/main/cpp/ec_effect_res.gd" id="2_c0ix3"]
+
+[sub_resource type="Resource" id="Resource_c0ix3"]
+script = ExtResource("1_suvbw")
+name = "effect_tankfire.xml"
+
+[resource]
+script = ExtResource("2_c0ix3")
+asset = SubResource("Resource_c0ix3")

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dfq04d0bsjmyb"]
 
 [ext_resource type="Script" uid="uid://ddqiis3e8517i" path="res://app/src/main/cpp/gui_sel_army.gd" id="1_prgj1"]
-[ext_resource type="Texture2D" uid="uid://boqjieg2fghqn" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/choosearmy_board.png.tres" id="1_sc4kf"]
+[ext_resource type="Texture2D" uid="uid://boqjieg2fghqn" path="res://app/src/main/cpp/resources/assets/logo_gui_res/choosearmy_board.png.tres" id="1_sc4kf"]
 [ext_resource type="PackedScene" uid="uid://yp2ihm1s2ft4" path="res://app/src/main/cpp/gui_army_item.tscn" id="2_gb3wi"]
 
 [node name="GUISelArmy" type="Control" unique_id=299185972]

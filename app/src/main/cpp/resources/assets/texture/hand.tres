@@ -1,0 +1,15 @@
+[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://lprdyx4n5dvd"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_6hosd"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="2_lvppd"]
+
+[sub_resource type="Resource" id="Resource_0hx2v"]
+script = ExtResource("1_6hosd")
+name = "hand.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_lvppd")
+asset = SubResource("Resource_0hx2v")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

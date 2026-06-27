@@ -1,0 +1,16 @@
+[gd_resource type="Theme" script_class="ecUniFontAssets" format=3 uid="uid://bwk3qhdj7kf1w"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_52vl8"]
+[ext_resource type="FontFile" path="res://font1.fnt" id="2_e21jh"]
+[ext_resource type="Script" uid="uid://ckk2mqlehxynn" path="res://app/src/main/cpp/ec_uni_font.gd" id="2_jhq2s"]
+
+[sub_resource type="Resource" id="Resource_e21jh"]
+script = ExtResource("1_52vl8")
+name = "font1.fnt"
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[resource]
+default_font = ExtResource("2_e21jh")
+default_font_size = 20
+script = ExtResource("2_jhq2s")
+asset = SubResource("Resource_e21jh")

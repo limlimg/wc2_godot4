@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="1_0nah5"]
 [ext_resource type="Script" uid="uid://c2o7l5cd0x8vw" path="res://app/src/main/cpp/c_logo_state.gd" id="1_b54l6"]
-[ext_resource type="Texture2D" uid="uid://xkr7cuawfg24" path="res://app/src/main/cpp/scene_system_resource/texture/logo.tres" id="4_hjp6p"]
+[ext_resource type="Texture2D" uid="uid://xkr7cuawfg24" path="res://app/src/main/cpp/resources/assets/texture/logo.tres" id="4_hjp6p"]
 
 [node name="CLogoState" type="Control" unique_id=1619107626]
 layout_mode = 3

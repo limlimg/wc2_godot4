@@ -1,0 +1,17 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://mav2dvk3j566"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_ymxu6"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://app/src/main/cpp/resources/assets/logo_gui_res/texture_res.tres" id="2_3l7q3"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://app/src/main/cpp/ec_image_attr.gd" id="4_3uw3g"]
+
+[sub_resource type="Resource" id="Resource_40ofo"]
+script = ExtResource("1_ymxu6")
+name = "medal_arrow.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_3uw3g")
+texture_res = ExtResource("2_3l7q3")
+image = SubResource("Resource_40ofo")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

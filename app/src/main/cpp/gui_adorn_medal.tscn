@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bjcmxuu6rr2wj"]
 
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_ii04l"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="1_ii04l"]
 [ext_resource type="Script" uid="uid://chnmvdul8k8d4" path="res://app/src/main/cpp/gui_adorn_medal.gd" id="1_ps31k"]
 [ext_resource type="PackedScene" uid="uid://cdca5xgwncvi1" path="res://app/src/main/cpp/gui_war_medal.tscn" id="3_dr252"]
-[ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://app/src/main/cpp/scene_system_resource/menu_gui_res/texture_res.tres" id="4_7xwpa"]
+[ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://app/src/main/cpp/resources/assets/menu_gui_res/texture_res.tres" id="4_7xwpa"]
 [ext_resource type="PackedScene" uid="uid://doku7gcg4y44n" path="res://app/src/main/cpp/gui_commander_medal.tscn" id="5_sshlh"]
 
 [node name="GUIAdornMedal" type="Control" unique_id=1776806515]

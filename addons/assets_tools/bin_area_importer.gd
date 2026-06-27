@@ -1,8 +1,8 @@
 @tool
 extends EditorImportPlugin
 
-const _AreaDataList = preload("res://app/src/main/cpp/imported_containers/area_data_list.gd")
-const _AreaData = preload("res://app/src/main/cpp/imported_containers/area_data.gd")
+const _AreaDataList = preload("res://app/src/main/cpp/resources/imported/area_data_list.gd")
+const _AreaData = preload("res://app/src/main/cpp/resources/imported/area_data.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.bin.area"

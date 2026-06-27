@@ -6,6 +6,8 @@ const _CCountry = preload("res://app/src/main/cpp/c_country.gd")
 
 var camera: _CCamera
 
+signal move_camera_completed
+
 func init(areas_enable: String, map: int) -> void:
 	pass
 
@@ -35,4 +37,12 @@ func clear_targets() -> void:
 
 
 func reset_target() -> void:
+	pass
+
+
+func move_camera_to_area(id: int) -> void:
+	pass
+
+
+func move_camera_center_to_area(id: int) -> void:
 	pass

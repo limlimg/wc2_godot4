@@ -1,6 +1,6 @@
 extends "res://app/src/main/cpp/gui_element.gd"
 
-const _UIAttackArmy = preload("res://app/src/main/cpp/scene_system_resource/game_res/ui_attack_army.gd")
+const _UIAttackArmy = preload("res://app/src/main/cpp/game_res_render/ui_attack_army.gd")
 
 signal ok_pressed
 signal cancel_pressed

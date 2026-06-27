@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://cp0rqwt3uf1t7" path="res://app/src/main/cpp/c_menu_state.gd" id="1_ehm5w"]
 [ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="1_nhdnm"]
 [ext_resource type="PackedScene" uid="uid://c4fcq7wy2b7qx" path="res://app/src/main/cpp/gui_main_menu.tscn" id="3_gvair"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="5_cwp5t"]
-[ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://app/src/main/cpp/scene_system_resource/menu_gui_selbattle_res/texture_res.tres" id="5_mwydp"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="5_cwp5t"]
+[ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://app/src/main/cpp/resources/assets/menu_gui_selbattle_res/texture_res.tres" id="5_mwydp"]
 
 [node name="CMenuState" type="Control" unique_id=54523483]
 layout_mode = 3

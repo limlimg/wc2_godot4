@@ -3,7 +3,7 @@ extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
 const _BattleDef = preload("res://app/src/main/cpp/battle_def.gd")
-const _BattleDefMap = preload("res://app/src/main/cpp/imported_containers/battle_def_map.gd")
+const _BattleDefMap = preload("res://app/src/main/cpp/resources/imported/battle_def_map.gd")
 const _FlagInfo = preload("res://app/src/main/cpp/flag_info.gd")
 
 func _get_importer_name() -> String:

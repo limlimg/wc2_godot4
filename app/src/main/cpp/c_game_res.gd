@@ -13,32 +13,32 @@ var _effect_cache: Array[_ecEffectRes]
 var card_d_research: Dictionary[int, Texture2D]
 
 func load_res() -> void:
-	_army_res = load("res://app/src/main/cpp/scene_system_resource/game_res/army.tres")
-	_cardtex_res = load("res://app/src/main/cpp/scene_system_resource/game_res/cardtex.tres")
+	_army_res = load("res://app/src/main/cpp/resources/assets/game_res/army.tres")
+	_cardtex_res = load("res://app/src/main/cpp/resources/assets/game_res/cardtex.tres")
 	var regex_card_d_research := RegEx.create_from_string("card_d_research_([0-9]+).png")
 	for i in _cardtex_res.get_keys():
 		var regex_match: RegExMatch
 		regex_match = regex_card_d_research.search(i)
-		if regex_match.get_group_count() > 0:
+		if regex_match != null:
 			card_d_research[regex_match.get_string(1).to_int()] = _cardtex_res.get_image(i)
-	_battlebg_res = load("res://app/src/main/cpp/scene_system_resource/game_res/battlebg.tres")
-	_flag_res = load("res://app/src/main/cpp/scene_system_resource/game_res/flag.tres")
-	_eff_res = load("res://app/src/main/cpp/scene_system_resource/game_res/eff.tres")
+	_battlebg_res = load("res://app/src/main/cpp/resources/assets/game_res/battlebg.tres")
+	_flag_res = load("res://app/src/main/cpp/resources/assets/game_res/flag.tres")
+	_eff_res = load("res://app/src/main/cpp/resources/assets/game_res/eff.tres")
 	_effect_cache = [
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_airstrike.tres"),
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_exp.tres"),
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_fortfire.tres"),
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_gunfire.tres"),
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_mgunfire.tres"),
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_nuclearbomb.tres"),
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_parachute.tres"),
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_shipfire.tres"),
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_strike1.tres"),
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_strike2.tres"),
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_strike3.tres"),
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_strike4.tres"),
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_strike5.tres"),
-		load("res://app/src/main/cpp/scene_system_resource/game_res/effect_tankfire.tres")
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_airstrike.tres"),
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_exp.tres"),
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_fortfire.tres"),
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_gunfire.tres"),
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_mgunfire.tres"),
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_nuclearbomb.tres"),
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_parachute.tres"),
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_shipfire.tres"),
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_strike1.tres"),
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_strike2.tres"),
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_strike3.tres"),
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_strike4.tres"),
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_strike5.tres"),
+		load("res://app/src/main/cpp/resources/assets/game_res/effect_tankfire.tres")
 	]
 
 

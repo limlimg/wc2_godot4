@@ -3,7 +3,7 @@ extends Node2D
 const _ecEffectManager = preload("res://app/src/main/cpp/ec_effect_manager.gd")
 const _ecEffect = preload("res://app/src/main/cpp/ec_effect.gd")
 const _ecEffectRes = preload("res://app/src/main/cpp/ec_effect_res.gd")
-const _AssetRegistry = preload("res://app/src/main/cpp/scene_system_resource/asset_registry.gd")
+const _AssetRegistry = preload("res://app/src/main/cpp/resources/assets/asset_registry.gd")
 
 static func instance() -> _ecEffectManager:
 	return (Engine.get_main_loop() as SceneTree).get_nodes_in_group("ecEffectManagerInstance")[-1]

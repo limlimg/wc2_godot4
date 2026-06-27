@@ -1,0 +1,16 @@
+[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://bi4s1a8uua7dp"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_nh1ww"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="3_ecxho"]
+
+[sub_resource type="Resource" id="Resource_nh1ww"]
+script = ExtResource("1_nh1ww")
+name = "board_exit.png"
+name_ipad = "board_exit@2x.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_ecxho")
+asset = SubResource("Resource_nh1ww")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

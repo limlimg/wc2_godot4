@@ -1,0 +1,16 @@
+[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://xkr7cuawfg24"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_r0ksv"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="3_uw6an"]
+
+[sub_resource type="Resource" id="Resource_dixvi"]
+script = ExtResource("1_r0ksv")
+name = "logo.webp"
+name_ipad = "logo_iPad.webp"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_uw6an")
+asset = SubResource("Resource_dixvi")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

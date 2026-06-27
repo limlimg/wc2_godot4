@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bnu3di5edrab5" path="res://app/src/main/cpp/c_fight_text_mgr.gd" id="1_5w5kv"]
 [ext_resource type="PackedScene" uid="uid://ts6golphrfh2" path="res://app/src/main/cpp/c_fight_text.tscn" id="1_r0upc"]
-[ext_resource type="Theme" uid="uid://fnnjxuxw1uqw" path="res://app/src/main/cpp/scene_system_resource/game_res/num2.tres" id="2_5w5kv"]
+[ext_resource type="Theme" uid="uid://fnnjxuxw1uqw" path="res://app/src/main/cpp/resources/assets/game_res/num2.tres" id="2_5w5kv"]
 
 [node name="CFightTextMgr" type="Node2D" unique_id=474335119]
 script = ExtResource("1_5w5kv")

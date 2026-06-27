@@ -2,8 +2,8 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _AreaTax = preload("res://app/src/main/cpp/imported_containers/area_tax.gd")
-const _AreaTaxMap = preload("res://app/src/main/cpp/imported_containers/area_tax_map.gd")
+const _AreaTax = preload("res://app/src/main/cpp/resources/imported/area_tax.gd")
+const _AreaTaxMap = preload("res://app/src/main/cpp/resources/imported/area_tax_map.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.areas"

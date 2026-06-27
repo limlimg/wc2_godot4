@@ -1,7 +1,7 @@
 @tool
 extends EditorImportPlugin
 
-const _Adjoin = preload("res://app/src/main/cpp/imported_containers/adjoin.gd")
+const _Adjoin = preload("res://app/src/main/cpp/resources/imported/adjoin.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.bin.adjoin"

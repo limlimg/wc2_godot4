@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cavnvxqevbxqu"]
 
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_1iitn"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="1_1iitn"]
 [ext_resource type="Script" uid="uid://c0egpmfnonjbm" path="res://app/src/main/cpp/gui_locked_warning.gd" id="1_ccynw"]
-[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://app/src/main/cpp/scene_system_resource/fade.tscn" id="2_k7wgp"]
-[ext_resource type="Texture2D" uid="uid://ctj87p2f2ndcd" path="res://app/src/main/cpp/scene_system_resource/texture/board_locked.tres" id="4_k7wgp"]
-[ext_resource type="Theme" uid="uid://kfde1dpf6pbh" path="res://app/src/main/cpp/scene_system_resource/menu_gui_selbattle_res/font4.tres" id="5_k7wgp"]
+[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://app/src/main/cpp/gui/fade.tscn" id="2_k7wgp"]
+[ext_resource type="Texture2D" uid="uid://ctj87p2f2ndcd" path="res://app/src/main/cpp/resources/assets/texture/board_locked.tres" id="4_k7wgp"]
+[ext_resource type="Theme" uid="uid://kfde1dpf6pbh" path="res://app/src/main/cpp/resources/assets/menu_gui_selbattle_res/font4.tres" id="5_k7wgp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7wgp"]
 

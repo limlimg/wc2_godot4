@@ -1,21 +1,21 @@
 extends "res://app/src/main/cpp/native-lib.gd"
 
 const _ArmyDef = preload("res://app/src/main/cpp/army_def.gd")
-const _ArmyDefListMap = preload("res://app/src/main/cpp/imported_containers/army_def_list_map.gd")
+const _ArmyDefListMap = preload("res://app/src/main/cpp/resources/imported/army_def_list_map.gd")
 const _CardDef = preload("res://app/src/main/cpp/card_def.gd")
-const _CardDefList = preload("res://app/src/main/cpp/imported_containers/card_def_list.gd")
+const _CardDefList = preload("res://app/src/main/cpp/resources/imported/card_def_list.gd")
 const _UnitMotions = preload("res://app/src/main/cpp/unit_motions.gd")
-const _UnitMotionsMap = preload("res://app/src/main/cpp/imported_containers/unit_motions_map.gd")
+const _UnitMotionsMap = preload("res://app/src/main/cpp/resources/imported/unit_motions_map.gd")
 const _UnitPositions = preload("res://app/src/main/cpp/unit_positions.gd")
-const _UnitPositionsMap = preload("res://app/src/main/cpp/imported_containers/unit_positions_map.gd")
+const _UnitPositionsMap = preload("res://app/src/main/cpp/resources/imported/unit_positions_map.gd")
 const _CommanderDef = preload("res://app/src/main/cpp/commander_def.gd")
-const _CommanderDefMap = preload("res://app/src/main/cpp/imported_containers/commander_def_map.gd")
+const _CommanderDefMap = preload("res://app/src/main/cpp/resources/imported/commander_def_map.gd")
 const _GeneralPhoto = preload("res://app/src/main/cpp/general_photo.gd")
-const _GeneralPhotoMap = preload("res://app/src/main/cpp/imported_containers/general_photo_map.gd")
+const _GeneralPhotoMap = preload("res://app/src/main/cpp/resources/imported/general_photo_map.gd")
 const _BattleDef = preload("res://app/src/main/cpp/battle_def.gd")
-const _BattleDefMap = preload("res://app/src/main/cpp/imported_containers/battle_def_map.gd")
+const _BattleDefMap = preload("res://app/src/main/cpp/resources/imported/battle_def_map.gd")
 const _ConquestDef = preload("res://app/src/main/cpp/conquest_def.gd")
-const _ConquestDefMap = preload("res://app/src/main/cpp/imported_containers/conquest_def_map.gd")
+const _ConquestDefMap = preload("res://app/src/main/cpp/resources/imported/conquest_def_map.gd")
 
 var _army_def: _ArmyDefListMap
 var _card_def: _CardDefList

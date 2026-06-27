@@ -1,7 +1,7 @@
 @tool
 extends EditorImportPlugin
 
-const _AreaEnable = preload("res://app/src/main/cpp/imported_containers/area_enable.gd")
+const _AreaEnable = preload("res://app/src/main/cpp/resources/imported/area_enable.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.bin.areaenable"

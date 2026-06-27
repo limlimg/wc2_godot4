@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bc0r4i3w2pyf6"]
 
 [ext_resource type="Script" uid="uid://cbcq3gglh2gj1" path="res://app/src/main/cpp/gui_scroll_bar.gd" id="1_6akf1"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_icu0f"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_icu0f"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_icu0f"]
 

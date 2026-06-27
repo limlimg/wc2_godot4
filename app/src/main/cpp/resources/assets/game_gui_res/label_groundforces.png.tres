@@ -1,0 +1,16 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://ccwdb1amkkmjp"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_14hcy"]
+[ext_resource type="Resource" uid="uid://dfe0w1ve8iqjk" path="res://app/src/main/cpp/resources/assets/game_gui_res/texture_res.tres" id="2_m5d2r"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://app/src/main/cpp/ec_image_attr.gd" id="4_s7rvj"]
+
+[sub_resource type="Resource" id="Resource_m5d2r"]
+script = ExtResource("1_14hcy")
+name = "label_groundforces.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_s7rvj")
+texture_res = ExtResource("2_m5d2r")
+image = SubResource("Resource_m5d2r")

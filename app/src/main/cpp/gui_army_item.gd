@@ -1,3 +1,4 @@
+@tool
 extends "res://app/src/main/cpp/gui_button.gd"
 
 const _CArmy = preload("res://app/src/main/cpp/c_army.gd")
@@ -10,6 +11,8 @@ func _process(delta: float) -> void:
 
 
 func _on_update(_delta: float) -> void:
+	if army == null or army.def == null:
+		return
 	var node = $Control/UIArmy
 	node.country = army.country
 	node.id = army.def.id

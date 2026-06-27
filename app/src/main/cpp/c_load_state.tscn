@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bine2n80jql7t"]
 
 [ext_resource type="Script" uid="uid://vf8r4wsfv76c" path="res://app/src/main/cpp/c_load_state.gd" id="1_oa3nl"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="1_olp3u"]
-[ext_resource type="Texture2D" uid="uid://ces6dlv70o7bo" path="res://app/src/main/cpp/scene_system_resource/texture/loading.tres" id="2_nhydb"]
-[ext_resource type="Texture2D" uid="uid://cda51cjweoibn" path="res://app/src/main/cpp/scene_system_resource/texture/loading_title.tres" id="4_5uj21"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="1_olp3u"]
+[ext_resource type="Texture2D" uid="uid://ces6dlv70o7bo" path="res://app/src/main/cpp/resources/assets/texture/loading.tres" id="2_nhydb"]
+[ext_resource type="Texture2D" uid="uid://cda51cjweoibn" path="res://app/src/main/cpp/resources/assets/texture/loading_title.tres" id="4_5uj21"]
 [ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="4_krfvt"]
-[ext_resource type="Theme" uid="uid://duqavds7qrws2" path="res://app/src/main/cpp/scene_system_resource/font/g_font2.tres" id="4_oa3nl"]
+[ext_resource type="Theme" uid="uid://duqavds7qrws2" path="res://app/src/main/cpp/resources/assets/font/g_font2.tres" id="4_oa3nl"]
 
 [node name="CLoadState" type="Control" unique_id=1642615460]
 layout_mode = 3

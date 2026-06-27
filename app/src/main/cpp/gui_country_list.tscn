@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://5sbo8jrgp10g" path="res://app/src/main/cpp/gui_country_list.gd" id="1_yqiw1"]
 [ext_resource type="PackedScene" uid="uid://55bpjexr684x" path="res://app/src/main/cpp/gui_list.tscn" id="2_throx"]
 [ext_resource type="PackedScene" uid="uid://cf6c1jdg631ss" path="res://app/src/main/cpp/gui_country_item.tscn" id="3_i064q"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="3_jpsur"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="3_jpsur"]
 
 [node name="GUICountryList" type="Control" unique_id=1324926271]
 layout_mode = 3

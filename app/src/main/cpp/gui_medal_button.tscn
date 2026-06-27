@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="1_utj8q"]
 [ext_resource type="Script" uid="uid://brlw6mi7xb5d5" path="res://app/src/main/cpp/gui_medal_button.gd" id="2_ssx07"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="3_xxwpf"]
-[ext_resource type="Texture2D" uid="uid://mav2dvk3j566" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/medal_arrow.png.tres" id="4_qtr3v"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="3_xxwpf"]
+[ext_resource type="Texture2D" uid="uid://mav2dvk3j566" path="res://app/src/main/cpp/resources/assets/logo_gui_res/medal_arrow.png.tres" id="4_qtr3v"]
 
 [sub_resource type="Animation" id="Animation_1aidn"]
 length = 0.001

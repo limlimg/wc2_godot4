@@ -1,0 +1,17 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://cgm24k31skmn"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_fg6kk"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://app/src/main/cpp/resources/assets/logo_gui_res/texture_res.tres" id="2_75o2j"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://app/src/main/cpp/ec_image_attr.gd" id="4_02qgh"]
+
+[sub_resource type="Resource" id="Resource_fg6kk"]
+script = ExtResource("1_fg6kk")
+name = "button_confirmexit.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_02qgh")
+texture_res = ExtResource("2_75o2j")
+image = SubResource("Resource_fg6kk")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

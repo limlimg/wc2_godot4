@@ -1,0 +1,17 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://bu6m3ik6qwmav"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_cfs4i"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://app/src/main/cpp/resources/assets/logo_gui_res/texture_res.tres" id="2_jgtb6"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://app/src/main/cpp/ec_image_attr.gd" id="4_ajt84"]
+
+[sub_resource type="Resource" id="Resource_v0skf"]
+script = ExtResource("1_cfs4i")
+name = "gamebutton_round_normal.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_ajt84")
+texture_res = ExtResource("2_jgtb6")
+image = SubResource("Resource_v0skf")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

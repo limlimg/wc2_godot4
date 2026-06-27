@@ -253,7 +253,7 @@ func _load_battle(file_name: String) -> void:
 			country.ai = country.id == _conquest_player_country_id
 		country.set_commander(i.commander)
 		country.money = i.money
-		country.techlevel = clampi(i.techlevel, 1, 5)
+		country.tech_level = clampi(i.techlevel, 1, 5)
 		country.industry = i.industry
 		_all_country.append(country)
 		if country.alliance != 4:

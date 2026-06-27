@@ -1,5 +1,18 @@
 [gd_scene format=3 uid="uid://cs77s0qa4kr1r"]
 
+[ext_resource type="Texture2D" uid="uid://bdt4ktnlcrivf" path="res://app/src/main/cpp/resources/assets/logo_gui_res/country_defeat.png.tres" id="1_e2dqc"]
+[ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://app/src/main/cpp/game_res_render/ai_commander_medal.tscn" id="1_wuq0w"]
+[ext_resource type="Script" uid="uid://c61bupitgwiku" path="res://app/src/main/cpp/gui_defeated.gd" id="1_ydi4n"]
+[ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://app/src/main/cpp/game_res_render/commander_medal.tscn" id="2_f1uq0"]
+[ext_resource type="Resource" uid="uid://eoo8e238q75f" path="res://app/src/main/cpp/resources/assets/game_gui_defeated_res/texture_res.tres" id="2_l3fon"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://app/src/main/cpp/resources/assets/logo_gui_res/texture_res.tres" id="2_y8yra"]
+[ext_resource type="Theme" uid="uid://cthcurv4u6ctt" path="res://app/src/main/cpp/resources/assets/font/g_font6.tres" id="3_8iexs"]
+[ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://app/src/main/cpp/gui_button_ex.tscn" id="3_ywyf6"]
+[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://app/src/main/cpp/gui/fade.tscn" id="4_2qn58"]
+[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_ok.png.tres" id="4_8iexs"]
+[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_ok_press.png.tres" id="5_e2dqc"]
+[ext_resource type="Texture2D" uid="uid://c5scjcg2j0bqx" path="res://app/src/main/cpp/resources/assets/logo_gui_res/green_normal.png.tres" id="6_ydi4n"]
+
 [node name="GUIDefeated" type="Control" unique_id=172360110]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +20,71 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ydi4n")
+texture_res = ExtResource("2_y8yra")
+flag_texture_res = ExtResource("2_l3fon")
+
+[node name="Fade" parent="." unique_id=741495168 instance=ExtResource("4_2qn58")]
+layout_mode = 0
+offset_right = 1209.0
+offset_bottom = 511.0
+alpha = 0.0
+
+[node name="CountryDefeat" type="Sprite2D" parent="." unique_id=1608977990]
+texture = ExtResource("1_e2dqc")
+centered = false
+
+[node name="Flag" type="Sprite2D" parent="." unique_id=1312985437]
+position = Vector2(19, 55)
+centered = false
+
+[node name="General" type="Sprite2D" parent="." unique_id=1233594692]
+position = Vector2(76, 90)
+centered = false
+
+[node name="IsAI" type="Node2D" parent="." unique_id=788968318]
+
+[node name="AICommanderMedal" parent="IsAI" unique_id=1467720846 instance=ExtResource("1_wuq0w")]
+position = Vector2(144, 102)
+stack = 1
+
+[node name="NotAI" type="Node2D" parent="." unique_id=1013992065]
+visible = false
+
+[node name="CommanderMedal" parent="NotAI" unique_id=1241850369 instance=ExtResource("2_f1uq0")]
+position = Vector2(144, 102)
+stack = 1
+
+[node name="Defeated" type="Label" parent="." unique_id=396323480]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 99.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme = ExtResource("3_8iexs")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "defeated"
+horizontal_alignment = 1
+
+[node name="ButtonOk" parent="." unique_id=2034275630 instance=ExtResource("3_ywyf6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 61.0
+offset_top = 140.0
+offset_right = 125.0
+offset_bottom = 172.0
+grow_horizontal = 1
+grow_vertical = 1
+texture_text_not_pressed = ExtResource("4_8iexs")
+texture_text_pressed = ExtResource("5_e2dqc")
+image_position_ipad = Vector2(11, -5)
+image_position = Vector2(13, 0)
+texture_normal = ExtResource("6_ydi4n")
+texture_pressed = ExtResource("6_ydi4n")
+
+[connection signal="back_pressed" from="." to="." method="_on_button_ok_pressed"]
+[connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]

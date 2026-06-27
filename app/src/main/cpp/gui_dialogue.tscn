@@ -1,5 +1,20 @@
 [gd_scene format=3 uid="uid://bicsosjw6x3o7"]
 
+[ext_resource type="Script" uid="uid://84g5c6kyu6lq" path="res://app/src/main/cpp/gui_dialogue.gd" id="1_dc2mx"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="1_ledfg"]
+[ext_resource type="Texture2D" uid="uid://c2e5r15nx22mc" path="res://app/src/main/cpp/resources/assets/texture/dlgboard.tres" id="2_tf4ko"]
+[ext_resource type="Theme" uid="uid://dh25s5c8rymt1" path="res://app/src/main/cpp/resources/assets/game_gui_res/font8.tres" id="3_ijub1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc2mx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kl1b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xt4qy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iv806"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6d2ax"]
+
 [node name="GUIDialogue" type="Control" unique_id=545709183]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +22,68 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dc2mx")
+
+[node name="General" parent="." unique_id=1576520916 instance=ExtResource("1_ledfg")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+grow_vertical = 0
+rect_ipad = Rect2(230, 0, 0, 0)
+rect = Rect2(130, 0, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="General" unique_id=1233614450]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 2
+
+[node name="DlgBoard" parent="." unique_id=1710732778 instance=ExtResource("1_ledfg")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
+rect_ipad = Rect2(-201, 682, 0, 0)
+rect = Rect2(-201, 234, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="DlgBoard" unique_id=1889370266]
+layout_mode = 2
+texture = ExtResource("2_tf4ko")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Dlg" parent="." unique_id=1928969560 instance=ExtResource("1_ledfg")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
+rect_ipad = Rect2(-201, 682, 0, 0)
+rect = Rect2(-186, 248, 0, 0)
+
+[node name="Label" type="Label" parent="Dlg" unique_id=1884416456]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("3_ijub1")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="Button" type="Button" parent="." unique_id=1672132165]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dc2mx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3kl1b")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_xt4qy")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_iv806")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6d2ax")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

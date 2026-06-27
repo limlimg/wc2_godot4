@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bcfm8kyvi5m6u"]
+
+[ext_resource type="Script" uid="uid://cefn8wgodbe5d" path="res://app/src/main/cpp/game_res_render/commander_medal.gd" id="1_rfvxv"]
+
+[node name="CommanderMedal" type="Node2D" unique_id=1241850369]
+script = ExtResource("1_rfvxv")

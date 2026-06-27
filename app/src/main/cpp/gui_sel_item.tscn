@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c1rdjdnbkq2v"]
 
 [ext_resource type="Script" uid="uid://dsb0y4ax1t1dh" path="res://app/src/main/cpp/gui_sel_item.gd" id="1_2s3h4"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_ogrdh"]
-[ext_resource type="Texture2D" uid="uid://dg6hbf8mwqrwq" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/mark_locked.png.tres" id="3_2asny"]
-[ext_resource type="Texture2D" uid="uid://6mcfqarlnark" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/small_rankstar.png.tres" id="4_p240s"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_ogrdh"]
+[ext_resource type="Texture2D" uid="uid://dg6hbf8mwqrwq" path="res://app/src/main/cpp/resources/assets/logo_gui_res/mark_locked.png.tres" id="3_2asny"]
+[ext_resource type="Texture2D" uid="uid://6mcfqarlnark" path="res://app/src/main/cpp/resources/assets/logo_gui_res/small_rankstar.png.tres" id="4_p240s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mf3m"]
 

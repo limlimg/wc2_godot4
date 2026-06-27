@@ -3,7 +3,7 @@ class_name ecImageAttr
 extends Texture2D
 
 const _ecTextureRes = preload("res://app/src/main/cpp/ec_texture_res.gd")
-const _AssetRegistry = preload("res://app/src/main/cpp/scene_system_resource/asset_registry.gd")
+const _AssetRegistry = preload("res://app/src/main/cpp/resources/assets/asset_registry.gd")
 
 @export
 var texture_res: _ecTextureRes:

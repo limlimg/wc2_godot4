@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://duidx7fccd24k"]
 
 [ext_resource type="Script" uid="uid://dqrrdid4hwf8t" path="res://app/src/main/cpp/gui_gold.gd" id="1_oqevq"]
-[ext_resource type="Texture2D" uid="uid://dvv46qmkmke7j" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/asset_board.png.tres" id="1_qd3tg"]
-[ext_resource type="Theme" uid="uid://chlkhwx64ya0c" path="res://app/src/main/cpp/scene_system_resource/font/g_num3-1.tres" id="3_qd3tg"]
+[ext_resource type="Texture2D" uid="uid://dvv46qmkmke7j" path="res://app/src/main/cpp/resources/assets/logo_gui_res/asset_board.png.tres" id="1_qd3tg"]
+[ext_resource type="Theme" uid="uid://chlkhwx64ya0c" path="res://app/src/main/cpp/resources/assets/font/g_num3-1.tres" id="3_qd3tg"]
 
 [node name="GUIGold" type="Control" unique_id=1663737891]
 layout_mode = 3

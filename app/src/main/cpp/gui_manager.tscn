@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b8ulkhao6n4aw"]
 
 [ext_resource type="Script" uid="uid://bo63r12xqtvg7" path="res://app/src/main/cpp/gui_manager.gd" id="1_o8ok3"]
-[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://app/src/main/cpp/scene_system_resource/fade.tscn" id="2_aqje5"]
+[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://app/src/main/cpp/gui/fade.tscn" id="2_aqje5"]
 [ext_resource type="PackedScene" uid="uid://d2ake044dm8mq" path="res://app/src/main/cpp/gui_image.tscn" id="3_aqje5"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="4_ow8w6"]
 [ext_resource type="PackedScene" uid="uid://bc0r4i3w2pyf6" path="res://app/src/main/cpp/gui_scroll_bar.tscn" id="5_x8exo"]

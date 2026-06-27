@@ -2,7 +2,7 @@
 class_name ecUniFont
 extends Theme
 
-const _AssetRegistry = preload("res://app/src/main/cpp/scene_system_resource/asset_registry.gd")
+const _AssetRegistry = preload("res://app/src/main/cpp/resources/assets/asset_registry.gd")
 const _lib = preload("res://app/src/main/cpp/native-lib.gd")
 
 ## .fnt files are imported as FontFile. @2x variant is not supported for the

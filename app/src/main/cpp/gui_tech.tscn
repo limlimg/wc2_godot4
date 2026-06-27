@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c5ire5b7or3k5"]
 
 [ext_resource type="Script" uid="uid://nn0osc563d66" path="res://app/src/main/cpp/gui_tech.gd" id="1_8eet7"]
-[ext_resource type="Texture2D" uid="uid://bvmp725cxl45p" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/technology_board.png.tres" id="1_bcovd"]
+[ext_resource type="Texture2D" uid="uid://bvmp725cxl45p" path="res://app/src/main/cpp/resources/assets/logo_gui_res/technology_board.png.tres" id="1_bcovd"]
 
 [node name="GUITech" type="Control" unique_id=895432528]
 layout_mode = 3

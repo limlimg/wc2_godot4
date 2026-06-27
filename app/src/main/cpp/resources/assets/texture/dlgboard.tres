@@ -1,0 +1,15 @@
+[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://c2e5r15nx22mc"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_yipqr"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="2_le03d"]
+
+[sub_resource type="Resource" id="Resource_0hx2v"]
+script = ExtResource("1_yipqr")
+name = "dlgboard.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_le03d")
+asset = SubResource("Resource_0hx2v")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

@@ -1,0 +1,16 @@
+[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://ctj87p2f2ndcd"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_1iu5s"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="3_c4dgb"]
+
+[sub_resource type="Resource" id="Resource_dixvi"]
+script = ExtResource("1_1iu5s")
+name = "board_locked.png"
+name_ipad = "board_locked@2x.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_c4dgb")
+asset = SubResource("Resource_dixvi")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="ecTextureRes" format=3 uid="uid://bkmda4ly4obxk"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_6emno"]
+[ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://app/src/main/cpp/ec_texture_res.gd" id="2_imc8w"]
+
+[sub_resource type="Resource" id="Resource_6emno"]
+script = ExtResource("1_6emno")
+name = "battlebg1.xml"
+name_hd = "battlebg1_hd.xml"
+name_ipad = "battlebg1_iPad.xml"
+name_640h = "battlebg1_568h.xml"
+name_640hd = "battlebg1_640hd.xml"
+name_568h = "battlebg1_568h.xml"
+name_568hd = "\"battlebg1_568hd.xml"
+name_534h = "battlebg1_568h.xml"
+name_534hd = "\"battlebg1_568hd.xml"
+name_512h = "battlebg1_568h.xml"
+name_512hd = "\"battlebg1_568hd.xml"
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[sub_resource type="Resource" id="Resource_imc8w"]
+script = ExtResource("1_6emno")
+name = "battlebg2.xml"
+name_hd = "battlebg2_hd.xml"
+name_ipad = "battlebg2_iPad.xml"
+name_640h = "battlebg2_568h.xml"
+name_640hd = "battlebg2_640hd.xml"
+name_568h = "battlebg2_568h.xml"
+name_568hd = "battlebg2_568hd.xml"
+name_534h = "battlebg2_568h.xml"
+name_534hd = "battlebg2_568hd.xml"
+name_512h = "battlebg2_568h.xml"
+name_512hd = "battlebg2_568hd.xml"
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[sub_resource type="Resource" id="Resource_cicwj"]
+script = ExtResource("1_6emno")
+name_ipad = "battlebg3_iPad.xml"
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[resource]
+script = ExtResource("2_imc8w")
+assets = Array[ExtResource("1_6emno")]([SubResource("Resource_6emno"), SubResource("Resource_imc8w"), SubResource("Resource_cicwj")])

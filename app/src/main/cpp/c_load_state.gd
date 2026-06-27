@@ -11,7 +11,7 @@ signal _game_initialized
 
 func _on_enter() -> void:
 	var tip_index := _rng.randi_range(1, 11)
-	$Tip/ecText.text = "tip {0}".format([tip_index])
+	$Tip/Label.text = "tip {0}".format([tip_index])
 	$GUIManager.fade_in(-1)
 	_load_thread.start(func():
 		_CGameState.init_game()

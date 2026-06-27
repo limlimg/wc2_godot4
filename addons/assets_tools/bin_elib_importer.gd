@@ -1,11 +1,10 @@
 @tool
 extends EditorImportPlugin
 
-const _Adjoin = preload("res://app/src/main/cpp/imported_containers/adjoin.gd")
 const _ecLibraryData = preload("res://app/src/main/cpp/ec_library_data.gd")
 const _ecItemData = preload("res://app/src/main/cpp/ec_item_data.gd")
-const _ecMotionData = preload("res://app/src/main/cpp/imported_containers/ec_motion_data.gd")
-const _ecShapeData = preload("res://app/src/main/cpp/imported_containers/ec_shape_data.gd")
+const _ecMotionData = preload("res://app/src/main/cpp/resources/imported/ec_motion_data.gd")
+const _ecShapeData = preload("res://app/src/main/cpp/resources/imported/ec_shape_data.gd")
 const _ecLayerData = preload("res://app/src/main/cpp/ec_layer_data.gd")
 const _ecFrameData = preload("res://app/src/main/cpp/ec_frame_data.gd")
 const _ecElementData = preload("res://app/src/main/cpp/ec_element_data.gd")

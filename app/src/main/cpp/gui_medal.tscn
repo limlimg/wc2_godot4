@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bp1f7if3s8vf4"]
 
-[ext_resource type="Theme" uid="uid://cwbjbqps0wawf" path="res://app/src/main/cpp/scene_system_resource/font/g_num1.tres" id="1_3qmw3"]
-[ext_resource type="Texture2D" uid="uid://dcxrp3ba6cb43" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/player_medal.png.tres" id="1_ev6no"]
+[ext_resource type="Theme" uid="uid://cwbjbqps0wawf" path="res://app/src/main/cpp/resources/assets/font/g_num1.tres" id="1_3qmw3"]
+[ext_resource type="Texture2D" uid="uid://dcxrp3ba6cb43" path="res://app/src/main/cpp/resources/assets/logo_gui_res/player_medal.png.tres" id="1_ev6no"]
 [ext_resource type="Script" uid="uid://6hflc5uqjdd2" path="res://app/src/main/cpp/gui_medal.gd" id="1_gytc2"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_gytc2"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_gytc2"]
 
 [node name="GUIMedal" type="Control" unique_id=642182575]
 layout_mode = 3

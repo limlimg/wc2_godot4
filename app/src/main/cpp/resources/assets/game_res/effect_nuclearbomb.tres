@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ecEffectRes" format=3 uid="uid://dxpwr32balapi"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_quw7c"]
+[ext_resource type="Script" uid="uid://db5ial1i1vdli" path="res://app/src/main/cpp/ec_effect_res.gd" id="2_1qgxl"]
+
+[sub_resource type="Resource" id="Resource_1qgxl"]
+script = ExtResource("1_quw7c")
+name = "effect_nuclearbomb.xml"
+
+[resource]
+script = ExtResource("2_1qgxl")
+asset = SubResource("Resource_1qgxl")

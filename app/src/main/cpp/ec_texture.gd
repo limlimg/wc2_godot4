@@ -2,7 +2,7 @@
 class_name ecTexture
 extends Texture2D
 
-const _AssetRegistry = preload("res://app/src/main/cpp/scene_system_resource/asset_registry.gd")
+const _AssetRegistry = preload("res://app/src/main/cpp/resources/assets/asset_registry.gd")
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")
 
 @export

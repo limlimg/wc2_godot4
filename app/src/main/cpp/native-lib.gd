@@ -167,16 +167,16 @@ static func _ec_game_init(content_scale_width: int, content_scale_height: int, o
 		#g_num3.init("num3.fnt", false)
 		#g_num4.init("num4.fnt", false)
 		#g_num5.init("num5.fnt", false)
-	g_font1 = load("res://app/src/main/cpp/scene_system_resource/font/g_font1.tres") as _ecUniFont
-	g_font2 = load("res://app/src/main/cpp/scene_system_resource/font/g_font2.tres") as _ecUniFont
-	g_font3 = load("res://app/src/main/cpp/scene_system_resource/font/g_font3.tres") as _ecUniFont
-	g_font6 = load("res://app/src/main/cpp/scene_system_resource/font/g_font6.tres") as _ecUniFont
-	g_font7 = load("res://app/src/main/cpp/scene_system_resource/font/g_font7.tres") as _ecUniFont
-	g_num1 = load("res://app/src/main/cpp/scene_system_resource/font/g_num1.tres") as _ecUniFont
-	g_num3 = load("res://app/src/main/cpp/scene_system_resource/font/g_num3.tres") as _ecUniFont
-	g_num4 = load("res://app/src/main/cpp/scene_system_resource/font/g_num4.tres") as _ecUniFont
-	g_num4b = load("res://app/src/main/cpp/scene_system_resource/font/g_num4b.tres") as _ecUniFont
-	g_num5 = load("res://app/src/main/cpp/scene_system_resource/font/g_num5.tres") as _ecUniFont
+	g_font1 = load("res://app/src/main/cpp/resources/assets/font/g_font1.tres") as _ecUniFont
+	g_font2 = load("res://app/src/main/cpp/resources/assets/font/g_font2.tres") as _ecUniFont
+	g_font3 = load("res://app/src/main/cpp/resources/assets/font/g_font3.tres") as _ecUniFont
+	g_font6 = load("res://app/src/main/cpp/resources/assets/font/g_font6.tres") as _ecUniFont
+	g_font7 = load("res://app/src/main/cpp/resources/assets/font/g_font7.tres") as _ecUniFont
+	g_num1 = load("res://app/src/main/cpp/resources/assets/font/g_num1.tres") as _ecUniFont
+	g_num3 = load("res://app/src/main/cpp/resources/assets/font/g_num3.tres") as _ecUniFont
+	g_num4 = load("res://app/src/main/cpp/resources/assets/font/g_num4.tres") as _ecUniFont
+	g_num4b = load("res://app/src/main/cpp/resources/assets/font/g_num4b.tres") as _ecUniFont
+	g_num5 = load("res://app/src/main/cpp/resources/assets/font/g_num5.tres") as _ecUniFont
 	# NOTTODO: initialize iap items
 	_game_initialized = true
 

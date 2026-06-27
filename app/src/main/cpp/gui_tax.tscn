@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c5o8iq207nbba"]
 
-[ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://app/src/main/cpp/scene_system_resource/game_res/ai_commander_medal.tscn" id="1_3nn02"]
+[ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://app/src/main/cpp/game_res_render/ai_commander_medal.tscn" id="1_3nn02"]
 [ext_resource type="Script" uid="uid://bf3lgmunho5eg" path="res://app/src/main/cpp/gui_tax.gd" id="1_cpoys"]
-[ext_resource type="Texture2D" uid="uid://dr7bgmp56b0q0" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/income_board2.png.tres" id="2_52irx"]
-[ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://app/src/main/cpp/scene_system_resource/game_res/commander_medal.tscn" id="2_cpoys"]
-[ext_resource type="Texture2D" uid="uid://crowfkj7bpn2g" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/income_board.png.tres" id="4_mvlbv"]
-[ext_resource type="Theme" uid="uid://c8j0lx6apqda5" path="res://app/src/main/cpp/scene_system_resource/font/g_num3.tres" id="7_ydn6t"]
+[ext_resource type="Texture2D" uid="uid://dr7bgmp56b0q0" path="res://app/src/main/cpp/resources/assets/logo_gui_res/income_board2.png.tres" id="2_52irx"]
+[ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://app/src/main/cpp/game_res_render/commander_medal.tscn" id="2_cpoys"]
+[ext_resource type="Texture2D" uid="uid://crowfkj7bpn2g" path="res://app/src/main/cpp/resources/assets/logo_gui_res/income_board.png.tres" id="4_mvlbv"]
+[ext_resource type="Theme" uid="uid://c8j0lx6apqda5" path="res://app/src/main/cpp/resources/assets/font/g_num3.tres" id="7_ydn6t"]
 
 [node name="GUITax" type="Control" unique_id=379815843]
 layout_mode = 3

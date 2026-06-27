@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bktnsnsbwc2q3" path="res://app/src/main/cpp/gui_save_item.tscn" id="1_cqbh5"]
 [ext_resource type="Script" uid="uid://b32fnamegjxat" path="res://app/src/main/cpp/gui_auto_save_item.gd" id="2_iafg2"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_ldgfg"]
-[ext_resource type="Theme" uid="uid://dmd4twdwradyn" path="res://app/src/main/cpp/scene_system_resource/font/g_font7.tres" id="5_rir1v"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_ldgfg"]
+[ext_resource type="Theme" uid="uid://dmd4twdwradyn" path="res://app/src/main/cpp/resources/assets/font/g_font7.tres" id="5_rir1v"]
 
 [node name="GUIAutoSaveItem" unique_id=2034275630 instance=ExtResource("1_cqbh5")]
 script = ExtResource("2_iafg2")

@@ -4,19 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://3kjay574huha" path="res://app/src/main/cpp/ec_effect_manager.tscn" id="2_0d8sx"]
 [ext_resource type="PackedScene" uid="uid://bdigiv3s86lid" path="res://app/src/main/cpp/c_fight_text_mgr.tscn" id="3_f1sur"]
 [ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="4_gmum2"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="5_iy5bs"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="5_iy5bs"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="6_ob33k"]
-[ext_resource type="Texture2D" uid="uid://bu6m3ik6qwmav" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/gamebutton_round_normal.png.tres" id="7_hejqp"]
-[ext_resource type="Texture2D" uid="uid://dcuchi3na4edf" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/gamebutton_round_press.png.tres" id="8_kjuls"]
-[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttonboard_green.png.tres" id="9_ob33k"]
-[ext_resource type="Texture2D" uid="uid://iwl5yhon4veh" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/gamebutton_card_normal.png.tres" id="10_0c3as"]
-[ext_resource type="Texture2D" uid="uid://cgcdqjqcyk235" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/gamebutton_card_press.png.tres" id="11_54h8e"]
-[ext_resource type="Texture2D" uid="uid://csvj0hmrb5ytf" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttonboard_blue.png.tres" id="12_xitlk"]
-[ext_resource type="Texture2D" uid="uid://dhfojrm8u7qnq" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/gamebutton_pause_normal.png.tres" id="13_xa4cd"]
-[ext_resource type="Texture2D" uid="uid://bx5koubtrha23" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/gamebutton_pause_press.png.tres" id="14_adpbo"]
-[ext_resource type="Texture2D" uid="uid://42otm2gr4o7o" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/buttonboard_red.png.tres" id="15_q1qaj"]
-[ext_resource type="Texture2D" uid="uid://c2gralhifxwj8" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/gamebutton_cardremove_normal.png.tres" id="16_q1qaj"]
-[ext_resource type="Texture2D" uid="uid://cnyjx7s30rc6u" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/gamebutton_cardremove_press.png.tres" id="17_u8uvy"]
+[ext_resource type="Texture2D" uid="uid://bu6m3ik6qwmav" path="res://app/src/main/cpp/resources/assets/logo_gui_res/gamebutton_round_normal.png.tres" id="7_hejqp"]
+[ext_resource type="Texture2D" uid="uid://dcuchi3na4edf" path="res://app/src/main/cpp/resources/assets/logo_gui_res/gamebutton_round_press.png.tres" id="8_kjuls"]
+[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_green.png.tres" id="9_ob33k"]
+[ext_resource type="Texture2D" uid="uid://iwl5yhon4veh" path="res://app/src/main/cpp/resources/assets/logo_gui_res/gamebutton_card_normal.png.tres" id="10_0c3as"]
+[ext_resource type="Texture2D" uid="uid://cgcdqjqcyk235" path="res://app/src/main/cpp/resources/assets/logo_gui_res/gamebutton_card_press.png.tres" id="11_54h8e"]
+[ext_resource type="Texture2D" uid="uid://csvj0hmrb5ytf" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_blue.png.tres" id="12_xitlk"]
+[ext_resource type="Texture2D" uid="uid://dhfojrm8u7qnq" path="res://app/src/main/cpp/resources/assets/logo_gui_res/gamebutton_pause_normal.png.tres" id="13_xa4cd"]
+[ext_resource type="Texture2D" uid="uid://bx5koubtrha23" path="res://app/src/main/cpp/resources/assets/logo_gui_res/gamebutton_pause_press.png.tres" id="14_adpbo"]
+[ext_resource type="Texture2D" uid="uid://42otm2gr4o7o" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_red.png.tres" id="15_q1qaj"]
+[ext_resource type="Texture2D" uid="uid://c2gralhifxwj8" path="res://app/src/main/cpp/resources/assets/logo_gui_res/gamebutton_cardremove_normal.png.tres" id="16_q1qaj"]
+[ext_resource type="Texture2D" uid="uid://cnyjx7s30rc6u" path="res://app/src/main/cpp/resources/assets/logo_gui_res/gamebutton_cardremove_press.png.tres" id="17_u8uvy"]
 [ext_resource type="PackedScene" uid="uid://duidx7fccd24k" path="res://app/src/main/cpp/gui_gold.tscn" id="18_3aq82"]
 [ext_resource type="PackedScene" uid="uid://c5o8iq207nbba" path="res://app/src/main/cpp/gui_tax.tscn" id="19_im5jt"]
 [ext_resource type="PackedScene" uid="uid://bcdwdidc5e6kk" path="res://app/src/main/cpp/gui_small_card.tscn" id="20_im5jt"]
@@ -154,6 +154,8 @@ grow_vertical = 2
 [node name="GUIAttackBox" parent="GUIManager/GUIAttackBox" unique_id=1463077957 instance=ExtResource("21_6jayj")]
 custom_minimum_size = Vector2(258, 186)
 layout_mode = 2
+attack = null
+defend = null
 
 [node name="GUIPauseBox" parent="GUIManager" unique_id=1648966608 instance=ExtResource("22_ennrn")]
 visible = false
@@ -244,6 +246,7 @@ rect = Rect2(-140, 0, 280, 14)
 layout_mode = 2
 
 [node name="GUIDefeated" type="CenterContainer" parent="GUIManager" unique_id=833270288]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

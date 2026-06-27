@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://d37lhebrper7l"]
 
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="1_nnjf7"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_i1ylu"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_i1ylu"]
 [ext_resource type="Script" uid="uid://d3d5m7n8xkevo" path="res://app/src/main/cpp/gui_upgrade_button.gd" id="2_muesp"]
-[ext_resource type="Texture2D" uid="uid://cbkryo0h38jlh" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/medal.png.tres" id="4_e8pok"]
-[ext_resource type="Theme" uid="uid://cwbjbqps0wawf" path="res://app/src/main/cpp/scene_system_resource/font/g_num1.tres" id="5_wcrlx"]
+[ext_resource type="Texture2D" uid="uid://cbkryo0h38jlh" path="res://app/src/main/cpp/resources/assets/logo_gui_res/medal.png.tres" id="4_e8pok"]
+[ext_resource type="Theme" uid="uid://cwbjbqps0wawf" path="res://app/src/main/cpp/resources/assets/font/g_num1.tres" id="5_wcrlx"]
 
 [node name="GUIUpgradeButton" unique_id=2034275630 instance=ExtResource("1_nnjf7")]
 script = ExtResource("2_muesp")

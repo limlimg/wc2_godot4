@@ -17,7 +17,7 @@ extends Resource
 ## as texture and specify the source ecTextureRes, the second patameter of
 ## load_res and the name of the image.
 
-const _AssetRegistry = preload("res://app/src/main/cpp/scene_system_resource/asset_registry.gd")
+const _AssetRegistry = preload("res://app/src/main/cpp/resources/assets/asset_registry.gd")
 const _ecImageAttr = preload("res://app/src/main/cpp/ec_image_attr.gd")
 const _lib = preload("res://app/src/main/cpp/native-lib.gd")
 

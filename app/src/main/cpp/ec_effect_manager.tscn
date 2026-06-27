@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://boorvbu4dkxcs" path="res://app/src/main/cpp/ec_effect_manager.gd" id="1_3sjwc"]
 [ext_resource type="PackedScene" uid="uid://clvmjkktsv3mo" path="res://app/src/main/cpp/ec_effect.tscn" id="2_3ge08"]
-[ext_resource type="Resource" uid="uid://cq5m16ucm6vuo" path="res://app/src/main/cpp/scene_system_resource/game_res/eff.tres" id="3_0e1io"]
+[ext_resource type="Resource" uid="uid://cq5m16ucm6vuo" path="res://app/src/main/cpp/resources/assets/game_res/eff.tres" id="3_0e1io"]
 
 [node name="ecEffectManager" type="Node2D" unique_id=506515038 groups=["ecEffectManagerInstance"]]
 script = ExtResource("1_3sjwc")

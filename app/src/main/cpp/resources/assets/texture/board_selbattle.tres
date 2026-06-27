@@ -1,0 +1,16 @@
+[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://cmvqgf8do8n86"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_ob28k"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="3_1hoc7"]
+
+[sub_resource type="Resource" id="Resource_dixvi"]
+script = ExtResource("1_ob28k")
+name = "board_selbattle.webp"
+name_ipad = "board_selbattle_iPad.webp"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_1hoc7")
+asset = SubResource("Resource_dixvi")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

@@ -1,0 +1,17 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://yn2m28j0gqlr"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_hixxt"]
+[ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://app/src/main/cpp/resources/assets/menu_gui_res/texture_res.tres" id="2_e8yio"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://app/src/main/cpp/ec_image_attr.gd" id="4_qrcff"]
+
+[sub_resource type="Resource" id="Resource_hixxt"]
+script = ExtResource("1_hixxt")
+name = "button_conquest8.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_qrcff")
+texture_res = ExtResource("2_e8yio")
+image = SubResource("Resource_hixxt")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://crdu2sxx57men" path="res://app/src/main/cpp/gui_card_list.gd" id="1_n3f07"]
 [ext_resource type="PackedScene" uid="uid://55bpjexr684x" path="res://app/src/main/cpp/gui_list.tscn" id="1_v5t7c"]
 [ext_resource type="PackedScene" uid="uid://5ts0efddgis5" path="res://app/src/main/cpp/gui_card.tscn" id="4_835vt"]
-[ext_resource type="Resource" uid="uid://dfe0w1ve8iqjk" path="res://app/src/main/cpp/scene_system_resource/game_gui_res/texture_res.tres" id="4_n3f07"]
+[ext_resource type="Resource" uid="uid://dfe0w1ve8iqjk" path="res://app/src/main/cpp/resources/assets/game_gui_res/texture_res.tres" id="4_n3f07"]
 
 [node name="GUICardList" type="Control" unique_id=1866886249]
 layout_mode = 3

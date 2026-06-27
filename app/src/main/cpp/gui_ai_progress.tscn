@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://451ls38c1bf8"]
 
 [ext_resource type="Script" uid="uid://b8ms3wfxb8xd0" path="res://app/src/main/cpp/gui_ai_progress.gd" id="1_nynuk"]
-[ext_resource type="Texture2D" uid="uid://cr341ld5q73ud" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/aiprogress.png.tres" id="1_om3wt"]
-[ext_resource type="Texture2D" uid="uid://dmwp04e85e0b6" path="res://app/src/main/cpp/scene_system_resource/logo_gui_res/progressbar.png.tres" id="2_pd72s"]
+[ext_resource type="Texture2D" uid="uid://cr341ld5q73ud" path="res://app/src/main/cpp/resources/assets/logo_gui_res/aiprogress.png.tres" id="1_om3wt"]
+[ext_resource type="Texture2D" uid="uid://dmwp04e85e0b6" path="res://app/src/main/cpp/resources/assets/logo_gui_res/progressbar.png.tres" id="2_pd72s"]
 
 [node name="GUIAIProgress" type="Control" unique_id=191726262]
 layout_mode = 3

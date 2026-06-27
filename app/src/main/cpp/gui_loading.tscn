@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhdgsyd0pgf1d"]
 
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="2_2y8tv"]
-[ext_resource type="Texture2D" uid="uid://ces6dlv70o7bo" path="res://app/src/main/cpp/scene_system_resource/texture/loading.tres" id="3_2vxlu"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_2y8tv"]
+[ext_resource type="Texture2D" uid="uid://ces6dlv70o7bo" path="res://app/src/main/cpp/resources/assets/texture/loading.tres" id="3_2vxlu"]
 
 [sub_resource type="Animation" id="Animation_2vxlu"]
 resource_name = "fade_in"

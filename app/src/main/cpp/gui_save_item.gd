@@ -1,3 +1,4 @@
+@tool
 extends "res://app/src/main/cpp/gui_radio_button.gd"
 
 const _lib = preload("res://app/src/main/cpp/native-lib.gd")

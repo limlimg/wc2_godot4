@@ -1,0 +1,16 @@
+[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://5u82hkjbjvk6"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_wjvo5"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="3_4lc2u"]
+
+[sub_resource type="Resource" id="Resource_dixvi"]
+script = ExtResource("1_wjvo5")
+name = "minimap1_4.pkm"
+name_ipad = "minimap1_4@2x.pkm"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_4lc2u")
+asset = SubResource("Resource_dixvi")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

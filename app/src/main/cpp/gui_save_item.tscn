@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://c5qvo6pghcxcm" path="res://app/src/main/cpp/gui_radio_button.tscn" id="1_175u4"]
 [ext_resource type="Script" uid="uid://5mem4ikjh4fo" path="res://app/src/main/cpp/gui_save_item.gd" id="2_awrqk"]
-[ext_resource type="Theme" uid="uid://cm4fpf5qkg0cu" path="res://app/src/main/cpp/scene_system_resource/font/g_num4b.tres" id="4_42unb"]
-[ext_resource type="Theme" uid="uid://dmd4twdwradyn" path="res://app/src/main/cpp/scene_system_resource/font/g_font7.tres" id="5_yp6wb"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/scene_system_resource/gui_rect_container.tscn" id="6_yp6wb"]
+[ext_resource type="Theme" uid="uid://cm4fpf5qkg0cu" path="res://app/src/main/cpp/resources/assets/font/g_num4b.tres" id="4_42unb"]
+[ext_resource type="Theme" uid="uid://dmd4twdwradyn" path="res://app/src/main/cpp/resources/assets/font/g_font7.tres" id="5_yp6wb"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="6_yp6wb"]
 
 [sub_resource type="Animation" id="Animation_42unb"]
 length = 0.001

@@ -1,0 +1,15 @@
+[gd_resource type="Theme" script_class="ecUniFont" format=3 uid="uid://dmd4twdwradyn"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_a5px2"]
+[ext_resource type="Script" uid="uid://ckk2mqlehxynn" path="res://app/src/main/cpp/ec_uni_font.gd" id="2_5ysbu"]
+
+[sub_resource type="Resource" id="Resource_7kx87"]
+script = ExtResource("1_a5px2")
+name = "font7_en.fnt"
+name_hd = "font7_en_hd.fnt"
+name_ipad = "font7_en_hd.fnt"
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[resource]
+script = ExtResource("2_5ysbu")
+asset = SubResource("Resource_7kx87")
