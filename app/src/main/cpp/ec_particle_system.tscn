@@ -1,15 +1,8 @@
 [gd_scene format=3 uid="uid://b4kec6mksgg5n"]
 
 [ext_resource type="Script" uid="uid://c863ldcx04cor" path="res://app/src/main/cpp/ec_particle_system.gd" id="1_l4qic"]
-[ext_resource type="PackedScene" uid="uid://c40moaqi5vk4g" path="res://app/src/main/cpp/ec_particle.tscn" id="2_4sx66"]
 
 [node name="ecParticleSystem" type="Node2D" unique_id=1215174198]
 script = ExtResource("1_l4qic")
 
-[node name="LiveParticles" type="Node2D" parent="." unique_id=1514767335]
-
-[node name="Prototype" type="Node2D" parent="." unique_id=1138808882]
-process_mode = 4
-visible = false
-
-[node name="ecParticle" parent="Prototype" unique_id=1239802628 instance=ExtResource("2_4sx66")]
+[node name="ecParticle" parent="." unique_id=1239802628 instance_placeholder="res://app/src/main/cpp/ec_particle.tscn"]

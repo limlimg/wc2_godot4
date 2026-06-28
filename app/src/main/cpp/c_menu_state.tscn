@@ -64,11 +64,7 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="Prototype" type="Control" parent="." unique_id=1989673705]
-visible = false
-anchors_preset = 0
-
-[node name="GUILoading" parent="Prototype" unique_id=1979438320 instance_placeholder="res://app/src/main/cpp/gui_loading.tscn"]
+[node name="GUILoading" parent="GUIManager" unique_id=1979438320 instance_placeholder="res://app/src/main/cpp/gui_loading.tscn"]
 layout_mode = 1
 
 [connection signal="commander_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_commander_pressed"]

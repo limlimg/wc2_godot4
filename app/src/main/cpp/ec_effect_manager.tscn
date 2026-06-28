@@ -1,17 +1,8 @@
 [gd_scene format=3 uid="uid://3kjay574huha"]
 
 [ext_resource type="Script" uid="uid://boorvbu4dkxcs" path="res://app/src/main/cpp/ec_effect_manager.gd" id="1_3sjwc"]
-[ext_resource type="PackedScene" uid="uid://clvmjkktsv3mo" path="res://app/src/main/cpp/ec_effect.tscn" id="2_3ge08"]
-[ext_resource type="Resource" uid="uid://cq5m16ucm6vuo" path="res://app/src/main/cpp/resources/assets/game_res/eff.tres" id="3_0e1io"]
 
 [node name="ecEffectManager" type="Node2D" unique_id=506515038 groups=["ecEffectManagerInstance"]]
 script = ExtResource("1_3sjwc")
 
-[node name="LiveEffect" type="Node2D" parent="." unique_id=2068677473]
-
-[node name="Prototype" type="Node2D" parent="." unique_id=592911775]
-process_mode = 4
-visible = false
-
-[node name="ecEffect" parent="Prototype" unique_id=1633173356 instance=ExtResource("2_3ge08")]
-texture_res = ExtResource("3_0e1io")
+[node name="ecEffect" parent="." unique_id=1633173356 instance_placeholder="res://app/src/main/cpp/ec_effect.tscn"]

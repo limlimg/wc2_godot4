@@ -1,20 +1,24 @@
 extends Node2D
 
+var _texts: Array[Label]
+
 func add_text(x: float, y: float, text: String, color: Color) -> void:
-	var node := $Prototype/CFightText.duplicate()
+	var node = $Prototype/CFightText.create_instance()
 	node.position = Vector2(x, y)
 	node.set_text(text)
 	node.set_color(color)
-	$Live.add_child(node)
 	node.hidden.connect(_remove.bind(node))
+	_texts.append(node)
 
 
 func release() -> void:
-	$Prototype/CFightText.theme = null
-	for c in $Live.get_children():
-		_remove(c)
+	$CFightText.theme = null
+	while not _texts.is_empty():
+		_remove(_texts[-1])
 
 
 func _remove(node: Node) -> void:
-	$Live.remove_child(node)
+	_texts[_texts.find(node)] = _texts[-1]
+	_texts.pop_back()
+	remove_child(node)
 	node.queue_free()

@@ -21,6 +21,7 @@ var emitter_attr: _ecEmitterAttr:
 var texture_res: _ecTextureRes
 
 var _live := false
+var _particles: Array[Sprite2D]
 var _speed_shift_curve: Curve
 var _gravity_shift_curve: Curve
 var _rot_shift_curve: Curve
@@ -57,8 +58,9 @@ func stop(stop_existing: bool) -> void:
 	_live = false
 	set_process(false)
 	if stop_existing:
-		for i in $LiveParticles.get_children():
-			$LiveParticles.remove_child(i)
+		for i in _particles:
+			_particles[_particles.find(i)] = _particles[-1]
+			remove_child(i)
 			i.queue_free()
 	_on_stopped()
 
@@ -69,13 +71,13 @@ func _on_stopped() -> void:
 
 
 func is_live() -> bool:
-	return $LiveParticles.get_child_count() > 0 or _live
+	return not _particles.is_empty() or _live
 
 
 func move_to(x: float, y: float, move_existing: bool) -> void:
 	var target := Vector2(x, y) + emitter_attr.offset
 	if not move_existing:
-		for i in $LiveParticles.get_children():
+		for i in _particles:
 			i.position -= target - position
 	if move_existing or _live:
 		_last_position = position
@@ -96,7 +98,7 @@ func _process(delta: float) -> void:
 			set_process(false)
 	var target_quantity := _sample_curve_extended(_emission_curve, _emitted_time)
 	while _emitted_quantity < target_quantity - 1:
-		var particle := $Prototype/ecParticle.duplicate()
+		var particle = $ecParticle.create_instance()
 		particle.lifespam = rng.randf_range(emitter_attr.particle_life_min, emitter_attr.particle_life_max)
 		var texture = texture_res.get_image(emitter_attr.image_file)
 		var texture_scale := Vector2.ONE
@@ -126,7 +128,7 @@ func _process(delta: float) -> void:
 		particle.rot_shift_curve = _rot_shift_curve
 		particle.color = emitter_attr.color_range.sample(rng.randf_range(0.0, 1.0))
 		particle.color_gradient = emitter_attr.life_track_color
-		$LiveParticles.add_child(particle)
+		_particles.append(particle)
 		particle.stopped.connect(_on_stopped)
 		_emitted_quantity += 1
 

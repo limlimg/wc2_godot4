@@ -51,7 +51,7 @@ func _on_gui_main_menu_sel_campaign_pressed(sel_campaign: int) -> void:
 		_displayed_menu.pressed.connect(_on_gui_locked_warning_pressed)
 		_displayed_menu.show()
 	else:
-		$GUIManager.fade_out(3, $Prototype/GUILoading.create_instance())
+		$GUIManager.fade_out(3, $GUIManager/GUILoading.create_instance())
 		$GUIManager.faded_out.connect(func(cause: int):
 			if cause == 3:
 				$GUIManager/GUIMainMenu.hide()
@@ -85,7 +85,7 @@ func _on_gui_main_menu_load_campaign_pressed() -> void:
 
 
 func _on_gui_main_menu_sel_conquest_pressed(sel_conquest: int) -> void:
-	$GUIManager.fade_out(4, $Prototype/GUILoading.create_instance())
+	$GUIManager.fade_out(4, $GUIManager/GUILoading.create_instance())
 	$GUIManager.faded_out.connect(func(cause: int):
 		if cause == 4:
 			$GUIManager/GUIMainMenu.hide()
