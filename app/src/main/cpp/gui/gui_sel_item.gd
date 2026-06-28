@@ -183,3 +183,10 @@ func _on_render() -> void:
 		$Control/SmallRankStar3.visible = false
 		$Control/SmallRankStar4.visible = false
 		$Control/SmallRankStar5.visible = false
+
+
+func _get_minimum_size() -> Vector2:
+	if _ecGraphics.instance().content_scale_size_mode == 3:
+		return Vector2(0.0, 80.0)
+	else:
+		return Vector2(0.0, 40.0)

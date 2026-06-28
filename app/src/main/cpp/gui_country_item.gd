@@ -1,4 +1,4 @@
-extends "res://app/src/main/cpp/gui_sel_item.gd"
+extends "res://app/src/main/cpp/gui/gui_sel_item.gd"
 
 @export
 var country_name: String:

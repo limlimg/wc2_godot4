@@ -1,4 +1,4 @@
-extends "res://app/src/main/cpp/gui_element.gd"
+extends "res://app/src/main/cpp/gui/gui_list.gd"
 
 const _CObjectDef = preload("res://app/src/main/cpp/c_object_def.gd")
 const _GUICard = preload("res://app/src/main/cpp/gui_card.gd")
@@ -8,10 +8,14 @@ var tab: int:
 	set(value):
 		if value != tab:
 			tab = value
+			for i in _cards:
+				$CTouchInertia/ScrollContainer/BoxContainer.remove_child(i)
+				i.queue_free()
 			init()
 
 
 var _selected := -1
+var _cards: Array[_GUICard]
 
 signal card_selected(index: int)
 
@@ -19,9 +23,9 @@ func init() -> void:
 	for i in 28:
 		var card := _CObjectDef.instance().get_card_def(i)
 		if card.type == tab:
-			$Factory/GUICard.def = card
-			var node = $Factory/GUICard.duplicate()
-			$GUIList.add_item(node)
+			var node = $CTouchInertia/ScrollContainer/BoxContainer/GUICard.create_instance()
+			node.def = card
+			_cards.append(node)
 
 
 func re_select() -> void:
@@ -44,10 +48,9 @@ func _reset_select() -> void:
 
 
 func get_card(index: int) -> _GUICard:
-	var list = $GUIList.get_items()
-	if index >= list.size():
+	if index >= _cards.size():
 		return null
-	return $GUIList.get_items()[index]
+	return _cards[index]
 
 
 func _on_gui_list_item_touched(item: int) -> void:

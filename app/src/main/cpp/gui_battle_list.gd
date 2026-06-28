@@ -1,9 +1,10 @@
-extends "res://app/src/main/cpp/gui_element.gd"
+extends "res://app/src/main/cpp/gui/gui_list.gd"
 
 # ResetTouchState is unused and not implemented.
 
-const _native = preload("res://app/src/main/cpp/native-lib.gd")
+const _lib = preload("res://app/src/main/cpp/native-lib.gd")
 const _GUIBattleItem = preload("res://app/src/main/cpp/gui_battle_item.gd")
+
 const CAMPIAGN_AXIS = 0
 const CAMPIAGN_ALLIES = 1
 const CAMPIAGN_WTO = 2
@@ -15,10 +16,13 @@ var campaign: int:
 	set(value):
 		if value != campaign:
 			campaign = value
+			for i in _items:
+				$CTouchInertia/ScrollContainer/BoxContainer.remove_child(i)
+				i.queue_free()
 			init()
 
 
-var _selected_item := -1
+var _items: Array[_GUIBattleItem]
 
 signal battle_selected(battle: int)
 
@@ -27,47 +31,45 @@ func _ready() -> void:
 
 
 func init() -> void:
-	$GUIList.clear_item()
-	var num_battles := _native.get_num_battles(campaign)
+	var num_battles := _lib.get_num_battles(campaign)
 	var played_battles := num_battles
 	if campaign != CAMPIAGN_MULTIPLAY:
 		played_battles = g_Commander.get_num_played_battles(campaign)
-	$Factory/MarginContainer/GUIBattleItem.campaign = campaign
 	for i in num_battles:
-		$Factory/MarginContainer/GUIBattleItem.battle = i
-		$Factory/MarginContainer/GUIBattleItem.star = g_Commander.get_num_battle_stars(campaign, i)
+		var item = $CTouchInertia/ScrollContainer/BoxContainer/GUIBattleItem.create_instance()
+		item.campaign = campaign
+		item.battle = i
+		item.star = g_Commander.get_num_battle_stars(campaign, i)
 		if i > played_battles:
-			$Factory/MarginContainer/GUIBattleItem.set_enable(false)
-			$Factory/MarginContainer/GUIBattleItem.locked = true
-		$GUIList.add_item($Factory/MarginContainer.duplicate())
+			item.set_enable(false)
+			item.locked = true
+		_items.append(item)
 
 
 func _reset_select() -> void:
-	for i in $GUIList.get_items():
-		i.get_node(^"GUIBattleItem").set_selected(false)
+	for i in _items:
+		i.set_selected(false)
 
 
 func set_select(index: int) -> void:
-	_selected_item = index
-	$GUIList.set_select(index)
+	super(index)
 	_reset_select()
-	$GUIList.get_items()[index].get_node(^"GUIBattleItem").set_selected(true)
+	_items[index].set_selected(true)
 	battle_selected.emit(index)
 
 
 func select_last_unlocked() -> void:
-	var a = $GUIList.get_items()
-	var i = a.size()
+	var i = _items.size()
 	while i > 0:
 		i -= 1
-		var node := a[i].get_node(^"GUIBattleItem") as _GUIBattleItem
-		if node != null and not node.locked:
+		var item := _items[i]
+		if item != null and not item.locked:
 			set_select(i)
 			return
 
 
-func _on_gui_list_item_touched(index: int) -> void:
-	var item = $GUIList.get_items()[index].get_node(^"GUIBattleItem")
-	if item is _GUIBattleItem and item.locked:
+func _on_item_touched(index: int) -> void:
+	var item = _items[index]
+	if item.locked:
 		return
 	set_select(index)

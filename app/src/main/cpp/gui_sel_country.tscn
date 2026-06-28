@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d1hsefm6u7qim"]
 
-[ext_resource type="PackedScene" uid="uid://d21hy30ofd6pt" path="res://app/src/main/cpp/gui_sel_battle_common.tscn" id="1_kbsvi"]
+[ext_resource type="PackedScene" uid="uid://d21hy30ofd6pt" path="res://app/src/main/cpp/gui/gui_sel_battle_common.tscn" id="1_kbsvi"]
 [ext_resource type="Script" uid="uid://dotfhchyclaym" path="res://app/src/main/cpp/gui_sel_country.gd" id="1_pdgie"]
 [ext_resource type="Resource" uid="uid://cas4w7q286tym" path="res://app/src/main/cpp/resources/assets/menu_gui_selcountry_res/texture_res.tres" id="3_1jcle"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="3_555th"]

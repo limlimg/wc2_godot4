@@ -1,4 +1,4 @@
-extends "res://app/src/main/cpp/gui_sel_item.gd"
+extends "res://app/src/main/cpp/gui/gui_sel_item.gd"
 
 const _MULTIPLAY_BATTLE = [
 	"text_axis_01.png",

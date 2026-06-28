@@ -1,43 +1,15 @@
 [gd_scene format=3 uid="uid://cn17i2r1lc2ki"]
 
 [ext_resource type="Script" uid="uid://5sbo8jrgp10g" path="res://app/src/main/cpp/gui_country_list.gd" id="1_yqiw1"]
-[ext_resource type="PackedScene" uid="uid://55bpjexr684x" path="res://app/src/main/cpp/gui_list.tscn" id="2_throx"]
-[ext_resource type="PackedScene" uid="uid://cf6c1jdg631ss" path="res://app/src/main/cpp/gui_country_item.tscn" id="3_i064q"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="3_jpsur"]
+[ext_resource type="PackedScene" uid="uid://55bpjexr684x" path="res://app/src/main/cpp/gui/gui_list.tscn" id="2_throx"]
 
-[node name="GUICountryList" type="Control" unique_id=1324926271]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="GUICountryList" unique_id=339150278 instance=ExtResource("2_throx")]
 script = ExtResource("1_yqiw1")
-
-[node name="GUIList" parent="." unique_id=339150278 instance=ExtResource("2_throx")]
-layout_mode = 1
+conquest = 0
 separation_ipad = 10
 separation = 5
 
-[node name="Factory" type="Control" parent="." unique_id=2066310404]
-visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="MarginContainer" type="MarginContainer" parent="Factory" unique_id=1260984798]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Minimum Height" parent="Factory/MarginContainer" unique_id=1576520916 instance=ExtResource("3_jpsur")]
-layout_mode = 2
-size_flags_vertical = 0
-rect_ipad = Rect2(0, 0, 0, 80)
-rect = Rect2(0, 0, 0, 40)
-
-[node name="GUICountryItem" parent="Factory/MarginContainer" unique_id=1471834346 instance=ExtResource("3_i064q")]
+[node name="GUICountryItem" parent="CTouchInertia/ScrollContainer/BoxContainer" parent_id_path=PackedInt32Array(544251423) index="0" unique_id=1471834346 instance_placeholder="res://app/src/main/cpp/gui_country_item.tscn"]
 layout_mode = 2
 
-[connection signal="item_touched" from="GUIList" to="." method="_on_gui_list_item_touched"]
+[connection signal="item_touched" from="." to="." method="_on_item_touched"]

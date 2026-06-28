@@ -1,42 +1,15 @@
 [gd_scene format=3 uid="uid://dilpumc03hfp0"]
 
 [ext_resource type="Script" uid="uid://bj88gkbpgi1jq" path="res://app/src/main/cpp/gui_battle_list.gd" id="1_scs3j"]
-[ext_resource type="PackedScene" uid="uid://55bpjexr684x" path="res://app/src/main/cpp/gui_list.tscn" id="3_8la76"]
-[ext_resource type="PackedScene" uid="uid://hqndxoi7i4j5" path="res://app/src/main/cpp/gui_battle_item.tscn" id="3_r5cn7"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="3_t2nrp"]
+[ext_resource type="PackedScene" uid="uid://55bpjexr684x" path="res://app/src/main/cpp/gui/gui_list.tscn" id="3_8la76"]
 
-[node name="GUIBattleList" type="Control" unique_id=2059566917]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="GUIBattleList" unique_id=339150278 instance=ExtResource("3_8la76")]
 script = ExtResource("1_scs3j")
-
-[node name="GUIList" parent="." unique_id=339150278 instance=ExtResource("3_8la76")]
-layout_mode = 1
+campaign = 0
 separation_ipad = 10
 separation = 5
 
-[node name="Factory" type="Control" parent="." unique_id=1172278810]
-visible = false
-anchors_preset = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="Factory" unique_id=55938902]
-layout_mode = 0
-offset_top = -22.5
-offset_bottom = 17.5
-size_flags_vertical = 0
-
-[node name="Minimum Height" parent="Factory/MarginContainer" unique_id=1335627167 instance=ExtResource("3_t2nrp")]
-layout_mode = 2
-size_flags_vertical = 0
-rect_ipad = Rect2(0, 0, 0, 80)
-rect = Rect2(0, 0, 0, 40)
-
-[node name="GUIBattleItem" parent="Factory/MarginContainer" unique_id=1471834346 instance=ExtResource("3_r5cn7")]
+[node name="GUIBattleItem" parent="CTouchInertia/ScrollContainer/BoxContainer" parent_id_path=PackedInt32Array(544251423) index="0" unique_id=1471834346 instance_placeholder="res://app/src/main/cpp/gui_battle_item.tscn"]
 layout_mode = 2
 
-[connection signal="item_touched" from="GUIList" to="." method="_on_gui_list_item_touched"]
+[connection signal="item_touched" from="." to="." method="_on_item_touched"]
