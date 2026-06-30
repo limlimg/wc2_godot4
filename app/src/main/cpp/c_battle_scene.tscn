@@ -34,21 +34,14 @@ visible = false
 position = Vector2(54, 170)
 texture = ExtResource("2_2x063")
 centered = false
-offset = Vector2(-45, -70)
 
 [node name="Fort" parent="." unique_id=769981397 instance_placeholder="res://app/src/main/cpp/c_battle_unit.tscn"]
 position = Vector2(54, 170)
 
-[node name="Entrenchment" type="TextureRect" parent="." unique_id=920356533]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-offset_left = 160.0
-offset_top = 316.0
-offset_right = 160.0
-offset_bottom = 316.0
-grow_vertical = 0
+[node name="Entrenchment" type="Sprite2D" parent="." unique_id=1916402097]
+position = Vector2(160, 316)
 texture = ExtResource("4_ctd4l")
+centered = false
 
 [node name="Units" type="Node2D" parent="." unique_id=502520808]
 

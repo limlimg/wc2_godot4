@@ -1,16 +1,70 @@
-[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://xkr7cuawfg24"]
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://xkr7cuawfg24"]
 
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_r0ksv"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://app/src/main/cpp/ec_image_attr.gd" id="2_ekvrk"]
 [ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="3_uw6an"]
+[ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://app/src/main/cpp/ec_texture_res.gd" id="4_lwmrp"]
 
-[sub_resource type="Resource" id="Resource_dixvi"]
+[sub_resource type="Resource" id="Resource_hwx6b"]
 script = ExtResource("1_r0ksv")
 name = "logo.webp"
 name_ipad = "logo_iPad.webp"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Resource" id="Resource_eeo2l"]
+script = ExtResource("1_r0ksv")
+name = "logo.webp"
+name_ipad = "logo_iPad.webp"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Texture2D" id="Texture2D_upgea"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_uw6an")
+asset = SubResource("Resource_eeo2l")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+
+[sub_resource type="Texture2D" id="Texture2D_7mjn2"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_ekvrk")
+texture = SubResource("Texture2D_upgea")
+region = Rect2(1, 1, 254, 254)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Resource" id="Resource_ushu4"]
+script = ExtResource("1_r0ksv")
+name = "logo.webp"
+name_ipad = "logo_iPad.webp"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Texture2D" id="Texture2D_20blg"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_uw6an")
+asset = SubResource("Resource_ushu4")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+
+[sub_resource type="Texture2D" id="Texture2D_3mynk"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_ekvrk")
+texture = SubResource("Texture2D_20blg")
+region = Rect2(1, 1, 510, 510)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Resource" id="Resource_1jwxv"]
+script = ExtResource("4_lwmrp")
+images = Dictionary[StringName, ExtResource("2_ekvrk")]({
+&"logo.webp": SubResource("Texture2D_7mjn2"),
+&"logo_iPad.webp": SubResource("Texture2D_3mynk")
+})
+metadata/_custom_type_script = "uid://chtcq7m8aw4se"
 
 [resource]
 resource_local_to_scene = false
 resource_name = ""
-script = ExtResource("3_uw6an")
-asset = SubResource("Resource_dixvi")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+script = ExtResource("2_ekvrk")
+texture_res = SubResource("Resource_1jwxv")
+image = SubResource("Resource_hwx6b")
+metadata/_custom_type_script = "uid://bvddy3vjuki27"

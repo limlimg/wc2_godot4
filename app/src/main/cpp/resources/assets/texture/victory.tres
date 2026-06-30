@@ -1,17 +1,70 @@
-[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://cgw5x0rgfrojx"]
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://cgw5x0rgfrojx"]
 
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_3io1y"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://app/src/main/cpp/ec_image_attr.gd" id="2_4k00j"]
 [ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="2_8erfp"]
+[ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://app/src/main/cpp/ec_texture_res.gd" id="4_m413t"]
 
-[sub_resource type="Resource" id="Resource_8bmli"]
+[sub_resource type="Resource" id="Resource_qs37y"]
 script = ExtResource("1_3io1y")
 name = "victory.png"
 name_ipad = "victory@2x.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[resource]
+[sub_resource type="Resource" id="Resource_pyxku"]
+script = ExtResource("1_3io1y")
+name = "victory.png"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Texture2D" id="Texture2D_1hnr2"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_8erfp")
-asset = SubResource("Resource_8bmli")
+asset = SubResource("Resource_pyxku")
 metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+
+[sub_resource type="Texture2D" id="Texture2D_j72s2"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_4k00j")
+texture = SubResource("Texture2D_1hnr2")
+region = Rect2(3, 3, 298, 66)
+origin = Vector2(149, 33)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Resource" id="Resource_4k00j"]
+script = ExtResource("1_3io1y")
+name_ipad = "victory@2x.png"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Texture2D" id="Texture2D_m413t"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_8erfp")
+asset = SubResource("Resource_4k00j")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+
+[sub_resource type="Texture2D" id="Texture2D_qs37y"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_4k00j")
+texture = SubResource("Texture2D_m413t")
+region = Rect2(6, 6, 596, 132)
+origin = Vector2(298, 66)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Resource" id="Resource_3br1x"]
+script = ExtResource("4_m413t")
+images = Dictionary[StringName, ExtResource("2_4k00j")]({
+&"victory.png": SubResource("Texture2D_j72s2"),
+&"victory@2x.png": SubResource("Texture2D_qs37y")
+})
+metadata/_custom_type_script = "uid://chtcq7m8aw4se"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_4k00j")
+texture_res = SubResource("Resource_3br1x")
+image = SubResource("Resource_qs37y")
+metadata/_custom_type_script = "uid://bvddy3vjuki27"

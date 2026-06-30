@@ -22,6 +22,9 @@ grow_vertical = 2
 script = ExtResource("1_ccynw")
 
 [node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_k7wgp")]
+layout_mode = 0
+offset_right = 1134.0
+offset_bottom = 454.0
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1945613680]
 layout_mode = 1

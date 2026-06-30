@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://clsohyo5himsx" path="res://app/src/main/cpp/gui_exit_warning.gd" id="1_6ytht"]
 [ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://app/src/main/cpp/gui/fade.tscn" id="2_kjn2k"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="3_5avr6"]
+[ext_resource type="Texture2D" uid="uid://ctj87p2f2ndcd" path="res://app/src/main/cpp/resources/assets/texture/board_locked.tres" id="3_kjn2k"]
 [ext_resource type="Texture2D" uid="uid://bi4s1a8uua7dp" path="res://app/src/main/cpp/resources/assets/texture/board_exit.tres" id="4_5avr6"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="5_kjn2k"]
 [ext_resource type="Texture2D" uid="uid://stjpuq26l3gi" path="res://app/src/main/cpp/resources/assets/logo_gui_res/button_cancleexit.png.tres" id="6_l4im6"]
@@ -18,8 +19,16 @@ grow_vertical = 2
 script = ExtResource("1_6ytht")
 
 [node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_kjn2k")]
+layout_mode = 0
+offset_right = 1134.0
+offset_bottom = 454.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=773164167]
+texture = ExtResource("4_5avr6")
+centered = false
 
 [node name="BoardExit" parent="." unique_id=808960343 instance=ExtResource("3_5avr6")]
+visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -33,7 +42,7 @@ rect = Rect2(-2, -2, 0, 0)
 
 [node name="TextureRect" type="TextureRect" parent="BoardExit" unique_id=1493583902]
 layout_mode = 2
-texture = ExtResource("4_5avr6")
+texture = ExtResource("3_kjn2k")
 expand_mode = 1
 stretch_mode = 2
 

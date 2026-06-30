@@ -94,14 +94,10 @@ func _draw_rect_region(to_canvas_item: RID, rect: Rect2, src_rect: Rect2, modula
 
 
 func _get_width() -> int:
-	if texture == null:
-		return 0
 	return size_override.x as int
 
 
 func _get_height() -> int:
-	if texture == null:
-		return 0
 	return size_override.y as int
 
 

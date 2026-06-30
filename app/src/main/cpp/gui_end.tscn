@@ -40,10 +40,9 @@ rect = Rect2(0, 30, 0, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Victroy" unique_id=1481949136]
 layout_mode = 2
-size_flags_horizontal = 4
 texture = ExtResource("3_m6t4y")
 expand_mode = 1
-stretch_mode = 3
+stretch_mode = 2
 
 [node name="TextVictroy" parent="." unique_id=481565011 instance=ExtResource("1_v01nc")]
 layout_mode = 1
