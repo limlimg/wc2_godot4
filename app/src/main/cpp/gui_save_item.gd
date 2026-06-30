@@ -98,6 +98,8 @@ func _ready() -> void:
 
 
 func init() -> void:
+	if Engine.is_editor_hint():
+		return
 	if g_LocalizableStrings.get_string("language") != "en":
 		if _ecGraphics.instance().content_scale_size_mode == 3:
 			$Name.position.y = -4.0
