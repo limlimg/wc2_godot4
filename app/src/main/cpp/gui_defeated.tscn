@@ -27,7 +27,7 @@ flag_texture_res = ExtResource("2_l3fon")
 [node name="Fade" parent="." unique_id=741495168 instance=ExtResource("4_2qn58")]
 layout_mode = 0
 offset_right = 1209.0
-offset_bottom = 511.0
+offset_bottom = 489.0
 alpha = 0.0
 
 [node name="CountryDefeat" type="Sprite2D" parent="." unique_id=1608977990]
@@ -42,16 +42,11 @@ centered = false
 position = Vector2(76, 90)
 centered = false
 
-[node name="IsAI" type="Node2D" parent="." unique_id=788968318]
-
-[node name="AICommanderMedal" parent="IsAI" unique_id=1467720846 instance=ExtResource("1_wuq0w")]
+[node name="AICommanderMedal" parent="." unique_id=1467720846 instance=ExtResource("1_wuq0w")]
 position = Vector2(144, 102)
 stack = 1
 
-[node name="NotAI" type="Node2D" parent="." unique_id=1013992065]
-visible = false
-
-[node name="CommanderMedal" parent="NotAI" unique_id=1241850369 instance=ExtResource("2_f1uq0")]
+[node name="CommanderMedal" parent="." unique_id=1241850369 instance=ExtResource("2_f1uq0")]
 position = Vector2(144, 102)
 stack = 1
 

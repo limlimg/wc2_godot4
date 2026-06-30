@@ -3,8 +3,6 @@ extends Node2D
 const _ecEmitterAttr = preload("res://app/src/main/cpp/ec_emitter_attr.gd")
 const _ecTextureRes = preload("res://app/src/main/cpp/ec_texture_res.gd")
 
-static var rng := RandomNumberGenerator.new()
-
 @export
 var emitter_attr: _ecEmitterAttr:
 	set(value):
@@ -99,7 +97,7 @@ func _process(delta: float) -> void:
 	var target_quantity := _sample_curve_extended(_emission_curve, _emitted_time)
 	while _emitted_quantity < target_quantity - 1:
 		var particle = $ecParticle.create_instance()
-		particle.lifespam = rng.randf_range(emitter_attr.particle_life_min, emitter_attr.particle_life_max)
+		particle.lifespam = randf_range(emitter_attr.particle_life_min, emitter_attr.particle_life_max)
 		var texture = texture_res.get_image(emitter_attr.image_file)
 		var texture_scale := Vector2.ONE
 		if texture != null:
@@ -108,25 +106,25 @@ func _process(delta: float) -> void:
 			particle.material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD if emitter_attr.image_blend == 1 else CanvasItemMaterial.BLEND_MODE_MIX
 		match emitter_attr.settings_type:
 			0:
-				particle.offset.x = rng.randf_range(_last_position.x - position.x, 0.0) + rng.randf_range(-2.0, 2.0)
-				particle.offset.y = rng.randf_range(_last_position.y - position.y, 0.0) + rng.randf_range(-2.0, 2.0)
+				particle.offset.x = randf_range(_last_position.x - position.x, 0.0) + randf_range(-2.0, 2.0)
+				particle.offset.y = randf_range(_last_position.y - position.y, 0.0) + randf_range(-2.0, 2.0)
 			2:
-				particle.offset.x = rng.randf_range(_last_position.x - position.x, 0.0) + rng.randf_range(-0.5, 0.5) * emitter_attr.settings_param_1
-				particle.offset.y = rng.randf_range(_last_position.y - position.y, 0.0) + rng.randf_range(-0.5, 0.5) * emitter_attr.settings_param_2
-		var speed_angle := _fire_at_angle + rng.randf_range(emitter_attr.angle_min, emitter_attr.angle_max)
-		particle.speed = Vector2.from_angle(speed_angle) * rng.randf_range(emitter_attr.speed_min, emitter_attr.speed_max)
+				particle.offset.x = randf_range(_last_position.x - position.x, 0.0) + randf_range(-0.5, 0.5) * emitter_attr.settings_param_1
+				particle.offset.y = randf_range(_last_position.y - position.y, 0.0) + randf_range(-0.5, 0.5) * emitter_attr.settings_param_2
+		var speed_angle := _fire_at_angle + randf_range(emitter_attr.angle_min, emitter_attr.angle_max)
+		particle.speed = Vector2.from_angle(speed_angle) * randf_range(emitter_attr.speed_min, emitter_attr.speed_max)
 		particle.speed_shift_curve = _speed_shift_curve
-		particle.gravity = rng.randf_range(emitter_attr.gravity_min, emitter_attr.gravity_max)
+		particle.gravity = randf_range(emitter_attr.gravity_min, emitter_attr.gravity_max)
 		particle.gravity_shift_curve = _gravity_shift_curve
-		particle.initial_scale = texture_scale * rng.randf_range(emitter_attr.scale_min, emitter_attr.scale_max)
+		particle.initial_scale = texture_scale * randf_range(emitter_attr.scale_min, emitter_attr.scale_max)
 		particle.scale_curve = emitter_attr.life_track_scale
 		if emitter_attr.rot_angle_type == 1.0:
 			particle.initial_rot_angle = _fire_at_angle + speed_angle
 		else:
-			particle.initial_rot_angle = _fire_at_angle + rng.randf_range(emitter_attr.rot_angle_min, emitter_attr.rot_angle_max)
-		particle.rot_speed = rng.randf_range(emitter_attr.rot_speed_min, emitter_attr.rot_speed_max)
+			particle.initial_rot_angle = _fire_at_angle + randf_range(emitter_attr.rot_angle_min, emitter_attr.rot_angle_max)
+		particle.rot_speed = randf_range(emitter_attr.rot_speed_min, emitter_attr.rot_speed_max)
 		particle.rot_shift_curve = _rot_shift_curve
-		particle.color = emitter_attr.color_range.sample(rng.randf_range(0.0, 1.0))
+		particle.color = emitter_attr.color_range.sample(randf_range(0.0, 1.0))
 		particle.color_gradient = emitter_attr.life_track_color
 		_particles.append(particle)
 		particle.stopped.connect(_on_stopped)

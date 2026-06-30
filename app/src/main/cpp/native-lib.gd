@@ -605,6 +605,16 @@ static func get_battle_belligerent_list(battle_file_name: String, include_ai: bo
 	return result
 
 
+static func has_unit_motion(res: String, country_name: String) -> bool:
+	var file_name := res + "_" + country_name
+	if g_content_scale_factor == 2.0:
+		return not get_asset_path(file_name + "_hd.xml", "").is_empty()\
+			and not get_asset_path(file_name + "_hd.bin", "").is_empty()
+	else:
+		return not get_asset_path(file_name + ".xml", "").is_empty()\
+			and not get_asset_path(file_name + ".bin", "").is_empty()
+
+
 static func main_menu_loaded_jni() -> void:
 	_Wc2Activity.main_menu_loaded()
 

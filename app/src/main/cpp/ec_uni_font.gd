@@ -33,6 +33,8 @@ func init() -> void:
 		default_font_size = -1
 		if Engine.is_editor_hint():
 			default_font = load(_lib.get_asset_path(asset.name, "")) as FontFile
+			if default_font == null:
+				return
 			default_font_size = default_font.fixed_size
 			if default_font:
 				default_font = load(_lib.get_asset_path(asset.name_hd, "")) as FontFile

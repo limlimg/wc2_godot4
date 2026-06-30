@@ -1,0 +1,321 @@
+[gd_scene format=3 uid="uid://cgox50ytcgjlf"]
+
+[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://app/src/main/cpp/resources/assets/texture/commonbg.tres" id="1_2rhdi"]
+[ext_resource type="Script" uid="uid://5yactqoponno" path="res://app/src/main/cpp/gui_result.gd" id="1_g0k7w"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_qd45r"]
+[ext_resource type="Texture2D" uid="uid://4wae451l6x07" path="res://app/src/main/cpp/resources/assets/texture/board_result.tres" id="3_assdo"]
+[ext_resource type="Texture2D" uid="uid://cekghbbruv1hp" path="res://app/src/main/cpp/resources/assets/texture/commander.tres" id="3_ec0gk"]
+[ext_resource type="Texture2D" uid="uid://swjh50dqufli" path="res://app/src/main/cpp/resources/assets/logo_gui_res/rank_star.png.tres" id="5_4eui7"]
+[ext_resource type="Texture2D" uid="uid://cbkryo0h38jlh" path="res://app/src/main/cpp/resources/assets/logo_gui_res/medal.png.tres" id="6_cmj7t"]
+[ext_resource type="Theme" uid="uid://cm4fpf5qkg0cu" path="res://app/src/main/cpp/resources/assets/font/g_num4b.tres" id="6_g0k7w"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="7_6ecye"]
+[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back.png.tres" id="8_kbvp5"]
+[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back_press.png.tres" id="9_8w1we"]
+[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_gray.png.tres" id="10_jlqut"]
+[ext_resource type="Texture2D" uid="uid://cp78gv12ahgor" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_next.png.tres" id="11_ve3vb"]
+[ext_resource type="Texture2D" uid="uid://c5qhm0igb3lm3" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_next_press.png.tres" id="12_2y7yi"]
+[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_green.png.tres" id="13_lk5od"]
+[ext_resource type="Texture2D" uid="uid://cmy0yuy6augy3" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_restart.png.tres" id="14_5gybd"]
+[ext_resource type="Texture2D" uid="uid://dnubyy1opjro1" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_restart_press.png.tres" id="15_j186u"]
+[ext_resource type="Texture2D" uid="uid://82luefhofd8a" path="res://app/src/main/cpp/resources/assets/logo_gui_res/longred_normal.png.tres" id="16_oi84v"]
+[ext_resource type="Texture2D" uid="uid://j85vsjd1rcf5" path="res://app/src/main/cpp/resources/assets/logo_gui_res/text_rating.png.tres" id="17_2y7yi"]
+[ext_resource type="Texture2D" uid="uid://cki22qrvpodrx" path="res://app/src/main/cpp/resources/assets/logo_gui_res/text_round.png.tres" id="18_lk5od"]
+[ext_resource type="Texture2D" uid="uid://k83bldght8lc" path="res://app/src/main/cpp/resources/assets/logo_gui_res/text_medals.png.tres" id="19_5gybd"]
+[ext_resource type="Texture2D" uid="uid://75g5s8l88o0x" path="res://app/src/main/cpp/resources/assets/logo_gui_res/rank_1.png.tres" id="20_oi84v"]
+[ext_resource type="Texture2D" uid="uid://624n2nal0tsq" path="res://app/src/main/cpp/resources/assets/logo_gui_res/rank_2.png.tres" id="21_6hmeg"]
+[ext_resource type="PackedScene" uid="uid://bjcmxuu6rr2wj" path="res://app/src/main/cpp/gui_adorn_medal.tscn" id="23_2kfc3"]
+
+[node name="GUIResult" type="Control" unique_id=659475739]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g0k7w")
+
+[node name="CommonBg" type="TextureRect" parent="." unique_id=1778618129]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2rhdi")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="BoardResult" parent="." unique_id=1576520916 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+rect_ipad = Rect2(-720, 0, 0, 0)
+rect = Rect2(-340, 0, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="BoardResult" unique_id=2057236074]
+layout_mode = 2
+texture = ExtResource("3_assdo")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Commander" parent="." unique_id=2000078905 instance=ExtResource("2_qd45r")]
+layout_mode = 0
+anchors_preset = 0
+rect_ipad = Rect2(0, 30, 0, 0)
+rect = Rect2(0, 5, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Commander" unique_id=1682793824]
+layout_mode = 2
+texture = ExtResource("3_ec0gk")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Round" parent="." unique_id=1480854056 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+rect_ipad = Rect2(-270, 105, 0, 0)
+rect = Rect2(-120, 50, 0, 0)
+
+[node name="Label" type="Label" parent="Round" unique_id=765409195]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("6_g0k7w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="RankStar" parent="." unique_id=1971342764 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+rect_ipad = Rect2(-352, 274, 0, 0)
+rect = Rect2(-152, 134, 0, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RankStar" unique_id=483121458]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 2
+
+[node name="Prototype" type="Control" parent="RankStar" unique_id=1510605727]
+visible = false
+layout_mode = 2
+
+[node name="RankStar" parent="RankStar/Prototype" unique_id=697288316 instance=ExtResource("2_qd45r")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 20.0
+rect_ipad = Rect2(0, 0, 40, 0)
+rect = Rect2(0, 0, 20, 0)
+
+[node name="TextureRect" type="TextureRect" parent="RankStar/Prototype/RankStar" unique_id=1869101142]
+layout_mode = 2
+texture = ExtResource("5_4eui7")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Medal" parent="." unique_id=321116982 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+rect_ipad = Rect2(-162, 254, 0, 0)
+rect = Rect2(-88, 126, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Medal" unique_id=901165482]
+layout_mode = 2
+texture = ExtResource("6_cmj7t")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="CampaignRewardMedal" parent="." unique_id=1907107730 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+rect_ipad = Rect2(-162, 254, 0, 0)
+rect = Rect2(-68, 128, 0, 0)
+
+[node name="Label" type="Label" parent="CampaignRewardMedal" unique_id=501924066]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("6_g0k7w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Medal2" parent="." unique_id=796137684 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+rect_ipad = Rect2(-162, 362, 0, 0)
+rect = Rect2(-88, 180, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Medal2" unique_id=2146400842]
+layout_mode = 2
+texture = ExtResource("6_cmj7t")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="RandomRewardMedal" parent="." unique_id=1459939815 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+rect_ipad = Rect2(-162, 364, 0, 0)
+rect = Rect2(-68, 182, 0, 0)
+
+[node name="Label" type="Label" parent="RandomRewardMedal" unique_id=1711731171]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("6_g0k7w")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="ButtonBack" parent="." unique_id=231113608 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -30.0
+offset_right = 32.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="GUIButton" parent="ButtonBack" unique_id=2034275630 instance=ExtResource("7_6ecye")]
+layout_mode = 2
+texture_normal = ExtResource("8_kbvp5")
+texture_pressed = ExtResource("9_8w1we")
+texture_background = ExtResource("10_jlqut")
+
+[node name="ButtonNext" parent="." unique_id=324662573 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -32.0
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="GUIButton" parent="ButtonNext" unique_id=371228801 instance=ExtResource("7_6ecye")]
+layout_mode = 2
+texture_normal = ExtResource("11_ve3vb")
+texture_pressed = ExtResource("12_2y7yi")
+texture_background = ExtResource("13_lk5od")
+
+[node name="ButtonRestart" parent="." unique_id=1854649857 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-49, 728, 98, 34)
+rect = Rect2(-49, 280, 98, 34)
+
+[node name="GUIButton" parent="ButtonRestart" unique_id=1057019128 instance=ExtResource("7_6ecye")]
+layout_mode = 2
+texture_normal = ExtResource("14_5gybd")
+texture_pressed = ExtResource("15_j186u")
+texture_background = ExtResource("16_oi84v")
+
+[node name="TextRating" parent="." unique_id=1275130343 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+rect_ipad = Rect2(-372, 219, 0, 0)
+rect = Rect2(-172, 108, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="TextRating" unique_id=694381419]
+layout_mode = 2
+texture = ExtResource("17_2y7yi")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="TextRound" parent="." unique_id=683310921 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+rect_ipad = Rect2(-543, 115, 0, 0)
+rect = Rect2(-254, 55, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="TextRound" unique_id=1712962299]
+layout_mode = 2
+texture = ExtResource("18_lk5od")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="TextMedals" parent="." unique_id=1800039835 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+rect_ipad = Rect2(-543, 387, 0, 0)
+rect = Rect2(-254, 193, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="TextMedals" unique_id=528584090]
+layout_mode = 2
+texture = ExtResource("19_5gybd")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Rank" parent="." unique_id=21823268 instance=ExtResource("2_qd45r")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 1
+rect = Rect2(-264, 143, 0, 0)
+
+[node name="Rank" type="TextureRect" parent="Rank" unique_id=1547987672]
+visible = false
+layout_mode = 2
+texture = ExtResource("20_oi84v")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Rank2" type="TextureRect" parent="Rank" unique_id=1937241790]
+layout_mode = 2
+texture = ExtResource("21_6hmeg")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="GUIAdornMedal" parent="." unique_id=1776806515 instance=ExtResource("23_2kfc3")]
+layout_mode = 1
+
+[connection signal="pressed" from="ButtonBack/GUIButton" to="." method="_on_gui_button_back_pressed"]
+[connection signal="pressed" from="ButtonNext/GUIButton" to="." method="_on_gui_button_next_pressed"]
+[connection signal="pressed" from="ButtonRestart/GUIButton" to="." method="_on_gui_button_restart_pressed"]

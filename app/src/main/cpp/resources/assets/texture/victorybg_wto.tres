@@ -1,0 +1,19 @@
+[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://cih6ropg6tjfs"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_66p4g"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="2_2glow"]
+
+[sub_resource type="Resource" id="Resource_8bmli"]
+script = ExtResource("1_66p4g")
+name = "victorybg_wto.webp"
+name_ipad = "victorybg_wto_iPad.webp"
+name_640h = "victorybg_wto-640h.webp"
+name_568h = "victorybg_wto-568h.webp"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_2glow")
+asset = SubResource("Resource_8bmli")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

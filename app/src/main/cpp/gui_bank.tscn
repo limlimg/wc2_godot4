@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://dimvkkpvigml4"]
+
+[ext_resource type="Script" uid="uid://f6yv87ec1xim" path="res://app/src/main/cpp/gui_bank.gd" id="1_wkm4s"]
+[ext_resource type="Texture2D" uid="uid://pwnfdb21yv80" path="res://app/src/main/cpp/resources/assets/texture/bankbg.tres" id="1_wyrhe"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_r7a7o"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="3_45dr7"]
+[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back.png.tres" id="4_1icbj"]
+[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back_press.png.tres" id="5_34fmx"]
+[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_gray.png.tres" id="6_g763y"]
+[ext_resource type="Texture2D" uid="uid://bb7hafhtx0owe" path="res://app/src/main/cpp/resources/assets/logo_gui_res/text_bank.png.tres" id="7_b2t3d"]
+[ext_resource type="Texture2D" uid="uid://dvx1tjdjrumju" path="res://app/src/main/cpp/resources/assets/logo_gui_res/button_Industrial10.png.tres" id="8_b2t3d"]
+[ext_resource type="Texture2D" uid="uid://byx2tu51vbe4l" path="res://app/src/main/cpp/resources/assets/logo_gui_res/button_Industrial50.png.tres" id="9_wkm4s"]
+[ext_resource type="Texture2D" uid="uid://cfs84s8ot5flx" path="res://app/src/main/cpp/resources/assets/logo_gui_res/button_money20.png.tres" id="10_13w1j"]
+[ext_resource type="Texture2D" uid="uid://djpi3srn1u8u6" path="res://app/src/main/cpp/resources/assets/logo_gui_res/button_money100.png.tres" id="11_p6phr"]
+
+[node name="GUIBank" type="Control" unique_id=86871795]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wkm4s")
+
+[node name="BankBg" type="TextureRect" parent="." unique_id=1377820787]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wyrhe")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Tip" parent="." unique_id=1576520916 instance=ExtResource("2_r7a7o")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
+rect_ipad = Rect2(0, 430, 0, 0)
+rect = Rect2(0, 215, 0, 0)
+
+[node name="Label" type="Label" parent="Tip" unique_id=212320205]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "bank tip"
+horizontal_alignment = 1
+
+[node name="ButtonBack" parent="." unique_id=1881890088 instance=ExtResource("2_r7a7o")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -30.0
+offset_right = 32.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="GUIButton" parent="ButtonBack" unique_id=2034275630 instance=ExtResource("3_45dr7")]
+layout_mode = 2
+texture_normal = ExtResource("4_1icbj")
+texture_pressed = ExtResource("5_34fmx")
+texture_background = ExtResource("6_g763y")
+
+[node name="TextBank" parent="." unique_id=788336879 instance=ExtResource("2_r7a7o")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
+rect_ipad = Rect2(0, 60, 1, 1)
+rect = Rect2(0, 80, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="TextBank" unique_id=822297620]
+layout_mode = 2
+texture = ExtResource("7_b2t3d")
+
+[node name="ButtonIndustrial10" parent="." unique_id=1332204802 instance=ExtResource("2_r7a7o")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-279, 318, 196, 62)
+rect = Rect2(-138, 159, 98, 31)
+
+[node name="GUIButton" parent="ButtonIndustrial10" unique_id=1165618794 instance=ExtResource("3_45dr7")]
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("8_b2t3d")
+texture_pressed = ExtResource("8_b2t3d")
+
+[node name="ButtonIndustrial50" parent="." unique_id=1595636918 instance=ExtResource("2_r7a7o")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(66, 318, 196, 62)
+rect = Rect2(38, 159, 98, 31)
+
+[node name="GUIButton" parent="ButtonIndustrial50" unique_id=577318757 instance=ExtResource("3_45dr7")]
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("9_wkm4s")
+texture_pressed = ExtResource("9_wkm4s")
+
+[node name="ButtonMoney20" parent="." unique_id=702302797 instance=ExtResource("2_r7a7o")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_right = 98.0
+offset_bottom = 31.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-279, 218, 196, 62)
+rect = Rect2(-138, 109, 98, 31)
+
+[node name="GUIButton" parent="ButtonMoney20" unique_id=2134155205 instance=ExtResource("3_45dr7")]
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("10_13w1j")
+texture_pressed = ExtResource("10_13w1j")
+
+[node name="ButtonMoney100" parent="." unique_id=650029681 instance=ExtResource("2_r7a7o")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_right = 98.0
+offset_bottom = 31.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(66, 218, 196, 62)
+rect = Rect2(38, 109, 98, 31)
+
+[node name="GUIButton" parent="ButtonMoney100" unique_id=1931221154 instance=ExtResource("3_45dr7")]
+layout_mode = 2
+grey_when_pressed = true
+texture_normal = ExtResource("11_p6phr")
+texture_pressed = ExtResource("11_p6phr")
+
+[connection signal="pressed" from="ButtonIndustrial10/GUIButton" to="." method="_on_gui_button_industry_10_pressed"]
+[connection signal="pressed" from="ButtonIndustrial50/GUIButton" to="." method="_on_gui_button_industry_50_pressed"]
+[connection signal="pressed" from="ButtonMoney20/GUIButton" to="." method="_on_gui_button_money_20_pressed"]
+[connection signal="pressed" from="ButtonMoney100/GUIButton" to="." method="_on_gui_button_money_100_pressed"]

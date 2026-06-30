@@ -183,9 +183,9 @@ func _on_render() -> void:
 			stat_color = Color8(0x4B, 0xA8, 0xE4)
 		else:
 			stat_color = Color8(0x25, 0x54, 0x72)
-		$Attack.color = stat_color
-		$Strength.color = stat_color
-		$Movement.color = stat_color
+		$Attack.self_modulate = stat_color
+		$Strength.self_modulate = stat_color
+		$Movement.self_modulate = stat_color
 		$Attack.visible = true
 		$Strength.visible = true
 		$Movement.visible = true

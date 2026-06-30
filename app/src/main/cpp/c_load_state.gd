@@ -3,15 +3,12 @@ extends "res://app/src/main/cpp/c_base_state.gd"
 const _CGameState = preload("res://app/src/main/cpp/c_game_state.gd")
 const _CStateManager = preload("res://app/src/main/cpp/c_state_manager.gd")
 
-static var _rng := RandomNumberGenerator.new()
-
 var _load_thread := Thread.new()
 
 signal _game_initialized
 
 func _on_enter() -> void:
-	var tip_index := _rng.randi_range(1, 11)
-	$Tip/Label.text = "tip {0}".format([tip_index])
+	$Tip/Label.text = "tip {0}".format([randi_range(1, 11)])
 	$GUIManager.fade_in(-1)
 	_load_thread.start(func():
 		_CGameState.init_game()

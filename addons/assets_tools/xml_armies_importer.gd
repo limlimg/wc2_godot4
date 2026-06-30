@@ -75,6 +75,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		var xml_army := xml_country.first_child_element()
 		while xml_army != null:
 			var res_army := _ArmyDef.new()
+			res_army.name = xml_army.attribute("type")
 			res_army.id = _ArmyDef.ARMY_TYPE.find(xml_army.attribute("type"))
 			if res_army.id == -1:
 				push_error("Parse Error: Element does not have valid \"type\" attibute on line {0} of {1}".format([xml_country.row() + 1, source_file]))

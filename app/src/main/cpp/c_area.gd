@@ -3,23 +3,12 @@ const _CCountry = preload("res://app/src/main/cpp/c_country.gd")
 const _CArmy = preload("res://app/src/main/cpp/c_army.gd")
 const _SaveAreaInfo = preload("res://app/src/main/cpp/save_area_info.gd")
 
-@export
+var type: int
 var army_position: Vector2
-
-
-@export
 var construction_position: Vector2
-
-
-@export
 var installation_position: Vector2
-
-
 var enable: bool
-
-@export
 var sea: int
-
 var construction: int
 var level: int
 var installation: int

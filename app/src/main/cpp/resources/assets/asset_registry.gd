@@ -104,27 +104,31 @@ var name_512hd: String:
 func get_resolved_name() -> String:
 	var graphics := _ecGraphics.instance()
 	if graphics.content_scale_size_mode == 3:
-		return _select(name_ipad_hd, name_ipad, name_hd, name)
-	elif graphics.orientated_content_scale_width > 568.0:
-		return _select(name_640hd, name_640h, name_hd, name)
-	elif graphics.orientated_content_scale_width > 534.0:
-		return _select(name_568hd, name_568h, name_hd, name)
-	elif graphics.orientated_content_scale_width == 534.0:
-		return _select(name_534hd, name_534h, name_hd, name)
-	elif graphics.orientated_content_scale_width == 512.0:
-		return _select(name_512hd, name_512h, name_hd, name)
+		return _select([name_ipad_hd, name_ipad, name_hd, name])
 	else:
-		return name_hd if _lib.g_content_scale_factor == 2.0 and not name_hd.is_empty() else name
+		var queue: Array[String]
+		if graphics.orientated_content_scale_width > 568.0:
+			queue.append_array([name_640hd, name_640h])
+		if graphics.orientated_content_scale_width > 534.0:
+			queue.append_array([name_568hd, name_568h])
+		if graphics.orientated_content_scale_width == 534.0:
+			queue.append_array([name_534hd, name_534h])
+		if graphics.orientated_content_scale_width == 512.0:
+			queue.append_array([name_512hd, name_512h])
+		queue.append_array([name_hd, name])
+		return _select(queue)
 
 
-func _select(s1: String, s2: String, s3: String, s4: String) -> String:
-	if _lib.g_content_scale_factor == 2.0 and not s1.is_empty():
-		return s1
-	if not s2.is_empty():
-		return s2
-	if _lib.g_content_scale_factor == 2.0 and not s3.is_empty():
-		return s3
-	return s4
+func _select(queue: Array[String]) -> String:
+	var s2: String
+	while not queue.is_empty():
+		var s1 = queue.pop_front()
+		if _lib.g_content_scale_factor == 2.0 and not s1.is_empty():
+			return s1
+		s2 = queue.pop_front()
+		if not s2.is_empty():
+			return s2
+	return s2
 
 
 func is_hd() -> bool:

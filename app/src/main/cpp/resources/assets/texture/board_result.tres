@@ -1,0 +1,16 @@
+[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://4wae451l6x07"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_iqlss"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="2_h7pa2"]
+
+[sub_resource type="Resource" id="Resource_0hx2v"]
+script = ExtResource("1_iqlss")
+name = "board_result.webp"
+name_ipad = "board_result@2x.webp"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_h7pa2")
+asset = SubResource("Resource_0hx2v")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

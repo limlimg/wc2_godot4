@@ -11,13 +11,18 @@ var tab: int:
 			for i in _cards:
 				$CTouchInertia/ScrollContainer/BoxContainer.remove_child(i)
 				i.queue_free()
-			init()
+			if is_node_ready():
+				init()
 
 
 var _selected := -1
 var _cards: Array[_GUICard]
 
 signal card_selected(index: int)
+
+func _ready() -> void:
+	init()
+
 
 func init() -> void:
 	for i in 28:

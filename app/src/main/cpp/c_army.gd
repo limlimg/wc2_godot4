@@ -21,3 +21,11 @@ func reset_max_strength(keep_ratio: bool) -> void:
 
 func get_max_strength() -> int:
 	return 0
+
+
+func get_num_dices() -> int:
+	return 0
+
+
+func is_navy() -> bool:
+	return false

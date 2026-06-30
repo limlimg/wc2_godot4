@@ -79,6 +79,9 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	var section_position := file.get_16()
 	var section_count := file.get_16()
 	var frame_rate := file.get_float()
+	if frame_rate == 0.0:
+		push_error("Failed to import {0}: Frame rate cannot be 0.0".format([source_file]))
+		return ERR_PARSE_ERROR
 	var item_position: int
 	var item_count: int
 	var item_name_position: int
@@ -131,8 +134,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	file.seek(item_name_position)
 	var item_name_buffer := file.get_buffer(item_name_size)
 	var res := _ecLibraryData.new()
-	var shape_items: Dictionary[int, _ecShapeData]
-	#var shape_index: Dictionary[_ecShapeData, int]
+	var items: Array[_ecItemData]
 	var element_sub_item: Dictionary[_ecElementData, int]
 	for i in item_count:
 		file.seek(item_position)
@@ -147,13 +149,13 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		if file.get_32() != 0:
 			assert(item_shape_index == i)
 			item = _ecShapeData.new()
-			shape_items[i] = item
 			#shape_index[item] = item_shape_index
 			item.shape_position = shape_position
 			file.get_32() # unknown or no longer used
 		else:
 			item = _ecMotionData.new()
-			item.length = file.get_32()
+			item.duration = file.get_32()
+		items.append(item)
 		item.item_name = item_name
 		var item_layer_created := file.get_32()
 		var item_frame_to_create := file.get_32()
@@ -169,7 +171,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 			for k in layer_frame_created:
 				file.seek(frame_position)
 				var frame := _ecFrameData.new()
-				frame.repeated_times = file.get_32()
+				frame.start_tick = file.get_32()
 				var frame_element_created := file.get_32()
 				file.get_32() # unknown or no longer used
 				for l in frame_element_created:
@@ -202,10 +204,31 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		elif item is _ecShapeData:
 			res.shape_items[item.item_name] = item
 		item_position += 56
-	#for k in shape_index.keys():
-		#k.shape_name = shape_items[shape_index[k]].item_name
-	for k in element_sub_item.keys():
-		k.sub_item = shape_items.get(element_sub_item[k], null)
+	for i in res.motion_items.values():
+		if _check_cycle(i, items, element_sub_item, source_file):
+			return ERR_PARSE_ERROR
 	res.frame_rate = frame_rate
 	var filename = save_path + "." + _get_save_extension()
 	return ResourceSaver.save(res, filename)
+
+
+func _check_cycle(item: _ecMotionData, items: Array[_ecItemData], element_sub_item: Dictionary[_ecElementData, int], source_file: String, stack: Array[_ecMotionData] = []) -> bool:
+	stack.push_back(item)
+	for l in item.layers:
+		for f in l.frames:
+			for e in f.elements:
+				if element_sub_item[e] == 0xFFFFFFFF:
+					continue
+				if element_sub_item[e] >= items.size():
+					push_error("Failed to import {0}: Invalid item index {1}".format([source_file, element_sub_item[e]]))
+					return true
+				var sub_item := items[element_sub_item[e]]
+				if sub_item is _ecMotionData:
+					if stack.has(sub_item):
+						push_error("Failed to import {0}: Cyclic reference to item '{1}'".format([source_file, sub_item.item_name]))
+						return true
+					if _check_cycle(sub_item, items, element_sub_item, source_file, stack):
+						return true
+				e.sub_item = sub_item
+	stack.pop_back()
+	return false

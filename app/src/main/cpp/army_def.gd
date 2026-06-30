@@ -23,6 +23,9 @@ const ARMY_TYPE = [
 var id: int
 
 @export
+var name: StringName
+
+@export
 var strength: int
 
 @export

@@ -31,8 +31,8 @@ func update_sound() -> void:
 	pass
 
 
-func load_music(path: String, _a2: String) -> void:
-	preload_background_music_jni(path)
+func load_music(path: String, extension: String) -> void:
+	preload_background_music_jni(get_asset_path(path, extension))
 
 
 func unload_music() -> void:

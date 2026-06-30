@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://u0qv8rrvngfj"]
+
+[ext_resource type="PackedScene" uid="uid://m381toakgabg" path="res://app/src/main/cpp/ec_element.tscn" id="1_8rnuj"]
+[ext_resource type="Script" uid="uid://okfryc63yrb5" path="res://app/src/main/cpp/c_battle_unit.gd" id="1_wxp3r"]
+[ext_resource type="Resource" uid="uid://jo0xvv1gacp7" path="res://app/src/main/cpp/resources/assets/game_res/effect_mgunfire.tres" id="3_q3yve"]
+[ext_resource type="Resource" uid="uid://gg4ruu33todh" path="res://app/src/main/cpp/resources/assets/game_res/effect_exp.tres" id="5_qhoug"]
+
+[node name="CBattleUnit" type="Node2D" unique_id=769981397]
+script = ExtResource("1_wxp3r")
+
+[node name="StandBy" parent="." unique_id=1474302610 instance=ExtResource("1_8rnuj")]
+process_mode = 4
+
+[node name="Attack" parent="." unique_id=1778415775 instance=ExtResource("1_8rnuj")]
+visible = false
+
+[node name="Destroyed" parent="." unique_id=455760921 instance_placeholder="res://app/src/main/cpp/ec_element.tscn"]
+process_mode = 4
+visible = false
+
+[node name="Fire" parent="." unique_id=1633173356 instance_placeholder="res://app/src/main/cpp/ec_effect.tscn"]
+effect_res = ExtResource("3_q3yve")
+
+[node name="Exp" parent="." unique_id=1258677139 instance_placeholder="res://app/src/main/cpp/ec_effect.tscn"]
+position = Vector2(0, -10)
+effect_res = ExtResource("5_qhoug")
+
+[connection signal="completed" from="Attack" to="." method="_on_attack_completed"]

@@ -73,3 +73,7 @@ func render_ui_army(country: String, x: float, y: float, id: int, carrier: bool,
 
 func get_flag_image(image_name: StringName) -> _ecImageAttr:
 	return null
+
+
+func get_battle_bg(bg_name: StringName) -> _ecImageAttr:
+	return null

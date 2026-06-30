@@ -29,6 +29,187 @@
 [ext_resource type="PackedScene" uid="uid://cs77s0qa4kr1r" path="res://app/src/main/cpp/gui_defeated.tscn" id="27_altjf"]
 [ext_resource type="PackedScene" uid="uid://cs2vqc5dk43cq" path="res://app/src/main/cpp/gui_battle.tscn" id="28_0lple"]
 
+[sub_resource type="Animation" id="Animation_me1p5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUIManager/GUIGold:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GUIManager/ButtonPause/Control/GUIButton:anchor_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GUIManager/ButtonPause/Control/GUIButton:anchor_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GUIManager/ButtonCard/Control/GUIButton:anchor_left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GUIManager/ButtonCard/Control/GUIButton:anchor_top")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GUIManager/ButtonRound/Control/GUIButton:anchor_left")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GUIManager/ButtonRound/Control/GUIButton:anchor_top")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_0lple"]
+resource_name = "move_in"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUIManager/GUIGold:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -50), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GUIManager/ButtonPause/Control/GUIButton:anchor_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GUIManager/ButtonPause/Control/GUIButton:anchor_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GUIManager/ButtonCard/Control/GUIButton:anchor_left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GUIManager/ButtonCard/Control/GUIButton:anchor_top")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("GUIManager/ButtonRound/Control/GUIButton:anchor_left")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GUIManager/ButtonRound/Control/GUIButton:anchor_top")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_me1p5"]
+_data = {
+&"RESET": SubResource("Animation_me1p5"),
+&"move_in": SubResource("Animation_0lple")
+}
+
 [node name="CGameState" type="Control" unique_id=1645819512]
 layout_mode = 3
 anchors_preset = 15
@@ -48,54 +229,119 @@ script = ExtResource("1_i7u21")
 [node name="GUIManager" parent="." unique_id=510783743 instance=ExtResource("4_gmum2")]
 layout_mode = 1
 
-[node name="ButtonRound" parent="GUIManager" unique_id=1576520916 instance=ExtResource("5_iy5bs")]
+[node name="GUIBattle" parent="GUIManager" unique_id=368823071 instance=ExtResource("28_0lple")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-grow_horizontal = 1
-grow_vertical = 1
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -160.0
+offset_bottom = 160.0
 
-[node name="GUIButton" parent="GUIManager/ButtonRound" unique_id=2034275630 instance=ExtResource("6_ob33k")]
-layout_mode = 2
-texture_normal = ExtResource("7_hejqp")
-texture_pressed = ExtResource("8_kjuls")
-texture_background = ExtResource("9_ob33k")
+[node name="GUIDefeated" parent="GUIManager" unique_id=172360110 instance=ExtResource("27_altjf")]
+visible = false
+custom_minimum_size = Vector2(186, 190)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -95.0
+offset_right = 93.0
+offset_bottom = 95.0
 
-[node name="ButtonCard" parent="GUIManager" unique_id=2040298773 instance=ExtResource("5_iy5bs")]
+[node name="GUIActionInfo" parent="GUIManager" unique_id=1593274674 instance=ExtResource("5_iy5bs")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 0.0
-grow_horizontal = 0
-grow_vertical = 1
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-
-[node name="GUIButton" parent="GUIManager/ButtonCard" unique_id=899432390 instance=ExtResource("6_ob33k")]
-layout_mode = 2
-play_sound_when_pressed = false
-texture_normal = ExtResource("10_0c3as")
-texture_pressed = ExtResource("11_54h8e")
-texture_background = ExtResource("12_xitlk")
-
-[node name="ButtonPause" parent="GUIManager" unique_id=1233548209 instance=ExtResource("5_iy5bs")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.0
+offset_right = 280.0
+offset_bottom = 14.0
 grow_horizontal = 1
-grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
+grow_vertical = 1
+rect_ipad = Rect2(-280, 0, 560, 28)
+rect = Rect2(-140, 0, 280, 14)
 
-[node name="GUIButton" parent="GUIManager/ButtonPause" unique_id=1187276192 instance=ExtResource("6_ob33k")]
+[node name="GUIActionInfo" parent="GUIManager/GUIActionInfo" unique_id=2027985913 instance_placeholder="res://app/src/main/cpp/gui_action_info.tscn"]
 layout_mode = 2
-texture_normal = ExtResource("13_xa4cd")
-texture_pressed = ExtResource("14_adpbo")
-texture_background = ExtResource("15_q1qaj")
+
+[node name="GUISelArmy" parent="GUIManager" unique_id=299185972 instance=ExtResource("25_0uskm")]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -120.0
+offset_bottom = 120.0
+grow_horizontal = 0
+
+[node name="GUIAIProgress" parent="GUIManager" unique_id=541368688 instance=ExtResource("5_iy5bs")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_right = 480.0
+offset_bottom = 320.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-240, 433, 480, 320)
+rect = Rect2(-240, 0, 480, 320)
+
+[node name="GUIAIProgress" parent="GUIManager/GUIAIProgress" unique_id=191726262 instance=ExtResource("24_42ds1")]
+layout_mode = 2
+
+[node name="GUIBuyCard" type="VBoxContainer" parent="GUIManager" unique_id=845837158]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Padding" parent="GUIManager/GUIBuyCard" unique_id=143842892 instance=ExtResource("5_iy5bs")]
+layout_mode = 2
+rect_ipad = Rect2(0, 0, 0, 468)
+
+[node name="GUIBuyCard" parent="GUIManager/GUIBuyCard" unique_id=595511499 instance=ExtResource("23_8sfin")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GUIPauseBox" parent="GUIManager" unique_id=1648966608 instance=ExtResource("22_ennrn")]
+visible = false
+custom_minimum_size = Vector2(166, 262)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -131.0
+offset_right = 83.0
+offset_bottom = 131.0
+
+[node name="GUISmallCard" parent="GUIManager" unique_id=485651445 instance=ExtResource("20_im5jt")]
+visible = false
+layout_mode = 1
+
+[node name="GUITax" parent="GUIManager" unique_id=379815843 instance=ExtResource("19_im5jt")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 104.0
+offset_bottom = 38.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="ButtonCardRemove" parent="GUIManager" unique_id=769934829 instance=ExtResource("5_iy5bs")]
 visible = false
@@ -116,103 +362,94 @@ texture_normal = ExtResource("16_q1qaj")
 texture_pressed = ExtResource("17_u8uvy")
 texture_background = ExtResource("12_xitlk")
 
-[node name="GUIGold" parent="GUIManager" unique_id=1663737891 instance=ExtResource("18_3aq82")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = -50.0
-offset_right = 104.0
-offset_bottom = -12.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="GUITax" parent="GUIManager" unique_id=379815843 instance=ExtResource("19_im5jt")]
-visible = false
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 104.0
-offset_bottom = 38.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="GUISmallCard" parent="GUIManager" unique_id=485651445 instance=ExtResource("20_im5jt")]
-visible = false
+[node name="ButtonPause" parent="GUIManager" unique_id=1233548209 instance=ExtResource("5_iy5bs")]
 layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -32.0
+offset_bottom = 30.0
+grow_horizontal = 0
+grow_vertical = 1
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
 
-[node name="GUIAttackBox" type="CenterContainer" parent="GUIManager" unique_id=695869441]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GUIAttackBox" parent="GUIManager/GUIAttackBox" unique_id=1463077957 instance=ExtResource("21_6jayj")]
-custom_minimum_size = Vector2(258, 186)
+[node name="Control" type="Control" parent="GUIManager/ButtonPause" unique_id=1459883420]
 layout_mode = 2
-attack = null
-defend = null
 
-[node name="GUIPauseBox" parent="GUIManager" unique_id=1648966608 instance=ExtResource("22_ennrn")]
+[node name="GUIButton" parent="GUIManager/ButtonPause/Control" unique_id=1187276192 instance=ExtResource("6_ob33k")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -1.0
+texture_normal = ExtResource("13_xa4cd")
+texture_pressed = ExtResource("14_adpbo")
+texture_background = ExtResource("15_q1qaj")
+
+[node name="ButtonCard" parent="GUIManager" unique_id=2040298773 instance=ExtResource("5_iy5bs")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -30.0
+offset_right = 32.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="Control" type="Control" parent="GUIManager/ButtonCard" unique_id=1388415888]
+layout_mode = 2
+
+[node name="GUIButton" parent="GUIManager/ButtonCard/Control" unique_id=899432390 instance=ExtResource("6_ob33k")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.0
+anchor_top = 1.0
+play_sound_when_pressed = false
+texture_normal = ExtResource("10_0c3as")
+texture_pressed = ExtResource("11_54h8e")
+texture_background = ExtResource("12_xitlk")
+
+[node name="ButtonRound" parent="GUIManager" unique_id=1576520916 instance=ExtResource("5_iy5bs")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -32.0
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="Control" type="Control" parent="GUIManager/ButtonRound" unique_id=2118377936]
+layout_mode = 2
+
+[node name="GUIButton" parent="GUIManager/ButtonRound/Control" unique_id=2034275630 instance=ExtResource("6_ob33k")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+texture_normal = ExtResource("7_hejqp")
+texture_pressed = ExtResource("8_kjuls")
+texture_background = ExtResource("9_ob33k")
+
+[node name="GUIAttackBox" parent="GUIManager" unique_id=1463077957 instance=ExtResource("21_6jayj")]
 visible = false
-custom_minimum_size = Vector2(166, 262)
+custom_minimum_size = Vector2(258, 186)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -83.0
-offset_top = -131.0
-offset_right = 83.0
-offset_bottom = 131.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GUIManager" unique_id=845837158]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Padding" parent="GUIManager/VBoxContainer" unique_id=143842892 instance=ExtResource("5_iy5bs")]
-layout_mode = 2
-rect_ipad = Rect2(0, 0, 0, 468)
-
-[node name="GUIBuyCard" parent="GUIManager/VBoxContainer" unique_id=595511499 instance=ExtResource("23_8sfin")]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="GUIAIProgress" parent="GUIManager" unique_id=541368688 instance=ExtResource("5_iy5bs")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-rect_ipad = Rect2(-240, 433, 480, 320)
-rect = Rect2(-240, 0, 480, 320)
-
-[node name="GUIAIProgress" parent="GUIManager/GUIAIProgress" unique_id=191726262 instance=ExtResource("24_42ds1")]
-layout_mode = 2
-
-[node name="GUISelArmy" parent="GUIManager" unique_id=299185972 instance=ExtResource("25_0uskm")]
-visible = false
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = -60.0
-offset_top = -120.0
-offset_bottom = 120.0
-grow_horizontal = 0
+offset_left = -129.0
+offset_top = -93.0
+offset_right = 129.0
+offset_bottom = 93.0
+attack = null
+defend = null
 
 [node name="GUIBegin" parent="GUIManager" unique_id=276795201 instance=ExtResource("26_ema4c")]
 visible = false
@@ -228,48 +465,56 @@ offset_top = -129.0
 offset_right = 92.0
 offset_bottom = 129.0
 
-[node name="GUIActionInfo" parent="GUIManager" unique_id=1593274674 instance=ExtResource("5_iy5bs")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-offset_right = 280.0
-offset_bottom = 14.0
-grow_horizontal = 1
-grow_vertical = 1
-rect_ipad = Rect2(-280, 0, 560, 28)
-rect = Rect2(-140, 0, 280, 14)
-
-[node name="GUIActionInfo" parent="GUIManager/GUIActionInfo" unique_id=2027985913 instance_placeholder="res://app/src/main/cpp/gui_action_info.tscn"]
-layout_mode = 2
-
-[node name="GUIDefeated" type="CenterContainer" parent="GUIManager" unique_id=833270288]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GUIDefeated" parent="GUIManager/GUIDefeated" unique_id=172360110 instance=ExtResource("27_altjf")]
-custom_minimum_size = Vector2(186, 190)
-layout_mode = 2
-
-[node name="GUIBattle" parent="GUIManager" unique_id=368823071 instance=ExtResource("28_0lple")]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -160.0
-offset_bottom = 160.0
-
 [node name="GUITutorails" parent="GUIManager" unique_id=326815524 instance_placeholder="res://app/src/main/cpp/gui_tutorails.tscn"]
 layout_mode = 1
 
 [node name="GUIDialogue" parent="GUIManager" unique_id=545709183 instance_placeholder="res://app/src/main/cpp/gui_dialogue.tscn"]
 visible = false
 layout_mode = 1
+
+[node name="GUIBattleIntro" parent="GUIManager" unique_id=1427534302 instance=ExtResource("5_iy5bs")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -160.0
+offset_right = 240.0
+offset_bottom = 160.0
+rect_ipad = Rect2(0, 0, 960, 640)
+rect = Rect2(0, 0, 480, 320)
+
+[node name="GUIBattleIntro" parent="GUIManager/GUIBattleIntro" unique_id=2130276311 instance_placeholder="res://app/src/main/cpp/gui_battle_intro.tscn"]
+visible = false
+z_index = 1
+layout_mode = 2
+
+[node name="GUIBank" parent="GUIManager" unique_id=86871795 instance_placeholder="res://app/src/main/cpp/gui_bank.tscn"]
+layout_mode = 1
+
+[node name="GUIGold" parent="GUIManager" unique_id=1663737891 instance=ExtResource("18_3aq82")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = -50.0
+offset_right = 104.0
+offset_bottom = -12.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="GUIVictory" parent="GUIManager" unique_id=43656708 instance_placeholder="res://app/src/main/cpp/gui_victory.tscn"]
+layout_mode = 1
+
+[node name="GUIResult" parent="GUIManager" unique_id=659475739 instance_placeholder="res://app/src/main/cpp/gui_result.tscn"]
+layout_mode = 1
+
+[node name="GUIEnd" parent="GUIManager" unique_id=230513713 instance_placeholder="res://app/src/main/cpp/gui_end.tscn"]
+layout_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1974311090]
+libraries/ = SubResource("AnimationLibrary_me1p5")
+
+[connection signal="faded_in" from="GUIManager" to="." method="_on_gui_manager_faded_in"]

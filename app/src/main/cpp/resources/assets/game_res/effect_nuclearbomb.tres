@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_quw7c"]
 [ext_resource type="Script" uid="uid://db5ial1i1vdli" path="res://app/src/main/cpp/ec_effect_res.gd" id="2_1qgxl"]
+[ext_resource type="Resource" uid="uid://cq5m16ucm6vuo" path="res://app/src/main/cpp/resources/assets/game_res/eff.tres" id="3_a3pf5"]
 
 [sub_resource type="Resource" id="Resource_1qgxl"]
 script = ExtResource("1_quw7c")
@@ -10,3 +11,4 @@ name = "effect_nuclearbomb.xml"
 [resource]
 script = ExtResource("2_1qgxl")
 asset = SubResource("Resource_1qgxl")
+texture_res = ExtResource("3_a3pf5")

@@ -1,0 +1,19 @@
+[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://pwnfdb21yv80"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_1nlwk"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="2_dkvia"]
+
+[sub_resource type="Resource" id="Resource_8bmli"]
+script = ExtResource("1_1nlwk")
+name = "bankbg.webp"
+name_ipad = "bankbg_iPad.webp"
+name_640h = "bankbg-640h.webp"
+name_568h = "bankbg-568h.webp"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_dkvia")
+asset = SubResource("Resource_8bmli")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

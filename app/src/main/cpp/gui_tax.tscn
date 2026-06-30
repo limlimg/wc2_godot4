@@ -26,15 +26,11 @@ centered = false
 position = Vector2(0, 108)
 centered = false
 
-[node name="IsAI" type="Node2D" parent="WithCommander" unique_id=267419633]
-
-[node name="AICommanderMedal" parent="WithCommander/IsAI" unique_id=1467720846 instance=ExtResource("1_3nn02")]
+[node name="AICommanderMedal" parent="WithCommander" unique_id=1467720846 instance=ExtResource("1_3nn02")]
 position = Vector2(60, 112)
 stack = 1
 
-[node name="NotAI" type="Node2D" parent="WithCommander" unique_id=1098185042]
-
-[node name="CommanderMedal" parent="WithCommander/NotAI" unique_id=1241850369 instance=ExtResource("2_cpoys")]
+[node name="CommanderMedal" parent="WithCommander" unique_id=1241850369 instance=ExtResource("2_cpoys")]
 position = Vector2(60, 112)
 stack = 1
 
