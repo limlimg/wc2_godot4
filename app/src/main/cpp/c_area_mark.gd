@@ -6,16 +6,20 @@ extends Resource
 
 const _lib = preload("res://app/src/main/cpp/native-lib.gd")
 
+@export
+var map: int:
+	set(value):
+		if value != map:
+			map = value
+			init()
+
+
 var mark_size := Vector2i(8, 8)
-var _pattern_size: Vector2i
 var _pattern: Image
 
-func init(map: int) -> void:
+func init() -> void:
 	release()
 	_pattern = load(_lib.get_asset_path("areamark{0}.raw".format([map]), "")) as Image
-	if _pattern == null:
-		return
-	_pattern_size = _pattern.get_size()
 
 
 func release() -> void:
@@ -25,9 +29,15 @@ func release() -> void:
 func get_mark(x: int, y: int) -> int:
 	x /= mark_size.x
 	y /= mark_size.y
-	if _pattern == null or x < 0 or x >= _pattern_size.x or y < 0 or y >= _pattern_size.y:
+	if _pattern == null or x < 0 or x >= _pattern.get_width() or y < 0 or y >= _pattern.get_height():
 		return -1
 	return color_to_id(_pattern.get_pixel(x, y))
+
+
+func get_map_size() -> Vector2i:
+	if _pattern == null:
+		return Vector2i.ZERO
+	return _pattern.get_size() * mark_size
 
 
 static func id_to_color(id: int) -> Color:
