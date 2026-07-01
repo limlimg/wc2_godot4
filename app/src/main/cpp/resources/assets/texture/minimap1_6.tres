@@ -1,16 +1,51 @@
-[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://dkxjlqu0cnvq1"]
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://dkxjlqu0cnvq1"]
 
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_4wbu5"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://app/src/main/cpp/ec_image_attr.gd" id="2_i2d2a"]
 [ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="3_omrdj"]
+[ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://app/src/main/cpp/ec_texture_res.gd" id="4_qir0p"]
 
-[sub_resource type="Resource" id="Resource_dixvi"]
+[sub_resource type="Resource" id="Resource_af58k"]
 script = ExtResource("1_4wbu5")
 name = "minimap1_6.pkm"
 name_ipad = "minimap1_6@2x.pkm"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Texture2D" id="Texture2D_i2d2a"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_omrdj")
+asset = SubResource("Resource_af58k")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+
+[sub_resource type="Texture2D" id="Texture2D_qir0p"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_i2d2a")
+texture = SubResource("Texture2D_i2d2a")
+region = Rect2(6, 6, 500, 500)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_o55v3"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_i2d2a")
+texture = SubResource("Texture2D_i2d2a")
+region = Rect2(12, 12, 1000, 1000)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Resource" id="Resource_fblmf"]
+script = ExtResource("4_qir0p")
+images = Dictionary[StringName, ExtResource("2_i2d2a")]({
+&"minimap1_6.pkm": SubResource("Texture2D_qir0p"),
+&"minimap1_6@2x.pkm": SubResource("Texture2D_o55v3")
+})
+metadata/_custom_type_script = "uid://chtcq7m8aw4se"
 
 [resource]
 resource_local_to_scene = false
 resource_name = ""
-script = ExtResource("3_omrdj")
-asset = SubResource("Resource_dixvi")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+script = ExtResource("2_i2d2a")
+texture_res = SubResource("Resource_fblmf")
+image = SubResource("Resource_af58k")
+metadata/_custom_type_script = "uid://bvddy3vjuki27"

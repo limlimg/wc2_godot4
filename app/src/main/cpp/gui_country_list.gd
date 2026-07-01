@@ -11,14 +11,16 @@ const CAMPIAGN_NATO = 3
 const CAMPIAGN_MULTIPLAY = 4
 
 @export
-var conquest: int:
+var conquest := -1:
 	set(value):
 		if value != conquest:
 			conquest = value
 			for i in _items:
 				$CTouchInertia/ScrollContainer/BoxContainer.remove_child(i)
 				i.queue_free()
-			init()
+			_items.clear()
+			if is_node_ready():
+				init()
 
 
 var _items: Array[Control]
@@ -30,6 +32,8 @@ func _ready() -> void:
 
 
 func init() -> void:
+	if conquest == -1:
+		return
 	var battle_file_name := _lib.get_battle_file_name(2, 0, conquest)
 	var belligerent_list := _lib.get_battle_belligerent_list(battle_file_name, true)
 	for belligerent in belligerent_list:

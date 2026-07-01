@@ -97,7 +97,7 @@ selected = true
 texture_normal = ExtResource("7_u4bcw")
 texture_pressed = ExtResource("7_u4bcw")
 
-[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer" unique_id=1510180055]
+[node name="BoardPaper" type="Sprite2D" parent="HBoxContainer" unique_id=1510180055]
 show_behind_parent = true
 texture = ExtResource("8_u1whf")
 centered = false

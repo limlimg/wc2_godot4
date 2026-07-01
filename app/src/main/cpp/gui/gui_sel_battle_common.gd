@@ -11,23 +11,14 @@ var _center_pos: Vector2
 var _on_animation_finished: Callable
 var _move_tween: Tween
 
-func _ready() -> void:
-	init()
-
-
-func init() -> void:
-	if _ecGraphics.instance().content_scale_size_mode == 3:
-		$Minimap.scale = Vector2(2.0, 2.0)
-		$Minimap/Prototype/Flag.scale = Vector2(0.5, 0.5)
-		$Minimap/Prototype/Arrow.scale = Vector2(0.5, 0.5)
-		$Minimap/ImageList/Age.scale = Vector2(0.5, 0.5)
-
-
 func set_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: String, age_pos: Vector2, center_pos: Vector2) -> void:
 	_release_image_list()
 	$Minimap/ImageList/Flags.add_child(_create_element_nodes(flags, "sflag_", $Minimap/Prototype/Flag))
 	$Minimap/ImageList/Arrows.add_child(_create_element_nodes(arrows, "maparrow_", $Minimap/Prototype/Arrow))
 	$Minimap/ImageList/Age/Label.text = age
+	if _ecGraphics.instance().content_scale_size_mode == 3:
+		age_pos *= 2
+		center_pos *= 2
 	$Minimap/ImageList/Age.position = age_pos
 	_center_pos = center_pos
 	if $Minimap/ImageList.modulate.a == 0.0:
@@ -67,7 +58,10 @@ func _create_element_nodes(data: Array[FlagInfo], image_prefix: String, prototyp
 			image = load(image_path)
 		var node: Sprite2D = prototype.duplicate()
 		node.texture = image
-		node.position = Vector2(i.x, i.y)
+		if _ecGraphics.instance().content_scale_size_mode == 3:
+			node.position = Vector2(i.x, i.y) * 2
+		else:
+			node.position = Vector2(i.x, i.y)
 		node.rotation = i.rot
 		node.scale *= i.scale
 		parent.add_child(node)
@@ -75,8 +69,7 @@ func _create_element_nodes(data: Array[FlagInfo], image_prefix: String, prototyp
 
 
 func _clamp_pos(center_pos: Vector2) -> Vector2:
-	center_pos *= $Minimap.scale
-	var minimap_size: Vector2 = $Minimap.size * $Minimap.scale
+	var minimap_size: Vector2 = $Minimap/Background.size
 	var result := (center_pos - size / 2.0).max(Vector2.ZERO).min(minimap_size - size)
 	if result.x < 0.0:
 		result.x *= 0.5

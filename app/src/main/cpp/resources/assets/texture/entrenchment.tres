@@ -13,78 +13,6 @@ name_ipad_hd = "entrenchment-568hd.png"
 name_568h = "entrenchment-568h.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="Resource" id="Resource_vvgwy"]
-script = ExtResource("1_8bmli")
-name = "entrenchment.png"
-name_ipad = "entrenchment_iPad.png"
-name_ipad_hd = "entrenchment-568h.png"
-name_568h = "entrenchment-568h.png"
-metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Texture2D" id="Texture2D_owvx2"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_segde")
-asset = SubResource("Resource_vvgwy")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
-
-[sub_resource type="Texture2D" id="Texture2D_ruj2n"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_uhi60")
-texture = SubResource("Texture2D_owvx2")
-region = Rect2(1, 0, 80, 171)
-origin = Vector2(0, 171)
-metadata/_custom_type_script = "uid://bvddy3vjuki27"
-
-[sub_resource type="Resource" id="Resource_j8tdp"]
-script = ExtResource("1_8bmli")
-name = "entrenchment.png"
-name_ipad = "entrenchment_iPad.png"
-name_ipad_hd = "entrenchment-568h.png"
-name_568h = "entrenchment-568h.png"
-metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Texture2D" id="Texture2D_syq1a"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_segde")
-asset = SubResource("Resource_j8tdp")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
-
-[sub_resource type="Texture2D" id="Texture2D_33tar"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_uhi60")
-texture = SubResource("Texture2D_syq1a")
-region = Rect2(1, 0, 120, 177)
-origin = Vector2(0, 177)
-metadata/_custom_type_script = "uid://bvddy3vjuki27"
-
-[sub_resource type="Resource" id="Resource_rm5lm"]
-script = ExtResource("1_8bmli")
-name = "entrenchment.png"
-name_ipad = "entrenchment_iPad.png"
-name_ipad_hd = "entrenchment-568h.png"
-name_568h = "entrenchment-568h.png"
-metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Texture2D" id="Texture2D_fdeqv"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_segde")
-asset = SubResource("Resource_rm5lm")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
-
-[sub_resource type="Texture2D" id="Texture2D_nkrfe"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_uhi60")
-texture = SubResource("Texture2D_fdeqv")
-region = Rect2(1, 0, 118, 166)
-origin = Vector2(0, 166)
-metadata/_custom_type_script = "uid://bvddy3vjuki27"
-
 [sub_resource type="Resource" id="Resource_px1eu"]
 script = ExtResource("1_8bmli")
 name = "entrenchment.png"
@@ -107,6 +35,33 @@ script = ExtResource("2_uhi60")
 texture = SubResource("Texture2D_yryru")
 region = Rect2(1, 0, 118, 166)
 origin = Vector2(0, 166)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_nkrfe"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_uhi60")
+texture = SubResource("Texture2D_yryru")
+region = Rect2(1, 0, 118, 166)
+origin = Vector2(0, 166)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_ruj2n"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_uhi60")
+texture = SubResource("Texture2D_yryru")
+region = Rect2(1, 0, 80, 171)
+origin = Vector2(0, 171)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_33tar"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_uhi60")
+texture = SubResource("Texture2D_yryru")
+region = Rect2(1, 0, 120, 177)
+origin = Vector2(0, 177)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
 [sub_resource type="Resource" id="Resource_i8i2w"]

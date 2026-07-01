@@ -11,16 +11,11 @@ name = "gameover.png"
 name_ipad = "gameover@2x.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="Resource" id="Resource_5gsq8"]
-script = ExtResource("1_8vsfi")
-name = "gameover.png"
-metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
 [sub_resource type="Texture2D" id="Texture2D_udi0v"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_hqalo")
-asset = SubResource("Resource_5gsq8")
+asset = SubResource("Resource_pyjdc")
 metadata/_custom_type_script = "uid://cr8ksgysprxjq"
 
 [sub_resource type="Texture2D" id="Texture2D_0h3hj"]
@@ -32,10 +27,20 @@ region = Rect2(3, 3, 380, 53)
 origin = Vector2(190, 26)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
+[sub_resource type="Texture2D" id="Texture2D_impci"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_impci")
+texture = SubResource("Texture2D_udi0v")
+region = Rect2(6, 6, 760, 106)
+origin = Vector2(380, 53)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
 [sub_resource type="Resource" id="Resource_yc0q3"]
 script = ExtResource("4_27iey")
 images = Dictionary[StringName, ExtResource("2_impci")]({
-&"gameover.png": SubResource("Texture2D_0h3hj")
+&"gameover.png": SubResource("Texture2D_0h3hj"),
+&"gameover@2x.png": SubResource("Texture2D_impci")
 })
 metadata/_custom_type_script = "uid://chtcq7m8aw4se"
 

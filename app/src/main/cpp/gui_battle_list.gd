@@ -12,14 +12,16 @@ const CAMPIAGN_NATO = 3
 const CAMPIAGN_MULTIPLAY = 4
 
 @export
-var campaign: int:
+var campaign := -1:
 	set(value):
 		if value != campaign:
 			campaign = value
 			for i in _items:
 				$CTouchInertia/ScrollContainer/BoxContainer.remove_child(i)
 				i.queue_free()
-			init()
+			_items.clear()
+			if is_node_ready():
+				init()
 
 
 var _items: Array[_GUIBattleItem]
@@ -31,6 +33,8 @@ func _ready() -> void:
 
 
 func init() -> void:
+	if campaign == -1:
+		return
 	var num_battles := _lib.get_num_battles(campaign)
 	var played_battles := num_battles
 	if campaign != CAMPIAGN_MULTIPLAY:

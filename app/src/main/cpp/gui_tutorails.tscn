@@ -68,6 +68,8 @@ rect = Rect2(30, 74, 0, 0)
 [node name="TextureRect" type="TextureRect" parent="Guider" unique_id=1927801652]
 layout_mode = 2
 texture = ExtResource("2_50j1d")
+expand_mode = 1
+stretch_mode = 2
 
 [node name="DlgBoard" parent="." unique_id=647623218 instance=ExtResource("1_snkox")]
 layout_mode = 1
@@ -82,6 +84,8 @@ rect = Rect2(-201, 234, 0, 0)
 [node name="TextureRect" type="TextureRect" parent="DlgBoard" unique_id=1421692535]
 layout_mode = 2
 texture = ExtResource("3_wn28i")
+expand_mode = 1
+stretch_mode = 2
 
 [node name="Dlg" parent="." unique_id=1012375041 instance=ExtResource("1_snkox")]
 layout_mode = 1

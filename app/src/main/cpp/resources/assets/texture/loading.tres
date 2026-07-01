@@ -1,16 +1,51 @@
-[gd_resource type="Texture2D" script_class="ecTexture" format=3 uid="uid://ces6dlv70o7bo"]
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://ces6dlv70o7bo"]
 
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="1_4571e"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://app/src/main/cpp/ec_image_attr.gd" id="2_y2435"]
 [ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="3_lq2lm"]
+[ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://app/src/main/cpp/ec_texture_res.gd" id="4_b828r"]
 
-[sub_resource type="Resource" id="Resource_dixvi"]
+[sub_resource type="Resource" id="Resource_5fj84"]
 script = ExtResource("1_4571e")
 name = "loading.png"
 name_ipad = "loading@2x.png"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Texture2D" id="Texture2D_j6snh"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_lq2lm")
+asset = SubResource("Resource_5fj84")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+
+[sub_resource type="Texture2D" id="Texture2D_rv1uy"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_y2435")
+texture = SubResource("Texture2D_j6snh")
+region = Rect2(0, 0, 78, 11)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_a66bi"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_y2435")
+texture = SubResource("Texture2D_j6snh")
+region = Rect2(0, 0, 156, 22)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Resource" id="Resource_cx2uk"]
+script = ExtResource("4_b828r")
+images = Dictionary[StringName, ExtResource("2_y2435")]({
+&"loading.png": SubResource("Texture2D_rv1uy"),
+&"loading@2x.png": SubResource("Texture2D_a66bi")
+})
+metadata/_custom_type_script = "uid://chtcq7m8aw4se"
 
 [resource]
 resource_local_to_scene = false
 resource_name = ""
-script = ExtResource("3_lq2lm")
-asset = SubResource("Resource_dixvi")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+script = ExtResource("2_y2435")
+texture_res = SubResource("Resource_cx2uk")
+image = SubResource("Resource_5fj84")
+metadata/_custom_type_script = "uid://bvddy3vjuki27"

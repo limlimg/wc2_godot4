@@ -4,14 +4,11 @@
 [ext_resource type="Script" uid="uid://5yactqoponno" path="res://app/src/main/cpp/gui_result.gd" id="1_g0k7w"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_qd45r"]
 [ext_resource type="Texture2D" uid="uid://cekghbbruv1hp" path="res://app/src/main/cpp/resources/assets/texture/commander.tres" id="3_ec0gk"]
-[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="4_tbp2c"]
-[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://app/src/main/cpp/ec_image_attr.gd" id="5_0f4pu"]
+[ext_resource type="Texture2D" uid="uid://4wae451l6x07" path="res://app/src/main/cpp/resources/assets/texture/board_result.tres" id="4_g0k7w"]
 [ext_resource type="Texture2D" uid="uid://swjh50dqufli" path="res://app/src/main/cpp/resources/assets/logo_gui_res/rank_star.png.tres" id="5_4eui7"]
 [ext_resource type="Texture2D" uid="uid://cbkryo0h38jlh" path="res://app/src/main/cpp/resources/assets/logo_gui_res/medal.png.tres" id="6_cmj7t"]
 [ext_resource type="Theme" uid="uid://cm4fpf5qkg0cu" path="res://app/src/main/cpp/resources/assets/font/g_num4b.tres" id="6_g0k7w"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://app/src/main/cpp/ec_texture.gd" id="6_mwaud"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="7_6ecye"]
-[ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://app/src/main/cpp/ec_texture_res.gd" id="7_gjooe"]
 [ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back.png.tres" id="8_kbvp5"]
 [ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back_press.png.tres" id="9_8w1we"]
 [ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_gray.png.tres" id="10_jlqut"]
@@ -27,90 +24,6 @@
 [ext_resource type="Texture2D" uid="uid://75g5s8l88o0x" path="res://app/src/main/cpp/resources/assets/logo_gui_res/rank_1.png.tres" id="20_oi84v"]
 [ext_resource type="Texture2D" uid="uid://624n2nal0tsq" path="res://app/src/main/cpp/resources/assets/logo_gui_res/rank_2.png.tres" id="21_6hmeg"]
 [ext_resource type="PackedScene" uid="uid://bjcmxuu6rr2wj" path="res://app/src/main/cpp/gui_adorn_medal.tscn" id="23_2kfc3"]
-
-[sub_resource type="Resource" id="Resource_kdp6a"]
-script = ExtResource("4_tbp2c")
-name = "board_result.webp"
-name_hd = "board_result_hd.webp"
-name_ipad = "board_result@2x.webp"
-metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Resource" id="Resource_vfoeu"]
-script = ExtResource("4_tbp2c")
-name = "board_result.webp"
-metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Texture2D" id="Texture2D_62skb"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("6_mwaud")
-asset = SubResource("Resource_vfoeu")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
-
-[sub_resource type="Texture2D" id="Texture2D_eaxy2"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("5_0f4pu")
-texture = SubResource("Texture2D_62skb")
-region = Rect2(0, 0, 340, 269)
-metadata/_custom_type_script = "uid://bvddy3vjuki27"
-
-[sub_resource type="Resource" id="Resource_thkcv"]
-script = ExtResource("4_tbp2c")
-name = "board_result.webp"
-metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Texture2D" id="Texture2D_lyhrp"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("6_mwaud")
-asset = SubResource("Resource_thkcv")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
-
-[sub_resource type="Texture2D" id="Texture2D_od3yb"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("5_0f4pu")
-texture = SubResource("Texture2D_lyhrp")
-region = Rect2(0, 0, 340, 272)
-metadata/_custom_type_script = "uid://bvddy3vjuki27"
-
-[sub_resource type="Resource" id="Resource_tvbg1"]
-script = ExtResource("4_tbp2c")
-name_ipad = "board_result@2x.webp"
-metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Texture2D" id="Texture2D_7yy80"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("6_mwaud")
-asset = SubResource("Resource_tvbg1")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
-
-[sub_resource type="Texture2D" id="Texture2D_q5i23"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("5_0f4pu")
-texture = SubResource("Texture2D_7yy80")
-region = Rect2(0, 0, 712, 544)
-metadata/_custom_type_script = "uid://bvddy3vjuki27"
-
-[sub_resource type="Resource" id="Resource_6ag77"]
-script = ExtResource("7_gjooe")
-images = Dictionary[StringName, ExtResource("5_0f4pu")]({
-&"board_result.webp": SubResource("Texture2D_eaxy2"),
-&"board_result@2x.webp": SubResource("Texture2D_q5i23"),
-&"board_result_hd.webp": SubResource("Texture2D_od3yb")
-})
-metadata/_custom_type_script = "uid://chtcq7m8aw4se"
-
-[sub_resource type="Texture2D" id="Texture2D_ha55p"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("5_0f4pu")
-texture_res = SubResource("Resource_6ag77")
-image = SubResource("Resource_kdp6a")
-metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
 [node name="GUIResult" type="Control" unique_id=659475739]
 layout_mode = 3
@@ -144,7 +57,7 @@ rect = Rect2(-340, 0, 0, 0)
 
 [node name="TextureRect" type="TextureRect" parent="BoardResult" unique_id=2057236074]
 layout_mode = 2
-texture = SubResource("Texture2D_ha55p")
+texture = ExtResource("4_g0k7w")
 expand_mode = 1
 stretch_mode = 2
 

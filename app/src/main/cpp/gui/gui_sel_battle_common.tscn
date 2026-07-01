@@ -91,7 +91,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_ap38y")
 
-[node name="CommonBackground" type="TextureRect" parent="." unique_id=1598357464]
+[node name="CommonBg" type="TextureRect" parent="." unique_id=1598357464]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,10 +104,7 @@ stretch_mode = 6
 
 [node name="Minimap" type="Control" parent="." unique_id=8535555]
 editor_description = "Defines total size of minimap"
-clip_contents = true
 anchors_preset = 0
-offset_right = 1715.0
-offset_bottom = 750.0
 size_flags_horizontal = 3
 mouse_filter = 2
 
@@ -116,14 +113,12 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 1994.0
-offset_bottom = 994.0
+offset_right = 1715.0
+offset_bottom = 750.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(0, 0, 4000, 2000)
-rect = Rect2(0, 0, 2000, 1000)
+rect_ipad = Rect2(0, 0, 3430, 1500)
+rect = Rect2(0, 0, 1715, 750)
 
 [node name="GridContainer" type="GridContainer" parent="Minimap/Background" unique_id=945798134]
 layout_mode = 2
@@ -131,125 +126,61 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 4
 
-[node name="MiniMap1" type="Control" parent="Minimap/Background/GridContainer" unique_id=211396206]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
+[node name="Minimap1" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=1612956961]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="Minimap1" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap1" unique_id=1612956961]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("3_u6gr4")
-expand_mode = 1
+stretch_mode = 2
 
-[node name="MiniMap2" type="Control" parent="Minimap/Background/GridContainer" unique_id=1289506090]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
+[node name="Minimap2" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=2143372789]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="Minimap2" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap2" unique_id=2143372789]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("4_67bt0")
-expand_mode = 1
+stretch_mode = 2
 
-[node name="MiniMap3" type="Control" parent="Minimap/Background/GridContainer" unique_id=1012242525]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
+[node name="Minimap3" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=2105644886]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="Minimap3" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap3" unique_id=2105644886]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("5_w8w5v")
-expand_mode = 1
+stretch_mode = 2
 
-[node name="MiniMap4" type="Control" parent="Minimap/Background/GridContainer" unique_id=364616880]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
+[node name="Minimap4" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=1520657236]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="Minimap4" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap4" unique_id=1520657236]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("6_1dr5e")
-expand_mode = 1
+stretch_mode = 2
 
-[node name="MiniMap5" type="Control" parent="Minimap/Background/GridContainer" unique_id=1261892310]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
+[node name="Minimap5" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=227474964]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="Minimap5" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap5" unique_id=227474964]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("7_bnxjm")
-expand_mode = 1
+stretch_mode = 2
 
-[node name="MiniMap6" type="Control" parent="Minimap/Background/GridContainer" unique_id=1387963843]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
+[node name="Minimap6" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=427001277]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="Minimap6" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap6" unique_id=427001277]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("8_nt22e")
-expand_mode = 1
+stretch_mode = 2
 
-[node name="MiniMap7" type="Control" parent="Minimap/Background/GridContainer" unique_id=937893266]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
+[node name="Minimap7" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=1251680486]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="Minimap7" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap7" unique_id=1251680486]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("9_rv5wm")
-expand_mode = 1
+stretch_mode = 2
 
-[node name="MiniMap8" type="Control" parent="Minimap/Background/GridContainer" unique_id=1262104882]
-clip_contents = true
-custom_minimum_size = Vector2(500, 500)
+[node name="Minimap8" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=573000560]
 layout_mode = 2
-mouse_filter = 2
-
-[node name="Minimap8" type="TextureRect" parent="Minimap/Background/GridContainer/MiniMap8" unique_id=573000560]
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 512.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("10_y8pec")
-expand_mode = 1
+stretch_mode = 2
 
 [node name="ImageList" type="Node2D" parent="Minimap" unique_id=600736883]
 

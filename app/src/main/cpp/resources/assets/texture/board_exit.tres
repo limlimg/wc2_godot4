@@ -11,16 +11,11 @@ name = "board_exit.png"
 name_ipad = "board_exit@2x.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="Resource" id="Resource_nvird"]
-script = ExtResource("1_nh1ww")
-name = "board_exit.png"
-metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
 [sub_resource type="Texture2D" id="Texture2D_vwbt6"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("3_ecxho")
-asset = SubResource("Resource_nvird")
+asset = SubResource("Resource_44107")
 metadata/_custom_type_script = "uid://cr8ksgysprxjq"
 
 [sub_resource type="Texture2D" id="Texture2D_1xoce"]
@@ -32,23 +27,11 @@ region = Rect2(0, 0, 227, 131)
 origin = Vector2(2, 2)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
-[sub_resource type="Resource" id="Resource_xsoks"]
-script = ExtResource("1_nh1ww")
-name_ipad = "board_exit@2x.png"
-metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Texture2D" id="Texture2D_s11f2"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("3_ecxho")
-asset = SubResource("Resource_xsoks")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
-
 [sub_resource type="Texture2D" id="Texture2D_f3jb5"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_i4g6i")
-texture = SubResource("Texture2D_s11f2")
+texture = SubResource("Texture2D_vwbt6")
 region = Rect2(0, 0, 454, 262)
 origin = Vector2(4, 4)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
