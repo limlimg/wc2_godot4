@@ -32,6 +32,7 @@ var separation: int:
 
 var _selected_item := -1
 var _scorll_value := 0.0
+var _items: Array[Node]
 
 signal item_touched(item: int)
 
@@ -117,13 +118,14 @@ func _calc_scroll(overflow: float, scroll_min: float, scroll_max: float) -> floa
 
 
 func clear_item() -> void:
-	for c in $CTouchInertia/ScrollContainer/BoxContainer.get_children():
-		$CTouchInertia/ScrollContainer/BoxContainer.remove_child(c)
+	for c in _items:
 		c.queue_free()
+	_items.clear()
 	_add_scroll_vertial(-_scorll_value)
 
 
 func add_item(item: Node) -> void:
+	_items.append(item)
 	$CTouchInertia/ScrollContainer/BoxContainer.add_child(item)
 
 

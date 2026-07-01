@@ -20,5 +20,4 @@ func release() -> void:
 func _remove(node: Node) -> void:
 	_texts[_texts.find(node)] = _texts[-1]
 	_texts.pop_back()
-	remove_child(node)
 	node.queue_free()

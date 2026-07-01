@@ -16,14 +16,11 @@ var conquest := -1:
 		if value != conquest:
 			conquest = value
 			for i in _items:
-				$CTouchInertia/ScrollContainer/BoxContainer.remove_child(i)
 				i.queue_free()
 			_items.clear()
 			if is_node_ready():
 				init()
 
-
-var _items: Array[Control]
 
 signal country_selected(country: int)
 

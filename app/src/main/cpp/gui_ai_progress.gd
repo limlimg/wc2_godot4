@@ -9,13 +9,14 @@ var progress: int:
 	set(value):
 		if value != progress:
 			progress = value
-			while $ProgressBar.get_child_count() < value:
-				$ProgressBar.add_child($Prototype/TextureRect.duplicate())
-			while $ProgressBar.get_child_count() > value:
-				var c := $ProgressBar.get_child(0)
-				$ProgressBar.remove_child(c)
-				c.queue_free()
+			while _bars.size() < value:
+				_bars.append($Prototype/TextureRect.duplicate())
+				$ProgressBar.add_child(_bars[-1])
+			while _bars.size() > value:
+				_bars.pop_back().queue_free()
 
+
+var _bars: Array[TextureRect]
 
 func set_cur_country_name(value):
 	if value != cur_country_name:

@@ -42,5 +42,4 @@ func remove_all() -> void:
 func _remove(node: Node) -> void:
 	_effects[_effects.find(node)] = _effects[-1]
 	_effects.pop_back()
-	remove_child(node)
 	node.queue_free()

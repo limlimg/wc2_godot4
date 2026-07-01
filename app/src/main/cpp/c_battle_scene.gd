@@ -98,7 +98,6 @@ func set_battle_area(value: int) -> void:
 
 func _release_fort() -> void:
 	if _fort != null:
-		remove_child(_fort)
 		_fort.queue_free()
 		_fort = null
 
@@ -122,11 +121,9 @@ func _create_fort() -> void:
 
 func _release_units() -> void:
 	for i in _units:
-		$Units.remove_child(i)
 		i.queue_free()
 	_units.clear()
 	for i in _destroyed_units:
-		$Units.remove_child(i)
 		i.queue_free()
 	_destroyed_units.clear()
 
@@ -242,13 +239,11 @@ func _add_effect(effect_name: String, x: float, y: float) -> void:
 	effect.stopped().connect(func ():
 		_effects[_effects.find(effect)] = _effects[-1]
 		_effects.pop_back()
-		remove_child(effect)
 		effect.queue_free())
 
 
 func clear_effect() -> void:
 	for i in _effects:
-		remove_child(i)
 		i.queue_free()
 
 

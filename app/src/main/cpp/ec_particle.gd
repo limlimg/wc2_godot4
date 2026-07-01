@@ -51,7 +51,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	_life += delta
 	if _life > lifespam:
-		get_parent().remove_child(self)
 		stopped.emit()
 		queue_free()
 		return

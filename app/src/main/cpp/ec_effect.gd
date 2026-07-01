@@ -25,7 +25,6 @@ func _ready() -> void:
 
 func init() -> void:
 	for i in _particles:
-		remove_child(i)
 		i.queue_free()
 	_particles.clear()
 	stopped.emit()

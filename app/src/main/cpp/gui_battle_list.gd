@@ -17,14 +17,11 @@ var campaign := -1:
 		if value != campaign:
 			campaign = value
 			for i in _items:
-				$CTouchInertia/ScrollContainer/BoxContainer.remove_child(i)
 				i.queue_free()
 			_items.clear()
 			if is_node_ready():
 				init()
 
-
-var _items: Array[_GUIBattleItem]
 
 signal battle_selected(battle: int)
 

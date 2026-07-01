@@ -67,7 +67,6 @@ func _reset_item(value: _ecItemData) -> void:
 	if value == _item_data:
 		return
 	for i in _nodes:
-		remove_child(i)
 		i.queue_free()
 	_nodes.clear()
 	_item_data = value

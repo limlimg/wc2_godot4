@@ -28,7 +28,6 @@ func init() -> void:
 		$RankStar/HBoxContainer.add_child(star)
 		_stars.append(star)
 	while _stars.size() > num_stars:
-		$RankStar/HBoxContainer.remove_child(_stars[-1])
 		_stars.pop_back().queue_free()
 	if num_stars == 5:
 		$Rank/Rank.show()

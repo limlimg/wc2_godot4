@@ -122,7 +122,6 @@ func fade_out(cause: int, overlay: Node) -> void:
 
 func _remove_overlay() -> void:
 	if _overlay != null:
-		$Fade.remove_child(_overlay)
 		_overlay.queue_free()
 		_overlay = null
 

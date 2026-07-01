@@ -8,15 +8,13 @@ var tab: int:
 	set(value):
 		if value != tab:
 			tab = value
-			for i in _cards:
-				$CTouchInertia/ScrollContainer/BoxContainer.remove_child(i)
+			for i in _items:
 				i.queue_free()
 			if is_node_ready():
 				init()
 
 
 var _selected := -1
-var _cards: Array[_GUICard]
 
 signal card_selected(index: int)
 
@@ -30,7 +28,7 @@ func init() -> void:
 		if card.type == tab:
 			var node = $CTouchInertia/ScrollContainer/BoxContainer/GUICard.create_instance()
 			node.def = card
-			_cards.append(node)
+			_items.append(node)
 
 
 func re_select() -> void:
@@ -53,9 +51,9 @@ func _reset_select() -> void:
 
 
 func get_card(index: int) -> _GUICard:
-	if index >= _cards.size():
+	if index >= _items.size():
 		return null
-	return _cards[index]
+	return _items[index]
 
 
 func _on_gui_list_item_touched(item: int) -> void:

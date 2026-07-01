@@ -37,7 +37,6 @@ func _release_image_list() -> void:
 
 func _clear_element_nodes(parent: Node) -> void:
 	for i in parent.get_children():
-		parent.remove_child(i)
 		i.queue_free()
 
 

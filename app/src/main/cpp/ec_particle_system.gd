@@ -58,7 +58,6 @@ func stop(stop_existing: bool) -> void:
 	if stop_existing:
 		for i in _particles:
 			_particles[_particles.find(i)] = _particles[-1]
-			remove_child(i)
 			i.queue_free()
 	_on_stopped()
 

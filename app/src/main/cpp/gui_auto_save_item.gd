@@ -1,3 +1,4 @@
+@tool
 extends "res://app/src/main/cpp/gui_save_item.gd"
 
 ## GUISaveItem for auto save slot is made into a different scene due to
