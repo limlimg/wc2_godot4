@@ -19,10 +19,10 @@ func bomb_area(area_id: int, action_type: int) -> void:
 	var target_pos := area.army_position
 	var start_pos := target_pos
 	start_pos.x = minf(-camera.position.x / camera.scale.x - 100, target_pos.x - 400)
-	var t0 := _t_s(start_pos.x)
+	var t0 := _t_s(start_pos.x - target_pos.x)
 	var end_pos := target_pos
 	end_pos.x = maxf((-camera.position.x + camera.size.x) / camera.scale.x + 100, target_pos.x + 400)
-	var t1 := _t_s(end_pos.x)
+	var t1 := _t_s(end_pos.x - target_pos.x)
 	var card: _CardDef
 	if _tween != null:
 		_tween.kill()
