@@ -9,24 +9,24 @@ var campaign: int:
 				init()
 
 
+var _bg: TextureRect
+
 func _ready() -> void:
 	init()
 
 
 func init() -> void:
+	if _bg != null:
+		_bg.queue_free()
 	match campaign:
 		0:
-			$VictroyBg.texture = load("res://app/src/main/cpp/resources/assets/texture/victorybg_axis.tres")
-			$TextVictroy/Label.text = "victory axis"
+			_bg = $GUIEndAxis.create_instance()
 		1:
-			$VictroyBg.texture = load("res://app/src/main/cpp/resources/assets/texture/victorybg_allies.tres")
-			$TextVictroy/Label.text = "victory allies"
+			_bg = $GUIEndAllies.create_instance()
 		2:
-			$VictroyBg.texture = load("res://app/src/main/cpp/resources/assets/texture/victorybg_wto.tres")
-			$TextVictroy/Label.text = "victory wto"
+			_bg = $GUIEndWto.create_instance()
 		3:
-			$VictroyBg.texture = load("res://app/src/main/cpp/resources/assets/texture/victorybg_nato.tres")
-			$TextVictroy/Label.text = "victory nato"
+			_bg = $GUIEndNato.create_instance()
 
 
 func _on_gui_button_back_pressed() -> void:

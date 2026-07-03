@@ -13,17 +13,28 @@ name_640h = "victorybg_wto-640h.webp"
 name_568h = "victorybg_wto-568h.webp"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="Resource" id="Resource_yr8c8"]
-script = ExtResource("1_66p4g")
-name = "victorybg_wto.webp"
-metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
 [sub_resource type="Texture2D" id="Texture2D_y130d"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_2glow")
-asset = SubResource("Resource_yr8c8")
+asset = SubResource("Resource_8bmli")
 metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+
+[sub_resource type="Texture2D" id="Texture2D_3flne"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_yr8c8")
+texture = SubResource("Texture2D_y130d")
+region = Rect2(0, 0, 568, 320)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_oh7iv"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_yr8c8")
+texture = SubResource("Texture2D_y130d")
+region = Rect2(0, 0, 640, 320)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
 [sub_resource type="Texture2D" id="Texture2D_acd4s"]
 resource_local_to_scene = false
@@ -39,22 +50,6 @@ resource_name = ""
 script = ExtResource("2_yr8c8")
 texture = SubResource("Texture2D_y130d")
 region = Rect2(0, 0, 1024, 768)
-metadata/_custom_type_script = "uid://bvddy3vjuki27"
-
-[sub_resource type="Texture2D" id="Texture2D_oh7iv"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_yr8c8")
-texture = SubResource("Texture2D_y130d")
-region = Rect2(0, 0, 640, 320)
-metadata/_custom_type_script = "uid://bvddy3vjuki27"
-
-[sub_resource type="Texture2D" id="Texture2D_3flne"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_yr8c8")
-texture = SubResource("Texture2D_y130d")
-region = Rect2(0, 0, 568, 320)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
 [sub_resource type="Resource" id="Resource_rqkki"]

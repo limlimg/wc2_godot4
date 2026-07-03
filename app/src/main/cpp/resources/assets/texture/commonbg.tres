@@ -20,6 +20,22 @@ script = ExtResource("3_83mk2")
 asset = SubResource("Resource_pwpsl")
 metadata/_custom_type_script = "uid://cr8ksgysprxjq"
 
+[sub_resource type="Texture2D" id="Texture2D_u1lw0"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_bfio6")
+texture = SubResource("Texture2D_vdo1d")
+region = Rect2(0, 0, 568, 320)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_uk4b2"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_bfio6")
+texture = SubResource("Texture2D_vdo1d")
+region = Rect2(0, 0, 640, 320)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
 [sub_resource type="Texture2D" id="Texture2D_wnd7d"]
 resource_local_to_scene = false
 resource_name = ""
@@ -34,22 +50,6 @@ resource_name = ""
 script = ExtResource("2_bfio6")
 texture = SubResource("Texture2D_vdo1d")
 region = Rect2(0, 0, 1024, 768)
-metadata/_custom_type_script = "uid://bvddy3vjuki27"
-
-[sub_resource type="Texture2D" id="Texture2D_uk4b2"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_bfio6")
-texture = SubResource("Texture2D_vdo1d")
-region = Rect2(0, 0, 640, 320)
-metadata/_custom_type_script = "uid://bvddy3vjuki27"
-
-[sub_resource type="Texture2D" id="Texture2D_u1lw0"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_bfio6")
-texture = SubResource("Texture2D_vdo1d")
-region = Rect2(0, 0, 568, 320)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
 [sub_resource type="Resource" id="Resource_i4ayr"]

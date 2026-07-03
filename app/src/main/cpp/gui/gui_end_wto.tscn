@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://ceqmprvrhs4gp"]
+
+[ext_resource type="Texture2D" uid="uid://cih6ropg6tjfs" path="res://app/src/main/cpp/resources/assets/texture/victorybg_wto.tres" id="1_27u1k"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_jsrmh"]
+[ext_resource type="Texture2D" uid="uid://cgw5x0rgfrojx" path="res://app/src/main/cpp/resources/assets/texture/victory.tres" id="3_48i1o"]
+[ext_resource type="Theme" uid="uid://dwf0jdgntpxmq" path="res://app/src/main/cpp/resources/assets/game_gui_end/font4.tres" id="4_y3gqa"]
+
+[node name="GUIEndWto" type="TextureRect" unique_id=270133824]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_27u1k")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Victroy" parent="." unique_id=1576520916 instance=ExtResource("2_jsrmh")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
+rect_ipad = Rect2(0, 96, 0, 0)
+rect = Rect2(0, 30, 0, 0)
+
+[node name="TextureRect" type="TextureRect" parent="Victroy" unique_id=960389048]
+layout_mode = 2
+texture = ExtResource("3_48i1o")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="TextVictroy" parent="." unique_id=1352119651 instance=ExtResource("2_jsrmh")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
+rect_ipad = Rect2(-439, 187, 0, 0)
+rect = Rect2(-210, 70, 0, 0)
+
+[node name="Label" type="Label" parent="TextVictroy" unique_id=231535116]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("4_y3gqa")
+text = "victory wto"
