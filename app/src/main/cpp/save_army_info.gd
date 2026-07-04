@@ -15,7 +15,7 @@ var type: int:
 		_mem.encode_u32(_offset, value)
 
 
-var durability: int:
+var strength: int:
 	get():
 		return _mem.decode_u32(_offset + 4)
 	set(value):
@@ -37,7 +37,7 @@ var cards: int:
 		_mem.encode_u32(_offset + 12, value)
 
 
-var max_durability: int:
+var max_strength: int:
 	get():
 		return _mem.decode_u32(_offset + 16)
 	set(value):
@@ -66,7 +66,7 @@ var morale: int:
 		_mem.encode_u32(_offset + 28, value)
 
 
-var moraleUpRound: int:
+var morale_up_round: int:
 	get():
 		return _mem.decode_u32(_offset + 32)
 	set(value):

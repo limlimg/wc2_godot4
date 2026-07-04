@@ -615,6 +615,44 @@ static func has_unit_motion(res: String, country_name: String) -> bool:
 			and not get_asset_path(file_name + ".bin", "").is_empty()
 
 
+const _COMMANDER_ABILITY = [
+	[0, 0, 0, 10, 5, 4],
+	[0, 0, 0, 15, 10, 4],
+	[0, 0, 0, 20, 15, 4],
+	[1, 0, 0, 25, 20, 4],
+	[1, 0, 0, 30, 25, 4],
+	[1, 0, 1, 35, 30, 3],
+	[1, 1, 2, 40, 35, 3],
+	[1, 1, 3, 45, 40, 3],
+	[1, 1, 4, 50, 45, 3],
+	[2, 1, 5, 55, 50, 3],
+	[2, 1, 6, 60, 55, 2],
+	[2, 1, 7, 65, 60, 2],
+	[3, 1, 8, 70, 65, 2],
+	[3, 1, 9, 75, 70, 2],
+	[3, 2, 10, 80, 75, 2],
+]
+
+static func get_commander_ability(level: int) -> Array[int]:
+	if level > 14:
+		level = 14
+	return _COMMANDER_ABILITY[level]
+
+
+const _ARMY_ABILITY = [
+	[0, 0, 0, 0, 0],
+	[1, 0, 0, 10, 0],
+	[1, 1, 0, 20, 0],
+	[1, 1, 0, 30, 20],
+	[1, 1, 2, 40, 20],
+]
+
+static func get_army_ability(level: int) -> Array[int]:
+	if level > 4:
+		level = 4
+	return _ARMY_ABILITY[level]
+
+
 static func main_menu_loaded_jni() -> void:
 	_Wc2Activity.main_menu_loaded()
 
