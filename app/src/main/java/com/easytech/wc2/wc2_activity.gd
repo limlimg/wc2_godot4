@@ -102,6 +102,11 @@ func _show_game_view(_width: float, _height: float) -> void:
 	var height_16_9 := (_m_game_view_height * 16) / 9
 	if _m_game_view_width > height_16_9:
 		_m_game_view_width = height_16_9
+		(func ():
+			await root.ready
+			root.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
+			root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
+			).call()
 	_ecRenderer.is_app_running = true
 	_m_gl_view = _ecGLSurfaceView.new()
 	#_m_gl_view.size = Vector2(_m_game_view_width, _m_game_view_height)
@@ -110,9 +115,6 @@ func _show_game_view(_width: float, _height: float) -> void:
 	_m_gl_view.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	DisplayServer.screen_set_keep_on(true)
 	# NOTTODO: get promotion info from google play
-	await root.ready
-	root.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
-	root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
 
 
 func _set_package_name(context: _Context) -> void:
