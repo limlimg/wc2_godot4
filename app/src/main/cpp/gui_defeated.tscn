@@ -25,7 +25,7 @@ texture_res = ExtResource("2_y8yra")
 flag_texture_res = ExtResource("2_l3fon")
 
 [node name="Fade" parent="." unique_id=741495168 instance=ExtResource("4_2qn58")]
-layout_mode = 0
+layout_mode = 1
 alpha = 0.0
 
 [node name="CountryDefeat" type="Sprite2D" parent="." unique_id=1608977990]

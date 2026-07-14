@@ -22,7 +22,7 @@ grow_vertical = 2
 script = ExtResource("1_ccynw")
 
 [node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_k7wgp")]
-layout_mode = 0
+layout_mode = 1
 
 [node name="BoardLocked" parent="." unique_id=1892596053 instance=ExtResource("1_1iitn")]
 layout_mode = 1

@@ -19,7 +19,7 @@ grow_vertical = 2
 script = ExtResource("1_6ytht")
 
 [node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_kjn2k")]
-layout_mode = 0
+layout_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=773164167]
 texture = ExtResource("4_5avr6")
