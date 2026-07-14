@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://cp0rqwt3uf1t7" path="res://app/src/main/cpp/c_menu_state.gd" id="1_ehm5w"]
 [ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://app/src/main/cpp/gui_manager.tscn" id="1_nhdnm"]
 [ext_resource type="PackedScene" uid="uid://c4fcq7wy2b7qx" path="res://app/src/main/cpp/gui_main_menu.tscn" id="3_gvair"]
+[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://app/src/main/cpp/resources/assets/texture/commonbg.tres" id="3_qq8xu"]
+[ext_resource type="PackedScene" uid="uid://caf0v7eqneb01" path="res://app/src/main/cpp/gui/gui_rect_4_container.tscn" id="4_fr7km"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="5_cwp5t"]
 [ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://app/src/main/cpp/resources/assets/menu_gui_selbattle_res/texture_res.tres" id="5_mwydp"]
 
@@ -18,8 +20,38 @@ script = ExtResource("1_ehm5w")
 [node name="GUIManager" parent="." unique_id=2004259692 instance=ExtResource("1_nhdnm")]
 layout_mode = 1
 
-[node name="GUIMainMenu" parent="GUIManager" unique_id=1094483503 instance=ExtResource("3_gvair")]
+[node name="MainMenu" type="TextureRect" parent="GUIManager" unique_id=538241938]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qq8xu")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="GUIRect" parent="GUIManager/MainMenu" unique_id=1576520916 instance=ExtResource("4_fr7km")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -160.0
+offset_right = 240.0
+offset_bottom = 160.0
+rect_640h = Rect2(0, 0, 640, 320)
+rect_568h = Rect2(0, 0, 568, 320)
+gui_scale_640h = Vector2(1, 1)
+gui_scale_568h = Vector2(1, 1)
+rect_ipad = Rect2(0, 0, 1024, 768)
+rect = Rect2(0, 0, 480, 320)
+
+[node name="GUIMainMenu" parent="GUIManager/MainMenu/GUIRect" unique_id=1094483503 instance=ExtResource("3_gvair")]
+clip_contents = true
+layout_mode = 2
 
 [node name="GUISelBattle" parent="GUIManager" unique_id=961076300 instance_placeholder="res://app/src/main/cpp/gui_sel_battle.tscn"]
 visible = false
@@ -42,7 +74,7 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="Warning" parent="GUIManager" unique_id=1576520916 instance=ExtResource("5_cwp5t")]
+[node name="Warning" parent="GUIManager" unique_id=1719695382 instance=ExtResource("5_cwp5t")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,11 +99,11 @@ layout_mode = 2
 [node name="GUILoading" parent="GUIManager" unique_id=1979438320 instance_placeholder="res://app/src/main/cpp/gui_loading.tscn"]
 layout_mode = 1
 
-[connection signal="commander_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_commander_pressed"]
-[connection signal="load_campaign_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_load_campaign_pressed"]
-[connection signal="load_conquest_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_load_conquest_pressed"]
-[connection signal="options_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_options_pressed"]
-[connection signal="quit_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_quit_pressed"]
-[connection signal="sel_campaign_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_sel_campaign_pressed"]
-[connection signal="sel_conquest_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_sel_conquest_pressed"]
-[connection signal="tutorial_pressed" from="GUIManager/GUIMainMenu" to="." method="_on_gui_main_menu_tutorial_pressed"]
+[connection signal="commander_pressed" from="GUIManager/MainMenu/GUIRect/GUIMainMenu" to="." method="_on_gui_main_menu_commander_pressed"]
+[connection signal="load_campaign_pressed" from="GUIManager/MainMenu/GUIRect/GUIMainMenu" to="." method="_on_gui_main_menu_load_campaign_pressed"]
+[connection signal="load_conquest_pressed" from="GUIManager/MainMenu/GUIRect/GUIMainMenu" to="." method="_on_gui_main_menu_load_conquest_pressed"]
+[connection signal="options_pressed" from="GUIManager/MainMenu/GUIRect/GUIMainMenu" to="." method="_on_gui_main_menu_options_pressed"]
+[connection signal="quit_pressed" from="GUIManager/MainMenu/GUIRect/GUIMainMenu" to="." method="_on_gui_main_menu_quit_pressed"]
+[connection signal="sel_campaign_pressed" from="GUIManager/MainMenu/GUIRect/GUIMainMenu" to="." method="_on_gui_main_menu_sel_campaign_pressed"]
+[connection signal="sel_conquest_pressed" from="GUIManager/MainMenu/GUIRect/GUIMainMenu" to="." method="_on_gui_main_menu_sel_conquest_pressed"]
+[connection signal="tutorial_pressed" from="GUIManager/MainMenu/GUIRect/GUIMainMenu" to="." method="_on_gui_main_menu_tutorial_pressed"]

@@ -290,7 +290,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_xqjbv")
 expand_mode = 1
-stretch_mode = 6
+stretch_mode = 5
 
 [node name="Title" parent="." unique_id=628963794 instance=ExtResource("3_kov84")]
 layout_mode = 0

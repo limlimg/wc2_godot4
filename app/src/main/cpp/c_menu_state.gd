@@ -12,7 +12,7 @@ func _on_enter() -> void:
 	sound_box.load_music("battle1.mp3", "")
 	sound_box.play_music(true)
 	if g_GameManager.should_show_next_battle:
-		$GUIManager/GUIMainMenu.hide()
+		$GUIManager/MainMenu.hide()
 		_displayed_menu = $GUIManager/GUISelBattle.create_instance()
 		_displayed_menu.campaign = g_GameManager.campaign
 		_displayed_menu.game_mode = 0
@@ -23,7 +23,7 @@ func _on_enter() -> void:
 	$GUIManager.fade_in(100)
 	var cause: int = await $GUIManager.faded_in
 	if cause == 100:
-		$GUIManager/GUIMainMenu.move_in_main_buttons()
+		$GUIManager/MainMenu/GUIRect/GUIMainMenu.move_in_main_buttons()
 
 
 func _on_exit() -> void:
@@ -53,7 +53,7 @@ func _on_gui_main_menu_sel_campaign_pressed(sel_campaign: int) -> void:
 		$GUIManager.fade_out(3, $GUIManager/GUILoading.create_instance())
 		var cause: int = await $GUIManager.faded_out
 		if cause == 3:
-			$GUIManager/GUIMainMenu.hide()
+			$GUIManager/MainMenu.hide()
 			_displayed_menu = $GUIManager/GUISelBattle.create_instance()
 			_displayed_menu.campaign = sel_campaign
 			_displayed_menu.game_mode = 0
@@ -71,7 +71,7 @@ func _on_gui_main_menu_load_campaign_pressed() -> void:
 	$GUIManager.fade_out(2, null)
 	var cause: int = await $GUIManager.faded_out
 	if cause == 2:
-		$GUIManager/GUIMainMenu.hide()
+		$GUIManager/MainMenu.hide()
 		_displayed_menu = $GUIManager/GUISave.create_instance()
 		_displayed_menu.game_mode = 1
 		_displayed_menu.loading = true
@@ -85,7 +85,7 @@ func _on_gui_main_menu_sel_conquest_pressed(sel_conquest: int) -> void:
 	$GUIManager.fade_out(4, $GUIManager/GUILoading.create_instance())
 	var cause: int = await $GUIManager.faded_out
 	if cause == 4:
-		$GUIManager/GUIMainMenu.hide()
+		$GUIManager/MainMenu.hide()
 		_displayed_menu = $GUIManager/GUISelCountry.create_instance()
 		_displayed_menu.conquest = sel_conquest
 		_displayed_menu.show()
@@ -98,7 +98,7 @@ func _on_gui_main_menu_load_conquest_pressed() -> void:
 	$GUIManager.fade_out(21, null)
 	var cause: int = await $GUIManager.faded_out
 	if cause == 21:
-		$GUIManager/GUIMainMenu.hide()
+		$GUIManager/MainMenu.hide()
 		_displayed_menu = $GUIManager/GUISave.create_instance()
 		_displayed_menu.game_mode = 2
 		_displayed_menu.loading = true
@@ -124,7 +124,7 @@ func _on_gui_main_menu_commander_pressed() -> void:
 	$GUIManager.fade_out(11, null)
 	var cause: int = await $GUIManager.faded_out
 	if cause == 11:
-		$GUIManager/GUIMainMenu.hide()
+		$GUIManager/MainMenu.hide()
 		_displayed_menu = $GUIManager/GUICommander.create_instance()
 		_displayed_menu.show()
 		_displayed_menu.back_pressed.connect(_fade_out_back)
@@ -135,7 +135,7 @@ func _on_gui_main_menu_options_pressed() -> void:
 	$GUIManager.fade_out(12, null)
 	var cause: int = await $GUIManager.faded_out
 	if cause == 12:
-		$GUIManager/GUIMainMenu.hide()
+		$GUIManager/MainMenu.hide()
 		_displayed_menu = $GUIManager/GUIOptions.create_instance()
 		_displayed_menu.show()
 		_displayed_menu.closed.connect(_fade_out_back)
@@ -150,7 +150,7 @@ func _fade_out_back() -> void:
 	$GUIManager.fade_out(9, null)
 	var cause: int = await $GUIManager.faded_out
 	if cause == 9:
-		$GUIManager/GUIMainMenu.show()
+		$GUIManager/MainMenu.show()
 		$GUIManager.safe_free_child(_displayed_menu)
 		$GUIManager.fade_in(-1)
 
