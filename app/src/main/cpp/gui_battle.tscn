@@ -424,7 +424,3 @@ theme = ExtResource("10_5yeo3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1332024249]
 libraries/ = SubResource("AnimationLibrary_pwmbj")
-
-[connection signal="attack_completed" from="Left/CBattleScene" to="." method="_on_battle_scene_attack_completed"]
-[connection signal="attack_completed" from="Right/CBattleScene" to="." method="_on_battle_scene_attack_completed"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

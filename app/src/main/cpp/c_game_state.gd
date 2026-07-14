@@ -34,16 +34,7 @@ func _on_enter() -> void:
 	$GUIManager.fade_in(1)
 	if g_GameManager.is_new_game and g_GameManager.game_mode != 4:
 		g_GameManager.turn_begin()
-
-
-func _update_ai_progress() -> void:
-	var cur_country := g_GameManager.get_cur_country()
-	if cur_country != null and not cur_country.ai:
-		$GUIManager/GUIAIProgress/GUIAIProgress.set_cur_country_name(cur_country.name)
-		$GUIManager/GUIAIProgress/GUIAIProgress.progress = _CActionAI.instance().ai_progress_percentage
-
-
-func _on_gui_manager_faded_in(cause: int) -> void:
+	await $GUIManager.faded_in
 	if g_GameManager.game_mode == 1:
 		_battle_intro = $GUIManager/GUIBattleIntro/GUIBattleIntro.create_instance()
 		_battle_intro.campaign = g_GameManager.campaign
@@ -56,8 +47,23 @@ func _on_gui_manager_faded_in(cause: int) -> void:
 		pass
 
 
+func _update_ai_progress() -> void:
+	var cur_country := g_GameManager.get_cur_country()
+	if cur_country != null and not cur_country.ai:
+		$GUIManager/GUIAIProgress/GUIAIProgress.set_cur_country_name(cur_country.name)
+		$GUIManager/GUIAIProgress/GUIAIProgress.progress = _CActionAI.instance().ai_progress_percentage
+
+
 func _on_gui_battle_intro_ok_pressed() -> void:
 	if g_GameManager.game_mode == 1:
 		$AnimationPlayer.play(&"move_in")
 		$GUIManager.safe_free_child(_battle_intro)
 		_battle_intro = null
+
+
+func _on_area_complained(complainer: StringName) -> void:
+	show_dialogue("commander complain {0}".format([randi_range(1, 2)]), complainer, false)
+
+
+func show_dialogue(dlg: String, general: StringName, left: bool) -> void:
+	$GUIManager/GUIDialogue.show_dlg(dlg, general, left)

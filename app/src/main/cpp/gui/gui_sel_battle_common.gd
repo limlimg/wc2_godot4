@@ -8,7 +8,7 @@ const _RES_PATH = "res://app/src/main/cpp/scene_system_resource/selbattle_res/"
 var texture_res: _ecTextureRes
 
 var _center_pos: Vector2
-var _on_animation_finished: Callable
+var _move_handle := 0
 var _move_tween: Tween
 
 func set_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: String, age_pos: Vector2, center_pos: Vector2) -> void:
@@ -83,13 +83,11 @@ func change_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: Strin
 	if $AnimationPlayer.current_animation != &"fade_out":
 		$AnimationPlayer.stop()
 		$AnimationPlayer.play(&"fade_out")
-	var sig: Signal = $AnimationPlayer.animation_finished
-	if not _on_animation_finished.is_null() and sig.is_connected(_on_animation_finished):
-		sig.disconnect(_on_animation_finished)
-	_on_animation_finished = func(anim_name: StringName):
-		if anim_name == &"fade_out":
-			set_image_list(flags, arrows, age, age_pos, center_pos)
-	sig.connect(_on_animation_finished, CONNECT_ONE_SHOT)
+	_move_handle += 1
+	var match_move_handle := _move_handle
+	var anim_name: StringName = await $AnimationPlayer.animation_finished
+	if anim_name == &"fade_out" and match_move_handle == _move_handle:
+		set_image_list(flags, arrows, age, age_pos, center_pos)
 
 
 func _on_moving_finished() -> void:

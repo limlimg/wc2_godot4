@@ -16,6 +16,20 @@ func battle_start() -> void:
 	_reset_battle()
 	_fight.first_attack(attack_area, defend_area)
 	$AnimationPlayer.play(&"move_in")
+	var anim_name: StringName = await $AnimationPlayer.animation_finished
+	if anim_name == &"move_in":
+		if _tween != null:
+			_tween.kill()
+		_tween.tween_interval(0.1)
+		_tween.tween_callback(func ():
+			$Left/CBattleScene.attack()
+			if _fight.can_counter:
+				$Right/CBattleScene.attack()
+			await $Left/CBattleScene.attack_completed
+			if _fight.can_counter:
+				await $Right/CBattleScene.attack_completed
+			_on_battle_scene_attack_completed())
+		_tween_second_attack()
 
 
 func _reset_battle() -> void:
@@ -46,44 +60,22 @@ func _reset_battle() -> void:
 	$AnimationPlayer.play(&"RESET")
 
 
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == &"move_in":
-		if _tween != null:
-			_tween.kill()
-		_tween.tween_interval(0.1)
-		_tween.tween_callback(func ():
-			$Left/CBattleScene.attack()
-			$Left/CBattleScene.attack_completed.connect(_on_battle_scene_attack_completed, CONNECT_ONE_SHOT)
-			if _fight.can_counter:
-				$Right/CBattleScene.attack()
-				$Right/CBattleScene.attack_completed.connect(_on_battle_scene_attack_completed, CONNECT_ONE_SHOT))
-		_tween_second_attack()
-	elif anim_name == &"move_out":
-		hide()
-		$Left/CBattleScene.clear_craters()
-		$Right/CBattleScene.clear_craters()
-		$Left/CBattleScene.clear_effect()
-		$Right/CBattleScene.clear_effect()
-
-
 func _tween_second_attack() -> void:
 	_tween.tween_interval(1.5)
 	_tween.tween_callback(func ():
 		_fight.apply_result()
 		if _fight.attack_army_second_attack or _fight.defend_army_second_attack:
 			_fight.second_attack()
-			if $Left/CBattleScene.attack_completed.is_connected(_on_battle_scene_attack_completed):
-				$Left/CBattleScene.attack_completed.disconnect(_on_battle_scene_attack_completed)
-			if $Right/CBattleScene.attack_completed.is_connected(_on_battle_scene_attack_completed):
-				$Right/CBattleScene.attack_completed.disconnect(_on_battle_scene_attack_completed)
 			_tween.tween_interval(0.1)
 			_tween.tween_callback(func ():
 				if _fight.second_attack_side == 0:
 					$Left/CBattleScene.attack()
-					$Left/CBattleScene.attack_completed.connect(_on_battle_scene_attack_completed, CONNECT_ONE_SHOT)
+					await $Left/CBattleScene.attack_completed
+					_on_battle_scene_attack_completed()
 				else:
 					$Right/CBattleScene.attack()
-					$Right/CBattleScene.attack_completed.connect(_on_battle_scene_attack_completed, CONNECT_ONE_SHOT))
+					await $Right/CBattleScene.attack_completed
+					_on_battle_scene_attack_completed())
 			_tween_second_attack()
 		else:
 			_battle_finish())
@@ -97,3 +89,10 @@ func _on_battle_scene_attack_completed() -> void:
 
 func _battle_finish() -> void:
 	$AnimationPlayer.play("move_out")
+	var anim_name: StringName = await $AnimationPlayer.animation_finished
+	if anim_name == &"move_out":
+		hide()
+		$Left/CBattleScene.clear_craters()
+		$Right/CBattleScene.clear_craters()
+		$Left/CBattleScene.clear_effect()
+		$Right/CBattleScene.clear_effect()

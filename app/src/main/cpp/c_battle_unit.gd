@@ -94,9 +94,7 @@ func attack() -> void:
 			16:
 				g_SoundRes.play_char_se(_SndEffect.CANNON_WAV)
 		)
-
-
-func _on_attack_completed() -> void:
+	await $Attack.completed
 	_attack_ended = true
 	attack_completed.emit()
 

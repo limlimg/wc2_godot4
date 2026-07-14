@@ -109,6 +109,9 @@ func fade_in(cause: int) -> void:
 	_fading_cause = cause
 	_remove_overlay()
 	$AnimationPlayer.play("fade_in")
+	var anim_name: StringName = await $AnimationPlayer.animation_finished
+	if anim_name == &"fade_in":
+		faded_in.emit(_fading_cause)
 
 
 func fade_out(cause: int, overlay: Node) -> void:
@@ -118,6 +121,10 @@ func fade_out(cause: int, overlay: Node) -> void:
 		overlay.reparent($Fade, false)
 		_overlay = overlay
 	$AnimationPlayer.play("fade_out")
+	var anim_name: StringName = await $AnimationPlayer.animation_finished
+	if anim_name == &"fade_out":
+		_remove_overlay()
+		faded_out.emit(_fading_cause)
 
 
 func _remove_overlay() -> void:
@@ -130,12 +137,3 @@ func _ready() -> void:
 	if start_faded_in:
 		$Fade.alpha = 0.0
 	$Fade.visible = true # $Fade is invisible in the editor for previewing
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	match anim_name:
-		&"fade_in":
-			faded_in.emit(_fading_cause)
-		&"fade_out":
-			_remove_overlay()
-			faded_out.emit(_fading_cause)

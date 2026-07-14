@@ -52,8 +52,9 @@ func _exe_cmd(index: int) -> void:
 				g_Scene.move_camera_to_area(cmd.id)
 			else:
 				g_Scene.move_camera_center_to_area(cmd.id)
-			g_Scene.move_camera_completed.connect(_on_button_pressed, CONNECT_ONE_SHOT)
 			_awaiting_input = true
+			await g_Scene.move_camera_completed
+			_on_button_pressed()
 		"finger at":
 			$Hand.visible = true
 			$Hand.position = Vector2(cmd.x, cmd.y)

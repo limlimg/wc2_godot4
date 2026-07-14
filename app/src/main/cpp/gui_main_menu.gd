@@ -165,42 +165,38 @@ func _move_button(state: int) -> void:
 	match state:
 		1:
 			$AnimationPlayer.play(&"move_main")
+			await $AnimationPlayer.animation_finished
+			_move_button(0)
 		2:
 			$AnimationPlayer.play_backwards(&"move_main")
+			await $AnimationPlayer.animation_finished
+			_move_button(3)
 		3:
 			$AnimationPlayer.play(&"move_campaign")
+			await $AnimationPlayer.animation_finished
+			_move_button(0)
 		4:
 			$AnimationPlayer.play_backwards(&"move_campaign")
+			await $AnimationPlayer.animation_finished
+			_move_button(5)
 		5:
 			_move_button(1)
 		6:
 			$AnimationPlayer.play_backwards(&"move_main")
-		7:
-			$AnimationPlayer.play_backwards(&"move_main")
-		8:
-			$AnimationPlayer.play(&"move_conquest")
-		9:
-			$AnimationPlayer.play_backwards(&"move_conquest")
-
-
-func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	match _state:
-		1:
-			_move_button(0)
-		2:
-			_move_button(3)
-		3:
-			_move_button(0)
-		4:
-			_move_button(5)
-		6:
+			await $AnimationPlayer.animation_finished
 			$SelMultiplayer.show()
 			_move_button(0)
 		7:
+			$AnimationPlayer.play_backwards(&"move_main")
+			await $AnimationPlayer.animation_finished
 			_move_button(8)
 		8:
+			$AnimationPlayer.play(&"move_conquest")
+			await $AnimationPlayer.animation_finished
 			_move_button(0)
 		9:
+			$AnimationPlayer.play_backwards(&"move_conquest")
+			await $AnimationPlayer.animation_finished
 			_move_button(5)
 
 

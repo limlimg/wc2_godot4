@@ -24,5 +24,3 @@ effect_res = ExtResource("3_q3yve")
 [node name="Exp" parent="." unique_id=1258677139 instance_placeholder="res://app/src/main/cpp/ec_effect.tscn"]
 position = Vector2(0, -10)
 effect_res = ExtResource("5_qhoug")
-
-[connection signal="completed" from="Attack" to="." method="_on_attack_completed"]

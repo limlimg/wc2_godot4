@@ -440,11 +440,12 @@ static func ec_texture_with_string(string: String, font_name: String, font_size:
 				_texture_with_string_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 			_:
 				_texture_with_string_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
-		_texture_with_string_label.draw.connect(func ():
+		await _texture_with_string_label.draw
+		(func ():
 			texture.set_image(_texture_with_string_viewport.get_texture().get_image())
 			if not _texture_with_string_queue.is_empty():
 				_texture_with_string_queue.pop_front().call()
-			, CONNECT_DEFERRED | CONNECT_ONE_SHOT)
+			).call_deferred()
 		)
 	if _texture_with_string_queue.is_empty():
 		_texture_with_string_queue.pop_front().call()

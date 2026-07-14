@@ -516,5 +516,3 @@ layout_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1974311090]
 libraries/ = SubResource("AnimationLibrary_me1p5")
-
-[connection signal="faded_in" from="GUIManager" to="." method="_on_gui_manager_faded_in"]
