@@ -24,8 +24,6 @@ script = ExtResource("1_56qfq")
 
 [node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_gsb3j")]
 layout_mode = 0
-offset_right = 1209.0
-offset_bottom = 511.0
 
 [node name="BoardIntro" type="Sprite2D" parent="." unique_id=935039412]
 texture = ExtResource("1_ft5bo")

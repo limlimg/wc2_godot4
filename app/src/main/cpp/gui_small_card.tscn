@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6smyl")
 
-[node name="CardCommon?" parent="." unique_id=1576520916 instance=ExtResource("1_m5ll4")]
+[node name="CardCommon" parent="." unique_id=1576520916 instance=ExtResource("1_m5ll4")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -26,7 +26,7 @@ rect = Rect2(50, 0, 0, 70)
 gui_scale_ipad = Vector2(0.7, 0.7)
 gui_scale = Vector2(0.42, 0.42)
 
-[node name="TextureRect" type="TextureRect" parent="CardCommon?" unique_id=1704674898]
+[node name="TextureRect" type="TextureRect" parent="CardCommon" unique_id=1704674898]
 layout_mode = 2
 texture = ExtResource("3_kdruj")
 

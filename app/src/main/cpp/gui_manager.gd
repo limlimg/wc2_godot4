@@ -136,4 +136,3 @@ func _remove_overlay() -> void:
 func _ready() -> void:
 	if start_faded_in:
 		$Fade.alpha = 0.0
-	$Fade.visible = true # $Fade is invisible in the editor for previewing

@@ -23,46 +23,22 @@ script = ExtResource("1_ccynw")
 
 [node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_k7wgp")]
 layout_mode = 0
-offset_right = 1134.0
-offset_bottom = 454.0
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1945613680]
+[node name="BoardLocked" parent="." unique_id=1892596053 instance=ExtResource("1_1iitn")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GUIRect" parent="CenterContainer" unique_id=922545371 instance=ExtResource("1_1iitn")]
-layout_mode = 2
-rect_ipad = Rect2(0, 0, 444, 252)
-rect = Rect2(0, 0, 222, 126)
-
-[node name="Control" type="Control" parent="CenterContainer/GUIRect" unique_id=1763780]
-layout_mode = 2
-
-[node name="BoardLocked" parent="CenterContainer/GUIRect/Control" unique_id=1892596053 instance=ExtResource("1_1iitn")]
-layout_mode = 1
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 1
-grow_vertical = 1
 rect_ipad = Rect2(-4, -4, 454, 262)
 rect = Rect2(-2, -2, 227, 131)
 
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/GUIRect/Control/BoardLocked" unique_id=1447175027]
-layout_mode = 2
+[node name="TextureRect" type="Sprite2D" parent="BoardLocked" unique_id=29363538]
 texture = ExtResource("4_k7wgp")
+centered = false
 
-[node name="GUIRect2" parent="CenterContainer/GUIRect/Control" unique_id=1643565686 instance=ExtResource("1_1iitn")]
-layout_mode = 1
-grow_horizontal = 1
-grow_vertical = 1
+[node name="GUIRect2" parent="BoardLocked" unique_id=1643565686 instance=ExtResource("1_1iitn")]
+layout_mode = 2
 rect_ipad = Rect2(32, 120, 0, 0)
 rect = Rect2(16, 60, 0, 0)
 
-[node name="Label" type="Label" parent="CenterContainer/GUIRect/Control/GUIRect2" unique_id=187493172]
+[node name="Label" type="Label" parent="BoardLocked/GUIRect2" unique_id=187493172]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0

@@ -26,6 +26,7 @@ grow_vertical = 2
 script = ExtResource("1_1x8k7")
 
 [node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_1x8k7")]
+layout_mode = 0
 
 [node name="RoundStartBoard" type="Sprite2D" parent="." unique_id=598272857]
 texture = ExtResource("2_7ujwe")
@@ -221,3 +222,7 @@ grow_vertical = 1
 texture_normal = ExtResource("12_1x8k7")
 texture_pressed = ExtResource("13_uwnyg")
 texture_background = ExtResource("14_hlywc")
+
+[connection signal="back_pressed" from="." to="." method="_on_button_ok_pressed"]
+[connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]
+[connection signal="pressed" from="ButtonBank" to="." method="_on_button_bank_pressed"]

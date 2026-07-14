@@ -56,7 +56,6 @@ grow_vertical = 2
 script = ExtResource("1_o8ok3")
 
 [node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_aqje5")]
-visible = false
 z_index = 1
 alpha = 1.0
 

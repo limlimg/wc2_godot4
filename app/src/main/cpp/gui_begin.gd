@@ -58,6 +58,9 @@ var medal_honor: int:
 			_on_render()
 
 
+signal ok_pressed
+signal bank_pressed
+
 func reset_data() -> void:
 	var round_text: String
 	if g_GameManager.game_mode == 1:
@@ -99,3 +102,11 @@ func _on_render() -> void:
 	$CenterContainer/RoundStartBoard/MedalPanzer/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_panzer]))
 	$CenterContainer/RoundStartBoard/MedalNavy/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_navy]))
 	$CenterContainer/RoundStartBoard/MedalHonor/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_honor]))
+
+
+func _on_button_ok_pressed() -> void:
+	ok_pressed.emit()
+
+
+func _on_button_bank_pressed() -> void:
+	bank_pressed.emit()

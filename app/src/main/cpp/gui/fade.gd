@@ -1,4 +1,3 @@
-@tool
 extends Control
 
 const _ecGraphics = preload("res://app/src/main/cpp/ec_graphics.gd")

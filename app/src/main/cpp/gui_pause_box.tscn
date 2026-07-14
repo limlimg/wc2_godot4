@@ -26,14 +26,10 @@ grow_vertical = 2
 
 [node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("1_7tnnw")]
 layout_mode = 0
-offset_right = 1209.0
-offset_bottom = 511.0
 
-[node name="MenuBox" type="TextureRect" parent="." unique_id=2064478520]
-layout_mode = 0
+[node name="MenuBox" type="Sprite2D" parent="." unique_id=1138681124]
 texture = ExtResource("2_vlbgk")
-expand_mode = 1
-stretch_mode = 2
+centered = false
 
 [node name="ButtonResume" parent="." unique_id=2034275630 instance=ExtResource("3_8j7p4")]
 layout_mode = 0
