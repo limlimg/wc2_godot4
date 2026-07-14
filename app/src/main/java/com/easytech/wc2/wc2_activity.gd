@@ -102,11 +102,10 @@ func _show_game_view(_width: float, _height: float) -> void:
 	var height_16_9 := (_m_game_view_height * 16) / 9
 	if _m_game_view_width > height_16_9:
 		_m_game_view_width = height_16_9
-		(func ():
-			await root.ready
+		root.ready.connect(func():
 			root.content_scale_mode = Window.CONTENT_SCALE_MODE_CANVAS_ITEMS
 			root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
-			).call()
+			, CONNECT_ONE_SHOT)
 	_ecRenderer.is_app_running = true
 	_m_gl_view = _ecGLSurfaceView.new()
 	#_m_gl_view.size = Vector2(_m_game_view_width, _m_game_view_height)

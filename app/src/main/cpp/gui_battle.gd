@@ -25,9 +25,8 @@ func battle_start() -> void:
 			$Left/CBattleScene.attack()
 			if _fight.can_counter:
 				$Right/CBattleScene.attack()
+				$Right/CBattleScene.attack_completed.connect(_on_battle_scene_attack_completed, CONNECT_ONE_SHOT)
 			await $Left/CBattleScene.attack_completed
-			if _fight.can_counter:
-				await $Right/CBattleScene.attack_completed
 			_on_battle_scene_attack_completed())
 		_tween_second_attack()
 
