@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://3ekoe0axhb3c"]
+
+[ext_resource type="Script" uid="uid://d0m1ul4gun2fw" path="res://app/src/main/cpp/game_res_render/construction.gd" id="1_fesvs"]
+
+[node name="Construction" type="Node2D" unique_id=2071965218]
+script = ExtResource("1_fesvs")

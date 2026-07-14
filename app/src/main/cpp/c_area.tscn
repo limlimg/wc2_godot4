@@ -1,27 +1,26 @@
 [gd_scene format=3 uid="uid://cmnci1ox4l6s1"]
 
-[ext_resource type="Script" uid="uid://x3sy0a0ph62w" path="res://app/src/main/cpp/c_area.gd" id="1_0tvyd"]
+[ext_resource type="Script" uid="uid://bo30ju3xnqjh7" path="res://app/src/main/cpp/c_area.gd" id="1_0tvyd"]
 
-[node name="CArea" type="TextureRect" unique_id=1240455242]
+[node name="CArea" type="Sprite2D" unique_id=1183696436]
+z_index = -2
 y_sort_enabled = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-expand_mode = 1
-stretch_mode = 2
 script = ExtResource("1_0tvyd")
-army_position = null
-construction_position = null
-installation_position = null
-sea = null
 
-[node name="Flag" type="Sprite2D" parent="." unique_id=402239010]
+[node name="Flag" type="Node2D" parent="." unique_id=811864936]
+z_index = 2
 
-[node name="Construction" type="Sprite2D" parent="Flag" unique_id=1191482551]
-show_behind_parent = true
+[node name="Flag" parent="Flag" unique_id=1037964281 instance_placeholder="res://app/src/main/cpp/game_res_render/flag.tscn"]
 
-[node name="Installation" type="Sprite2D" parent="." unique_id=201397588]
+[node name="Building" parent="Flag" unique_id=1662782881 instance_placeholder="res://app/src/main/cpp/area_render/building.tscn"]
+z_index = -1
 
-[node name="Army" type="Node2D" parent="." unique_id=398251219]
+[node name="Army" type="Node2D" parent="." unique_id=2098620198]
+z_index = 2
+
+[node name="Army" parent="Army" unique_id=129528515 instance_placeholder="res://app/src/main/cpp/area_render/army.tscn"]
+
+[node name="ArrowShadow" type="Sprite2D" parent="Army" unique_id=1491334964]
+visible = false
+
+[node name="Arrow" type="Sprite2D" parent="Army" unique_id=1500530425]

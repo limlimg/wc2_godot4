@@ -1,4 +1,4 @@
-extends "res://app/src/main/cpp/native-lib.gd"
+extends Control
 
 const _CCamera = preload("res://app/src/main/cpp/c_camera.gd")
 const _CArea = preload("res://app/src/main/cpp/c_area.gd")
@@ -46,3 +46,11 @@ func move_camera_to_area(id: int) -> void:
 
 func move_camera_center_to_area(id: int) -> void:
 	pass
+
+
+func adjacent_areas_encirclement(id: int) -> void:
+	pass
+
+
+func get_num_adjacent_areas(id: int) -> int:
+	return 0

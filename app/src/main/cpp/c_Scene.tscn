@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://boe8je6i3v5xc"]
+
+[ext_resource type="Script" uid="uid://dwigbsm4seqr1" path="res://app/src/main/cpp/c_scene.gd" id="1_2l0sg"]
+[ext_resource type="PackedScene" uid="uid://cmnci1ox4l6s1" path="res://app/src/main/cpp/c_area.tscn" id="1_l63fu"]
+
+[node name="CScene" type="Control" unique_id=2018660802]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2l0sg")
+
+[node name="CCamera" parent="." unique_id=1077541885 instance_placeholder="res://app/src/main/cpp/c_camera.tscn"]
+layout_mode = 1
+
+[node name="CBackground" parent="CCamera" unique_id=1763912598 instance_placeholder="res://app/src/main/cpp/c_background.tscn"]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="DisabledArea" type="Sprite2D" parent="CCamera" unique_id=1705058765]
+centered = false
+
+[node name="CArea" parent="CCamera" unique_id=1183696436 instance=ExtResource("1_l63fu")]
+
+[node name="SelectedOverlay" type="Node2D" parent="CCamera" unique_id=978128942]
+
+[node name="CMedal" parent="CCamera" unique_id=1613117480 instance_placeholder="res://app/src/main/cpp/c_medal.tscn"]
+
+[node name="CBomber" parent="CCamera" unique_id=511489610 instance_placeholder="res://app/src/main/cpp/c_bomber.tscn"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1646489199]

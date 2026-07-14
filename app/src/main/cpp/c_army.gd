@@ -15,39 +15,33 @@ var def: _ArmyDef:
 			init()
 
 
-var country: _CCountry:
-	set(value):
-		if value != country:
-			country = value
-			init()
-
-
+var country: _CCountry
 var strength: int
 var max_strength: int
 var movement: int
 var cards: int
 var level: int
 var _exp: int
-var _morale: int:
+var morale: int:
 	set = set_morale
 
 var _morale_up_round: int
-var _direction: float
-var _ai_active: bool
+var direction: float
+var ai_active: bool
 
 func init() -> void:
-	if def == null or country == null:
+	if def == null:
 		return
 	strength = def.strength
 	max_strength = def.strength
 	movement = def.movement
 	cards = 0
 	level = 0
-	_direction = 1.0
+	direction = 1.0
 	_exp = 0
-	_morale = 0
+	morale = 0
 	_morale_up_round = 0
-	_ai_active = false
+	ai_active = false
 	reset_max_strength(false)
 
 
@@ -148,13 +142,13 @@ func get_max_strength() -> int:
 
 
 func set_morale(value: int) -> void:
-	_morale = value
-	if _morale != 2:
+	morale = value
+	if value != 2:
 		_morale_up_round = 0
 
 
 func break_through() -> void:
-	_morale = 2
+	morale = 2
 	_morale_up_round = 2
 
 
@@ -166,10 +160,10 @@ func save_army(save: _SaveArmyInfo) -> void:
 	save.max_strength = max_strength
 	save.level = level
 	save.experience = _exp
-	save.morale = _morale
+	save.morale = morale
 	save.morale_up_round = _morale_up_round
-	save.direction = _direction
-	save.ai_active = _ai_active
+	save.direction = direction
+	save.ai_active = ai_active
 
 
 func load_army(save: _SaveArmyInfo) -> void:
@@ -179,22 +173,22 @@ func load_army(save: _SaveArmyInfo) -> void:
 	max_strength = save.max_strength
 	level = save.level
 	_exp = save.experience
-	_morale = save.morale
+	morale = save.morale
 	_morale_up_round = save.morale_up_round
-	_direction = save.direction
-	_ai_active = save.ai_active
+	direction = save.direction
+	ai_active = save.ai_active
 	reset_max_strength(false)
 
 
 func turn_begin() -> void:
 	movement = def.movement
-	_ai_active = true
+	ai_active = true
 
 
 func turn_end() -> void:
 	movement = 0
-	_ai_active = false
+	ai_active = false
 	if _morale_up_round > 0:
 		_morale_up_round -= 1
 		if _morale_up_round == 0:
-			_morale = 0
+			morale = 0

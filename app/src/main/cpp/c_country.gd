@@ -1,4 +1,5 @@
 
+const _CCountry = preload("res://app/src/main/cpp/c_country.gd")
 const _SaveCountryInfo = preload("res://app/src/main/cpp/save_country_info.gd")
 const _CardDef = preload("res://app/src/main/cpp/card_def.gd")
 const _CardId = preload("res://app/src/main/cpp/card_id.gd").CARD_ID
@@ -94,3 +95,23 @@ func get_industrys() -> int:
 
 func get_war_medal_level(id: _WarMedalId) -> int:
 	return 0
+
+
+func use_card(card: _CardDef, area_id: int, army_index: int):
+	pass
+
+
+func remove_area(area_id: int) -> void:
+	pass
+
+
+func is_conquested() -> bool:
+	return false
+
+
+func be_conquested_by(conqueror: _CCountry) -> void:
+	pass
+
+
+func commander_die() -> void:
+	pass
