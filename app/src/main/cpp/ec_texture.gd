@@ -33,10 +33,7 @@ var size_override: Vector2:
 			emit_changed()
 
 
-var res_scale := 1.0:
-	set(value):
-		if value != res_scale:
-			res_scale = value
+var res_scale := 1.0
 
 
 var _reload_needed := false
@@ -78,7 +75,7 @@ func _reload_clone() -> void:
 
 func _on_clone_changed() -> void:
 	texture = _clone_from.texture
-	size_override = _clone_from.size_override
+	size_override = _clone_from.size_override / res_scale
 
 
 func _validate_property(property: Dictionary) -> void:
