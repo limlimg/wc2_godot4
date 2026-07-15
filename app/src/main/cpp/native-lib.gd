@@ -471,21 +471,28 @@ static func ec_texture_load(texture_name: String) -> _ecTexture:
 		if is_2x:
 			path = get_2x_path(texture_name, "")
 	if not ResourceLoader.exists(path):
-		return null
-	var texture := load(path) as Texture2D
-	if texture == null:
 		if not texture_name.ends_with(".png"):
 			texture_name = texture_name.substr(0, texture_name.rfind(".")) + ".png"
 			return ec_texture_load(texture_name)
 		return null
+	var texture: Texture2D = null
+	if Engine.is_editor_hint():
+		texture = load(path) as Texture2D
+	else:
+		var status := ResourceLoader.load_threaded_get_status(path)
+		if status == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
+			ResourceLoader.load_threaded_request(path)
+		elif status == ResourceLoader.THREAD_LOAD_LOADED:
+			texture = ResourceLoader.load_threaded_get(path)
 	var ec_texture := _ecTexture.new()
 	ec_texture.texture = texture
-	if is_2x:
-		ec_texture.size_override.x = texture.get_width() / 2.0
-		ec_texture.size_override.y = texture.get_height() / 2.0
-	else:
-		ec_texture.size_override.x = texture.get_width()
-		ec_texture.size_override.y = texture.get_height()
+	if texture != null:
+		if is_2x:
+			ec_texture.size_override.x = texture.get_width() / 2.0
+			ec_texture.size_override.y = texture.get_height() / 2.0
+		else:
+			ec_texture.size_override.x = texture.get_width()
+			ec_texture.size_override.y = texture.get_height()
 	return ec_texture
 
 

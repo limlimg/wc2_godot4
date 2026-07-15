@@ -32,6 +32,7 @@ var _render_shape := 3
 var _bound_texture: Texture2D
 var fade_color: Color
 var _texture_cache: Dictionary[String, WeakRef]
+var _texture_loading: Array[String]
 var _rendering_canvas_item: CanvasItem
 
 static func instance() -> _ecGraphics:
@@ -101,7 +102,26 @@ func load_texture(texture_name: String) -> _ecTexture:
 	var ec_texture := ec_texture_load(texture_name)
 	if ec_texture != null:
 		_texture_cache[texture_name] = weakref(ec_texture)
+		if ec_texture.texture == null:
+			_texture_loading.append(texture_name)
 	return ec_texture
+
+
+func _process(_delta: float) -> void:
+	for i in _texture_loading.duplicate():
+		var ec_texture := ec_texture_load(i)
+		if ec_texture == null:
+			_texture_loading.erase(i)
+			continue
+		if ec_texture.texture == null:
+			continue
+		_texture_loading.erase(i)
+		if i not in _texture_cache:
+			continue
+		var ref = _texture_cache[i].get_ref()
+		if ref != null:
+			ref.texture = ec_texture.texture
+			ref.size_override = ec_texture.size_override
 
 
 func free_texture(texture_name: StringName) -> void:

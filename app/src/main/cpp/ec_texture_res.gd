@@ -24,7 +24,7 @@ const _lib = preload("res://app/src/main/cpp/native-lib.gd")
 @export
 var assets: Array[_AssetRegistry]:
 	set(value):
-		#if value != assets:
+		if value != assets:
 			var _cache_images = images
 			images = {}
 			assets = value

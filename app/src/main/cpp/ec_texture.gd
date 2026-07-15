@@ -39,6 +39,18 @@ var res_scale := 1.0:
 			res_scale = value
 
 
+var _reload_needed := false
+var _clone_from: ecTexture:
+	set(value):
+		if value != _clone_from:
+			if _clone_from != null:
+				_clone_from.changed.disconnect(_on_clone_changed)
+			_clone_from = value
+			_on_clone_changed()
+			if value != null:
+				value.changed.connect(_on_clone_changed)
+
+
 func _on_asset_changed() -> void:
 	if asset != null:
 		var clone_texture: ecTexture
@@ -46,18 +58,27 @@ func _on_asset_changed() -> void:
 			clone_texture = _ecGraphics.instance().load_texture(asset.name)
 			if clone_texture == null:
 				clone_texture = _ecGraphics.instance().load_texture(asset.name_hd)
+			if clone_texture != null:
+				texture = clone_texture.texture
+				size_override = clone_texture.size_override
+				res_scale = clone_texture.res_scale
+			else:
+				texture = null
+				size_override = Vector2.ZERO
 		else:
-			var name := asset.get_resolved_name()
-			if not name.is_empty():
-				clone_texture = _ecGraphics.instance().load_texture(name)
-		if clone_texture != null:
-			texture = clone_texture.texture
-			size_override = clone_texture.size_override
-			res_scale = clone_texture.res_scale
-		else:
-			texture = null
-			size_override = Vector2.ZERO
+			_reload_needed = true
 	notify_property_list_changed()
+
+
+func _reload_clone() -> void:
+	var name := asset.get_resolved_name()
+	if not name.is_empty():
+		_clone_from = _ecGraphics.instance().load_texture(name)
+
+
+func _on_clone_changed() -> void:
+	texture = _clone_from.texture
+	size_override = _clone_from.size_override
 
 
 func _validate_property(property: Dictionary) -> void:
@@ -67,6 +88,8 @@ func _validate_property(property: Dictionary) -> void:
 
 
 func _draw(to_canvas_item: RID, pos: Vector2, modulate: Color, transpose: bool) -> void:
+	if _reload_needed:
+		_reload_clone()
 	if texture == null:
 		return
 	var rect := Rect2(pos, size_override)
@@ -74,6 +97,8 @@ func _draw(to_canvas_item: RID, pos: Vector2, modulate: Color, transpose: bool) 
 
 
 func _draw_rect(to_canvas_item: RID, rect: Rect2, tile: bool, modulate: Color, transpose: bool) -> void:
+	if _reload_needed:
+		_reload_clone()
 	if texture == null:
 		return
 	if tile:
@@ -85,6 +110,8 @@ func _draw_rect(to_canvas_item: RID, rect: Rect2, tile: bool, modulate: Color, t
 
 
 func _draw_rect_region(to_canvas_item: RID, rect: Rect2, src_rect: Rect2, modulate: Color, transpose: bool, clip_uv: bool) -> void:
+	if _reload_needed:
+		_reload_clone()
 	if texture == null:
 		return
 	var texture_size := texture.get_size()
