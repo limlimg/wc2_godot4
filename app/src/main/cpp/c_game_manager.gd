@@ -8,6 +8,7 @@ const _CActionAssist = preload("res://app/src/main/cpp/c_action_assist.gd")
 const _CArmy = preload("res://app/src/main/cpp/c_army.gd")
 const _SaveAreaInfo = preload("res://app/src/main/cpp/save_area_info.gd")
 const _SaveArmyInfo = preload("res://app/src/main/cpp/save_army_info.gd")
+const _CArea = preload("res://app/src/main/cpp/c_area.gd")
 
 var _all_country: Array[_CCountry]
 var _belligerent_country: Array[_CCountry]
@@ -52,12 +53,12 @@ func set_conquest_player_country_id(value: String) -> void:
 	_conquest_player_country_id = value
 
 
-func new_game(new_game_mode: int, map_index: int, new_campaign: int, battle: int) -> void:
+func new_game(new_game_mode: int, map_index: int, new_campaign: int, new_battle: int) -> void:
 	game_mode = new_game_mode
 	if map_index >= 0:
 		_map = map_index + 1
 	campaign = new_campaign
-	battle = battle
+	battle = new_battle
 	victory = 100000
 	_great_victory = 10
 	if game_mode == 1:
@@ -221,7 +222,7 @@ func init_battle() -> void:
 	var ai_area_with_army_count := 0
 	var sea_area_count := 0
 	for i in g_Scene.get_num_areas():
-		var area := g_Scene.get_area(i)
+		var area: _CArea = g_Scene.get_area(i)
 		if area.enable:
 			if area.country != null and area.country.ai and area.army.size() > 0:
 				ai_area_with_army_count += 1
@@ -234,11 +235,12 @@ func init_battle() -> void:
 
 func _load_battle(file_name: String) -> void:
 	_clear_battle()
-	var battle: _SaveHeader = load(get_asset_path(file_name, ""))
-	g_Scene.init(battle.areas_enable, battle.map)
-	for i in battle.country:
+	var res_battle: _SaveHeader = load(get_asset_path(file_name, ""))
+	g_Scene.init(res_battle.areas_enable, res_battle.map)
+	for i in res_battle.country:
 		var country := _CCountry.new()
-		country.init(i.id, i.name)
+		country.id = i.id
+		country.name = i.name
 		country.color = i.color
 		country.alliance = i.alliance
 		country.tax_factor = i.tax_factor
@@ -255,9 +257,9 @@ func _load_battle(file_name: String) -> void:
 		_all_country.append(country)
 		if country.alliance != 4:
 			_belligerent_country.append(country)
-	for i in battle.area:
+	for i in res_battle.area:
 		var id := i.id
-		var area := g_Scene.get_area(id)
+		var area: _CArea = g_Scene.get_area(id)
 		if area.enable:
 			var country := _find_country(i.country)
 			g_Scene.set_area_country(id, country)
@@ -272,7 +274,8 @@ func _load_battle(file_name: String) -> void:
 				if country != null:
 					var army_def := _CObjectDef.instance().get_army_def(j.type, country.name)
 					var army := _CArmy.new()
-					army.init(army_def, country)
+					army.def = army_def
+					army.country = country
 					army.cards = j.cards
 					army.level = j.level
 					if area.sea != 0 and army.movement > 1:
@@ -281,7 +284,7 @@ func _load_battle(file_name: String) -> void:
 					if army.cards & (1 << 3) != 0:
 						country.commander_alive = true
 					army.reset_max_strength(false)
-	_dialogue = battle.dialogue.duplicate()
+	_dialogue = res_battle.dialogue.duplicate()
 	_current_country = 0
 
 
@@ -348,7 +351,8 @@ func _real_load_game(file_name: String) -> void:
 			info._mem = buf_country
 			info._offset = 276 * i
 			var country := _CCountry.new()
-			country.init(info.id, info.name)
+			country.id = info.id
+			country.name = info.name
 			country.load_country(info)
 			_all_country.append(country)
 			if country.alliance != 4:
@@ -357,7 +361,7 @@ func _real_load_game(file_name: String) -> void:
 			var info := _SaveAreaInfo.new()
 			info._mem = buf_area
 			info._offset = 200 * i
-			var area := g_Scene.get_area(info.id)
+			var area: _CArea = g_Scene.get_area(info.id)
 			area.country = _all_country[info.country_index]
 			area.load_area(info)
 			_all_country[info.country_index].add_area(info.id)
@@ -370,7 +374,7 @@ func _real_load_game(file_name: String) -> void:
 		current_round = save.current_round
 		random_reward_medal = save.random_reward_medal
 		g_Scene.camera.set_pos(save.camera_x, save.camera_y, false)
-		g_Scene.camera.scale = save.camera_scale
+		g_Scene.camera.scale = Vector2(save.camera_scale, save.camera_scale)
 
 
 func get_local_player_country() -> _CCountry:

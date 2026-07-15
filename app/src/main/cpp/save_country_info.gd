@@ -31,7 +31,7 @@ var techlevel: int:
 		_mem.encode_u32(_offset + 8, value)
 
 
-var tech_developing_round: int:
+var research_round: int:
 	get():
 		return _mem.decode_u32(_offset + 12)
 	set(value):
