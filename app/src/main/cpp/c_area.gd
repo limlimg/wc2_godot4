@@ -206,6 +206,10 @@ func get_industry_level() -> int:
 	return industry_level
 
 
+func get_num_armies() -> int:
+	return _armies.size()
+
+
 func get_army(idx: int) -> _CArmy:
 	if idx < 0 or idx >= _armies.size():
 		return null

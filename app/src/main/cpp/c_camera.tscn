@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://jqqrcwjhx42l"]
+
+[ext_resource type="Script" uid="uid://cs12ti8mqlvse" path="res://app/src/main/cpp/c_camera.gd" id="1_n23jt"]
+
+[node name="CCamera" type="SubViewport" unique_id=1246448664]
+script = ExtResource("1_n23jt")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=279675088]

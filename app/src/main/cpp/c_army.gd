@@ -8,6 +8,7 @@ const _SaveArmyInfo = preload("res://app/src/main/cpp/save_army_info.gd")
 
 const _EXP_REQUIREMENT = [100, 150, 200, 250]
 
+@export
 var def: _ArmyDef:
 	set(value):
 		if value != def:
@@ -15,18 +16,36 @@ var def: _ArmyDef:
 			init()
 
 
+@export
 var country: _CCountry
+
+@export
 var strength: int
+
+@export
 var max_strength: int
+
+@export
 var movement: int
+
+@export
 var cards: int
+
+@export
 var level: int
+
 var _exp: int
+
+@export
 var morale: int:
 	set = set_morale
 
+@export
 var _morale_up_round: int
+
+@export
 var direction: float
+
 var ai_active: bool
 
 func init() -> void:

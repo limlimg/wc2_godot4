@@ -53,6 +53,3 @@ theme = ExtResource("4_oa3nl")
 
 [node name="GUIManager" parent="." unique_id=510783743 instance=ExtResource("4_krfvt")]
 layout_mode = 1
-
-[connection signal="faded_in" from="GUIManager" to="." method="_on_gui_manager_faded_in"]
-[connection signal="faded_out" from="GUIManager" to="." method="_on_gui_manager_faded_out"]

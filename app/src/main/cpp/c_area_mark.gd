@@ -19,7 +19,10 @@ var _pattern: Image
 
 func init() -> void:
 	release()
-	_pattern = load(_lib.get_asset_path("areamark{0}.raw".format([map]), "")) as Image
+	var path :=_lib.get_asset_path("areamark{0}.raw".format([map]), "")
+	if path.is_empty():
+		return
+	_pattern = load(path) as Image
 
 
 func release() -> void:

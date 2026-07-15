@@ -12,26 +12,43 @@ var map: int:
 			init()
 
 
+@export
+var map_rect: Rect2:
+	set(value):
+		if value != map_rect:
+			map_rect = value
+			init()
+
+
+@export
+var scene_rect: Rect2:
+	set(value):
+		if value != scene_rect:
+			scene_rect = value
+			position = value.position - Vector2.ONE * 82.0
+			size = value.size + Vector2.ONE * 164.0
+			init()
+
+
 var _bgs: Array[Sprite2D]
 
 func init() -> void:
 	for i in _bgs:
 		i.queue_free()
 	_bgs.clear()
-	var areas_mark := _CAreaMark.new()
-	areas_mark.map = map
-	var map_full_size := areas_mark.get_map_size()
-	var visible_rect := Rect2(position, size)
-	@warning_ignore("integer_division")
-	var col := (map_full_size.x + 499) / 500
-	@warning_ignore("integer_division")
-	for i in (map_full_size.y + 499) / 500:
-		for j in col:
-			var image_pos = Vector2(500 * j, 500 * i)
-			if Rect2(image_pos, Vector2(500, 500)).intersects(visible_rect):
+	@warning_ignore("narrowing_conversion")
+	var i: int = map_rect.position.y / 500
+	while i <= map_rect.end.y / 500:
+		@warning_ignore("narrowing_conversion")
+		var j: int = map_rect.position.x / 500
+		while j <= map_rect.end.x / 500:
+			var image_pos = Vector2(500 * j, 500 * i) + map_rect.position
+			if Rect2(image_pos, Vector2(500, 500)).intersects(scene_rect):
 				var image := $Background/Sprite2D.duplicate()
 				image.texture = image.texture.duplicate()
-				image.texture.texture = _ecGraphics.instance().load_texture("map{0}_{1}.pkm".format([map, i * col + j + 1]))
-				image.position = image_pos - position
+				image.texture.texture = _ecGraphics.instance().load_texture("map{0}_{1}.pkm".format([map, i * ceili(map_rect.size.x / 500) + j + 1]))
+				image.position = image_pos - scene_rect.position
 				$Background.add_child(image)
 				_bgs.append(image)
+			j += 1
+		i += 1

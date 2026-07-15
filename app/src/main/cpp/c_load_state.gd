@@ -3,25 +3,11 @@ extends "res://app/src/main/cpp/c_base_state.gd"
 const _CGameState = preload("res://app/src/main/cpp/c_game_state.gd")
 const _CStateManager = preload("res://app/src/main/cpp/c_state_manager.gd")
 
-var _load_thread := Thread.new()
-
-signal _game_initialized
-
 func _on_enter() -> void:
 	$Tip/Label.text = "tip {0}".format([randi_range(1, 11)])
 	$GUIManager.fade_in(-1)
-	_load_thread.start(func():
-		_CGameState.init_game()
-		_game_initialized.emit())
-
-
-func _on_gui_manager_faded_in(_cause: int) -> void:
-	_game_initialized.connect(func():
-		_load_thread.wait_to_finish()
-		$GUIManager.fade_out(-1, null))
-	if not _load_thread.is_alive():
-		_game_initialized.emit()
-
-
-func _on_gui_manager_faded_out(_cause: int) -> void:
+	await $GUIManager.faded_in
+	_CGameState.init_game()
+	$GUIManager.fade_out(-1, null)
+	await $GUIManager.faded_out
 	_CStateManager.instance().set_cur_state("res://app/src/main/cpp/c_game_state.tscn")

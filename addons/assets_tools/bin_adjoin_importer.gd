@@ -69,14 +69,14 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		push_error("Failed to import {0}: Unexpected file length: expected at least {1}, got {2}".format([source_file, 4 + 17 * 4 * size, file_length]))
 		return ERR_PARSE_ERROR
 	var res := _Adjoin.new()
-	res._index.append(res._data.size())
+	res.index.append(0)
 	var cur := 4
 	while cur < file_length:
 		file.seek(cur)
 		var entry_size := file.get_32()
 		for i in entry_size:
-			res._data.append(file.get_32())
-		res._index.append(res._data.size())
+			res.data.append(file.get_32())
+		res.index.append(res.data.size())
 		cur += 4 * max(entry_size + 1, 17)
 	var filename = save_path + "." + _get_save_extension()
 	return ResourceSaver.save(res, filename)
