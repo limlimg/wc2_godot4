@@ -43,11 +43,13 @@ func _on_asset_changed() -> void:
 	if asset != null:
 		var res: ecEffectRes
 		if Engine.is_editor_hint():
-			print(asset.name)
-			print(_lib.get_asset_path(asset.name, ""))
-			res = load(_lib.get_asset_path(asset.name, "")) as ecEffectRes
-			if res == null:
-				res = load(_lib.get_asset_path(asset.name_hd, "")) as ecEffectRes
+			var path := _lib.get_asset_path(asset.name, "")
+			if path.is_empty():
+				path = _lib.get_asset_path(asset.name_hd, "")
+			if not path.is_empty():
+				res = load(path) as ecEffectRes
+			else:
+				res = null
 		else:
 			var name := asset.get_resolved_name()
 			if not name.is_empty():
