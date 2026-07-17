@@ -1,0 +1,10 @@
+class_name WARMEDAL_ID
+
+enum {
+  INFANTRY_MEDAL = 0x0,
+  AIR_FORCE_MEDAL = 0x1,
+  ARTILLERY_MEDAL = 0x2,
+  ARMOUR_MEDAL = 0x3,
+  NAVY_MEDAL = 0x4,
+  COMMERCE_MEDAL = 0x5,
+}

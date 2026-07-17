@@ -15,29 +15,24 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="World Conqueror 2"
-run/main_scene="uid://k1rddnv5q5m8"
+run/main_scene="uid://d1fpwlnpujwen"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-ecGraphics="*uid://bgqo85u3r33x3"
-CStateManager="*res://app/src/main/cpp/c_state_manager.gd"
+ecGraphicsInstance="*uid://bgqo85u3r33x3"
 g_LocalizableStrings="*uid://rbwcuj5sihmy"
 g_StringTable="*uid://rbwcuj5sihmy"
-CObjectDef="*uid://chppiklcc4q7g"
-g_Commander="*res://app/src/main/cpp/c_commander.gd"
-CSoundBox="*res://app/src/main/cpp/c_sound_box.gd"
-GUIMotionManager="*res://app/src/main/cpp/gui_motion_manager.gd"
-g_GameSettings="*res://app/src/main/cpp/c_game_settings.gd"
-g_GameManager="*res://app/src/main/cpp/c_game_manager.gd"
+CObjectDefInstance="*uid://chppiklcc4q7g"
+g_Commander="*uid://br6thvhxrujky"
+CSoundBoxInstance="*uid://dkim8xlep1wjg"
+g_GameSettings="*uid://bvg1wsn3twqek"
+g_GameManager="*uid://b5tv1g6v504vp"
 g_SoundRes="*uid://csrlpeqpqytkc"
 g_GameRes="*uid://b6nay46iirkmq"
-g_Scene="*uid://boe8je6i3v5xc"
-CActionAI="*uid://bjcor7a8i4mlv"
-CActionAssist="*uid://6n107koaw8pt"
-AndroidManifest="*res://app/src/main/android_manifest.tscn"
+AppDelegate="*uid://ca4a33l6mf8ec"
 
 [display]
 
@@ -48,6 +43,7 @@ window/size/window_width_override=1024
 window/size/window_height_override=768
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
+window/stretch/scale=0.5
 
 [editor_plugins]
 
@@ -57,6 +53,8 @@ enabled=PackedStringArray("res://addons/assets_tools/plugin.cfg")
 
 GUIManagerInstance=""
 ecEffectManagerInstance=""
+CStateManagerInstance=""
+GUIMotionManagerInstance=""
 
 [input]
 
@@ -78,41 +76,41 @@ pointing/emulate_mouse_from_touch=false
 locale/translation_remaps={
 "res://app/src/main/assets/English.lproj/InfoPlist.strings": PackedStringArray("res://app/src/main/assets/ja.lproj/InfoPlist.strings:ja", "res://app/src/main/assets/kr.lproj/InfoPlist.strings:ko", "res://app/src/main/assets/ru.lproj/InfoPlist.strings:ru", "res://app/src/main/assets/zh_CN.lproj/InfoPlist.strings:zh_Hans", "res://app/src/main/assets/zh_TW.lproj/InfoPlist.strings:zh_Hant"),
 "res://app/src/main/assets/English.lproj/Localizable.strings": PackedStringArray("res://app/src/main/assets/ja.lproj/Localizable.strings:ja", "res://app/src/main/assets/kr.lproj/Localizable.strings:ko", "res://app/src/main/assets/ru.lproj/Localizable.strings:ru", "res://app/src/main/assets/zh_CN.lproj/Localizable.strings:zh_Hans", "res://app/src/main/assets/zh_TW.lproj/Localizable.strings:zh_Hant"),
-"res://app/src/main/assets/English.lproj/font_text_newgame_1_en.fnt": PackedStringArray("res://app/src/main/assets/ja.lproj/font_text_newgame_1_ja.fnt:ja", "res://app/src/main/assets/kr.lproj/font_text_newgame_1_ko.fnt:ko", "res://app/src/main/assets/ru.lproj/font_text_newgame_1_en.fnt:ru", "res://app/src/main/assets/zh_CN.lproj/font_text_newgame_1_cn.fnt:zh_Hans", "res://app/src/main/assets/zh_TW.lproj/font_text_newgame_1_tw.fnt:zh_Hant"),
-"res://app/src/main/assets/English.lproj/font_text_newgame_1_en_hd.fnt": PackedStringArray("res://app/src/main/assets/ja.lproj/font_text_newgame_1_ja_hd.fnt:ja", "res://app/src/main/assets/kr.lproj/font_text_newgame_1_ko_hd.fnt:ko", "res://app/src/main/assets/ru.lproj/font_text_newgame_1_en_hd.fnt:ru", "res://app/src/main/assets/zh_CN.lproj/font_text_newgame_1_cn_hd.fnt:zh_Hans", "res://app/src/main/assets/zh_TW.lproj/font_text_newgame_1_tw_hd.fnt:zh_Hant"),
-"res://app/src/main/assets/English.lproj/font_text_newgame_2_en.fnt": PackedStringArray("res://app/src/main/assets/ja.lproj/font_text_newgame_2_ja.fnt:ja", "res://app/src/main/assets/kr.lproj/font_text_newgame_2_ko.fnt:ko", "res://app/src/main/assets/ru.lproj/font_text_newgame_2_en.fnt:ru", "res://app/src/main/assets/zh_CN.lproj/font_text_newgame_2_cn.fnt:zh_Hans", "res://app/src/main/assets/zh_TW.lproj/font_text_newgame_2_tw.fnt:zh_Hant"),
-"res://app/src/main/assets/English.lproj/font_text_newgame_2_en_hd.fnt": PackedStringArray("res://app/src/main/assets/ja.lproj/font_text_newgame_2_ja_hd.fnt:ja", "res://app/src/main/assets/kr.lproj/font_text_newgame_2_ko_hd.fnt:ko", "res://app/src/main/assets/ru.lproj/font_text_newgame_2_en_hd.fnt:ru", "res://app/src/main/assets/zh_CN.lproj/font_text_newgame_2_cn_hd.fnt:zh_Hans", "res://app/src/main/assets/zh_TW.lproj/font_text_newgame_2_tw_hd.fnt:zh_Hant"),
-"res://app/src/main/assets/English.lproj/font_text_newgame_3_en.fnt": PackedStringArray("res://app/src/main/assets/ja.lproj/font_text_newgame_3_ja.fnt:ja", "res://app/src/main/assets/kr.lproj/font_text_newgame_3_ko.fnt:ko", "res://app/src/main/assets/ru.lproj/font_text_newgame_3_en.fnt:ru", "res://app/src/main/assets/zh_CN.lproj/font_text_newgame_3_cn.fnt:zh_Hans", "res://app/src/main/assets/zh_TW.lproj/font_text_newgame_3_tw.fnt:zh_Hant"),
-"res://app/src/main/assets/English.lproj/font_text_newgame_3_en_hd.fnt": PackedStringArray("res://app/src/main/assets/ja.lproj/font_text_newgame_3_ja_hd.fnt:ja", "res://app/src/main/assets/kr.lproj/font_text_newgame_3_ko_hd.fnt:ko", "res://app/src/main/assets/ru.lproj/font_text_newgame_3_en_hd.fnt:ru", "res://app/src/main/assets/zh_CN.lproj/font_text_newgame_3_cn_hd.fnt:zh_Hans", "res://app/src/main/assets/zh_TW.lproj/font_text_newgame_3_tw_hd.fnt:zh_Hant"),
-"res://app/src/main/assets/English.lproj/font_text_newgame_4_en.fnt": PackedStringArray("res://app/src/main/assets/ja.lproj/font_text_newgame_4_ja.fnt:ja", "res://app/src/main/assets/kr.lproj/font_text_newgame_4_ko.fnt:ko", "res://app/src/main/assets/ru.lproj/font_text_newgame_4_en.fnt:ru", "res://app/src/main/assets/zh_CN.lproj/font_text_newgame_4_cn.fnt:zh_Hans", "res://app/src/main/assets/zh_TW.lproj/font_text_newgame_4_tw.fnt:zh_Hant"),
-"res://app/src/main/assets/English.lproj/font_text_newgame_4_en_hd.fnt": PackedStringArray("res://app/src/main/assets/ja.lproj/font_text_newgame_4_ja_hd.fnt:ja", "res://app/src/main/assets/kr.lproj/font_text_newgame_4_ko_hd.fnt:ko", "res://app/src/main/assets/ru.lproj/font_text_newgame_4_en_hd.fnt:ru", "res://app/src/main/assets/zh_CN.lproj/font_text_newgame_4_cn_hd.fnt:zh_Hans", "res://app/src/main/assets/zh_TW.lproj/font_text_newgame_4_tw_hd.fnt:zh_Hant"),
-"res://app/src/main/assets/English.lproj/locstrings.xml": PackedStringArray("res://app/src/main/assets/ja.lproj/locstrings.xml:ja", "res://app/src/main/assets/kr.lproj/locstrings.xml:ko", "res://app/src/main/assets/ru.lproj/locstrings.xml:ru", "res://app/src/main/assets/zh_CN.lproj/locstrings.xml:zh_Hans", "res://app/src/main/assets/zh_TW.lproj/locstrings.xml:zh_Hant"),
-"res://app/src/main/assets/battlename_en_hd.xml": PackedStringArray("res://app/src/main/assets/battlename_ja_hd.xml:ja", "res://app/src/main/assets/battlename_kr_hd.png:ko", "res://app/src/main/assets/battlename_ru_hd.xml:ru", "res://app/src/main/assets/battlename_cn_hd.xml:zh_Hans", "res://app/src/main/assets/battlename_tw_hd.xml:zh_Hant"),
-"res://app/src/main/assets/board_exit@2x.png": PackedStringArray("res://app/src/main/assets/board_exit_cn@2x.png:zh_Hans"),
-"res://app/src/main/assets/ew6_en.webp": PackedStringArray("res://app/src/main/assets/ew6_ja.webp:ja", "res://app/src/main/assets/ew6_ko.webp:ko", "res://app/src/main/assets/ew6_cn.webp:zh_Hans", "res://app/src/main/assets/ew6_tw.webp:zh_Hant"),
-"res://app/src/main/assets/font2_en.fnt": PackedStringArray("res://app/src/main/assets/font2_ja.fnt:ja", "res://app/src/main/assets/font2_kr.fnt:ko", "res://app/src/main/assets/font2_ru.fnt:ru", "res://app/src/main/assets/font2_cn.fnt:zh_Hans", "res://app/src/main/assets/font2_tw.fnt:zh_Hant"),
-"res://app/src/main/assets/font2_en_hd.fnt": PackedStringArray("res://app/src/main/assets/font2_ja_hd.fnt:ja", "res://app/src/main/assets/font2_kr_hd.fnt:ko", "res://app/src/main/assets/font2_ru_hd.fnt:ru", "res://app/src/main/assets/font2_cn_hd.fnt:zh_Hans", "res://app/src/main/assets/font2_tw_hd.fnt:zh_Hant"),
-"res://app/src/main/assets/font3_en.fnt": PackedStringArray("res://app/src/main/assets/font3_ja.fnt:ja", "res://app/src/main/assets/font3_kr.fnt:ko", "res://app/src/main/assets/font3_ru.fnt:ru", "res://app/src/main/assets/font3_cn.fnt:zh_Hans", "res://app/src/main/assets/font3_tw.fnt:zh_Hant"),
-"res://app/src/main/assets/font3_en_hd.fnt": PackedStringArray("res://app/src/main/assets/font3_ja_hd.fnt:ja", "res://app/src/main/assets/font3_kr_hd.fnt:ko", "res://app/src/main/assets/font3_ru_hd.fnt:ru", "res://app/src/main/assets/font3_cn_hd.fnt:zh_Hans", "res://app/src/main/assets/font3_tw_hd.fnt:zh_Hant"),
-"res://app/src/main/assets/font4_en.fnt": PackedStringArray("res://app/src/main/assets/font4_ja.fnt:ja", "res://app/src/main/assets/font4_kr.fnt:ko", "res://app/src/main/assets/font4_ru.fnt:ru", "res://app/src/main/assets/font4_cn.fnt:zh_Hans", "res://app/src/main/assets/font4_tw.fnt:zh_Hant"),
-"res://app/src/main/assets/font4_en_hd.fnt": PackedStringArray("res://app/src/main/assets/font4_ja_hd.fnt:ja", "res://app/src/main/assets/font4_kr_hd.fnt:ko", "res://app/src/main/assets/font4_ru_hd.fnt:ru", "res://app/src/main/assets/font4_cn_hd.fnt:zh_Hans", "res://app/src/main/assets/font4_tw_hd.fnt:zh_Hant"),
-"res://app/src/main/assets/font5_en.fnt": PackedStringArray("res://app/src/main/assets/font5_ja.fnt:ja", "res://app/src/main/assets/font5_kr.fnt:ko", "res://app/src/main/assets/font5_ru.fnt:ru", "res://app/src/main/assets/font5_cn.fnt:zh_Hans", "res://app/src/main/assets/font5_tw.fnt:zh_Hant"),
-"res://app/src/main/assets/font5_en_hd.fnt": PackedStringArray("res://app/src/main/assets/font5_ja_hd.fnt:ja", "res://app/src/main/assets/font5_kr_hd.fnt:ko", "res://app/src/main/assets/font5_ru_hd.fnt:ru", "res://app/src/main/assets/font5_cn_hd.fnt:zh_Hans", "res://app/src/main/assets/font5_tw_hd.fnt:zh_Hant"),
-"res://app/src/main/assets/font6_en.fnt": PackedStringArray("res://app/src/main/assets/font6_ja.fnt:ja", "res://app/src/main/assets/font6_kr.fnt:ko", "res://app/src/main/assets/font6_ru.fnt:ru", "res://app/src/main/assets/font6_cn.fnt:zh_Hans", "res://app/src/main/assets/font6_tw.fnt:zh_Hant"),
-"res://app/src/main/assets/font6_en_hd.fnt": PackedStringArray("res://app/src/main/assets/font6_ja_hd.fnt:ja", "res://app/src/main/assets/font6_kr_hd.fnt:ko", "res://app/src/main/assets/font6_ru_hd.fnt:ru", "res://app/src/main/assets/font6_cn_hd.fnt:zh_Hans", "res://app/src/main/assets/font6_tw_hd.fnt:zh_Hant"),
-"res://app/src/main/assets/font7_en.fnt": PackedStringArray("res://app/src/main/assets/font7_ja.fnt:ja", "res://app/src/main/assets/font7_kr.fnt:ko", "res://app/src/main/assets/font7_ru.fnt:ru", "res://app/src/main/assets/font7_cn.fnt:zh_Hans", "res://app/src/main/assets/font7_tw.fnt:zh_Hant"),
-"res://app/src/main/assets/font7_en_hd.fnt": PackedStringArray("res://app/src/main/assets/font7_ja_hd.fnt:ja", "res://app/src/main/assets/font7_kr_hd.fnt:ko", "res://app/src/main/assets/font7_ru_hd.fnt:ru", "res://app/src/main/assets/font7_cn_hd.fnt:zh_Hans", "res://app/src/main/assets/font7_tw_hd.fnt:zh_Hant"),
-"res://app/src/main/assets/font8_en.fnt": PackedStringArray("res://app/src/main/assets/font8_ja.fnt:ja", "res://app/src/main/assets/font8_kr.fnt:ko", "res://app/src/main/assets/font8_ru.fnt:ru", "res://app/src/main/assets/font8_cn.fnt:zh_Hans", "res://app/src/main/assets/font8_tw.fnt:zh_Hant"),
-"res://app/src/main/assets/font8_en_hd.fnt": PackedStringArray("res://app/src/main/assets/font8_ja_hd.fnt:ja", "res://app/src/main/assets/font8_kr_hd.fnt:ko", "res://app/src/main/assets/font8_ru_hd.fnt:ru", "res://app/src/main/assets/font8_cn_hd.fnt:zh_Hans", "res://app/src/main/assets/font8_tw_hd.fnt:zh_Hant"),
-"res://app/src/main/assets/loading@2x.png": PackedStringArray("res://app/src/main/assets/loading_cn@2x.png:zh_Hans"),
-"res://app/src/main/assets/loading_title@2x.png": PackedStringArray("res://app/src/main/assets/loading_title_cn@2x.png:zh_Hans"),
-"res://app/src/main/assets/mui_en_hd.xml": PackedStringArray("res://app/src/main/assets/mui_ja_hd.xml:ja", "res://app/src/main/assets/mui_kr_hd.xml:ko", "res://app/src/main/assets/mui_ru_hd.xml:ru", "res://app/src/main/assets/mui_cn_hd.xml:zh_Hans", "res://app/src/main/assets/mui_tw_hd.xml:zh_Hant"),
-"res://app/src/main/assets/stringtable_en.xml": PackedStringArray("res://app/src/main/assets/stringtable_ja.xml:ja", "res://app/src/main/assets/stringtable_kr.xml:ko", "res://app/src/main/assets/stringtable_ru.xml:ru", "res://app/src/main/assets/stringtable_cn.xml:zh_Hans", "res://app/src/main/assets/stringtable_tw.xml:zh_Hant"),
-"res://app/src/main/assets/stringtable_en_iPad.xml": PackedStringArray("res://app/src/main/assets/stringtable_ja_iPad.xml:ja", "res://app/src/main/assets/stringtable_kr_iPad.xml:ko", "res://app/src/main/assets/stringtable_ru_iPad.xml:ru", "res://app/src/main/assets/stringtable_cn_iPad.xml:zh_Hans", "res://app/src/main/assets/stringtable_tw_iPad.xml:zh_Hant"),
-"res://app/src/main/assets/text_en_hd.xml": PackedStringArray("res://app/src/main/assets/text_ja_hd.xml:ja", "res://app/src/main/assets/text_kr_hd.xml:ko", "res://app/src/main/assets/text_ru_hd.xml:ru", "res://app/src/main/assets/text_cn_hd.xml:zh_Hans", "res://app/src/main/assets/text_tw_hd.xml:zh_Hant"),
-"res://app/src/main/assets/text_en_iPad.xml": PackedStringArray("res://app/src/main/assets/text_ja_iPad.xml:ja", "res://app/src/main/assets/text_kr_iPad.xml:ko", "res://app/src/main/assets/text_ru_iPad.xml:ru", "res://app/src/main/assets/text_cn_iPad.xml:zh_Hans"),
-"res://app/src/main/assets/text_en_iPad_hd.xml": PackedStringArray("res://app/src/main/assets/text_ja_iPad_hd.xml:ja", "res://app/src/main/assets/text_kr_iPad_hd.xml:ko", "res://app/src/main/assets/text_ru_iPad_hd.xml:ru", "res://app/src/main/assets/text_cn_iPad_hd.xml:zh_Hans", "res://app/src/main/assets/text_tw_iPad_hd.xml:zh_Hant"),
-"res://app/src/main/assets/title_hd.xml": PackedStringArray("res://app/src/main/assets/title_cn_hd.xml:zh_Hans")
+"res://assets/English.lproj/font_text_newgame_1_en.fnt": PackedStringArray("res://assets/ja.lproj/font_text_newgame_1_ja.fnt:ja", "res://assets/kr.lproj/font_text_newgame_1_ko.fnt:ko", "res://assets/ru.lproj/font_text_newgame_1_en.fnt:ru", "res://assets/zh_CN.lproj/font_text_newgame_1_cn.fnt:zh_Hans", "res://assets/zh_TW.lproj/font_text_newgame_1_tw.fnt:zh_Hant"),
+"res://assets/English.lproj/font_text_newgame_1_en_hd.fnt": PackedStringArray("res://assets/ja.lproj/font_text_newgame_1_ja_hd.fnt:ja", "res://assets/kr.lproj/font_text_newgame_1_ko_hd.fnt:ko", "res://assets/ru.lproj/font_text_newgame_1_en_hd.fnt:ru", "res://assets/zh_CN.lproj/font_text_newgame_1_cn_hd.fnt:zh_Hans", "res://assets/zh_TW.lproj/font_text_newgame_1_tw_hd.fnt:zh_Hant"),
+"res://assets/English.lproj/font_text_newgame_2_en.fnt": PackedStringArray("res://assets/ja.lproj/font_text_newgame_2_ja.fnt:ja", "res://assets/kr.lproj/font_text_newgame_2_ko.fnt:ko", "res://assets/ru.lproj/font_text_newgame_2_en.fnt:ru", "res://assets/zh_CN.lproj/font_text_newgame_2_cn.fnt:zh_Hans", "res://assets/zh_TW.lproj/font_text_newgame_2_tw.fnt:zh_Hant"),
+"res://assets/English.lproj/font_text_newgame_2_en_hd.fnt": PackedStringArray("res://assets/ja.lproj/font_text_newgame_2_ja_hd.fnt:ja", "res://assets/kr.lproj/font_text_newgame_2_ko_hd.fnt:ko", "res://assets/ru.lproj/font_text_newgame_2_en_hd.fnt:ru", "res://assets/zh_CN.lproj/font_text_newgame_2_cn_hd.fnt:zh_Hans", "res://assets/zh_TW.lproj/font_text_newgame_2_tw_hd.fnt:zh_Hant"),
+"res://assets/English.lproj/font_text_newgame_3_en.fnt": PackedStringArray("res://assets/ja.lproj/font_text_newgame_3_ja.fnt:ja", "res://assets/kr.lproj/font_text_newgame_3_ko.fnt:ko", "res://assets/ru.lproj/font_text_newgame_3_en.fnt:ru", "res://assets/zh_CN.lproj/font_text_newgame_3_cn.fnt:zh_Hans", "res://assets/zh_TW.lproj/font_text_newgame_3_tw.fnt:zh_Hant"),
+"res://assets/English.lproj/font_text_newgame_3_en_hd.fnt": PackedStringArray("res://assets/ja.lproj/font_text_newgame_3_ja_hd.fnt:ja", "res://assets/kr.lproj/font_text_newgame_3_ko_hd.fnt:ko", "res://assets/ru.lproj/font_text_newgame_3_en_hd.fnt:ru", "res://assets/zh_CN.lproj/font_text_newgame_3_cn_hd.fnt:zh_Hans", "res://assets/zh_TW.lproj/font_text_newgame_3_tw_hd.fnt:zh_Hant"),
+"res://assets/English.lproj/font_text_newgame_4_en.fnt": PackedStringArray("res://assets/ja.lproj/font_text_newgame_4_ja.fnt:ja", "res://assets/kr.lproj/font_text_newgame_4_ko.fnt:ko", "res://assets/ru.lproj/font_text_newgame_4_en.fnt:ru", "res://assets/zh_CN.lproj/font_text_newgame_4_cn.fnt:zh_Hans", "res://assets/zh_TW.lproj/font_text_newgame_4_tw.fnt:zh_Hant"),
+"res://assets/English.lproj/font_text_newgame_4_en_hd.fnt": PackedStringArray("res://assets/ja.lproj/font_text_newgame_4_ja_hd.fnt:ja", "res://assets/kr.lproj/font_text_newgame_4_ko_hd.fnt:ko", "res://assets/ru.lproj/font_text_newgame_4_en_hd.fnt:ru", "res://assets/zh_CN.lproj/font_text_newgame_4_cn_hd.fnt:zh_Hans", "res://assets/zh_TW.lproj/font_text_newgame_4_tw_hd.fnt:zh_Hant"),
+"res://assets/English.lproj/locstrings.xml": PackedStringArray("res://assets/ja.lproj/locstrings.xml:ja", "res://assets/kr.lproj/locstrings.xml:ko", "res://assets/ru.lproj/locstrings.xml:ru", "res://assets/zh_CN.lproj/locstrings.xml:zh_Hans", "res://assets/zh_TW.lproj/locstrings.xml:zh_Hant"),
+"res://assets/battlename_en_hd.xml": PackedStringArray("res://assets/battlename_ja_hd.xml:ja", "res://assets/battlename_kr_hd.png:ko", "res://assets/battlename_ru_hd.xml:ru", "res://assets/battlename_cn_hd.xml:zh_Hans", "res://assets/battlename_tw_hd.xml:zh_Hant"),
+"res://assets/board_exit@2x.png": PackedStringArray("res://assets/board_exit_cn@2x.png:zh_Hans"),
+"res://assets/ew6_en.webp": PackedStringArray("res://assets/ew6_ja.webp:ja", "res://assets/ew6_ko.webp:ko", "res://assets/ew6_cn.webp:zh_Hans", "res://assets/ew6_tw.webp:zh_Hant"),
+"res://assets/font2_en.fnt": PackedStringArray("res://assets/font2_ja.fnt:ja", "res://assets/font2_kr.fnt:ko", "res://assets/font2_ru.fnt:ru", "res://assets/font2_cn.fnt:zh_Hans", "res://assets/font2_tw.fnt:zh_Hant"),
+"res://assets/font2_en_hd.fnt": PackedStringArray("res://assets/font2_ja_hd.fnt:ja", "res://assets/font2_kr_hd.fnt:ko", "res://assets/font2_ru_hd.fnt:ru", "res://assets/font2_cn_hd.fnt:zh_Hans", "res://assets/font2_tw_hd.fnt:zh_Hant"),
+"res://assets/font3_en.fnt": PackedStringArray("res://assets/font3_ja.fnt:ja", "res://assets/font3_kr.fnt:ko", "res://assets/font3_ru.fnt:ru", "res://assets/font3_cn.fnt:zh_Hans", "res://assets/font3_tw.fnt:zh_Hant"),
+"res://assets/font3_en_hd.fnt": PackedStringArray("res://assets/font3_ja_hd.fnt:ja", "res://assets/font3_kr_hd.fnt:ko", "res://assets/font3_ru_hd.fnt:ru", "res://assets/font3_cn_hd.fnt:zh_Hans", "res://assets/font3_tw_hd.fnt:zh_Hant"),
+"res://assets/font4_en.fnt": PackedStringArray("res://assets/font4_ja.fnt:ja", "res://assets/font4_kr.fnt:ko", "res://assets/font4_ru.fnt:ru", "res://assets/font4_cn.fnt:zh_Hans", "res://assets/font4_tw.fnt:zh_Hant"),
+"res://assets/font4_en_hd.fnt": PackedStringArray("res://assets/font4_ja_hd.fnt:ja", "res://assets/font4_kr_hd.fnt:ko", "res://assets/font4_ru_hd.fnt:ru", "res://assets/font4_cn_hd.fnt:zh_Hans", "res://assets/font4_tw_hd.fnt:zh_Hant"),
+"res://assets/font5_en.fnt": PackedStringArray("res://assets/font5_ja.fnt:ja", "res://assets/font5_kr.fnt:ko", "res://assets/font5_ru.fnt:ru", "res://assets/font5_cn.fnt:zh_Hans", "res://assets/font5_tw.fnt:zh_Hant"),
+"res://assets/font5_en_hd.fnt": PackedStringArray("res://assets/font5_ja_hd.fnt:ja", "res://assets/font5_kr_hd.fnt:ko", "res://assets/font5_ru_hd.fnt:ru", "res://assets/font5_cn_hd.fnt:zh_Hans", "res://assets/font5_tw_hd.fnt:zh_Hant"),
+"res://assets/font6_en.fnt": PackedStringArray("res://assets/font6_ja.fnt:ja", "res://assets/font6_kr.fnt:ko", "res://assets/font6_ru.fnt:ru", "res://assets/font6_cn.fnt:zh_Hans", "res://assets/font6_tw.fnt:zh_Hant"),
+"res://assets/font6_en_hd.fnt": PackedStringArray("res://assets/font6_ja_hd.fnt:ja", "res://assets/font6_kr_hd.fnt:ko", "res://assets/font6_ru_hd.fnt:ru", "res://assets/font6_cn_hd.fnt:zh_Hans", "res://assets/font6_tw_hd.fnt:zh_Hant"),
+"res://assets/font7_en.fnt": PackedStringArray("res://assets/font7_ja.fnt:ja", "res://assets/font7_kr.fnt:ko", "res://assets/font7_ru.fnt:ru", "res://assets/font7_cn.fnt:zh_Hans", "res://assets/font7_tw.fnt:zh_Hant"),
+"res://assets/font7_en_hd.fnt": PackedStringArray("res://assets/font7_ja_hd.fnt:ja", "res://assets/font7_kr_hd.fnt:ko", "res://assets/font7_ru_hd.fnt:ru", "res://assets/font7_cn_hd.fnt:zh_Hans", "res://assets/font7_tw_hd.fnt:zh_Hant"),
+"res://assets/font8_en.fnt": PackedStringArray("res://assets/font8_ja.fnt:ja", "res://assets/font8_kr.fnt:ko", "res://assets/font8_ru.fnt:ru", "res://assets/font8_cn.fnt:zh_Hans", "res://assets/font8_tw.fnt:zh_Hant"),
+"res://assets/font8_en_hd.fnt": PackedStringArray("res://assets/font8_ja_hd.fnt:ja", "res://assets/font8_kr_hd.fnt:ko", "res://assets/font8_ru_hd.fnt:ru", "res://assets/font8_cn_hd.fnt:zh_Hans", "res://assets/font8_tw_hd.fnt:zh_Hant"),
+"res://assets/loading@2x.png": PackedStringArray("res://assets/loading_cn@2x.png:zh_Hans"),
+"res://assets/loading_title@2x.png": PackedStringArray("res://assets/loading_title_cn@2x.png:zh_Hans"),
+"res://assets/mui_en_hd.xml": PackedStringArray("res://assets/mui_ja_hd.xml:ja", "res://assets/mui_kr_hd.xml:ko", "res://assets/mui_ru_hd.xml:ru", "res://assets/mui_cn_hd.xml:zh_Hans", "res://assets/mui_tw_hd.xml:zh_Hant"),
+"res://assets/stringtable_en.xml": PackedStringArray("res://assets/stringtable_ja.xml:ja", "res://assets/stringtable_kr.xml:ko", "res://assets/stringtable_ru.xml:ru", "res://assets/stringtable_cn.xml:zh_Hans", "res://assets/stringtable_tw.xml:zh_Hant"),
+"res://assets/stringtable_en_iPad.xml": PackedStringArray("res://assets/stringtable_ja_iPad.xml:ja", "res://assets/stringtable_kr_iPad.xml:ko", "res://assets/stringtable_ru_iPad.xml:ru", "res://assets/stringtable_cn_iPad.xml:zh_Hans", "res://assets/stringtable_tw_iPad.xml:zh_Hant"),
+"res://assets/text_en_hd.xml": PackedStringArray("res://assets/text_ja_hd.xml:ja", "res://assets/text_kr_hd.xml:ko", "res://assets/text_ru_hd.xml:ru", "res://assets/text_cn_hd.xml:zh_Hans", "res://assets/text_tw_hd.xml:zh_Hant"),
+"res://assets/text_en_iPad.xml": PackedStringArray("res://assets/text_ja_iPad.xml:ja", "res://assets/text_kr_iPad.xml:ko", "res://assets/text_ru_iPad.xml:ru", "res://assets/text_cn_iPad.xml:zh_Hans"),
+"res://assets/text_en_iPad_hd.xml": PackedStringArray("res://assets/text_ja_iPad_hd.xml:ja", "res://assets/text_kr_iPad_hd.xml:ko", "res://assets/text_ru_iPad_hd.xml:ru", "res://assets/text_cn_iPad_hd.xml:zh_Hans", "res://assets/text_tw_iPad_hd.xml:zh_Hant"),
+"res://assets/title_hd.xml": PackedStringArray("res://assets/title_cn_hd.xml:zh_Hans")
 }
 
 [rendering]

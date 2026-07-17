@@ -1,13 +1,13 @@
 @tool
 extends EditorImportPlugin
 
-const _ecLibraryData = preload("res://app/src/main/cpp/ec_library_data.gd")
-const _ecItemData = preload("res://app/src/main/cpp/ec_item_data.gd")
-const _ecMotionData = preload("res://app/src/main/cpp/resources/imported/ec_motion_data.gd")
-const _ecShapeData = preload("res://app/src/main/cpp/resources/imported/ec_shape_data.gd")
-const _ecLayerData = preload("res://app/src/main/cpp/ec_layer_data.gd")
-const _ecFrameData = preload("res://app/src/main/cpp/ec_frame_data.gd")
-const _ecElementData = preload("res://app/src/main/cpp/ec_element_data.gd")
+const _ecLibraryData = preload("res://ec_library_data.gd")
+const _ecItemData = preload("res://ec_item_data.gd")
+const _ecMotionData = preload("res://resources/imported/ec_motion_data.gd")
+const _ecShapeData = preload("res://resources/imported/ec_shape_data.gd")
+const _ecLayerData = preload("res://ec_layer_data.gd")
+const _ecFrameData = preload("res://ec_frame_data.gd")
+const _ecElementData = preload("res://ec_element_data.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.bin.elib"

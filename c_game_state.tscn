@@ -1,0 +1,514 @@
+[gd_scene format=3 uid="uid://cyteip1ai4gjt"]
+
+[ext_resource type="Script" uid="uid://r8i8smosqhsx" path="res://c_game_state.gd" id="1_i7u21"]
+[ext_resource type="PackedScene" uid="uid://3kjay574huha" path="res://ec_effect_manager.tscn" id="2_0d8sx"]
+[ext_resource type="PackedScene" uid="uid://bdigiv3s86lid" path="res://c_fight_text_mgr.tscn" id="3_f1sur"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="5_iy5bs"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="6_ob33k"]
+[ext_resource type="Texture2D" uid="uid://bu6m3ik6qwmav" path="res://resources/assets/logo_gui_res/gamebutton_round_normal.png.tres" id="7_hejqp"]
+[ext_resource type="Texture2D" uid="uid://dcuchi3na4edf" path="res://resources/assets/logo_gui_res/gamebutton_round_press.png.tres" id="8_kjuls"]
+[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://resources/assets/logo_gui_res/buttonboard_green.png.tres" id="9_ob33k"]
+[ext_resource type="Texture2D" uid="uid://iwl5yhon4veh" path="res://resources/assets/logo_gui_res/gamebutton_card_normal.png.tres" id="10_0c3as"]
+[ext_resource type="Texture2D" uid="uid://cgcdqjqcyk235" path="res://resources/assets/logo_gui_res/gamebutton_card_press.png.tres" id="11_54h8e"]
+[ext_resource type="Texture2D" uid="uid://csvj0hmrb5ytf" path="res://resources/assets/logo_gui_res/buttonboard_blue.png.tres" id="12_xitlk"]
+[ext_resource type="Texture2D" uid="uid://dhfojrm8u7qnq" path="res://resources/assets/logo_gui_res/gamebutton_pause_normal.png.tres" id="13_xa4cd"]
+[ext_resource type="Texture2D" uid="uid://bx5koubtrha23" path="res://resources/assets/logo_gui_res/gamebutton_pause_press.png.tres" id="14_adpbo"]
+[ext_resource type="Texture2D" uid="uid://42otm2gr4o7o" path="res://resources/assets/logo_gui_res/buttonboard_red.png.tres" id="15_q1qaj"]
+[ext_resource type="Texture2D" uid="uid://c2gralhifxwj8" path="res://resources/assets/logo_gui_res/gamebutton_cardremove_normal.png.tres" id="16_q1qaj"]
+[ext_resource type="Texture2D" uid="uid://cnyjx7s30rc6u" path="res://resources/assets/logo_gui_res/gamebutton_cardremove_press.png.tres" id="17_u8uvy"]
+[ext_resource type="PackedScene" uid="uid://duidx7fccd24k" path="res://gui_gold.tscn" id="18_3aq82"]
+[ext_resource type="PackedScene" uid="uid://c5o8iq207nbba" path="res://gui_tax.tscn" id="19_im5jt"]
+[ext_resource type="PackedScene" uid="uid://bcdwdidc5e6kk" path="res://gui_small_card.tscn" id="20_im5jt"]
+[ext_resource type="PackedScene" uid="uid://b3cll0m0etpx" path="res://gui_attack_box.tscn" id="21_6jayj"]
+[ext_resource type="PackedScene" uid="uid://u7akx8jrxvgd" path="res://gui_pause_box.tscn" id="22_ennrn"]
+[ext_resource type="PackedScene" uid="uid://cse56b6hg7yjm" path="res://gui_buy_card.tscn" id="23_8sfin"]
+[ext_resource type="PackedScene" uid="uid://451ls38c1bf8" path="res://gui_ai_progress.tscn" id="24_42ds1"]
+[ext_resource type="PackedScene" uid="uid://dfq04d0bsjmyb" path="res://gui_sel_army.tscn" id="25_0uskm"]
+[ext_resource type="PackedScene" uid="uid://c7b151kdvwx4w" path="res://gui_begin.tscn" id="26_ema4c"]
+[ext_resource type="PackedScene" uid="uid://cs77s0qa4kr1r" path="res://gui_defeated.tscn" id="27_altjf"]
+[ext_resource type="PackedScene" uid="uid://cs2vqc5dk43cq" path="res://gui_battle.tscn" id="28_0lple"]
+
+[sub_resource type="Animation" id="Animation_me1p5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUIGold:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonPause/Control/GUIButton:anchor_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ButtonPause/Control/GUIButton:anchor_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ButtonCard/Control/GUIButton:anchor_left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ButtonCard/Control/GUIButton:anchor_top")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ButtonRound/Control/GUIButton:anchor_left")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ButtonRound/Control/GUIButton:anchor_top")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_0lple"]
+resource_name = "move_in"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GUIGold:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -50), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ButtonPause/Control/GUIButton:anchor_left")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ButtonPause/Control/GUIButton:anchor_top")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ButtonCard/Control/GUIButton:anchor_left")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ButtonCard/Control/GUIButton:anchor_top")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ButtonRound/Control/GUIButton:anchor_left")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ButtonRound/Control/GUIButton:anchor_top")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_me1p5"]
+_data = {
+&"RESET": SubResource("Animation_me1p5"),
+&"move_in": SubResource("Animation_0lple")
+}
+
+[node name="CGameState" type="Control" unique_id=1645819512]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_i7u21")
+
+[node name="CScene" type="Node2D" parent="." unique_id=1828344225]
+
+[node name="ecEffectManager" parent="." unique_id=506515038 instance=ExtResource("2_0d8sx")]
+
+[node name="CFightTextMgr" parent="." unique_id=474335119 instance=ExtResource("3_f1sur")]
+
+[node name="GUIBattle" parent="." unique_id=368823071 instance=ExtResource("28_0lple")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -160.0
+offset_bottom = 160.0
+
+[node name="GUIDefeated" parent="." unique_id=172360110 instance=ExtResource("27_altjf")]
+visible = false
+custom_minimum_size = Vector2(186, 190)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -95.0
+offset_right = 93.0
+offset_bottom = 95.0
+
+[node name="GUIActionInfo" parent="." unique_id=1593274674 instance=ExtResource("5_iy5bs")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_right = 280.0
+offset_bottom = 14.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-280, 0, 560, 28)
+rect = Rect2(-140, 0, 280, 14)
+
+[node name="GUIActionInfo" parent="GUIActionInfo" unique_id=2027985913 instance_placeholder="res://gui_action_info.tscn"]
+layout_mode = 2
+
+[node name="GUISelArmy" parent="." unique_id=299185972 instance=ExtResource("25_0uskm")]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -120.0
+offset_bottom = 120.0
+grow_horizontal = 0
+
+[node name="GUIAIProgress" parent="." unique_id=541368688 instance=ExtResource("5_iy5bs")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_right = 480.0
+offset_bottom = 320.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(-240, 433, 480, 320)
+rect = Rect2(-240, 0, 480, 320)
+
+[node name="GUIAIProgress" parent="GUIAIProgress" unique_id=191726262 instance=ExtResource("24_42ds1")]
+layout_mode = 2
+
+[node name="GUIBuyCard" type="VBoxContainer" parent="." unique_id=845837158]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Padding" parent="GUIBuyCard" unique_id=143842892 instance=ExtResource("5_iy5bs")]
+layout_mode = 2
+rect_ipad = Rect2(0, 0, 0, 468)
+
+[node name="GUIBuyCard" parent="GUIBuyCard" unique_id=595511499 instance=ExtResource("23_8sfin")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GUIPauseBox" parent="." unique_id=1648966608 instance=ExtResource("22_ennrn")]
+visible = false
+custom_minimum_size = Vector2(166, 262)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -131.0
+offset_right = 83.0
+offset_bottom = 131.0
+
+[node name="GUISmallCard" parent="." unique_id=485651445 instance=ExtResource("20_im5jt")]
+visible = false
+layout_mode = 1
+
+[node name="GUITax" parent="." unique_id=379815843 instance=ExtResource("19_im5jt")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 104.0
+offset_bottom = 38.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="ButtonCardRemove" parent="." unique_id=769934829 instance=ExtResource("5_iy5bs")]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -30.0
+offset_right = 32.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="GUIButton" parent="ButtonCardRemove" unique_id=1211914993 instance=ExtResource("6_ob33k")]
+layout_mode = 2
+texture_normal = ExtResource("16_q1qaj")
+texture_pressed = ExtResource("17_u8uvy")
+texture_background = ExtResource("12_xitlk")
+
+[node name="ButtonPause" parent="." unique_id=1233548209 instance=ExtResource("5_iy5bs")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -32.0
+offset_bottom = 30.0
+grow_horizontal = 0
+grow_vertical = 1
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="Control" type="Control" parent="ButtonPause" unique_id=1459883420]
+layout_mode = 2
+
+[node name="GUIButton" parent="ButtonPause/Control" unique_id=1187276192 instance=ExtResource("6_ob33k")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -1.0
+texture_normal = ExtResource("13_xa4cd")
+texture_pressed = ExtResource("14_adpbo")
+texture_background = ExtResource("15_q1qaj")
+
+[node name="ButtonCard" parent="." unique_id=2040298773 instance=ExtResource("5_iy5bs")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -30.0
+offset_right = 32.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="Control" type="Control" parent="ButtonCard" unique_id=1388415888]
+layout_mode = 2
+
+[node name="GUIButton" parent="ButtonCard/Control" unique_id=899432390 instance=ExtResource("6_ob33k")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.0
+anchor_top = 1.0
+play_sound_when_pressed = false
+texture_normal = ExtResource("10_0c3as")
+texture_pressed = ExtResource("11_54h8e")
+texture_background = ExtResource("12_xitlk")
+
+[node name="ButtonRound" parent="." unique_id=1576520916 instance=ExtResource("5_iy5bs")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -32.0
+offset_top = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="Control" type="Control" parent="ButtonRound" unique_id=2118377936]
+layout_mode = 2
+
+[node name="GUIButton" parent="ButtonRound/Control" unique_id=2034275630 instance=ExtResource("6_ob33k")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+texture_normal = ExtResource("7_hejqp")
+texture_pressed = ExtResource("8_kjuls")
+texture_background = ExtResource("9_ob33k")
+
+[node name="GUIAttackBox" parent="." unique_id=1463077957 instance=ExtResource("21_6jayj")]
+visible = false
+custom_minimum_size = Vector2(258, 186)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -93.0
+offset_right = 129.0
+offset_bottom = 93.0
+attack = null
+defend = null
+
+[node name="GUIBegin" parent="." unique_id=276795201 instance=ExtResource("26_ema4c")]
+visible = false
+custom_minimum_size = Vector2(184, 258)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -129.0
+offset_right = 92.0
+offset_bottom = 129.0
+
+[node name="GUITutorails" parent="." unique_id=326815524 instance_placeholder="res://gui_tutorails.tscn"]
+layout_mode = 1
+
+[node name="GUIDialogue" parent="." unique_id=545709183 instance_placeholder="res://gui_dialogue.tscn"]
+visible = false
+layout_mode = 1
+
+[node name="GUIBattleIntro" parent="." unique_id=1427534302 instance=ExtResource("5_iy5bs")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -160.0
+offset_right = 240.0
+offset_bottom = 160.0
+rect_ipad = Rect2(0, 0, 960, 640)
+rect = Rect2(0, 0, 480, 320)
+
+[node name="GUIBattleIntro" parent="GUIBattleIntro" unique_id=2130276311 instance_placeholder="res://gui_battle_intro.tscn"]
+visible = false
+z_index = 1
+layout_mode = 2
+
+[node name="GUIBank" parent="." unique_id=86871795 instance_placeholder="res://gui_bank.tscn"]
+layout_mode = 1
+
+[node name="GUIGold" parent="." unique_id=1663737891 instance=ExtResource("18_3aq82")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = -50.0
+offset_right = 104.0
+offset_bottom = -12.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="GUIVictory" parent="." unique_id=43656708 instance_placeholder="res://gui_victory.tscn"]
+layout_mode = 1
+
+[node name="GUIResult" parent="." unique_id=659475739 instance_placeholder="res://gui_result.tscn"]
+layout_mode = 1
+
+[node name="GUIEnd" parent="." unique_id=230513713 instance_placeholder="res://gui_end.tscn"]
+layout_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1974311090]
+libraries/ = SubResource("AnimationLibrary_me1p5")

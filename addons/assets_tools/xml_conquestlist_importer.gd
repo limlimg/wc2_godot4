@@ -2,9 +2,9 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _ConquestDef = preload("res://app/src/main/cpp/conquest_def.gd")
-const _ConquestDefMap = preload("res://app/src/main/cpp/resources/imported/conquest_def_map.gd")
-const _FlagInfo = preload("res://app/src/main/cpp/flag_info.gd")
+const _ConquestDef = preload("res://conquest_def.gd")
+const _ConquestDefMap = preload("res://resources/imported/conquest_def_map.gd")
+const _FlagInfo = preload("res://flag_info.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.conquestlist"

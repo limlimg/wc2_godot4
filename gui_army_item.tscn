@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://yp2ihm1s2ft4"]
+
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="1_kywap"]
+[ext_resource type="Script" uid="uid://6t1nxk1nc2sx" path="res://gui_army_item.gd" id="2_iele2"]
+[ext_resource type="PackedScene" uid="uid://dkp06osh2ahu7" path="res://game_res_render/ui_army.tscn" id="3_w6n2a"]
+
+[node name="GUIArmyItem" unique_id=2034275630 instance=ExtResource("1_kywap")]
+script = ExtResource("2_iele2")
+
+[node name="Control" type="Control" parent="." index="5" unique_id=1457018611]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="UIArmy" parent="Control" index="0" unique_id=1549378055 instance=ExtResource("3_w6n2a")]

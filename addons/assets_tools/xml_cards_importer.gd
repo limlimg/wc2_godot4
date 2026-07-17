@@ -2,8 +2,8 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _CardDef = preload("res://app/src/main/cpp/card_def.gd")
-const _CardDefList = preload("res://app/src/main/cpp/resources/imported/card_def_list.gd")
+const _CardDef = preload("res://card_def.gd")
+const _CardDefList = preload("res://resources/imported/card_def_list.gd")
 const _CARD_LIST_SIZE = 28
 const _CARD_TYPE = [
 	"army",

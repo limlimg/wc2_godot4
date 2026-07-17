@@ -2,11 +2,11 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _SaveHeader = preload("res://app/src/main/cpp/save_header.gd")
-const _SaveCountryInfo = preload("res://app/src/main/cpp/save_country_info.gd")
-const _SaveAreaInfo = preload("res://app/src/main/cpp/save_area_info.gd")
-const _SaveArmyInfo = preload("res://app/src/main/cpp/save_army_info.gd")
-const _DialogueDef = preload("res://app/src/main/cpp/dialogue_def.gd")
+const _SaveHeader = preload("res://save_header.gd")
+const _SaveCountryInfo = preload("res://save_country_info.gd")
+const _SaveAreaInfo = preload("res://save_area_info.gd")
+const _SaveArmyInfo = preload("res://save_army_info.gd")
+const _DialogueDef = preload("res://dialogue_def.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.battle"

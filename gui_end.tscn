@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bcrmfestr2423"]
+
+[ext_resource type="Script" uid="uid://klh7m6ek13wo" path="res://gui_end.gd" id="1_s0ohu"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="1_v01nc"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="4_2bnpi"]
+[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://resources/assets/logo_gui_res/buttontext_back.png.tres" id="5_p170c"]
+[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://resources/assets/logo_gui_res/buttontext_back_press.png.tres" id="6_wbcbj"]
+[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://resources/assets/logo_gui_res/buttonboard_gray.png.tres" id="7_qn48w"]
+
+[node name="GUIEnd" type="Control" unique_id=230513713]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s0ohu")
+
+[node name="GUIEndAxis" parent="." unique_id=270133824 instance_placeholder="res://gui/gui_end_axis.tscn"]
+layout_mode = 1
+
+[node name="GUIEndAllies" parent="." unique_id=1799538278 instance_placeholder="res://gui/gui_end_allies.tscn"]
+layout_mode = 0
+anchors_preset = 0
+
+[node name="GUIEndWto" parent="." unique_id=642609080 instance_placeholder="res://gui/gui_end_wto.tscn"]
+layout_mode = 0
+anchors_preset = 0
+
+[node name="GUIEndNato" parent="." unique_id=1706292480 instance_placeholder="res://gui/gui_end_nato.tscn"]
+layout_mode = 0
+anchors_preset = 0
+
+[node name="ButtonBack" parent="." unique_id=1349729184 instance=ExtResource("1_v01nc")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -30.0
+offset_right = 32.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 40, 38)
+rect = Rect2(0, 0, 32, 30)
+
+[node name="GUIButton" parent="ButtonBack" unique_id=2034275630 instance=ExtResource("4_2bnpi")]
+layout_mode = 2
+texture_normal = ExtResource("5_p170c")
+texture_pressed = ExtResource("6_wbcbj")
+texture_background = ExtResource("7_qn48w")
+
+[connection signal="pressed" from="ButtonBack/GUIButton" to="." method="_on_gui_button_back_pressed"]

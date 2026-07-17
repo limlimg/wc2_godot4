@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d1fpwlnpujwen"]
+
+[ext_resource type="PackedScene" uid="uid://fcfp44mkojj0" path="res://c_state_manager.tscn" id="1_y2d0g"]
+[ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://gui_manager.tscn" id="2_xjqce"]
+[ext_resource type="PackedScene" uid="uid://cyix61j6uvyd3" path="res://gui_motion_manager.tscn" id="3_jtqsl"]
+
+[node name="EAGLView" type="Control" unique_id=833534245]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CStateManager" parent="." unique_id=824437752 instance=ExtResource("1_y2d0g")]
+layout_mode = 1
+
+[node name="GUIManager" parent="CStateManager" unique_id=510783743 instance=ExtResource("2_xjqce")]
+layout_mode = 1
+
+[node name="GUIMotionManager" parent="." unique_id=1039021798 instance=ExtResource("3_jtqsl")]

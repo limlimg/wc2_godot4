@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bnl2uppe67g4k"]
+
+[ext_resource type="Script" uid="uid://ck1qupjcfmnsd" path="res://area_render/army.gd" id="1_4wshh"]
+[ext_resource type="PackedScene" uid="uid://8cxd37mnd6ak" path="res://game_res_render/army.tscn" id="2_it0yl"]
+[ext_resource type="Script" uid="uid://d227vyjm2ehln" path="res://game_res_render/army.gd" id="3_it0yl"]
+[ext_resource type="PackedScene" uid="uid://by50lvwepixtl" path="res://game_res_render/army_info.tscn" id="3_nwwus"]
+[ext_resource type="Script" uid="uid://vc4wanmr7qef" path="res://game_res_render/army_info.gd" id="5_nwwus"]
+
+[node name="Army" type="Node2D" unique_id=129528515]
+script = ExtResource("1_4wshh")
+
+[node name="Army" parent="." unique_id=1392976348 instance=ExtResource("2_it0yl")]
+script = ExtResource("3_it0yl")
+
+[node name="ArmyInfo" parent="Army" unique_id=899833631 instance=ExtResource("3_nwwus")]
+script = ExtResource("5_nwwus")
+
+[node name="AICommanderMedal" parent="Army/ArmyInfo" unique_id=1467720846 instance_placeholder="res://game_res_render/ai_commander_medal.tscn"]
+visible = false
+
+[node name="CommanderMedal" parent="Army/ArmyInfo" unique_id=1241850369 instance_placeholder="res://game_res_render/commander_medal.tscn"]
+visible = false

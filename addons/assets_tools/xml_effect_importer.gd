@@ -2,8 +2,8 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _ecEffectRes = preload("res://app/src/main/cpp/ec_effect_res.gd")
-const _ecEmitterAttr = preload("res://app/src/main/cpp/ec_emitter_attr.gd")
+const _ecEffectRes = preload("res://ec_effect_res.gd")
+const _ecEmitterAttr = preload("res://ec_emitter_attr.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.effect"

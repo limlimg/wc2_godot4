@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://3kjay574huha"]
+
+[ext_resource type="Script" uid="uid://boorvbu4dkxcs" path="res://ec_effect_manager.gd" id="1_3sjwc"]
+
+[node name="ecEffectManager" type="Node2D" unique_id=506515038 groups=["ecEffectManagerInstance"]]
+script = ExtResource("1_3sjwc")
+
+[node name="ecEffect" parent="." unique_id=1633173356 instance_placeholder="res://ec_effect.tscn"]

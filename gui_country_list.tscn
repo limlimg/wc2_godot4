@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cn17i2r1lc2ki"]
+
+[ext_resource type="Script" uid="uid://5sbo8jrgp10g" path="res://gui_country_list.gd" id="1_yqiw1"]
+[ext_resource type="PackedScene" uid="uid://55bpjexr684x" path="res://gui/gui_list.tscn" id="2_throx"]
+
+[node name="GUICountryList" unique_id=339150278 instance=ExtResource("2_throx")]
+script = ExtResource("1_yqiw1")
+conquest = 0
+separation_ipad = 10
+separation = 5
+
+[node name="GUICountryItem" parent="CTouchInertia/ScrollContainer/BoxContainer" parent_id_path=PackedInt32Array(544251423) index="0" unique_id=1471834346 instance_placeholder="res://gui_country_item.tscn"]
+layout_mode = 2
+
+[connection signal="item_touched" from="." to="." method="_on_item_touched"]

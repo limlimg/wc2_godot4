@@ -1,0 +1,189 @@
+[gd_scene format=3 uid="uid://ciwlalt7fqwik"]
+
+[ext_resource type="Script" uid="uid://ci8373bocp2ax" path="res://gui_battle_intro.gd" id="1_56qfq"]
+[ext_resource type="Texture2D" uid="uid://fdsov0ivcmg8" path="res://resources/assets/texture/board_intro.tres" id="1_ft5bo"]
+[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="2_gsb3j"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_mp2r6"]
+[ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://gui_button_ex.tscn" id="4_cl8ju"]
+[ext_resource type="Texture2D" uid="uid://x2oo4pcca42" path="res://resources/assets/logo_gui_res/text_conditon.png.tres" id="4_g2uog"]
+[ext_resource type="Texture2D" uid="uid://c5scjcg2j0bqx" path="res://resources/assets/logo_gui_res/green_normal.png.tres" id="5_mxe0c"]
+[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://resources/assets/logo_gui_res/buttontext_ok.png.tres" id="7_gsb3j"]
+[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://resources/assets/logo_gui_res/buttontext_ok_press.png.tres" id="8_qr5bd"]
+[ext_resource type="Theme" uid="uid://cpnxetsssuv7j" path="res://resources/assets/menu_gui_selbattle_res/num7.tres" id="9_3lprt"]
+[ext_resource type="Theme" uid="uid://kfde1dpf6pbh" path="res://resources/assets/menu_gui_selbattle_res/font4.tres" id="10_0gbd6"]
+[ext_resource type="Theme" uid="uid://b6mb1wkh5nrw1" path="res://resources/assets/font/g_font3.tres" id="11_0gbd6"]
+
+[node name="GUIBattleIntro" type="Control" unique_id=2130276311]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_56qfq")
+
+[node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_gsb3j")]
+layout_mode = 1
+
+[node name="BoardIntro" type="Sprite2D" parent="." unique_id=935039412]
+texture = ExtResource("1_ft5bo")
+centered = false
+
+[node name="TextCondition" parent="." unique_id=446430762 instance=ExtResource("2_mp2r6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(480, 384, 1, 1)
+rect = Rect2(240, 192, 1, 1)
+
+[node name="TextureRect" type="TextureRect" parent="TextCondition" unique_id=1678927271]
+layout_mode = 2
+texture = ExtResource("4_g2uog")
+
+[node name="ButtonOK" parent="." unique_id=40345469 instance=ExtResource("2_mp2r6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 64.0
+offset_bottom = 32.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(420, 580, 64, 32)
+rect = Rect2(210, 283, 64, 32)
+
+[node name="GUIButtonEx" parent="ButtonOK" unique_id=493498822 instance=ExtResource("4_cl8ju")]
+layout_mode = 2
+texture_text_not_pressed = ExtResource("7_gsb3j")
+texture_text_pressed = ExtResource("8_qr5bd")
+image_position_ipad = Vector2(11, -5)
+image_position = Vector2(13, 0)
+texture_normal = ExtResource("5_mxe0c")
+texture_pressed = ExtResource("5_mxe0c")
+
+[node name="BattleName" parent="." unique_id=189534227 instance=ExtResource("2_mp2r6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(480, 76, 0, 0)
+rect = Rect2(240, 38, 0, 0)
+
+[node name="Label" type="Label" parent="BattleName" unique_id=1893557597]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("11_0gbd6")
+horizontal_alignment = 1
+
+[node name="BattleIntro" parent="." unique_id=65639465 instance=ExtResource("2_mp2r6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(140, 176, 0, 0)
+rect = Rect2(70, 88, 0, 0)
+
+[node name="Label" type="Label" parent="BattleIntro" unique_id=1906551488]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("10_0gbd6")
+theme_override_colors/font_color = Color(0.2, 0.19215687, 0.24313726, 1)
+
+[node name="Age" parent="." unique_id=1517116202 instance=ExtResource("2_mp2r6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(480, 130, 0, 0)
+rect = Rect2(240, 65, 0, 0)
+
+[node name="Label" type="Label" parent="Age" unique_id=1420899562]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("9_3lprt")
+horizontal_alignment = 1
+
+[node name="Victory" parent="." unique_id=995341333 instance=ExtResource("2_mp2r6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(366, 410, 0, 0)
+rect = Rect2(183, 205, 0, 0)
+
+[node name="Label" type="Label" parent="Victory" unique_id=1751691927]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("10_0gbd6")
+theme_override_colors/font_color = Color(0.2, 0.19215687, 0.24313726, 1)
+
+[node name="GreatVictory" parent="." unique_id=532892512 instance=ExtResource("2_mp2r6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(366, 470, 0, 0)
+rect = Rect2(183, 235, 0, 0)
+
+[node name="Label" type="Label" parent="GreatVictory" unique_id=1929991900]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("10_0gbd6")
+theme_override_colors/font_color = Color(0.2, 0.19215687, 0.24313726, 1)
+
+[node name="VictoryDays" parent="." unique_id=1701368727 instance=ExtResource("2_mp2r6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(556, 410, 0, 0)
+rect = Rect2(278, 205, 0, 0)
+
+[node name="Label" type="Label" parent="VictoryDays" unique_id=770797630]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("10_0gbd6")
+theme_override_colors/font_color = Color(0.2, 0.19215687, 0.24313726, 1)
+
+[node name="GreatVictoryDays" parent="." unique_id=2066649019 instance=ExtResource("2_mp2r6")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect_ipad = Rect2(556, 470, 0, 0)
+rect = Rect2(278, 235, 0, 0)
+
+[node name="Label" type="Label" parent="GreatVictoryDays" unique_id=1738285730]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("10_0gbd6")
+theme_override_colors/font_color = Color(0.2, 0.19215687, 0.24313726, 1)
+
+[connection signal="back_pressed" from="." to="." method="_on_gui_button_ex_pressed"]
+[connection signal="pressed" from="ButtonOK/GUIButtonEx" to="." method="_on_gui_button_ex_pressed"]

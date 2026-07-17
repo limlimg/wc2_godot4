@@ -2,8 +2,8 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _GeneralPhoto = preload("res://app/src/main/cpp/general_photo.gd")
-const _GeneralPhotoMap = preload("res://app/src/main/cpp/resources/imported/general_photo_map.gd")
+const _GeneralPhoto = preload("res://general_photo.gd")
+const _GeneralPhotoMap = preload("res://resources/imported/general_photo_map.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.generals"

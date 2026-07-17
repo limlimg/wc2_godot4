@@ -10,7 +10,7 @@ extends TiXmlNode
 ## as dictionaries, and tinyxml is built on top of them as iterators.
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _ecFile = preload("res://app/src/main/cpp/ec_file.gd")
+const _ecFile = preload("res://ec_file.gd")
 
 static var _regex_not_whitespace := RegEx.create_from_string(r"[^\s]+")
 

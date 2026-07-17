@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cmnci1ox4l6s1"]
+
+[ext_resource type="Script" uid="uid://bo30ju3xnqjh7" path="res://c_area.gd" id="1_0tvyd"]
+
+[node name="CArea" type="Sprite2D" unique_id=1183696436]
+z_index = -2
+y_sort_enabled = true
+script = ExtResource("1_0tvyd")
+
+[node name="Flag" type="Node2D" parent="." unique_id=811864936]
+z_index = 2
+
+[node name="Flag" parent="Flag" unique_id=1037964281 instance_placeholder="res://game_res_render/flag.tscn"]
+
+[node name="Building" parent="Flag" unique_id=1662782881 instance_placeholder="res://area_render/building.tscn"]
+z_index = -1
+
+[node name="Army" type="Node2D" parent="." unique_id=2098620198]
+z_index = 2
+
+[node name="Army" parent="Army" unique_id=129528515 instance_placeholder="res://area_render/army.tscn"]
+
+[node name="ArrowShadow" type="Sprite2D" parent="Army" unique_id=1491334964]
+visible = false
+
+[node name="Arrow" type="Sprite2D" parent="Army" unique_id=1500530425]

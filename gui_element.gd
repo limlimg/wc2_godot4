@@ -1,0 +1,109 @@
+class_name GUIElement
+extends Control
+
+## In the original game code, GUIElements are, as its name suggests, components
+## of the graphical user interface. They are organized in a tree structure, with
+## GUIManager::Instance() always being the root. They communicate with each
+## other via OnEvent method. Inputs trigger this method and spread to the
+## children of an element if not handled by its OnEvent method. Elements can
+## also create events which spread along its ancestors. This kind of events
+## usually reach the GUIManager which then send them to the current active state.
+## OnUpdate method updates the element and OnRender renders the element.
+##
+## In this projects, GUIElements inherits Control node class. Inputs are handled
+## by children nodes or _input callback if necessary. Up-spreading events are
+## replaced by signals. Time-based changes are handled by Tween or _process
+## callback if necessary. Rendering is implemented with children nodes or _draw
+## callback if necessary (remember to call queue_redraw in _process if using
+## this). Some of the original methods collide with the built-in methods of
+## Control and are therefore not coded in this file.
+## 
+## The original SetVisible method is unused and not implemented due to name
+## conflict with engine method.
+
+static var _next_handle: int
+#@warning_ignore("unused_private_class_variable")
+#static var s_texture_res := ecTextureRes.new()
+
+var _handle: int
+
+signal touch_began(pos: Vector2, index: int)
+signal touch_moved(pos: Vector2, index: int)
+signal touch_ended(pos: Vector2, index: int)
+signal back_pressed
+
+func _init() -> void:
+	_next_handle += 1
+	_handle = _next_handle
+
+
+func free_child(child: Node) -> void:
+	remove_child(child)
+	if child != null:
+		child.free()
+
+
+func free_all_child() -> void:
+	var child := get_child(0)
+	while child != null:
+		free_child(child)
+		child = get_child(0)
+
+
+func get_pos() -> Vector2:
+	return position
+
+
+func set_pos(x: float, y: float) -> void:
+	position = Vector2(x, y)
+
+
+func _move(x: float, y: float) -> void:
+	position += Vector2(x, y)
+
+
+func center() -> void:
+	var c: Vector2
+	var parent := get_parent_control()
+	if parent != null:
+		c = parent.size / 2
+	else:
+		var graphics := ecGraphics.instance()
+		c = Vector2(graphics.orientated_content_scale_width, graphics.orientated_content_scale_height)
+	position = c - size / 2
+
+
+func get_abs_rect() -> Rect2:
+	return get_global_rect()
+
+
+func check_in_rect(x: float, y: float, rect := get_abs_rect()) -> bool:
+	return rect.has_point(Vector2(x, y))
+
+
+func set_enable(value: bool) -> void:
+	if "enable" in self:
+		self.enable = value
+
+
+func _find_by_handle(handle: int) -> GUIElement:
+	if _handle == handle:
+		return self
+	for child in get_children():
+		if child is GUIElement:
+			var result = child._find_by_handle(handle)
+			if result != null:
+				return result
+	return null
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			touch_began.emit(event.position, event.index)
+		else:
+			touch_ended.emit(event.position, event.index)
+	elif event is InputEventScreenDrag:
+		touch_moved.emit(event.position, event.index)
+	elif event.is_action(&"ui_cancel"):
+		back_pressed.emit()

@@ -2,8 +2,8 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _TutorialCmd = preload("res://app/src/main/cpp/resources/imported/tutorial_cmd.gd")
-const _TutorialCmdList = preload("res://app/src/main/cpp/resources/imported/tutorial_cmd_list.gd")
+const _TutorialCmd = preload("res://resources/imported/tutorial_cmd.gd")
+const _TutorialCmdList = preload("res://resources/imported/tutorial_cmd_list.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.script"

@@ -1,0 +1,26 @@
+class_name SND_EFFECT
+
+enum {
+  DRAFT_WAV = 0x0,
+  MOVE_WAV = 0x1,
+  OCCUPY_WAV = 0x2,
+  CANNON_WAV = 0x3,
+  ROCKET_WAV = 0x4,
+  FIRE_WAV = 0x5,
+  EXP_WAV = 0x6,
+  STRIKE_WAV = 0x7,
+  SELECT_WAV = 0x8,
+  CANCEL_WAV = 0x9,
+  SHIP_WAV = 0xA,
+  CELEBRATE_WAV = 0xB,
+  AFTER_WAR_WAV = 0xC,
+  BUFF_WAV = 0xD,
+  BUILD_WAV = 0xE,
+  CARD_INTERFACE_WAV = 0xF,
+  GAS_WAV = 0x10,
+  LV_UP_WAV = 0x11,
+  MACHINE_GUN_WAV = 0x12,
+  NAVAL_GUN_WAV = 0x13,
+  POP_WAV = 0x14,
+  SUPPLY_WAV = 0x15,
+}

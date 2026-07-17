@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://fcfp44mkojj0"]
+
+[ext_resource type="Script" uid="uid://b657hk371043b" path="res://c_state_manager.gd" id="1_31rwq"]
+
+[node name="CStateManager" type="Control" unique_id=824437752 groups=["CStateManagerInstance"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_31rwq")
+states = Dictionary[int, NodePath]({
+0: NodePath("CLogoState"),
+1: NodePath("CMenuState"),
+3: NodePath("CLoadState"),
+4: NodePath("CGameState")
+})
+
+[node name="CLogoState" parent="." unique_id=1619107626 instance_placeholder="res://c_logo_state.tscn"]
+layout_mode = 1
+
+[node name="CMenuState" parent="." unique_id=54523483 instance_placeholder="res://c_menu_state.tscn"]
+layout_mode = 1
+
+[node name="CLoadState" parent="." unique_id=1642615460 instance_placeholder="res://c_load_state.tscn"]
+layout_mode = 1
+
+[node name="CGameState" parent="." unique_id=1645819512 instance_placeholder="res://c_game_state.tscn"]
+layout_mode = 1

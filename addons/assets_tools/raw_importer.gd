@@ -3,7 +3,7 @@ extends EditorImportPlugin
 
 # Reference: Godot source code of Image importer (https://github.com/godotengine/godot/blob/master/editor/import/resource_importer_image.cpp)
 
-const _CAreaMark = preload("res://app/src/main/cpp/c_area_mark.gd")
+const _CAreaMark = preload("res://c_area_mark.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.raw"

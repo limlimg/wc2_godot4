@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://jbmu7hxw0gjs"]
+
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="1_utj8q"]
+[ext_resource type="Script" uid="uid://brlw6mi7xb5d5" path="res://gui_medal_button.gd" id="2_ssx07"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="3_xxwpf"]
+[ext_resource type="Texture2D" uid="uid://mav2dvk3j566" path="res://resources/assets/logo_gui_res/medal_arrow.png.tres" id="4_qtr3v"]
+
+[sub_resource type="Animation" id="Animation_1aidn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Medal/GUIRect/Control/Arrow:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_5whqx"]
+resource_name = "arrow"
+length = 0.2
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Medal/GUIRect/Control/Arrow:anchor_top")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g20c0"]
+_data = {
+&"RESET": SubResource("Animation_1aidn"),
+&"arrow": SubResource("Animation_5whqx")
+}
+
+[node name="GUIMedalButton" unique_id=2034275630 instance=ExtResource("1_utj8q")]
+script = ExtResource("2_ssx07")
+selected = false
+arrow_color = Color(1, 1, 1, 1)
+
+[node name="Label" parent="." index="3" unique_id=1317756632]
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="Medal" type="TextureRect" parent="." index="5" unique_id=1865123603]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 2
+
+[node name="GUIRect" parent="Medal" index="0" unique_id=1576520916 instance=ExtResource("3_xxwpf")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 0
+rect_ipad = Rect2(0, 0, 0, 10)
+rect = Rect2(0, 0, 0, 5)
+
+[node name="Control" type="Control" parent="Medal/GUIRect" index="0" unique_id=792741410]
+layout_mode = 2
+
+[node name="Arrow" type="TextureRect" parent="Medal/GUIRect/Control" index="0" unique_id=811429696]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("4_qtr3v")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6" unique_id=2085164581]
+libraries/ = SubResource("AnimationLibrary_g20c0")

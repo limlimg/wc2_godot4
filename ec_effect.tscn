@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://clvmjkktsv3mo"]
+
+[ext_resource type="Script" uid="uid://bs5s8d044hv4a" path="res://ec_effect.gd" id="1_7ijto"]
+
+[node name="ecEffect" type="Node2D" unique_id=1633173356]
+script = ExtResource("1_7ijto")
+
+[node name="ecParticleSystem" parent="." unique_id=1215174198 instance_placeholder="res://ec_particle_system.tscn"]

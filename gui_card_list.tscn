@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bvd1rulqn5q7a"]
+
+[ext_resource type="Script" uid="uid://crdu2sxx57men" path="res://gui_card_list.gd" id="1_n3f07"]
+[ext_resource type="PackedScene" uid="uid://55bpjexr684x" path="res://gui/gui_list.tscn" id="1_v5t7c"]
+[ext_resource type="Resource" uid="uid://dfe0w1ve8iqjk" path="res://resources/assets/game_gui_res/texture_res.tres" id="4_n3f07"]
+
+[node name="GUICardList" unique_id=339150278 instance=ExtResource("1_v5t7c")]
+script = ExtResource("1_n3f07")
+tab = 0
+vertical = false
+separation_ipad = 10
+separation = 13
+
+[node name="GUICard" parent="CTouchInertia/ScrollContainer/BoxContainer" parent_id_path=PackedInt32Array(544251423) index="0" unique_id=1070159959 instance_placeholder="res://gui_card.tscn"]
+custom_minimum_size = Vector2(100, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture_res = ExtResource("4_n3f07")

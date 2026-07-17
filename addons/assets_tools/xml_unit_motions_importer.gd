@@ -7,9 +7,9 @@ const _MOTION_TYPE = [
 	"destroyed"
 ]
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _UnitMotion = preload("res://app/src/main/cpp/unit_motion.gd")
-const _UnitMotions = preload("res://app/src/main/cpp/unit_motions.gd")
-const _UnitMotionsMap = preload("res://app/src/main/cpp/resources/imported/unit_motions_map.gd")
+const _UnitMotion = preload("res://unit_motion.gd")
+const _UnitMotions = preload("res://unit_motions.gd")
+const _UnitMotionsMap = preload("res://resources/imported/unit_motions_map.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.unitmotions"

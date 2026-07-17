@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bw36wnr8tqwkd"]
+
+[ext_resource type="Script" uid="uid://dbda4lvx3hq5t" path="res://gui/fade.gd" id="1_owpuu"]
+
+[node name="Fade" type="Node2D" unique_id=1674156080]
+script = ExtResource("1_owpuu")
