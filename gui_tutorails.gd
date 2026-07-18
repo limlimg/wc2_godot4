@@ -4,7 +4,6 @@ extends GUIElement
 var asset: AssetRegistry
 
 var _cmds: TutorialCmdList
-var _awaiting_input: bool
 var _current_cmd: int
 var _tween: Tween
 
@@ -47,9 +46,9 @@ func _exe_cmd(index: int) -> void:
 				AppDelegate.g_Scene.move_camera_to_area(cmd.id)
 			else:
 				AppDelegate.g_Scene.move_camera_center_to_area(cmd.id)
-			_awaiting_input = true
+			var waiting_cmd := _current_cmd
 			await AppDelegate.g_Scene.move_camera_completed
-			_on_button_pressed()
+			_skip_cmd(waiting_cmd)
 		"finger at":
 			$Hand.visible = true
 			$Hand.position = Vector2(cmd.x, cmd.y)
@@ -57,8 +56,7 @@ func _exe_cmd(index: int) -> void:
 		"finger to":
 			_tween = create_tween()
 			_tween.tween_property($Hand, "position", Vector2(cmd.x, cmd.y), 1.0)
-			_tween.tween_callback(_on_button_pressed)
-			_awaiting_input = true
+			_tween.tween_callback(_skip_cmd.bind(_current_cmd))
 		"hide finger":
 			$Hand.visible = false
 			_exe_cmd(index + 1)
@@ -80,7 +78,8 @@ func _exe_cmd(index: int) -> void:
 			$drawRect.visible = false
 			_exe_cmd(index + 1)
 		"wait":
-			_awaiting_input = true
+			await $Button.pressed
+			_exe_cmd(index + 1)
 		"show image":
 			$Tutorials.texture = ecGraphics.instance().load_texture("tutorails{0}.webp".format([cmd.id]))
 			$Tutorials.position = Vector2(cmd.x, cmd.y)
@@ -102,9 +101,6 @@ func _show_dlg(dlg: String) -> void:
 	CSoundBox.get_instance().play_se("btn.wav")
 
 
-func _on_button_pressed() -> void:
-	if _awaiting_input:
-		if AppDelegate.g_Scene.move_camera_completed.is_connected(_on_button_pressed):
-			AppDelegate.g_Scene.move_camera_completed.disconnect(_on_button_pressed)
-		_awaiting_input = false
+func _skip_cmd(skip_cmd: int) -> void:
+	if _current_cmd == skip_cmd:
 		_exe_cmd(_current_cmd + 1)

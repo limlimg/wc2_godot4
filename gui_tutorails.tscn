@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://bcqpf4ldpbt1a"]
 
-[ext_resource type="Script" uid="uid://btpt1tqt60ufx" path="res://app/src/main/cpp/gui_tutorails.gd" id="1_6ixiq"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="1_snkox"]
-[ext_resource type="Texture2D" uid="uid://tiqbqgbii7uf" path="res://app/src/main/cpp/resources/assets/texture/guider.tres" id="2_50j1d"]
-[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://app/src/main/cpp/resources/assets/asset_registry.gd" id="2_jei2j"]
-[ext_resource type="Texture2D" uid="uid://c2e5r15nx22mc" path="res://app/src/main/cpp/resources/assets/texture/dlgboard.tres" id="3_wn28i"]
-[ext_resource type="Theme" uid="uid://dh25s5c8rymt1" path="res://app/src/main/cpp/resources/assets/game_gui_res/font8.tres" id="4_hdl1u"]
-[ext_resource type="Texture2D" uid="uid://lprdyx4n5dvd" path="res://app/src/main/cpp/resources/assets/texture/hand.tres" id="4_wn28i"]
+[ext_resource type="Script" uid="uid://btpt1tqt60ufx" path="res://gui_tutorails.gd" id="1_6ixiq"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="1_snkox"]
+[ext_resource type="Texture2D" uid="uid://tiqbqgbii7uf" path="res://resources/assets/texture/guider.tres" id="2_50j1d"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="2_jei2j"]
+[ext_resource type="Texture2D" uid="uid://c2e5r15nx22mc" path="res://resources/assets/texture/dlgboard.tres" id="3_wn28i"]
+[ext_resource type="Theme" uid="uid://dh25s5c8rymt1" path="res://resources/assets/game_gui_res/font8.tres" id="4_hdl1u"]
+[ext_resource type="Texture2D" uid="uid://lprdyx4n5dvd" path="res://resources/assets/texture/hand.tres" id="4_wn28i"]
 
 [sub_resource type="Resource" id="Resource_olh4s"]
 script = ExtResource("2_jei2j")
@@ -122,4 +122,4 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_ser6o")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ekwma")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yifqu")
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_skip_cmd"]

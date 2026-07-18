@@ -21,6 +21,8 @@ extends GUIElement
 ## PostEvent is not implemented because the original event system is not used
 ## any more.
 
+var _fade_order := 0
+
 signal faded_in(cause: int)
 signal faded_out(cause: int)
 
@@ -92,30 +94,24 @@ func add_scroll_bar(rect: Rect2, parent:Node, normal_image_name: StringName,
 
 
 func fade_in(cause: int) -> void:
+	_fade_order += 1
 	if $AnimationPlayer.is_playing():
-		$AnimationPlayer.animation_finished.emit($AnimationPlayer.current_animation)
-		#$AnimationPlayer.stop()
-	var fading_cause := cause
-	print("fade_in", fading_cause)
-	$AnimationPlayer.play("fade_in")
+		$AnimationPlayer.animation_finished.emit(&"fade_out") # to remove overlay
+	$AnimationPlayer.play_section(&"fade_in", 1.0 - $Fade/Fade.alpha)
+	var waiting_fade_order := _fade_order
 	var anim_name: StringName = await $AnimationPlayer.animation_finished
-	if anim_name == &"fade_in":
-		print("faded_in", fading_cause)
-		faded_in.emit(fading_cause)
+	if anim_name == &"fade_in" and _fade_order == waiting_fade_order:
+		faded_in.emit(cause)
 
 
 func fade_out(cause: int, overlay: Control) -> void:
-	if $AnimationPlayer.is_playing():
-		$AnimationPlayer.animation_finished.emit($AnimationPlayer.current_animation)
-		#$AnimationPlayer.stop()
-	var fading_cause := cause
+	_fade_order += 1
 	if overlay != null:
 		overlay.reparent($Fade, false)
-	print("fade_out", fading_cause)
-	$AnimationPlayer.play("fade_out")
+	$AnimationPlayer.play_section(&"fade_out", $Fade/Fade.alpha)
+	var waiting_fade_order := _fade_order
 	var anim_name: StringName = await $AnimationPlayer.animation_finished
-	if anim_name == &"fade_out":
-		if overlay != null:
-			overlay.queue_free()
-		print("faded_out", fading_cause)
-		faded_out.emit(fading_cause)
+	if overlay != null:
+		overlay.queue_free()
+	if anim_name == &"fade_out" and _fade_order == waiting_fade_order:
+		faded_out.emit(cause)

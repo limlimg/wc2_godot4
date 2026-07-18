@@ -8,7 +8,7 @@ const _RES_PATH = "res://scene_system_resource/selbattle_res/"
 var texture_res: ecTextureRes
 
 var _center_pos: Vector2
-var _move_handle := 0
+var _change_order := 0
 var _move_tween: Tween
 
 func set_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: String, age_pos: Vector2, center_pos: Vector2) -> void:
@@ -54,7 +54,7 @@ func _create_element_nodes(data: Array[FlagInfo], image_prefix: String, prototyp
 			image = image_attr
 			image.take_over_path(image_path)
 		else:
-			image = load(image_path)
+			image = ResourceLoader.get_cached_ref(image_path)
 		var node: Sprite2D = prototype.duplicate()
 		node.texture = image
 		if ecGraphics.instance().content_scale_size_mode == 3:
@@ -83,10 +83,10 @@ func change_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: Strin
 	if $AnimationPlayer.current_animation != &"fade_out":
 		$AnimationPlayer.stop()
 		$AnimationPlayer.play(&"fade_out")
-	_move_handle += 1
-	var match_move_handle := _move_handle
+	_change_order += 1
+	var waiting_change_order := _change_order
 	var anim_name: StringName = await $AnimationPlayer.animation_finished
-	if anim_name == &"fade_out" and match_move_handle == _move_handle:
+	if anim_name == &"fade_out" and _change_order == waiting_change_order:
 		set_image_list(flags, arrows, age, age_pos, center_pos)
 
 
