@@ -30,7 +30,7 @@ func set_battle_area(value: int) -> void:
 	if value == battle_area:
 		return
 	battle_area = value
-	var area := AppDelegate.g_Scene.get_area(value)
+	var area := g_Scene.get_area(value)
 	if area == null:
 		return
 	var army := area.get_army(0)
@@ -120,7 +120,7 @@ func _release_units() -> void:
 
 
 func _create_units() -> void:
-	var area := AppDelegate.g_Scene.get_area(battle_area)
+	var area := g_Scene.get_area(battle_area)
 	var army := area.get_army(0)
 	var army_id := army.def.id
 	var army_name := army.def.name
@@ -171,7 +171,7 @@ func attack() -> void:
 		_attack_tween.tween_callback(_fort.attack)
 	for i in _units.size():
 		if i == 0:
-			var army := AppDelegate.g_Scene.get_area(battle_area).get_army(0)
+			var army := g_Scene.get_area(battle_area).get_army(0)
 			if army != null and army.def.id > 1:
 				_attack_tween.tween_callback(get_node(opposite_scene).start_effect.bind(_units.size() + 1))
 		else:
@@ -189,7 +189,7 @@ func start_effect(num: int) -> void:
 			var rand_x := randi_range(0, 119) + 20.0
 			var rand_y := randi_range(280 - 30 * _units.size(), 299)
 			var rand_effect := randi_range(0, 4)
-			if AppDelegate.g_Scene.get_area(battle_area).sea != 0:
+			if g_Scene.get_area(battle_area).sea != 0:
 				match rand_effect:
 					0:
 						_add_effect("effect_strike2.xml", rand_x, rand_y)

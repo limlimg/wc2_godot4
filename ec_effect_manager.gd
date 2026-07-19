@@ -1,12 +1,10 @@
 class_name ecEffectManager
-extends Node2D
-
-static var _instance := new()
+extends CanvasLayer
 
 var _effects: Array[Node2D]
 
 static func instance() -> ecEffectManager:
-	return _instance
+	return _ZN15ecEffectManager8InstancevE
 
 
 func add_effect(file: String, auto_remove: bool) -> ecEffect:

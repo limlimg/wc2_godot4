@@ -19,7 +19,7 @@ var industry := 0:
 	set = set_industry
 
 func set_area(id: int) -> void:
-	var area := AppDelegate.g_Scene.get_area(id)
+	var area := g_Scene.get_area(id)
 	set_money(area.get_real_tax())
 	set_industry(area.get_industry())
 	var installation = area.installation

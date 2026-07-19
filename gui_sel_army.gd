@@ -11,7 +11,7 @@ signal army_targeted(index: int)
 func set_area(value: int) -> void:
 	if value != area:
 		area = value
-		var c_area := AppDelegate.g_Scene.get_area(value)
+		var c_area := g_Scene.get_area(value)
 		var army_count := c_area.get_num_armies()
 		for i in $VBoxContainer.get_child_count():
 			var node := get_child(i)
@@ -39,7 +39,7 @@ func move_army_to_front(index: int) -> void:
 	$VBoxContainer/GUIArmyItem3.army = $VBoxContainer/GUIArmyItem2.army
 	$VBoxContainer/GUIArmyItem2.army = $VBoxContainer/GUIArmyItem.army
 	$VBoxContainer/GUIArmyItem.army = moving_army
-	AppDelegate.g_Scene.get_area(area).move_army_to_front(index, true)
+	g_Scene.get_area(area).move_army_to_front(index, true)
 	if g_GameManager.game_mode == 4:
 		# TODO: send multiplayer data
 		pass

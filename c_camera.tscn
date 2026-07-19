@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://jqqrcwjhx42l"]
 
-[ext_resource type="Script" uid="uid://cs12ti8mqlvse" path="res://app/src/main/cpp/c_camera.gd" id="1_n23jt"]
+[ext_resource type="Script" uid="uid://cs12ti8mqlvse" path="res://c_camera.gd" id="1_n23jt"]
 
-[node name="CCamera" type="SubViewport" unique_id=1246448664]
+[node name="CCamera" type="Control" unique_id=512154116]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_n23jt")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=279675088]

@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 var _texts: Array[Label]
 

@@ -77,7 +77,7 @@ func load_game(save_file_name: String) -> void:
 
 
 func get_save_header(save_file_name: String) -> SaveHeader:
-	var path = AppDelegate.get_document_path(save_file_name)
+	var path = EC2dAppDelegate.get_document_path(save_file_name)
 	var file := ecFile.new()
 	if not file.open(path, FileAccess.READ):
 		return null
@@ -208,11 +208,11 @@ func init_battle() -> void:
 	_game_ended = false
 	campaign_reward_medal = 0
 	_local_game = game_mode != 4
-	AppDelegate.g_Scene.all_areas_encirclement()
+	g_Scene.all_areas_encirclement()
 	var ai_area_with_army_count := 0
 	var sea_area_count := 0
-	for i in AppDelegate.g_Scene.get_num_areas():
-		var area: CArea = AppDelegate.g_Scene.get_area(i)
+	for i in g_Scene.get_num_areas():
+		var area: CArea = g_Scene.get_area(i)
 		if area.enable:
 			if area.country != null and area.country.ai and area.army.size() > 0:
 				ai_area_with_army_count += 1
@@ -225,8 +225,8 @@ func init_battle() -> void:
 
 func _load_battle(file_name: String) -> void:
 	_clear_battle()
-	var res_battle: SaveHeader = load(AppDelegate.get_asset_path(file_name, ""))
-	AppDelegate.g_Scene.init(res_battle.areas_enable, res_battle.map)
+	var res_battle: SaveHeader = load(EC2dAppDelegate.get_asset_path(file_name, ""))
+	g_Scene.init(res_battle.areas_enable, res_battle.map)
 	for i in res_battle.country:
 		var country := CCountry.new()
 		country.init(i.id, i.name)
@@ -248,10 +248,10 @@ func _load_battle(file_name: String) -> void:
 			_belligerent_country.append(country)
 	for i in res_battle.area:
 		var id := i.id
-		var area: CArea = AppDelegate.g_Scene.get_area(id)
+		var area: CArea = g_Scene.get_area(id)
 		if area != null:
 			var country := _find_country(i.country)
-			AppDelegate.g_Scene.set_area_country(id, country)
+			g_Scene.set_area_country(id, country)
 			if country != null:
 				country.add_area(id)
 			var construction = i.construction
@@ -314,7 +314,7 @@ func _init_camera_pos() -> void:
 	if country != null:
 		var area := country.get_highest_value_area()
 		if area >= 0:
-			AppDelegate.g_Scene.set_camera_to_area(area)
+			g_Scene.set_camera_to_area(area)
 
 
 func get_cur_country() -> CCountry:
@@ -325,8 +325,8 @@ func get_cur_country() -> CCountry:
 
 func _real_load_game(file_name: String) -> void:
 	_clear_battle()
-	AppDelegate.g_Scene.init(_areas_enable, _map)
-	var path = AppDelegate.get_document_path(file_name)
+	g_Scene.init(_areas_enable, _map)
+	var path = EC2dAppDelegate.get_document_path(file_name)
 	var file := ecFile.new()
 	if file.open(path, FileAccess.READ):
 		var save := _get_save_header_from_file(file)
@@ -349,7 +349,7 @@ func _real_load_game(file_name: String) -> void:
 			var info := SaveAreaInfo.new()
 			info._mem = buf_area
 			info._offset = 200 * i
-			var area: CArea = AppDelegate.g_Scene.get_area(info.id)
+			var area: CArea = g_Scene.get_area(info.id)
 			area.country = _all_country[info.country_index]
 			area.load_area(info)
 			_all_country[info.country_index].add_area(info.id)
@@ -361,8 +361,8 @@ func _real_load_game(file_name: String) -> void:
 		victory = save.victory
 		current_round = save.current_round
 		random_reward_medal = save.random_reward_medal
-		AppDelegate.g_Scene.camera.set_pos(save.camera_x, save.camera_y, false)
-		AppDelegate.g_Scene.camera.scale = Vector2(save.camera_scale, save.camera_scale)
+		g_Scene.camera.set_pos(save.camera_x, save.camera_y, false)
+		g_Scene.camera.scale = Vector2(save.camera_scale, save.camera_scale)
 
 
 func get_local_player_country() -> CCountry:

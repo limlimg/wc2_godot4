@@ -1,8 +1,9 @@
+@tool
 class_name GUIImage
 extends GUIElement
 
 @export
-var alpha: float:
+var alpha := 1.0:
 	get():
 		return $TextureRect.self_modulate.a
 	set(value):

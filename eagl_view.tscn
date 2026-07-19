@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://d1fpwlnpujwen"]
 
-[ext_resource type="PackedScene" uid="uid://fcfp44mkojj0" path="res://c_state_manager.tscn" id="1_y2d0g"]
-[ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://gui_manager.tscn" id="2_xjqce"]
-[ext_resource type="PackedScene" uid="uid://cyix61j6uvyd3" path="res://gui_motion_manager.tscn" id="3_jtqsl"]
+[ext_resource type="Script" uid="uid://ct43yalqtd27j" path="res://eagl_view.gd" id="1_eb6bw"]
 
 [node name="EAGLView" type="Control" unique_id=833534245]
 layout_mode = 3
@@ -11,11 +9,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_eb6bw")
 
-[node name="CStateManager" parent="." unique_id=824437752 instance=ExtResource("1_y2d0g")]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1117201085]
+layer = -96
 
-[node name="GUIManager" parent="CStateManager" unique_id=510783743 instance=ExtResource("2_xjqce")]
-layout_mode = 1
-
-[node name="GUIMotionManager" parent="." unique_id=1039021798 instance=ExtResource("3_jtqsl")]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1875625985]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

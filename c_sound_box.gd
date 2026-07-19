@@ -7,7 +7,7 @@ var _loaded_se: Dictionary[String, AudioStream]
 var _play_se_on_load: Dictionary[String, bool]
 
 static func get_instance() -> CSoundBox:
-	return CSoundBoxInstance
+	return _ZN10CCSoundBox9mInstanceE
 
 
 func _init_sound_system() -> void:
@@ -16,7 +16,7 @@ func _init_sound_system() -> void:
 
 
 static func destroy() -> void:
-	CSoundBoxInstance._destroy_sound_system()
+	_ZN10CCSoundBox9mInstanceE._destroy_sound_system()
 
 
 func _destroy_sound_system() -> void:
@@ -38,7 +38,7 @@ func load_music(music_name: String, extension: String) -> void:
 		ResourceLoader.load_threaded_get(_loading_music_path)
 	_play_music_on_load = false
 	$Music.stream.stream_count = 0
-	_loading_music_path = AppDelegate.get_asset_path(music_name, extension)
+	_loading_music_path = EC2dAppDelegate.get_asset_path(music_name, extension)
 	if _loading_music_path.is_empty():
 		return
 	ResourceLoader.load_threaded_request(_loading_music_path)
@@ -69,7 +69,7 @@ func set_music_volume(volume: int) -> void:
 
 
 func load_se(se_name: String) -> void:
-	var path = AppDelegate.get_asset_path(se_name, "")
+	var path = EC2dAppDelegate.get_asset_path(se_name, "")
 	if path.is_empty():
 		return
 	_play_se_on_load[path] = false
@@ -77,7 +77,7 @@ func load_se(se_name: String) -> void:
 
 
 func unload_se(se_name: String) -> void:
-	var path = AppDelegate.get_asset_path(se_name, "")
+	var path = EC2dAppDelegate.get_asset_path(se_name, "")
 	if _play_se_on_load.has(path):
 		ResourceLoader.load_threaded_get(path)
 		_play_se_on_load.erase(path)
@@ -86,7 +86,7 @@ func unload_se(se_name: String) -> void:
 
 
 func play_se(se_name: String) -> int:
-	var path = AppDelegate.get_asset_path(se_name, "")
+	var path = EC2dAppDelegate.get_asset_path(se_name, "")
 	if _loaded_se.has(path):
 		if not $SE.playing:
 			$SE.play()

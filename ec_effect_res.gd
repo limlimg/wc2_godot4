@@ -38,9 +38,9 @@ func _on_asset_changed() -> void:
 	if asset != null:
 		var res: ecEffectRes
 		if Engine.is_editor_hint():
-			var path = AppDelegate.get_asset_path(asset.name, "")
+			var path = EC2dAppDelegate.get_asset_path(asset.name, "")
 			if path.is_empty():
-				path = AppDelegate.get_asset_path(asset.name_hd, "")
+				path = EC2dAppDelegate.get_asset_path(asset.name_hd, "")
 			if not path.is_empty():
 				res = load(path) as ecEffectRes
 			else:
@@ -48,7 +48,7 @@ func _on_asset_changed() -> void:
 		else:
 			var name := asset.get_resolved_name()
 			if not name.is_empty():
-				var path = AppDelegate.get_asset_path(name, "")
+				var path = EC2dAppDelegate.get_asset_path(name, "")
 				if not path.is_empty():
 					res = load(path) as ecEffectRes
 		if res != null:

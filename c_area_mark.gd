@@ -9,7 +9,7 @@ var _pattern: Image
 
 func init(map: int) -> void:
 	release()
-	var path = AppDelegate.get_asset_path("areamark{0}.raw".format([map]), "")
+	var path = EC2dAppDelegate.get_asset_path("areamark{0}.raw".format([map]), "")
 	if path.is_empty():
 		return
 	_pattern = load(path) as Image

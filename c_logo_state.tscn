@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://k1rddnv5q5m8"]
 
-[ext_resource type="Script" uid="uid://c2o7l5cd0x8vw" path="res://app/src/main/cpp/c_logo_state.gd" id="1_b54l6"]
-[ext_resource type="Texture2D" uid="uid://xkr7cuawfg24" path="res://app/src/main/cpp/resources/assets/texture/logo.tres" id="4_hjp6p"]
+[ext_resource type="Script" uid="uid://c2o7l5cd0x8vw" path="res://c_logo_state.gd" id="1_b54l6"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_16a6w"]
+[ext_resource type="Texture2D" uid="uid://xkr7cuawfg24" path="res://resources/assets/texture/logo.tres" id="3_16a6w"]
 
 [node name="CLogoState" type="Control" unique_id=1619107626]
 layout_mode = 3
@@ -20,17 +21,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Logo" type="TextureRect" parent="." unique_id=1501354742]
+[node name="Logo" parent="." unique_id=1576520916 instance=ExtResource("2_16a6w")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -128.0
-offset_right = 128.0
-offset_bottom = 128.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("4_hjp6p")
+offset_left = -127.0
+offset_top = -127.0
+offset_right = 127.0
+offset_bottom = 127.0
+rect_ipad = Rect2(0, 0, 510, 510)
+rect = Rect2(0, 0, 254, 254)
+
+[node name="GUIImage" parent="Logo" unique_id=879262850 instance_placeholder="res://gui_image.tscn"]
+layout_mode = 2
+texture = ExtResource("3_16a6w")

@@ -2,29 +2,13 @@
 class_name EC2dAppDelegate
 extends Node
 
-func _notification(what):
-	if Engine.is_editor_hint():
-		return
-	if what == NOTIFICATION_READY:
-		_application_did_finish_launching_with_options(Engine.get_main_loop(), {})
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		_application_will_terminate(Engine.get_main_loop())
-	elif what == NOTIFICATION_APPLICATION_PAUSED:
-		_application_did_enter_background(Engine.get_main_loop())
-		get_tree().paused = true
-	elif what == NOTIFICATION_APPLICATION_RESUMED:
-		_application_will_enter_foreground(Engine.get_main_loop())
-		get_tree().paused = false
-	elif what == NOTIFICATION_WM_GO_BACK_REQUEST:
-		var event := InputEventAction.new()
-		event.action = &"ui_cancel"
-		event.pressed = true
-		Input.parse_input_event(event)
+func _init() -> void:
+	_application_will_finish_launching_with_options(Engine.get_main_loop(), {})
 
 
 static var g_content_scale_factor: float = 1.0 / ProjectSettings.get_setting("display/window/stretch/scale")
 
-func _application_did_finish_launching_with_options(_application: MainLoop, _launch_options: Dictionary) -> bool:
+func _application_will_finish_launching_with_options(_application: MainLoop, _launch_options: Dictionary) -> bool:
 	var window_size := DisplayServer.window_get_size()
 	var game_view_width := maxf(window_size.x, window_size.y)
 	var game_view_height := minf(window_size.x, window_size.y)
@@ -136,8 +120,22 @@ func get_rand() -> int:
 	return (_rand_seed >> 16) & 0x7FFF;
 
 
-func _get_time() -> int:
-	return Time.get_ticks_msec()
+func _notification(what):
+	if Engine.is_editor_hint():
+		return
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		_application_will_terminate(Engine.get_main_loop())
+	elif what == NOTIFICATION_APPLICATION_PAUSED:
+		_application_did_enter_background(Engine.get_main_loop())
+		get_tree().paused = true
+	elif what == NOTIFICATION_APPLICATION_RESUMED:
+		_application_will_enter_foreground(Engine.get_main_loop())
+		get_tree().paused = false
+	elif what == NOTIFICATION_WM_GO_BACK_REQUEST:
+		var event := InputEventAction.new()
+		event.action = &"ui_cancel"
+		event.pressed = true
+		Input.parse_input_event(event)
 
 
 func _application_will_terminate(_application: MainLoop) -> void:
@@ -176,7 +174,7 @@ static func get_document_path(file_name: String) -> String:
 	return "user://" + file_name
 
 
-static func get_2x_path(file_name: String, _a2: String) -> String:
+func get_2x_path(file_name: String, _a2: String) -> String:
 	var file_2x_name: String
 	var i := file_name.find('.')
 	while i != -1:
@@ -250,7 +248,7 @@ func ec_texture_with_string(string: String, font_name: String, font_size: int, a
 	return _ec_texture
 
 
-static func ec_texture_load(texture_name: String) -> ecTexture:
+func ec_texture_load(texture_name: String) -> ecTexture:
 	var path := ""
 	var is_2x: bool
 	if not Engine.is_editor_hint():
@@ -288,12 +286,6 @@ static func ec_texture_load(texture_name: String) -> ecTexture:
 			ec_texture.size_override.x = texture.get_width()
 			ec_texture.size_override.y = texture.get_height()
 	return ec_texture
-
-var g_Scene: CScene:
-	get():
-		if g_Scene == null or not is_instance_valid(g_Scene):
-			g_Scene = $CScene.create_instance()
-		return g_Scene
 
 
 var _dynamic_num_battles: Array[int]

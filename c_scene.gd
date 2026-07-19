@@ -1,5 +1,5 @@
 class_name CScene
-extends Control
+extends CanvasLayer
 
 var camera: CCamera
 var _area_mark := CAreaMark.new()

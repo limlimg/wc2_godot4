@@ -6,7 +6,7 @@ extends Node
 var _translation: Translation
 
 func load_table(file_name: String) -> bool:
-	var path = AppDelegate.get_asset_path(file_name, "")
+	var path = EC2dAppDelegate.get_asset_path(file_name, "")
 	if path.is_empty():
 		return false
 	_translation = load(path) as Translation

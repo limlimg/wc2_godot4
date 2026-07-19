@@ -1,6 +1,9 @@
 extends CBaseState
 
+var _logo: Control
+
 func _on_enter() -> void:
+	_logo = $Logo/GUIImage.create_instance()
 	g_GameSettings.load_settings()
 	var sound_box := CSoundBox.get_instance()
 	sound_box.set_music_volume(g_GameSettings.music_volume)
@@ -16,3 +19,7 @@ func _on_enter() -> void:
 		# TODO: initialize player manager
 		CStateManager.instance().set_cur_state(EState.MENU)
 		)
+
+
+func _on_exit() -> void:
+	_logo.queue_free()

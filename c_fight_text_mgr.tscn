@@ -3,15 +3,14 @@
 [ext_resource type="Script" uid="uid://bnu3di5edrab5" path="res://c_fight_text_mgr.gd" id="1_5w5kv"]
 [ext_resource type="Theme" uid="uid://fnnjxuxw1uqw" path="res://resources/assets/game_res/num2.tres" id="2_5w5kv"]
 
-[node name="CFightTextMgr" type="Node2D" unique_id=474335119]
+[node name="CFightTextMgr" type="CanvasLayer" unique_id=1897881315]
+layer = -48
+visible = false
+follow_viewport_enabled = true
 script = ExtResource("1_5w5kv")
 
 [node name="CFightText" parent="." unique_id=448162067 instance_placeholder="res://c_fight_text.tscn"]
 anchors_preset = -1
-anchor_right = 0.0
-anchor_bottom = 0.0
 offset_right = 1.0
 offset_bottom = 73.0
-grow_horizontal = 1
-grow_vertical = 1
 theme = ExtResource("2_5w5kv")

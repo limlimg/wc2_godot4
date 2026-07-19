@@ -2,13 +2,28 @@ extends CBaseState
 
 var _fade_order := 0
 var _displayed_menu: Control
+var _background: Control
+var _main_menu: Control
 
 func _on_enter() -> void:
 	var sound_box := CSoundBox.get_instance()
 	sound_box.load_music("battle1.mp3", "")
 	sound_box.play_music(true)
+	_background = $Background.create_instance()
+	_main_menu = $MainMenu/GUIMainMenu.create_instance()
+	_main_menu.sel_campaign_pressed.connect(_on_gui_main_menu_sel_campaign_pressed)
+	_main_menu.load_campaign_pressed.connect(_on_gui_main_menu_load_campaign_pressed)
+	_main_menu.sel_conquest_pressed.connect(_on_gui_main_menu_sel_conquest_pressed)
+	_main_menu.load_conquest_pressed.connect(_on_gui_main_menu_load_conquest_pressed)
+	#_main_menu.multi_player_global_pressed.connect(_on_gui_main_menu_multi_player_global_pressed)
+	#_main_menu.multi_player_host_pressed.connect(_on_gui_main_menu_multi_player_host_pressed)
+	#_main_menu.multi_player_join_pressed.connect(_on_gui_main_menu_multi_player_join_pressed)
+	_main_menu.tutorial_pressed.connect(_on_gui_main_menu_tutorial_pressed)
+	_main_menu.commander_pressed.connect(_on_gui_main_menu_commander_pressed)
+	_main_menu.options_pressed.connect(_on_gui_main_menu_options_pressed)
+	_main_menu.quit_pressed.connect(_on_gui_main_menu_quit_pressed)
 	if g_GameManager.should_show_next_battle:
-		$MainMenu.hide()
+		_main_menu.hide()
 		if _displayed_menu != null:
 			_displayed_menu.queue_free()
 		_displayed_menu = $GUISelBattle.create_instance()
@@ -23,11 +38,16 @@ func _on_enter() -> void:
 	GUIManager.instance().fade_in(100)
 	var cause: int = await GUIManager.instance().faded_in
 	if cause == 100 and _fade_order == wait_fade_order:
-		$MainMenu/GUIRect/GUIMainMenu.move_in_main_buttons()
+		_main_menu.move_in_main_buttons()
 
 
 func _on_exit() -> void:
 	CSoundBox.get_instance().unload_music()
+	if _displayed_menu != null:
+		_displayed_menu.queue_free()
+		_displayed_menu = null
+	_background.queue_free()
+	_main_menu.queue_free()
 
 
 func _back_pressed() -> bool:
@@ -57,7 +77,7 @@ func _on_gui_main_menu_sel_campaign_pressed(sel_campaign: int) -> void:
 		GUIManager.instance().fade_out(3, $GUILoading.create_instance())
 		var cause: int = await GUIManager.instance().faded_out
 		if cause == 3 and _fade_order == wait_fade_order:
-			$MainMenu.hide()
+			_main_menu.hide()
 			if _displayed_menu != null:
 				_displayed_menu.queue_free()
 			_displayed_menu = $GUISelBattle.create_instance()
@@ -79,7 +99,7 @@ func _on_gui_main_menu_load_campaign_pressed() -> void:
 	GUIManager.instance().fade_out(2, null)
 	var cause: int = await GUIManager.instance().faded_out
 	if cause == 2 and _fade_order == wait_fade_order:
-		$MainMenu.hide()
+		_main_menu.hide()
 		if _displayed_menu != null:
 			_displayed_menu.queue_free()
 		_displayed_menu = $GUISave.create_instance()
@@ -97,7 +117,7 @@ func _on_gui_main_menu_sel_conquest_pressed(sel_conquest: int) -> void:
 	GUIManager.instance().fade_out(4, $GUILoading.create_instance())
 	var cause: int = await GUIManager.instance().faded_out
 	if cause == 4 and _fade_order == wait_fade_order:
-		$MainMenu.hide()
+		_main_menu.hide()
 		if _displayed_menu != null:
 			_displayed_menu.queue_free()
 		_displayed_menu = $GUISelCountry.create_instance()
@@ -114,7 +134,7 @@ func _on_gui_main_menu_load_conquest_pressed() -> void:
 	GUIManager.instance().fade_out(21, null)
 	var cause: int = await GUIManager.instance().faded_out
 	if cause == 21 and _fade_order == wait_fade_order:
-		$MainMenu.hide()
+		_main_menu.hide()
 		if _displayed_menu != null:
 			_displayed_menu.queue_free()
 		_displayed_menu = $GUISave.create_instance()
@@ -146,7 +166,7 @@ func _on_gui_main_menu_commander_pressed() -> void:
 	GUIManager.instance().fade_out(11, null)
 	var cause: int = await GUIManager.instance().faded_out
 	if cause == 11 and _fade_order == wait_fade_order:
-		$MainMenu.hide()
+		_main_menu.hide()
 		if _displayed_menu != null:
 			_displayed_menu.queue_free()
 		_displayed_menu = $GUICommander.create_instance()
@@ -161,7 +181,7 @@ func _on_gui_main_menu_options_pressed() -> void:
 	GUIManager.instance().fade_out(12, null)
 	var cause: int = await GUIManager.instance().faded_out
 	if cause == 12 and _fade_order == wait_fade_order:
-		$MainMenu.hide()
+		_main_menu.hide()
 		if _displayed_menu != null:
 			_displayed_menu.queue_free()
 		_displayed_menu = $GUIOptions.create_instance()
@@ -180,7 +200,7 @@ func _fade_out_back() -> void:
 	GUIManager.instance().fade_out(9, null)
 	var cause: int = await GUIManager.instance().faded_out
 	if cause == 9 and _fade_order == wait_fade_order:
-		$MainMenu.show()
+		_main_menu.show()
 		GUIManager.instance().safe_free_child(_displayed_menu)
 		GUIManager.instance().fade_in(-1)
 

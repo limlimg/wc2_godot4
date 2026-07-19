@@ -31,10 +31,10 @@ func battle_start() -> void:
 func _reset_battle() -> void:
 	if attack_area < 0 or defend_area < 0:
 		return
-	var area1 := AppDelegate.g_Scene.get_area(attack_area)
+	var area1 := g_Scene.get_area(attack_area)
 	if area1 == null:
 		return
-	var area2 := AppDelegate.g_Scene.get_area(defend_area)
+	var area2 := g_Scene.get_area(defend_area)
 	if area2 == null:
 		return
 	var army1 := area1.get_army(0)

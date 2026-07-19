@@ -27,7 +27,7 @@ signal faded_in(cause: int)
 signal faded_out(cause: int)
 
 static func instance() -> GUIManager:
-	return (Engine.get_main_loop() as SceneTree).get_first_node_in_group(&"GUIManagerInstance")
+	return (Engine.get_main_loop() as SceneTree).get_first_node_in_group(&"_ZN10GUIManager8InstancevE")
 
 
 #func load_texture_res(file_name: String, hd: bool) -> void:
@@ -49,34 +49,34 @@ func safe_free_child(child: Node) -> void:
 ## The original method has more parameter for specifying texture format.
 func add_image_texture(texture_name: String, attr: ecTextureRect, rect: Rect2,
 		parent:Node) -> GUIImage:
-	var image := $Prototype/GUIImage.duplicate()
+	var image = $Prototype/GUIImage.create_instance()
 	if not image.init_atlas(texture_name, attr, rect):
 		image.free()
 		return null
 	if parent == null:
 		parent = self
-	parent.add_child(image)
+	parent.reparent(image)
 	return image
 
 
 func add_image(texture_name: String, rect: Rect2, parent:Node) -> GUIImage:
-	var image := $Prototype/GUIImage.duplicate()
+	var image = $Prototype/GUIImage.create_instance()
 	if not image.init_image_attr(texture_name, rect):
 		image.free()
 		return null
 	if parent == null:
 		parent = self
-	parent.add_child(image)
+	parent.reparent(image)
 	return image
 
 
 func add_button(normal_image_name: StringName, pressed_image_name: StringName,
 		rect: Rect2, parent:Node, font: ecUniFont) -> GUIButton:
-	var button := $Prototype/GUIButton.duplicate()
+	var button = $Prototype/GUIButton.create_instance()
 	button.init(normal_image_name, pressed_image_name, rect, font)
 	if parent == null:
 		parent = self
-	parent.add_child(button)
+	parent.reparent(button)
 	return button
 
 
@@ -84,12 +84,12 @@ func add_scroll_bar(rect: Rect2, parent:Node, normal_image_name: StringName,
 		pressed_image_name: StringName, grabber_size_w: int,
 		grabber_size_h: int, default_value: int, set_max_value: int,
 		is_horizontal: bool) -> GUIScrollBar:
-	var scroll_bar := $Prototype/GUIScrollBar.duplicate()
+	var scroll_bar = $Prototype/GUIScrollBar.create_instance()
 	scroll_bar.init(rect, normal_image_name, pressed_image_name, grabber_size_w,
 		grabber_size_h, default_value, set_max_value, is_horizontal)
 	if parent == null:
 		parent = self
-	parent.add_child(scroll_bar)
+	parent.reparent(scroll_bar)
 	return scroll_bar
 
 

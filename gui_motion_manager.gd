@@ -26,7 +26,7 @@ var _frozen: bool
 signal motion_finished(Control)
 
 static func instance() -> GUIMotionManager:
-	return (Engine.get_main_loop() as SceneTree).get_first_node_in_group(&"GUIMotionManagerInstance")
+	return _ZN16GUIMotionManager8InstancevE
 
 
 func clear_motion() -> void:

@@ -23,15 +23,13 @@ grow_horizontal = 1
 rect_ipad = Rect2(-174, 730, 0, 0)
 rect = Rect2(-86, 300, 0, 0)
 
-[node name="TextureRect" type="TextureRect" parent="Loading" unique_id=116623192]
+[node name="GUIImage" parent="Loading" unique_id=1995706357 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 2
 texture = ExtResource("2_nhydb")
 
-[node name="LoadingTitle" type="TextureRect" parent="." unique_id=997851547]
-layout_mode = 0
+[node name="LoadingTitle" parent="." unique_id=1259909505 instance_placeholder="res://gui_image.tscn"]
+layout_mode = 1
 texture = ExtResource("4_5uj21")
-expand_mode = 1
-stretch_mode = 2
 
 [node name="Tip" parent="." unique_id=1352659599 instance=ExtResource("1_olp3u")]
 layout_mode = 1

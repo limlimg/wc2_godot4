@@ -33,7 +33,7 @@ var _texture_loading: Array[String]
 var _rendering_canvas_item: CanvasItem
 
 static func instance() -> ecGraphics:
-	return ecGraphicsInstance
+	return _ZN10ecGraphics8InstancevE
 
 
 func init(content_scale_width: int, content_scale_height: int, _orientation: int, _view_width: int, _view_height: int) -> void:
@@ -62,6 +62,7 @@ func init(content_scale_width: int, content_scale_height: int, _orientation: int
 	else:
 		content_scale_size_mode = 1
 	var window := (Engine.get_main_loop() as SceneTree).root
+	await window.ready
 	window.content_scale_factor = AppDelegate.g_content_scale_factor
 	var window_content_x = content_scale_width * AppDelegate.g_content_scale_factor
 	var window_content_y = content_scale_height * AppDelegate.g_content_scale_factor
@@ -95,7 +96,7 @@ func create_texture_with_string(string: String, font_name: String, font_size: in
 func load_texture(texture_name: String) -> ecTexture:
 	if _texture_cache.has(texture_name) and _texture_cache[texture_name].get_ref() != null:
 		return _texture_cache[texture_name].get_ref()
-	var ec_texture = EC2dAppDelegate.ec_texture_load(texture_name)
+	var ec_texture = AppDelegate.ec_texture_load(texture_name)
 	if ec_texture != null:
 		_texture_cache[texture_name] = weakref(ec_texture)
 		if ec_texture.texture == null:
@@ -105,7 +106,7 @@ func load_texture(texture_name: String) -> ecTexture:
 
 func _process(_delta: float) -> void:
 	for i in _texture_loading.duplicate():
-		var ec_texture = EC2dAppDelegate.ec_texture_load(i)
+		var ec_texture = AppDelegate.ec_texture_load(i)
 		if ec_texture == null:
 			_texture_loading.erase(i)
 			continue

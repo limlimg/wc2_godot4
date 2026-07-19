@@ -11,11 +11,11 @@ var _battle_list: BattleDefMap
 var _conquest_list: ConquestDefMap
 
 static func instance() -> CObjectDef:
-	return CObjectDefInstance
+	return _ZN10CObjectDef10m_InstanceE
 
 
 func destroy() -> void:
-	CObjectDefInstance._release()
+	_ZN10CObjectDef10m_InstanceE._release()
 
 
 func init() -> void:
@@ -39,7 +39,7 @@ func _release() -> void:
 	_release_conquest_list()
 
 func _load_army_def() -> void:
-	_army_def = load(AppDelegate.get_asset_path("armydef.xml", "")) as ArmyDefListMap
+	_army_def = load(EC2dAppDelegate.get_asset_path("armydef.xml", "")) as ArmyDefListMap
 	if _army_def == null:
 		push_error("Failed to load armydef.xml")
 
@@ -56,7 +56,7 @@ func get_army_def(id: int, country: StringName) -> ArmyDef:
 
 
 func _load_card_def() -> void:
-	_card_def = load(AppDelegate.get_asset_path("carddef.xml", "")) as CardDefList
+	_card_def = load(EC2dAppDelegate.get_asset_path("carddef.xml", "")) as CardDefList
 	if _card_def == null:
 		push_error("Failed to load carddef.xml")
 
@@ -76,7 +76,7 @@ func get_card_target_type(card: CardDef) -> int:
 
 
 func _load_unit_motions() -> void:
-	_unit_motions = load(AppDelegate.get_asset_path("motiondef.xml", "")) as UnitMotionsMap
+	_unit_motions = load(EC2dAppDelegate.get_asset_path("motiondef.xml", "")) as UnitMotionsMap
 	if _unit_motions == null:
 		push_error("Failed to load motiondef.xml")
 
@@ -94,7 +94,7 @@ func get_unit_motions(type: String, country: String) -> UnitMotions:
 
 
 func _load_unit_positions() -> void:
-	_unit_positions = load(AppDelegate.get_asset_path("unitposdef.xml", "")) as UnitPositionsMap
+	_unit_positions = load(EC2dAppDelegate.get_asset_path("unitposdef.xml", "")) as UnitPositionsMap
 	if _unit_positions == null:
 		push_error("Failed to load unitposdef.xml")
 
@@ -108,7 +108,7 @@ func get_unit_positions(type: StringName) -> UnitPositions:
 
 
 func _load_commander_def() -> void:
-	_commander_def = load(AppDelegate.get_asset_path("commanderdef.xml", "")) as CommanderDefMap
+	_commander_def = load(EC2dAppDelegate.get_asset_path("commanderdef.xml", "")) as CommanderDefMap
 	if _commander_def == null:
 		push_error("Failed to load commanderdef.xml")
 
@@ -122,7 +122,7 @@ func get_commander_def(def_name: StringName) -> CommanderDef:
 
 
 func _load_general_photos() -> void:
-	_general_photos = load(AppDelegate.get_asset_path("generalphotos.xml", "")) as GeneralPhotoMap
+	_general_photos = load(EC2dAppDelegate.get_asset_path("generalphotos.xml", "")) as GeneralPhotoMap
 	if _general_photos == null:
 		push_error("Failed to load generalphotos.xml")
 
@@ -136,7 +136,7 @@ func get_general_photo(def_name: StringName) -> GeneralPhoto:
 
 
 func _load_battle_list() -> void:
-	_battle_list = load(AppDelegate.get_asset_path("battlelist.xml", "")) as BattleDefMap
+	_battle_list = load(EC2dAppDelegate.get_asset_path("battlelist.xml", "")) as BattleDefMap
 	if _battle_list == null:
 		push_error("Failed to load battlelist.xml")
 
@@ -150,7 +150,7 @@ func get_battle_def(def_name: StringName) -> BattleDef:
 
 
 func _load_conquest_list() -> void:
-	_conquest_list = load(AppDelegate.get_asset_path("conquestlist.xml", "")) as ConquestDefMap
+	_conquest_list = load(EC2dAppDelegate.get_asset_path("conquestlist.xml", "")) as ConquestDefMap
 	if _conquest_list == null:
 		push_error("Failed to load conquestlist.xml")
 

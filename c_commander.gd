@@ -22,7 +22,7 @@ func _init() -> void:
 func load() -> void:
 	_loaded = true
 	var file := ecFile.new()
-	if file.open(AppDelegate.get_document_path("commander.sav"), FileAccess.READ):
+	if file.open(EC2dAppDelegate.get_document_path("commander.sav"), FileAccess.READ):
 		var buffer := PackedByteArray()
 		if file.read(buffer, _DOCUMENT_SIZE) and buffer.slice(0, 4).get_string_from_ascii().reverse() == _MAGIC and buffer.decode_u32(4) == 1:
 			rank = buffer.decode_u32(16)
@@ -70,7 +70,7 @@ func save() -> void:
 				buffer.encode_u32(offset, x)
 				offset += 4
 		var file := ecFile.new()
-		if file.open(AppDelegate.get_document_path("commander.sav"), FileAccess.WRITE):
+		if file.open(EC2dAppDelegate.get_document_path("commander.sav"), FileAccess.WRITE):
 			file.write(buffer, _DOCUMENT_SIZE)
 			file.close()
 

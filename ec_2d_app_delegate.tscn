@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://ca4a33l6mf8ec"]
-
-[ext_resource type="Script" uid="uid://cwnp8pga0kaay" path="res://ec_2d_app_delegate.gd" id="1_qvxgr"]
-
-[node name="Ec2dAppDelegate" type="Node" unique_id=1899091817]
-script = ExtResource("1_qvxgr")
-
-[node name="CScene" parent="." unique_id=974913835 instance_placeholder="res://c_scene.tscn"]

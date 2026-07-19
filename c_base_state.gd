@@ -9,16 +9,21 @@ extends Control
 ## in a duck-typed manner, so defining one of the following method is enough
 ## to allow it to be called, while it is not necessary to define all of them.
 
-func _ready() -> void:
-	_on_enter()
+func _notification(what):
+	if what == NOTIFICATION_VISIBILITY_CHANGED:
+		if is_node_ready():
+			if visible:
+				_on_enter()
+			else:
+				_on_exit()
+	if what == NOTIFICATION_APPLICATION_RESUMED:
+		_enter_foreground()
+	elif what == NOTIFICATION_APPLICATION_PAUSED:
+		_enter_background()
 
 
 func _on_enter() -> void:
 	pass
-
-
-func _exit_tree() -> void:
-	_on_exit()
 
 
 func _on_exit() -> void:
@@ -60,13 +65,6 @@ func _key_down(_key: Key) -> void:
 
 func _scroll_wheel(_x_value: float, _y_value: float, _a3: float) -> void:
 	pass
-
-
-func _notification(what):
-	if what == NOTIFICATION_APPLICATION_RESUMED:
-		_enter_foreground()
-	elif what == NOTIFICATION_APPLICATION_PAUSED:
-		_enter_background()
 
 
 func _enter_background() -> void:

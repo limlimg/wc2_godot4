@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://cyteip1ai4gjt"]
 
 [ext_resource type="Script" uid="uid://r8i8smosqhsx" path="res://c_game_state.gd" id="1_i7u21"]
-[ext_resource type="PackedScene" uid="uid://3kjay574huha" path="res://ec_effect_manager.tscn" id="2_0d8sx"]
-[ext_resource type="PackedScene" uid="uid://bdigiv3s86lid" path="res://c_fight_text_mgr.tscn" id="3_f1sur"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="5_iy5bs"]
-[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="6_ob33k"]
 [ext_resource type="Texture2D" uid="uid://bu6m3ik6qwmav" path="res://resources/assets/logo_gui_res/gamebutton_round_normal.png.tres" id="7_hejqp"]
 [ext_resource type="Texture2D" uid="uid://dcuchi3na4edf" path="res://resources/assets/logo_gui_res/gamebutton_round_press.png.tres" id="8_kjuls"]
 [ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://resources/assets/logo_gui_res/buttonboard_green.png.tres" id="9_ob33k"]
@@ -16,17 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://42otm2gr4o7o" path="res://resources/assets/logo_gui_res/buttonboard_red.png.tres" id="15_q1qaj"]
 [ext_resource type="Texture2D" uid="uid://c2gralhifxwj8" path="res://resources/assets/logo_gui_res/gamebutton_cardremove_normal.png.tres" id="16_q1qaj"]
 [ext_resource type="Texture2D" uid="uid://cnyjx7s30rc6u" path="res://resources/assets/logo_gui_res/gamebutton_cardremove_press.png.tres" id="17_u8uvy"]
-[ext_resource type="PackedScene" uid="uid://duidx7fccd24k" path="res://gui_gold.tscn" id="18_3aq82"]
-[ext_resource type="PackedScene" uid="uid://c5o8iq207nbba" path="res://gui_tax.tscn" id="19_im5jt"]
-[ext_resource type="PackedScene" uid="uid://bcdwdidc5e6kk" path="res://gui_small_card.tscn" id="20_im5jt"]
-[ext_resource type="PackedScene" uid="uid://b3cll0m0etpx" path="res://gui_attack_box.tscn" id="21_6jayj"]
-[ext_resource type="PackedScene" uid="uid://u7akx8jrxvgd" path="res://gui_pause_box.tscn" id="22_ennrn"]
-[ext_resource type="PackedScene" uid="uid://cse56b6hg7yjm" path="res://gui_buy_card.tscn" id="23_8sfin"]
-[ext_resource type="PackedScene" uid="uid://451ls38c1bf8" path="res://gui_ai_progress.tscn" id="24_42ds1"]
-[ext_resource type="PackedScene" uid="uid://dfq04d0bsjmyb" path="res://gui_sel_army.tscn" id="25_0uskm"]
-[ext_resource type="PackedScene" uid="uid://c7b151kdvwx4w" path="res://gui_begin.tscn" id="26_ema4c"]
-[ext_resource type="PackedScene" uid="uid://cs77s0qa4kr1r" path="res://gui_defeated.tscn" id="27_altjf"]
-[ext_resource type="PackedScene" uid="uid://cs2vqc5dk43cq" path="res://gui_battle.tscn" id="28_0lple"]
 
 [sub_resource type="Animation" id="Animation_me1p5"]
 length = 0.001
@@ -117,7 +103,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_0lple"]
 resource_name = "move_in"
-length = 0.6
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -125,7 +111,7 @@ tracks/0/path = NodePath("GUIGold:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, -50), Vector2(0, 0)]
@@ -137,7 +123,7 @@ tracks/1/path = NodePath("ButtonPause/Control/GUIButton:anchor_left")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -149,7 +135,7 @@ tracks/2/path = NodePath("ButtonPause/Control/GUIButton:anchor_top")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-1.0, 0.0]
@@ -161,7 +147,7 @@ tracks/3/path = NodePath("ButtonCard/Control/GUIButton:anchor_left")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-1.0, 0.0]
@@ -173,7 +159,7 @@ tracks/4/path = NodePath("ButtonCard/Control/GUIButton:anchor_top")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -185,7 +171,7 @@ tracks/5/path = NodePath("ButtonRound/Control/GUIButton:anchor_left")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -197,7 +183,7 @@ tracks/6/path = NodePath("ButtonRound/Control/GUIButton:anchor_top")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -219,13 +205,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_i7u21")
 
-[node name="CScene" type="Node2D" parent="." unique_id=1828344225]
-
-[node name="ecEffectManager" parent="." unique_id=506515038 instance=ExtResource("2_0d8sx")]
-
-[node name="CFightTextMgr" parent="." unique_id=474335119 instance=ExtResource("3_f1sur")]
-
-[node name="GUIBattle" parent="." unique_id=368823071 instance=ExtResource("28_0lple")]
+[node name="GUIBattle" parent="." unique_id=368823071 instance_placeholder="res://gui_battle.tscn"]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -234,7 +214,7 @@ anchor_bottom = 0.5
 offset_top = -160.0
 offset_bottom = 160.0
 
-[node name="GUIDefeated" parent="." unique_id=172360110 instance=ExtResource("27_altjf")]
+[node name="GUIDefeated" parent="." unique_id=172360110 instance_placeholder="res://gui_defeated.tscn"]
 visible = false
 custom_minimum_size = Vector2(186, 190)
 layout_mode = 1
@@ -265,7 +245,7 @@ rect = Rect2(-140, 0, 280, 14)
 [node name="GUIActionInfo" parent="GUIActionInfo" unique_id=2027985913 instance_placeholder="res://gui_action_info.tscn"]
 layout_mode = 2
 
-[node name="GUISelArmy" parent="." unique_id=299185972 instance=ExtResource("25_0uskm")]
+[node name="GUISelArmy" parent="." unique_id=299185972 instance_placeholder="res://gui_sel_army.tscn"]
 visible = false
 layout_mode = 1
 anchors_preset = 6
@@ -290,7 +270,7 @@ grow_vertical = 1
 rect_ipad = Rect2(-240, 433, 480, 320)
 rect = Rect2(-240, 0, 480, 320)
 
-[node name="GUIAIProgress" parent="GUIAIProgress" unique_id=191726262 instance=ExtResource("24_42ds1")]
+[node name="GUIAIProgress" parent="GUIAIProgress" unique_id=191726262 instance_placeholder="res://gui_ai_progress.tscn"]
 layout_mode = 2
 
 [node name="GUIBuyCard" type="VBoxContainer" parent="." unique_id=845837158]
@@ -306,11 +286,11 @@ grow_vertical = 2
 layout_mode = 2
 rect_ipad = Rect2(0, 0, 0, 468)
 
-[node name="GUIBuyCard" parent="GUIBuyCard" unique_id=595511499 instance=ExtResource("23_8sfin")]
+[node name="GUIBuyCard" parent="GUIBuyCard" unique_id=595511499 instance_placeholder="res://gui_buy_card.tscn"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GUIPauseBox" parent="." unique_id=1648966608 instance=ExtResource("22_ennrn")]
+[node name="GUIPauseBox" parent="." unique_id=1648966608 instance_placeholder="res://gui_pause_box.tscn"]
 visible = false
 custom_minimum_size = Vector2(166, 262)
 layout_mode = 1
@@ -324,11 +304,11 @@ offset_top = -131.0
 offset_right = 83.0
 offset_bottom = 131.0
 
-[node name="GUISmallCard" parent="." unique_id=485651445 instance=ExtResource("20_im5jt")]
+[node name="GUISmallCard" parent="." unique_id=485651445 instance_placeholder="res://gui_small_card.tscn"]
 visible = false
 layout_mode = 1
 
-[node name="GUITax" parent="." unique_id=379815843 instance=ExtResource("19_im5jt")]
+[node name="GUITax" parent="." unique_id=379815843 instance_placeholder="res://gui_tax.tscn"]
 visible = false
 layout_mode = 0
 anchors_preset = 0
@@ -352,7 +332,7 @@ grow_vertical = 0
 rect_ipad = Rect2(0, 0, 40, 38)
 rect = Rect2(0, 0, 32, 30)
 
-[node name="GUIButton" parent="ButtonCardRemove" unique_id=1211914993 instance=ExtResource("6_ob33k")]
+[node name="GUIButton" parent="ButtonCardRemove" unique_id=1211914993 instance_placeholder="res://gui_button.tscn"]
 layout_mode = 2
 texture_normal = ExtResource("16_q1qaj")
 texture_pressed = ExtResource("17_u8uvy")
@@ -373,7 +353,7 @@ rect = Rect2(0, 0, 32, 30)
 [node name="Control" type="Control" parent="ButtonPause" unique_id=1459883420]
 layout_mode = 2
 
-[node name="GUIButton" parent="ButtonPause/Control" unique_id=1187276192 instance=ExtResource("6_ob33k")]
+[node name="GUIButton" parent="ButtonPause/Control" unique_id=1187276192 instance_placeholder="res://gui_button.tscn"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -397,7 +377,7 @@ rect = Rect2(0, 0, 32, 30)
 [node name="Control" type="Control" parent="ButtonCard" unique_id=1388415888]
 layout_mode = 2
 
-[node name="GUIButton" parent="ButtonCard/Control" unique_id=899432390 instance=ExtResource("6_ob33k")]
+[node name="GUIButton" parent="ButtonCard/Control" unique_id=899432390 instance_placeholder="res://gui_button.tscn"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -1.0
@@ -422,7 +402,7 @@ rect = Rect2(0, 0, 32, 30)
 [node name="Control" type="Control" parent="ButtonRound" unique_id=2118377936]
 layout_mode = 2
 
-[node name="GUIButton" parent="ButtonRound/Control" unique_id=2034275630 instance=ExtResource("6_ob33k")]
+[node name="GUIButton" parent="ButtonRound/Control" unique_id=2034275630 instance_placeholder="res://gui_button.tscn"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -431,7 +411,7 @@ texture_normal = ExtResource("7_hejqp")
 texture_pressed = ExtResource("8_kjuls")
 texture_background = ExtResource("9_ob33k")
 
-[node name="GUIAttackBox" parent="." unique_id=1463077957 instance=ExtResource("21_6jayj")]
+[node name="GUIAttackBox" parent="." unique_id=1463077957 instance_placeholder="res://gui_attack_box.tscn"]
 visible = false
 custom_minimum_size = Vector2(258, 186)
 layout_mode = 1
@@ -447,7 +427,7 @@ offset_bottom = 93.0
 attack = null
 defend = null
 
-[node name="GUIBegin" parent="." unique_id=276795201 instance=ExtResource("26_ema4c")]
+[node name="GUIBegin" parent="." unique_id=276795201 instance_placeholder="res://gui_begin.tscn"]
 visible = false
 custom_minimum_size = Vector2(184, 258)
 layout_mode = 1
@@ -490,7 +470,7 @@ layout_mode = 2
 [node name="GUIBank" parent="." unique_id=86871795 instance_placeholder="res://gui_bank.tscn"]
 layout_mode = 1
 
-[node name="GUIGold" parent="." unique_id=1663737891 instance=ExtResource("18_3aq82")]
+[node name="GUIGold" parent="." unique_id=1663737891 instance_placeholder="res://gui_gold.tscn"]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
