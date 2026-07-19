@@ -1,0 +1,17 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://cnyjx7s30rc6u"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_x5rna"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="2_nya57"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="4_5tiw4"]
+
+[sub_resource type="Resource" id="Resource_v0skf"]
+script = ExtResource("1_x5rna")
+name = "gamebutton_cardremove_press.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_5tiw4")
+texture_res = ExtResource("2_nya57")
+image = SubResource("Resource_v0skf")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

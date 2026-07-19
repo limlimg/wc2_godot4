@@ -1,0 +1,17 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://do8qhxpc6yin2"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_x0e3y"]
+[ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://resources/assets/menu_gui_res/texture_res.tres" id="2_t8h5h"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="4_tuuwq"]
+
+[sub_resource type="Resource" id="Resource_x0e3y"]
+script = ExtResource("1_x0e3y")
+name = "m_buttontext_allies.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_tuuwq")
+texture_res = ExtResource("2_t8h5h")
+image = SubResource("Resource_x0e3y")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

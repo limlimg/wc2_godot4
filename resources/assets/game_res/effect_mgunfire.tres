@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ecEffectRes" format=3 uid="uid://jo0xvv1gacp7"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_6ria3"]
+[ext_resource type="Script" uid="uid://db5ial1i1vdli" path="res://ec_effect_res.gd" id="2_2xcek"]
+[ext_resource type="Resource" uid="uid://cq5m16ucm6vuo" path="res://resources/assets/game_res/eff.tres" id="3_071df"]
+
+[sub_resource type="Resource" id="Resource_2xcek"]
+script = ExtResource("1_6ria3")
+name = "effect_mgunfire.xml"
+
+[resource]
+script = ExtResource("2_2xcek")
+asset = SubResource("Resource_2xcek")
+texture_res = ExtResource("3_071df")

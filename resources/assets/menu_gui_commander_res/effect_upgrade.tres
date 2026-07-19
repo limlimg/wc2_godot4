@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ecEffectRes" format=3 uid="uid://bef2rby8g6gtk"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_5ebpv"]
+[ext_resource type="Script" uid="uid://db5ial1i1vdli" path="res://ec_effect_res.gd" id="2_4qytg"]
+[ext_resource type="Resource" uid="uid://bukq4yhh88ly1" path="res://resources/assets/menu_gui_commander_res/eff.tres" id="3_ie2hf"]
+
+[sub_resource type="Resource" id="Resource_5ebpv"]
+script = ExtResource("1_5ebpv")
+name = "effect_upgrade.xml"
+name_ipad = "effect_upgrade_iPad.xml"
+
+[resource]
+script = ExtResource("2_4qytg")
+asset = SubResource("Resource_5ebpv")
+texture_res = ExtResource("3_ie2hf")

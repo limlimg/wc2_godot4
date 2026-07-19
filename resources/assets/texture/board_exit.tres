@@ -1,0 +1,53 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://bi4s1a8uua7dp"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_nh1ww"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_i4g6i"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="3_ecxho"]
+[ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://ec_texture_res.gd" id="4_lfyrv"]
+
+[sub_resource type="Resource" id="Resource_44107"]
+script = ExtResource("1_nh1ww")
+name = "board_exit.png"
+name_ipad = "board_exit@2x.png"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Texture2D" id="Texture2D_vwbt6"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_ecxho")
+asset = SubResource("Resource_44107")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+
+[sub_resource type="Texture2D" id="Texture2D_1xoce"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_i4g6i")
+texture = SubResource("Texture2D_vwbt6")
+region = Rect2(0, 0, 227, 131)
+origin = Vector2(2, 2)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_f3jb5"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_i4g6i")
+texture = SubResource("Texture2D_vwbt6")
+region = Rect2(0, 0, 454, 262)
+origin = Vector2(4, 4)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Resource" id="Resource_0lyoc"]
+script = ExtResource("4_lfyrv")
+images = Dictionary[StringName, ExtResource("2_i4g6i")]({
+&"board_exit.png": SubResource("Texture2D_1xoce"),
+&"board_exit@2x.png": SubResource("Texture2D_f3jb5")
+})
+metadata/_custom_type_script = "uid://chtcq7m8aw4se"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_i4g6i")
+texture_res = SubResource("Resource_0lyoc")
+image = SubResource("Resource_44107")
+metadata/_custom_type_script = "uid://bvddy3vjuki27"

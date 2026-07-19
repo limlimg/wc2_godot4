@@ -1,0 +1,51 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://bda1v753s45f6"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_betch"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_0ycoh"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="3_0wauv"]
+[ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://ec_texture_res.gd" id="4_fkh3e"]
+
+[sub_resource type="Resource" id="Resource_af58k"]
+script = ExtResource("1_betch")
+name = "minimap1_5.pkm"
+name_ipad = "minimap1_5@2x.pkm"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Texture2D" id="Texture2D_0ycoh"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_0wauv")
+asset = SubResource("Resource_af58k")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+
+[sub_resource type="Texture2D" id="Texture2D_fkh3e"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_0ycoh")
+texture = SubResource("Texture2D_0ycoh")
+region = Rect2(6, 6, 500, 500)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_tawsh"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_0ycoh")
+texture = SubResource("Texture2D_0ycoh")
+region = Rect2(12, 12, 1000, 1000)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Resource" id="Resource_fblmf"]
+script = ExtResource("4_fkh3e")
+images = Dictionary[StringName, ExtResource("2_0ycoh")]({
+&"minimap1_5.pkm": SubResource("Texture2D_fkh3e"),
+&"minimap1_5@2x.pkm": SubResource("Texture2D_tawsh")
+})
+metadata/_custom_type_script = "uid://chtcq7m8aw4se"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_0ycoh")
+texture_res = SubResource("Resource_fblmf")
+image = SubResource("Resource_af58k")
+metadata/_custom_type_script = "uid://bvddy3vjuki27"

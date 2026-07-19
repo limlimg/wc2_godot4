@@ -1,0 +1,14 @@
+[gd_resource type="Theme" script_class="ecUniFont" format=3 uid="uid://c8j0lx6apqda5"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_2bluc"]
+[ext_resource type="Script" uid="uid://ckk2mqlehxynn" path="res://ec_uni_font.gd" id="2_v4kxc"]
+
+[sub_resource type="Resource" id="Resource_ov55p"]
+script = ExtResource("1_2bluc")
+name = "num3.fnt"
+name_hd = "num3_hd.fnt"
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[resource]
+script = ExtResource("2_v4kxc")
+asset = SubResource("Resource_ov55p")

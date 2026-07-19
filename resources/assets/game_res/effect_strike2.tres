@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ecEffectRes" format=3 uid="uid://rmcbo0e561v5"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_63wd2"]
+[ext_resource type="Script" uid="uid://db5ial1i1vdli" path="res://ec_effect_res.gd" id="2_fwvkx"]
+[ext_resource type="Resource" uid="uid://cq5m16ucm6vuo" path="res://resources/assets/game_res/eff.tres" id="3_t2lx3"]
+
+[sub_resource type="Resource" id="Resource_fwvkx"]
+script = ExtResource("1_63wd2")
+name = "effect_strike2.xml"
+
+[resource]
+script = ExtResource("2_fwvkx")
+asset = SubResource("Resource_fwvkx")
+texture_res = ExtResource("3_t2lx3")

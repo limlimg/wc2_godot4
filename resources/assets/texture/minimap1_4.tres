@@ -1,0 +1,51 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://5u82hkjbjvk6"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_wjvo5"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_0dvev"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="3_4lc2u"]
+[ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://ec_texture_res.gd" id="4_5m1by"]
+
+[sub_resource type="Resource" id="Resource_af58k"]
+script = ExtResource("1_wjvo5")
+name = "minimap1_4.pkm"
+name_ipad = "minimap1_4@2x.pkm"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Texture2D" id="Texture2D_0dvev"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_4lc2u")
+asset = SubResource("Resource_af58k")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+
+[sub_resource type="Texture2D" id="Texture2D_5m1by"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_0dvev")
+texture = SubResource("Texture2D_0dvev")
+region = Rect2(6, 6, 500, 500)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_n0e46"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_0dvev")
+texture = SubResource("Texture2D_0dvev")
+region = Rect2(12, 12, 1000, 1000)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Resource" id="Resource_fblmf"]
+script = ExtResource("4_5m1by")
+images = Dictionary[StringName, ExtResource("2_0dvev")]({
+&"minimap1_4.pkm": SubResource("Texture2D_5m1by"),
+&"minimap1_4@2x.pkm": SubResource("Texture2D_n0e46")
+})
+metadata/_custom_type_script = "uid://chtcq7m8aw4se"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_0dvev")
+texture_res = SubResource("Resource_fblmf")
+image = SubResource("Resource_af58k")
+metadata/_custom_type_script = "uid://bvddy3vjuki27"

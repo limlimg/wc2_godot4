@@ -1,0 +1,72 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://c2hc2xw8tbdjk"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_adsfu"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_3b7yu"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="3_f5tg7"]
+[ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://ec_texture_res.gd" id="4_sry3m"]
+
+[sub_resource type="Resource" id="Resource_podtm"]
+script = ExtResource("1_adsfu")
+name = "buycardbg.webp"
+name_ipad = "board_leather_down_iPad.webp"
+name_640h = "buycardbg-640h.webp"
+name_568h = "buycardbg-568h.webp"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Texture2D" id="Texture2D_dax6g"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_f5tg7")
+asset = SubResource("Resource_podtm")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+
+[sub_resource type="Texture2D" id="Texture2D_kldar"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_3b7yu")
+texture = SubResource("Texture2D_dax6g")
+region = Rect2(0, 0, 1024, 311)
+origin = Vector2(0, 11)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_50jp4"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_3b7yu")
+texture = SubResource("Texture2D_dax6g")
+region = Rect2(0, 0, 568, 320)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_6clcy"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_3b7yu")
+texture = SubResource("Texture2D_dax6g")
+region = Rect2(0, 0, 640, 320)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_7a0v5"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_3b7yu")
+texture = SubResource("Texture2D_dax6g")
+region = Rect2(0, 0, 480, 320)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Resource" id="Resource_d6vxo"]
+script = ExtResource("4_sry3m")
+images = Dictionary[StringName, ExtResource("2_3b7yu")]({
+&"board_leather_down_iPad.webp": SubResource("Texture2D_kldar"),
+&"buycardbg-568h.webp": SubResource("Texture2D_50jp4"),
+&"buycardbg-640h.webp": SubResource("Texture2D_6clcy"),
+&"buycardbg.webp": SubResource("Texture2D_7a0v5")
+})
+metadata/_custom_type_script = "uid://chtcq7m8aw4se"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_3b7yu")
+texture_res = SubResource("Resource_d6vxo")
+image = SubResource("Resource_podtm")
+metadata/_custom_type_script = "uid://bvddy3vjuki27"

@@ -1,0 +1,18 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://c0nb7oo1ywbjf"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_vvfck"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_0g2sa"]
+[ext_resource type="Resource" uid="uid://5nio3rrdptta" path="res://resources/assets/game_res/army.tres" id="3_bavr6"]
+
+[sub_resource type="Resource" id="Resource_8u3de"]
+script = ExtResource("1_vvfck")
+name = "medal.png"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_0g2sa")
+texture_res = ExtResource("3_bavr6")
+image = SubResource("Resource_8u3de")
+metadata/_custom_type_script = "uid://bvddy3vjuki27"

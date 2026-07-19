@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ecEffectRes" format=3 uid="uid://s4ltj382igco"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_m0mbx"]
+[ext_resource type="Script" uid="uid://db5ial1i1vdli" path="res://ec_effect_res.gd" id="2_u5wbh"]
+[ext_resource type="Resource" uid="uid://cq5m16ucm6vuo" path="res://resources/assets/game_res/eff.tres" id="3_v4e38"]
+
+[sub_resource type="Resource" id="Resource_u5wbh"]
+script = ExtResource("1_m0mbx")
+name = "effect_shipfire.xml"
+
+[resource]
+script = ExtResource("2_u5wbh")
+asset = SubResource("Resource_u5wbh")
+texture_res = ExtResource("3_v4e38")

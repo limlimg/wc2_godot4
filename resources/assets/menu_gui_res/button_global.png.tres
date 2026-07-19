@@ -1,0 +1,17 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://bv6m5tuoibveb"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_eqlmj"]
+[ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://resources/assets/menu_gui_res/texture_res.tres" id="2_uitmc"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="4_1vhs3"]
+
+[sub_resource type="Resource" id="Resource_eqlmj"]
+script = ExtResource("1_eqlmj")
+name = "button_global.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_1vhs3")
+texture_res = ExtResource("2_uitmc")
+image = SubResource("Resource_eqlmj")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

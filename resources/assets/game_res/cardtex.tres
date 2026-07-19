@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ecTextureRes" format=3 uid="uid://dt2l6h34s4mjc"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_aa6xg"]
+[ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://ec_texture_res.gd" id="2_xeguk"]
+
+[sub_resource type="Resource" id="Resource_aa6xg"]
+script = ExtResource("1_aa6xg")
+name = "cardtex.xml"
+name_hd = "cardtex_hd.xml"
+metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+
+[resource]
+script = ExtResource("2_xeguk")
+assets = Array[ExtResource("1_aa6xg")]([SubResource("Resource_aa6xg")])

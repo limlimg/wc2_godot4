@@ -1,0 +1,17 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://dnubyy1opjro1"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_ug16t"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="2_idceo"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="4_exic8"]
+
+[sub_resource type="Resource" id="Resource_hcepd"]
+script = ExtResource("1_ug16t")
+name = "buttontext_restart_press.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_exic8")
+texture_res = ExtResource("2_idceo")
+image = SubResource("Resource_hcepd")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

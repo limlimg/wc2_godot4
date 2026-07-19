@@ -1,0 +1,17 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://bb7hafhtx0owe"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_6unpg"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_gmmtg"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="3_cypxe"]
+
+[sub_resource type="Resource" id="Resource_054k6"]
+script = ExtResource("1_6unpg")
+name = "text_bank.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_gmmtg")
+texture_res = ExtResource("3_cypxe")
+image = SubResource("Resource_054k6")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"

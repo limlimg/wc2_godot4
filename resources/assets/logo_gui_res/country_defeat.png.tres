@@ -1,0 +1,16 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://bdt4ktnlcrivf"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_7pofv"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_hj0np"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="3_ec7gt"]
+
+[sub_resource type="Resource" id="Resource_8kvfc"]
+script = ExtResource("1_7pofv")
+name = "country_defeat.png"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_hj0np")
+texture_res = ExtResource("3_ec7gt")
+image = SubResource("Resource_8kvfc")

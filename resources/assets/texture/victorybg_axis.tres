@@ -1,0 +1,71 @@
+[gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://fiq5hqj0kqmo"]
+
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_ewpmx"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_2meok"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="2_rweml"]
+[ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://ec_texture_res.gd" id="4_q7o7k"]
+
+[sub_resource type="Resource" id="Resource_8bmli"]
+script = ExtResource("1_ewpmx")
+name = "victorybg_axis.webp"
+name_ipad = "victorybg_axis_iPad.webp"
+name_640h = "victorybg_axis-640h.webp"
+name_568h = "victorybg_axis-568h.webp"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Texture2D" id="Texture2D_2meok"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_rweml")
+asset = SubResource("Resource_8bmli")
+metadata/_custom_type_script = "uid://cr8ksgysprxjq"
+
+[sub_resource type="Texture2D" id="Texture2D_gioq0"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_2meok")
+texture = SubResource("Texture2D_2meok")
+region = Rect2(0, 0, 568, 320)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_2a24a"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_2meok")
+texture = SubResource("Texture2D_2meok")
+region = Rect2(0, 0, 640, 320)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_q7o7k"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_2meok")
+texture = SubResource("Texture2D_2meok")
+region = Rect2(0, 0, 480, 320)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Texture2D" id="Texture2D_gf7gq"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_2meok")
+texture = SubResource("Texture2D_2meok")
+region = Rect2(0, 0, 1024, 768)
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
+
+[sub_resource type="Resource" id="Resource_rqkki"]
+script = ExtResource("4_q7o7k")
+images = Dictionary[StringName, ExtResource("2_2meok")]({
+&"victorybg_axis-568h.webp": SubResource("Texture2D_gioq0"),
+&"victorybg_axis-640h.webp": SubResource("Texture2D_2a24a"),
+&"victorybg_axis.webp": SubResource("Texture2D_q7o7k"),
+&"victorybg_axis_iPad.webp": SubResource("Texture2D_gf7gq")
+})
+metadata/_custom_type_script = "uid://chtcq7m8aw4se"
+
+[resource]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("2_2meok")
+texture_res = SubResource("Resource_rqkki")
+image = SubResource("Resource_8bmli")
+metadata/_custom_type_script = "uid://bvddy3vjuki27"
