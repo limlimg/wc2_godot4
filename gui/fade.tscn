@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://bw36wnr8tqwkd"]
 
 [ext_resource type="Script" uid="uid://dbda4lvx3hq5t" path="res://gui/fade.gd" id="1_owpuu"]
+[ext_resource type="Script" uid="uid://bgmws3vrhjfhx" path="res://gui_element.gd" id="2_jg5bh"]
 
 [node name="Fade" type="Node2D" unique_id=1674156080]
 script = ExtResource("1_owpuu")
+
+[node name="Control" type="Control" parent="." unique_id=233764720]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_jg5bh")
+
+[connection signal="back_pressed" from="Control" to="." method="_on_control_back_pressed"]

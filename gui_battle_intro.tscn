@@ -23,7 +23,6 @@ grow_vertical = 2
 script = ExtResource("1_56qfq")
 
 [node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_gsb3j")]
-layout_mode = 1
 
 [node name="BoardIntro" type="Sprite2D" parent="." unique_id=935039412]
 texture = ExtResource("1_ft5bo")
@@ -186,4 +185,5 @@ theme = ExtResource("10_0gbd6")
 theme_override_colors/font_color = Color(0.2, 0.19215687, 0.24313726, 1)
 
 [connection signal="back_pressed" from="." to="." method="_on_gui_button_ex_pressed"]
+[connection signal="back_pressed" from="Fade" to="." method="_on_gui_button_ex_pressed"]
 [connection signal="pressed" from="ButtonOK/GUIButtonEx" to="." method="_on_gui_button_ex_pressed"]

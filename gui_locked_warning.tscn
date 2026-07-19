@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cavnvxqevbxqu"]
 
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="1_1iitn"]
-[ext_resource type="Script" uid="uid://c0egpmfnonjbm" path="res://app/src/main/cpp/gui_locked_warning.gd" id="1_ccynw"]
-[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://app/src/main/cpp/gui/fade.tscn" id="2_k7wgp"]
-[ext_resource type="Texture2D" uid="uid://ctj87p2f2ndcd" path="res://app/src/main/cpp/resources/assets/texture/board_locked.tres" id="4_k7wgp"]
-[ext_resource type="Theme" uid="uid://kfde1dpf6pbh" path="res://app/src/main/cpp/resources/assets/menu_gui_selbattle_res/font4.tres" id="5_k7wgp"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="1_1iitn"]
+[ext_resource type="Script" uid="uid://c0egpmfnonjbm" path="res://gui_locked_warning.gd" id="1_ccynw"]
+[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="2_k7wgp"]
+[ext_resource type="Texture2D" uid="uid://ctj87p2f2ndcd" path="res://resources/assets/texture/board_locked.tres" id="4_k7wgp"]
+[ext_resource type="Theme" uid="uid://kfde1dpf6pbh" path="res://resources/assets/menu_gui_selbattle_res/font4.tres" id="5_k7wgp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7wgp"]
 
@@ -22,7 +22,6 @@ grow_vertical = 2
 script = ExtResource("1_ccynw")
 
 [node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_k7wgp")]
-layout_mode = 1
 
 [node name="BoardLocked" parent="." unique_id=1892596053 instance=ExtResource("1_1iitn")]
 layout_mode = 1
@@ -58,4 +57,5 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_3gx5n")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_flmrv")
 
 [connection signal="back_pressed" from="." to="." method="_on_button_pressed"]
+[connection signal="back_pressed" from="Fade" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

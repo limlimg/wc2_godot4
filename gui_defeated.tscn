@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://cs77s0qa4kr1r"]
 
-[ext_resource type="Texture2D" uid="uid://bdt4ktnlcrivf" path="res://app/src/main/cpp/resources/assets/logo_gui_res/country_defeat.png.tres" id="1_e2dqc"]
-[ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://app/src/main/cpp/game_res_render/ai_commander_medal.tscn" id="1_wuq0w"]
-[ext_resource type="Script" uid="uid://c61bupitgwiku" path="res://app/src/main/cpp/gui_defeated.gd" id="1_ydi4n"]
-[ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://app/src/main/cpp/game_res_render/commander_medal.tscn" id="2_f1uq0"]
-[ext_resource type="Resource" uid="uid://eoo8e238q75f" path="res://app/src/main/cpp/resources/assets/game_gui_defeated_res/texture_res.tres" id="2_l3fon"]
-[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://app/src/main/cpp/resources/assets/logo_gui_res/texture_res.tres" id="2_y8yra"]
-[ext_resource type="Theme" uid="uid://cthcurv4u6ctt" path="res://app/src/main/cpp/resources/assets/font/g_font6.tres" id="3_8iexs"]
-[ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://app/src/main/cpp/gui_button_ex.tscn" id="3_ywyf6"]
-[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://app/src/main/cpp/gui/fade.tscn" id="4_2qn58"]
-[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_ok.png.tres" id="4_8iexs"]
-[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_ok_press.png.tres" id="5_e2dqc"]
-[ext_resource type="Texture2D" uid="uid://c5scjcg2j0bqx" path="res://app/src/main/cpp/resources/assets/logo_gui_res/green_normal.png.tres" id="6_ydi4n"]
+[ext_resource type="Texture2D" uid="uid://bdt4ktnlcrivf" path="res://resources/assets/logo_gui_res/country_defeat.png.tres" id="1_e2dqc"]
+[ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://game_res_render/ai_commander_medal.tscn" id="1_wuq0w"]
+[ext_resource type="Script" uid="uid://c61bupitgwiku" path="res://gui_defeated.gd" id="1_ydi4n"]
+[ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://game_res_render/commander_medal.tscn" id="2_f1uq0"]
+[ext_resource type="Resource" uid="uid://eoo8e238q75f" path="res://resources/assets/game_gui_defeated_res/texture_res.tres" id="2_l3fon"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="2_y8yra"]
+[ext_resource type="Theme" uid="uid://cthcurv4u6ctt" path="res://resources/assets/font/g_font6.tres" id="3_8iexs"]
+[ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://gui_button_ex.tscn" id="3_ywyf6"]
+[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="4_2qn58"]
+[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://resources/assets/logo_gui_res/buttontext_ok.png.tres" id="4_8iexs"]
+[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://resources/assets/logo_gui_res/buttontext_ok_press.png.tres" id="5_e2dqc"]
+[ext_resource type="Texture2D" uid="uid://c5scjcg2j0bqx" path="res://resources/assets/logo_gui_res/green_normal.png.tres" id="6_ydi4n"]
 
 [node name="GUIDefeated" type="Control" unique_id=172360110]
 layout_mode = 3
@@ -25,7 +25,6 @@ texture_res = ExtResource("2_y8yra")
 flag_texture_res = ExtResource("2_l3fon")
 
 [node name="Fade" parent="." unique_id=741495168 instance=ExtResource("4_2qn58")]
-layout_mode = 1
 alpha = 0.0
 
 [node name="CountryDefeat" type="Sprite2D" parent="." unique_id=1608977990]
@@ -80,4 +79,5 @@ texture_normal = ExtResource("6_ydi4n")
 texture_pressed = ExtResource("6_ydi4n")
 
 [connection signal="back_pressed" from="." to="." method="_on_button_ok_pressed"]
+[connection signal="back_pressed" from="Fade" to="." method="_on_button_ok_pressed"]
 [connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]

@@ -90,7 +90,7 @@ func _on_gui_main_menu_sel_campaign_pressed(sel_campaign: int) -> void:
 
 
 func _on_gui_locked_warning_pressed() -> void:
-	_displayed_menu.hide()
+	_displayed_menu.queue_free()
 
 
 func _on_gui_main_menu_load_campaign_pressed() -> void:

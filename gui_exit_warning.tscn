@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://ca03jr48w1uws"]
 
-[ext_resource type="Script" uid="uid://clsohyo5himsx" path="res://app/src/main/cpp/gui_exit_warning.gd" id="1_6ytht"]
-[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://app/src/main/cpp/gui/fade.tscn" id="2_kjn2k"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="3_5avr6"]
-[ext_resource type="Texture2D" uid="uid://ctj87p2f2ndcd" path="res://app/src/main/cpp/resources/assets/texture/board_locked.tres" id="3_kjn2k"]
-[ext_resource type="Texture2D" uid="uid://bi4s1a8uua7dp" path="res://app/src/main/cpp/resources/assets/texture/board_exit.tres" id="4_5avr6"]
-[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="5_kjn2k"]
-[ext_resource type="Texture2D" uid="uid://stjpuq26l3gi" path="res://app/src/main/cpp/resources/assets/logo_gui_res/button_cancleexit.png.tres" id="6_l4im6"]
-[ext_resource type="Texture2D" uid="uid://cgm24k31skmn" path="res://app/src/main/cpp/resources/assets/logo_gui_res/button_confirmexit.png.tres" id="7_ctosj"]
+[ext_resource type="Script" uid="uid://clsohyo5himsx" path="res://gui_exit_warning.gd" id="1_6ytht"]
+[ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="2_kjn2k"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="3_5avr6"]
+[ext_resource type="Texture2D" uid="uid://ctj87p2f2ndcd" path="res://resources/assets/texture/board_locked.tres" id="3_kjn2k"]
+[ext_resource type="Texture2D" uid="uid://bi4s1a8uua7dp" path="res://resources/assets/texture/board_exit.tres" id="4_5avr6"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="5_kjn2k"]
+[ext_resource type="Texture2D" uid="uid://stjpuq26l3gi" path="res://resources/assets/logo_gui_res/button_cancleexit.png.tres" id="6_l4im6"]
+[ext_resource type="Texture2D" uid="uid://cgm24k31skmn" path="res://resources/assets/logo_gui_res/button_confirmexit.png.tres" id="7_ctosj"]
 
 [node name="GUIExitWarning" type="Control" unique_id=986775281]
 layout_mode = 3
@@ -19,7 +19,6 @@ grow_vertical = 2
 script = ExtResource("1_6ytht")
 
 [node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_kjn2k")]
-layout_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=773164167]
 texture = ExtResource("4_5avr6")
@@ -81,5 +80,6 @@ texture_pressed = ExtResource("7_ctosj")
 text_offset = Vector2(20, 19)
 
 [connection signal="back_pressed" from="." to="." method="_on_gui_button_cancel_pressed"]
+[connection signal="back_pressed" from="Fade" to="." method="_on_gui_button_cancel_pressed"]
 [connection signal="pressed" from="CancleExit/GUIButton" to="." method="_on_gui_button_cancel_pressed"]
 [connection signal="pressed" from="ConfirmExit/GUIButton" to="." method="_on_gui_button_confirm_pressed"]
