@@ -2,8 +2,6 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _ecEffectRes = preload("res://ec_effect_res.gd")
-const _ecEmitterAttr = preload("res://ec_emitter_attr.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.effect"
@@ -62,10 +60,10 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if xml_root == null:
 		push_error("Parse Error: Failed to find <effect> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
-	var res_effect := _ecEffectRes.new()
+	var res_effect := ecEffectRes.new()
 	var xml_emitter := xml_root.first_child_element()
 	while xml_emitter != null:
-		var res_emitter := _ecEmitterAttr.new()
+		var res_emitter := ecEmitterAttr.new()
 		var color_min := Color.WHITE
 		var color_max := Color.WHITE
 		var pf: Array[float]

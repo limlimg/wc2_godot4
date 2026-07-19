@@ -1,8 +1,6 @@
 @tool
 extends EditorImportPlugin
 
-const _Adjoin = preload("res://resources/imported/adjoin.gd")
-
 func _get_importer_name() -> String:
 	return "wc2.assets.bin.adjoin"
 
@@ -68,7 +66,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if file_length < 4 + 17 * 4 * size:
 		push_error("Failed to import {0}: Unexpected file length: expected at least {1}, got {2}".format([source_file, 4 + 17 * 4 * size, file_length]))
 		return ERR_PARSE_ERROR
-	var res := _Adjoin.new()
+	var res := Adjoin.new()
 	res.index.append(0)
 	var cur := 4
 	while cur < file_length:

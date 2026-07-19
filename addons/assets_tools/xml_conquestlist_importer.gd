@@ -2,9 +2,6 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _ConquestDef = preload("res://conquest_def.gd")
-const _ConquestDefMap = preload("res://resources/imported/conquest_def_map.gd")
-const _FlagInfo = preload("res://flag_info.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.conquestlist"
@@ -63,10 +60,10 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if xml_root == null:
 		push_error("Parse Error: Failed to find <battlelist> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
-	var res_battlelist := _ConquestDefMap.new()
+	var res_battlelist := ConquestDefMap.new()
 	var xml_battle := xml_root.first_child_element()
 	while xml_battle != null:
-		var res_battle := _ConquestDef.new()
+		var res_battle := ConquestDef.new()
 		var name := xml_battle.attribute("name")
 		if name == "":
 			push_error("Parse Error: Element does not have valid \"name\" attibute on line {0} of {1}".format([xml_battle.row() + 1, source_file]))
@@ -89,7 +86,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 				return ERR_PARSE_ERROR
 			var xml_flag := xml_list.first_child_element()
 			while xml_flag != null:
-				var res_flag := _FlagInfo.new()
+				var res_flag := FlagInfo.new()
 				res_flag.rot = 0.0
 				res_flag.scale = 1.0
 				var flag_name := xml_flag.attribute("name")

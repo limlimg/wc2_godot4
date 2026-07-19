@@ -1,14 +1,6 @@
 @tool
 extends EditorImportPlugin
 
-const _ecLibraryData = preload("res://ec_library_data.gd")
-const _ecItemData = preload("res://ec_item_data.gd")
-const _ecMotionData = preload("res://resources/imported/ec_motion_data.gd")
-const _ecShapeData = preload("res://resources/imported/ec_shape_data.gd")
-const _ecLayerData = preload("res://ec_layer_data.gd")
-const _ecFrameData = preload("res://ec_frame_data.gd")
-const _ecElementData = preload("res://ec_element_data.gd")
-
 func _get_importer_name() -> String:
 	return "wc2.assets.bin.elib"
 
@@ -133,12 +125,12 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		section_position += section_size
 	file.seek(item_name_position)
 	var item_name_buffer := file.get_buffer(item_name_size)
-	var res := _ecLibraryData.new()
-	var items: Array[_ecItemData]
-	var element_sub_item: Dictionary[_ecElementData, int]
+	var res := ecLibraryData.new()
+	var items: Array[ecItemData]
+	var element_sub_item: Dictionary[ecElementData, int]
 	for i in item_count:
 		file.seek(item_position)
-		var item: _ecItemData
+		var item: ecItemData
 		var item_shape_index := file.get_32()
 		var item_name_offset := file.get_32()
 		var item_name_byte := item_name_buffer.slice(item_name_offset, item_name_buffer.find(0, item_name_offset))
@@ -148,12 +140,12 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		file.get_32() # unknown or no longer used
 		if file.get_32() != 0:
 			assert(item_shape_index == i)
-			item = _ecShapeData.new()
+			item = ecShapeData.new()
 			#shape_index[item] = item_shape_index
 			item.shape_position = shape_position
 			file.get_32() # unknown or no longer used
 		else:
-			item = _ecMotionData.new()
+			item = ecMotionData.new()
 			item.duration = file.get_32()
 		items.append(item)
 		item.item_name = item_name
@@ -165,18 +157,18 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		file.get_32() # unknown or no longer used
 		for j in item_layer_created:
 			file.seek(layer_position)
-			var layer := _ecLayerData.new()
+			var layer := ecLayerData.new()
 			var layer_frame_created = file.get_32()
 			file.get_32() # unknown or no longer used
 			for k in layer_frame_created:
 				file.seek(frame_position)
-				var frame := _ecFrameData.new()
+				var frame := ecFrameData.new()
 				frame.start_tick = file.get_32()
 				var frame_element_created := file.get_32()
 				file.get_32() # unknown or no longer used
 				for l in frame_element_created:
 					file.seek(element_position)
-					var element := _ecElementData.new()
+					var element := ecElementData.new()
 					var xx := file.get_float()
 					var xy := file.get_float()
 					var yx := file.get_float()
@@ -194,14 +186,14 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 				layer.frames.append(frame)
 				frame_position += 12
 			item_frame_to_create -= layer_frame_created
-			if item is _ecMotionData:
+			if item is ecMotionData:
 				item.layers.append(layer)
 			layer_position += 8
 		assert(item_element_to_create == 0)
 		assert(item_frame_to_create == 0)
-		if item is _ecMotionData:
+		if item is ecMotionData:
 			res.motion_items[item.item_name] = item
-		elif item is _ecShapeData:
+		elif item is ecShapeData:
 			res.shape_items[item.item_name] = item
 		item_position += 56
 	for i in res.motion_items.values():
@@ -212,7 +204,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	return ResourceSaver.save(res, filename)
 
 
-func _check_cycle(item: _ecMotionData, items: Array[_ecItemData], element_sub_item: Dictionary[_ecElementData, int], source_file: String, stack: Array[_ecMotionData] = []) -> bool:
+func _check_cycle(item: ecMotionData, items: Array[ecItemData], element_sub_item: Dictionary[ecElementData, int], source_file: String, stack: Array[ecMotionData] = []) -> bool:
 	stack.push_back(item)
 	for l in item.layers:
 		for f in l.frames:
@@ -223,7 +215,7 @@ func _check_cycle(item: _ecMotionData, items: Array[_ecItemData], element_sub_it
 					push_error("Failed to import {0}: Invalid item index {1}".format([source_file, element_sub_item[e]]))
 					return true
 				var sub_item := items[element_sub_item[e]]
-				if sub_item is _ecMotionData:
+				if sub_item is ecMotionData:
 					if stack.has(sub_item):
 						push_error("Failed to import {0}: Cyclic reference to item '{1}'".format([source_file, sub_item.item_name]))
 						return true

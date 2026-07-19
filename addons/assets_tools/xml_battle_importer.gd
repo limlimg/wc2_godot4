@@ -2,11 +2,6 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _SaveHeader = preload("res://save_header.gd")
-const _SaveCountryInfo = preload("res://save_country_info.gd")
-const _SaveAreaInfo = preload("res://save_area_info.gd")
-const _SaveArmyInfo = preload("res://save_army_info.gd")
-const _DialogueDef = preload("res://dialogue_def.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.battle"
@@ -52,7 +47,7 @@ func _get_resource_type() -> String:
 	return "Resource"
 
 
-func _get_save_extension() -> String:
+func _getSave_extension() -> String:
 	return "res"
 
 
@@ -119,7 +114,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 						techlevel = 5
 					elif techlevel <= 0:
 						techlevel = 1
-					var res_country := _SaveCountryInfo.new()
+					var res_country := SaveCountryInfo.new()
 					res_country.money = money
 					res_country.industry = industry
 					res_country.techlevel = techlevel
@@ -163,7 +158,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 							installation = 3
 						"radar":
 							installation = 4
-					var res_area := _SaveAreaInfo.new()
+					var res_area := SaveAreaInfo.new()
 					res_area.id = id
 					res_area.construction = construction
 					res_area.level = level
@@ -202,7 +197,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 						var cards = 0
 						if xml_army.query_int_attribute("cards", pi) == xml_army.TIXML_SUCCESS:
 							cards = pi.pop_back()
-						var res_army := _SaveArmyInfo.new()
+						var res_army := SaveArmyInfo.new()
 						res_army.type = type
 						res_army.cards = cards
 						res_army.level = level
@@ -226,7 +221,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 						push_error("Parse Error: Element does not have valid \"left\" attibute on line {0} of {1}".format([xml_dialogue.row() + 1, source_file]))
 						return ERR_PARSE_ERROR
 					var left := 1 if pi.pop_back() != 0 else 0
-					var res_dialogue := _DialogueDef.new()
+					var res_dialogue := DialogueDef.new()
 					res_dialogue.commander = commander
 					res_dialogue.index = index
 					res_dialogue.at_round = atround
@@ -237,5 +232,5 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 				push_error("Parse Error: Unrecoginzed name on line {0} of {1}".format([xml_list.row() + 1, source_file]))
 				return ERR_PARSE_ERROR
 		xml_list = xml_list.next_sibling_element()
-	var filename = save_path + "." + _get_save_extension()
+	var filename = save_path + "." + _getSave_extension()
 	return ResourceSaver.save(res_battle, filename)

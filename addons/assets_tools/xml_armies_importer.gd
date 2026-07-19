@@ -2,9 +2,6 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _ArmyDef = preload("res:///army_def.gd")
-const _ArmyDefList = preload("res://resources/imported/army_def_list.gd")
-const _ArmyDefListMap = preload("res://resources/imported/army_def_list_map.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.armies"
@@ -63,20 +60,20 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if xml_root == null:
 		push_error("Parse Error: Failed to find <armies> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
-	var res_armies := _ArmyDefListMap.new()
+	var res_armies := ArmyDefListMap.new()
 	var xml_country := xml_root.first_child_element()
 	while xml_country != null:
 		var country_name := xml_country.attribute("name")
 		if country_name == "":
 			push_error("Parse Error: Element does not have valid \"name\" attibute on line {0} of {1}".format([xml_country.row() + 1, source_file]))
 			return ERR_PARSE_ERROR
-		var res_country := _ArmyDefList.new()
-		res_country.armies.resize(_ArmyDef.ARMY_TYPE.size())
+		var res_country := ArmyDefList.new()
+		res_country.armies.resize(ArmyDef.ARMY_TYPE.size())
 		var xml_army := xml_country.first_child_element()
 		while xml_army != null:
-			var res_army := _ArmyDef.new()
+			var res_army := ArmyDef.new()
 			res_army.name = xml_army.attribute("type")
-			res_army.id = _ArmyDef.ARMY_TYPE.find(xml_army.attribute("type"))
+			res_army.id = ArmyDef.ARMY_TYPE.find(xml_army.attribute("type"))
 			if res_army.id == -1:
 				push_error("Parse Error: Element does not have valid \"type\" attibute on line {0} of {1}".format([xml_country.row() + 1, source_file]))
 				return ERR_PARSE_ERROR

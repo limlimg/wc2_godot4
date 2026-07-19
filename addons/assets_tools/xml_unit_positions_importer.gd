@@ -1,10 +1,9 @@
 @tool
 extends EditorImportPlugin
 
-const _UNIT_POSITIONS_SIZE = 5
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _UnitPositions = preload("res://unit_positions.gd")
-const _UnitPositionsMap = preload("res://resources/imported/unit_positions_map.gd")
+
+const _UNIT_POSITIONS_SIZE = 5
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.unitpositions"
@@ -63,10 +62,10 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if xml_root == null:
 		push_error("Parse Error: Failed to find <Units> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
-	var res_units := _UnitPositionsMap.new()
+	var res_units := UnitPositionsMap.new()
 	var xml_unit := xml_root.first_child_element()
 	while xml_unit != null:
-		var res_unit := _UnitPositions.new()
+		var res_unit := UnitPositions.new()
 		res_unit.x.resize(_UNIT_POSITIONS_SIZE)
 		res_unit.y.resize(_UNIT_POSITIONS_SIZE)
 		res_unit.scale.resize(_UNIT_POSITIONS_SIZE)

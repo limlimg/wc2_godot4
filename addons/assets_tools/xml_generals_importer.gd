@@ -2,8 +2,6 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _GeneralPhoto = preload("res://general_photo.gd")
-const _GeneralPhotoMap = preload("res://resources/imported/general_photo_map.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.generals"
@@ -62,7 +60,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if xml_root == null:
 		push_error("Parse Error: Failed to find <generals> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
-	var res_generals := _GeneralPhotoMap.new()
+	var res_generals := GeneralPhotoMap.new()
 	var xml_general := xml_root.first_child_element()
 	while xml_general != null:
 		var name := xml_general.attribute("name")

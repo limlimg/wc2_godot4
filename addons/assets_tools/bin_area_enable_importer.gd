@@ -1,8 +1,6 @@
 @tool
 extends EditorImportPlugin
 
-const _AreaEnable = preload("res://resources/imported/area_enable.gd")
-
 func _get_importer_name() -> String:
 	return "wc2.assets.bin.areaenable"
 
@@ -67,7 +65,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if file.get_length() != 4 + size:
 		push_error("Failed to import {0}: Unexpected file length: expected {1}, got {2}".format([source_file, 4 + size, file.get_length()]))
 		return ERR_PARSE_ERROR
-	var res := _AreaEnable.new()
+	var res := AreaEnable.new()
 	res.enable = file.get_buffer(size)
 	var filename = save_path + "." + _get_save_extension()
 	return ResourceSaver.save(res, filename)

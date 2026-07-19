@@ -2,8 +2,7 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _CardDef = preload("res://card_def.gd")
-const _CardDefList = preload("res://resources/imported/card_def_list.gd")
+
 const _CARD_LIST_SIZE = 28
 const _CARD_TYPE = [
 	"army",
@@ -69,7 +68,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if xml_root == null:
 		push_error("Parse Error: Failed to find <cards> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
-	var res_cards := _CardDefList.new()
+	var res_cards := CardDefList.new()
 	res_cards.cards.resize(_CARD_LIST_SIZE)
 	var xml_card := xml_root.first_child_element()
 	while xml_card != null:
@@ -77,7 +76,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		if xml_card.query_int_attribute("id", p) != xml_card.TIXML_SUCCESS or p.back() < 0 or p.back() >= _CARD_LIST_SIZE:
 			push_error("Parse Error: Element does not have valid \"id\" attibute on line {0} of {1}".format([xml_card.row() + 1, source_file]))
 			return ERR_PARSE_ERROR
-		var res_card := _CardDef.new()
+		var res_card := CardDef.new()
 		var id := p.pop_back()
 		res_cards.cards[id] = res_card
 		res_card.id = id

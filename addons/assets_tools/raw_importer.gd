@@ -3,8 +3,6 @@ extends EditorImportPlugin
 
 # Reference: Godot source code of Image importer (https://github.com/godotengine/godot/blob/master/editor/import/resource_importer_image.cpp)
 
-const _CAreaMark = preload("res://c_area_mark.gd")
-
 func _get_importer_name() -> String:
 	return "wc2.assets.raw"
 
@@ -74,7 +72,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	var image := Image.create_empty(width, height, false, Image.FORMAT_RGB8)
 	for y in height:
 		for x in width:
-			image.set_pixel(x, y, _CAreaMark.id_to_color(image_data.decode_u16(2 * (y * width + x))))
+			image.set_pixel(x, y, CAreaMark.id_to_color(image_data.decode_u16(2 * (y * width + x))))
 	var filename = save_path + "." + _get_save_extension()
 	var output := FileAccess.open(filename, FileAccess.WRITE)
 	if output == null:

@@ -4,14 +4,12 @@ extends Resource
 ## Change one of the properties and the other will change itself according to
 ## the color schema of CAreaMark.
 
-const _CAreaMark = preload("res://c_area_mark.gd")
-
 @export
 var id: int:
 	get():
-		return _CAreaMark.color_to_id(color)
+		return CAreaMark.color_to_id(color)
 	set(value):
-		color = _CAreaMark.id_to_color(value)
+		color = CAreaMark.id_to_color(value)
 
 
 @export

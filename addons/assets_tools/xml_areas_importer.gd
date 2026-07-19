@@ -2,8 +2,6 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _AreaTax = preload("res://resources/imported/area_tax.gd")
-const _AreaTaxMap = preload("res://resources/imported/area_tax_map.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.areas"
@@ -62,7 +60,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if xml_root == null:
 		push_error("Parse Error: Failed to find <areas> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
-	var res_areas := _AreaTaxMap.new()
+	var res_areas := AreaTaxMap.new()
 	var xml_area := xml_root.first_child_element()
 	while xml_area != null:
 		var type := 0
@@ -83,7 +81,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 			push_error("Parse Error: Element does not have valid \"tax\" attibute on line {0} of {1}".format([xml_area.row() + 1, source_file]))
 			return ERR_PARSE_ERROR
 		var tax := p.pop_back()
-		var res_area := _AreaTax.new()
+		var res_area := AreaTax.new()
 		res_area.id = id
 		res_area.type = type
 		res_area.tax = tax

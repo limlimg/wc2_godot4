@@ -2,8 +2,6 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _CommanderDef = preload("res://commander_def.gd")
-const _CommanderDefMap = preload("res://resources/imported/commander_def_map.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.commanders"
@@ -62,14 +60,14 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if xml_root == null:
 		push_error("Parse Error: Failed to find <commanders> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
-	var res_commanders := _CommanderDefMap.new()
+	var res_commanders := CommanderDefMap.new()
 	var xml_commander := xml_root.first_child_element()
 	while xml_commander != null:
 		var name := xml_commander.attribute("name")
 		if name == "":
 			push_error("Parse Error: Element does not have valid \"name\" attibute on line {0} of {1}".format([xml_commander.row() + 1, source_file]))
 			return ERR_PARSE_ERROR
-		var res_commander := _CommanderDef.new()
+		var res_commander := CommanderDef.new()
 		res_commander.name = name
 		res_commander.country = xml_commander.attribute("country") # Does this field even have effect?
 		var p: Array[int] = []

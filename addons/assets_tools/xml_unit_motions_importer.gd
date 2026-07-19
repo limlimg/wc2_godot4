@@ -7,9 +7,6 @@ const _MOTION_TYPE = [
 	"destroyed"
 ]
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _UnitMotion = preload("res://unit_motion.gd")
-const _UnitMotions = preload("res://unit_motions.gd")
-const _UnitMotionsMap = preload("res://resources/imported/unit_motions_map.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.unitmotions"
@@ -68,10 +65,10 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if xml_root == null:
 		push_error("Parse Error: Failed to find <Units> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
-	var res_units := _UnitMotionsMap.new()
+	var res_units := UnitMotionsMap.new()
 	var xml_unit := xml_root.first_child_element()
 	while xml_unit != null:
-		var res_unit := _UnitMotions.new()
+		var res_unit := UnitMotions.new()
 		var name := xml_unit.attribute("name")
 		var res := xml_unit.attribute("res")
 		if res == "":
@@ -91,7 +88,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 				var type := _MOTION_TYPE.find(xml_motion.attribute("type"))
 				if type == -1:
 					type = 0
-				var res_motion := _UnitMotion.new()
+				var res_motion := UnitMotion.new()
 				var motion_name := xml_motion.attribute("name")
 				if motion_name == "":
 					push_error("Parse Error: Element does not have valid \"name\" attibute on line {0} of {1}".format([xml_motion.row() + 1, source_file]))

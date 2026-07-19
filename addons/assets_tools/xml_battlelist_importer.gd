@@ -2,9 +2,6 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _BattleDef = preload("res://battle_def.gd")
-const _BattleDefMap = preload("res://resources/imported/battle_def_map.gd")
-const _FlagInfo = preload("res://flag_info.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.battlelist"
@@ -63,10 +60,10 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if xml_root == null:
 		push_error("Parse Error: Failed to find <battlelist> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
-	var res_battlelist := _BattleDefMap.new()
+	var res_battlelist := BattleDefMap.new()
 	var xml_battle := xml_root.first_child_element()
 	while xml_battle != null:
-		var res_battle := _BattleDef.new()
+		var res_battle := BattleDef.new()
 		res_battle.greatvictory = 10
 		res_battle.victory = 15
 		var name := xml_battle.attribute("name")
@@ -109,7 +106,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 				return ERR_PARSE_ERROR
 			var xml_flag := xml_list.first_child_element()
 			while xml_flag != null:
-				var res_flag := _FlagInfo.new()
+				var res_flag := FlagInfo.new()
 				res_flag.rot = 0.0
 				res_flag.scale = 1.0
 				var flag_name := xml_flag.attribute("name")

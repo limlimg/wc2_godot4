@@ -2,10 +2,6 @@
 extends EditorImportPlugin
 
 const _TiXmlDocument = preload("res://addons/assets_tools/tinyxml.gd")
-const _ecTextureRes = preload("res://ec_texture_res.gd")
-const _ecTexture = preload("res://ec_texture.gd")
-const _AssetRegistry = preload("res://resources/assets/asset_registry.gd")
-const _ecImageAttr = preload("res://ec_image_attr.gd")
 
 func _get_importer_name() -> String:
 	return "wc2.assets.xml.texture"
@@ -64,7 +60,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if xml_root == null:
 		push_error("Parse Error: Failed to find <Texture> in {0}".format([source_file]))
 		return ERR_PARSE_ERROR
-	var res_texture := _ecTextureRes.new()
+	var res_texture := ecTextureRes.new()
 	var texture_name := xml_root.attribute("name")
 	if texture_name == "":
 		push_error("Parse Error: Element does not have valid \"name\" attibute on line {0} of {1}".format([xml_root.row() + 1, source_file]))
@@ -74,8 +70,8 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if load(texture_path) as Texture2D == null:
 		push_error("Error: failed to validate texture {0} for {1}".format([texture_name, source_file]))
 		return FAILED
-	var ec_texture := _ecTexture.new()
-	ec_texture.asset = _AssetRegistry.new()
+	var ec_texture := ecTexture.new()
+	ec_texture.asset = AssetRegistry.new()
 	ec_texture.asset.name = texture_name
 	var xml_images := doc.first_child_element("Images")
 	if xml_images == null:
@@ -106,7 +102,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		var refy := 0.0
 		if xml_image.query_float_attribute("refy", p) == xml_image.TIXML_SUCCESS:
 			refy = p.pop_back()
-		var res_image := _ecImageAttr.new()
+		var res_image := ecImageAttr.new()
 		res_image.texture = ec_texture
 		res_image.region = Rect2(x, y, w, h)
 		res_image.origin = Vector2(refx, refy)
