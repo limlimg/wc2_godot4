@@ -25,8 +25,8 @@ func init() -> void:
 func _set_commander_info() -> void:
 	if _select_medal == 6:
 		var rank := g_Commander.rank + 1
-		$Medal/Label.text = "rank {0}".format([rank])
-		$MedalIntro/Label.text = "rank {0} intro".format([rank])
+		$Medal/ecText.text = "rank {0}".format([rank])
+		$MedalIntro/ecText.text = "rank {0} intro".format([rank])
 		if not g_Commander.is_max_level():
 			$UpgradeButton/GUIUpgradeButton.visible = true
 			$UpgradeButton/GUIUpgradeButton.need_medal = g_Commander.get_upgrade_medal()
@@ -36,8 +36,8 @@ func _set_commander_info() -> void:
 		var level := g_Commander.get_war_medal_level(_select_medal)
 		if level <= 0:
 			level = 1
-		$Medal/Label.text = "war medal {0} level {1}".format([_select_medal + 1, level])
-		$MedalIntro/Label.text = "war medal {0} level {1} intro".format([_select_medal + 1, level])
+		$Medal/ecText.text = "war medal {0} level {1}".format([_select_medal + 1, level])
+		$MedalIntro/ecText.text = "war medal {0} level {1} intro".format([_select_medal + 1, level])
 		if level <= 2:
 			$UpgradeButton/GUIUpgradeButton.visible = true
 			$UpgradeButton/GUIUpgradeButton.need_medal = g_Commander.get_need_upgrade_medal(_select_medal)

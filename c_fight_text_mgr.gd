@@ -3,7 +3,7 @@ extends CanvasLayer
 var _texts: Array[Label]
 
 func add_text(x: float, y: float, text: String, color: Color) -> void:
-	var node = $Prototype/CFightText.create_instance()
+	var node = $Num2/CFightText.create_instance()
 	node.position = Vector2(x, y)
 	node.set_text(text)
 	node.set_color(color)
@@ -12,7 +12,7 @@ func add_text(x: float, y: float, text: String, color: Color) -> void:
 
 
 func release() -> void:
-	$CFightText.theme = null
+	$Num2.asset = null
 	while not _texts.is_empty():
 		_remove(_texts[-1])
 

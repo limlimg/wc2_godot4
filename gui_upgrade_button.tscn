@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_i1ylu"]
 [ext_resource type="Script" uid="uid://d3d5m7n8xkevo" path="res://gui_upgrade_button.gd" id="2_muesp"]
 [ext_resource type="Texture2D" uid="uid://cbkryo0h38jlh" path="res://resources/assets/logo_gui_res/medal.png.tres" id="4_e8pok"]
-[ext_resource type="Theme" uid="uid://cwbjbqps0wawf" path="res://resources/assets/font/g_num1.tres" id="5_wcrlx"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="5_18k73"]
 
 [node name="GUIUpgradeButton" unique_id=2034275630 instance=ExtResource("1_nnjf7")]
 script = ExtResource("2_muesp")
@@ -83,10 +83,10 @@ texture = ExtResource("4_e8pok")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="NeedMedal" type="Label" parent="GUIRect/Control/HBoxContainer" index="1" unique_id=1333125560]
+[node name="NeedMedal" parent="GUIRect/Control/HBoxContainer" index="1" unique_id=1650770578 instance=ExtResource("5_18k73")]
 layout_mode = 2
 size_flags_vertical = 0
-theme = ExtResource("5_wcrlx")
+font = NodePath("/root/g_Num1")
 
 [node name="PaddingRight" parent="GUIRect/Control/HBoxContainer" index="2" unique_id=933333579 instance=ExtResource("2_i1ylu")]
 layout_mode = 2

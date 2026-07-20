@@ -43,11 +43,11 @@ func _exe_cmd(index: int) -> void:
 			_exe_cmd(index + 1)
 		"moveto area":
 			if ecGraphics.instance().content_scale_size_mode == 3:
-				AppDelegate.g_Scene.move_camera_to_area(cmd.id)
+				g_Scene.move_camera_to_area(cmd.id)
 			else:
-				AppDelegate.g_Scene.move_camera_center_to_area(cmd.id)
+				g_Scene.move_camera_center_to_area(cmd.id)
 			var waiting_cmd := _current_cmd
-			await AppDelegate.g_Scene.move_camera_completed
+			await g_Scene.move_camera_completed
 			_skip_cmd(waiting_cmd)
 		"finger at":
 			$Hand.visible = true
@@ -96,7 +96,7 @@ func _show_dlg_id(id: int) -> void:
 
 
 func _show_dlg(dlg: String) -> void:
-	$Dlg/Label.text = dlg
+	$Dlg/ecUniFont/Label.text = dlg
 	show()
 	CSoundBox.get_instance().play_se("btn.wav")
 

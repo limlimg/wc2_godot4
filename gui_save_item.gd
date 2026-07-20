@@ -109,17 +109,17 @@ func _set_info() -> void:
 	if not empty:
 		if country_res != null:
 			$Flag/TextureRect.texture = country_res.get_image("flag_{0}.png".format([country]))
-		$Time/Label.text = _make_time_string()
+		$Time/ecText.text = _make_time_string()
 		if game_mode != 2:
 			var campaign_key := "alliance name {0}".format([campaign + 1])
 			var campaign_name := g_StringTable.get_string(campaign_key)
-			$Name/Label.text = "{0} {1}".format([campaign_name, battle + 1])
+			$Name/ecText.text = "{0} {1}".format([campaign_name, battle + 1])
 		else:
-			$Name/Label.text = "conquest name {0}".format([battle + 1])
+			$Name/ecText.text = "conquest name {0}".format([battle + 1])
 	else:
 		$Flag/TextureRect.texture = null
-		$Time/Label.text = ""
-		$Name/Label.text = ""
+		$Time/ecText.text = ""
+		$Name/ecText.text = ""
 
 
 func _make_time_string() -> String:

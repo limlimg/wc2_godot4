@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bev0ex7wxa3dd"]
 
-[ext_resource type="Script" uid="uid://dcq0gqsverp5q" path="res://app/src/main/cpp/ec_text.gd" id="1_tq6e4"]
+[ext_resource type="Script" uid="uid://dcq0gqsverp5q" path="res://ec_text.gd" id="1_tq6e4"]
 
-[node name="ecText" type="Node2D" unique_id=1328740515]
+[node name="ecText" type="Label" unique_id=1650770578]
 script = ExtResource("1_tq6e4")

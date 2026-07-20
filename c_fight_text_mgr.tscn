@@ -1,7 +1,13 @@
 [gd_scene format=3 uid="uid://bdigiv3s86lid"]
 
 [ext_resource type="Script" uid="uid://bnu3di5edrab5" path="res://c_fight_text_mgr.gd" id="1_5w5kv"]
-[ext_resource type="Theme" uid="uid://fnnjxuxw1uqw" path="res://resources/assets/game_res/num2.tres" id="2_5w5kv"]
+[ext_resource type="PackedScene" uid="uid://dr76fdoysjvb3" path="res://ec_uni_font.tscn" id="2_8ssm8"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="3_6o5wv"]
+
+[sub_resource type="Resource" id="Resource_3wq21"]
+script = ExtResource("3_6o5wv")
+name = "num2.fnt"
+name_hd = "num2_hd.fnt"
 
 [node name="CFightTextMgr" type="CanvasLayer" unique_id=1897881315]
 layer = -48
@@ -9,8 +15,11 @@ visible = false
 follow_viewport_enabled = true
 script = ExtResource("1_5w5kv")
 
-[node name="CFightText" parent="." unique_id=448162067 instance_placeholder="res://c_fight_text.tscn"]
+[node name="Num2" parent="." unique_id=1248850266 instance=ExtResource("2_8ssm8")]
+asset = SubResource("Resource_3wq21")
+
+[node name="CFightText" parent="Num2" unique_id=448162067 instance_placeholder="res://c_fight_text.tscn"]
+layout_mode = 1
 anchors_preset = -1
 offset_right = 1.0
 offset_bottom = 73.0
-theme = ExtResource("2_5w5kv")

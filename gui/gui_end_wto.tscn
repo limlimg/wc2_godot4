@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://ceqmprvrhs4gp"]
 
-[ext_resource type="Texture2D" uid="uid://cih6ropg6tjfs" path="res://app/src/main/cpp/resources/assets/texture/victorybg_wto.tres" id="1_27u1k"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_jsrmh"]
-[ext_resource type="Texture2D" uid="uid://cgw5x0rgfrojx" path="res://app/src/main/cpp/resources/assets/texture/victory.tres" id="3_48i1o"]
-[ext_resource type="Theme" uid="uid://dwf0jdgntpxmq" path="res://app/src/main/cpp/resources/assets/game_gui_end/font4.tres" id="4_y3gqa"]
+[ext_resource type="Texture2D" uid="uid://cih6ropg6tjfs" path="res://resources/assets/texture/victorybg_wto.tres" id="1_27u1k"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_jsrmh"]
+[ext_resource type="Texture2D" uid="uid://cgw5x0rgfrojx" path="res://resources/assets/texture/victory.tres" id="3_48i1o"]
+[ext_resource type="PackedScene" uid="uid://dr76fdoysjvb3" path="res://ec_uni_font.tscn" id="4_k2woi"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="5_xgcjx"]
+
+[sub_resource type="Resource" id="Resource_3o7sr"]
+script = ExtResource("5_xgcjx")
+name = "font4_en.fnt"
+name_hd = "font4_en_hd.fnt"
+name_ipad = "font4_en_hd.fnt"
 
 [node name="GUIEndWto" type="TextureRect" unique_id=270133824]
 anchors_preset = 15
@@ -41,9 +48,14 @@ grow_vertical = 1
 rect_ipad = Rect2(-439, 187, 0, 0)
 rect = Rect2(-210, 70, 0, 0)
 
-[node name="Label" type="Label" parent="TextVictroy" unique_id=231535116]
+[node name="ecUniFont" parent="TextVictroy" unique_id=1248850266 instance=ExtResource("4_k2woi")]
 layout_mode = 2
+asset = SubResource("Resource_3o7sr")
+
+[node name="Label" type="Label" parent="TextVictroy/ecUniFont" unique_id=231535116]
+layout_mode = 0
+offset_right = 63.0
+offset_bottom = 15.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource("4_y3gqa")
 text = "victory wto"

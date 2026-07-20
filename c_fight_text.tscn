@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ts6golphrfh2"]
 
-[ext_resource type="Script" uid="uid://5xjeodbvdomv" path="res://app/src/main/cpp/c_fight_text.gd" id="1_gubay"]
+[ext_resource type="Script" uid="uid://5xjeodbvdomv" path="res://c_fight_text.gd" id="1_gubay"]
 
 [sub_resource type="Animation" id="Animation_atrwe"]
 resource_name = "RESET"

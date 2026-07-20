@@ -1,9 +1,16 @@
 [gd_scene format=3 uid="uid://bw0mr1d823yk2"]
 
-[ext_resource type="Texture2D" uid="uid://4hfiwjwv00ej" path="res://app/src/main/cpp/resources/assets/texture/victorybg_allies.tres" id="1_bfque"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_p1p0e"]
-[ext_resource type="Texture2D" uid="uid://cgw5x0rgfrojx" path="res://app/src/main/cpp/resources/assets/texture/victory.tres" id="3_g2ye1"]
-[ext_resource type="Theme" uid="uid://dwf0jdgntpxmq" path="res://app/src/main/cpp/resources/assets/game_gui_end/font4.tres" id="4_lfnas"]
+[ext_resource type="Texture2D" uid="uid://4hfiwjwv00ej" path="res://resources/assets/texture/victorybg_allies.tres" id="1_bfque"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_p1p0e"]
+[ext_resource type="Texture2D" uid="uid://cgw5x0rgfrojx" path="res://resources/assets/texture/victory.tres" id="3_g2ye1"]
+[ext_resource type="PackedScene" uid="uid://dr76fdoysjvb3" path="res://ec_uni_font.tscn" id="4_av3f6"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="5_s8k6l"]
+
+[sub_resource type="Resource" id="Resource_dd2af"]
+script = ExtResource("5_s8k6l")
+name = "font4_en.fnt"
+name_hd = "font4_en_hd.fnt"
+name_ipad = "font4_en_hd.fnt"
 
 [node name="GUIEndAllies" type="TextureRect" unique_id=270133824]
 anchors_preset = 15
@@ -41,9 +48,14 @@ grow_vertical = 1
 rect_ipad = Rect2(-439, 187, 0, 0)
 rect = Rect2(-210, 70, 0, 0)
 
-[node name="Label" type="Label" parent="TextVictroy" unique_id=231535116]
+[node name="ecUniFont" parent="TextVictroy" unique_id=1248850266 instance=ExtResource("4_av3f6")]
 layout_mode = 2
+asset = SubResource("Resource_dd2af")
+
+[node name="Label" type="Label" parent="TextVictroy/ecUniFont" unique_id=231535116]
+layout_mode = 0
+offset_right = 73.0
+offset_bottom = 15.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource("4_lfnas")
 text = "victory allies"

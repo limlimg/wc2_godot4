@@ -32,9 +32,9 @@ func init() -> void:
 	if num_stars == 5:
 		$Rank/Rank.show()
 		$Rank/Rank2.hide()
-	$Round/Label.text = "{0}".format([g_GameManager.current_round + 1])
-	$RandomRewardMedal/Label.text = "{0}".format([g_GameManager.random_reward_medal])
-	$CampaignRewardMedal/Label.text = "{0}".format([g_GameManager.campaign_reward_medal])
+	$Round/ecText.text = "{0}".format([g_GameManager.current_round + 1])
+	$RandomRewardMedal/ecText.text = "{0}".format([g_GameManager.random_reward_medal])
+	$CampaignRewardMedal/ecText.text = "{0}".format([g_GameManager.campaign_reward_medal])
 
 
 func _on_gui_button_back_pressed() -> void:

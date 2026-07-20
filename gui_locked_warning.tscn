@@ -4,7 +4,14 @@
 [ext_resource type="Script" uid="uid://c0egpmfnonjbm" path="res://gui_locked_warning.gd" id="1_ccynw"]
 [ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="2_k7wgp"]
 [ext_resource type="Texture2D" uid="uid://ctj87p2f2ndcd" path="res://resources/assets/texture/board_locked.tres" id="4_k7wgp"]
-[ext_resource type="Theme" uid="uid://kfde1dpf6pbh" path="res://resources/assets/menu_gui_selbattle_res/font4.tres" id="5_k7wgp"]
+[ext_resource type="PackedScene" uid="uid://dr76fdoysjvb3" path="res://ec_uni_font.tscn" id="5_fylra"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="6_dnmqc"]
+
+[sub_resource type="Resource" id="Resource_8f3fq"]
+script = ExtResource("6_dnmqc")
+name = "font4_en.fnt"
+name_hd = "font4_en_hd.fnt"
+name_ipad = "font4_en_hd.fnt"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7wgp"]
 
@@ -37,11 +44,16 @@ layout_mode = 2
 rect_ipad = Rect2(32, 120, 0, 0)
 rect = Rect2(16, 60, 0, 0)
 
-[node name="Label" type="Label" parent="BoardLocked/GUIRect2" unique_id=187493172]
+[node name="ecUniFont" parent="BoardLocked/GUIRect2" unique_id=1248850266 instance=ExtResource("5_fylra")]
 layout_mode = 2
+asset = SubResource("Resource_8f3fq")
+
+[node name="Label" type="Label" parent="BoardLocked/GUIRect2/ecUniFont" unique_id=187493172]
+layout_mode = 0
+offset_right = 89.0
+offset_bottom = 15.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource("5_k7wgp")
 text = "locked warning"
 
 [node name="Button" type="Button" parent="." unique_id=286542659]

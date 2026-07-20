@@ -96,7 +96,7 @@ func create_texture_with_string(string: String, font_name: String, font_size: in
 func load_texture(texture_name: String) -> ecTexture:
 	if _texture_cache.has(texture_name) and _texture_cache[texture_name].get_ref() != null:
 		return _texture_cache[texture_name].get_ref()
-	var ec_texture = AppDelegate.ec_texture_load(texture_name)
+	var ec_texture = EC2dAppDelegate.ec_texture_load(texture_name)
 	if ec_texture != null:
 		_texture_cache[texture_name] = weakref(ec_texture)
 		if ec_texture.texture == null:
@@ -106,7 +106,7 @@ func load_texture(texture_name: String) -> ecTexture:
 
 func _process(_delta: float) -> void:
 	for i in _texture_loading.duplicate():
-		var ec_texture = AppDelegate.ec_texture_load(i)
+		var ec_texture = EC2dAppDelegate.ec_texture_load(i)
 		if ec_texture == null:
 			_texture_loading.erase(i)
 			continue
@@ -240,11 +240,11 @@ func render_circle(x: float, y: float, radius: float, color: Color):
 	_rendering_canvas_item.draw_circle(Vector2(x, y), radius, color)
 
 
-func render_text(text: TextParagraph, x: float, y: float, color: Color) -> void:
+func render_text(font: Font, x: float, y: float, text: String, alignment: HorizontalAlignment, font_size: int, color: Color) -> void:
 	if _rendering_canvas_item == null:
 		return
 	_flush()
-	text.draw(_rendering_canvas_item.get_canvas_item(), Vector2(x, y), color)
+	font.draw_string(_rendering_canvas_item.get_canvas_item(), Vector2(x, y), text, alignment, -1, font_size, color)
 
 
 func fade(alpha: float):

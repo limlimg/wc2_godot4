@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://game_res_render/commander_medal.tscn" id="2_f1uq0"]
 [ext_resource type="Resource" uid="uid://eoo8e238q75f" path="res://resources/assets/game_gui_defeated_res/texture_res.tres" id="2_l3fon"]
 [ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="2_y8yra"]
-[ext_resource type="Theme" uid="uid://cthcurv4u6ctt" path="res://resources/assets/font/g_font6.tres" id="3_8iexs"]
 [ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://gui_button_ex.tscn" id="3_ywyf6"]
 [ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="4_2qn58"]
 [ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://resources/assets/logo_gui_res/buttontext_ok.png.tres" id="4_8iexs"]
 [ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://resources/assets/logo_gui_res/buttontext_ok_press.png.tres" id="5_e2dqc"]
 [ext_resource type="Texture2D" uid="uid://c5scjcg2j0bqx" path="res://resources/assets/logo_gui_res/green_normal.png.tres" id="6_ydi4n"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="9_6vb1t"]
 
 [node name="GUIDefeated" type="Control" unique_id=172360110]
 layout_mode = 3
@@ -47,7 +47,7 @@ stack = 1
 position = Vector2(144, 102)
 stack = 1
 
-[node name="Defeated" type="Label" parent="." unique_id=396323480]
+[node name="Defeated" parent="." unique_id=1650770578 instance=ExtResource("9_6vb1t")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -55,10 +55,12 @@ anchor_right = 0.5
 offset_top = 99.0
 offset_bottom = 99.0
 grow_horizontal = 2
-theme = ExtResource("3_8iexs")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "defeated"
 horizontal_alignment = 1
+font = NodePath("../ecText/root/g_Font6")
+color = Color(0, 0, 0, 1)
+alpha = 1.0
 
 [node name="ButtonOk" parent="." unique_id=2034275630 instance=ExtResource("3_ywyf6")]
 layout_mode = 0

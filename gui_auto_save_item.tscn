@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dbndqpxk2yyd1"]
 
-[ext_resource type="PackedScene" uid="uid://bktnsnsbwc2q3" path="res://app/src/main/cpp/gui_save_item.tscn" id="1_cqbh5"]
-[ext_resource type="Script" uid="uid://b32fnamegjxat" path="res://app/src/main/cpp/gui_auto_save_item.gd" id="2_iafg2"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_ldgfg"]
-[ext_resource type="Theme" uid="uid://dmd4twdwradyn" path="res://app/src/main/cpp/resources/assets/font/g_font7.tres" id="5_rir1v"]
+[ext_resource type="PackedScene" uid="uid://bktnsnsbwc2q3" path="res://gui_save_item.tscn" id="1_cqbh5"]
+[ext_resource type="Script" uid="uid://b32fnamegjxat" path="res://gui_auto_save_item.gd" id="2_iafg2"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_ldgfg"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="5_8dynu"]
 
 [node name="GUIAutoSaveItem" unique_id=2034275630 instance=ExtResource("1_cqbh5")]
 script = ExtResource("2_iafg2")
@@ -33,9 +33,12 @@ layout_mode = 2
 rect_ipad = Rect2(0, -148, 0, 0)
 rect = Rect2(0, -74, 0, 0)
 
-[node name="Label" type="Label" parent="Name/AutoSave" index="0" unique_id=578903388]
+[node name="ecText" parent="Name/AutoSave" index="0" unique_id=1650770578 instance=ExtResource("5_8dynu")]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("5_rir1v")
 theme_override_colors/font_color = Color(0.8352941, 0.90588236, 0.9372549, 1)
 horizontal_alignment = 1
+font = NodePath("/root/g_Font7")
+color = Color(0.8352941, 0.90588236, 0.9372549, 1)
+alpha = 1.0

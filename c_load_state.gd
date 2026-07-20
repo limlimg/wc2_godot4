@@ -6,7 +6,7 @@ var _loading_title: Control
 func _on_enter() -> void:
 	_loading = $Loading/GUIImage.create_instance()
 	_loading_title = $LoadingTitle.create_instance()
-	$Tip/Label.text = "tip {0}".format([randi_range(1, 11)])
+	$Tip/ecText.text = "tip {0}".format([randi_range(1, 11)])
 	GUIManager.instance().fade_in(-1)
 	await GUIManager.instance().faded_in
 	CGameState.init_game()

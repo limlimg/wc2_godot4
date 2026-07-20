@@ -7,7 +7,7 @@ func show_dlg(dlg: String, general: StringName, _left: bool) -> void:
 	if photo == null:
 		return
 	$General/TextureRect.texture = ecGraphics.instance().load_texture(photo.filename)
-	$Dlg/Label.text = dlg
+	$Dlg/Font8/Label.text = dlg
 	show()
 
 

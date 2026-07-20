@@ -1,29 +1,29 @@
 [gd_scene format=3 uid="uid://cgox50ytcgjlf"]
 
-[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://app/src/main/cpp/resources/assets/texture/commonbg.tres" id="1_2rhdi"]
-[ext_resource type="Script" uid="uid://5yactqoponno" path="res://app/src/main/cpp/gui_result.gd" id="1_g0k7w"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_qd45r"]
-[ext_resource type="Texture2D" uid="uid://cekghbbruv1hp" path="res://app/src/main/cpp/resources/assets/texture/commander.tres" id="3_ec0gk"]
-[ext_resource type="Texture2D" uid="uid://4wae451l6x07" path="res://app/src/main/cpp/resources/assets/texture/board_result.tres" id="4_g0k7w"]
-[ext_resource type="Texture2D" uid="uid://swjh50dqufli" path="res://app/src/main/cpp/resources/assets/logo_gui_res/rank_star.png.tres" id="5_4eui7"]
-[ext_resource type="Texture2D" uid="uid://cbkryo0h38jlh" path="res://app/src/main/cpp/resources/assets/logo_gui_res/medal.png.tres" id="6_cmj7t"]
-[ext_resource type="Theme" uid="uid://cm4fpf5qkg0cu" path="res://app/src/main/cpp/resources/assets/font/g_num4b.tres" id="6_g0k7w"]
-[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="7_6ecye"]
-[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back.png.tres" id="8_kbvp5"]
-[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back_press.png.tres" id="9_8w1we"]
-[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_gray.png.tres" id="10_jlqut"]
-[ext_resource type="Texture2D" uid="uid://cp78gv12ahgor" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_next.png.tres" id="11_ve3vb"]
-[ext_resource type="Texture2D" uid="uid://c5qhm0igb3lm3" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_next_press.png.tres" id="12_2y7yi"]
-[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_green.png.tres" id="13_lk5od"]
-[ext_resource type="Texture2D" uid="uid://cmy0yuy6augy3" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_restart.png.tres" id="14_5gybd"]
-[ext_resource type="Texture2D" uid="uid://dnubyy1opjro1" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_restart_press.png.tres" id="15_j186u"]
-[ext_resource type="Texture2D" uid="uid://82luefhofd8a" path="res://app/src/main/cpp/resources/assets/logo_gui_res/longred_normal.png.tres" id="16_oi84v"]
-[ext_resource type="Texture2D" uid="uid://j85vsjd1rcf5" path="res://app/src/main/cpp/resources/assets/logo_gui_res/text_rating.png.tres" id="17_2y7yi"]
-[ext_resource type="Texture2D" uid="uid://cki22qrvpodrx" path="res://app/src/main/cpp/resources/assets/logo_gui_res/text_round.png.tres" id="18_lk5od"]
-[ext_resource type="Texture2D" uid="uid://k83bldght8lc" path="res://app/src/main/cpp/resources/assets/logo_gui_res/text_medals.png.tres" id="19_5gybd"]
-[ext_resource type="Texture2D" uid="uid://75g5s8l88o0x" path="res://app/src/main/cpp/resources/assets/logo_gui_res/rank_1.png.tres" id="20_oi84v"]
-[ext_resource type="Texture2D" uid="uid://624n2nal0tsq" path="res://app/src/main/cpp/resources/assets/logo_gui_res/rank_2.png.tres" id="21_6hmeg"]
-[ext_resource type="PackedScene" uid="uid://bjcmxuu6rr2wj" path="res://app/src/main/cpp/gui_adorn_medal.tscn" id="23_2kfc3"]
+[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://resources/assets/texture/commonbg.tres" id="1_2rhdi"]
+[ext_resource type="Script" uid="uid://5yactqoponno" path="res://gui_result.gd" id="1_g0k7w"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_qd45r"]
+[ext_resource type="Texture2D" uid="uid://cekghbbruv1hp" path="res://resources/assets/texture/commander.tres" id="3_ec0gk"]
+[ext_resource type="Texture2D" uid="uid://4wae451l6x07" path="res://resources/assets/texture/board_result.tres" id="4_g0k7w"]
+[ext_resource type="Texture2D" uid="uid://swjh50dqufli" path="res://resources/assets/logo_gui_res/rank_star.png.tres" id="5_4eui7"]
+[ext_resource type="Texture2D" uid="uid://cbkryo0h38jlh" path="res://resources/assets/logo_gui_res/medal.png.tres" id="6_cmj7t"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="7_5c726"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="7_6ecye"]
+[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://resources/assets/logo_gui_res/buttontext_back.png.tres" id="8_kbvp5"]
+[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://resources/assets/logo_gui_res/buttontext_back_press.png.tres" id="9_8w1we"]
+[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://resources/assets/logo_gui_res/buttonboard_gray.png.tres" id="10_jlqut"]
+[ext_resource type="Texture2D" uid="uid://cp78gv12ahgor" path="res://resources/assets/logo_gui_res/buttontext_next.png.tres" id="11_ve3vb"]
+[ext_resource type="Texture2D" uid="uid://c5qhm0igb3lm3" path="res://resources/assets/logo_gui_res/buttontext_next_press.png.tres" id="12_2y7yi"]
+[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://resources/assets/logo_gui_res/buttonboard_green.png.tres" id="13_lk5od"]
+[ext_resource type="Texture2D" uid="uid://cmy0yuy6augy3" path="res://resources/assets/logo_gui_res/buttontext_restart.png.tres" id="14_5gybd"]
+[ext_resource type="Texture2D" uid="uid://dnubyy1opjro1" path="res://resources/assets/logo_gui_res/buttontext_restart_press.png.tres" id="15_j186u"]
+[ext_resource type="Texture2D" uid="uid://82luefhofd8a" path="res://resources/assets/logo_gui_res/longred_normal.png.tres" id="16_oi84v"]
+[ext_resource type="Texture2D" uid="uid://j85vsjd1rcf5" path="res://resources/assets/logo_gui_res/text_rating.png.tres" id="17_2y7yi"]
+[ext_resource type="Texture2D" uid="uid://cki22qrvpodrx" path="res://resources/assets/logo_gui_res/text_round.png.tres" id="18_lk5od"]
+[ext_resource type="Texture2D" uid="uid://k83bldght8lc" path="res://resources/assets/logo_gui_res/text_medals.png.tres" id="19_5gybd"]
+[ext_resource type="Texture2D" uid="uid://75g5s8l88o0x" path="res://resources/assets/logo_gui_res/rank_1.png.tres" id="20_oi84v"]
+[ext_resource type="Texture2D" uid="uid://624n2nal0tsq" path="res://resources/assets/logo_gui_res/rank_2.png.tres" id="21_6hmeg"]
+[ext_resource type="PackedScene" uid="uid://bjcmxuu6rr2wj" path="res://gui_adorn_medal.tscn" id="23_2kfc3"]
 
 [node name="GUIResult" type="Control" unique_id=659475739]
 layout_mode = 3
@@ -87,12 +87,12 @@ grow_vertical = 1
 rect_ipad = Rect2(-270, 105, 0, 0)
 rect = Rect2(-120, 50, 0, 0)
 
-[node name="Label" type="Label" parent="Round" unique_id=765409195]
+[node name="ecText" parent="Round" unique_id=1650770578 instance=ExtResource("7_5c726")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource("6_g0k7w")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+font = NodePath("/root/g_Num4b")
+color = Color(0, 0, 0, 1)
 
 [node name="RankStar" parent="." unique_id=1971342764 instance=ExtResource("2_qd45r")]
 layout_mode = 1
@@ -156,12 +156,12 @@ grow_vertical = 1
 rect_ipad = Rect2(-162, 254, 0, 0)
 rect = Rect2(-68, 128, 0, 0)
 
-[node name="Label" type="Label" parent="CampaignRewardMedal" unique_id=501924066]
+[node name="ecText" parent="CampaignRewardMedal" unique_id=280456404 instance=ExtResource("7_5c726")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource("6_g0k7w")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+font = NodePath("/root/g_Num4b")
+color = Color(0, 0, 0, 1)
 
 [node name="Medal2" parent="." unique_id=796137684 instance=ExtResource("2_qd45r")]
 layout_mode = 1
@@ -189,12 +189,12 @@ grow_vertical = 1
 rect_ipad = Rect2(-162, 364, 0, 0)
 rect = Rect2(-68, 182, 0, 0)
 
-[node name="Label" type="Label" parent="RandomRewardMedal" unique_id=1711731171]
+[node name="ecText" parent="RandomRewardMedal" unique_id=52295389 instance=ExtResource("7_5c726")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource("6_g0k7w")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+font = NodePath("/root/g_Num4b")
+color = Color(0, 0, 0, 1)
 
 [node name="ButtonBack" parent="." unique_id=231113608 instance=ExtResource("2_qd45r")]
 layout_mode = 1

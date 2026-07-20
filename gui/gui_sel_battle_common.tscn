@@ -11,9 +11,16 @@
 [ext_resource type="Texture2D" uid="uid://dkxjlqu0cnvq1" path="res://resources/assets/texture/minimap1_6.tres" id="8_nt22e"]
 [ext_resource type="Texture2D" uid="uid://c3ti4j1qeff4t" path="res://resources/assets/texture/minimap1_7.tres" id="9_rv5wm"]
 [ext_resource type="Texture2D" uid="uid://dnbbn81qmkd3b" path="res://resources/assets/texture/minimap1_8.tres" id="10_y8pec"]
-[ext_resource type="Theme" uid="uid://l3oxkticxpdd" path="res://resources/assets/menu_gui_selbattle_res/num6.tres" id="11_a5ym0"]
 [ext_resource type="Texture2D" uid="uid://cd2xlypbsgglm" path="res://resources/assets/menu_gui_selbattle_res/sflag_shadow.png.tres" id="12_15bd2"]
+[ext_resource type="PackedScene" uid="uid://dr76fdoysjvb3" path="res://ec_uni_font.tscn" id="12_b143d"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="13_3d7ta"]
 [ext_resource type="PackedScene" uid="uid://bp1f7if3s8vf4" path="res://gui_medal.tscn" id="14_xi63f"]
+
+[sub_resource type="Resource" id="Resource_8f3fq"]
+script = ExtResource("13_3d7ta")
+name = "num6.fnt"
+name_hd = "num6_hd.fnt"
+name_ipad = "num6_hd.fnt"
 
 [sub_resource type="Animation" id="Animation_ap38y"]
 length = 0.001
@@ -188,15 +195,26 @@ stretch_mode = 2
 
 [node name="Arrows" type="Node2D" parent="Minimap/ImageList" unique_id=758524085]
 
-[node name="Age" type="CenterContainer" parent="Minimap/ImageList" unique_id=2106438542]
-offset_right = 40.0
-offset_bottom = 40.0
-use_top_left = true
+[node name="Num6" parent="Minimap/ImageList" unique_id=1248850266 instance=ExtResource("12_b143d")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+asset = SubResource("Resource_8f3fq")
 
-[node name="Label" type="Label" parent="Minimap/ImageList/Age" unique_id=1147939039]
-layout_mode = 2
-theme = ExtResource("11_a5ym0")
-horizontal_alignment = 3
+[node name="Age" type="Label" parent="Minimap/ImageList/Num6" unique_id=1147939039]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -0.5
+offset_top = -36.5
+offset_right = 0.5
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
 
 [node name="Prototype" type="Node2D" parent="Minimap" unique_id=1121306584]
 visible = false

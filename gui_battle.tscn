@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://cs2vqc5dk43cq"]
 
-[ext_resource type="PackedScene" uid="uid://c7xftwk7efcxj" path="res://app/src/main/cpp/c_battle_scene.tscn" id="1_5gv8k"]
-[ext_resource type="Script" uid="uid://bpfsj3lintrsq" path="res://app/src/main/cpp/gui_battle.gd" id="1_g67rq"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_eo1tm"]
-[ext_resource type="PackedScene" uid="uid://d1lnnqonc760d" path="res://app/src/main/cpp/game_res_render/army_hp.tscn" id="3_g67rq"]
-[ext_resource type="Resource" uid="uid://cq5m16ucm6vuo" path="res://app/src/main/cpp/resources/assets/game_res/eff.tres" id="3_ulyfx"]
-[ext_resource type="PackedScene" uid="uid://7cn6l08bv1gv" path="res://app/src/main/cpp/game_res_render/army_level.tscn" id="4_gmhhi"]
-[ext_resource type="Texture2D" uid="uid://dbmkdw2tuqyo" path="res://app/src/main/cpp/resources/assets/logo_gui_res/board_down.png.tres" id="4_w82aw"]
-[ext_resource type="Texture2D" uid="uid://jdvnbdyerr2e" path="res://app/src/main/cpp/resources/assets/texture/board_up.png.tres" id="5_5yeo3"]
-[ext_resource type="PackedScene" uid="uid://caf0v7eqneb01" path="res://app/src/main/cpp/gui/gui_rect_4_container.tscn" id="5_tt5x7"]
-[ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://app/src/main/cpp/game_res_render/ai_commander_medal.tscn" id="5_w82aw"]
-[ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://app/src/main/cpp/game_res_render/commander_medal.tscn" id="6_5yeo3"]
-[ext_resource type="Theme" uid="uid://ba2i3m3wqakcx" path="res://app/src/main/cpp/resources/assets/font/g_num5.tres" id="10_5yeo3"]
+[ext_resource type="PackedScene" uid="uid://c7xftwk7efcxj" path="res://c_battle_scene.tscn" id="1_5gv8k"]
+[ext_resource type="Script" uid="uid://bpfsj3lintrsq" path="res://gui_battle.gd" id="1_g67rq"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_eo1tm"]
+[ext_resource type="PackedScene" uid="uid://d1lnnqonc760d" path="res://game_res_render/army_hp.tscn" id="3_g67rq"]
+[ext_resource type="Resource" uid="uid://cq5m16ucm6vuo" path="res://resources/assets/game_res/eff.tres" id="3_ulyfx"]
+[ext_resource type="PackedScene" uid="uid://7cn6l08bv1gv" path="res://game_res_render/army_level.tscn" id="4_gmhhi"]
+[ext_resource type="Texture2D" uid="uid://dbmkdw2tuqyo" path="res://resources/assets/logo_gui_res/board_down.png.tres" id="4_w82aw"]
+[ext_resource type="Texture2D" uid="uid://jdvnbdyerr2e" path="res://resources/assets/texture/board_up.png.tres" id="5_5yeo3"]
+[ext_resource type="PackedScene" uid="uid://caf0v7eqneb01" path="res://gui/gui_rect_4_container.tscn" id="5_tt5x7"]
+[ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://game_res_render/ai_commander_medal.tscn" id="5_w82aw"]
+[ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://game_res_render/commander_medal.tscn" id="6_5yeo3"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="12_ffeyb"]
 
 [sub_resource type="Animation" id="Animation_ulyfx"]
 length = 0.001
@@ -282,23 +282,23 @@ position = Vector2(53, 54)
 [node name="CommanderMedal" parent="Left" unique_id=1241850369 instance=ExtResource("6_5yeo3")]
 position = Vector2(53, 54)
 
-[node name="MinAttack" type="Label" parent="Left" unique_id=944775528]
+[node name="MinAttack" parent="Left" unique_id=1650770578 instance=ExtResource("12_ffeyb")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 128.0
 offset_top = 12.0
-offset_right = 129.0
-offset_bottom = 61.0
-theme = ExtResource("10_5yeo3")
+offset_right = 128.0
+offset_bottom = 12.0
+font = NodePath("/root/g_Num5")
 
-[node name="MaxAttack" type="Label" parent="Left" unique_id=1548747435]
+[node name="MaxAttack" parent="Left" unique_id=1464757886 instance=ExtResource("12_ffeyb")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 168.0
 offset_top = 12.0
-offset_right = 169.0
-offset_bottom = 61.0
-theme = ExtResource("10_5yeo3")
+offset_right = 168.0
+offset_bottom = 12.0
+font = NodePath("/root/g_Num5")
 
 [node name="Right" type="Control" parent="." unique_id=1358950416]
 custom_minimum_size = Vector2(0, 320)
@@ -404,23 +404,23 @@ position = Vector2(-37, 43)
 [node name="ArmyLevel" parent="Right" unique_id=1204844584 instance=ExtResource("4_gmhhi")]
 position = Vector2(-66, 32)
 
-[node name="MinAttack" type="Label" parent="Right" unique_id=1500539383]
+[node name="MinAttack" parent="Right" unique_id=202818103 instance=ExtResource("12_ffeyb")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = -180.0
 offset_top = 12.0
-offset_right = -179.0
-offset_bottom = 61.0
-theme = ExtResource("10_5yeo3")
+offset_right = -180.0
+offset_bottom = 12.0
+font = NodePath("/root/g_Num5")
 
-[node name="MaxAttack" type="Label" parent="Right" unique_id=1854149353]
+[node name="MaxAttack" parent="Right" unique_id=568094909 instance=ExtResource("12_ffeyb")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = -140.0
 offset_top = 12.0
-offset_right = -139.0
-offset_bottom = 61.0
-theme = ExtResource("10_5yeo3")
+offset_right = -140.0
+offset_bottom = 12.0
+font = NodePath("/root/g_Num5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1332024249]
 libraries/ = SubResource("AnimationLibrary_pwmbj")

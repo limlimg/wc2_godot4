@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://bktnsnsbwc2q3"]
 
-[ext_resource type="PackedScene" uid="uid://c5qvo6pghcxcm" path="res://app/src/main/cpp/gui_radio_button.tscn" id="1_175u4"]
-[ext_resource type="Script" uid="uid://5mem4ikjh4fo" path="res://app/src/main/cpp/gui_save_item.gd" id="2_awrqk"]
-[ext_resource type="Theme" uid="uid://cm4fpf5qkg0cu" path="res://app/src/main/cpp/resources/assets/font/g_num4b.tres" id="4_42unb"]
-[ext_resource type="Theme" uid="uid://dmd4twdwradyn" path="res://app/src/main/cpp/resources/assets/font/g_font7.tres" id="5_yp6wb"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="6_yp6wb"]
+[ext_resource type="PackedScene" uid="uid://c5qvo6pghcxcm" path="res://gui_radio_button.tscn" id="1_175u4"]
+[ext_resource type="Script" uid="uid://5mem4ikjh4fo" path="res://gui_save_item.gd" id="2_awrqk"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="6_gflr3"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="6_yp6wb"]
 
 [sub_resource type="Animation" id="Animation_42unb"]
 length = 0.001
@@ -70,15 +69,6 @@ month = 0
 day = 0
 hour = 0
 minute = 0
-text_align = 0
-
-[node name="TextureButton" parent="." index="2" unique_id=1801436601]
-self_modulate = Color(0.784, 1, 0.784, 1)
-
-[node name="Label" parent="." index="3" unique_id=1317756632]
-grow_horizontal = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-horizontal_alignment = 1
 
 [node name="Flag" parent="." index="5" unique_id=873500403 instance=ExtResource("6_yp6wb")]
 layout_mode = 0
@@ -105,12 +95,14 @@ grow_vertical = 1
 rect_ipad = Rect2(44, 104, 0, 0)
 rect = Rect2(22, 52, 0, 0)
 
-[node name="Label" type="Label" parent="Time" index="0" unique_id=133954019]
+[node name="ecText" parent="Time" index="0" unique_id=1650770578 instance=ExtResource("6_gflr3")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource("4_42unb")
 theme_override_colors/font_color = Color(0.20784314, 0.2901961, 0.23137255, 1)
+font = NodePath("/root/g_Num4b")
+color = Color(0.20784314, 0.2901961, 0.23137255, 1)
+alpha = 1.0
 
 [node name="Name" parent="." index="7" unique_id=1694919059 instance=ExtResource("6_yp6wb")]
 layout_mode = 0
@@ -122,12 +114,15 @@ grow_vertical = 1
 rect_ipad = Rect2(216, 2, 0, 0)
 rect = Rect2(113, 1, 0, 0)
 
-[node name="Label" type="Label" parent="Name" index="0" unique_id=221604491]
+[node name="ecText" parent="Name" index="0" unique_id=33360194 instance=ExtResource("6_gflr3")]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("5_yp6wb")
 theme_override_colors/font_color = Color(0.8352941, 0.90588236, 0.9372549, 1)
 horizontal_alignment = 1
+font = NodePath("/root/g_Font7")
+color = Color(0.8352941, 0.90588236, 0.9372549, 1)
+alpha = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8" unique_id=1901739085]
 libraries/ = SubResource("AnimationLibrary_72qpu")

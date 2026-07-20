@@ -1,79 +1,52 @@
-@tool
-extends Node2D
+extends Label
 
 @export
-var font: ecUniFont:
+var font: NodePath:
 	set(value):
 		if value != font:
-			if font != null:
-				font.changed.disconnect(init)
+			if not is_inside_tree():
+				await tree_entered
+			var node := get_node_or_null(font)
+			if node != null:
+				node.theme_changed.disconnect(init)
 			font = value
 			init()
-			if value != null:
-				value.changed.connect(init)
+			node = get_node_or_null(value)
+			if node != null:
+				node.theme_changed.connect(init)
 
-
-@export
-var text: String:
-	set = set_text
 
 @export
 var color: Color = Color.WHITE:
 	set = set_color
 
 @export
-var alpha: float:
+var alpha := 1.0:
 	get = get_alpha,
 	set = set_alpha
 
-
 @export
-var alignment: HorizontalAlignment:
-	set(value):
-		if value != alignment:
-			alignment = value
-			queue_redraw()
-
-
-@export
-var spacing: Vector2i:
-	set(value):
-		if value != spacing:
-			spacing = value
-			queue_redraw()
-
-
-var _text_paragraph := TextParagraph.new()
-var _font_with_spacing: FontVariation
+var spacing := Vector2i.ZERO:
+	set = set_spacing
 
 func init():
-	_text_paragraph.clear()
-	if font == null or font.default_font == null:
-		return
-	if spacing != Vector2i.ZERO:
-		if _font_with_spacing == null:
-			_font_with_spacing = FontVariation.new()
-			_font_with_spacing.base_font = font.default_font
-		_font_with_spacing.spacing_glyph = spacing.x
-		_font_with_spacing.spacing_bottom = spacing.y
-		_text_paragraph.add_string(text, _font_with_spacing, font.default_font_size)
+	if not Engine.get_main_loop().root.is_node_ready():
+		await Engine.get_main_loop().root.ready
+	var old_spacing := spacing
+	set_spacing(Vector2i.ZERO)
+	remove_theme_font_override(&"font")
+	var node := get_node_or_null(font) as Control
+	if node != null:
+		theme = node.theme
 	else:
-		_text_paragraph.add_string(text, font.default_font, font.default_font_size)
-	if _font_with_spacing != null:
-		_font_with_spacing.base_font = font.default_font
-	queue_redraw()
-
-
-func set_text(value: String) -> void:
-	if value != text:
-		text = value
-		init()
+		theme = null
+	set_spacing(old_spacing)
 
 
 func set_color(value: Color) -> void:
 	if value != color:
 		color = value
-		queue_redraw()
+		add_theme_color_override(&"font_color", value)
 
 
 func get_alpha() -> float:
@@ -84,41 +57,59 @@ func set_alpha(value: float) -> void:
 	set_color(Color(color, value))
 
 
+func set_spacing(value: Vector2i) -> void:
+	if value != spacing:
+		spacing = value
+		var theme_font := get_theme_font(&"font")
+		var new_font: Font
+		if value != Vector2i.ZERO:
+			if theme_font is FontVariation:
+				new_font = theme_font.duplicate()
+				new_font.base_font = theme_font.base_font
+			else:
+				new_font = FontVariation.new()
+				new_font.base_font = theme_font
+		else:
+			if theme_font is FontVariation:
+				new_font = theme_font.duplicate()
+			else:
+				new_font = theme_font
+		if new_font is FontVariation:
+			new_font.spacing_glyph = value.x
+			new_font.spacing_bottom = value.y
+		add_theme_font_override(&"font", new_font)
+
+
 func get_height() -> float:
-	return _text_paragraph.get_size().y
+	return size.y
 
 
-func get_string_width(line: int, max_remaining: bool) -> float:
-	var num_lines = get_num_lines()
+func get_string_width(from_pos: int, to_string_end: bool) -> float:
 	var width := 0.0
-	while line < num_lines:
-		var next_width := _text_paragraph.get_line_width(line)
-		if next_width > width:
-			width = next_width
-		if not max_remaining:
-			break
-		line += 1
+	var line_width := 0.0
+	var length := text.length()
+	while from_pos < length:
+		if text[from_pos] == '\n':
+			if not to_string_end:
+				return line_width
+			if line_width > width:
+				width = line_width
+			line_width = 0.0
+		else:
+			line_width += get_character_bounds(from_pos).size.x
+		from_pos += 1
 	return width
 
 
 func get_num_lines() -> int:
-	return _text_paragraph.get_line_count()
+	return get_line_count()
 
 
 func draw_text(x: float, y: float, draw_alignment: int) -> void:
 	match draw_alignment:
 		1:
-			x -= _text_paragraph.get_size().x
-			_text_paragraph.alignment = HORIZONTAL_ALIGNMENT_RIGHT
+			x -= get_string_width(0, true)
 		2:
-			x -= _text_paragraph.get_size().x / 2.0
-			_text_paragraph.alignment = HORIZONTAL_ALIGNMENT_CENTER
-		_:
-			_text_paragraph.alignment = HORIZONTAL_ALIGNMENT_LEFT
-	ecGraphics.instance().render_text(_text_paragraph, x, y, color)
-
-
-func _draw() -> void:
-	ecGraphics.instance().render_begin(self)
-	draw_text(0.0, 0.0, alignment)
-	ecGraphics.instance().render_end()
+			x -= get_string_width(0, true) / 2.0
+	ecGraphics.instance().render_text(get_theme_font(&"font"), x, y, text, draw_alignment\
+		, get_theme_font_size(&"font_size"), get_theme_color(&"font_color"))

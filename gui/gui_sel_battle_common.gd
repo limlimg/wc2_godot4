@@ -15,11 +15,11 @@ func set_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: String, 
 	_release_image_list()
 	$Minimap/ImageList/Flags.add_child(_create_element_nodes(flags, "sflag_", $Minimap/Prototype/Flag))
 	$Minimap/ImageList/Arrows.add_child(_create_element_nodes(arrows, "maparrow_", $Minimap/Prototype/Arrow))
-	$Minimap/ImageList/Age/Label.text = age
+	$Minimap/ImageList/Num6/Age.text = age
 	if ecGraphics.instance().content_scale_size_mode == 3:
 		age_pos *= 2
 		center_pos *= 2
-	$Minimap/ImageList/Age.position = age_pos
+	$Minimap/ImageList/Num6.position = age_pos
 	_center_pos = center_pos
 	if $Minimap/ImageList.modulate.a == 0.0:
 		_move_tween = create_tween()

@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="2_1x8k7"]
 [ext_resource type="Texture2D" uid="uid://irajadqr0cpm" path="res://resources/assets/logo_gui_res/roundstart_board.png.tres" id="2_7ujwe"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_bq5nl"]
-[ext_resource type="Theme" uid="uid://d4iqm05y31a6g" path="res://resources/assets/font/g_num4.tres" id="5_lr5ce"]
 [ext_resource type="PackedScene" uid="uid://c5ire5b7or3k5" path="res://gui_tech.tscn" id="5_lusf5"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="6_00kvo"]
 [ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="7_1x8k7"]
 [ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://gui_button_ex.tscn" id="7_2258h"]
 [ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://resources/assets/logo_gui_res/buttontext_ok.png.tres" id="8_8rls6"]
@@ -139,37 +139,37 @@ layout_mode = 2
 expand_mode = 1
 stretch_mode = 2
 
-[node name="Round" type="Label" parent="." unique_id=1634398879]
+[node name="Round" parent="." unique_id=1650770578 instance=ExtResource("6_00kvo")]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 85.0
+offset_left = 84.5
 offset_top = 33.0
 offset_right = 85.0
 offset_bottom = 33.0
 grow_horizontal = 2
-theme = ExtResource("5_lr5ce")
-theme_override_colors/font_color = Color(0.08627451, 0.101960786, 0.56078434, 1)
 horizontal_alignment = 1
+font = NodePath("/root/g_Num4")
+color = Color(0.08627451, 0.101960786, 0.56078434, 1)
 
-[node name="Taxes" type="Label" parent="." unique_id=1752851231]
+[node name="Taxes" parent="." unique_id=1809116860 instance=ExtResource("6_00kvo")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 74.0
 offset_top = 96.0
 offset_right = 74.0
 offset_bottom = 96.0
-theme = ExtResource("5_lr5ce")
-theme_override_colors/font_color = Color(0.02745098, 0.1882353, 0.23921569, 1)
+font = NodePath("/root/g_Num4")
+color = Color(0.02745098, 0.1882353, 0.23921569, 1)
 
-[node name="Industrys" type="Label" parent="." unique_id=586364670]
+[node name="Industrys" parent="." unique_id=443890231 instance=ExtResource("6_00kvo")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 74.0
 offset_top = 123.0
 offset_right = 74.0
 offset_bottom = 123.0
-theme = ExtResource("5_lr5ce")
-theme_override_colors/font_color = Color(0.02745098, 0.1882353, 0.23921569, 1)
+font = NodePath("/root/g_Num4")
+color = Color(0.02745098, 0.1882353, 0.23921569, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1792107603]
 position = Vector2(117, -10)

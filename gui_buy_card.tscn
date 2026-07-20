@@ -1,24 +1,30 @@
 [gd_scene format=3 uid="uid://cse56b6hg7yjm"]
 
-[ext_resource type="Texture2D" uid="uid://c2hc2xw8tbdjk" path="res://app/src/main/cpp/resources/assets/texture/buycardbg.tres" id="1_mj0ox"]
-[ext_resource type="PackedScene" uid="uid://caf0v7eqneb01" path="res://app/src/main/cpp/gui/gui_rect_4_container.tscn" id="1_pwt1f"]
-[ext_resource type="Script" uid="uid://dducl552p8o1q" path="res://app/src/main/cpp/gui_buy_card.gd" id="1_rm3xk"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="3_pwt1f"]
-[ext_resource type="Texture2D" uid="uid://cyf614mjen5ie" path="res://app/src/main/cpp/resources/assets/texture/board_leather_up.tres" id="4_pwt1f"]
-[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="6_kap0g"]
-[ext_resource type="Theme" uid="uid://cthcurv4u6ctt" path="res://app/src/main/cpp/resources/assets/font/g_font6.tres" id="6_pc1ec"]
-[ext_resource type="Theme" uid="uid://jjobdimdjvc1" path="res://app/src/main/cpp/resources/assets/game_gui_res/font5.tres" id="6_wygf6"]
-[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back.png.tres" id="7_g0g5x"]
-[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back_press.png.tres" id="8_go81l"]
-[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_gray.png.tres" id="9_vdx00"]
-[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_ok.png.tres" id="10_vdx00"]
-[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_ok_press.png.tres" id="11_y08fe"]
-[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_green.png.tres" id="12_wygf6"]
-[ext_resource type="PackedScene" uid="uid://dpsfyw86jcr6b" path="res://app/src/main/cpp/gui_card_tab.tscn" id="14_pc1ec"]
-[ext_resource type="PackedScene" uid="uid://bvd1rulqn5q7a" path="res://app/src/main/cpp/gui_card_list.tscn" id="15_p3fxn"]
-[ext_resource type="PackedScene" uid="uid://c5ire5b7or3k5" path="res://app/src/main/cpp/gui_tech.tscn" id="17_iypsr"]
-[ext_resource type="Resource" uid="uid://dfe0w1ve8iqjk" path="res://app/src/main/cpp/resources/assets/game_gui_res/texture_res.tres" id="18_iypsr"]
-[ext_resource type="PackedScene" uid="uid://bp1f7if3s8vf4" path="res://app/src/main/cpp/gui_medal.tscn" id="18_rm3xk"]
+[ext_resource type="Texture2D" uid="uid://c2hc2xw8tbdjk" path="res://resources/assets/texture/buycardbg.tres" id="1_mj0ox"]
+[ext_resource type="PackedScene" uid="uid://caf0v7eqneb01" path="res://gui/gui_rect_4_container.tscn" id="1_pwt1f"]
+[ext_resource type="Script" uid="uid://dducl552p8o1q" path="res://gui_buy_card.gd" id="1_rm3xk"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="3_pwt1f"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="4_7lva4"]
+[ext_resource type="Texture2D" uid="uid://cyf614mjen5ie" path="res://resources/assets/texture/board_leather_up.tres" id="4_pwt1f"]
+[ext_resource type="PackedScene" uid="uid://dr76fdoysjvb3" path="res://ec_uni_font.tscn" id="5_inwyh"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="6_a1xfa"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="6_kap0g"]
+[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://resources/assets/logo_gui_res/buttontext_back.png.tres" id="7_g0g5x"]
+[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://resources/assets/logo_gui_res/buttontext_back_press.png.tres" id="8_go81l"]
+[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://resources/assets/logo_gui_res/buttonboard_gray.png.tres" id="9_vdx00"]
+[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://resources/assets/logo_gui_res/buttontext_ok.png.tres" id="10_vdx00"]
+[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://resources/assets/logo_gui_res/buttontext_ok_press.png.tres" id="11_y08fe"]
+[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://resources/assets/logo_gui_res/buttonboard_green.png.tres" id="12_wygf6"]
+[ext_resource type="PackedScene" uid="uid://dpsfyw86jcr6b" path="res://gui_card_tab.tscn" id="14_pc1ec"]
+[ext_resource type="PackedScene" uid="uid://bvd1rulqn5q7a" path="res://gui_card_list.tscn" id="15_p3fxn"]
+[ext_resource type="PackedScene" uid="uid://c5ire5b7or3k5" path="res://gui_tech.tscn" id="17_iypsr"]
+[ext_resource type="Resource" uid="uid://dfe0w1ve8iqjk" path="res://resources/assets/game_gui_res/texture_res.tres" id="18_iypsr"]
+[ext_resource type="PackedScene" uid="uid://bp1f7if3s8vf4" path="res://gui_medal.tscn" id="18_rm3xk"]
+
+[sub_resource type="Resource" id="Resource_dd2af"]
+script = ExtResource("6_a1xfa")
+name = "font5_en.fnt"
+name_hd = "font5_en_hd.fnt"
 
 [node name="GUIBuyCard" type="Control" unique_id=595511499]
 layout_mode = 3
@@ -64,12 +70,15 @@ gui_scale_568h = Vector2(1, 1)
 rect_ipad = Rect2(552, 222, 0, 0)
 rect = Rect2(268, 240, 0, 0)
 
-[node name="Label" type="Label" parent="GUIRect/BuyCardBg/Name" unique_id=1094338418]
+[node name="ecText" parent="GUIRect/BuyCardBg/Name" unique_id=1650770578 instance=ExtResource("4_7lva4")]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("6_pc1ec")
 theme_override_colors/font_color = Color(0.043137256, 0.12156863, 0.19215687, 1)
 horizontal_alignment = 1
+font = NodePath("/root/g_Font6")
+color = Color(0.043137256, 0.12156863, 0.19215687, 1)
+alpha = 1.0
 
 [node name="Intro" parent="GUIRect/BuyCardBg" unique_id=481540715 instance=ExtResource("1_pwt1f")]
 layout_mode = 0
@@ -87,10 +96,15 @@ gui_scale_568h = Vector2(1, 1)
 rect_ipad = Rect2(428, 238, 0, 0)
 rect = Rect2(152, 258, 0, 0)
 
-[node name="Label" type="Label" parent="GUIRect/BuyCardBg/Intro" unique_id=1040134274]
+[node name="Font5" parent="GUIRect/BuyCardBg/Intro" unique_id=1248850266 instance=ExtResource("5_inwyh")]
 layout_mode = 2
+asset = SubResource("Resource_dd2af")
+
+[node name="Label" type="Label" parent="GUIRect/BuyCardBg/Intro/Font5" unique_id=1040134274]
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 13.0
 size_flags_vertical = 0
-theme = ExtResource("6_wygf6")
 theme_override_colors/font_color = Color(0.043137256, 0.12156863, 0.19215687, 1)
 
 [node name="GUICardTab" parent="GUIRect/BuyCardBg" unique_id=1481582815 instance=ExtResource("14_pc1ec")]

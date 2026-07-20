@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c5o8iq207nbba"]
 
-[ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://app/src/main/cpp/game_res_render/ai_commander_medal.tscn" id="1_3nn02"]
-[ext_resource type="Script" uid="uid://bf3lgmunho5eg" path="res://app/src/main/cpp/gui_tax.gd" id="1_cpoys"]
-[ext_resource type="Texture2D" uid="uid://dr7bgmp56b0q0" path="res://app/src/main/cpp/resources/assets/logo_gui_res/income_board2.png.tres" id="2_52irx"]
-[ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://app/src/main/cpp/game_res_render/commander_medal.tscn" id="2_cpoys"]
-[ext_resource type="Texture2D" uid="uid://crowfkj7bpn2g" path="res://app/src/main/cpp/resources/assets/logo_gui_res/income_board.png.tres" id="4_mvlbv"]
-[ext_resource type="Theme" uid="uid://c8j0lx6apqda5" path="res://app/src/main/cpp/resources/assets/font/g_num3.tres" id="7_ydn6t"]
+[ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://game_res_render/ai_commander_medal.tscn" id="1_3nn02"]
+[ext_resource type="Script" uid="uid://bf3lgmunho5eg" path="res://gui_tax.gd" id="1_cpoys"]
+[ext_resource type="Texture2D" uid="uid://dr7bgmp56b0q0" path="res://resources/assets/logo_gui_res/income_board2.png.tres" id="2_52irx"]
+[ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://game_res_render/commander_medal.tscn" id="2_cpoys"]
+[ext_resource type="Texture2D" uid="uid://crowfkj7bpn2g" path="res://resources/assets/logo_gui_res/income_board.png.tres" id="4_mvlbv"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="7_rmsci"]
 
 [node name="GUITax" type="Control" unique_id=379815843]
 layout_mode = 3
@@ -44,7 +44,7 @@ centered = false
 position = Vector2(55, 28)
 centered = false
 
-[node name="Money" type="Label" parent="." unique_id=1484181780]
+[node name="Money" parent="." unique_id=1650770578 instance=ExtResource("7_rmsci")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 50.0
@@ -52,12 +52,12 @@ offset_top = 25.0
 offset_right = 50.0
 offset_bottom = 25.0
 grow_horizontal = 0
-theme = ExtResource("7_ydn6t")
-theme_override_colors/font_color = Color(0.05882353, 0.14901961, 0.19607843, 1)
 text = "0"
 horizontal_alignment = 2
+font = NodePath("/root/g_Num3")
+color = Color(0.05882353, 0.14901961, 0.19607843, 1)
 
-[node name="Industry" type="Label" parent="." unique_id=1662309432]
+[node name="Industry" parent="." unique_id=527208843 instance=ExtResource("7_rmsci")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 50.0
@@ -65,7 +65,7 @@ offset_top = 45.0
 offset_right = 50.0
 offset_bottom = 45.0
 grow_horizontal = 0
-theme = ExtResource("7_ydn6t")
-theme_override_colors/font_color = Color(0.05882353, 0.14901961, 0.19607843, 1)
 text = "0"
 horizontal_alignment = 2
+font = NodePath("/root/g_Num3")
+color = Color(0.05882353, 0.14901961, 0.19607843, 1)

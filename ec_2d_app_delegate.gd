@@ -1,4 +1,3 @@
-@tool
 class_name EC2dAppDelegate
 extends Node
 
@@ -51,42 +50,44 @@ func _ec_game_init(content_scale_width: int, content_scale_height: int, orientat
 	CObjectDef.instance().init()
 	g_Commander.load()
 	CSoundBox.get_instance().load_se("btn.wav")
-	#g_font1.init("font1.fnt", false)
-	#var language := g_LocalizableStrings.get_string("language")
-	#if ecGraphics.instance().content_scale_size_mode == 3:
-		#g_font2.init("font2_{0}_hd.fnt".format([language]), false)
-		#g_font3.init("font3_{0}_hd.fnt".format([language]), false)
-		#if g_content_scale_factor == 2.0:
-			#g_font6.init("font6_{0}_hd.fnt".format([language]), true)
-			#g_num3.init("num3_hd.fnt", true)
-			#g_num5.init("num5_hd.fnt", true)
-		#else:
-			#g_font6.init("font6_{0}.fnt".format([language]), false)
-			#g_num3.init("num3.fnt", false)
-			#g_num5.init("num5.fnt", false)
-		#g_font7.init("font7_{0}_hd.fnt".format([language]), false)
-		#g_num1.init("num1_hd.fnt", false)
-		#g_num4.init("num4.fnt", false)
-		#g_num4b.init("num4_hd.fnt", false)
-	#elif g_content_scale_factor == 2.0:
-		#g_font2.init("font2_{0}_hd.fnt".format([language]), true)
-		#g_font3.init("font3_{0}_hd.fnt".format([language]), true)
-		#g_font6.init("font6_{0}_hd.fnt".format([language]), true)
-		#g_font7.init("font7_{0}_hd.fnt".format([language]), true)
-		#g_num1.init("num1_hd.fnt", true)
-		#g_num3.init("num3_hd.fnt", true)
-		#g_num4.init("num4_hd.fnt", true)
-		#g_num5.init("num5_hd.fnt", true)
-		 ##g_num8.init("num8_hd.fnt", true) The original game code tries to load this font but it does not exist
-	#else:
-		#g_font2.init("font2_{0}.fnt".format([language]), false)
-		#g_font3.init("font3_{0}.fnt".format([language]), false)
-		#g_font6.init("font6_{0}.fnt".format([language]), false)
-		#g_font7.init("font7_{0}.fnt".format([language]), false)
-		#g_num1.init("num1.fnt", false)
-		#g_num3.init("num3.fnt", false)
-		#g_num4.init("num4.fnt", false)
-		#g_num5.init("num5.fnt", false)
+	g_Font1.init("font1.fnt", false)
+	var language := g_LocalizableStrings.get_string("language")
+	if ecGraphics.instance().content_scale_size_mode == 3:
+		g_Font2.init("font2_{0}_hd.fnt".format([language]), false)
+		g_Font3.init("font3_{0}_hd.fnt".format([language]), false)
+		if g_content_scale_factor == 2.0:
+			g_Font6.init("font6_{0}_hd.fnt".format([language]), true)
+			g_Num3.init("num3_hd.fnt", true)
+			g_Num5.init("num5_hd.fnt", true)
+		else:
+			g_Font6.init("font6_{0}.fnt".format([language]), false)
+			g_Num3.init("num3.fnt", false)
+			g_Num5.init("num5.fnt", false)
+		g_Font7.init("font7_{0}_hd.fnt".format([language]), false)
+		g_Num1.init("num1_hd.fnt", false)
+		g_Num4.init("num4.fnt", false)
+		g_Num4b.init("num4_hd.fnt", false)
+	elif g_content_scale_factor == 2.0:
+		g_Font2.init("font2_{0}_hd.fnt".format([language]), true)
+		g_Font3.init("font3_{0}_hd.fnt".format([language]), true)
+		g_Font6.init("font6_{0}_hd.fnt".format([language]), true)
+		g_Font7.init("font7_{0}_hd.fnt".format([language]), true)
+		g_Num1.init("num1_hd.fnt", true)
+		g_Num3.init("num3_hd.fnt", true)
+		g_Num4.init("num4_hd.fnt", true)
+		g_Num4b.init("num4_hd.fnt", true)
+		g_Num5.init("num5_hd.fnt", true)
+		#g_Num8.init("num8_hd.fnt", true) The original game code tries to load this font but it does not exist
+	else:
+		g_Font2.init("font2_{0}.fnt".format([language]), false)
+		g_Font3.init("font3_{0}.fnt".format([language]), false)
+		g_Font6.init("font6_{0}.fnt".format([language]), false)
+		g_Font7.init("font7_{0}.fnt".format([language]), false)
+		g_Num1.init("num1.fnt", false)
+		g_Num3.init("num3.fnt", false)
+		g_Num4.init("num4.fnt", false)
+		g_Num4b.init("num4.fnt", false)
+		g_Num5.init("num5.fnt", false)
 	# NOTTODO: initialize iap items
 
 
@@ -140,18 +141,17 @@ func _notification(what):
 
 func _application_will_terminate(_application: MainLoop) -> void:
 	# TODO: finalize g_PlayerManager
-	#g_font1.release()
-	#g_font2.release()
-	#g_font3.release()
-	#g_font6.release()
-	#g_font7.release()
-	#g_num1.release()
-	#g_num3.release()
-	#g_num4.release()
-	#if ecGraphics.instance().content_scale_size_mode == 3:
-		#g_num4b.release()
-	#g_num5.release()
-	#g_num8.release()
+	g_Font1.release()
+	g_Font2.release()
+	g_Font3.release()
+	g_Font6.release()
+	g_Font7.release()
+	g_Num1.release()
+	g_Num3.release()
+	g_Num4.release()
+	g_Num4b.release()
+	g_Num5.release()
+	#g_Num8.release()
 	CSoundBox.get_instance().unload_se("btn.wav")
 	#_CStateManager.instance().term()
 	# no GUIManager
@@ -174,7 +174,7 @@ static func get_document_path(file_name: String) -> String:
 	return "user://" + file_name
 
 
-func get_2x_path(file_name: String, _a2: String) -> String:
+static func get_2x_path(file_name: String, _a2: String) -> String:
 	var file_2x_name: String
 	var i := file_name.find('.')
 	while i != -1:
@@ -248,7 +248,7 @@ func ec_texture_with_string(string: String, font_name: String, font_size: int, a
 	return _ec_texture
 
 
-func ec_texture_load(texture_name: String) -> ecTexture:
+static func ec_texture_load(texture_name: String) -> ecTexture:
 	var path := ""
 	var is_2x: bool
 	if not Engine.is_editor_hint():

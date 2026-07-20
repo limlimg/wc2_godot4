@@ -41,28 +41,26 @@ func _ready() -> void:
 
 
 func init() -> void:
-	var battle_intro = $BattleIntro/Label
+	var battle_intro = $Font4/BattleIntro/Label
 	if ecGraphics.instance().content_scale_size_mode == 3:
 		battle_intro.add_theme_constant_override("line_spacing", -6)
 	else:
 		battle_intro.add_theme_constant_override("line_spacing", -3)
-	$Victory/Label.text = "victory"
-	$GreatVictory/Label.text = "great victory"
 	_set_battle()
 
 
 func _set_battle() -> void:
 	var string_table := g_StringTable
 	if campaign >= 0 and campaign < 4:
-		$BattleIntro/Label.text = _BATTLE_INTRO_KEY_FORMAT[campaign].format([battle + 1])
-		$BattleName/Label.text = _BATTLE_NAME_KEY_FORMAT[campaign].format([battle + 1])
+		$Font4/BattleIntro/Label.text = _BATTLE_INTRO_KEY_FORMAT[campaign].format([battle + 1])
+		$BattleName/ecText.text = _BATTLE_NAME_KEY_FORMAT[campaign].format([battle + 1])
 	var battle_key_name := AppDelegate.get_battle_key_name(campaign, battle)
 	var battle_def := CObjectDef.instance().get_battle_def(battle_key_name)
-	$Age/Label.text = battle_def.age
+	$Font4/Age/Num7/Label.text = battle_def.age
 	var v1 := string_table.get_string("victory days1")
 	var v2 := string_table.get_string("victory days2")
-	var v := $VictoryDays/Label
-	var gv := $GreatVictoryDays/Label
+	var v := $Font4/VictoryDays/Label
+	var gv := $Font4/GreatVictoryDays/Label
 	if not v1.is_empty():
 		v.text = "%s %d %s"%[v1, battle_def.victory, v2]
 		gv.text = "%s %d %s"%[v1, battle_def.greatvictory, v2]

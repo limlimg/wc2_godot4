@@ -28,6 +28,16 @@ g_StringTable="*uid://rbwcuj5sihmy"
 _ZN10CObjectDef10m_InstanceE="*uid://chppiklcc4q7g"
 g_Commander="*uid://br6thvhxrujky"
 _ZN10CCSoundBox9mInstanceE="*uid://dkim8xlep1wjg"
+g_Font1="*uid://lwqol1op6b8i"
+g_Font2="*uid://lwqol1op6b8i"
+g_Font3="*uid://lwqol1op6b8i"
+g_Font6="*uid://lwqol1op6b8i"
+g_Font7="*uid://lwqol1op6b8i"
+g_Num1="*uid://lwqol1op6b8i"
+g_Num3="*uid://lwqol1op6b8i"
+g_Num4="*uid://lwqol1op6b8i"
+g_Num4b="*uid://lwqol1op6b8i"
+g_Num5="*uid://lwqol1op6b8i"
 AppDelegate="*uid://cwnp8pga0kaay"
 g_GameSettings="*uid://bvg1wsn3twqek"
 g_GameManager="*uid://b5tv1g6v504vp"
@@ -77,8 +87,8 @@ pointing/emulate_mouse_from_touch=false
 [internationalization]
 
 locale/translation_remaps={
-"res://app/src/main/assets/English.lproj/InfoPlist.strings": PackedStringArray("res://app/src/main/assets/ja.lproj/InfoPlist.strings:ja", "res://app/src/main/assets/kr.lproj/InfoPlist.strings:ko", "res://app/src/main/assets/ru.lproj/InfoPlist.strings:ru", "res://app/src/main/assets/zh_CN.lproj/InfoPlist.strings:zh_Hans", "res://app/src/main/assets/zh_TW.lproj/InfoPlist.strings:zh_Hant"),
-"res://app/src/main/assets/English.lproj/Localizable.strings": PackedStringArray("res://app/src/main/assets/ja.lproj/Localizable.strings:ja", "res://app/src/main/assets/kr.lproj/Localizable.strings:ko", "res://app/src/main/assets/ru.lproj/Localizable.strings:ru", "res://app/src/main/assets/zh_CN.lproj/Localizable.strings:zh_Hans", "res://app/src/main/assets/zh_TW.lproj/Localizable.strings:zh_Hant"),
+"res://assets/English.lproj/InfoPlist.strings": PackedStringArray("res://assets/ja.lproj/InfoPlist.strings:ja", "res://assets/kr.lproj/InfoPlist.strings:ko", "res://assets/ru.lproj/InfoPlist.strings:ru", "res://assets/zh_CN.lproj/InfoPlist.strings:zh_Hans", "res://assets/zh_TW.lproj/InfoPlist.strings:zh_Hant"),
+"res://assets/English.lproj/Localizable.strings": PackedStringArray("res://assets/ja.lproj/Localizable.strings:ja", "res://assets/kr.lproj/Localizable.strings:ko", "res://assets/ru.lproj/Localizable.strings:ru", "res://assets/zh_CN.lproj/Localizable.strings:zh_Hans", "res://assets/zh_TW.lproj/Localizable.strings:zh_Hant"),
 "res://assets/English.lproj/font_text_newgame_1_en.fnt": PackedStringArray("res://assets/ja.lproj/font_text_newgame_1_ja.fnt:ja", "res://assets/kr.lproj/font_text_newgame_1_ko.fnt:ko", "res://assets/ru.lproj/font_text_newgame_1_en.fnt:ru", "res://assets/zh_CN.lproj/font_text_newgame_1_cn.fnt:zh_Hans", "res://assets/zh_TW.lproj/font_text_newgame_1_tw.fnt:zh_Hant"),
 "res://assets/English.lproj/font_text_newgame_1_en_hd.fnt": PackedStringArray("res://assets/ja.lproj/font_text_newgame_1_ja_hd.fnt:ja", "res://assets/kr.lproj/font_text_newgame_1_ko_hd.fnt:ko", "res://assets/ru.lproj/font_text_newgame_1_en_hd.fnt:ru", "res://assets/zh_CN.lproj/font_text_newgame_1_cn_hd.fnt:zh_Hans", "res://assets/zh_TW.lproj/font_text_newgame_1_tw_hd.fnt:zh_Hant"),
 "res://assets/English.lproj/font_text_newgame_2_en.fnt": PackedStringArray("res://assets/ja.lproj/font_text_newgame_2_ja.fnt:ja", "res://assets/kr.lproj/font_text_newgame_2_ko.fnt:ko", "res://assets/ru.lproj/font_text_newgame_2_en.fnt:ru", "res://assets/zh_CN.lproj/font_text_newgame_2_cn.fnt:zh_Hans", "res://assets/zh_TW.lproj/font_text_newgame_2_tw.fnt:zh_Hant"),
