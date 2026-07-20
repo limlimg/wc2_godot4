@@ -32,8 +32,6 @@ var size_override: Vector2:
 
 var res_scale := 1.0
 
-
-var _reload_needed := false
 var _clone_from: ecTexture:
 	set(value):
 		if value != _clone_from:
@@ -60,14 +58,10 @@ func _on_asset_changed() -> void:
 				texture = null
 				size_override = Vector2.ZERO
 		else:
-			_reload_needed = true
+			var name := await asset.get_resolved_name()
+			if not name.is_empty():
+				_clone_from = ecGraphics.instance().load_texture(name)
 	notify_property_list_changed()
-
-
-func _reload_clone() -> void:
-	var name := await asset.get_resolved_name()
-	if not name.is_empty():
-		_clone_from = ecGraphics.instance().load_texture(name)
 
 
 func _on_clone_changed() -> void:
@@ -82,9 +76,6 @@ func _validate_property(property: Dictionary) -> void:
 
 
 func _draw(to_canvas_item: RID, pos: Vector2, modulate: Color, transpose: bool) -> void:
-	if _reload_needed:
-		_reload_clone()
-		_reload_needed = false
 	if texture == null:
 		return
 	var rect := Rect2(pos, size_override)
@@ -92,9 +83,6 @@ func _draw(to_canvas_item: RID, pos: Vector2, modulate: Color, transpose: bool) 
 
 
 func _draw_rect(to_canvas_item: RID, rect: Rect2, tile: bool, modulate: Color, transpose: bool) -> void:
-	if _reload_needed:
-		_reload_clone()
-		_reload_needed = false
 	if texture == null:
 		return
 	if tile:
@@ -106,9 +94,6 @@ func _draw_rect(to_canvas_item: RID, rect: Rect2, tile: bool, modulate: Color, t
 
 
 func _draw_rect_region(to_canvas_item: RID, rect: Rect2, src_rect: Rect2, modulate: Color, transpose: bool, clip_uv: bool) -> void:
-	if _reload_needed:
-		_reload_clone()
-		_reload_needed = false
 	if texture == null:
 		return
 	var texture_size := texture.get_size()

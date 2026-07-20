@@ -284,17 +284,20 @@ static func ec_texture_load(texture_name: String) -> ecTexture:
 		var status := ResourceLoader.load_threaded_get_status(path)
 		if status == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
 			ResourceLoader.load_threaded_request(path)
-		elif status == ResourceLoader.THREAD_LOAD_LOADED:
-			texture = ResourceLoader.load_threaded_get(path)
 	var ec_texture := ecTexture.new()
-	ec_texture.texture = texture
-	if texture != null:
-		if is_2x:
-			ec_texture.size_override.x = texture.get_width() / 2.0
-			ec_texture.size_override.y = texture.get_height() / 2.0
-		else:
-			ec_texture.size_override.x = texture.get_width()
-			ec_texture.size_override.y = texture.get_height()
+	(func ():
+		var status := ResourceLoader.load_threaded_get_status(path)
+		while status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+			await (Engine.get_main_loop() as SceneTree).process_frame
+			status = ResourceLoader.load_threaded_get_status(path)
+		if status == ResourceLoader.THREAD_LOAD_LOADED:
+			var loaded_texture = ResourceLoader.load_threaded_get(path)
+			ec_texture.texture = loaded_texture
+			if is_2x:
+				ec_texture.size_override = loaded_texture.get_size() / 2
+			else:
+				ec_texture.size_override = loaded_texture.get_size()
+		).call_deferred()
 	return ec_texture
 
 
