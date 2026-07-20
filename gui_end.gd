@@ -20,13 +20,13 @@ func init() -> void:
 		_bg.queue_free()
 	match campaign:
 		0:
-			_bg = $GUIEndAxis.create_instance()
+			_bg = $GUIRect/GUIEndAxis.create_instance()
 		1:
-			_bg = $GUIEndAllies.create_instance()
+			_bg = $GUIRect/GUIEndAllies.create_instance()
 		2:
-			_bg = $GUIEndWto.create_instance()
+			_bg = $GUIRect/GUIEndWto.create_instance()
 		3:
-			_bg = $GUIEndNato.create_instance()
+			_bg = $GUIRect/GUIEndNato.create_instance()
 
 
 func _on_gui_button_back_pressed() -> void:
