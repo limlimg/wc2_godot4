@@ -21,20 +21,14 @@ extends Resource
 var assets: Array[AssetRegistry]:
 	set(value):
 		if value != assets:
-			var _cache_images = images
-			images = {}
+			for i in assets:
+				if i != null:
+					i.changed.disconnect(_on_assets_changed)
 			assets = value
+			_on_assets_changed()
 			for i in value:
-				if i == null:
-					continue
-				if Engine.is_editor_hint():
-					if not load_res(i.name, false):
-						load_res(i.name_hd, true)
-				else:
-					var name := i.get_resolved_name()
-					if not name.is_empty():
-						load_res(name, i.is_hd())
-			notify_property_list_changed()
+				if i != null:
+					i.changed.connect(_on_assets_changed)
 
 
 @export
@@ -43,6 +37,22 @@ var images: Dictionary[StringName, ecImageAttr]:
 		if value != images:
 			images = value
 			emit_changed()
+
+
+func _on_assets_changed() -> void:
+	var _cache_old_images = images
+	images = {}
+	for i in assets:
+		if i == null:
+			continue
+		if Engine.is_editor_hint():
+			if not load_res(i.name, false):
+				load_res(i.name_hd, true)
+		else:
+			var name := await i.get_resolved_name()
+			if not name.is_empty():
+				load_res(name, await i.is_hd())
+	notify_property_list_changed()
 
 
 func _validate_property(property: Dictionary) -> void:

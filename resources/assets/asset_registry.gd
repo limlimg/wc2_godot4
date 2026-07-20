@@ -100,6 +100,8 @@ var name_512hd: String:
 
 func get_resolved_name() -> String:
 	var graphics := ecGraphics.instance()
+	if not graphics.is_node_ready():
+		await graphics.ready
 	if graphics.content_scale_size_mode == 3:
 		return _select([name_ipad_hd, name_ipad, name_hd, name])
 	else:
@@ -132,6 +134,8 @@ func is_hd() -> bool:
 	if EC2dAppDelegate.g_content_scale_factor != 2.0:
 		return false
 	var graphics := ecGraphics.instance()
+	if not graphics.is_node_ready():
+		await graphics.ready
 	if graphics.content_scale_size_mode == 3:
 		return not name_ipad_hd.is_empty() or name_ipad.is_empty() and not name_hd.is_empty()
 	elif graphics.orientated_content_scale_width > 568.0:

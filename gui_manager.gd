@@ -30,6 +30,11 @@ static func instance() -> GUIManager:
 	return (Engine.get_main_loop() as SceneTree).get_first_node_in_group(&"_ZN10GUIManager8InstancevE")
 
 
+func init() -> void:
+	# nothing to do
+	pass
+
+
 #func load_texture_res(file_name: String, hd: bool) -> void:
 	#s_texture_res.load_res(file_name, hd)
 #

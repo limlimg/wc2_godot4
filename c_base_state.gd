@@ -9,14 +9,22 @@ extends Control
 ## in a duck-typed manner, so defining one of the following method is enough
 ## to allow it to be called, while it is not necessary to define all of them.
 
+@export
+var state: int
+
+var _entered := false
+
 func _notification(what):
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
 		if is_node_ready():
-			if visible:
+			if is_visible_in_tree() and not _entered:
 				_on_enter()
-			else:
+			elif _entered:
 				_on_exit()
-	if what == NOTIFICATION_APPLICATION_RESUMED:
+	elif what == NOTIFICATION_READY:
+		if is_visible_in_tree() and not _entered:
+			_on_enter()
+	elif what == NOTIFICATION_APPLICATION_RESUMED:
 		_enter_foreground()
 	elif what == NOTIFICATION_APPLICATION_PAUSED:
 		_enter_background()

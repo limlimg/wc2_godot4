@@ -28,9 +28,9 @@ func _on_asset_changed() -> void:
 			if not init(asset.name, false):
 				init(asset.name_hd, true)
 		else:
-			var font_name := asset.get_resolved_name()
+			var font_name := await asset.get_resolved_name()
 			if not font_name.is_empty():
-				init(font_name, asset.is_hd())
+				init(font_name, await asset.is_hd())
 	notify_property_list_changed()
 
 

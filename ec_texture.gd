@@ -65,7 +65,7 @@ func _on_asset_changed() -> void:
 
 
 func _reload_clone() -> void:
-	var name := asset.get_resolved_name()
+	var name := await asset.get_resolved_name()
 	if not name.is_empty():
 		_clone_from = ecGraphics.instance().load_texture(name)
 

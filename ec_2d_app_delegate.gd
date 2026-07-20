@@ -2,12 +2,15 @@ class_name EC2dAppDelegate
 extends Node
 
 func _init() -> void:
-	_application_will_finish_launching_with_options(Engine.get_main_loop(), {})
+	var root := (Engine.get_main_loop() as SceneTree).root
+	if not root.is_node_ready():
+		await root.ready
+	_application_did_finish_launching_with_options(Engine.get_main_loop(), {})
 
 
 static var g_content_scale_factor: float = 1.0 / ProjectSettings.get_setting("display/window/stretch/scale")
 
-func _application_will_finish_launching_with_options(_application: MainLoop, _launch_options: Dictionary) -> bool:
+func _application_did_finish_launching_with_options(_application: MainLoop, _launch_options: Dictionary) -> bool:
 	var window_size := DisplayServer.window_get_size()
 	var game_view_width := maxf(window_size.x, window_size.y)
 	var game_view_height := minf(window_size.x, window_size.y)
@@ -38,7 +41,14 @@ func _ec_game_init(content_scale_width: int, content_scale_height: int, orientat
 	set_ai_rand_seed(randi())
 	set_rand_seed(randi())
 	ecGraphics.instance().init(content_scale_width, content_scale_height, orientation, game_view_width, game_view_height)
-	# CStateManager, GUIManager as well as other GUIElements typically have their init method invoked by setters
+	GUIManager.instance().init()
+	var state_manager := CStateManager.instance()
+	state_manager.init()
+	state_manager.register_state($CLogoState.create_instance())
+	state_manager.register_state($CMenuState.create_instance())
+	state_manager.register_state($CLoadState.create_instance())
+	state_manager.register_state($CGameState.create_instance())
+	state_manager.set_cur_state(EState.LOGO)
 	g_LocalizableStrings.load_table("Localizable.strings")
 	var string_table_key: StringName
 	if ecGraphics.instance().content_scale_size_mode == 3:

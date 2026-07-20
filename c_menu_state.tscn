@@ -14,6 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ehm5w")
+state = 1
 
 [node name="Background" parent="." unique_id=1995706357 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 1

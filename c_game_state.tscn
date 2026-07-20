@@ -204,6 +204,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_i7u21")
+state = 4
 
 [node name="GUIBattle" parent="." unique_id=368823071 instance_placeholder="res://gui_battle.tscn"]
 visible = false

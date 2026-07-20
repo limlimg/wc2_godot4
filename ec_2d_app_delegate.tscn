@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ca4a33l6mf8ec"]
+
+[ext_resource type="Script" uid="uid://cwnp8pga0kaay" path="res://ec_2d_app_delegate.gd" id="1_qvxgr"]
+
+[node name="Ec2dAppDelegate" type="Node" unique_id=1119378283]
+script = ExtResource("1_qvxgr")
+
+[node name="CLogoState" parent="." unique_id=1619107626 instance_placeholder="res://c_logo_state.tscn"]
+visible = false
+
+[node name="CMenuState" parent="." unique_id=54523483 instance_placeholder="res://c_menu_state.tscn"]
+visible = false
+
+[node name="CLoadState" parent="." unique_id=1642615460 instance_placeholder="res://c_load_state.tscn"]
+visible = false
+
+[node name="CGameState" parent="." unique_id=1645819512 instance_placeholder="res://c_game_state.tscn"]
+visible = false

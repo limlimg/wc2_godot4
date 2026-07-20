@@ -17,23 +17,12 @@ extends CanvasLayer
 ## registered in advance. Scene paths specify which state to create and enter,
 ## which means every scene can be used, not just subclasses of CBaseState.
 
-@export
-var states: Dictionary[int, Control]
-
+var _states: Dictionary[int, CBaseState]
 var _cur_state := EState.ESTATE_MAX as int
 var _next_state := EState.ESTATE_MAX as int
 
 static func instance() -> CStateManager:
 	return _ZN13CStateManager8InstancevE
-
-
-func _ready() -> void:
-	init()
-	_register_state($CLogoState)
-	_register_state($CMenuState)
-	_register_state($CLoadState)
-	_register_state($CGameState)
-	set_cur_state(EState.LOGO)
 
 
 func init() -> void:
@@ -42,7 +31,7 @@ func init() -> void:
 
 
 func term() -> void:
-	var _cur_state_node = states.get(_cur_state)
+	var _cur_state_node = _states.get(_cur_state)
 	if _cur_state_node != null:
 		_cur_state_node.hide()
 		_cur_state_node.set_process(false)
@@ -54,22 +43,24 @@ func _process(delta: float) -> void:
 
 func update(_delta: float) -> void:
 	if _next_state != _cur_state:
-		var _cur_state_node = states.get(_cur_state)
+		var _cur_state_node = _states.get(_cur_state)
 		if _cur_state_node != null:
 			_cur_state_node.hide()
 			_cur_state_node.set_process(false)
 		_cur_state = _next_state
-		_cur_state_node = states.get(_next_state)
+		_cur_state_node = _states.get(_next_state)
 		if _cur_state_node != null:
 			_cur_state_node.show()
 			_cur_state_node.set_process(true)
 
 
-func _register_state(state: Control) -> void:
+func register_state(state: CBaseState) -> void:
 	if state == null:
 		return
 	state.hide()
 	state.set_process(false)
+	state.reparent(self)
+	_states[state.state] = state
 
 
 func set_cur_state(state: int) -> void:
@@ -77,4 +68,4 @@ func set_cur_state(state: int) -> void:
 
 
 func get_state_ptr(state: int) -> Control:
-	return states.get(state)
+	return _states.get(state)

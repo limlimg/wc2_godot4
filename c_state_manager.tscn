@@ -1,32 +1,8 @@
 [gd_scene format=3 uid="uid://fcfp44mkojj0"]
 
 [ext_resource type="Script" uid="uid://b657hk371043b" path="res://c_state_manager.gd" id="1_31rwq"]
-[ext_resource type="PackedScene" uid="uid://k1rddnv5q5m8" path="res://c_logo_state.tscn" id="2_ii4nm"]
-[ext_resource type="PackedScene" uid="uid://d20oukqjjuchm" path="res://c_menu_state.tscn" id="3_4aap8"]
-[ext_resource type="PackedScene" uid="uid://bine2n80jql7t" path="res://c_load_state.tscn" id="4_qu4wi"]
-[ext_resource type="PackedScene" uid="uid://cyteip1ai4gjt" path="res://c_game_state.tscn" id="5_diymx"]
 
-[node name="CStateManager" type="CanvasLayer" unique_id=1651870662 node_paths=PackedStringArray("states")]
+[node name="CStateManager" type="CanvasLayer" unique_id=1651870662]
 layer = -32
 visible = false
 script = ExtResource("1_31rwq")
-states = {
-0: NodePath("CLogoState"),
-1: NodePath("CMenuState"),
-2: null,
-3: NodePath("CLoadState"),
-4: NodePath("CGameState"),
-5: null
-}
-
-[node name="CLogoState" parent="." unique_id=1619107626 instance=ExtResource("2_ii4nm")]
-visible = false
-
-[node name="CMenuState" parent="." unique_id=54523483 instance=ExtResource("3_4aap8")]
-visible = false
-
-[node name="CLoadState" parent="." unique_id=1642615460 instance=ExtResource("4_qu4wi")]
-visible = false
-
-[node name="CGameState" parent="." unique_id=1645819512 instance=ExtResource("5_diymx")]
-visible = false
