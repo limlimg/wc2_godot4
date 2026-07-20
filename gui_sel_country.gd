@@ -25,7 +25,7 @@ func init() -> void:
 
 
 func _load_image_list(sel_conquest: int) -> void:
-	var key := AppDelegate.get_conquest_key_name(sel_conquest)
+	var key = AppDelegate.get_conquest_key_name(sel_conquest)
 	var def := CObjectDef.instance().get_conquest_def(key)
 	if def == null:
 		return

@@ -62,7 +62,7 @@ func _sel_battle(sel_campaign: int, battle: int) -> void:
 
 
 func _load_image_list(sel_campaign: int, battle: int) -> void:
-	var key := AppDelegate.get_battle_key_name(sel_campaign, battle)
+	var key = AppDelegate.get_battle_key_name(sel_campaign, battle)
 	var def := CObjectDef.instance().get_battle_def(key)
 	if def == null:
 		return

@@ -26,7 +26,7 @@ var texture_res: ecTextureRes:
 
 
 func load_data(name: String) -> void:
-	var path := AppDelegate.get_asset_path(name, "")
+	var path := EC2dAppDelegate.get_asset_path(name, "")
 	if path.is_empty():
 		return
 	data = load(path)

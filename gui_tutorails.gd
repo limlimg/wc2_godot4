@@ -21,7 +21,7 @@ func init() -> void:
 
 
 func _load_script() -> void:
-	_cmds = load(EC2dAppDelegate.get_asset_path(asset.get_resolved_name(), ""))
+	_cmds = load(EC2dAppDelegate.get_asset_path(await asset.get_resolved_name(), ""))
 
 
 func _release_script() -> void:

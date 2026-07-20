@@ -29,8 +29,8 @@ func _ready() -> void:
 func init() -> void:
 	if campaign == -1:
 		return
-	var num_battles := AppDelegate.get_num_battles(campaign)
-	var played_battles := num_battles
+	var num_battles = AppDelegate.get_num_battles(campaign)
+	var played_battles = num_battles
 	if campaign != CAMPIAGN_MULTIPLAY:
 		played_battles = g_Commander.get_num_played_battles(campaign)
 	for i in num_battles:

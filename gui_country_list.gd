@@ -29,8 +29,8 @@ func _ready() -> void:
 func init() -> void:
 	if conquest == -1:
 		return
-	var battle_file_name := AppDelegate.get_battle_file_name(2, 0, conquest)
-	var belligerent_list := AppDelegate.get_battle_belligerent_list(battle_file_name, true)
+	var battle_file_name = AppDelegate.get_battle_file_name(2, 0, conquest)
+	var belligerent_list = AppDelegate.get_battle_belligerent_list(battle_file_name, true)
 	for belligerent in belligerent_list:
 		var item = $CTouchInertia/ScrollContainer/BoxContainer/GUICountryItem.create_instance()
 		item.country_name = belligerent.name

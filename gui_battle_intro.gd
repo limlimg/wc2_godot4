@@ -54,7 +54,7 @@ func _set_battle() -> void:
 	if campaign >= 0 and campaign < 4:
 		$Font4/BattleIntro/Label.text = _BATTLE_INTRO_KEY_FORMAT[campaign].format([battle + 1])
 		$BattleName/ecText.text = _BATTLE_NAME_KEY_FORMAT[campaign].format([battle + 1])
-	var battle_key_name := AppDelegate.get_battle_key_name(campaign, battle)
+	var battle_key_name = AppDelegate.get_battle_key_name(campaign, battle)
 	var battle_def := CObjectDef.instance().get_battle_def(battle_key_name)
 	$Font4/Age/Num7/Label.text = battle_def.age
 	var v1 := string_table.get_string("victory days1")
