@@ -27,5 +27,6 @@ func _draw() -> void:
 	ecGraphics.instance().render_end()
 
 
-func _on_control_back_pressed() -> void:
-	back_pressed.emit()
+func _on_control_gui_input(event: InputEvent) -> void:
+	if event.is_action(&"ui_cancel"):
+		back_pressed.emit()
