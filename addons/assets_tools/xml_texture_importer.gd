@@ -72,7 +72,6 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		return FAILED
 	var ec_texture := ecTexture.new()
 	ec_texture.asset = AssetRegistry.new()
-	ec_texture.asset.name = texture_name
 	var xml_images := doc.first_child_element("Images")
 	if xml_images == null:
 		push_error("Parse Error: Failed to find <Images> in {0}".format([source_file]))
@@ -107,6 +106,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		res_image.region = Rect2(x, y, w, h)
 		res_image.origin = Vector2(refx, refy)
 		res_texture.images[name] = res_image
+		res_texture.image_texture[name] = texture_name
 		xml_image = xml_image.next_sibling_element()
 	var filename = save_path + "." + _get_save_extension()
 	return ResourceSaver.save(res_texture, filename)

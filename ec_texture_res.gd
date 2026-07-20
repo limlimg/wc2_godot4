@@ -32,6 +32,14 @@ var assets: Array[AssetRegistry]:
 
 
 @export
+var image_texture: Dictionary[StringName, String]:
+	set(value):
+		if value != image_texture:
+			image_texture = value
+			emit_changed()
+
+
+@export
 var images: Dictionary[StringName, ecImageAttr]:
 	set(value):
 		if value != images:
@@ -88,11 +96,17 @@ func load_res(file_name: String, hd: bool) -> bool:
 			images[k] = hd_attr
 	else:
 		images.merge(add_images)
+	image_texture.merge(res.image_texture)
 	return true
 
 
 func get_image(image_name: StringName) -> ecImageAttr:
-	return images.get(image_name)
+	if image_name not in images:
+		return null
+	var image = images[image_name]
+	if image_name in image_texture:
+		image.texture.asset.name = image_texture[image_name]
+	return image
 
 
 func get_keys() -> Array[StringName]:
