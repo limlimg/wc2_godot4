@@ -1,8 +1,6 @@
 [gd_scene format=3 uid="uid://d20oukqjjuchm"]
 
 [ext_resource type="Script" uid="uid://cp0rqwt3uf1t7" path="res://c_menu_state.gd" id="1_ehm5w"]
-[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://resources/assets/texture/commonbg.tres" id="3_qq8xu"]
-[ext_resource type="PackedScene" uid="uid://caf0v7eqneb01" path="res://gui/gui_rect_4_container.tscn" id="4_fr7km"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="5_cwp5t"]
 [ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://resources/assets/menu_gui_selbattle_res/texture_res.tres" id="5_mwydp"]
 
@@ -16,31 +14,9 @@ grow_vertical = 2
 script = ExtResource("1_ehm5w")
 state = 1
 
-[node name="Background" parent="." unique_id=1995706357 instance_placeholder="res://gui_image.tscn"]
-layout_mode = 1
-texture = ExtResource("3_qq8xu")
-
-[node name="MainMenu" parent="." unique_id=1576520916 instance=ExtResource("4_fr7km")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -240.0
-offset_top = -160.0
-offset_right = 240.0
-offset_bottom = 160.0
-rect_640h = Rect2(0, 0, 640, 320)
-rect_568h = Rect2(0, 0, 568, 320)
-gui_scale_640h = Vector2(1, 1)
-gui_scale_568h = Vector2(1, 1)
-rect_ipad = Rect2(0, 0, 1024, 768)
-rect = Rect2(0, 0, 480, 320)
-
-[node name="GUIMainMenu" parent="MainMenu" unique_id=1094483503 instance_placeholder="res://gui_main_menu.tscn"]
+[node name="GUIMainMenu" parent="." unique_id=1094483503 instance_placeholder="res://gui_main_menu.tscn"]
 clip_contents = true
-layout_mode = 2
+layout_mode = 1
 
 [node name="GUISelBattle" parent="." unique_id=961076300 instance_placeholder="res://gui_sel_battle.tscn"]
 visible = false

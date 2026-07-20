@@ -2,15 +2,13 @@ extends CBaseState
 
 var _fade_order := 0
 var _displayed_menu: Control
-var _background: Control
 var _main_menu: Control
 
 func _on_enter() -> void:
 	var sound_box := CSoundBox.get_instance()
 	sound_box.load_music("battle1.mp3", "")
 	sound_box.play_music(true)
-	_background = $Background.create_instance()
-	_main_menu = $MainMenu/GUIMainMenu.create_instance()
+	_main_menu = $GUIMainMenu.create_instance()
 	_main_menu.sel_campaign_pressed.connect(_on_gui_main_menu_sel_campaign_pressed)
 	_main_menu.load_campaign_pressed.connect(_on_gui_main_menu_load_campaign_pressed)
 	_main_menu.sel_conquest_pressed.connect(_on_gui_main_menu_sel_conquest_pressed)
@@ -46,7 +44,6 @@ func _on_exit() -> void:
 	if _displayed_menu != null:
 		_displayed_menu.queue_free()
 		_displayed_menu = null
-	_background.queue_free()
 	_main_menu.queue_free()
 
 

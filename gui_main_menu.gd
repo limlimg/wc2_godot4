@@ -19,11 +19,11 @@ func _ready() -> void:
 	var commander := g_Commander
 	if commander.get_num_played_battles(0) < AppDelegate.get_num_battles(0)\
 			and commander.get_num_played_battles(1) < AppDelegate.get_num_battles(1):
-		$SelCampaigns/ButtonWto/GUIButton.grey_scale = 0.7
-		$SelCampaigns/ButtonNato/GUIButton.grey_scale = 0.7
+		$GUIRect/SelCampaigns/ButtonWto/GUIButton.grey_scale = 0.7
+		$GUIRect/SelCampaigns/ButtonNato/GUIButton.grey_scale = 0.7
 	else:
-		$SelCampaigns/ButtonWto/GUIButton/Locked/TextureRect.visible = false
-		$SelCampaigns/ButtonNato/GUIButton/Locked/TextureRect.visible = false
+		$GUIRect/SelCampaigns/ButtonWto/GUIButton/Locked/TextureRect.visible = false
+		$GUIRect/SelCampaigns/ButtonNato/GUIButton/Locked/TextureRect.visible = false
 	# NOTTODO: refresh the "new" highlight of the more games button
 
 
@@ -108,8 +108,8 @@ func _on_button_multi_player_global_pressed() -> void:
 
 func _on_button_local_pressed() -> void:
 	if _state == 0:
-		$SelMultiplayer.hide()
-		$SelLocal.show()
+		$GUIRect/SelMultiplayer.hide()
+		$GUIRect/SelLocal.show()
 
 
 func _on_button_multi_player_host_pressed() -> void:
@@ -124,8 +124,8 @@ func _on_button_multi_player_join_pressed() -> void:
 
 func _on_button_local_back_pressed() -> void:
 	if _state == 0:
-		$SelMultiplayer.show()
-		$SelLocal.hide()
+		$GUIRect/SelMultiplayer.show()
+		$GUIRect/SelLocal.hide()
 
 
 func _on_button_multi_player_back_pressed() -> void:
@@ -197,7 +197,7 @@ func _move_button(state: int) -> void:
 
 func _on_back_pressed() -> void:
 	if _state == 0:
-		for button in [$SelCampaigns/ButtonBack/GUIButton, $SelConquest/ButtonBack/GUIButton]:
+		for button in [$GUIRect/SelCampaigns/ButtonBack/GUIButton, $GUIRect/SelConquest/ButtonBack/GUIButton]:
 			if button.is_visible_in_tree():
 				button.pressed.emit()
 				accept_event()
