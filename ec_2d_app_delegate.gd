@@ -2,15 +2,12 @@ class_name EC2dAppDelegate
 extends Node
 
 func _init() -> void:
-	var root := (Engine.get_main_loop() as SceneTree).root
-	if not root.is_node_ready():
-		await root.ready
-	_application_did_finish_launching_with_options(Engine.get_main_loop(), {})
+	_application_will_finish_launching_with_options(Engine.get_main_loop(), {})
 
 
 static var g_content_scale_factor: float = 1.0 / ProjectSettings.get_setting("display/window/stretch/scale")
 
-func _application_did_finish_launching_with_options(_application: MainLoop, _launch_options: Dictionary) -> bool:
+func _application_will_finish_launching_with_options(_application: MainLoop, _launch_options: Dictionary) -> bool:
 	var window_size := DisplayServer.window_get_size()
 	var game_view_width := maxf(window_size.x, window_size.y)
 	var game_view_height := minf(window_size.x, window_size.y)
@@ -37,6 +34,7 @@ func _application_did_finish_launching_with_options(_application: MainLoop, _lau
 	# NOTTODO: assign callbacks for review and in app purchase
 	return true
 
+
 func _ec_game_init(content_scale_width: int, content_scale_height: int, orientation: int, game_view_width: int, game_view_height: int) -> void:
 	set_ai_rand_seed(randi())
 	set_rand_seed(randi())
@@ -44,11 +42,13 @@ func _ec_game_init(content_scale_width: int, content_scale_height: int, orientat
 	GUIManager.instance().init()
 	var state_manager := CStateManager.instance()
 	state_manager.init()
-	state_manager.register_state($CLogoState.create_instance())
-	state_manager.register_state($CMenuState.create_instance())
-	state_manager.register_state($CLoadState.create_instance())
-	state_manager.register_state($CGameState.create_instance())
-	state_manager.set_cur_state(EState.LOGO)
+	(func ():
+		await ready
+		state_manager.register_state($CLogoState.create_instance())
+		state_manager.register_state($CMenuState.create_instance())
+		state_manager.register_state($CLoadState.create_instance())
+		state_manager.register_state($CGameState.create_instance())
+		state_manager.set_cur_state(EState.LOGO)).call()
 	g_LocalizableStrings.load_table("Localizable.strings")
 	var string_table_key: StringName
 	if ecGraphics.instance().content_scale_size_mode == 3:

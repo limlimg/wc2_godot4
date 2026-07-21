@@ -27,7 +27,7 @@ signal faded_in(cause: int)
 signal faded_out(cause: int)
 
 static func instance() -> GUIManager:
-	return (Engine.get_main_loop() as SceneTree).get_first_node_in_group(&"_ZN10GUIManager8InstancevE")
+	return _ZN10GUIManager8InstancevE.get_child(0)
 
 
 func init() -> void:

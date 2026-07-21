@@ -61,6 +61,7 @@ func init(content_scale_width: int, content_scale_height: int, _orientation: int
 	else:
 		content_scale_size_mode = 1
 	var window := (Engine.get_main_loop() as SceneTree).root
+	await window.ready
 	window.content_scale_factor = AppDelegate.g_content_scale_factor
 	var window_content_x = content_scale_width * AppDelegate.g_content_scale_factor
 	var window_content_y = content_scale_height * AppDelegate.g_content_scale_factor
