@@ -277,28 +277,34 @@ static func ec_texture_load(texture_name: String) -> ecTexture:
 			texture_name = texture_name.substr(0, texture_name.rfind(".")) + ".png"
 			return ec_texture_load(texture_name)
 		return null
-	var texture: Texture2D = null
 	if Engine.is_editor_hint():
+		var texture: Texture2D = null
 		texture = load(path) as Texture2D
+		var ec_texture := ecTexture.new()
+		ec_texture.texture = texture
+		if is_2x:
+			ec_texture.size_override = texture.get_size() / 2
+		else:
+			ec_texture.size_override = texture.get_size()
+		return ec_texture
 	else:
-		var status := ResourceLoader.load_threaded_get_status(path)
-		if status == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
+		if ResourceLoader.load_threaded_get_status(path) == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
 			ResourceLoader.load_threaded_request(path)
-	var ec_texture := ecTexture.new()
-	(func ():
-		var status := ResourceLoader.load_threaded_get_status(path)
-		while status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-			await (Engine.get_main_loop() as SceneTree).process_frame
-			status = ResourceLoader.load_threaded_get_status(path)
-		if status == ResourceLoader.THREAD_LOAD_LOADED:
-			var loaded_texture = ResourceLoader.load_threaded_get(path)
-			ec_texture.texture = loaded_texture
-			if is_2x:
-				ec_texture.size_override = loaded_texture.get_size() / 2
-			else:
-				ec_texture.size_override = loaded_texture.get_size()
-		).call_deferred()
-	return ec_texture
+		var ec_texture := ecTexture.new()
+		(func ():
+			var status := ResourceLoader.load_threaded_get_status(path)
+			while status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+				await (Engine.get_main_loop() as SceneTree).process_frame
+				status = ResourceLoader.load_threaded_get_status(path)
+			if status == ResourceLoader.THREAD_LOAD_LOADED:
+				var texture = ResourceLoader.load_threaded_get(path)
+				ec_texture.texture = texture
+				if is_2x:
+					ec_texture.size_override = texture.get_size() / 2
+				else:
+					ec_texture.size_override = texture.get_size()
+			).call_deferred()
+		return ec_texture
 
 
 var _dynamic_num_battles: Array[int]

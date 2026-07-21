@@ -2,9 +2,20 @@
 
 [ext_resource type="Script" uid="uid://vf8r4wsfv76c" path="res://c_load_state.gd" id="1_oa3nl"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="1_olp3u"]
-[ext_resource type="Texture2D" uid="uid://ces6dlv70o7bo" path="res://resources/assets/texture/loading.tres" id="2_nhydb"]
-[ext_resource type="Texture2D" uid="uid://cda51cjweoibn" path="res://resources/assets/texture/loading_title.tres" id="4_5uj21"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="3_kp0kq"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="6_f6vse"]
+
+[sub_resource type="Resource" id="Resource_5fj84"]
+script = ExtResource("3_kp0kq")
+name = "loading.png"
+name_ipad = "loading@2x.png"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Resource" id="Resource_5f1vv"]
+script = ExtResource("3_kp0kq")
+name = "loading_title.png"
+name_ipad = "loading_title@2x.png"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
 [node name="CLoadState" type="Control" unique_id=1642615460]
 layout_mode = 3
@@ -26,11 +37,11 @@ rect = Rect2(-86, 300, 0, 0)
 
 [node name="GUIImage" parent="Loading" unique_id=1995706357 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 2
-texture = ExtResource("2_nhydb")
+asset = SubResource("Resource_5fj84")
 
 [node name="LoadingTitle" parent="." unique_id=1259909505 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 1
-texture = ExtResource("4_5uj21")
+asset = SubResource("Resource_5f1vv")
 
 [node name="Tip" parent="." unique_id=1352659599 instance=ExtResource("1_olp3u")]
 layout_mode = 1

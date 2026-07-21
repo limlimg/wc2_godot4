@@ -2,7 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c2o7l5cd0x8vw" path="res://c_logo_state.gd" id="1_b54l6"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_16a6w"]
-[ext_resource type="Texture2D" uid="uid://xkr7cuawfg24" path="res://resources/assets/texture/logo.tres" id="3_16a6w"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="3_16a6w"]
+
+[sub_resource type="Resource" id="Resource_hwx6b"]
+script = ExtResource("3_16a6w")
+name = "logo.webp"
+name_ipad = "logo_iPad.webp"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
 [node name="CLogoState" type="Control" unique_id=1619107626]
 layout_mode = 3
@@ -37,4 +43,4 @@ rect = Rect2(0, 0, 254, 254)
 
 [node name="GUIImage" parent="Logo" unique_id=879262850 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 2
-texture = ExtResource("3_16a6w")
+asset = SubResource("Resource_hwx6b")
