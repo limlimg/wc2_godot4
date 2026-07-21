@@ -129,10 +129,10 @@ func _on_render() -> void:
 	$Control/ButtonImage.self_modulate = color
 	$Control/TextImage.self_modulate = color
 	if selected:
-		$Control/ButtonImage.position.y = -size.y * 0.075
+		$Control/ButtonImage.set_anchor(SIDE_TOP, -0.075, true)
 		$Control/ButtonImage.scale = Vector2(1.15, 1.15)
 	else:
-		$Control/ButtonImage.position.y = 0.0
+		$Control/ButtonImage.set_anchor(SIDE_TOP, 0.0, true)
 		$Control/ButtonImage.scale = Vector2.ONE
 	if not locked:
 		if selected:

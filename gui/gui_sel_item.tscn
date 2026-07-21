@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://c1rdjdnbkq2v"]
 
-[ext_resource type="Script" uid="uid://dsb0y4ax1t1dh" path="res://app/src/main/cpp/gui/gui_sel_item.gd" id="1_2s3h4"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_ogrdh"]
-[ext_resource type="Texture2D" uid="uid://dg6hbf8mwqrwq" path="res://app/src/main/cpp/resources/assets/logo_gui_res/mark_locked.png.tres" id="3_2asny"]
-[ext_resource type="Texture2D" uid="uid://6mcfqarlnark" path="res://app/src/main/cpp/resources/assets/logo_gui_res/small_rankstar.png.tres" id="4_p240s"]
+[ext_resource type="Script" uid="uid://dsb0y4ax1t1dh" path="res://gui/gui_sel_item.gd" id="1_2s3h4"]
+[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_ogrdh"]
+[ext_resource type="Texture2D" uid="uid://dg6hbf8mwqrwq" path="res://resources/assets/logo_gui_res/mark_locked.png.tres" id="3_2asny"]
+[ext_resource type="Texture2D" uid="uid://6mcfqarlnark" path="res://resources/assets/logo_gui_res/small_rankstar.png.tres" id="4_p240s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mf3m"]
 
@@ -26,8 +26,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ButtonImage" type="Sprite2D" parent="Control" unique_id=328503851]
-centered = false
+[node name="ButtonImage" type="TextureRect" parent="Control" unique_id=1928824000]
+layout_mode = 0
+expand_mode = 1
+stretch_mode = 2
 
 [node name="TextImage" type="TextureRect" parent="Control" unique_id=833545168]
 layout_mode = 1

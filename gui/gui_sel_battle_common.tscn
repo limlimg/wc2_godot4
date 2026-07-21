@@ -196,9 +196,6 @@ stretch_mode = 2
 [node name="Arrows" type="Node2D" parent="Minimap/ImageList" unique_id=758524085]
 
 [node name="Num6" parent="Minimap/ImageList" unique_id=1248850266 instance=ExtResource("12_b143d")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
 asset = SubResource("Resource_8f3fq")
 
 [node name="Age" type="Label" parent="Minimap/ImageList/Num6" unique_id=1147939039]
