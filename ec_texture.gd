@@ -29,7 +29,7 @@ var size_override: Vector2:
 			size_override = value
 			emit_changed()
 
-
+@export
 var res_scale := 1.0
 
 var _clone_from: ecTexture:
@@ -52,8 +52,7 @@ func _on_asset_changed() -> void:
 				clone_texture = ecGraphics.instance().load_texture(asset.name_hd)
 			if clone_texture != null:
 				texture = clone_texture.texture
-				size_override = clone_texture.size_override
-				res_scale = clone_texture.res_scale
+				size_override = clone_texture.size_override / res_scale
 			else:
 				texture = null
 				size_override = Vector2.ZERO
