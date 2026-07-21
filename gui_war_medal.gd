@@ -10,13 +10,6 @@ const _WAR_MEDAL_NAME = [
 	"honor"
 ]
 
-@export
-var texture_res: ecTextureRes:
-	set(value):
-		if value != texture_res:
-			texture_res = value
-			set_level(level)
-
 
 @export
 var medal: int:
@@ -34,6 +27,11 @@ var level: int:
 func _ready() -> void:
 	init()
 	_on_render()
+
+
+func _on_asset_changed() -> void:
+	super()
+	init()
 
 
 func init() -> void:

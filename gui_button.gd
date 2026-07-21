@@ -105,6 +105,54 @@ var text_align: HorizontalAlignment:
 	get = get_text_align,
 	set = set_text_align
 
+@export_group("Texture from Asset", "")
+@export
+var texture_res: ecTextureRes:
+	set(value):
+		if value != texture_res:
+			if texture_res != null:
+				texture_res.changed.disconnect(_on_asset_changed)
+			texture_res = value
+			_on_asset_changed()
+			if value != null:
+				value.changed.connect(_on_asset_changed)
+
+
+@export
+var image_normal: AssetRegistry:
+	set(value):
+		if value != image_normal:
+			if image_normal != null:
+				image_normal.changed.disconnect(_on_asset_changed)
+			image_normal = value
+			_on_asset_changed()
+			if value != null:
+				value.changed.connect(_on_asset_changed)
+
+
+@export
+var image_pressed: AssetRegistry:
+	set(value):
+		if value != image_pressed:
+			if image_pressed != null:
+				image_pressed.changed.disconnect(_on_asset_changed)
+			image_pressed = value
+			_on_asset_changed()
+			if value != null:
+				value.changed.connect(_on_asset_changed)
+
+
+@export
+var image_background: AssetRegistry:
+	set(value):
+		if value != image_background:
+			if image_background != null:
+				image_background.changed.disconnect(_on_asset_changed)
+			image_background = value
+			_on_asset_changed()
+			if value != null:
+				value.changed.connect(_on_asset_changed)
+
 
 signal pressed
 
@@ -123,6 +171,50 @@ signal pressed
 #
 #func _set_glow(image_name: StringName) -> void:
 	#texture_glow = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(image_name))
+
+
+func _on_asset_changed() -> void:
+	if texture_res != null:
+		if image_normal != null:
+			if Engine.is_editor_hint():
+				texture_normal = texture_res.get_image(image_normal.name)
+				if texture_normal == null:
+					texture_normal = texture_res.get_image(image_normal.name_hd)
+			else:
+				var image_name := await image_normal.get_resolved_name()
+				if not image_name.is_empty():
+					texture_normal = texture_res.get_image(image_name)
+		if image_pressed != null:
+			if Engine.is_editor_hint():
+				texture_pressed = texture_res.get_image(image_pressed.name)
+				if texture_pressed == null:
+					texture_pressed = texture_res.get_image(image_pressed.name_hd)
+			else:
+				var image_name := await image_pressed.get_resolved_name()
+				if not image_name.is_empty():
+					texture_pressed = texture_res.get_image(image_name)
+		if image_background != null:
+			if Engine.is_editor_hint():
+				texture_background = texture_res.get_image(image_background.name)
+				if texture_background == null:
+					texture_background = texture_res.get_image(image_background.name_hd)
+			else:
+				var image_name := await image_background.get_resolved_name()
+				if not image_name.is_empty():
+					texture_background = texture_res.get_image(image_name)
+	notify_property_list_changed()
+
+
+func _validate_property(property: Dictionary) -> void:
+	if texture_res != null and image_normal != null and (property.name == "texture_normal"):
+		property.usage &= ~PROPERTY_USAGE_STORAGE
+		property.usage |= PROPERTY_USAGE_READ_ONLY
+	if texture_res != null and image_pressed != null and (property.name == "texture_pressed"):
+		property.usage &= ~PROPERTY_USAGE_STORAGE
+		property.usage |= PROPERTY_USAGE_READ_ONLY
+	if texture_res != null and image_background != null and (property.name == "texture_background"):
+		property.usage &= ~PROPERTY_USAGE_STORAGE
+		property.usage |= PROPERTY_USAGE_READ_ONLY
 
 
 func get_text() -> String:

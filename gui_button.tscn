@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmysnlqa41guv"]
 
-[ext_resource type="Script" uid="uid://cfykx5f1m6cjg" path="res://app/src/main/cpp/gui_button.gd" id="1_0hq7w"]
+[ext_resource type="Script" uid="uid://cfykx5f1m6cjg" path="res://gui_button.gd" id="1_0hq7w"]
 
 [node name="GUIButton" type="Control" unique_id=2034275630]
 layout_mode = 3

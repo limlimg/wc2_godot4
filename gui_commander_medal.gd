@@ -2,14 +2,6 @@
 extends GUIMedalButton
 
 @export
-var texture_res: ecTextureRes:
-	set(value):
-		if value != texture_res:
-			texture_res = value
-			init()
-
-
-@export
 var rank: int:
 	set(value):
 		if value != rank:
@@ -18,6 +10,11 @@ var rank: int:
 
 
 func _ready() -> void:
+	init()
+
+
+func _on_asset_changed() -> void:
+	super()
 	init()
 
 

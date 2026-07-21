@@ -1,18 +1,53 @@
 [gd_scene format=3 uid="uid://cyteip1ai4gjt"]
 
 [ext_resource type="Script" uid="uid://r8i8smosqhsx" path="res://c_game_state.gd" id="1_i7u21"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="4_r3slg"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="5_iy5bs"]
-[ext_resource type="Texture2D" uid="uid://bu6m3ik6qwmav" path="res://resources/assets/logo_gui_res/gamebutton_round_normal.png.tres" id="7_hejqp"]
-[ext_resource type="Texture2D" uid="uid://dcuchi3na4edf" path="res://resources/assets/logo_gui_res/gamebutton_round_press.png.tres" id="8_kjuls"]
-[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://resources/assets/logo_gui_res/buttonboard_green.png.tres" id="9_ob33k"]
-[ext_resource type="Texture2D" uid="uid://iwl5yhon4veh" path="res://resources/assets/logo_gui_res/gamebutton_card_normal.png.tres" id="10_0c3as"]
-[ext_resource type="Texture2D" uid="uid://cgcdqjqcyk235" path="res://resources/assets/logo_gui_res/gamebutton_card_press.png.tres" id="11_54h8e"]
-[ext_resource type="Texture2D" uid="uid://csvj0hmrb5ytf" path="res://resources/assets/logo_gui_res/buttonboard_blue.png.tres" id="12_xitlk"]
-[ext_resource type="Texture2D" uid="uid://dhfojrm8u7qnq" path="res://resources/assets/logo_gui_res/gamebutton_pause_normal.png.tres" id="13_xa4cd"]
-[ext_resource type="Texture2D" uid="uid://bx5koubtrha23" path="res://resources/assets/logo_gui_res/gamebutton_pause_press.png.tres" id="14_adpbo"]
-[ext_resource type="Texture2D" uid="uid://42otm2gr4o7o" path="res://resources/assets/logo_gui_res/buttonboard_red.png.tres" id="15_q1qaj"]
-[ext_resource type="Texture2D" uid="uid://c2gralhifxwj8" path="res://resources/assets/logo_gui_res/gamebutton_cardremove_normal.png.tres" id="16_q1qaj"]
-[ext_resource type="Texture2D" uid="uid://cnyjx7s30rc6u" path="res://resources/assets/logo_gui_res/gamebutton_cardremove_press.png.tres" id="17_u8uvy"]
+[ext_resource type="Resource" uid="uid://dfe0w1ve8iqjk" path="res://resources/assets/game_gui_res/texture_res.tres" id="6_iyelv"]
+
+[sub_resource type="Resource" id="Resource_v0skf"]
+script = ExtResource("4_r3slg")
+name = "gamebutton_cardremove_normal.png"
+
+[sub_resource type="Resource" id="Resource_rlpu7"]
+script = ExtResource("4_r3slg")
+name = "gamebutton_cardremove_press.png"
+
+[sub_resource type="Resource" id="Resource_40ofo"]
+script = ExtResource("4_r3slg")
+name = "buttonboard_blue.png"
+
+[sub_resource type="Resource" id="Resource_bymt8"]
+script = ExtResource("4_r3slg")
+name = "gamebutton_pause_normal.png"
+
+[sub_resource type="Resource" id="Resource_jgvbs"]
+script = ExtResource("4_r3slg")
+name = "gamebutton_pause_press.png"
+
+[sub_resource type="Resource" id="Resource_gejxm"]
+script = ExtResource("4_r3slg")
+name = "buttonboard_red.png"
+
+[sub_resource type="Resource" id="Resource_3m502"]
+script = ExtResource("4_r3slg")
+name = "gamebutton_card_normal.png"
+
+[sub_resource type="Resource" id="Resource_j4ryw"]
+script = ExtResource("4_r3slg")
+name = "gamebutton_card_press.png"
+
+[sub_resource type="Resource" id="Resource_3dd4c"]
+script = ExtResource("4_r3slg")
+name = "gamebutton_round_normal.png"
+
+[sub_resource type="Resource" id="Resource_ifia7"]
+script = ExtResource("4_r3slg")
+name = "gamebutton_round_press.png"
+
+[sub_resource type="Resource" id="Resource_i5xih"]
+script = ExtResource("4_r3slg")
+name = "buttonboard_green.png"
 
 [sub_resource type="Animation" id="Animation_me1p5"]
 length = 0.001
@@ -335,9 +370,10 @@ rect = Rect2(0, 0, 32, 30)
 
 [node name="GUIButton" parent="ButtonCardRemove" unique_id=1211914993 instance_placeholder="res://gui_button.tscn"]
 layout_mode = 2
-texture_normal = ExtResource("16_q1qaj")
-texture_pressed = ExtResource("17_u8uvy")
-texture_background = ExtResource("12_xitlk")
+texture_res = ExtResource("6_iyelv")
+image_normal = SubResource("Resource_v0skf")
+image_pressed = SubResource("Resource_rlpu7")
+image_background = SubResource("Resource_40ofo")
 
 [node name="ButtonPause" parent="." unique_id=1233548209 instance=ExtResource("5_iy5bs")]
 layout_mode = 1
@@ -359,9 +395,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_top = -1.0
-texture_normal = ExtResource("13_xa4cd")
-texture_pressed = ExtResource("14_adpbo")
-texture_background = ExtResource("15_q1qaj")
+texture_res = ExtResource("6_iyelv")
+image_normal = SubResource("Resource_bymt8")
+image_pressed = SubResource("Resource_jgvbs")
+image_background = SubResource("Resource_gejxm")
 
 [node name="ButtonCard" parent="." unique_id=2040298773 instance=ExtResource("5_iy5bs")]
 layout_mode = 1
@@ -384,9 +421,10 @@ anchors_preset = -1
 anchor_left = -1.0
 anchor_top = 1.0
 play_sound_when_pressed = false
-texture_normal = ExtResource("10_0c3as")
-texture_pressed = ExtResource("11_54h8e")
-texture_background = ExtResource("12_xitlk")
+texture_res = ExtResource("6_iyelv")
+image_normal = SubResource("Resource_3m502")
+image_pressed = SubResource("Resource_j4ryw")
+image_background = SubResource("Resource_40ofo")
 
 [node name="ButtonRound" parent="." unique_id=1576520916 instance=ExtResource("5_iy5bs")]
 layout_mode = 1
@@ -408,9 +446,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
-texture_normal = ExtResource("7_hejqp")
-texture_pressed = ExtResource("8_kjuls")
-texture_background = ExtResource("9_ob33k")
+texture_res = ExtResource("6_iyelv")
+image_normal = SubResource("Resource_3dd4c")
+image_pressed = SubResource("Resource_ifia7")
+image_background = SubResource("Resource_i5xih")
 
 [node name="GUIAttackBox" parent="." unique_id=1463077957 instance_placeholder="res://gui_attack_box.tscn"]
 visible = false
