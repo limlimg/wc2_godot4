@@ -15,7 +15,6 @@ script = ExtResource("1_ehm5w")
 state = 1
 
 [node name="GUIMainMenu" parent="." unique_id=1094483503 instance_placeholder="res://gui_main_menu.tscn"]
-clip_contents = true
 layout_mode = 1
 
 [node name="GUISelBattle" parent="." unique_id=961076300 instance_placeholder="res://gui_sel_battle.tscn"]
