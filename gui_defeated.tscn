@@ -58,9 +58,8 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "defeated"
 horizontal_alignment = 1
-font = NodePath("../ecText/root/g_Font6")
+font = NodePath("/root/g_Font6")
 color = Color(0, 0, 0, 1)
-alpha = 1.0
 
 [node name="ButtonOk" parent="." unique_id=2034275630 instance=ExtResource("3_ywyf6")]
 layout_mode = 0
