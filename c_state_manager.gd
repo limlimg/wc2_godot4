@@ -35,6 +35,7 @@ func term() -> void:
 	if _cur_state_node != null:
 		_cur_state_node.hide()
 		_cur_state_node.set_process(false)
+	_states.clear()
 	_cur_state = EState.ESTATE_MAX
 
 

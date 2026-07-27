@@ -7,5 +7,5 @@ func _on_gui_button_cancel_pressed() -> void:
 
 
 func _on_gui_button_confirm_pressed() -> void:
-	get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+	get_tree().root.propagate_notification.call_deferred(NOTIFICATION_WM_CLOSE_REQUEST)
 	get_tree().quit()
