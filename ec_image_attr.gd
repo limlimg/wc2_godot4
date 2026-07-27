@@ -63,7 +63,7 @@ func _on_asset_changed() -> void:
 				if attr == null:
 					attr = texture_res.get_image(image.name_hd)
 			else:
-				var image_name := await image.get_resolved_name()
+				var image_name := image.get_resolved_name()
 				if not image_name.is_empty():
 					attr = texture_res.get_image(image_name)
 			if attr != null:

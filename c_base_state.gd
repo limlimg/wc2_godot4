@@ -18,12 +18,15 @@ func _notification(what):
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
 		if is_node_ready():
 			if is_visible_in_tree() and not _entered:
+				_entered = true
 				_on_enter()
 			elif _entered:
 				_on_exit()
+				_entered = false
 	elif what == NOTIFICATION_READY:
 		if is_visible_in_tree() and not _entered:
 			_on_enter()
+			_entered = true
 	elif what == NOTIFICATION_APPLICATION_RESUMED:
 		_enter_foreground()
 	elif what == NOTIFICATION_APPLICATION_PAUSED:

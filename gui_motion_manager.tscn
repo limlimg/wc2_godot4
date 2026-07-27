@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cyix61j6uvyd3"]
+
+[ext_resource type="Script" uid="uid://dmyld7o5cdm6r" path="res://gui_motion_manager.gd" id="1_ogris"]
+
+[node name="GUIMotionManager" type="Node" unique_id=85917874]
+script = ExtResource("1_ogris")

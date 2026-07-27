@@ -57,7 +57,7 @@ func _on_asset_changed() -> void:
 				texture = null
 				size_override = Vector2.ZERO
 		else:
-			var name := await asset.get_resolved_name()
+			var name := asset.get_resolved_name()
 			if not name.is_empty():
 				_clone_from = ecGraphics.instance().load_texture(name)
 	notify_property_list_changed()

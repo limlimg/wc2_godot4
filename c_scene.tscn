@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dwigbsm4seqr1" path="res://c_scene.gd" id="1_2l0sg"]
 
-[node name="CScene" type="CanvasLayer" unique_id=1283259973]
-layer = -80
-visible = false
-follow_viewport_enabled = true
+[node name="CScene" type="Control" unique_id=342875909]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_2l0sg")
 
 [node name="CCamera" parent="." unique_id=1077541885 instance_placeholder="res://c_camera.tscn"]
+layout_mode = 1
 offset_right = 480.0
 offset_bottom = 320.0
 

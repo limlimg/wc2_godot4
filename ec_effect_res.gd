@@ -46,7 +46,7 @@ func _on_asset_changed() -> void:
 			else:
 				res = null
 		else:
-			var name := await asset.get_resolved_name()
+			var name := asset.get_resolved_name()
 			if not name.is_empty():
 				var path = EC2dAppDelegate.get_asset_path(name, "")
 				if not path.is_empty():

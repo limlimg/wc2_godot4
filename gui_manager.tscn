@@ -43,11 +43,7 @@ _data = {
 &"fade_out": SubResource("Animation_d060b")
 }
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1244188232]
-layer = -16
-
-[node name="GUIManager" type="Control" parent="." unique_id=510783743 groups=["_ZN10GUIManager8InstancevE"]]
-visible = false
+[node name="GUIManager" type="Control" unique_id=510783743]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,13 +53,13 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_o8ok3")
 
-[node name="Fade" type="CanvasLayer" parent="GUIManager" unique_id=592006800]
-layer = 16
+[node name="Fade" type="CanvasLayer" parent="." unique_id=592006800]
+layer = 32
 
-[node name="Fade" parent="GUIManager/Fade" unique_id=1831918263 instance=ExtResource("2_aqje5")]
+[node name="Fade" parent="Fade" unique_id=1831918263 instance=ExtResource("2_aqje5")]
 alpha = 0.0
 
-[node name="Prototype" type="Control" parent="GUIManager" unique_id=1759728991]
+[node name="Prototype" type="Control" parent="." unique_id=1759728991]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -72,15 +68,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GUIImage" parent="GUIManager/Prototype" unique_id=2123851549 instance_placeholder="res://gui_image.tscn"]
+[node name="GUIImage" parent="Prototype" unique_id=2123851549 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 1
 
-[node name="GUIButton" parent="GUIManager/Prototype" unique_id=2034275630 instance_placeholder="res://gui_button.tscn"]
+[node name="GUIButton" parent="Prototype" unique_id=2034275630 instance_placeholder="res://gui_button.tscn"]
 layout_mode = 1
 text_offset = Vector2(240, 160)
 
-[node name="GUIScrollBar" parent="GUIManager/Prototype" unique_id=1159300293 instance_placeholder="res://gui_scroll_bar.tscn"]
+[node name="GUIScrollBar" parent="Prototype" unique_id=1159300293 instance_placeholder="res://gui_scroll_bar.tscn"]
 layout_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="GUIManager" unique_id=930970644]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=930970644]
 libraries/ = SubResource("AnimationLibrary_aqje5")

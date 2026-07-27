@@ -2,16 +2,5 @@
 
 [ext_resource type="Script" uid="uid://chpdhhx4pqpce" path="res://c_sound_box.gd" id="1_rr2gf"]
 
-[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_rr2gf"]
-fade_time = 0.0
-
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_rr2gf"]
-
-[node name="CSoundBox" type="Node" unique_id=1966991959 groups=["CSoundBoxInstance"]]
+[node name="CSoundBox" type="Node" unique_id=150447003]
 script = ExtResource("1_rr2gf")
-
-[node name="Music" type="AudioStreamPlayer" parent="." unique_id=671133168]
-stream = SubResource("AudioStreamPlaylist_rr2gf")
-
-[node name="SE" type="AudioStreamPlayer" parent="." unique_id=2067571103]
-stream = SubResource("AudioStreamPolyphonic_rr2gf")

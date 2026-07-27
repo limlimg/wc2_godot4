@@ -22,12 +22,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-_ZN10ecGraphics8InstancevE="*uid://bgqo85u3r33x3"
 g_LocalizableStrings="*uid://rbwcuj5sihmy"
 g_StringTable="*uid://rbwcuj5sihmy"
-_ZN10CObjectDef10m_InstanceE="*uid://chppiklcc4q7g"
 g_Commander="*uid://br6thvhxrujky"
-_ZN10CCSoundBox9mInstanceE="*uid://dkim8xlep1wjg"
 g_Font1="*uid://dr76fdoysjvb3"
 g_Font2="*uid://dr76fdoysjvb3"
 g_Font3="*uid://dr76fdoysjvb3"
@@ -42,12 +39,8 @@ g_GameSettings="*uid://bvg1wsn3twqek"
 g_GameManager="*uid://b5tv1g6v504vp"
 g_SoundRes="*uid://csrlpeqpqytkc"
 g_GameRes="*uid://b6nay46iirkmq"
-g_Scene="*uid://boe8je6i3v5xc"
-_ZN15ecEffectManager8InstancevE="*uid://3kjay574huha"
-g_FightTextMgr="*uid://bdigiv3s86lid"
-_ZN13CStateManager8InstancevE="*uid://fcfp44mkojj0"
-_ZN10GUIManager8InstancevE="*uid://b8ulkhao6n4aw"
-_ZN16GUIMotionManager8InstancevE="*uid://dmyld7o5cdm6r"
+g_Scene="*uid://dwigbsm4seqr1"
+g_FightTextMgr="*uid://bnu3di5edrab5"
 AppDelegate="*uid://ca4a33l6mf8ec"
 
 [display]
@@ -67,7 +60,13 @@ enabled=PackedStringArray("res://addons/assets_tools/plugin.cfg")
 
 [global_group]
 
+g_Scene=""
+g_FightTextMgr=""
+_ZN15ecEffectManager8InstancevE=""
+_ZN10CCSoundBox9mInstanceE=""
+_ZN16GUIMotionManager8InstancevE=""
 _ZN10GUIManager8InstancevE=""
+_ZN13CStateManager8InstancevE=""
 
 [input]
 

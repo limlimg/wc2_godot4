@@ -57,9 +57,9 @@ func _on_assets_changed() -> void:
 			if not load_res(i.name, false):
 				load_res(i.name_hd, true)
 		else:
-			var name := await i.get_resolved_name()
+			var name := i.get_resolved_name()
 			if not name.is_empty():
-				load_res(name, await i.is_hd())
+				load_res(name, i.is_hd())
 	notify_property_list_changed()
 
 

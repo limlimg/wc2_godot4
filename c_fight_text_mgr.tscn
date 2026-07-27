@@ -9,13 +9,13 @@ script = ExtResource("3_6o5wv")
 name = "num2.fnt"
 name_hd = "num2_hd.fnt"
 
-[node name="CFightTextMgr" type="CanvasLayer" unique_id=1897881315]
-layer = -48
-visible = false
-follow_viewport_enabled = true
+[node name="CFightTextMgr" type="Control" unique_id=737208760]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_5w5kv")
 
 [node name="Num2" parent="." unique_id=1248850266 instance=ExtResource("2_8ssm8")]
+layout_mode = 0
 asset = SubResource("Resource_3wq21")
 
 [node name="CFightText" parent="Num2" unique_id=448162067 instance_placeholder="res://c_fight_text.tscn"]

@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://cyteip1ai4gjt"]
 
 [ext_resource type="Script" uid="uid://r8i8smosqhsx" path="res://c_game_state.gd" id="1_i7u21"]
+[ext_resource type="PackedScene" uid="uid://boe8je6i3v5xc" path="res://c_scene.tscn" id="2_3m502"]
+[ext_resource type="PackedScene" uid="uid://3kjay574huha" path="res://ec_effect_manager.tscn" id="3_j4ryw"]
+[ext_resource type="PackedScene" uid="uid://bdigiv3s86lid" path="res://c_fight_text_mgr.tscn" id="4_6de0u"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="4_r3slg"]
 [ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="5_iy5bs"]
 [ext_resource type="Resource" uid="uid://dfe0w1ve8iqjk" path="res://resources/assets/game_gui_res/texture_res.tres" id="6_iyelv"]
@@ -240,6 +243,14 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_i7u21")
 state = 4
+
+[node name="CScene" parent="." unique_id=1283259973 groups=["g_Scene"] instance=ExtResource("2_3m502")]
+layout_mode = 0
+
+[node name="ecEffectManager" parent="." unique_id=11432247 groups=["_ZN15ecEffectManager8InstancevE"] instance=ExtResource("3_j4ryw")]
+
+[node name="CFightTextMgr" parent="." unique_id=1897881315 groups=["g_FightTextMgr"] instance=ExtResource("4_6de0u")]
+layout_mode = 0
 
 [node name="GUIBattle" parent="." unique_id=368823071 instance_placeholder="res://gui_battle.tscn"]
 visible = false

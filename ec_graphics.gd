@@ -1,6 +1,6 @@
 @tool
 class_name ecGraphics
-extends Node
+extends Object
 
 ## In the original game code, ecGraphics is responsible for loading textures and
 ## drawing them. It calls native GL functions to draw on the ecGLSurfaceView
@@ -15,6 +15,8 @@ extends Node
 ## viewport is modified to achieve the same effect. SetBlendMode is not
 ## implemented because it is unused in the original code and complicated to
 ## implement using Godot's API (require multiple canvas items).
+
+static var _instance := new()
 
 #var _width_multiplier: float
 #var _height_multiplier: float
@@ -32,7 +34,7 @@ var _texture_cache: Dictionary[String, WeakRef]
 var _rendering_canvas_item: CanvasItem
 
 static func instance() -> ecGraphics:
-	return _ZN10ecGraphics8InstancevE
+	return _instance
 
 
 func init(content_scale_width: int, content_scale_height: int, _orientation: int, _view_width: int, _view_height: int) -> void:
@@ -232,7 +234,7 @@ func fade(alpha: float):
 		return
 	var color := Color(fade_color, alpha)
 	var trans_inv := _rendering_canvas_item.get_global_transform_with_canvas().affine_inverse()
-	var view_size := get_viewport().get_visible_rect().size
+	var view_size := _rendering_canvas_item.get_viewport().get_visible_rect().size
 	var v0 := trans_inv * Vector2.ZERO
 	var v1 := trans_inv * Vector2(view_size.x, 0.0)
 	var v2 := trans_inv * Vector2(view_size.x, view_size.y)

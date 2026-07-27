@@ -1,5 +1,5 @@
 class_name CStateManager
-extends CanvasLayer
+extends Control
 
 ## In the original game code, several states are defined as the primary
 ## controller of the game's behavour (i.e. rendering and responding to time
@@ -22,7 +22,7 @@ var _cur_state := EState.ESTATE_MAX as int
 var _next_state := EState.ESTATE_MAX as int
 
 static func instance() -> CStateManager:
-	return _ZN13CStateManager8InstancevE
+	return (Engine.get_main_loop() as SceneTree).get_first_node_in_group(&"_ZN13CStateManager8InstancevE")
 
 
 func init() -> void:
@@ -35,6 +35,7 @@ func term() -> void:
 	if _cur_state_node != null:
 		_cur_state_node.hide()
 		_cur_state_node.set_process(false)
+	_cur_state = EState.ESTATE_MAX
 
 
 func _process(delta: float) -> void:

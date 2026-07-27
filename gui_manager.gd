@@ -27,7 +27,14 @@ signal faded_in(cause: int)
 signal faded_out(cause: int)
 
 static func instance() -> GUIManager:
-	return _ZN10GUIManager8InstancevE.get_child(0)
+	return (Engine.get_main_loop() as SceneTree).get_first_node_in_group(&"_ZN10GUIManager8InstancevE")
+
+
+func _ready() -> void:
+	for i in [$Fade, $Prototype, $AnimationPlayer]:
+		# make these nodes internal for immunity to free_all_child
+		remove_child(i)
+		add_child(i, true, Node.INTERNAL_MODE_BACK)
 
 
 func init() -> void:

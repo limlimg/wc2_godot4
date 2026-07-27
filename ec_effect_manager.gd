@@ -1,10 +1,10 @@
 class_name ecEffectManager
-extends CanvasLayer
+extends Node2D
 
 var _effects: Array[Node2D]
 
 static func instance() -> ecEffectManager:
-	return _ZN15ecEffectManager8InstancevE
+	return (Engine.get_main_loop() as SceneTree).get_first_node_in_group(&"_ZN15ecEffectManager8InstancevE")
 
 
 func add_effect(file: String, auto_remove: bool) -> ecEffect:

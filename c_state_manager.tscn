@@ -2,7 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b657hk371043b" path="res://c_state_manager.gd" id="1_31rwq"]
 
-[node name="CStateManager" type="CanvasLayer" unique_id=1651870662]
-layer = -32
+[node name="CStateManager" type="Control" unique_id=532158895]
 visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_31rwq")

@@ -1,18 +1,36 @@
 [gd_scene format=3 uid="uid://ca4a33l6mf8ec"]
 
 [ext_resource type="Script" uid="uid://cwnp8pga0kaay" path="res://ec_2d_app_delegate.gd" id="1_qvxgr"]
+[ext_resource type="PackedScene" uid="uid://fcfp44mkojj0" path="res://c_state_manager.tscn" id="2_up4qs"]
+[ext_resource type="PackedScene" uid="uid://b8ulkhao6n4aw" path="res://gui_manager.tscn" id="3_xxlut"]
+[ext_resource type="PackedScene" uid="uid://dkim8xlep1wjg" path="res://c_sound_box.tscn" id="5_2iitf"]
 
 [node name="Ec2dAppDelegate" type="Node" unique_id=1119378283]
 script = ExtResource("1_qvxgr")
 
-[node name="CLogoState" parent="." unique_id=1619107626 instance_placeholder="res://c_logo_state.tscn"]
-visible = false
+[node name="CStateManager" parent="." unique_id=1651870662 groups=["_ZN13CStateManager8InstancevE"] instance=ExtResource("2_up4qs")]
 
-[node name="CMenuState" parent="." unique_id=54523483 instance_placeholder="res://c_menu_state.tscn"]
+[node name="CLogoState" parent="CStateManager" unique_id=1619107626 instance_placeholder="res://c_logo_state.tscn"]
 visible = false
+layout_mode = 1
 
-[node name="CLoadState" parent="." unique_id=1642615460 instance_placeholder="res://c_load_state.tscn"]
+[node name="CMenuState" parent="CStateManager" unique_id=54523483 instance_placeholder="res://c_menu_state.tscn"]
 visible = false
+layout_mode = 1
 
-[node name="CGameState" parent="." unique_id=1645819512 instance_placeholder="res://c_game_state.tscn"]
+[node name="CLoadState" parent="CStateManager" unique_id=1642615460 instance_placeholder="res://c_load_state.tscn"]
 visible = false
+layout_mode = 1
+
+[node name="CGameState" parent="CStateManager" unique_id=1645819512 instance_placeholder="res://c_game_state.tscn"]
+visible = false
+layout_mode = 1
+
+[node name="GUIManagerLayer" type="CanvasLayer" parent="." unique_id=1541116286]
+layer = 16
+
+[node name="GUIManager" parent="GUIManagerLayer" unique_id=1244188232 groups=["_ZN10GUIManager8InstancevE"] instance=ExtResource("3_xxlut")]
+
+[node name="GUIMotionManager" parent="." unique_id=85917874 groups=["_ZN16GUIMotionManager8InstancevE"] instance_placeholder="res://gui_motion_manager.tscn"]
+
+[node name="CSoundBox" parent="." unique_id=150447003 groups=["_ZN10CCSoundBox9mInstanceE"] instance=ExtResource("5_2iitf")]

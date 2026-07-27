@@ -1,5 +1,7 @@
 class_name CObjectDef
-extends Node
+extends Object
+
+static var _m_instance: CObjectDef
 
 var _army_def: ArmyDefListMap
 var _card_def: CardDefList
@@ -11,11 +13,16 @@ var _battle_list: BattleDefMap
 var _conquest_list: ConquestDefMap
 
 static func instance() -> CObjectDef:
-	return _ZN10CObjectDef10m_InstanceE
+	if _m_instance == null:
+		_m_instance = new()
+	return _m_instance
 
 
-func destroy() -> void:
-	_ZN10CObjectDef10m_InstanceE._release()
+static func destroy() -> void:
+	if _m_instance != null:
+		_m_instance._release()
+		_m_instance.free()
+	_m_instance = null
 
 
 func init() -> void:

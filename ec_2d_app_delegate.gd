@@ -39,16 +39,15 @@ func _ec_game_init(content_scale_width: int, content_scale_height: int, orientat
 	set_ai_rand_seed(randi())
 	set_rand_seed(randi())
 	ecGraphics.instance().init(content_scale_width, content_scale_height, orientation, game_view_width, game_view_height)
+	await ready
 	GUIManager.instance().init()
 	var state_manager := CStateManager.instance()
 	state_manager.init()
-	(func ():
-		await ready
-		state_manager.register_state($CLogoState.create_instance())
-		state_manager.register_state($CMenuState.create_instance())
-		state_manager.register_state($CLoadState.create_instance())
-		state_manager.register_state($CGameState.create_instance())
-		state_manager.set_cur_state(EState.LOGO)).call()
+	state_manager.register_state($CStateManager/CLogoState.create_instance())
+	state_manager.register_state($CStateManager/CMenuState.create_instance())
+	state_manager.register_state($CStateManager/CLoadState.create_instance())
+	state_manager.register_state($CStateManager/CGameState.create_instance())
+	state_manager.set_cur_state(EState.LOGO)
 	g_LocalizableStrings.load_table("Localizable.strings")
 	var string_table_key: StringName
 	if ecGraphics.instance().content_scale_size_mode == 3:
@@ -163,11 +162,12 @@ func _application_will_terminate(_application: MainLoop) -> void:
 	g_Num5.release()
 	#g_Num8.release()
 	CSoundBox.get_instance().unload_se("btn.wav")
-	#_CStateManager.instance().term()
-	# no GUIManager
+	CStateManager.instance().term()
+	GUIManager.instance().free_all_child()
+	GUIManager.instance().release_texture_res()
 	ecGraphics.instance().shutdown()
 	CSoundBox.destroy()
-	CObjectDef.instance().destroy()
+	CObjectDef.destroy()
 	g_StringTable.clear()
 	g_LocalizableStrings.clear()
 
