@@ -15,7 +15,7 @@ var value: int:
 				_bars.append($Prototype/GUIRect.duplicate())
 				$HBoxContainer.add_child(_bars[-1])
 			while $HBoxContainer.get_child_count() > n:
-				_bars.pop_back().queue_free()
+				_bars.pop_back().free()
 
 
 var _bars: Array[Control]
