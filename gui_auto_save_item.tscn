@@ -50,8 +50,6 @@ metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 script = ExtResource("2_iafg2")
 
 [node name="Flag" parent="." index="5" unique_id=1627139554]
-grow_horizontal = 1
-grow_vertical = 1
 rect = SubResource("Resource_8dynu")
 rect_ipad = SubResource("Resource_yvi66")
 
@@ -64,8 +62,6 @@ offset_left = 0.0
 offset_top = 126.0
 offset_right = 0.0
 offset_bottom = 126.0
-grow_horizontal = 1
-grow_vertical = 1
 rect = SubResource("Resource_pd60k")
 rect_ipad = SubResource("Resource_vecpd")
 
@@ -78,15 +74,10 @@ offset_left = -4.0
 offset_top = 76.0
 offset_right = -4.0
 offset_bottom = 76.0
-grow_horizontal = 1
-grow_vertical = 1
 rect = SubResource("Resource_8n728")
 rect_ipad = SubResource("Resource_hnhpb")
 
-[node name="ecText" parent="Name" index="0" unique_id=33360194]
-font = NodePath("/root/g_Font7")
-
-[node name="AutoSave" parent="Name/ecText" index="0" unique_id=1433577795 instance=ExtResource("4_8dynu")]
+[node name="AutoSave" parent="Name/ecText" parent_id_path=PackedInt32Array(33360194) index="0" unique_id=1433577795 instance=ExtResource("4_8dynu")]
 layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
@@ -106,5 +97,5 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.8352941, 0.90588236, 0.9372549, 1)
 horizontal_alignment = 1
-font = NodePath("../../GUIElement/ecText/root/g_Font7")
+font = NodePath("/root/g_Font7")
 color = Color(0.8352941, 0.90588236, 0.9372549, 1)

@@ -2,11 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bnu3di5edrab5" path="res://c_fight_text_mgr.gd" id="1_5w5kv"]
 [ext_resource type="PackedScene" uid="uid://dr76fdoysjvb3" path="res://ec_uni_font.tscn" id="2_8ssm8"]
-[ext_resource type="FontFile" uid="uid://de7p64x75fvba" path="res://assets/num2.fnt" id="3_8ssm8"]
-
-[sub_resource type="Theme" id="Theme_6o5wv"]
-default_font = ExtResource("3_8ssm8")
-default_font_size = 24
 
 [node name="CFightTextMgr" type="Control" unique_id=737208760]
 layout_mode = 3
@@ -15,7 +10,6 @@ script = ExtResource("1_5w5kv")
 
 [node name="Num2" parent="." unique_id=1248850266 instance=ExtResource("2_8ssm8")]
 layout_mode = 0
-theme = SubResource("Theme_6o5wv")
 
 [node name="CFightText" parent="Num2" unique_id=448162067 instance_placeholder="res://c_fight_text.tscn"]
 layout_mode = 1
