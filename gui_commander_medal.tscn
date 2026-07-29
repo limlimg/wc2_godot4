@@ -1,11 +1,10 @@
 [gd_scene format=3 uid="uid://doku7gcg4y44n"]
 
-[ext_resource type="PackedScene" uid="uid://jbmu7hxw0gjs" path="res://app/src/main/cpp/gui_medal_button.tscn" id="1_fglpq"]
-[ext_resource type="Script" uid="uid://cka5orik5xjoi" path="res://app/src/main/cpp/gui_commander_medal.gd" id="2_abfs0"]
+[ext_resource type="PackedScene" uid="uid://jbmu7hxw0gjs" path="res://gui_medal_button.tscn" id="1_fglpq"]
+[ext_resource type="Script" uid="uid://cka5orik5xjoi" path="res://gui_commander_medal.gd" id="2_abfs0"]
 
 [node name="GUICommanderMedal" unique_id=2034275630 instance=ExtResource("1_fglpq")]
 script = ExtResource("2_abfs0")
-texture_res = null
 rank = 0
 
 [node name="Star" type="TextureRect" parent="Medal" parent_id_path=PackedInt32Array(1865123603) index="0" unique_id=2042001809]

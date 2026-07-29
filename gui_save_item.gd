@@ -9,13 +9,6 @@ var empty := true:
 			empty = value
 			_set_info()
 
-@export
-var country_res: ecTextureRes:
-	set(value):
-		if value != country_res:
-			country_res = value
-			_set_info()
-
 
 @export
 var country: String:
@@ -91,11 +84,13 @@ var minute: int:
 
 func _ready() -> void:
 	super()
-	init()
 	_set_info()
 
 
 func init() -> void:
+	if not is_node_ready():
+		return
+	super()
 	if Engine.is_editor_hint():
 		return
 	if g_LocalizableStrings.get_string("language") != "en":
@@ -107,8 +102,11 @@ func init() -> void:
 
 func _set_info() -> void:
 	if not empty:
-		if country_res != null:
-			$Flag/TextureRect.texture = country_res.get_image("flag_{0}.png".format([country]))
+		var res := texture_res
+		if res == null:
+			res = s_texture_res
+		if res != null:
+			$Flag/TextureRect.texture = res.get_image("flag_{0}.png".format([country]))
 		$Time/ecText.text = _make_time_string()
 		if game_mode != 2:
 			var campaign_key := "alliance name {0}".format([campaign + 1])

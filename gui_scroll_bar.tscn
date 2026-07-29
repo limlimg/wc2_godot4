@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bc0r4i3w2pyf6"]
 
-[ext_resource type="Script" uid="uid://cbcq3gglh2gj1" path="res://app/src/main/cpp/gui_scroll_bar.gd" id="1_6akf1"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_icu0f"]
+[ext_resource type="Script" uid="uid://cbcq3gglh2gj1" path="res://gui_scroll_bar.gd" id="1_6akf1"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_icu0f"]
 
@@ -44,15 +43,13 @@ theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_shki2"
 theme_override_styles/slider = SubResource("StyleBoxEmpty_shki2")
 value = 50.0
 
-[node name="VSlider" type="VSlider" parent="HSlider" unique_id=97006024]
+[node name="VSlider" type="VSlider" parent="." unique_id=97006024]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 2.0
 anchor_bottom = 2.0
-offset_left = 3.0517578e-05
-offset_right = 6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 3.14159
@@ -63,24 +60,15 @@ theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_vgsbn"
 theme_override_styles/slider = SubResource("StyleBoxEmpty_6akf1")
 value = 50.0
 
-[node name="GrabberRect" parent="." unique_id=1576520916 instance=ExtResource("2_icu0f")]
+[node name="Grabber" type="TextureButton" parent="." unique_id=375730084]
 layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="Grabber" type="TextureButton" parent="GrabberRect" unique_id=375730084]
-layout_mode = 2
 mouse_filter = 2
 toggle_mode = true
 ignore_texture_size = true
 
 [connection signal="drag_ended" from="HSlider" to="." method="_on_drag_ended" unbinds=1]
-[connection signal="drag_started" from="HSlider" to="GrabberRect/Grabber" method="set_pressed" binds= [true]]
+[connection signal="drag_started" from="HSlider" to="Grabber" method="set_pressed" binds= [true]]
 [connection signal="value_changed" from="HSlider" to="." method="_on_value_changed"]
-[connection signal="drag_ended" from="HSlider/VSlider" to="." method="_on_drag_ended" unbinds=1]
-[connection signal="drag_started" from="HSlider/VSlider" to="GrabberRect/Grabber" method="set_pressed_no_signal" binds= [true]]
-[connection signal="value_changed" from="HSlider/VSlider" to="." method="_on_value_changed"]
-[connection signal="sort_children" from="GrabberRect" to="." method="_on_render"]
+[connection signal="drag_ended" from="VSlider" to="." method="_on_drag_ended" unbinds=1]
+[connection signal="drag_started" from="VSlider" to="Grabber" method="set_pressed_no_signal" binds= [true]]
+[connection signal="value_changed" from="VSlider" to="." method="_on_value_changed"]

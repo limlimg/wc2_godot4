@@ -1,18 +1,85 @@
 [gd_scene format=3 uid="uid://d1hsefm6u7qim"]
 
-[ext_resource type="PackedScene" uid="uid://d21hy30ofd6pt" path="res://app/src/main/cpp/gui/gui_sel_battle_common.tscn" id="1_kbsvi"]
-[ext_resource type="Script" uid="uid://dotfhchyclaym" path="res://app/src/main/cpp/gui_sel_country.gd" id="1_pdgie"]
-[ext_resource type="Resource" uid="uid://cas4w7q286tym" path="res://app/src/main/cpp/resources/assets/menu_gui_selcountry_res/texture_res.tres" id="3_1jcle"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="3_555th"]
-[ext_resource type="Texture2D" uid="uid://cmvqgf8do8n86" path="res://app/src/main/cpp/resources/assets/texture/board_selbattle.tres" id="4_5xtgw"]
-[ext_resource type="PackedScene" uid="uid://cn17i2r1lc2ki" path="res://app/src/main/cpp/gui_country_list.tscn" id="5_555th"]
-[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="6_a2ovt"]
-[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_ok.png.tres" id="7_1jcle"]
-[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_ok_press.png.tres" id="8_bhoq2"]
-[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_green.png.tres" id="9_sbv8l"]
-[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back.png.tres" id="10_sxndy"]
-[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back_press.png.tres" id="11_xxgvg"]
-[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_gray.png.tres" id="12_iidk8"]
+[ext_resource type="PackedScene" uid="uid://d21hy30ofd6pt" path="res://gui/gui_sel_battle_common.tscn" id="1_kbsvi"]
+[ext_resource type="Script" uid="uid://dotfhchyclaym" path="res://gui_sel_country.gd" id="1_pdgie"]
+[ext_resource type="Resource" uid="uid://cas4w7q286tym" path="res://resources/assets/menu_gui_selcountry_res/texture_res.tres" id="3_1jcle"]
+[ext_resource type="PackedScene" uid="uid://d2ake044dm8mq" path="res://gui_image.tscn" id="4_3jkiq"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="5_0i521"]
+[ext_resource type="PackedScene" uid="uid://cn17i2r1lc2ki" path="res://gui_country_list.tscn" id="5_555th"]
+[ext_resource type="Script" uid="uid://8hwlr3pkh8ko" path="res://ec_texture_rect.gd" id="6_8cno3"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="6_a2ovt"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="9_3clep"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="12_444t6"]
+
+[sub_resource type="Resource" id="Resource_cekmy"]
+script = ExtResource("5_0i521")
+name = "board_selbattle.webp"
+name_ipad = "board_selbattle_iPad.webp"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Resource" id="Resource_6lvsi"]
+script = ExtResource("6_8cno3")
+region = Rect2(0, 0, 144, 320)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_v4jtg"]
+script = ExtResource("6_8cno3")
+region = Rect2(0, 0, 288, 768)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_l0004"]
+script = ExtResource("9_3clep")
+rect = Rect2(0, 0, 81, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_bqlo8"]
+script = ExtResource("9_3clep")
+rect = Rect2(0, 0, 162, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_bbms7"]
+script = ExtResource("9_3clep")
+rect = Rect2(-66, 0, 71, 300)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_yi3a5"]
+script = ExtResource("9_3clep")
+rect = Rect2(-132, 0, 142, 728)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_1scgp"]
+script = ExtResource("5_0i521")
+name = "buttontext_ok.png"
+
+[sub_resource type="Resource" id="Resource_pgo8h"]
+script = ExtResource("5_0i521")
+name = "buttontext_ok_press.png"
+
+[sub_resource type="Resource" id="Resource_i5xih"]
+script = ExtResource("5_0i521")
+name = "buttonboard_green.png"
+
+[sub_resource type="Resource" id="Resource_svslp"]
+script = ExtResource("9_3clep")
+rect = Rect2(0, 0, 32, 30)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_x13eq"]
+script = ExtResource("9_3clep")
+rect = Rect2(0, 0, 40, 38)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_4yntp"]
+script = ExtResource("5_0i521")
+name = "buttontext_back.png"
+
+[sub_resource type="Resource" id="Resource_b4dmi"]
+script = ExtResource("5_0i521")
+name = "buttontext_back_press.png"
+
+[sub_resource type="Resource" id="Resource_oo0i1"]
+script = ExtResource("5_0i521")
+name = "buttonboard_gray.png"
 
 [node name="GUISelCountry" type="Control" unique_id=949481072]
 layout_mode = 3
@@ -27,76 +94,58 @@ script = ExtResource("1_pdgie")
 layout_mode = 1
 texture_res = ExtResource("3_1jcle")
 
-[node name="BoardSelBattle" parent="GUISelBattleCommon" unique_id=93369881 instance=ExtResource("3_555th")]
+[node name="BoardSelBattle" parent="." unique_id=1342067132 instance=ExtResource("4_3jkiq")]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
-offset_left = -81.0
 grow_horizontal = 0
-rect_ipad = Rect2(0, 0, 162, 768)
-rect = Rect2(0, 0, 81, 320)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
+asset = SubResource("Resource_cekmy")
+texture_rect = SubResource("Resource_6lvsi")
+texture_rect_ipad = SubResource("Resource_v4jtg")
+rect = SubResource("Resource_l0004")
+rect_ipad = SubResource("Resource_bqlo8")
 
-[node name="TextureRect" type="TextureRect" parent="GUISelBattleCommon/BoardSelBattle" unique_id=1584926920]
-layout_mode = 2
-texture = ExtResource("4_5xtgw")
-
-[node name="GUICountryList" parent="." unique_id=1630994738 instance=ExtResource("3_555th")]
+[node name="GUICountryList" parent="." unique_id=1324926271 instance=ExtResource("5_555th")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
-offset_right = 71.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -150.0
+offset_bottom = 150.0
 grow_horizontal = 1
-grow_vertical = 1
-rect_ipad = Rect2(-132, 20, 142, 728)
-rect = Rect2(-66, 10, 71, 300)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
+rect = SubResource("Resource_bbms7")
+rect_ipad = SubResource("Resource_yi3a5")
 
-[node name="GUICountryList" parent="GUICountryList" unique_id=1324926271 instance=ExtResource("5_555th")]
-layout_mode = 2
-
-[node name="ButtonOk" parent="." unique_id=371620190 instance=ExtResource("3_555th")]
+[node name="ButtonOk" parent="." unique_id=2034275630 instance=ExtResource("6_a2ovt")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
-offset_left = -32.0
-offset_top = -30.0
 grow_horizontal = 0
 grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
+texture_res = ExtResource("12_444t6")
+image_normal = SubResource("Resource_1scgp")
+image_pressed = SubResource("Resource_pgo8h")
+image_background = SubResource("Resource_i5xih")
+rect = SubResource("Resource_svslp")
+rect_ipad = SubResource("Resource_x13eq")
 
-[node name="GUIButton" parent="ButtonOk" unique_id=2034275630 instance=ExtResource("6_a2ovt")]
-layout_mode = 2
-texture_normal = ExtResource("7_1jcle")
-texture_pressed = ExtResource("8_bhoq2")
-texture_background = ExtResource("9_sbv8l")
-
-[node name="ButtonBack" parent="." unique_id=197237804 instance=ExtResource("3_555th")]
+[node name="ButtonBack" parent="." unique_id=1304652735 instance=ExtResource("6_a2ovt")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
-offset_top = -30.0
-offset_right = 32.0
 grow_horizontal = 1
 grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
+texture_res = ExtResource("12_444t6")
+image_normal = SubResource("Resource_4yntp")
+image_pressed = SubResource("Resource_b4dmi")
+image_background = SubResource("Resource_oo0i1")
+rect = SubResource("Resource_svslp")
+rect_ipad = SubResource("Resource_x13eq")
 
-[node name="GUIButton" parent="ButtonBack" unique_id=1304652735 instance=ExtResource("6_a2ovt")]
-layout_mode = 2
-texture_normal = ExtResource("10_sxndy")
-texture_pressed = ExtResource("11_xxgvg")
-texture_background = ExtResource("12_iidk8")
-
-[connection signal="country_selected" from="GUICountryList/GUICountryList" to="." method="_on_gui_country_list_country_selected"]
-[connection signal="pressed" from="ButtonOk/GUIButton" to="." method="_on_button_ok_pressed"]
-[connection signal="pressed" from="ButtonBack/GUIButton" to="." method="_on_button_back_pressed"]
+[connection signal="country_selected" from="GUICountryList" to="." method="_on_gui_country_list_country_selected"]
+[connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]
+[connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]

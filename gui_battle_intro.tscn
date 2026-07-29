@@ -3,15 +3,81 @@
 [ext_resource type="Script" uid="uid://ci8373bocp2ax" path="res://gui_battle_intro.gd" id="1_56qfq"]
 [ext_resource type="Texture2D" uid="uid://fdsov0ivcmg8" path="res://resources/assets/texture/board_intro.tres" id="1_ft5bo"]
 [ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="2_gsb3j"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_mp2r6"]
 [ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://gui_button_ex.tscn" id="4_cl8ju"]
-[ext_resource type="Texture2D" uid="uid://x2oo4pcca42" path="res://resources/assets/logo_gui_res/text_conditon.png.tres" id="4_g2uog"]
-[ext_resource type="Texture2D" uid="uid://c5scjcg2j0bqx" path="res://resources/assets/logo_gui_res/green_normal.png.tres" id="5_mxe0c"]
-[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://resources/assets/logo_gui_res/buttontext_ok.png.tres" id="7_gsb3j"]
-[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://resources/assets/logo_gui_res/buttontext_ok_press.png.tres" id="8_qr5bd"]
+[ext_resource type="PackedScene" uid="uid://d2ake044dm8mq" path="res://gui_image.tscn" id="4_hntj7"]
+[ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://resources/assets/menu_gui_selbattle_res/texture_res.tres" id="5_0capv"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="7_re5ym"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="10_htr7f"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="11_0capv"]
 [ext_resource type="PackedScene" uid="uid://dr76fdoysjvb3" path="res://ec_uni_font.tscn" id="11_hntj7"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="11_re5ym"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="12_0capv"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="12_re5ym"]
+
+[sub_resource type="Resource" id="Resource_8kvfc"]
+script = ExtResource("12_0capv")
+name = "text_conditon.png"
+
+[sub_resource type="Resource" id="Resource_vdbs8"]
+script = ExtResource("7_re5ym")
+rect = Rect2(240, 192, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_miapv"]
+script = ExtResource("7_re5ym")
+rect = Rect2(480, 384, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_1scgp"]
+script = ExtResource("12_0capv")
+name = "buttontext_ok.png"
+
+[sub_resource type="Resource" id="Resource_pgo8h"]
+script = ExtResource("12_0capv")
+name = "buttontext_ok_press.png"
+
+[sub_resource type="Resource" id="Resource_v0skf"]
+script = ExtResource("12_0capv")
+name = "green_normal.png"
+
+[sub_resource type="Resource" id="Resource_bvffp"]
+script = ExtResource("12_0capv")
+name = "ui1_hd.webp"
+
+[sub_resource type="Texture2D" id="Texture2D_g71tu"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("12_re5ym")
+asset = SubResource("Resource_bvffp")
+res_scale = 2.0
+
+[sub_resource type="Texture2D" id="Texture2D_678ko"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("11_0capv")
+texture = SubResource("Texture2D_g71tu")
+region = Rect2(505.5, 51.5, 67.5, 36)
+origin = Vector2(1.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_hntj7"]
+script = ExtResource("7_re5ym")
+rect = Rect2(210, 283, 64, 32)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_0capv"]
+script = ExtResource("7_re5ym")
+rect = Rect2(420, 580, 64, 32)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_ewltq"]
+script = ExtResource("7_re5ym")
+rect = Rect2(240, 38, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_4vp80"]
+script = ExtResource("7_re5ym")
+rect = Rect2(480, 76, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [sub_resource type="Resource" id="Resource_8f3fq"]
 script = ExtResource("12_0capv")
@@ -19,11 +85,71 @@ name = "font4_en.fnt"
 name_hd = "font4_en_hd.fnt"
 name_ipad = "font4_en_hd.fnt"
 
+[sub_resource type="Resource" id="Resource_re5ym"]
+script = ExtResource("7_re5ym")
+rect = Rect2(70, 88, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_owrid"]
+script = ExtResource("7_re5ym")
+rect = Rect2(140, 176, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_3i5gq"]
+script = ExtResource("7_re5ym")
+rect = Rect2(240, 65, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_uks0o"]
+script = ExtResource("7_re5ym")
+rect = Rect2(480, 130, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
 [sub_resource type="Resource" id="Resource_678ko"]
 script = ExtResource("12_0capv")
 name = "num7.fnt"
 name_hd = "num7_hd.fnt"
 name_ipad = "num7_hd.fnt"
+
+[sub_resource type="Resource" id="Resource_n3gp3"]
+script = ExtResource("7_re5ym")
+rect = Rect2(183, 205, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_1n6kc"]
+script = ExtResource("7_re5ym")
+rect = Rect2(366, 410, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_nj32s"]
+script = ExtResource("7_re5ym")
+rect = Rect2(183, 235, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_1pgui"]
+script = ExtResource("7_re5ym")
+rect = Rect2(366, 470, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_upyjg"]
+script = ExtResource("7_re5ym")
+rect = Rect2(278, 205, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_io2hs"]
+script = ExtResource("7_re5ym")
+rect = Rect2(556, 410, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_mg2tx"]
+script = ExtResource("7_re5ym")
+rect = Rect2(278, 235, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_d75vu"]
+script = ExtResource("7_re5ym")
+rect = Rect2(556, 470, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [node name="GUIBattleIntro" type="Control" unique_id=2130276311]
 layout_mode = 3
@@ -40,175 +166,213 @@ script = ExtResource("1_56qfq")
 texture = ExtResource("1_ft5bo")
 centered = false
 
-[node name="TextCondition" parent="." unique_id=446430762 instance=ExtResource("2_mp2r6")]
+[node name="TextCondition" parent="." unique_id=1342067132 instance=ExtResource("4_hntj7")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 1.0
-offset_bottom = 1.0
+offset_left = 240.0
+offset_top = 192.0
+offset_right = 240.0
+offset_bottom = 192.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(480, 384, 1, 1)
-rect = Rect2(240, 192, 1, 1)
+texture_res = ExtResource("5_0capv")
+asset = SubResource("Resource_8kvfc")
+rect = SubResource("Resource_vdbs8")
+rect_ipad = SubResource("Resource_miapv")
 
-[node name="TextureRect" type="TextureRect" parent="TextCondition" unique_id=1678927271]
-layout_mode = 2
-texture = ExtResource("4_g2uog")
-
-[node name="ButtonOK" parent="." unique_id=40345469 instance=ExtResource("2_mp2r6")]
+[node name="ButtonOK" parent="." unique_id=493498822 instance=ExtResource("4_cl8ju")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 64.0
-offset_bottom = 32.0
+offset_left = 210.0
+offset_top = 283.0
+offset_right = 210.0
+offset_bottom = 283.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(420, 580, 64, 32)
-rect = Rect2(210, 283, 64, 32)
-
-[node name="GUIButtonEx" parent="ButtonOK" unique_id=493498822 instance=ExtResource("4_cl8ju")]
-layout_mode = 2
-texture_text_not_pressed = ExtResource("7_gsb3j")
-texture_text_pressed = ExtResource("8_qr5bd")
+image_text_normal = SubResource("Resource_1scgp")
+image_text_pressed = SubResource("Resource_pgo8h")
 image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
-texture_normal = ExtResource("5_mxe0c")
-texture_pressed = ExtResource("5_mxe0c")
+texture_res = ExtResource("5_0capv")
+image_normal = SubResource("Resource_v0skf")
+image_pressed = SubResource("Resource_v0skf")
+texture_normal = SubResource("Texture2D_678ko")
+texture_pressed = SubResource("Texture2D_678ko")
+rect = SubResource("Resource_hntj7")
+rect_ipad = SubResource("Resource_0capv")
 
-[node name="BattleName" parent="." unique_id=189534227 instance=ExtResource("2_mp2r6")]
+[node name="BattleName" parent="." unique_id=1627139554 instance=ExtResource("11_re5ym")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_left = 240.0
+offset_top = 38.0
+offset_right = 240.0
+offset_bottom = 38.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(480, 76, 0, 0)
-rect = Rect2(240, 38, 0, 0)
+rect = SubResource("Resource_ewltq")
+rect_ipad = SubResource("Resource_4vp80")
 
 [node name="ecText" parent="BattleName" unique_id=1650770578 instance=ExtResource("10_htr7f")]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = -1
+offset_left = -1.0
+offset_bottom = 23.0
+grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 horizontal_alignment = 1
 font = NodePath("/root/g_Font3")
-color = Color(1, 1, 1, 1)
-alpha = 1.0
 
 [node name="Font4" parent="." unique_id=1248850266 instance=ExtResource("11_hntj7")]
 layout_mode = 1
 asset = SubResource("Resource_8f3fq")
 
-[node name="BattleIntro" parent="Font4" unique_id=65639465 instance=ExtResource("2_mp2r6")]
+[node name="BattleIntro" parent="Font4" unique_id=50701909 instance=ExtResource("11_re5ym")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_left = 70.0
+offset_top = 88.0
+offset_right = 70.0
+offset_bottom = 88.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(140, 176, 0, 0)
-rect = Rect2(70, 88, 0, 0)
+rect = SubResource("Resource_re5ym")
+rect_ipad = SubResource("Resource_owrid")
 
 [node name="Label" type="Label" parent="Font4/BattleIntro" unique_id=1906551488]
-layout_mode = 2
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 16.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.2, 0.19215687, 0.24313726, 1)
 
-[node name="Age" parent="Font4" unique_id=1517116202 instance=ExtResource("2_mp2r6")]
+[node name="Age" parent="Font4" unique_id=1796849934 instance=ExtResource("11_re5ym")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_left = 240.0
+offset_top = 65.0
+offset_right = 240.0
+offset_bottom = 65.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(480, 130, 0, 0)
-rect = Rect2(240, 65, 0, 0)
+rect = SubResource("Resource_3i5gq")
+rect_ipad = SubResource("Resource_uks0o")
 
 [node name="Num7" parent="Font4/Age" unique_id=645181965 instance=ExtResource("11_hntj7")]
-layout_mode = 2
+layout_mode = 0
 asset = SubResource("Resource_678ko")
 
 [node name="Label" type="Label" parent="Font4/Age/Num7" unique_id=1420899562]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = -1
 offset_left = -0.5
-offset_right = 0.5
-offset_bottom = 37.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 horizontal_alignment = 1
 
-[node name="Victory" parent="Font4" unique_id=995341333 instance=ExtResource("2_mp2r6")]
+[node name="Victory" parent="Font4" unique_id=1784363193 instance=ExtResource("11_re5ym")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_left = 183.0
+offset_top = 205.0
+offset_right = 183.0
+offset_bottom = 205.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(366, 410, 0, 0)
-rect = Rect2(183, 205, 0, 0)
+rect = SubResource("Resource_n3gp3")
+rect_ipad = SubResource("Resource_1n6kc")
 
 [node name="Label" type="Label" parent="Font4/Victory" unique_id=1751691927]
-layout_mode = 2
+layout_mode = 0
+offset_right = 37.0
+offset_bottom = 16.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.2, 0.19215687, 0.24313726, 1)
 text = "victory"
 
-[node name="GreatVictory" parent="Font4" unique_id=532892512 instance=ExtResource("2_mp2r6")]
+[node name="GreatVictory" parent="Font4" unique_id=235527727 instance=ExtResource("11_re5ym")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_left = 183.0
+offset_top = 235.0
+offset_right = 183.0
+offset_bottom = 235.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(366, 470, 0, 0)
-rect = Rect2(183, 235, 0, 0)
+rect = SubResource("Resource_nj32s")
+rect_ipad = SubResource("Resource_1pgui")
 
 [node name="Label" type="Label" parent="Font4/GreatVictory" unique_id=1929991900]
-layout_mode = 2
+layout_mode = 0
+offset_right = 74.0
+offset_bottom = 16.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.2, 0.19215687, 0.24313726, 1)
 text = "great victory"
 
-[node name="VictoryDays" parent="Font4" unique_id=1701368727 instance=ExtResource("2_mp2r6")]
+[node name="VictoryDays" parent="Font4" unique_id=1811130033 instance=ExtResource("11_re5ym")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_left = 278.0
+offset_top = 205.0
+offset_right = 278.0
+offset_bottom = 205.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(556, 410, 0, 0)
-rect = Rect2(278, 205, 0, 0)
+rect = SubResource("Resource_upyjg")
+rect_ipad = SubResource("Resource_io2hs")
 
 [node name="Label" type="Label" parent="Font4/VictoryDays" unique_id=770797630]
-layout_mode = 2
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 16.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.2, 0.19215687, 0.24313726, 1)
 
-[node name="GreatVictoryDays" parent="Font4" unique_id=2066649019 instance=ExtResource("2_mp2r6")]
+[node name="GreatVictoryDays" parent="Font4" unique_id=761840635 instance=ExtResource("11_re5ym")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_left = 278.0
+offset_top = 235.0
+offset_right = 278.0
+offset_bottom = 235.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(556, 470, 0, 0)
-rect = Rect2(278, 235, 0, 0)
+rect = SubResource("Resource_mg2tx")
+rect_ipad = SubResource("Resource_d75vu")
 
 [node name="Label" type="Label" parent="Font4/GreatVictoryDays" unique_id=1738285730]
-layout_mode = 2
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 16.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.2, 0.19215687, 0.24313726, 1)
 
 [connection signal="back_pressed" from="." to="." method="_on_gui_button_ex_pressed"]
 [connection signal="back_pressed" from="Fade" to="." method="_on_gui_button_ex_pressed"]
-[connection signal="pressed" from="ButtonOK/GUIButtonEx" to="." method="_on_gui_button_ex_pressed"]
+[connection signal="pressed" from="ButtonOK" to="." method="_on_gui_button_ex_pressed"]

@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bine2n80jql7t"]
 
 [ext_resource type="Script" uid="uid://vf8r4wsfv76c" path="res://c_load_state.gd" id="1_oa3nl"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="1_olp3u"]
+[ext_resource type="Script" uid="uid://8hwlr3pkh8ko" path="res://ec_texture_rect.gd" id="3_f6vse"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="3_kp0kq"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="4_s64gq"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="5_f6vse"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="6_f6vse"]
 
 [sub_resource type="Resource" id="Resource_5fj84"]
@@ -11,11 +13,47 @@ name = "loading.png"
 name_ipad = "loading@2x.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
+[sub_resource type="Resource" id="Resource_x46yl"]
+script = ExtResource("3_f6vse")
+region = Rect2(0, 0, 78, 11)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_o7yo0"]
+script = ExtResource("3_f6vse")
+region = Rect2(0, 0, 156, 22)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_rgn37"]
+script = ExtResource("4_s64gq")
+rect = Rect2(-86, 300, 0, 0)
+
+[sub_resource type="Resource" id="Resource_ajw5h"]
+script = ExtResource("4_s64gq")
+rect = Rect2(-174, 730, 0, 0)
+
 [sub_resource type="Resource" id="Resource_5f1vv"]
 script = ExtResource("3_kp0kq")
 name = "loading_title.png"
 name_ipad = "loading_title@2x.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Resource" id="Resource_f6vse"]
+script = ExtResource("3_f6vse")
+region = Rect2(0, 0, 214, 59)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_s64gq"]
+script = ExtResource("3_f6vse")
+region = Rect2(0, 0, 428, 118)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_el4jd"]
+script = ExtResource("4_s64gq")
+rect = Rect2(-210, 150, 0, 0)
+
+[sub_resource type="Resource" id="Resource_naxso"]
+script = ExtResource("4_s64gq")
+rect = Rect2(-462, 370, 0, 0)
 
 [node name="CLoadState" type="Control" unique_id=1642615460]
 layout_mode = 3
@@ -27,35 +65,44 @@ grow_vertical = 2
 script = ExtResource("1_oa3nl")
 state = 3
 
-[node name="Loading" parent="." unique_id=1576520916 instance=ExtResource("1_olp3u")]
+[node name="Loading" parent="." unique_id=1995706357 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
-grow_horizontal = 1
-rect_ipad = Rect2(-174, 730, 0, 0)
-rect = Rect2(-86, 300, 0, 0)
-
-[node name="GUIImage" parent="Loading" unique_id=1995706357 instance_placeholder="res://gui_image.tscn"]
-layout_mode = 2
+anchor_bottom = 0.0
+offset_left = -86.0
+offset_top = 300.0
+offset_right = -86.0
+offset_bottom = 300.0
 asset = SubResource("Resource_5fj84")
+texture_rect = SubResource("Resource_x46yl")
+texture_rect_ipad = SubResource("Resource_o7yo0")
+rect = SubResource("Resource_rgn37")
+rect_ipad = SubResource("Resource_ajw5h")
 
 [node name="LoadingTitle" parent="." unique_id=1259909505 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 1
 asset = SubResource("Resource_5f1vv")
+texture_rect = SubResource("Resource_f6vse")
+texture_rect_ipad = SubResource("Resource_s64gq")
 
-[node name="Tip" parent="." unique_id=1352659599 instance=ExtResource("1_olp3u")]
+[node name="Tip" parent="." unique_id=1627139554 instance=ExtResource("5_f6vse")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-rect_ipad = Rect2(-462, 370, 0, 0)
-rect = Rect2(-210, 150, 0, 0)
+offset_left = -210.0
+offset_top = 150.0
+offset_right = -210.0
+offset_bottom = 150.0
+rect = SubResource("Resource_el4jd")
+rect_ipad = SubResource("Resource_naxso")
 
 [node name="ecText" parent="Tip" unique_id=1650770578 instance=ExtResource("6_f6vse")]
-layout_mode = 2
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 23.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 font = NodePath("/root/g_Font2")

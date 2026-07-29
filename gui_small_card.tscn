@@ -1,8 +1,29 @@
 [gd_scene format=3 uid="uid://bcdwdidc5e6kk"]
 
-[ext_resource type="Script" uid="uid://ddcomkq3if8ni" path="res://app/src/main/cpp/gui_small_card.gd" id="1_6smyl"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="1_m5ll4"]
-[ext_resource type="Texture2D" uid="uid://bdyptcoqfrlnm" path="res://app/src/main/cpp/resources/assets/game_res/card_common.png.tres" id="3_kdruj"]
+[ext_resource type="Script" uid="uid://ddcomkq3if8ni" path="res://gui_small_card.gd" id="1_6smyl"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="2_6hmkh"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="3_fo0pl"]
+[ext_resource type="Texture2D" uid="uid://bdyptcoqfrlnm" path="res://resources/assets/game_res/card_common.png.tres" id="3_kdruj"]
+
+[sub_resource type="Resource" id="Resource_21m37"]
+script = ExtResource("3_fo0pl")
+rect = Rect2(50, 0, 0, 70)
+scale = Vector2(0.42, 0.42)
+
+[sub_resource type="Resource" id="Resource_ay23q"]
+script = ExtResource("3_fo0pl")
+rect = Rect2(70, 0, 0, 110)
+scale = Vector2(0.7, 0.7)
+
+[sub_resource type="Resource" id="Resource_nmp5u"]
+script = ExtResource("3_fo0pl")
+rect = Rect2(50, 7, 0, 70)
+scale = Vector2(0.42, 0.42)
+
+[sub_resource type="Resource" id="Resource_ovufa"]
+script = ExtResource("3_fo0pl")
+rect = Rect2(70, 7, 0, 110)
+scale = Vector2(0.7, 0.7)
 
 [node name="GUISmallCard" type="Control" unique_id=485651445]
 layout_mode = 3
@@ -13,35 +34,43 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6smyl")
 
-[node name="CardCommon" parent="." unique_id=1576520916 instance=ExtResource("1_m5ll4")]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+[node name="CardCommon" parent="." unique_id=1627139554 instance=ExtResource("2_6hmkh")]
+layout_mode = 0
+anchors_preset = 0
 anchor_right = 0.0
-offset_top = -70.0
+anchor_bottom = 0.0
+offset_left = 50.0
+offset_top = 250.0
+offset_right = 50.0
+offset_bottom = 320.0
 grow_horizontal = 1
-grow_vertical = 0
-rect_ipad = Rect2(70, 0, 0, 110)
-rect = Rect2(50, 0, 0, 70)
-gui_scale_ipad = Vector2(0.7, 0.7)
-gui_scale = Vector2(0.42, 0.42)
+grow_vertical = 1
+scale = Vector2(0.42, 0.42)
+rect = SubResource("Resource_21m37")
+rect_ipad = SubResource("Resource_ay23q")
 
 [node name="TextureRect" type="TextureRect" parent="CardCommon" unique_id=1704674898]
-layout_mode = 2
+layout_mode = 0
+offset_right = 110.0
+offset_bottom = 162.0
+scale = Vector2(0.42, 0.42)
 texture = ExtResource("3_kdruj")
 
-[node name="Card" parent="." unique_id=1537015811 instance=ExtResource("1_m5ll4")]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+[node name="Card" parent="." unique_id=301565502 instance=ExtResource("2_6hmkh")]
+layout_mode = 0
+anchors_preset = 0
 anchor_right = 0.0
-offset_top = -70.0
+anchor_bottom = 0.0
+offset_left = 50.0
+offset_top = 257.0
+offset_right = 50.0
+offset_bottom = 327.0
 grow_horizontal = 1
-grow_vertical = 0
-rect_ipad = Rect2(70, 7, 0, 110)
-rect = Rect2(50, 7, 0, 70)
-gui_scale_ipad = Vector2(0.7, 0.7)
-gui_scale = Vector2(0.42, 0.42)
+grow_vertical = 1
+scale = Vector2(0.42, 0.42)
+rect = SubResource("Resource_nmp5u")
+rect_ipad = SubResource("Resource_ovufa")
 
 [node name="TextureRect" type="TextureRect" parent="Card" unique_id=1339344562]
-layout_mode = 2
+layout_mode = 0
+scale = Vector2(0.42, 0.42)

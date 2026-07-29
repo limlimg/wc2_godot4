@@ -71,6 +71,8 @@ func _validate_property(property: Dictionary) -> void:
 
 func release() -> void:
 	images.clear()
+	image_texture.clear()
+	emit_changed()
 
 
 func load_res(file_name: String, hd: bool) -> bool:
@@ -97,7 +99,22 @@ func load_res(file_name: String, hd: bool) -> bool:
 	else:
 		images.merge(add_images)
 	image_texture.merge(res.image_texture)
+	emit_changed()
 	return true
+
+
+func unload_res(file_name: String) -> void:
+	var path = EC2dAppDelegate.get_asset_path(file_name, "")
+	if path.is_empty():
+		return
+	var res := load(path) as ecTextureRes
+	if res == null:
+		return
+	for k in res.images.keys():
+		images.erase(k)
+	for k in res.image_texture.keys():
+		image_texture.erase(k)
+	emit_changed()
 
 
 func get_image(image_name: StringName) -> ecImageAttr:

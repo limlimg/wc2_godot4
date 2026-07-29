@@ -2,16 +2,34 @@
 
 [ext_resource type="PackedScene" uid="uid://c7xftwk7efcxj" path="res://c_battle_scene.tscn" id="1_5gv8k"]
 [ext_resource type="Script" uid="uid://bpfsj3lintrsq" path="res://gui_battle.gd" id="1_g67rq"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_eo1tm"]
 [ext_resource type="PackedScene" uid="uid://d1lnnqonc760d" path="res://game_res_render/army_hp.tscn" id="3_g67rq"]
 [ext_resource type="Resource" uid="uid://cq5m16ucm6vuo" path="res://resources/assets/game_res/eff.tres" id="3_ulyfx"]
 [ext_resource type="PackedScene" uid="uid://7cn6l08bv1gv" path="res://game_res_render/army_level.tscn" id="4_gmhhi"]
 [ext_resource type="Texture2D" uid="uid://dbmkdw2tuqyo" path="res://resources/assets/logo_gui_res/board_down.png.tres" id="4_w82aw"]
 [ext_resource type="Texture2D" uid="uid://jdvnbdyerr2e" path="res://resources/assets/texture/board_up.png.tres" id="5_5yeo3"]
-[ext_resource type="PackedScene" uid="uid://caf0v7eqneb01" path="res://gui/gui_rect_4_container.tscn" id="5_tt5x7"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="5_t5bh4"]
 [ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://game_res_render/ai_commander_medal.tscn" id="5_w82aw"]
 [ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://game_res_render/commander_medal.tscn" id="6_5yeo3"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="6_fnrpd"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="12_ffeyb"]
+
+[sub_resource type="Resource" id="Resource_f7lds"]
+script = ExtResource("6_fnrpd")
+scale = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_ffeyb"]
+script = ExtResource("6_fnrpd")
+rect = Rect2(0, 330, 512, 18)
+scale = Vector2(1, -1)
+
+[sub_resource type="Resource" id="Resource_t5bh4"]
+script = ExtResource("6_fnrpd")
+scale = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_fnrpd"]
+script = ExtResource("6_fnrpd")
+rect = Rect2(0, 330, 512, 18)
+scale = Vector2(-1, -1)
 
 [sub_resource type="Animation" id="Animation_ulyfx"]
 length = 0.001
@@ -212,40 +230,34 @@ centered = false
 position = Vector2(0, 9)
 centered = false
 
-[node name="BoardUp" parent="Left" unique_id=619109169 instance=ExtResource("5_tt5x7")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 480.0
+[node name="BoardUp" type="TextureRect" parent="Left" unique_id=434912705]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 18.0
-grow_horizontal = 1
-grow_vertical = 1
-rect_640h = Rect2(0, 0, 320, 18)
-rect_568h = Rect2(0, 0, 284, 18)
-gui_scale_640h = Vector2(1, 1)
-gui_scale_568h = Vector2(1, 1)
-rect_ipad = Rect2(0, 0, 512, 18)
-rect = Rect2(0, 0, 240, 18)
-
-[node name="TextureRect" type="TextureRect" parent="Left/BoardUp" unique_id=434912705]
-layout_mode = 2
+grow_horizontal = 2
 texture = ExtResource("5_5yeo3")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="BoardUp2" parent="Left" unique_id=1315446201 instance=ExtResource("2_eo1tm")]
+[node name="BoardUp2" parent="Left" unique_id=1627139554 instance=ExtResource("5_t5bh4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(0, 330, 512, 18)
-gui_scale_ipad = Vector2(1, -1)
+scale = Vector2(1, -1)
+rect = SubResource("Resource_f7lds")
+rect_ipad = SubResource("Resource_ffeyb")
 
 [node name="TextureRect" type="TextureRect" parent="Left/BoardUp2" unique_id=1423905491]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_5yeo3")
 expand_mode = 1
 stretch_mode = 1
@@ -333,40 +345,35 @@ centered = false
 position = Vector2(-46, 9)
 centered = false
 
-[node name="BoardUp" parent="Right" unique_id=22505422 instance=ExtResource("5_tt5x7")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 480.0
+[node name="BoardUp" type="TextureRect" parent="Right" unique_id=392230511]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 18.0
-grow_horizontal = 1
-grow_vertical = 1
-rect_640h = Rect2(0, 0, 320, 18)
-rect_568h = Rect2(0, 0, 284, 18)
-gui_scale_640h = Vector2(-1, 1)
-gui_scale_568h = Vector2(-1, 1)
-rect_ipad = Rect2(0, 0, 512, 18)
-rect = Rect2(0, 0, 240, 18)
-gui_scale_ipad = Vector2(-1, 1)
-gui_scale = Vector2(-1, 1)
-
-[node name="TextureRect" type="TextureRect" parent="Right/BoardUp" unique_id=392230511]
-layout_mode = 2
+grow_horizontal = 2
+scale = Vector2(-1, 1)
 texture = ExtResource("5_5yeo3")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="BoardUp2" parent="Right" unique_id=530708467 instance=ExtResource("2_eo1tm")]
-layout_mode = 1
-anchors_preset = -1
+[node name="BoardUp2" parent="Right" unique_id=1246013166 instance=ExtResource("5_t5bh4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(0, 330, 512, 18)
-gui_scale_ipad = Vector2(-1, -1)
+scale = Vector2(-1, -1)
+rect = SubResource("Resource_t5bh4")
+rect_ipad = SubResource("Resource_fnrpd")
 
 [node name="TextureRect" type="TextureRect" parent="Right/BoardUp2" unique_id=102415074]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_5yeo3")
 expand_mode = 1
 stretch_mode = 1

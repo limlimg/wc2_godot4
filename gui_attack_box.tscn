@@ -5,13 +5,54 @@
 [ext_resource type="PackedScene" uid="uid://d257pj86yi20b" path="res://game_res_render/ui_attack_army.tscn" id="1_yycet"]
 [ext_resource type="PackedScene" uid="uid://384nv1p6s1wi" path="res://game_res_render/ui_defend_army.tscn" id="2_h34v0"]
 [ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://gui_button_ex.tscn" id="4_0omd4"]
-[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://resources/assets/logo_gui_res/buttontext_ok.png.tres" id="5_j1p28"]
-[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://resources/assets/logo_gui_res/buttontext_ok_press.png.tres" id="6_x47bi"]
-[ext_resource type="Texture2D" uid="uid://c5scjcg2j0bqx" path="res://resources/assets/logo_gui_res/green_normal.png.tres" id="7_kgn2k"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="6_aupwa"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="7_qvtfe"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="8_lm7xa"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="8_omktk"]
-[ext_resource type="Texture2D" uid="uid://binw7toyncxs4" path="res://resources/assets/logo_gui_res/buttontext_cancel.png.tres" id="9_ad1sf"]
-[ext_resource type="Texture2D" uid="uid://fpgymkhlea3t" path="res://resources/assets/logo_gui_res/buttontext_cancel_press.png.tres" id="10_7pi8d"]
-[ext_resource type="Texture2D" uid="uid://dokkmrq77snfe" path="res://resources/assets/logo_gui_res/gray_normal.png.tres" id="12_x47bi"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="9_kpifn"]
+
+[sub_resource type="Resource" id="Resource_1scgp"]
+script = ExtResource("6_aupwa")
+name = "buttontext_ok.png"
+
+[sub_resource type="Resource" id="Resource_pgo8h"]
+script = ExtResource("6_aupwa")
+name = "buttontext_ok_press.png"
+
+[sub_resource type="Resource" id="Resource_v0skf"]
+script = ExtResource("6_aupwa")
+name = "green_normal.png"
+
+[sub_resource type="Resource" id="Resource_bvffp"]
+script = ExtResource("6_aupwa")
+name = "ui1_hd.webp"
+
+[sub_resource type="Texture2D" id="Texture2D_g71tu"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("9_kpifn")
+asset = SubResource("Resource_bvffp")
+res_scale = 2.0
+
+[sub_resource type="Texture2D" id="Texture2D_x83h0"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("8_lm7xa")
+texture = SubResource("Texture2D_g71tu")
+region = Rect2(505.5, 51.5, 67.5, 36)
+origin = Vector2(1.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_hl1tj"]
+script = ExtResource("6_aupwa")
+name = "buttontext_cancel.png"
+
+[sub_resource type="Resource" id="Resource_d4ylm"]
+script = ExtResource("6_aupwa")
+name = "buttontext_cancel_press.png"
+
+[sub_resource type="Resource" id="Resource_aupwa"]
+script = ExtResource("6_aupwa")
+name = "gray_normal.png"
 
 [node name="GUIAttackBox" type="Control" unique_id=1463077957]
 layout_mode = 3
@@ -51,12 +92,15 @@ offset_right = 243.0
 offset_bottom = 175.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_text_not_pressed = ExtResource("5_j1p28")
-texture_text_pressed = ExtResource("6_x47bi")
+image_text_normal = SubResource("Resource_1scgp")
+image_text_pressed = SubResource("Resource_pgo8h")
 image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
-texture_normal = ExtResource("7_kgn2k")
-texture_pressed = ExtResource("7_kgn2k")
+texture_res = ExtResource("7_qvtfe")
+image_normal = SubResource("Resource_v0skf")
+image_pressed = SubResource("Resource_v0skf")
+texture_normal = SubResource("Texture2D_x83h0")
+texture_pressed = SubResource("Texture2D_x83h0")
 
 [node name="ButtonCancel" parent="." unique_id=932974651 instance=ExtResource("8_omktk")]
 layout_mode = 0
@@ -69,9 +113,10 @@ offset_right = 77.0
 offset_bottom = 175.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_normal = ExtResource("9_ad1sf")
-texture_pressed = ExtResource("10_7pi8d")
-texture_background = ExtResource("12_x47bi")
+texture_res = ExtResource("7_qvtfe")
+image_normal = SubResource("Resource_hl1tj")
+image_pressed = SubResource("Resource_d4ylm")
+image_background = SubResource("Resource_aupwa")
 
 [connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]
 [connection signal="back_pressed" from="ButtonCancel" to="." method="_on_button_cancel_pressed"]

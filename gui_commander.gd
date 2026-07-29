@@ -3,21 +3,21 @@ extends GUIElement
 var _select_medal := -1
 
 @onready var _list := [
-		$WarMedal/GUIWarMedal,
-		$WarMedal2/GUIWarMedal,
-		$WarMedal3/GUIWarMedal,
-		$WarMedal4/GUIWarMedal,
-		$WarMedal5/GUIWarMedal,
-		$WarMedal6/GUIWarMedal,
-		$CommanderMedal/GUICommanderMedal
+		$GUIWarMedal,
+		$GUIWarMedal2,
+		$GUIWarMedal3,
+		$GUIWarMedal4,
+		$GUIWarMedal5,
+		$GUIWarMedal6,
+		$GUICommanderMedal
 	]
-
-func _ready() -> void:
-	init()
 
 
 func init() -> void:
-	$CommanderMedal/GUICommanderMedal.rank = g_Commander.rank
+	if not is_node_ready():
+		return
+	super()
+	$GUICommanderMedal.rank = g_Commander.rank
 	_select_medal = -1
 	_set_commander_info()
 
@@ -28,10 +28,10 @@ func _set_commander_info() -> void:
 		$Medal/ecText.text = "rank {0}".format([rank])
 		$MedalIntro/ecText.text = "rank {0} intro".format([rank])
 		if not g_Commander.is_max_level():
-			$UpgradeButton/GUIUpgradeButton.visible = true
-			$UpgradeButton/GUIUpgradeButton.need_medal = g_Commander.get_upgrade_medal()
+			$GUIUpgradeButton.visible = true
+			$GUIUpgradeButton.need_medal = g_Commander.get_upgrade_medal()
 		else:
-			$UpgradeButton/GUIUpgradeButton.visible = false
+			$GUIUpgradeButton.visible = false
 	elif _select_medal >= 0:
 		var level := g_Commander.get_war_medal_level(_select_medal)
 		if level <= 0:
@@ -39,26 +39,26 @@ func _set_commander_info() -> void:
 		$Medal/ecText.text = "war medal {0} level {1}".format([_select_medal + 1, level])
 		$MedalIntro/ecText.text = "war medal {0} level {1} intro".format([_select_medal + 1, level])
 		if level <= 2:
-			$UpgradeButton/GUIUpgradeButton.visible = true
-			$UpgradeButton/GUIUpgradeButton.need_medal = g_Commander.get_need_upgrade_medal(_select_medal)
+			$GUIUpgradeButton.visible = true
+			$GUIUpgradeButton.need_medal = g_Commander.get_need_upgrade_medal(_select_medal)
 		else:
-			$UpgradeButton/GUIUpgradeButton.visible = false
-	$CommanderMedal/GUICommanderMedal.rank = g_Commander.rank
-	$WarMedal/GUIWarMedal.level = g_Commander.get_war_medal_level(WARMEDAL_ID.INFANTRY_MEDAL)
-	$WarMedal2/GUIWarMedal.level = g_Commander.get_war_medal_level(WARMEDAL_ID.AIR_FORCE_MEDAL)
-	$WarMedal3/GUIWarMedal.level = g_Commander.get_war_medal_level(WARMEDAL_ID.ARTILLERY_MEDAL)
-	$WarMedal4/GUIWarMedal.level = g_Commander.get_war_medal_level(WARMEDAL_ID.ARMOUR_MEDAL)
-	$WarMedal5/GUIWarMedal.level = g_Commander.get_war_medal_level(WARMEDAL_ID.NAVY_MEDAL)
-	$WarMedal6/GUIWarMedal.level = g_Commander.get_war_medal_level(WARMEDAL_ID.COMMERCE_MEDAL)
+			$GUIUpgradeButton.visible = false
+	$GUICommanderMedal.rank = g_Commander.rank
+	$GUIWarMedal.level = g_Commander.get_war_medal_level(WARMEDAL_ID.INFANTRY_MEDAL)
+	$GUIWarMedal2.level = g_Commander.get_war_medal_level(WARMEDAL_ID.AIR_FORCE_MEDAL)
+	$GUIWarMedal3.level = g_Commander.get_war_medal_level(WARMEDAL_ID.ARTILLERY_MEDAL)
+	$GUIWarMedal4.level = g_Commander.get_war_medal_level(WARMEDAL_ID.ARMOUR_MEDAL)
+	$GUIWarMedal5.level = g_Commander.get_war_medal_level(WARMEDAL_ID.NAVY_MEDAL)
+	$GUIWarMedal6.level = g_Commander.get_war_medal_level(WARMEDAL_ID.COMMERCE_MEDAL)
 	$GUIAdornMedal.refresh()
 
 
-func _selected_medal(value: int) -> void:
-	_select_medal = value
+func _selected_medal(source: Node) -> void:
 	for i in _list.size():
-		_list[i].selected = i == value
-		if i == value:
+		_list[i].selected = _list[i] == source
+		if _list[i] == source:
 			_list[i].arrow_color = Color.GREEN
+			_select_medal = i
 	_set_commander_info()
 
 

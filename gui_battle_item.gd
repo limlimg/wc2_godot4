@@ -32,10 +32,14 @@ var battle: int:
 
 
 func init() -> void:
-	super()
-	if texture_res == null:
+	if not is_node_ready():
 		return
+	super()
 	var res := texture_res
+	if res == null:
+		res = s_texture_res
+	if res == null:
+		return
 	var attr
 	match campaign:
 		0:

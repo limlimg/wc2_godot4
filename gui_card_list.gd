@@ -13,13 +13,12 @@ var tab: int:
 
 var _selected := -1
 
-signal card_selected(index: int)
-
-func _ready() -> void:
-	init()
-
+signal card_selected(tab: int, index: int)
 
 func init() -> void:
+	if not is_node_ready():
+		return
+	super()
 	for i in 28:
 		var card := CObjectDef.instance().get_card_def(i)
 		if card.type == tab:
@@ -38,7 +37,7 @@ func re_select() -> void:
 func _set_select(index: int) -> void:
 	_selected = index
 	get_card(index).selected = true
-	card_selected.emit(index)
+	card_selected.emit(tab, index)
 
 
 func _reset_select() -> void:

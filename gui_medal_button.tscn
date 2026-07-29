@@ -2,15 +2,26 @@
 
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="1_utj8q"]
 [ext_resource type="Script" uid="uid://brlw6mi7xb5d5" path="res://gui_medal_button.gd" id="2_ssx07"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="3_xxwpf"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="3_x0hk3"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="4_orwb0"]
 [ext_resource type="Texture2D" uid="uid://mav2dvk3j566" path="res://resources/assets/logo_gui_res/medal_arrow.png.tres" id="4_qtr3v"]
+
+[sub_resource type="Resource" id="Resource_hgpbl"]
+script = ExtResource("4_orwb0")
+rect = Rect2(0, 0, 0, 5)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_n1ywe"]
+script = ExtResource("4_orwb0")
+rect = Rect2(0, 0, 0, 10)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [sub_resource type="Animation" id="Animation_1aidn"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Medal/GUIRect/Control/Arrow:anchor_top")
+tracks/0/path = NodePath("Medal/GUIElement/Arrow:anchor_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,7 +38,7 @@ loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Medal/GUIRect/Control/Arrow:anchor_top")
+tracks/0/path = NodePath("Medal/GUIElement/Arrow:anchor_top")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,20 +75,17 @@ mouse_filter = 2
 expand_mode = 1
 stretch_mode = 2
 
-[node name="GUIRect" parent="Medal" index="0" unique_id=1576520916 instance=ExtResource("3_xxwpf")]
+[node name="GUIElement" parent="Medal" index="0" unique_id=1627139554 instance=ExtResource("3_x0hk3")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.0
 anchor_bottom = 0.0
-grow_horizontal = 1
+offset_top = -5.0
 grow_vertical = 0
-rect_ipad = Rect2(0, 0, 0, 10)
-rect = Rect2(0, 0, 0, 5)
+rect = SubResource("Resource_hgpbl")
+rect_ipad = SubResource("Resource_n1ywe")
 
-[node name="Control" type="Control" parent="Medal/GUIRect" index="0" unique_id=792741410]
-layout_mode = 2
-
-[node name="Arrow" type="TextureRect" parent="Medal/GUIRect/Control" index="0" unique_id=811429696]
+[node name="Arrow" type="TextureRect" parent="Medal/GUIElement" index="0" unique_id=811429696]
 visible = false
 layout_mode = 1
 anchors_preset = -1

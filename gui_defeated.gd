@@ -3,16 +3,16 @@ extends GUIElement
 @export
 var texture_res: ecTextureRes
 
-@export
-var flag_texture_res: ecTextureRes
-
 var _tween_auto_close: Tween
 
 signal ok_pressed
 
 func show_defeated(country: CCountry) -> void:
-	if texture_res != null and country != null:
-		$Flag.texture = flag_texture_res.get_image("flag_{0}.png".format([country.name]))
+	var res := texture_res
+	if res == null:
+		res = s_texture_res
+	if res != null and country != null:
+		$Flag.texture = res.get_image("flag_{0}.png".format([country.name]))
 	else:
 		$Flag.texture = null
 	if country.ai:
@@ -20,11 +20,11 @@ func show_defeated(country: CCountry) -> void:
 		if not commander_name.is_empty():
 			var photo := CObjectDef.instance().get_general_photo(commander_name)
 			if photo != null:
-				$General.texture = texture_res.get_image(commander_name.left(commander_name.rfind(".")) + ".png")
+				$General.texture = res.get_image(commander_name.left(commander_name.rfind(".")) + ".png")
 			else:
-				$General.texture = texture_res.get_image("general_common.png")
+				$General.texture = res.get_image("general_common.png")
 	else:
-		$General.texture = texture_res.get_image("general_player.png")
+		$General.texture = res.get_image("general_player.png")
 	show()
 	if g_GameManager.game_mode == 4:
 		_tween_auto_close = create_tween()

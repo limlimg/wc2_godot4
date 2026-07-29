@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://c21703l00we80"]
 
-[ext_resource type="Script" uid="uid://ddbsirm68jtkm" path="res://app/src/main/cpp/gui_button_ex.gd" id="1_ka7if"]
-[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="2_bdh2w"]
+[ext_resource type="Script" uid="uid://ddbsirm68jtkm" path="res://gui_button_ex.gd" id="1_ka7if"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="2_bdh2w"]
 
 [node name="GUIButtonEx" unique_id=2034275630 instance=ExtResource("2_bdh2w")]
 script = ExtResource("1_ka7if")
+image_text_normal = null
+image_text_pressed = null
 texture_text_not_pressed = null
 texture_text_pressed = null
 image_position_ipad = Vector2(0, 0)

@@ -10,4 +10,8 @@ var card: CardDef:
 func set_card(value: CardDef) -> void:
 	if value != card:
 		card = value
-		$Card/TextureRect.texture = texture_res.get_image(value.image)
+		var res := texture_res
+		if res == null:
+			res = s_texture_res
+		if res != null:
+			$Card/TextureRect.texture = res.get_image(value.image)

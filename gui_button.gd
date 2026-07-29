@@ -3,6 +3,83 @@ class_name GUIButton
 extends GUIElement
 
 @export
+var texture_res: ecTextureRes:
+	set(value):
+		if value != texture_res:
+			if texture_res != null:
+				texture_res.changed.disconnect(init)
+			elif not Engine.is_editor_hint():
+				if s_texture_res.changed.is_connected(init):
+					s_texture_res.changed.disconnect(init)
+			texture_res = value
+			init()
+			if value != null:
+				value.changed.connect(init)
+			elif not Engine.is_editor_hint():
+				s_texture_res.changed.connect(init)
+
+
+@export
+var image_normal: AssetRegistry:
+	set(value):
+		if value != image_normal:
+			if image_normal != null:
+				image_normal.changed.disconnect(init)
+			image_normal = value
+			init()
+			if value != null:
+				value.changed.connect(init, CONNECT_REFERENCE_COUNTED)
+
+
+@export
+var image_pressed: AssetRegistry:
+	set(value):
+		if value != image_pressed:
+			if image_pressed != null:
+				image_pressed.changed.disconnect(init)
+			image_pressed = value
+			init()
+			if value != null:
+				value.changed.connect(init, CONNECT_REFERENCE_COUNTED)
+
+
+@export
+var image_glow: AssetRegistry:
+	set(value):
+		if value != image_glow:
+			if image_glow != null:
+				image_glow.changed.disconnect(init)
+			image_glow = value
+			init()
+			if value != null:
+				value.changed.connect(init, CONNECT_REFERENCE_COUNTED)
+
+
+@export
+var image_background: AssetRegistry:
+	set(value):
+		if value != image_background:
+			if image_background != null:
+				image_background.changed.disconnect(init)
+			image_background = value
+			init()
+			if value != null:
+				value.changed.connect(init, CONNECT_REFERENCE_COUNTED)
+
+
+@export
+var image_text_image: AssetRegistry:
+	set(value):
+		if value != image_text_image:
+			if image_text_image != null:
+				image_text_image.changed.disconnect(init)
+			image_text_image = value
+			init()
+			if value != null:
+				value.changed.connect(init, CONNECT_REFERENCE_COUNTED)
+
+
+@export
 var enable := true:
 	get():
 		return not $TextureButton.disabled
@@ -105,116 +182,123 @@ var text_align: HorizontalAlignment:
 	get = get_text_align,
 	set = set_text_align
 
-@export_group("Texture from Asset", "")
-@export
-var texture_res: ecTextureRes:
-	set(value):
-		if value != texture_res:
-			if texture_res != null:
-				texture_res.changed.disconnect(_on_asset_changed)
-			texture_res = value
-			_on_asset_changed()
-			if value != null:
-				value.changed.connect(_on_asset_changed)
-
-
-@export
-var image_normal: AssetRegistry:
-	set(value):
-		if value != image_normal:
-			if image_normal != null:
-				image_normal.changed.disconnect(_on_asset_changed)
-			image_normal = value
-			_on_asset_changed()
-			if value != null:
-				value.changed.connect(_on_asset_changed)
-
-
-@export
-var image_pressed: AssetRegistry:
-	set(value):
-		if value != image_pressed:
-			if image_pressed != null:
-				image_pressed.changed.disconnect(_on_asset_changed)
-			image_pressed = value
-			_on_asset_changed()
-			if value != null:
-				value.changed.connect(_on_asset_changed)
-
-
-@export
-var image_background: AssetRegistry:
-	set(value):
-		if value != image_background:
-			if image_background != null:
-				image_background.changed.disconnect(_on_asset_changed)
-			image_background = value
-			_on_asset_changed()
-			if value != null:
-				value.changed.connect(_on_asset_changed)
-
-
 signal pressed
 
-#func init(normal_image_name: StringName, pressed_image_name: StringName,
-		#rect: Rect2, font: ecUniFont) -> void:
-	#texture_normal = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(normal_image_name)) 
-	#texture_pressed = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(pressed_image_name))
-	#position = rect.position
-	#size = rect.size
-	##text_font = font
-#
-#
-#func set_background(image_name: StringName) -> void:
-	#texture_background = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(image_name))
-#
-#
-#func _set_glow(image_name: StringName) -> void:
-	#texture_glow = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(image_name))
+func _ready():
+	super()
+	_on_render()
 
 
-func _on_asset_changed() -> void:
-	if texture_res != null:
+func init() -> void:
+	if not is_node_ready():
+		return
+	super()
+	var res := texture_res
+	if res == null:
+		res = s_texture_res
+	if res != null:
 		if image_normal != null:
 			if Engine.is_editor_hint():
 				texture_normal = texture_res.get_image(image_normal.name)
 				if texture_normal == null:
 					texture_normal = texture_res.get_image(image_normal.name_hd)
 			else:
-				var image_name := await image_normal.get_resolved_name()
+				var image_name := image_normal.get_resolved_name()
 				if not image_name.is_empty():
-					texture_normal = texture_res.get_image(image_name)
+					texture_normal = res.get_image(image_name)
 		if image_pressed != null:
 			if Engine.is_editor_hint():
 				texture_pressed = texture_res.get_image(image_pressed.name)
 				if texture_pressed == null:
 					texture_pressed = texture_res.get_image(image_pressed.name_hd)
 			else:
-				var image_name := await image_pressed.get_resolved_name()
+				var image_name := image_pressed.get_resolved_name()
 				if not image_name.is_empty():
-					texture_pressed = texture_res.get_image(image_name)
+					texture_pressed = res.get_image(image_name)
+		if image_glow != null:
+			if Engine.is_editor_hint():
+				texture_glow = texture_res.get_image(image_glow.name)
+				if texture_glow == null:
+					texture_glow = texture_res.get_image(image_glow.name_hd)
+			else:
+				var image_name := image_glow.get_resolved_name()
+				if not image_name.is_empty():
+					texture_glow = res.get_image(image_name)
 		if image_background != null:
 			if Engine.is_editor_hint():
 				texture_background = texture_res.get_image(image_background.name)
 				if texture_background == null:
 					texture_background = texture_res.get_image(image_background.name_hd)
 			else:
-				var image_name := await image_background.get_resolved_name()
+				var image_name := image_background.get_resolved_name()
 				if not image_name.is_empty():
-					texture_background = texture_res.get_image(image_name)
+					texture_background = res.get_image(image_name)
+		if image_text_image != null:
+			if Engine.is_editor_hint():
+				texture_text_image = texture_res.get_image(image_text_image.name)
+				if texture_text_image == null:
+					texture_text_image = texture_res.get_image(image_text_image.name_hd)
+			else:
+				var image_name := image_text_image.get_resolved_name()
+				if not image_name.is_empty():
+					texture_text_image = res.get_image(image_name)
 	notify_property_list_changed()
 
 
 func _validate_property(property: Dictionary) -> void:
-	if texture_res != null and image_normal != null and (property.name == "texture_normal"):
+	if image_normal != null and property.name == "texture_normal":
 		property.usage &= ~PROPERTY_USAGE_STORAGE
 		property.usage |= PROPERTY_USAGE_READ_ONLY
-	if texture_res != null and image_pressed != null and (property.name == "texture_pressed"):
+	if image_pressed != null and property.name == "texture_pressed":
 		property.usage &= ~PROPERTY_USAGE_STORAGE
 		property.usage |= PROPERTY_USAGE_READ_ONLY
-	if texture_res != null and image_background != null and (property.name == "texture_background"):
+	if image_glow != null and property.name == "texture_glow":
 		property.usage &= ~PROPERTY_USAGE_STORAGE
 		property.usage |= PROPERTY_USAGE_READ_ONLY
+	if image_background != null and property.name == "texture_background":
+		property.usage &= ~PROPERTY_USAGE_STORAGE
+		property.usage |= PROPERTY_USAGE_READ_ONLY
+	if image_text_image != null and property.name == "texture_text_image":
+		property.usage &= ~PROPERTY_USAGE_STORAGE
+		property.usage |= PROPERTY_USAGE_READ_ONLY
+
+
+func _on_render():
+	if $TextureButton.button_pressed:
+		$Glow.show()
+		$Glow.self_modulate = Color(Color.WHITE * grey_scale, alpha)
+	else:
+		$Glow.hide()
+	if not enable:
+		var color := Color8(110, 110, 110) * grey_scale
+		$TextureButton.self_modulate = Color(color, alpha)
+	else:
+		if grey_when_pressed and $TextureButton.button_pressed:
+			var color := Color8(210, 210, 210) * grey_scale
+			$TextureButton.self_modulate = Color(color, alpha)
+		else:
+			$TextureButton.self_modulate = Color(Color.WHITE * grey_scale, alpha)
+	if grey_when_pressed and $TextureButton.button_pressed:
+		var color := Color8(210, 210, 210) * grey_scale
+		$TextImage.self_modulate = Color(color, alpha)
+	else:
+		$TextImage.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)
+
+
+func _set_glow(image_name: StringName) -> void:
+	var res := texture_res
+	if res == null:
+		res = s_texture_res
+	if res != null:
+		texture_glow = res.get_image(image_name)
+
+
+func _set_background(image_name: StringName) -> void:
+	var res := texture_res
+	if res == null:
+		res = s_texture_res
+	if res != null:
+		texture_background = res.get_image(image_name)
 
 
 func get_text() -> String:
@@ -268,32 +352,6 @@ func set_alpha(value: float) -> void:
 	if value != alpha:
 		alpha = value
 		_on_render()
-
-
-func _ready() -> void:
-	_on_render()
-
-
-func _on_render():
-	if $TextureButton.button_pressed:
-		$Glow.show()
-		$Glow.self_modulate = Color(Color.WHITE * grey_scale, alpha)
-	else:
-		$Glow.hide()
-	if not enable:
-		var color := Color8(110, 110, 110) * grey_scale
-		$TextureButton.self_modulate = Color(color, alpha)
-	else:
-		if grey_when_pressed and $TextureButton.button_pressed:
-			var color := Color8(210, 210, 210) * grey_scale
-			$TextureButton.self_modulate = Color(color, alpha)
-		else:
-			$TextureButton.self_modulate = Color(Color.WHITE * grey_scale, alpha)
-	if grey_when_pressed and $TextureButton.button_pressed:
-		var color := Color8(210, 210, 210) * grey_scale
-		$TextImage.self_modulate = Color(color, alpha)
-	else:
-		$TextImage.self_modulate = Color(grey_scale, grey_scale, grey_scale, alpha)
 
 
 func _on_texture_button_button_down() -> void:

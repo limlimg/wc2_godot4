@@ -85,11 +85,10 @@ var tech_request: int:
 
 signal pressed
 
-func _ready() -> void:
-	init()
-
-
 func init() -> void:
+	if not is_node_ready():
+		return
+	super()
 	if def == null:
 		return
 	if texture_res != null:

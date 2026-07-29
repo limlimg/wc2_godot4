@@ -22,6 +22,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 480.0
 offset_bottom = 320.0
+mouse_filter = 1
 script = ExtResource("1_1n35g")
 
 [node name="CardShadow" type="Sprite2D" parent="." unique_id=1470134489]
@@ -134,6 +135,7 @@ color = Color(0.29411766, 0.65882355, 0.89411765, 1)
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 150.0
+mouse_filter = 1
 theme_override_styles/normal = SubResource("StyleBoxEmpty_16sg0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_v74qj")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0g25l")

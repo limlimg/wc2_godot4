@@ -22,8 +22,55 @@ extends Control
 ## conflict with engine method.
 
 static var _next_handle: int
-#@warning_ignore("unused_private_class_variable")
-#static var s_texture_res := ecTextureRes.new()
+static var s_texture_res := ecTextureRes.new()
+
+@export
+var rect: GUIRect:
+	set(value):
+		if value != rect:
+			if rect != null:
+				rect.changed.disconnect(init)
+			rect = value
+			init()
+			if value != null:
+				value.changed.connect(init)
+
+
+@export
+var rect_ipad: GUIRect:
+	set(value):
+		if value != rect_ipad:
+			if rect_ipad != null:
+				rect_ipad.changed.disconnect(init)
+			rect_ipad = value
+			init()
+			if value != null:
+				value.changed.connect(init)
+
+
+@export
+var rect_640h: GUIRect:
+	set(value):
+		if value != rect_640h:
+			if rect_640h != null:
+				rect_640h.changed.disconnect(init)
+			rect_640h = value
+			init()
+			if value != null:
+				value.changed.connect(init)
+
+
+@export
+var rect_568h: GUIRect:
+	set(value):
+		if value != rect_568h:
+			if rect_568h != null:
+				rect_568h.changed.disconnect(init)
+			rect_568h = value
+			init()
+			if value != null:
+				value.changed.connect(init)
+
 
 var _handle: int
 
@@ -32,22 +79,56 @@ signal touch_moved(pos: Vector2, index: int)
 signal touch_ended(pos: Vector2, index: int)
 signal back_pressed
 
-func _init() -> void:
+func _ready() -> void:
 	_next_handle += 1
 	_handle = _next_handle
+	init()
+
+
+func init() -> void:
+	if not is_node_ready():
+		return
+	var selected_rect := _get_selected_rect()
+	if selected_rect != null:
+		offset_left = selected_rect.rect.position.x
+		offset_top = selected_rect.rect.position.y
+		offset_right = selected_rect.rect.position.x
+		offset_bottom = selected_rect.rect.position.y
+		scale = selected_rect.scale
+	update_minimum_size()
+
+
+func _get_selected_rect() -> GUIRect:
+	var selected_rect: GUIRect
+	var graphics := ecGraphics.instance()
+	if graphics.content_scale_size_mode == 3:
+		selected_rect = rect_ipad
+	elif graphics.orientated_content_scale_width > 568.0:
+		selected_rect = rect_640h
+	elif graphics.orientated_content_scale_width > 480.0:
+		selected_rect = rect_568h
+	if selected_rect == null:
+		selected_rect = rect
+	return selected_rect
+
+
+func _get_minimum_size() -> Vector2:
+	var selected_rect := _get_selected_rect()
+	if selected_rect != null:
+		return selected_rect.rect.size
+	else:
+		return Vector2.ZERO
 
 
 func free_child(child: Node) -> void:
-	remove_child(child)
 	if child != null:
+		remove_child(child)
 		child.free()
 
 
 func free_all_child() -> void:
-	var child := get_child(0)
-	while child != null:
-		free_child(child)
-		child = get_child(0)
+	for i in get_children():
+		free_child(i)
 
 
 func get_pos() -> Vector2:
@@ -77,8 +158,8 @@ func get_abs_rect() -> Rect2:
 	return get_global_rect()
 
 
-func check_in_rect(x: float, y: float, rect := get_abs_rect()) -> bool:
-	return rect.has_point(Vector2(x, y))
+func check_in_rect(x: float, y: float, in_rect := get_abs_rect()) -> bool:
+	return in_rect.has_point(Vector2(x, y))
 
 
 func set_enable(value: bool) -> void:

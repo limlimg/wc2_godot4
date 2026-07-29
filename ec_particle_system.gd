@@ -1,5 +1,74 @@
 extends Node2D
 
+class Particle:
+	extends Sprite2D
+	
+	@export
+	var speed: Vector2
+	
+	@export
+	var speed_shift_curve := Curve.new()
+	
+	@export
+	var gravity: float
+	
+	@export
+	var gravity_shift_curve := Curve.new()
+	
+	@export
+	var initial_scale: Vector2
+	
+	@export
+	var scale_curve := Curve.new()
+	
+	@export
+	var initial_rot_angle: float
+	
+	@export
+	var rot_speed: float
+	
+	@export
+	var rot_shift_curve := Curve.new()
+	
+	@export
+	var color: Color
+	
+	@export
+	var color_gradient := Gradient.new()
+	
+	@export
+	var lifespam: float
+	
+	var _life := 0.0
+	
+	signal stopped
+	
+	func _init() -> void:
+		centered = false
+		material = CanvasItemMaterial.new()
+	
+	
+	func _ready() -> void:
+		speed_shift_curve.bake()
+		gravity_shift_curve.bake()
+		scale_curve.bake()
+		rot_shift_curve.bake()
+		_life = 0.0
+	
+	
+	func _process(delta: float) -> void:
+		_life += delta
+		if _life > lifespam:
+			stopped.emit()
+			return
+		var t1 := _life / lifespam
+		position = speed * speed_shift_curve.sample_baked(t1)
+		position.y += gravity * gravity_shift_curve.sample_baked(t1)
+		rotation = initial_rot_angle + rot_speed * rot_shift_curve.sample_baked(t1)
+		scale = initial_scale * scale_curve.sample_baked(t1)
+		self_modulate = color * color_gradient.sample(t1)
+
+
 @export
 var emitter_attr: ecEmitterAttr:
 	set(value):
@@ -54,12 +123,16 @@ func stop(stop_existing: bool) -> void:
 	set_process(false)
 	if stop_existing:
 		for i in _particles:
-			_particles[_particles.find(i)] = _particles[-1]
 			i.queue_free()
-	_on_stopped()
+		_particles.clear()
+	if not is_live():
+		stopped.emit()
 
 
-func _on_stopped() -> void:
+func _on_stopped(particle: Particle) -> void:
+	particle.queue_free()
+	_particles[_particles.find(particle)] = _particles[-1]
+	_particles.pop_back()
 	if not is_live():
 		stopped.emit()
 
@@ -92,7 +165,7 @@ func _process(delta: float) -> void:
 			set_process(false)
 	var target_quantity := _sample_curve_extended(_emission_curve, _emitted_time)
 	while _emitted_quantity < target_quantity - 1:
-		var particle = $ecParticle.create_instance()
+		var particle = Particle.new()
 		particle.lifespam = randf_range(emitter_attr.particle_life_min, emitter_attr.particle_life_max)
 		var texture = texture_res.get_image(emitter_attr.image_file)
 		var texture_scale := Vector2.ONE
@@ -122,8 +195,9 @@ func _process(delta: float) -> void:
 		particle.rot_shift_curve = _rot_shift_curve
 		particle.color = emitter_attr.color_range.sample(randf_range(0.0, 1.0))
 		particle.color_gradient = emitter_attr.life_track_color
+		add_child(particle)
 		_particles.append(particle)
-		particle.stopped.connect(_on_stopped)
+		particle.stopped.connect(_on_stopped.bind(particle))
 		_emitted_quantity += 1
 
 

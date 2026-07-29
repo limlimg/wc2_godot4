@@ -5,11 +5,11 @@ var _targeting := false
 var _targeting_army := false
 
 @onready var _tabs := [
-	$GUIRect/BuyCardBg/VBoxContainer/Control/CardList/GUICardList,
-	$GUIRect/BuyCardBg/VBoxContainer/Control/CardList2/GUICardList,
-	$GUIRect/BuyCardBg/VBoxContainer/Control/CardList3/GUICardList,
-	$GUIRect/BuyCardBg/VBoxContainer/Control/CardList4/GUICardList,
-	$GUIRect/BuyCardBg/VBoxContainer/Control/CardList5/GUICardList
+	$GUICardList,
+	$GUICardList2,
+	$GUICardList3,
+	$GUICardList4,
+	$GUICardList5
 ]
 
 func _sel_card(tab: int, index: int) -> void:
@@ -19,16 +19,16 @@ func _sel_card(tab: int, index: int) -> void:
 	if _selected_card >= 0:
 		_set_sel_card_intro()
 	if _get_sel_card() == null:
-		$GUIRect/BuyCardBg/ButtonOk/GUIButton.enable = false
-	$GUIRect/BuyCardBg/ButtonOk/GUIButton.enable = _can_buy_sel_card()
+		$ButtonOk.enable = false
+	$ButtonOk.enable = _can_buy_sel_card()
 
 
 func _set_sel_card_intro() -> void:
 	if _selected_card >= 0:
 		var card := _get_sel_card()
 		if card != null:
-			$GUIRect/BuyCardBg/Name/ecText.text = card.name
-			$GUIRect/BuyCardBg/Intro/ecText.text = card.intro
+			$Name/ecText.text = card.name
+			$Intro/Font5/Label.text = card.intro
 
 
 func _get_sel_card() -> CardDef:
@@ -94,7 +94,7 @@ func reset_card_state() -> void:
 				card.time = time
 			card.enable = should_enable
 			j += 1
-	$GUIRect/BuyCardBg/ButtonOk/GUIButton.enable = _get_sel_card() != null and _can_buy_sel_card()
+	$ButtonOk.enable = _get_sel_card() != null and _can_buy_sel_card()
 
 
 func reset_card_target() -> void:
@@ -148,5 +148,5 @@ func _on_gui_button_ok_pressed() -> void:
 			hide()
 
 
-func _on_gui_card_list_card_selected(index: int, tab: int) -> void:
+func _on_gui_card_list_card_selected(tab: int, index: int) -> void:
 	_sel_card(tab, index)

@@ -8,7 +8,7 @@ var need_medal: int:
 func set_need_medal(value: int) -> void:
 	if value != need_medal:
 		need_medal = value
-		$GUIRect/Control/HBoxContainer/NeedMedal.text = "{0}".format([value])
+		$GUIElement/HBoxContainer/NeedMedal.text = "{0}".format([value])
 
 
 func _on_render():

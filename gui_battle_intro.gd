@@ -36,11 +36,10 @@ var battle: int:
 
 signal ok_pressed
 
-func _ready() -> void:
-	init()
-
-
 func init() -> void:
+	if not is_node_ready():
+		return
+	super()
 	var battle_intro = $Font4/BattleIntro/Label
 	if ecGraphics.instance().content_scale_size_mode == 3:
 		battle_intro.add_theme_constant_override("line_spacing", -6)

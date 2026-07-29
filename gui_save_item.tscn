@@ -2,8 +2,39 @@
 
 [ext_resource type="PackedScene" uid="uid://c5qvo6pghcxcm" path="res://gui_radio_button.tscn" id="1_175u4"]
 [ext_resource type="Script" uid="uid://5mem4ikjh4fo" path="res://gui_save_item.gd" id="2_awrqk"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="3_gflr3"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="4_r52vv"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="6_gflr3"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="6_yp6wb"]
+
+[sub_resource type="Resource" id="Resource_rdq0q"]
+script = ExtResource("4_r52vv")
+rect = Rect2(10, 8, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_usce4"]
+script = ExtResource("4_r52vv")
+rect = Rect2(18, 17, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_gflr3"]
+script = ExtResource("4_r52vv")
+rect = Rect2(22, 52, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_r52vv"]
+script = ExtResource("4_r52vv")
+rect = Rect2(44, 104, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_orc3w"]
+script = ExtResource("4_r52vv")
+rect = Rect2(113, 1, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_gkxjg"]
+script = ExtResource("4_r52vv")
+rect = Rect2(216, 2, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [sub_resource type="Animation" id="Animation_42unb"]
 length = 0.001
@@ -59,7 +90,6 @@ _data = {
 [node name="GUISaveItem" unique_id=2034275630 instance=ExtResource("1_175u4")]
 script = ExtResource("2_awrqk")
 empty = true
-country_res = null
 country = ""
 game_mode = 0
 campaign = 0
@@ -70,59 +100,73 @@ day = 0
 hour = 0
 minute = 0
 
-[node name="Flag" parent="." index="5" unique_id=873500403 instance=ExtResource("6_yp6wb")]
+[node name="Flag" parent="." index="5" unique_id=1627139554 instance=ExtResource("3_gflr3")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 10.0
+offset_bottom = 8.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(18, 17, 0, 0)
-rect = Rect2(10, 8, 0, 0)
+rect = SubResource("Resource_rdq0q")
+rect_ipad = SubResource("Resource_usce4")
 
 [node name="TextureRect" type="TextureRect" parent="Flag" index="0" unique_id=2067843225]
-layout_mode = 2
+layout_mode = 0
 expand_mode = 1
 stretch_mode = 2
 
-[node name="Time" parent="." index="6" unique_id=977391077 instance=ExtResource("6_yp6wb")]
+[node name="Time" parent="." index="6" unique_id=2137297580 instance=ExtResource("3_gflr3")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_left = 22.0
+offset_top = 52.0
+offset_right = 22.0
+offset_bottom = 52.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(44, 104, 0, 0)
-rect = Rect2(22, 52, 0, 0)
+rect = SubResource("Resource_gflr3")
+rect_ipad = SubResource("Resource_r52vv")
 
 [node name="ecText" parent="Time" index="0" unique_id=1650770578 instance=ExtResource("6_gflr3")]
-layout_mode = 2
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 23.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.20784314, 0.2901961, 0.23137255, 1)
 font = NodePath("/root/g_Num4b")
 color = Color(0.20784314, 0.2901961, 0.23137255, 1)
-alpha = 1.0
 
-[node name="Name" parent="." index="7" unique_id=1694919059 instance=ExtResource("6_yp6wb")]
+[node name="Name" parent="." index="7" unique_id=1202682057 instance=ExtResource("3_gflr3")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_left = 113.0
+offset_top = 1.0
+offset_right = 113.0
+offset_bottom = 1.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(216, 2, 0, 0)
-rect = Rect2(113, 1, 0, 0)
+rect = SubResource("Resource_orc3w")
+rect_ipad = SubResource("Resource_gkxjg")
 
 [node name="ecText" parent="Name" index="0" unique_id=33360194 instance=ExtResource("6_gflr3")]
-layout_mode = 2
+layout_mode = 0
+offset_left = -1.0
+offset_bottom = 23.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.8352941, 0.90588236, 0.9372549, 1)
 horizontal_alignment = 1
 font = NodePath("/root/g_Font7")
 color = Color(0.8352941, 0.90588236, 0.9372549, 1)
-alpha = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8" unique_id=1901739085]
 libraries/ = SubResource("AnimationLibrary_72qpu")

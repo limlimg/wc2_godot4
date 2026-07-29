@@ -24,10 +24,10 @@ var game_mode: int:
 @export
 var campaign: int:
 	get():
-		return $GUIBattleList/GUIBattleList.campaign
+		return $GUIBattleList.campaign
 	set(value):
 		if value != campaign:
-			$GUIBattleList/GUIBattleList.campaign = value
+			$GUIBattleList.campaign = value
 			init()
 
 
@@ -35,21 +35,46 @@ var _battle := -1
 
 signal ok_pressed
 
-func _ready() -> void:
-	init()
-
-
 func init() -> void:
+	if not is_node_ready():
+		return
+	super()
+	var loc := g_LocalizableStrings.get_string(&"language")
+	if ecGraphics.instance().content_scale_size_mode == 3:
+		s_texture_res.load_res("selbattle_hd.xml", false)
+		s_texture_res.load_res("battlename_{0}_hd.xml".format([loc]), false)
+	elif EC2dAppDelegate.g_content_scale_factor == 2.0:
+		s_texture_res.load_res("selbattle_hd.xml", true)
+		s_texture_res.load_res("battlename_{0}_hd.xml".format([loc]), true)
+	else:
+		s_texture_res.load_res("selbattle.xml", false)
+		s_texture_res.load_res("battlename_{0}.xml".format([loc]), false)
 	var logo: Texture2D = null
-	if texture_res != null and campaign < _CAMPAIGN_LOGO.size():
-		logo = texture_res.get_image(_CAMPAIGN_LOGO[campaign])
+	var res := texture_res
+	if res == null:
+		res = s_texture_res
+	if res != null and campaign < _CAMPAIGN_LOGO.size():
+		logo = res.get_image(_CAMPAIGN_LOGO[campaign])
 	$Logo/TextureRect.texture = logo
-	#s_texture_res = load("res://scene_system_resource/selbattle_res/texture_res.tres").get_res()
 	_battle = -1
 	if game_mode != 4 and g_Commander.get_num_played_battles(campaign) < AppDelegate.get_num_battles(campaign):
-		$GUIBattleList/GUIBattleList.select_last_unlocked()
+		$GUIBattleList.select_last_unlocked()
 	else:
-		$GUIBattleList/GUIBattleList.set_select(0)
+		$GUIBattleList.set_select(0)
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		var loc := g_LocalizableStrings.get_string(&"language")
+		if ecGraphics.instance().content_scale_size_mode == 3:
+			s_texture_res.unload_res("selbattle_hd.xml")
+			s_texture_res.unload_res("battlename_{0}_hd.xml".format([loc]))
+		elif EC2dAppDelegate.g_content_scale_factor == 2.0:
+			s_texture_res.unload_res("selbattle_hd.xml")
+			s_texture_res.unload_res("battlename_{0}_hd.xml".format([loc]))
+		else:
+			s_texture_res.unload_res("selbattle.xml")
+			s_texture_res.unload_res("battlename_{0}.xml".format([loc]))
 
 
 func _on_gui_battle_list_battle_selected(battle: int) -> void:
@@ -73,13 +98,13 @@ func _load_image_list(sel_campaign: int, battle: int) -> void:
 
 
 func _on_button_info_pressed() -> void:
-	$GUIBattleIntro/GUIBattleIntro.campaign = campaign
-	$GUIBattleIntro/GUIBattleIntro.battle = _battle
-	$GUIBattleIntro/GUIBattleIntro.show()
+	$GUIBattleIntro.campaign = campaign
+	$GUIBattleIntro.battle = _battle
+	$GUIBattleIntro.show()
 
 
 func _on_gui_battle_intro_ok_pressed() -> void:
-	$GUIBattleIntro/GUIBattleIntro.hide()
+	$GUIBattleIntro.hide()
 
 
 func _on_button_ok_pressed() -> void:

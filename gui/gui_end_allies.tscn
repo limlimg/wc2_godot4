@@ -1,12 +1,29 @@
 [gd_scene format=3 uid="uid://bw0mr1d823yk2"]
 
 [ext_resource type="Texture2D" uid="uid://4hfiwjwv00ej" path="res://resources/assets/texture/victorybg_allies.tres" id="1_bfque"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_p1p0e"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="2_s8k6l"]
 [ext_resource type="Texture2D" uid="uid://cgw5x0rgfrojx" path="res://resources/assets/texture/victory.tres" id="3_g2ye1"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="3_nx3yr"]
 [ext_resource type="PackedScene" uid="uid://dr76fdoysjvb3" path="res://ec_uni_font.tscn" id="4_av3f6"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="5_s8k6l"]
 
-[sub_resource type="Resource" id="Resource_dd2af"]
+[sub_resource type="Resource" id="Resource_6eu0i"]
+script = ExtResource("3_nx3yr")
+rect = Rect2(0, 30, 0, 0)
+
+[sub_resource type="Resource" id="Resource_b3u8k"]
+script = ExtResource("3_nx3yr")
+rect = Rect2(0, 96, 0, 0)
+
+[sub_resource type="Resource" id="Resource_05ffj"]
+script = ExtResource("3_nx3yr")
+rect = Rect2(-210, 70, 0, 0)
+
+[sub_resource type="Resource" id="Resource_m0rei"]
+script = ExtResource("3_nx3yr")
+rect = Rect2(-439, 187, 0, 0)
+
+[sub_resource type="Resource" id="Resource_wdfs1"]
 script = ExtResource("5_s8k6l")
 name = "font4_en.fnt"
 name_hd = "font4_en_hd.fnt"
@@ -22,39 +39,45 @@ texture = ExtResource("1_bfque")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Victroy" parent="." unique_id=1576520916 instance=ExtResource("2_p1p0e")]
+[node name="Victroy" parent="." unique_id=1627139554 instance=ExtResource("2_s8k6l")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
+offset_top = 30.0
+offset_bottom = 30.0
 grow_vertical = 1
-rect_ipad = Rect2(0, 96, 0, 0)
-rect = Rect2(0, 30, 0, 0)
+rect = SubResource("Resource_6eu0i")
+rect_ipad = SubResource("Resource_b3u8k")
 
-[node name="TextureRect" type="TextureRect" parent="Victroy" unique_id=960389048]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="Victroy" unique_id=1983454193]
+layout_mode = 0
 texture = ExtResource("3_g2ye1")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="TextVictroy" parent="." unique_id=1352119651 instance=ExtResource("2_p1p0e")]
+[node name="TextVictroy" parent="." unique_id=1999810336 instance=ExtResource("2_s8k6l")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
+offset_left = -210.0
+offset_top = 70.0
+offset_right = -210.0
+offset_bottom = 70.0
 grow_vertical = 1
-rect_ipad = Rect2(-439, 187, 0, 0)
-rect = Rect2(-210, 70, 0, 0)
+rect = SubResource("Resource_05ffj")
+rect_ipad = SubResource("Resource_m0rei")
 
 [node name="ecUniFont" parent="TextVictroy" unique_id=1248850266 instance=ExtResource("4_av3f6")]
-layout_mode = 2
-asset = SubResource("Resource_dd2af")
-
-[node name="Label" type="Label" parent="TextVictroy/ecUniFont" unique_id=231535116]
 layout_mode = 0
-offset_right = 73.0
+asset = SubResource("Resource_wdfs1")
+
+[node name="Label" type="Label" parent="TextVictroy/ecUniFont" unique_id=971896405]
+layout_mode = 0
+offset_right = 65.0
 offset_bottom = 15.0
 size_flags_horizontal = 0
 size_flags_vertical = 0

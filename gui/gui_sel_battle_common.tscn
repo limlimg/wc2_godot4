@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dtwrl4dmbtg5n" path="res://gui/gui_sel_battle_common.gd" id="1_ap38y"]
 [ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://resources/assets/texture/commonbg.tres" id="1_euem8"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_ap38y"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="3_3d7ta"]
 [ext_resource type="Texture2D" uid="uid://crietgngbpmjc" path="res://resources/assets/texture/minimap1_1.tres" id="3_u6gr4"]
 [ext_resource type="Texture2D" uid="uid://twvebqix5p1p" path="res://resources/assets/texture/minimap1_2.tres" id="4_67bt0"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="4_dk1i4"]
 [ext_resource type="Texture2D" uid="uid://2kosbyajq6kn" path="res://resources/assets/texture/minimap1_3.tres" id="5_w8w5v"]
 [ext_resource type="Texture2D" uid="uid://5u82hkjbjvk6" path="res://resources/assets/texture/minimap1_4.tres" id="6_1dr5e"]
 [ext_resource type="Texture2D" uid="uid://bda1v753s45f6" path="res://resources/assets/texture/minimap1_5.tres" id="7_bnxjm"]
@@ -16,11 +17,31 @@
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="13_3d7ta"]
 [ext_resource type="PackedScene" uid="uid://bp1f7if3s8vf4" path="res://gui_medal.tscn" id="14_xi63f"]
 
+[sub_resource type="Resource" id="Resource_6edyx"]
+script = ExtResource("4_dk1i4")
+rect = Rect2(0, 0, 1715, 750)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_mqori"]
+script = ExtResource("4_dk1i4")
+rect = Rect2(0, 0, 3430, 1500)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
 [sub_resource type="Resource" id="Resource_8f3fq"]
 script = ExtResource("13_3d7ta")
 name = "num6.fnt"
 name_hd = "num6_hd.fnt"
 name_ipad = "num6_hd.fnt"
+
+[sub_resource type="Resource" id="Resource_t6uaj"]
+script = ExtResource("4_dk1i4")
+rect = Rect2(36, 0, 70, 23)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_rbldi"]
+script = ExtResource("4_dk1i4")
+rect = Rect2(55, 0, 146, 50)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [sub_resource type="Animation" id="Animation_ap38y"]
 length = 0.001
@@ -115,7 +136,7 @@ anchors_preset = 0
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Background" parent="Minimap" unique_id=2068186717 instance=ExtResource("2_ap38y")]
+[node name="Background" parent="Minimap" unique_id=1627139554 instance=ExtResource("3_3d7ta")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -124,11 +145,13 @@ offset_right = 1715.0
 offset_bottom = 750.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(0, 0, 3430, 1500)
-rect = Rect2(0, 0, 1715, 750)
+rect = SubResource("Resource_6edyx")
+rect_ipad = SubResource("Resource_mqori")
 
 [node name="GridContainer" type="GridContainer" parent="Minimap/Background" unique_id=945798134]
-layout_mode = 2
+layout_mode = 1
+offset_right = 2000.0
+offset_bottom = 1000.0
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 4
@@ -229,20 +252,18 @@ centered = false
 [node name="Arrow" type="Sprite2D" parent="Minimap/Prototype" unique_id=1661421727]
 centered = false
 
-[node name="GUIMedal" parent="." unique_id=668390441 instance=ExtResource("2_ap38y")]
+[node name="GUIMedal" parent="." unique_id=439510704 instance=ExtResource("14_xi63f")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
+offset_left = 36.0
 offset_top = -23.0
-offset_right = 70.0
+offset_right = 106.0
 grow_horizontal = 1
 grow_vertical = 0
-rect_ipad = Rect2(55, 0, 146, 50)
-rect = Rect2(36, 0, 70, 23)
-
-[node name="GUIMedal" parent="GUIMedal" unique_id=439510704 instance=ExtResource("14_xi63f")]
-layout_mode = 2
+rect = SubResource("Resource_t6uaj")
+rect_ipad = SubResource("Resource_rbldi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1407031096]
 root_node = NodePath("../Minimap/ImageList")

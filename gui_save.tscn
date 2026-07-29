@@ -1,20 +1,126 @@
 [gd_scene format=3 uid="uid://b2tuhbhr3or2w"]
 
-[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://app/src/main/cpp/resources/assets/texture/commonbg.tres" id="1_4hx74"]
-[ext_resource type="Script" uid="uid://dl6e64ot5dyyj" path="res://app/src/main/cpp/gui_save.gd" id="1_h7uv5"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_3p75f"]
-[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="3_43u7i"]
-[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back.png.tres" id="4_mkn08"]
-[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back_press.png.tres" id="5_elaf6"]
-[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_gray.png.tres" id="6_ddbjm"]
-[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_ok.png.tres" id="7_h7uv5"]
-[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_ok_press.png.tres" id="8_tyc1t"]
-[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_green.png.tres" id="9_ogghu"]
-[ext_resource type="PackedScene" uid="uid://bktnsnsbwc2q3" path="res://app/src/main/cpp/gui_save_item.tscn" id="10_elaf6"]
-[ext_resource type="Texture2D" uid="uid://dr8fdh2jlyc1t" path="res://app/src/main/cpp/resources/assets/logo_gui_res/btnsaveback1.png.tres" id="11_ddbjm"]
-[ext_resource type="PackedScene" uid="uid://dbndqpxk2yyd1" path="res://app/src/main/cpp/gui_auto_save_item.tscn" id="12_h7uv5"]
-[ext_resource type="Resource" uid="uid://cpadhmrva5yu8" path="res://app/src/main/cpp/resources/assets/menu_gui_save_res/texture_res.tres" id="12_tyc1t"]
-[ext_resource type="Texture2D" uid="uid://cam4s04ib1iku" path="res://app/src/main/cpp/resources/assets/logo_gui_res/btnsaveback2.png.tres" id="13_ddbjm"]
+[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://resources/assets/texture/commonbg.tres" id="1_4hx74"]
+[ext_resource type="Script" uid="uid://dl6e64ot5dyyj" path="res://gui_save.gd" id="1_h7uv5"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="3_43u7i"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="4_y86r8"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="5_h6187"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="6_2ci0e"]
+[ext_resource type="Resource" uid="uid://cpadhmrva5yu8" path="res://resources/assets/menu_gui_save_res/texture_res.tres" id="9_vtfj7"]
+[ext_resource type="PackedScene" uid="uid://bktnsnsbwc2q3" path="res://gui_save_item.tscn" id="10_elaf6"]
+[ext_resource type="PackedScene" uid="uid://dbndqpxk2yyd1" path="res://gui_auto_save_item.tscn" id="12_h7uv5"]
+
+[sub_resource type="Resource" id="Resource_4yntp"]
+script = ExtResource("5_h6187")
+name = "buttontext_back.png"
+
+[sub_resource type="Resource" id="Resource_b4dmi"]
+script = ExtResource("5_h6187")
+name = "buttontext_back_press.png"
+
+[sub_resource type="Resource" id="Resource_oo0i1"]
+script = ExtResource("5_h6187")
+name = "buttonboard_gray.png"
+
+[sub_resource type="Resource" id="Resource_b6fe3"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(0, 0, 32, 30)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_m73mc"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(0, 0, 40, 38)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_1scgp"]
+script = ExtResource("5_h6187")
+name = "buttontext_ok.png"
+
+[sub_resource type="Resource" id="Resource_pgo8h"]
+script = ExtResource("5_h6187")
+name = "buttontext_ok_press.png"
+
+[sub_resource type="Resource" id="Resource_i5xih"]
+script = ExtResource("5_h6187")
+name = "buttonboard_green.png"
+
+[sub_resource type="Resource" id="Resource_uo6gt"]
+script = ExtResource("5_h6187")
+name = "btnsaveback1.png"
+
+[sub_resource type="Resource" id="Resource_y86r8"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(-242, -148, 180, 86)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_h6187"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(-491, -303, 360, 173)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_2ci0e"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(-242, -55, 180, 86)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_pb5r4"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(-491, -117, 360, 173)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_b7mum"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(-242, 38, 180, 86)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_ipxdd"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(-491, 69, 360, 173)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_gksh3"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(62, -148, 180, 86)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_u6hwg"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(122, -303, 360, 173)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_l8hdj"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(62, -55, 180, 86)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_71wvs"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(122, -117, 360, 173)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_xnw2o"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(62, 38, 180, 86)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_lijg1"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(122, 69, 360, 173)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_5trkp"]
+script = ExtResource("5_h6187")
+name = "btnsaveback2.png"
+
+[sub_resource type="Resource" id="Resource_l85cj"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(1, -12, 110, 206)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_a6wgm"]
+script = ExtResource("6_2ci0e")
+rect = Rect2(-2, -33, 220, 412)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [node name="GUISave" type="Control" unique_id=1102808812]
 layout_mode = 3
@@ -36,212 +142,172 @@ texture = ExtResource("1_4hx74")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="ButtonBack" parent="." unique_id=1909106129 instance=ExtResource("2_3p75f")]
+[node name="ButtonBack" parent="." unique_id=2034275630 instance=ExtResource("3_43u7i")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
+texture_res = ExtResource("4_y86r8")
+image_normal = SubResource("Resource_4yntp")
+image_pressed = SubResource("Resource_b4dmi")
+image_background = SubResource("Resource_oo0i1")
+rect = SubResource("Resource_b6fe3")
+rect_ipad = SubResource("Resource_m73mc")
 
-[node name="GUIButton" parent="ButtonBack" unique_id=2034275630 instance=ExtResource("3_43u7i")]
-layout_mode = 2
-texture_normal = ExtResource("4_mkn08")
-texture_pressed = ExtResource("5_elaf6")
-texture_background = ExtResource("6_ddbjm")
-
-[node name="ButtonOk" parent="." unique_id=1603056165 instance=ExtResource("2_3p75f")]
+[node name="ButtonOk" parent="." unique_id=254315075 instance=ExtResource("3_43u7i")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
+texture_res = ExtResource("4_y86r8")
+image_normal = SubResource("Resource_1scgp")
+image_pressed = SubResource("Resource_pgo8h")
+image_background = SubResource("Resource_i5xih")
+rect = SubResource("Resource_b6fe3")
+rect_ipad = SubResource("Resource_m73mc")
 
-[node name="GUIButton" parent="ButtonOk" unique_id=254315075 instance=ExtResource("3_43u7i")]
-layout_mode = 2
-texture_normal = ExtResource("7_h7uv5")
-texture_pressed = ExtResource("8_tyc1t")
-texture_background = ExtResource("9_ogghu")
-
-[node name="Control" type="Control" parent="." unique_id=1640727207]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="SaveItem" parent="Control" unique_id=621397009 instance=ExtResource("2_3p75f")]
-show_behind_parent = true
+[node name="GUISaveItem" parent="." unique_id=84813601 instance=ExtResource("10_elaf6")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 180.0
-offset_bottom = 86.0
+offset_left = -242.0
+offset_top = -148.0
+offset_right = -242.0
+offset_bottom = -148.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(-491, -303, 360, 173)
-rect = Rect2(-242, -148, 180, 86)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
+texture_res = ExtResource("4_y86r8")
+image_normal = SubResource("Resource_uo6gt")
+image_pressed = SubResource("Resource_uo6gt")
+rect = SubResource("Resource_y86r8")
+rect_ipad = SubResource("Resource_h6187")
 
-[node name="GUISaveItem" parent="Control/SaveItem" unique_id=84813601 instance=ExtResource("10_elaf6")]
-layout_mode = 2
-country_res = ExtResource("12_tyc1t")
-texture_normal = ExtResource("11_ddbjm")
-texture_pressed = ExtResource("11_ddbjm")
-
-[node name="SaveItem2" parent="Control" unique_id=600227997 instance=ExtResource("2_3p75f")]
-show_behind_parent = true
+[node name="GUISaveItem2" parent="." unique_id=864049145 instance=ExtResource("10_elaf6")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 180.0
-offset_bottom = 86.0
+offset_left = -242.0
+offset_top = -55.0
+offset_right = -242.0
+offset_bottom = -55.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(-491, -117, 360, 173)
-rect = Rect2(-242, -55, 180, 86)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
+texture_res = ExtResource("4_y86r8")
+image_normal = SubResource("Resource_uo6gt")
+image_pressed = SubResource("Resource_uo6gt")
+rect = SubResource("Resource_2ci0e")
+rect_ipad = SubResource("Resource_pb5r4")
 
-[node name="GUISaveItem" parent="Control/SaveItem2" unique_id=864049145 instance=ExtResource("10_elaf6")]
-layout_mode = 2
-country_res = ExtResource("12_tyc1t")
-texture_normal = ExtResource("11_ddbjm")
-texture_pressed = ExtResource("11_ddbjm")
-
-[node name="SaveItem3" parent="Control" unique_id=1151305700 instance=ExtResource("2_3p75f")]
-show_behind_parent = true
+[node name="GUISaveItem3" parent="." unique_id=205932105 instance=ExtResource("10_elaf6")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 180.0
-offset_bottom = 86.0
+offset_left = -242.0
+offset_top = 38.0
+offset_right = -242.0
+offset_bottom = 38.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(-491, 69, 360, 173)
-rect = Rect2(-242, 38, 180, 86)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
+texture_res = ExtResource("4_y86r8")
+image_normal = SubResource("Resource_uo6gt")
+image_pressed = SubResource("Resource_uo6gt")
+rect = SubResource("Resource_b7mum")
+rect_ipad = SubResource("Resource_ipxdd")
 
-[node name="GUISaveItem" parent="Control/SaveItem3" unique_id=205932105 instance=ExtResource("10_elaf6")]
-layout_mode = 2
-country_res = ExtResource("12_tyc1t")
-texture_normal = ExtResource("11_ddbjm")
-texture_pressed = ExtResource("11_ddbjm")
-
-[node name="SaveItem4" parent="Control" unique_id=909226541 instance=ExtResource("2_3p75f")]
-show_behind_parent = true
+[node name="GUISaveItem4" parent="." unique_id=936653722 instance=ExtResource("10_elaf6")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 180.0
-offset_bottom = 86.0
+offset_left = 62.0
+offset_top = -148.0
+offset_right = 62.0
+offset_bottom = -148.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(122, -303, 360, 173)
-rect = Rect2(62, -148, 180, 86)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
+texture_res = ExtResource("4_y86r8")
+image_normal = SubResource("Resource_uo6gt")
+image_pressed = SubResource("Resource_uo6gt")
+rect = SubResource("Resource_gksh3")
+rect_ipad = SubResource("Resource_u6hwg")
 
-[node name="GUISaveItem" parent="Control/SaveItem4" unique_id=936653722 instance=ExtResource("10_elaf6")]
-layout_mode = 2
-country_res = ExtResource("12_tyc1t")
-texture_normal = ExtResource("11_ddbjm")
-texture_pressed = ExtResource("11_ddbjm")
-
-[node name="SaveItem5" parent="Control" unique_id=1435155649 instance=ExtResource("2_3p75f")]
-show_behind_parent = true
+[node name="GUISaveItem5" parent="." unique_id=1460200486 instance=ExtResource("10_elaf6")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 180.0
-offset_bottom = 86.0
+offset_left = 62.0
+offset_top = -55.0
+offset_right = 62.0
+offset_bottom = -55.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(122, -117, 360, 173)
-rect = Rect2(62, -55, 180, 86)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
+texture_res = ExtResource("4_y86r8")
+image_normal = SubResource("Resource_uo6gt")
+image_pressed = SubResource("Resource_uo6gt")
+rect = SubResource("Resource_l8hdj")
+rect_ipad = SubResource("Resource_71wvs")
 
-[node name="GUISaveItem" parent="Control/SaveItem5" unique_id=1460200486 instance=ExtResource("10_elaf6")]
-layout_mode = 2
-country_res = ExtResource("12_tyc1t")
-texture_normal = ExtResource("11_ddbjm")
-texture_pressed = ExtResource("11_ddbjm")
-
-[node name="SaveItem6" parent="Control" unique_id=715527059 instance=ExtResource("2_3p75f")]
-show_behind_parent = true
+[node name="GUISaveItem6" parent="." unique_id=2085961165 instance=ExtResource("10_elaf6")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 180.0
-offset_bottom = 86.0
+offset_left = 62.0
+offset_top = 38.0
+offset_right = 62.0
+offset_bottom = 38.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(122, 69, 360, 173)
-rect = Rect2(62, 38, 180, 86)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
+texture_res = ExtResource("4_y86r8")
+image_normal = SubResource("Resource_uo6gt")
+image_pressed = SubResource("Resource_uo6gt")
+rect = SubResource("Resource_xnw2o")
+rect_ipad = SubResource("Resource_lijg1")
 
-[node name="GUISaveItem" parent="Control/SaveItem6" unique_id=2085961165 instance=ExtResource("10_elaf6")]
-layout_mode = 2
-country_res = ExtResource("12_tyc1t")
-texture_normal = ExtResource("11_ddbjm")
-texture_pressed = ExtResource("11_ddbjm")
-
-[node name="AutoSaveItem" parent="Control" unique_id=1731880358 instance=ExtResource("2_3p75f")]
-show_behind_parent = true
+[node name="GUIAutoSaveItem" parent="." unique_id=559276820 instance=ExtResource("12_h7uv5")]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_right = 110.0
-offset_bottom = 206.0
-grow_horizontal = 1
-grow_vertical = 1
-rect_ipad = Rect2(-112, -214, 220, 412)
-rect = Rect2(-60, -74, 110, 206)
-gui_scale_ipad = Vector2(1, 1)
-gui_scale = Vector2(1, 1)
-
-[node name="GUIAutoSaveItem" parent="Control/AutoSaveItem" unique_id=559276820 instance=ExtResource("12_h7uv5")]
-layout_mode = 2
-country_res = ExtResource("12_tyc1t")
+offset_left = 1.0
+offset_top = -12.0
+offset_right = 1.0
+offset_bottom = -12.0
+texture_res = ExtResource("9_vtfj7")
+image_normal = SubResource("Resource_5trkp")
+image_pressed = SubResource("Resource_5trkp")
 enable = false
-texture_normal = ExtResource("13_ddbjm")
-texture_pressed = ExtResource("13_ddbjm")
+rect = SubResource("Resource_l85cj")
+rect_ipad = SubResource("Resource_a6wgm")
 
-[connection signal="pressed" from="ButtonBack/GUIButton" to="." method="_on_gui_button_back_pressed"]
-[connection signal="pressed" from="ButtonOk/GUIButton" to="." method="_on_gui_button_ok_pressed"]
+[connection signal="pressed" from="ButtonBack" to="." method="_on_gui_button_back_pressed"]
+[connection signal="pressed" from="ButtonOk" to="." method="_on_gui_button_ok_pressed"]
+[connection signal="pressed" from="GUISaveItem" to="." method="_on_gui_save_item_pressed" flags=18]
+[connection signal="pressed" from="GUISaveItem2" to="." method="_on_gui_save_item_pressed" flags=18]
+[connection signal="pressed" from="GUISaveItem3" to="." method="_on_gui_save_item_pressed" flags=18]
+[connection signal="pressed" from="GUISaveItem4" to="." method="_on_gui_save_item_pressed" flags=18]
+[connection signal="pressed" from="GUISaveItem5" to="." method="_on_gui_save_item_pressed" flags=18]
+[connection signal="pressed" from="GUISaveItem6" to="." method="_on_gui_save_item_pressed" flags=18]
+[connection signal="pressed" from="GUIAutoSaveItem" to="." method="_on_gui_save_item_pressed" flags=18]

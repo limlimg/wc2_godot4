@@ -14,17 +14,53 @@ signal commander_pressed
 signal options_pressed
 signal quit_pressed
 
-func _ready() -> void:
-	#GUIManager.s_texture_res = load("res://scene_system_resource/menu_gui_res/texture_res.tres").get_res()
+func init():
+	if not is_node_ready():
+		return
+	super()
+	var loc := g_LocalizableStrings.get_string(&"language")
+	var graphics := ecGraphics.instance()
+	var gui_manager := GUIManager.instance()
+	if graphics.content_scale_size_mode == 3:
+		gui_manager.load_texture_res("mui_hd.xml", false)
+		gui_manager.load_texture_res("mui2_hd.xml", false)
+		gui_manager.load_texture_res("mui_{0}_hd.xml".format([loc]), false)
+	elif EC2dAppDelegate.g_content_scale_factor == 2.0:
+		gui_manager.load_texture_res("mui_hd.xml", true)
+		gui_manager.load_texture_res("mui2_hd.xml", true)
+		gui_manager.load_texture_res("mui_{0}_hd.xml".format([loc]), true)
+	else:
+		gui_manager.load_texture_res("mui.xml", false)
+		gui_manager.load_texture_res("mui2.xml", false)
+		gui_manager.load_texture_res("mui_{0}.xml".format([loc]), false)
 	var commander := g_Commander
 	if commander.get_num_played_battles(0) < AppDelegate.get_num_battles(0)\
 			and commander.get_num_played_battles(1) < AppDelegate.get_num_battles(1):
-		$GUIRect/SelCampaigns/ButtonWto/GUIButton.grey_scale = 0.7
-		$GUIRect/SelCampaigns/ButtonNato/GUIButton.grey_scale = 0.7
+		$FixedWidth/SelCampaigns/ButtonWto.grey_scale = 0.7
+		$FixedWidth/SelCampaigns/ButtonNato.grey_scale = 0.7
 	else:
-		$GUIRect/SelCampaigns/ButtonWto/GUIButton/Locked/TextureRect.visible = false
-		$GUIRect/SelCampaigns/ButtonNato/GUIButton/Locked/TextureRect.visible = false
+		$FixedWidth/SelCampaigns/ButtonWto/Locked/TextureRect.visible = false
+		$FixedWidth/SelCampaigns/ButtonNato/Locked/TextureRect.visible = false
 	# NOTTODO: refresh the "new" highlight of the more games button
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		var loc := g_LocalizableStrings.get_string(&"language")
+		var graphics := ecGraphics.instance()
+		var gui_manager := GUIManager.instance()
+		if graphics.content_scale_size_mode == 3:
+			gui_manager.unload_texture_res("mui_hd.xml")
+			gui_manager.unload_texture_res("mui2_hd.xml")
+			gui_manager.unload_texture_res("mui_{0}_hd.xml".format([loc]))
+		elif EC2dAppDelegate.g_content_scale_factor == 2.0:
+			gui_manager.unload_texture_res("mui_hd.xml")
+			gui_manager.unload_texture_res("mui2_hd.xml")
+			gui_manager.unload_texture_res("mui_{0}_hd.xml".format([loc]))
+		else:
+			gui_manager.unload_texture_res("mui.xml")
+			gui_manager.unload_texture_res("mui2.xml")
+			gui_manager.unload_texture_res("mui_{0}.xml".format([loc]))
 
 
 func move_in_main_buttons() -> void:
@@ -108,8 +144,8 @@ func _on_button_multi_player_global_pressed() -> void:
 
 func _on_button_local_pressed() -> void:
 	if _state == 0:
-		$GUIRect/SelMultiplayer.hide()
-		$GUIRect/SelLocal.show()
+		$FixedWidth/SelMultiplayer.hide()
+		$FixedWidth/SelLocal.show()
 
 
 func _on_button_multi_player_host_pressed() -> void:
@@ -124,8 +160,8 @@ func _on_button_multi_player_join_pressed() -> void:
 
 func _on_button_local_back_pressed() -> void:
 	if _state == 0:
-		$GUIRect/SelMultiplayer.show()
-		$GUIRect/SelLocal.hide()
+		$FixedWidth/SelMultiplayer.show()
+		$FixedWidth/SelLocal.hide()
 
 
 func _on_button_multi_player_back_pressed() -> void:
@@ -197,7 +233,7 @@ func _move_button(state: int) -> void:
 
 func _on_back_pressed() -> void:
 	if _state == 0:
-		for button in [$GUIRect/SelCampaigns/ButtonBack/GUIButton, $GUIRect/SelConquest/ButtonBack/GUIButton]:
+		for button in [$FixedWidth/SelCampaigns/ButtonBack, $FixedWidth/SelConquest/ButtonBack]:
 			if button.is_visible_in_tree():
 				button.pressed.emit()
 				accept_event()

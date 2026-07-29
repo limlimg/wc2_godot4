@@ -11,17 +11,16 @@ signal select_area_executed(id: int)
 signal unselect_area_executed
 signal exit_executed
 
-func _ready() -> void:
-	init()
-
-
 func init() -> void:
+	if not is_node_ready():
+		return
+	super()
 	_load_script()
 	_exe_cmd(0)
 
 
 func _load_script() -> void:
-	_cmds = load(EC2dAppDelegate.get_asset_path(await asset.get_resolved_name(), ""))
+	_cmds = load(EC2dAppDelegate.get_asset_path(asset.get_resolved_name(), ""))
 
 
 func _release_script() -> void:
@@ -47,7 +46,8 @@ func _exe_cmd(index: int) -> void:
 			else:
 				g_Scene.move_camera_center_to_area(cmd.id)
 			var waiting_cmd := _current_cmd
-			await g_Scene.move_camera_completed
+			while g_Scene.is_moving():
+				await get_tree().process_frame
 			_skip_cmd(waiting_cmd)
 		"finger at":
 			$Hand.visible = true

@@ -1,8 +1,18 @@
 [gd_scene format=3 uid="uid://d20oukqjjuchm"]
 
 [ext_resource type="Script" uid="uid://cp0rqwt3uf1t7" path="res://c_menu_state.gd" id="1_ehm5w"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="5_cwp5t"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="3_dtnok"]
 [ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://resources/assets/menu_gui_selbattle_res/texture_res.tres" id="5_mwydp"]
+
+[sub_resource type="Resource" id="Resource_5eoo2"]
+script = ExtResource("3_dtnok")
+rect = Rect2(0, 0, 222, 126)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_ppcga"]
+script = ExtResource("3_dtnok")
+rect = Rect2(0, 0, 444, 252)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [node name="CMenuState" type="Control" unique_id=54523483]
 layout_mode = 3
@@ -38,7 +48,8 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="Warning" parent="." unique_id=1719695382 instance=ExtResource("5_cwp5t")]
+[node name="GUILockedWarning" parent="." unique_id=131788446 instance_placeholder="res://gui_locked_warning.tscn"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -49,16 +60,23 @@ offset_left = -111.0
 offset_top = -63.0
 offset_right = 111.0
 offset_bottom = 63.0
-rect_ipad = Rect2(0, 0, 444, 252)
-rect = Rect2(0, 0, 222, 126)
+rect = SubResource("Resource_5eoo2")
+rect_ipad = SubResource("Resource_ppcga")
 
-[node name="GUILockedWarning" parent="Warning" unique_id=131788446 instance_placeholder="res://gui_locked_warning.tscn"]
+[node name="GUIExitWarning" parent="." unique_id=986775281 instance_placeholder="res://gui_exit_warning.tscn"]
 visible = false
-layout_mode = 2
-
-[node name="GUIExitWarning" parent="Warning" unique_id=986775281 instance_placeholder="res://gui_exit_warning.tscn"]
-visible = false
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -63.0
+offset_right = 111.0
+offset_bottom = 63.0
+rect = SubResource("Resource_5eoo2")
+rect_ipad = SubResource("Resource_ppcga")
 
 [node name="GUILoading" parent="." unique_id=1979438320 instance_placeholder="res://gui_loading.tscn"]
 layout_mode = 1

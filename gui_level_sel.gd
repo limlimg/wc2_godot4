@@ -12,7 +12,7 @@ var value: int:
 		if n != value:
 			value = n
 			while $HBoxContainer.get_child_count() < n:
-				_bars.append($Prototype/GUIRect.duplicate())
+				_bars.append($Prototype/GUIElement.duplicate())
 				$HBoxContainer.add_child(_bars[-1])
 			while $HBoxContainer.get_child_count() > n:
 				_bars.pop_back().free()

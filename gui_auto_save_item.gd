@@ -7,9 +7,9 @@ extends GUISaveItem
 func _set_info() -> void:
 	super()
 	if not empty:
-		$Name/AutoSave/ecText.text = "AutoSave"
+		$Name/ecText/AutoSave/ecText.text = "AutoSave"
 	else:
-		$Name/AutoSave/ecText.text = ""
+		$Name/ecText/AutoSave/ecText.text = ""
 
 
 func _make_time_string() -> String:

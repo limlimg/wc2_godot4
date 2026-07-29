@@ -1,8 +1,17 @@
 [gd_scene format=3 uid="uid://w3w2er1hsdsq"]
 
-[ext_resource type="Script" uid="uid://dns73sowod14i" path="res://app/src/main/cpp/gui_level_sel.gd" id="1_3bgbm"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_ymlgf"]
-[ext_resource type="Texture2D" uid="uid://ew3mmy7kab3j" path="res://app/src/main/cpp/resources/assets/logo_gui_res/block.png.tres" id="3_33hhi"]
+[ext_resource type="Script" uid="uid://dns73sowod14i" path="res://gui_level_sel.gd" id="1_3bgbm"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="2_k4qyj"]
+[ext_resource type="Texture2D" uid="uid://ew3mmy7kab3j" path="res://resources/assets/logo_gui_res/block.png.tres" id="3_33hhi"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="3_sl8ga"]
+
+[sub_resource type="Resource" id="Resource_g8bm0"]
+script = ExtResource("3_sl8ga")
+rect = Rect2(0, 5, 20, 0)
+
+[sub_resource type="Resource" id="Resource_eb15d"]
+script = ExtResource("3_sl8ga")
+rect = Rect2(0, 0, 40, 0)
 
 [node name="GUILevelSel" type="Control" unique_id=528832786]
 layout_mode = 3
@@ -26,18 +35,20 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="GUIRect" parent="Prototype" unique_id=1576520916 instance=ExtResource("2_ymlgf")]
+[node name="GUIElement" parent="Prototype" unique_id=1627139554 instance=ExtResource("2_k4qyj")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-rect_ipad = Rect2(0, 0, 40, 0)
-rect = Rect2(0, 5, 20, 0)
+offset_top = 5.0
+offset_right = 20.0
+offset_bottom = 5.0
+rect = SubResource("Resource_g8bm0")
+rect_ipad = SubResource("Resource_eb15d")
 
-[node name="TextureRect" type="TextureRect" parent="Prototype/GUIRect" unique_id=698801839]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="Prototype/GUIElement" unique_id=698801839]
+layout_mode = 0
+offset_right = 20.0
 texture = ExtResource("3_33hhi")
 expand_mode = 1
 stretch_mode = 2

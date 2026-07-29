@@ -61,20 +61,27 @@ func _on_c_touch_inertia_inertia_ended() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var y: float = $CTouchInertia/ScrollContainer.position.y
-	if y < 0.0:
-		_add_scroll_vertial(min(y * delta * 5.0, -0.4))
-	elif y > 0.0:
-		_add_scroll_vertial(max(y * delta * 5.0, 0.4))
+	var d: float
+	if vertical:
+		d = $CTouchInertia/ScrollContainer.position.y
+	else:
+		d = $CTouchInertia/ScrollContainer.position.x
+	if d < 0.0:
+		_add_scroll(min(d * delta * 5.0, -0.4))
+	elif d > 0.0:
+		_add_scroll(max(d * delta * 5.0, 0.4))
 	else:
 		set_physics_process(false)
 
 
 func _on_c_touch_inertia_touch_moved(relative: Vector2) -> void:
-	_add_scroll_vertial(-relative.y)
+	if vertical:
+		_add_scroll(-relative.y)
+	else:
+		_add_scroll(-relative.x)
 
 
-func _add_scroll_vertial(delta: float) -> void:
+func _add_scroll(delta: float) -> void:
 	if delta == 0.0:
 		return
 	if vertical:
@@ -121,7 +128,7 @@ func clear_item() -> void:
 	for c in _items:
 		c.queue_free()
 	_items.clear()
-	_add_scroll_vertial(-_scorll_value)
+	_add_scroll(-_scorll_value)
 
 
 func add_item(item: Node) -> void:

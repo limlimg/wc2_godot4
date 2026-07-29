@@ -80,11 +80,14 @@ var selected: bool:
 var _down: bool
 
 func _ready() -> void:
-	init()
+	super()
 	_move_button()
 
 
 func init() -> void:
+	if not is_node_ready():
+		return
+	super()
 	_on_render()
 
 

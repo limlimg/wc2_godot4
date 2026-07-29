@@ -5,8 +5,44 @@
 [ext_resource type="PackedScene" uid="uid://3kjay574huha" path="res://ec_effect_manager.tscn" id="3_j4ryw"]
 [ext_resource type="PackedScene" uid="uid://bdigiv3s86lid" path="res://c_fight_text_mgr.tscn" id="4_6de0u"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="4_r3slg"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="5_iy5bs"]
 [ext_resource type="Resource" uid="uid://dfe0w1ve8iqjk" path="res://resources/assets/game_gui_res/texture_res.tres" id="6_iyelv"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="6_j4ryw"]
+
+[sub_resource type="Resource" id="Resource_6de0u"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 280, 14)
+
+[sub_resource type="Resource" id="Resource_jh5xu"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 560, 28)
+
+[sub_resource type="Resource" id="Resource_q0ii3"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 480, 320)
+
+[sub_resource type="Resource" id="Resource_eyr7r"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 433, 480, 320)
+
+[sub_resource type="Resource" id="Resource_0kjjk"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 0, 320)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_jiok5"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 0, 300)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_xukep"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 0, 320)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_kxxgh"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 0, 320)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [sub_resource type="Resource" id="Resource_v0skf"]
 script = ExtResource("4_r3slg")
@@ -19,6 +55,14 @@ name = "gamebutton_cardremove_press.png"
 [sub_resource type="Resource" id="Resource_40ofo"]
 script = ExtResource("4_r3slg")
 name = "buttonboard_blue.png"
+
+[sub_resource type="Resource" id="Resource_r3slg"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 32, 30)
+
+[sub_resource type="Resource" id="Resource_r11dq"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 40, 38)
 
 [sub_resource type="Resource" id="Resource_bymt8"]
 script = ExtResource("4_r3slg")
@@ -52,186 +96,13 @@ name = "gamebutton_round_press.png"
 script = ExtResource("4_r3slg")
 name = "buttonboard_green.png"
 
-[sub_resource type="Animation" id="Animation_me1p5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GUIGold:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -50)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ButtonPause/Control/GUIButton:anchor_left")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ButtonPause/Control/GUIButton:anchor_top")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ButtonCard/Control/GUIButton:anchor_left")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ButtonCard/Control/GUIButton:anchor_top")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("ButtonRound/Control/GUIButton:anchor_left")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("ButtonRound/Control/GUIButton:anchor_top")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
+[sub_resource type="Resource" id="Resource_iyelv"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 480, 320)
 
-[sub_resource type="Animation" id="Animation_0lple"]
-resource_name = "move_in"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GUIGold:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -50), Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ButtonPause/Control/GUIButton:anchor_left")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ButtonPause/Control/GUIButton:anchor_top")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-1.0, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("ButtonCard/Control/GUIButton:anchor_left")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-1.0, 0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("ButtonCard/Control/GUIButton:anchor_top")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("ButtonRound/Control/GUIButton:anchor_left")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("ButtonRound/Control/GUIButton:anchor_top")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_me1p5"]
-_data = {
-&"RESET": SubResource("Animation_me1p5"),
-&"move_in": SubResource("Animation_0lple")
-}
+[sub_resource type="Resource" id="Resource_ul3e6"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 960, 640)
 
 [node name="CGameState" type="Control" unique_id=1645819512]
 layout_mode = 3
@@ -275,22 +146,19 @@ offset_top = -95.0
 offset_right = 93.0
 offset_bottom = 95.0
 
-[node name="GUIActionInfo" parent="." unique_id=1593274674 instance=ExtResource("5_iy5bs")]
+[node name="GUIActionInfo" parent="." unique_id=2027985913 instance_placeholder="res://gui_action_info.tscn"]
 visible = false
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-offset_right = 280.0
+offset_left = -140.0
+offset_right = 140.0
 offset_bottom = 14.0
-grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(-280, 0, 560, 28)
-rect = Rect2(-140, 0, 280, 14)
-
-[node name="GUIActionInfo" parent="GUIActionInfo" unique_id=2027985913 instance_placeholder="res://gui_action_info.tscn"]
-layout_mode = 2
+rect = SubResource("Resource_6de0u")
+rect_ipad = SubResource("Resource_jh5xu")
 
 [node name="GUISelArmy" parent="." unique_id=299185972 instance_placeholder="res://gui_sel_army.tscn"]
 visible = false
@@ -304,38 +172,31 @@ offset_top = -120.0
 offset_bottom = 120.0
 grow_horizontal = 0
 
-[node name="GUIAIProgress" parent="." unique_id=541368688 instance=ExtResource("5_iy5bs")]
+[node name="GUIAIProgress" parent="." unique_id=191726262 instance_placeholder="res://gui_ai_progress.tscn"]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-offset_right = 480.0
+offset_left = -240.0
+offset_right = 240.0
 offset_bottom = 320.0
-grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(-240, 433, 480, 320)
-rect = Rect2(-240, 0, 480, 320)
+rect = SubResource("Resource_q0ii3")
+rect_ipad = SubResource("Resource_eyr7r")
 
-[node name="GUIAIProgress" parent="GUIAIProgress" unique_id=191726262 instance_placeholder="res://gui_ai_progress.tscn"]
-layout_mode = 2
-
-[node name="GUIBuyCard" type="VBoxContainer" parent="." unique_id=845837158]
+[node name="GUIBuyCard" parent="." unique_id=595511499 instance_placeholder="res://gui_buy_card.tscn"]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Padding" parent="GUIBuyCard" unique_id=143842892 instance=ExtResource("5_iy5bs")]
-layout_mode = 2
-rect_ipad = Rect2(0, 0, 0, 468)
-
-[node name="GUIBuyCard" parent="GUIBuyCard" unique_id=595511499 instance_placeholder="res://gui_buy_card.tscn"]
-layout_mode = 2
+anchors_preset = 12
+anchor_top = 1.0
+offset_top = -320.0
+grow_vertical = 0
 size_flags_vertical = 3
+rect = SubResource("Resource_0kjjk")
+rect_ipad = SubResource("Resource_jiok5")
+rect_640h = SubResource("Resource_xukep")
+rect_568h = SubResource("Resource_kxxgh")
 
 [node name="GUIPauseBox" parent="." unique_id=1648966608 instance_placeholder="res://gui_pause_box.tscn"]
 visible = false
@@ -366,101 +227,63 @@ offset_bottom = 38.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="ButtonCardRemove" parent="." unique_id=769934829 instance=ExtResource("5_iy5bs")]
+[node name="ButtonCardRemove" parent="." unique_id=1211914993 instance_placeholder="res://gui_button.tscn"]
 visible = false
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+layout_mode = 0
+anchors_preset = 0
 anchor_right = 0.0
-offset_top = -30.0
-offset_right = 32.0
+anchor_bottom = 0.0
 grow_horizontal = 1
-grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-
-[node name="GUIButton" parent="ButtonCardRemove" unique_id=1211914993 instance_placeholder="res://gui_button.tscn"]
-layout_mode = 2
+grow_vertical = 1
 texture_res = ExtResource("6_iyelv")
 image_normal = SubResource("Resource_v0skf")
 image_pressed = SubResource("Resource_rlpu7")
 image_background = SubResource("Resource_40ofo")
+rect = SubResource("Resource_r3slg")
+rect_ipad = SubResource("Resource_r11dq")
 
-[node name="ButtonPause" parent="." unique_id=1233548209 instance=ExtResource("5_iy5bs")]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_bottom = 0.0
-offset_left = -32.0
-offset_bottom = 30.0
-grow_horizontal = 0
-grow_vertical = 1
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-
-[node name="Control" type="Control" parent="ButtonPause" unique_id=1459883420]
-layout_mode = 2
-
-[node name="GUIButton" parent="ButtonPause/Control" unique_id=1187276192 instance_placeholder="res://gui_button.tscn"]
+[node name="ButtonPause" parent="." unique_id=1187276192 instance_placeholder="res://gui_button.tscn"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
-anchor_top = -1.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 0
 texture_res = ExtResource("6_iyelv")
 image_normal = SubResource("Resource_bymt8")
 image_pressed = SubResource("Resource_jgvbs")
 image_background = SubResource("Resource_gejxm")
+rect = SubResource("Resource_r3slg")
+rect_ipad = SubResource("Resource_r11dq")
 
-[node name="ButtonCard" parent="." unique_id=2040298773 instance=ExtResource("5_iy5bs")]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
-offset_top = -30.0
-offset_right = 32.0
-grow_horizontal = 1
-grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-
-[node name="Control" type="Control" parent="ButtonCard" unique_id=1388415888]
-layout_mode = 2
-
-[node name="GUIButton" parent="ButtonCard/Control" unique_id=899432390 instance_placeholder="res://gui_button.tscn"]
+[node name="ButtonCard" parent="." unique_id=899432390 instance_placeholder="res://gui_button.tscn"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -1.0
 anchor_top = 1.0
-play_sound_when_pressed = false
+anchor_right = 0.0
+grow_horizontal = 0
+grow_vertical = 1
 texture_res = ExtResource("6_iyelv")
 image_normal = SubResource("Resource_3m502")
 image_pressed = SubResource("Resource_j4ryw")
 image_background = SubResource("Resource_40ofo")
+play_sound_when_pressed = false
+rect = SubResource("Resource_r3slg")
+rect_ipad = SubResource("Resource_r11dq")
 
-[node name="ButtonRound" parent="." unique_id=1576520916 instance=ExtResource("5_iy5bs")]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = -32.0
-offset_top = -30.0
-grow_horizontal = 0
-grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-
-[node name="Control" type="Control" parent="ButtonRound" unique_id=2118377936]
-layout_mode = 2
-
-[node name="GUIButton" parent="ButtonRound/Control" unique_id=2034275630 instance_placeholder="res://gui_button.tscn"]
+[node name="ButtonRound" parent="." unique_id=2034275630 instance_placeholder="res://gui_button.tscn"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
+grow_horizontal = 1
+grow_vertical = 1
 texture_res = ExtResource("6_iyelv")
 image_normal = SubResource("Resource_3dd4c")
 image_pressed = SubResource("Resource_ifia7")
 image_background = SubResource("Resource_i5xih")
+rect = SubResource("Resource_r3slg")
+rect_ipad = SubResource("Resource_r11dq")
 
 [node name="GUIAttackBox" parent="." unique_id=1463077957 instance_placeholder="res://gui_attack_box.tscn"]
 visible = false
@@ -475,8 +298,6 @@ offset_left = -129.0
 offset_top = -93.0
 offset_right = 129.0
 offset_bottom = 93.0
-attack = null
-defend = null
 
 [node name="GUIBegin" parent="." unique_id=276795201 instance_placeholder="res://gui_begin.tscn"]
 visible = false
@@ -499,7 +320,8 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="GUIBattleIntro" parent="." unique_id=1427534302 instance=ExtResource("5_iy5bs")]
+[node name="GUIBattleIntro" parent="." unique_id=2130276311 instance_placeholder="res://gui_battle_intro.tscn"]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -510,13 +332,8 @@ offset_left = -240.0
 offset_top = -160.0
 offset_right = 240.0
 offset_bottom = 160.0
-rect_ipad = Rect2(0, 0, 960, 640)
-rect = Rect2(0, 0, 480, 320)
-
-[node name="GUIBattleIntro" parent="GUIBattleIntro" unique_id=2130276311 instance_placeholder="res://gui_battle_intro.tscn"]
-visible = false
-z_index = 1
-layout_mode = 2
+rect = SubResource("Resource_iyelv")
+rect_ipad = SubResource("Resource_ul3e6")
 
 [node name="GUIBank" parent="." unique_id=86871795 instance_placeholder="res://gui_bank.tscn"]
 layout_mode = 1
@@ -540,6 +357,3 @@ layout_mode = 1
 
 [node name="GUIEnd" parent="." unique_id=230513713 instance_placeholder="res://gui_end.tscn"]
 layout_mode = 1
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1974311090]
-libraries/ = SubResource("AnimationLibrary_me1p5")

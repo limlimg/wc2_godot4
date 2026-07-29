@@ -10,10 +10,10 @@ var selected: bool:
 		if value != selected:
 			selected = value
 			if value:
-				$Medal/GUIRect/Control/Arrow.visible = true
+				$Medal/GUIElement/Arrow.visible = true
 				$AnimationPlayer.play("arrow")
 			else:
-				$Medal/GUIRect/Control/Arrow.visible = false
+				$Medal/GUIElement/Arrow.visible = false
 				$AnimationPlayer.stop()
 
 
@@ -26,4 +26,4 @@ var arrow_color := Color.WHITE:
 func set_arrow_color(value: Color) -> void:
 	if value != arrow_color:
 		arrow_color = value
-		$Medal/GUIRect/Control/Arrow.self_modulate = value
+		$Medal/GUIElement/Arrow.self_modulate = value

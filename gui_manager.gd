@@ -42,16 +42,16 @@ func init() -> void:
 	pass
 
 
-#func load_texture_res(file_name: String, hd: bool) -> void:
-	#s_texture_res.load_res(file_name, hd)
-#
-#
-#func unload_texture_res(file_name: String) -> void:
-	#s_texture_res.unload_res(file_name)
-#
-#
-#func release_texture_res() -> void:
-	#s_texture_res.release()
+func load_texture_res(file_name: String, hd: bool) -> void:
+	s_texture_res.load_res(file_name, hd)
+
+
+func unload_texture_res(file_name: String) -> void:
+	s_texture_res.unload_res(file_name)
+
+
+func release_texture_res() -> void:
+	s_texture_res.release()
 
 
 func safe_free_child(child: Node) -> void:
@@ -59,45 +59,47 @@ func safe_free_child(child: Node) -> void:
 
 
 ## The original method has more parameter for specifying texture format.
-func add_image_texture(texture_name: String, attr: ecTextureRect, rect: Rect2,
+func add_image_texture(texture_name: String, attr: ecTextureRect, gui_rect: Rect2,
 		parent:Node) -> GUIImage:
 	var image = $Prototype/GUIImage.create_instance()
-	if not image.init_atlas(texture_name, attr, rect):
+	image.rect = gui_rect
+	if not image.set_image(texture_name, attr):
 		image.free()
 		return null
 	if parent == null:
 		parent = self
-	parent.reparent(image)
+	image.reparent(parent)
 	return image
 
 
-func add_image(texture_name: String, rect: Rect2, parent:Node) -> GUIImage:
+func add_image(texture_name: String, gui_rect: Rect2, parent:Node) -> GUIImage:
 	var image = $Prototype/GUIImage.create_instance()
-	if not image.init_image_attr(texture_name, rect):
+	image.rect = gui_rect
+	if not image.set_image(texture_name):
 		image.free()
 		return null
 	if parent == null:
 		parent = self
-	parent.reparent(image)
+	image.reparent(parent)
 	return image
 
 
 func add_button(normal_image_name: StringName, pressed_image_name: StringName,
-		rect: Rect2, parent:Node, font: ecUniFont) -> GUIButton:
+		gui_rect: Rect2, parent:Node, font: ecUniFont) -> GUIButton:
 	var button = $Prototype/GUIButton.create_instance()
-	button.init(normal_image_name, pressed_image_name, rect, font)
+	button.init(normal_image_name, pressed_image_name, gui_rect, font)
 	if parent == null:
 		parent = self
 	parent.reparent(button)
 	return button
 
 
-func add_scroll_bar(rect: Rect2, parent:Node, normal_image_name: StringName,
+func add_scroll_bar(gui_rect: Rect2, parent:Node, normal_image_name: StringName,
 		pressed_image_name: StringName, grabber_size_w: int,
 		grabber_size_h: int, default_value: int, set_max_value: int,
 		is_horizontal: bool) -> GUIScrollBar:
 	var scroll_bar = $Prototype/GUIScrollBar.create_instance()
-	scroll_bar.init(rect, normal_image_name, pressed_image_name, grabber_size_w,
+	scroll_bar.init(gui_rect, normal_image_name, pressed_image_name, grabber_size_w,
 		grabber_size_h, default_value, set_max_value, is_horizontal)
 	if parent == null:
 		parent = self
@@ -109,7 +111,10 @@ func fade_in(cause: int) -> void:
 	_fade_order += 1
 	if $AnimationPlayer.is_playing():
 		$AnimationPlayer.animation_finished.emit(&"fade_out") # to remove overlay
-	$AnimationPlayer.play_section(&"fade_in", 1.0 - $Fade/Fade.alpha)
+	if $Fade/Fade.alpha != 0.0:
+		$AnimationPlayer.play_section(&"fade_in", (1.0 - $Fade/Fade.alpha) * 0.4)
+	else:
+		$AnimationPlayer.animation_finished.emit.call_deferred(&"fade_in")
 	var waiting_fade_order := _fade_order
 	var anim_name: StringName = await $AnimationPlayer.animation_finished
 	if anim_name == &"fade_in" and _fade_order == waiting_fade_order:
@@ -120,7 +125,10 @@ func fade_out(cause: int, overlay: Control) -> void:
 	_fade_order += 1
 	if overlay != null:
 		overlay.reparent($Fade, false)
-	$AnimationPlayer.play_section(&"fade_out", $Fade/Fade.alpha)
+	if $Fade/Fade.alpha != 1.0:
+		$AnimationPlayer.play_section(&"fade_out", ($Fade/Fade.alpha) * 0.4)
+	else:
+		$AnimationPlayer.animation_finished.emit.call_deferred(&"fade_out")
 	var waiting_fade_order := _fade_order
 	var anim_name: StringName = await $AnimationPlayer.animation_finished
 	if overlay != null:

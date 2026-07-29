@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://55bpjexr684x"]
 
-[ext_resource type="Script" uid="uid://hld4gs38ov1v" path="res://app/src/main/cpp/gui/gui_list.gd" id="1_u6nvb"]
-[ext_resource type="PackedScene" uid="uid://dchd7a0cd1asv" path="res://app/src/main/cpp/c_touch_inertia.tscn" id="2_st7b2"]
+[ext_resource type="Script" uid="uid://hld4gs38ov1v" path="res://gui/gui_list.gd" id="1_u6nvb"]
+[ext_resource type="PackedScene" uid="uid://dchd7a0cd1asv" path="res://c_touch_inertia.tscn" id="2_st7b2"]
 
 [node name="GUIList" type="Control" unique_id=339150278]
 layout_mode = 3

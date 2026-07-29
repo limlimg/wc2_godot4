@@ -10,8 +10,6 @@ var _areas: Dictionary[int, CArea]
 var _disabled_areas: Dictionary[int, Sprite2D]
 var _scene_rect: Rect2
 
-signal move_camera_completed
-
 func init(areas_enable: String, map: int) -> void:
 	_area_mark.init(map)
 	_load_area_data(map)
@@ -166,3 +164,7 @@ func adjacent_areas_encirclement(id: int) -> void:
 
 func get_num_adjacent_areas(id: int) -> int:
 	return 0
+
+
+func is_moving() -> bool:
+	return true

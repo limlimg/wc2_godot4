@@ -3,10 +3,10 @@ extends GUIElement
 @export
 var conquest: int:
 	get():
-		return $GUICountryList/GUICountryList.conquest
+		return $GUICountryList.conquest
 	set(value):
 		if value != conquest:
-			$GUICountryList/GUICountryList.conquest = value
+			$GUICountryList.conquest = value
 			init()
 
 
@@ -14,14 +14,28 @@ var _country := -1
 
 signal ok_pressed
 
-func _ready() -> void:
-	init()
-
-
 func init() -> void:
-	#s_texture_res = load("res://scene_system_resource/selcountry_res/texture_res.tres").get_res()
+	if not is_node_ready():
+		return
+	super()
+	if ecGraphics.instance().content_scale_size_mode == 3:
+		s_texture_res.load_res("selcountry_hd.xml", false)
+	elif EC2dAppDelegate.g_content_scale_factor == 2.0:
+		s_texture_res.load_res("selcountry_hd.xml", true)
+	else:
+		s_texture_res.load_res("selcountry.xml", false)
 	_country = -1
 	_load_image_list(conquest)
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		if ecGraphics.instance().content_scale_size_mode == 3:
+			s_texture_res.unload_res("selcountry_hd.xml")
+		elif EC2dAppDelegate.g_content_scale_factor == 2.0:
+			s_texture_res.unload_res("selcountry_hd.xml")
+		else:
+			s_texture_res.unload_res("selcountry.xml")
 
 
 func _load_image_list(sel_conquest: int) -> void:

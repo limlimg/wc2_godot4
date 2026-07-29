@@ -22,11 +22,10 @@ var conquest := -1:
 
 signal country_selected(country: int)
 
-func _ready() -> void:
-	init()
-
-
 func init() -> void:
+	if not is_node_ready():
+		return
+	super()
 	if conquest == -1:
 		return
 	var battle_file_name = AppDelegate.get_battle_file_name(2, 0, conquest)

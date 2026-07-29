@@ -17,11 +17,10 @@ var show_restart: bool:
 
 var _stars: Array[Control]
 
-func _ready() -> void:
-	init()
-
-
 func init() -> void:
+	if not is_node_ready():
+		return
+	super()
 	var num_stars := g_GameManager.get_num_victory_stars()
 	while _stars.size() < num_stars:
 		var star := $RankStar/Prototype/RankStar.duplicate()

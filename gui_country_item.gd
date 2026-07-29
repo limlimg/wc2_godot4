@@ -9,10 +9,14 @@ var country_name: String:
 
 
 func init() -> void:
-	super()
-	if texture_res == null:
+	if not is_node_ready():
 		return
+	super()
 	var res := texture_res
+	if res == null:
+		res = s_texture_res
+	if res == null:
+		return
 	var attr := res.get_image("button_%s.png"%(country_name))
 	if attr != null:
 		$Control/ButtonImage.texture = attr

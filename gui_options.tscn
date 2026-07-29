@@ -1,24 +1,160 @@
 [gd_scene format=3 uid="uid://ug2i6qxj113x"]
 
-[ext_resource type="Script" uid="uid://470hu7gtgnhn" path="res://app/src/main/cpp/gui_options.gd" id="1_ruhul"]
-[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://app/src/main/cpp/resources/assets/texture/commonbg.tres" id="2_uk8uf"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="3_3wp5a"]
-[ext_resource type="Texture2D" uid="uid://bbsc65uvmk2yp" path="res://app/src/main/cpp/resources/assets/texture/board_options.tres" id="4_itflt"]
-[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://app/src/main/cpp/gui_button.tscn" id="5_igfu0"]
-[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back.png.tres" id="6_unpst"]
-[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_back_press.png.tres" id="7_0tb6l"]
-[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_gray.png.tres" id="8_i1u1b"]
-[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttontext_ok.png.tres" id="9_0tb6l"]
-[ext_resource type="Texture2D" uid="uid://ci0wp16g26jau" path="res://app/src/main/cpp/resources/assets/logo_gui_res/buttonboard_green.png.tres" id="10_i1u1b"]
-[ext_resource type="PackedScene" uid="uid://bc0r4i3w2pyf6" path="res://app/src/main/cpp/gui_scroll_bar.tscn" id="11_i1u1b"]
-[ext_resource type="Texture2D" uid="uid://u7jlvv3scj2j" path="res://app/src/main/cpp/resources/assets/logo_gui_res/slider.png.tres" id="12_q3n0e"]
-[ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://app/src/main/cpp/gui_button_ex.tscn" id="13_g40fc"]
-[ext_resource type="Texture2D" uid="uid://da3seh6qshw8f" path="res://app/src/main/cpp/resources/assets/logo_gui_res/check_ok.png.tres" id="14_mooxn"]
-[ext_resource type="PackedScene" uid="uid://w3w2er1hsdsq" path="res://app/src/main/cpp/gui_level_sel.tscn" id="15_mooxn"]
-[ext_resource type="Texture2D" uid="uid://bai8qomltrv7r" path="res://app/src/main/cpp/resources/assets/logo_gui_res/text_music.png.tres" id="16_w20t2"]
-[ext_resource type="Texture2D" uid="uid://mx4o6gdapkiv" path="res://app/src/main/cpp/resources/assets/logo_gui_res/text_sfx.png.tres" id="17_vlur8"]
-[ext_resource type="Texture2D" uid="uid://csb0chid0y67v" path="res://app/src/main/cpp/resources/assets/logo_gui_res/text_animation.png.tres" id="18_4svru"]
-[ext_resource type="Texture2D" uid="uid://dr5emm1lexxin" path="res://app/src/main/cpp/resources/assets/logo_gui_res/text_speed.png.tres" id="19_v2pjh"]
+[ext_resource type="Script" uid="uid://470hu7gtgnhn" path="res://gui_options.gd" id="1_ruhul"]
+[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://resources/assets/texture/commonbg.tres" id="2_uk8uf"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="3_d0ynr"]
+[ext_resource type="Texture2D" uid="uid://bbsc65uvmk2yp" path="res://resources/assets/texture/board_options.tres" id="4_itflt"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="4_nsfuo"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="5_igfu0"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="7_ngy6y"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="8_r1apu"]
+[ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://resources/assets/menu_gui_res/texture_res.tres" id="10_nsfuo"]
+[ext_resource type="PackedScene" uid="uid://bc0r4i3w2pyf6" path="res://gui_scroll_bar.tscn" id="11_i1u1b"]
+[ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://gui_button_ex.tscn" id="13_g40fc"]
+[ext_resource type="PackedScene" uid="uid://d2ake044dm8mq" path="res://gui_image.tscn" id="13_knly8"]
+[ext_resource type="PackedScene" uid="uid://w3w2er1hsdsq" path="res://gui_level_sel.tscn" id="15_mooxn"]
+
+[sub_resource type="Resource" id="Resource_4l12c"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(-256, 0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_ywbw2"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(-512, 0, 0, 0)
+
+[sub_resource type="Resource" id="Resource_4yntp"]
+script = ExtResource("8_r1apu")
+name = "buttontext_back.png"
+
+[sub_resource type="Resource" id="Resource_b4dmi"]
+script = ExtResource("8_r1apu")
+name = "buttontext_back_press.png"
+
+[sub_resource type="Resource" id="Resource_oo0i1"]
+script = ExtResource("8_r1apu")
+name = "buttonboard_gray.png"
+
+[sub_resource type="Resource" id="Resource_upv2v"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(0, 0, 32, 30)
+
+[sub_resource type="Resource" id="Resource_ewkda"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(0, 0, 40, 38)
+
+[sub_resource type="Resource" id="Resource_1scgp"]
+script = ExtResource("8_r1apu")
+name = "buttontext_ok.png"
+
+[sub_resource type="Resource" id="Resource_i5xih"]
+script = ExtResource("8_r1apu")
+name = "buttonboard_green.png"
+
+[sub_resource type="Resource" id="Resource_xevht"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(0, 0, 32, 30)
+
+[sub_resource type="Resource" id="Resource_50lxd"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(0, 0, 40, 38)
+
+[sub_resource type="Resource" id="Resource_ikmsq"]
+script = ExtResource("8_r1apu")
+name = "slider.png"
+
+[sub_resource type="Resource" id="Resource_ngy6y"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(-158, 82, 106, 31)
+
+[sub_resource type="Resource" id="Resource_r1apu"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(-318, 174, 212, 42)
+
+[sub_resource type="Resource" id="Resource_d0ynr"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(42, 82, 106, 31)
+
+[sub_resource type="Resource" id="Resource_nsfuo"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(82, 174, 212, 42)
+
+[sub_resource type="Resource" id="Resource_ahyo3"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(81, 145, 23, 23)
+
+[sub_resource type="Resource" id="Resource_pmi2d"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(160, 291, 46, 46)
+
+[sub_resource type="Resource" id="Resource_0i0yp"]
+script = ExtResource("8_r1apu")
+name = "buttontext_ok.png"
+name_ipad = "check_ok.png"
+
+[sub_resource type="Resource" id="Resource_eonad"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(81, 145, 23, 23)
+
+[sub_resource type="Resource" id="Resource_6xjs3"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(160, 291, 46, 46)
+
+[sub_resource type="Resource" id="Resource_qeety"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(45, 210, 101, 21)
+
+[sub_resource type="Resource" id="Resource_e0xtm"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(88, 429, 202, 22)
+
+[sub_resource type="Resource" id="Resource_nk5su"]
+script = ExtResource("8_r1apu")
+name = "text_music.png"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Resource" id="Resource_4pvh2"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(-104, 54, 0, 0)
+
+[sub_resource type="Resource" id="Resource_00orp"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(-212, 107, 0, 0)
+
+[sub_resource type="Resource" id="Resource_vqnl5"]
+script = ExtResource("8_r1apu")
+name = "text_sfx.png"
+
+[sub_resource type="Resource" id="Resource_l12k1"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(95, 54, 0, 0)
+
+[sub_resource type="Resource" id="Resource_aajrt"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(188, 107, 0, 0)
+
+[sub_resource type="Resource" id="Resource_054k6"]
+script = ExtResource("8_r1apu")
+name = "text_animation.png"
+
+[sub_resource type="Resource" id="Resource_lioqd"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(-104, 157, 0, 0)
+
+[sub_resource type="Resource" id="Resource_80glp"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(-212, 313, 0, 0)
+
+[sub_resource type="Resource" id="Resource_dxid3"]
+script = ExtResource("8_r1apu")
+name = "text_speed.png"
+
+[sub_resource type="Resource" id="Resource_knly8"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(-104, 222, 0, 0)
+
+[sub_resource type="Resource" id="Resource_dqttm"]
+script = ExtResource("4_nsfuo")
+rect = Rect2(-212, 442, 0, 0)
 
 [node name="GUIOptions" type="Control" unique_id=707334202]
 layout_mode = 3
@@ -40,207 +176,215 @@ texture = ExtResource("2_uk8uf")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="BoardOptions" parent="." unique_id=1576520916 instance=ExtResource("3_3wp5a")]
+[node name="BoardOptions" parent="." unique_id=1627139554 instance=ExtResource("3_d0ynr")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
+offset_left = -256.0
+offset_right = -256.0
 grow_vertical = 1
-rect_ipad = Rect2(-512, 0, 0, 0)
-rect = Rect2(-256, 0, 0, 0)
+rect = SubResource("Resource_4l12c")
+rect_ipad = SubResource("Resource_ywbw2")
 
 [node name="TextureRect" type="TextureRect" parent="BoardOptions" unique_id=1633968043]
-layout_mode = 2
+layout_mode = 0
 texture = ExtResource("4_itflt")
 stretch_mode = 2
 
-[node name="ButtonBack" parent="." unique_id=1540222566 instance=ExtResource("3_3wp5a")]
+[node name="ButtonBack" parent="." unique_id=2034275630 instance=ExtResource("5_igfu0")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
-offset_top = -30.0
-offset_right = 32.0
 grow_horizontal = 1
 grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
+texture_res = ExtResource("7_ngy6y")
+image_normal = SubResource("Resource_4yntp")
+image_pressed = SubResource("Resource_b4dmi")
+image_background = SubResource("Resource_oo0i1")
+rect = SubResource("Resource_upv2v")
+rect_ipad = SubResource("Resource_ewkda")
 
-[node name="GUIButton" parent="ButtonBack" unique_id=2034275630 instance=ExtResource("5_igfu0")]
-layout_mode = 2
-texture_normal = ExtResource("6_unpst")
-texture_pressed = ExtResource("7_0tb6l")
-texture_background = ExtResource("8_i1u1b")
-
-[node name="ButtonOk" parent="." unique_id=568635877 instance=ExtResource("3_3wp5a")]
+[node name="ButtonOk" parent="." unique_id=112910976 instance=ExtResource("5_igfu0")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
-offset_left = -32.0
-offset_top = -30.0
 grow_horizontal = 0
 grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
+texture_res = ExtResource("7_ngy6y")
+image_normal = SubResource("Resource_1scgp")
+image_pressed = SubResource("Resource_1scgp")
+image_background = SubResource("Resource_i5xih")
+rect = SubResource("Resource_xevht")
+rect_ipad = SubResource("Resource_50lxd")
 
-[node name="GUIButton" parent="ButtonOk" unique_id=112910976 instance=ExtResource("5_igfu0")]
-layout_mode = 2
-texture_normal = ExtResource("9_0tb6l")
-texture_pressed = ExtResource("9_0tb6l")
-texture_background = ExtResource("10_i1u1b")
-
-[node name="Music" parent="." unique_id=1139800160 instance=ExtResource("3_3wp5a")]
+[node name="Music" parent="." unique_id=2087203300 instance=ExtResource("11_i1u1b")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
+offset_left = -158.0
+offset_top = 82.0
+offset_right = -158.0
+offset_bottom = 82.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(-318, 174, 212, 42)
-rect = Rect2(-158, 82, 106, 31)
-
-[node name="GUIScrollBar" parent="Music" unique_id=2087203300 instance=ExtResource("11_i1u1b")]
-layout_mode = 2
+texture_res = ExtResource("10_nsfuo")
+image_normal = SubResource("Resource_ikmsq")
+image_pressed = SubResource("Resource_ikmsq")
 horizontal = true
 max_value = 100.0
+value = 50.0
 grabber_size_ipad = Vector2(26, 42)
 grabber_size = Vector2(13, 21)
-texture_normal = ExtResource("12_q3n0e")
-texture_pressed = ExtResource("12_q3n0e")
+rect = SubResource("Resource_ngy6y")
+rect_ipad = SubResource("Resource_r1apu")
 
-[node name="SFX" parent="." unique_id=1153847570 instance=ExtResource("3_3wp5a")]
+[node name="SFX" parent="." unique_id=1952883568 instance=ExtResource("11_i1u1b")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
+offset_left = 42.0
+offset_top = 82.0
+offset_right = 42.0
+offset_bottom = 82.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(82, 174, 212, 42)
-rect = Rect2(42, 82, 106, 31)
-
-[node name="GUIScrollBar" parent="SFX" unique_id=1952883568 instance=ExtResource("11_i1u1b")]
-layout_mode = 2
+texture_res = ExtResource("10_nsfuo")
+image_normal = SubResource("Resource_ikmsq")
+image_pressed = SubResource("Resource_ikmsq")
 horizontal = true
 max_value = 100.0
+value = 50.0
 grabber_size_ipad = Vector2(26, 42)
 grabber_size = Vector2(13, 21)
-texture_normal = ExtResource("12_q3n0e")
-texture_pressed = ExtResource("12_q3n0e")
+rect = SubResource("Resource_d0ynr")
+rect_ipad = SubResource("Resource_nsfuo")
 
-[node name="AnimationButton" parent="." unique_id=630223689 instance=ExtResource("3_3wp5a")]
+[node name="AnimationButton" parent="." unique_id=1535915774 instance=ExtResource("5_igfu0")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
+offset_left = 81.0
+offset_top = 145.0
+offset_right = 81.0
+offset_bottom = 145.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(160, 291, 46, 46)
-rect = Rect2(81, 145, 23, 23)
+rect = SubResource("Resource_ahyo3")
+rect_ipad = SubResource("Resource_pmi2d")
 
-[node name="GUIButton" parent="AnimationButton" unique_id=1535915774 instance=ExtResource("5_igfu0")]
-layout_mode = 2
-
-[node name="AnimationCheck" parent="." unique_id=88619924 instance=ExtResource("3_3wp5a")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
-rect_ipad = Rect2(160, 291, 46, 46)
-rect = Rect2(81, 145, 23, 23)
-
-[node name="GUIButtonEx" parent="AnimationCheck" unique_id=1833060967 instance=ExtResource("13_g40fc")]
+[node name="AnimationCheck" parent="." unique_id=1833060967 instance=ExtResource("13_g40fc")]
 visible = false
-layout_mode = 2
-texture_text_not_pressed = ExtResource("14_mooxn")
-texture_text_pressed = ExtResource("14_mooxn")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 81.0
+offset_top = 145.0
+offset_right = 81.0
+offset_bottom = 145.0
+grow_horizontal = 1
+grow_vertical = 1
+image_text_normal = SubResource("Resource_0i0yp")
+image_text_pressed = SubResource("Resource_0i0yp")
 image_position_ipad = Vector2(-6, -5)
 image_position = Vector2(-6, -5)
+texture_res = ExtResource("7_ngy6y")
+rect = SubResource("Resource_eonad")
+rect_ipad = SubResource("Resource_6xjs3")
 
-[node name="Speed" parent="." unique_id=1788259704 instance=ExtResource("3_3wp5a")]
+[node name="GameSpeed" parent="." unique_id=528832786 instance=ExtResource("15_mooxn")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
+offset_left = 45.0
+offset_top = 210.0
+offset_right = 146.0
+offset_bottom = 231.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(88, 429, 202, 22)
-rect = Rect2(45, 210, 101, 21)
-
-[node name="GUILevelSel" parent="Speed" unique_id=528832786 instance=ExtResource("15_mooxn")]
-layout_mode = 2
 max_value = 5
+rect = SubResource("Resource_qeety")
+rect_ipad = SubResource("Resource_e0xtm")
 
-[node name="TextMusic" parent="." unique_id=106312095 instance=ExtResource("3_3wp5a")]
+[node name="TextMusic" parent="." unique_id=1342067132 instance=ExtResource("13_knly8")]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-grow_horizontal = 1
+offset_left = -104.0
+offset_top = 54.0
+offset_right = -104.0
+offset_bottom = 54.0
 grow_vertical = 1
-rect_ipad = Rect2(-212, 107, 0, 0)
-rect = Rect2(-104, 54, 0, 0)
+texture_res = ExtResource("7_ngy6y")
+asset = SubResource("Resource_nk5su")
+rect = SubResource("Resource_4pvh2")
+rect_ipad = SubResource("Resource_00orp")
 
-[node name="TextureRect" type="TextureRect" parent="TextMusic" unique_id=2143104819]
-layout_mode = 2
-texture = ExtResource("16_w20t2")
-
-[node name="TextSFX" parent="." unique_id=1176912910 instance=ExtResource("3_3wp5a")]
+[node name="TextSFX" parent="." unique_id=2117732028 instance=ExtResource("13_knly8")]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-grow_horizontal = 1
+offset_left = 95.0
+offset_top = 54.0
+offset_right = 95.0
+offset_bottom = 54.0
 grow_vertical = 1
-rect_ipad = Rect2(188, 107, 0, 0)
-rect = Rect2(95, 54, 0, 0)
+texture_res = ExtResource("7_ngy6y")
+asset = SubResource("Resource_vqnl5")
+rect = SubResource("Resource_l12k1")
+rect_ipad = SubResource("Resource_aajrt")
 
-[node name="TextureRect" type="TextureRect" parent="TextSFX" unique_id=1437623514]
-layout_mode = 2
-texture = ExtResource("17_vlur8")
-
-[node name="TextAnimation" parent="." unique_id=1896449178 instance=ExtResource("3_3wp5a")]
+[node name="TextAnimation" parent="." unique_id=1267847731 instance=ExtResource("13_knly8")]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-grow_horizontal = 1
+offset_left = -104.0
+offset_top = 157.0
+offset_right = -104.0
+offset_bottom = 157.0
 grow_vertical = 1
-rect_ipad = Rect2(-212, 313, 0, 0)
-rect = Rect2(-104, 157, 0, 0)
+texture_res = ExtResource("7_ngy6y")
+asset = SubResource("Resource_054k6")
+rect = SubResource("Resource_lioqd")
+rect_ipad = SubResource("Resource_80glp")
 
-[node name="TextureRect" type="TextureRect" parent="TextAnimation" unique_id=1566140996]
-layout_mode = 2
-texture = ExtResource("18_4svru")
-
-[node name="TextSpeed" parent="." unique_id=139534771 instance=ExtResource("3_3wp5a")]
+[node name="TextSpeed" parent="." unique_id=1946059887 instance=ExtResource("13_knly8")]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
-grow_horizontal = 1
+offset_left = -104.0
+offset_top = 222.0
+offset_right = -104.0
+offset_bottom = 222.0
 grow_vertical = 1
-rect_ipad = Rect2(-212, 442, 0, 0)
-rect = Rect2(-104, 222, 0, 0)
-
-[node name="TextureRect" type="TextureRect" parent="TextSpeed" unique_id=292977094]
-layout_mode = 2
-texture = ExtResource("19_v2pjh")
+texture_res = ExtResource("7_ngy6y")
+asset = SubResource("Resource_dxid3")
+rect = SubResource("Resource_knly8")
+rect_ipad = SubResource("Resource_dqttm")
 
 [connection signal="back_pressed" from="." to="." method="_on_gui_button_back_pressed"]
-[connection signal="pressed" from="ButtonBack/GUIButton" to="." method="_on_gui_button_back_pressed"]
-[connection signal="pressed" from="ButtonOk/GUIButton" to="." method="_on_gui_button_ok_pressed"]
-[connection signal="pressed" from="AnimationButton/GUIButton" to="." method="_set_animation" binds= [true]]
-[connection signal="pressed" from="AnimationCheck/GUIButtonEx" to="." method="_set_animation" binds= [false]]
+[connection signal="pressed" from="ButtonBack" to="." method="_on_gui_button_back_pressed"]
+[connection signal="pressed" from="ButtonOk" to="." method="_on_gui_button_ok_pressed"]
+[connection signal="pressed" from="AnimationButton" to="." method="_set_animation" binds= [true]]
+[connection signal="pressed" from="AnimationCheck" to="." method="_set_animation" binds= [false]]

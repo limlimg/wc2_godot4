@@ -25,23 +25,24 @@ var level: int:
 
 
 func _ready() -> void:
-	init()
+	super()
 	_on_render()
 
 
-func _on_asset_changed() -> void:
-	super()
-	init()
-
-
 func init() -> void:
+	if not is_node_ready():
+		return
+	super()
 	set_level(level)
 
 
 func set_level(value: int) -> void:
 	level = value
-	if texture_res != null:
-		$Medal.texture = texture_res.get_image("medal_{0}_{1}.png".format([_WAR_MEDAL_NAME[medal], level]))
+	var res := texture_res
+	if res == null:
+		res = s_texture_res
+	if res != null:
+		$Medal.texture = res.get_image("medal_{0}_{1}.png".format([_WAR_MEDAL_NAME[medal], level]))
 		_on_render()
 	else:
 		$Medal.texture = null

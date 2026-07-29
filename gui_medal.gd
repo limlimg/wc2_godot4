@@ -15,7 +15,7 @@ var _medal := 0:
 func set_medal(value: int) -> void:
 	if value != _medal:
 		_medal = value
-		$GUIRect/ecText.set_text(str(value))
+		$GUIElement/ecText.set_text(str(value))
 
 
 func _process(delta: float) -> void:

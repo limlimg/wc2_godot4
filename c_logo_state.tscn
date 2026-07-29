@@ -1,14 +1,35 @@
 [gd_scene format=3 uid="uid://k1rddnv5q5m8"]
 
 [ext_resource type="Script" uid="uid://c2o7l5cd0x8vw" path="res://c_logo_state.gd" id="1_b54l6"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_16a6w"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="3_16a6w"]
+[ext_resource type="Script" uid="uid://8hwlr3pkh8ko" path="res://ec_texture_rect.gd" id="4_0t5le"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="5_setpe"]
 
 [sub_resource type="Resource" id="Resource_hwx6b"]
 script = ExtResource("3_16a6w")
 name = "logo.webp"
 name_ipad = "logo_iPad.webp"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Resource" id="Resource_c5klu"]
+script = ExtResource("4_0t5le")
+region = Rect2(1, 1, 254, 254)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_62g6t"]
+script = ExtResource("4_0t5le")
+region = Rect2(1, 1, 510, 510)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_1kvt5"]
+script = ExtResource("5_setpe")
+rect = Rect2(0, 0, 254, 254)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_fto0o"]
+script = ExtResource("5_setpe")
+rect = Rect2(0, 0, 510, 510)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [node name="CLogoState" type="Control" unique_id=1619107626]
 layout_mode = 3
@@ -27,7 +48,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Logo" parent="." unique_id=1576520916 instance=ExtResource("2_16a6w")]
+[node name="GUIImage" parent="." unique_id=879262850 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -38,9 +59,8 @@ offset_left = -127.0
 offset_top = -127.0
 offset_right = 127.0
 offset_bottom = 127.0
-rect_ipad = Rect2(0, 0, 510, 510)
-rect = Rect2(0, 0, 254, 254)
-
-[node name="GUIImage" parent="Logo" unique_id=879262850 instance_placeholder="res://gui_image.tscn"]
-layout_mode = 2
 asset = SubResource("Resource_hwx6b")
+texture_rect = SubResource("Resource_c5klu")
+texture_rect_ipad = SubResource("Resource_62g6t")
+rect = SubResource("Resource_1kvt5")
+rect_ipad = SubResource("Resource_fto0o")

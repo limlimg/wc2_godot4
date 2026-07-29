@@ -1,13 +1,49 @@
 [gd_scene format=3 uid="uid://bcrmfestr2423"]
 
 [ext_resource type="Script" uid="uid://klh7m6ek13wo" path="res://gui_end.gd" id="1_s0ohu"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="1_v01nc"]
-[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://resources/assets/texture/commonbg.tres" id="2_74sbm"]
-[ext_resource type="PackedScene" uid="uid://caf0v7eqneb01" path="res://gui/gui_rect_4_container.tscn" id="2_v8bo1"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="2_bcayu"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="3_v8bo1"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="4_2bnpi"]
-[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://resources/assets/logo_gui_res/buttontext_back.png.tres" id="5_p170c"]
-[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://resources/assets/logo_gui_res/buttontext_back_press.png.tres" id="6_wbcbj"]
-[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://resources/assets/logo_gui_res/buttonboard_gray.png.tres" id="7_qn48w"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="5_74sbm"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="6_h6kcb"]
+
+[sub_resource type="Resource" id="Resource_yaqsy"]
+script = ExtResource("3_v8bo1")
+rect = Rect2(0, 0, 480, 320)
+
+[sub_resource type="Resource" id="Resource_nqj5j"]
+script = ExtResource("3_v8bo1")
+rect = Rect2(0, 0, 1024, 768)
+
+[sub_resource type="Resource" id="Resource_otebj"]
+script = ExtResource("3_v8bo1")
+rect = Rect2(0, 0, 640, 320)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_5loo4"]
+script = ExtResource("3_v8bo1")
+rect = Rect2(0, 0, 568, 320)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_4yntp"]
+script = ExtResource("6_h6kcb")
+name = "buttontext_back.png"
+
+[sub_resource type="Resource" id="Resource_b4dmi"]
+script = ExtResource("6_h6kcb")
+name = "buttontext_back_press.png"
+
+[sub_resource type="Resource" id="Resource_oo0i1"]
+script = ExtResource("6_h6kcb")
+name = "buttonboard_gray.png"
+
+[sub_resource type="Resource" id="Resource_7n0ay"]
+script = ExtResource("3_v8bo1")
+rect = Rect2(0, 0, 32, 30)
+
+[sub_resource type="Resource" id="Resource_drr22"]
+script = ExtResource("3_v8bo1")
+rect = Rect2(0, 0, 40, 38)
 
 [node name="GUIEnd" type="Control" unique_id=230513713]
 layout_mode = 3
@@ -18,18 +54,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_s0ohu")
 
-[node name="CommonBg" type="TextureRect" parent="." unique_id=274697649]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1379186737]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_74sbm")
-expand_mode = 1
-stretch_mode = 6
+color = Color(0, 0, 0, 1)
 
-[node name="GUIRect" parent="." unique_id=1576520916 instance=ExtResource("2_v8bo1")]
+[node name="FixedWidth" parent="." unique_id=1627139554 instance=ExtResource("2_bcayu")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,44 +74,35 @@ offset_left = -240.0
 offset_top = -160.0
 offset_right = 240.0
 offset_bottom = 160.0
-rect_640h = Rect2(0, 0, 640, 320)
-rect_568h = Rect2(0, 0, 568, 320)
-gui_scale_640h = Vector2(1, 1)
-gui_scale_568h = Vector2(1, 1)
-rect_ipad = Rect2(0, 0, 1024, 768)
-rect = Rect2(0, 0, 480, 320)
+rect = SubResource("Resource_yaqsy")
+rect_ipad = SubResource("Resource_nqj5j")
+rect_640h = SubResource("Resource_otebj")
+rect_568h = SubResource("Resource_5loo4")
 
-[node name="GUIEndAxis" parent="GUIRect" unique_id=270133824 instance_placeholder="res://gui/gui_end_axis.tscn"]
-layout_mode = 2
+[node name="GUIEndAxis" parent="FixedWidth" unique_id=270133824 instance_placeholder="res://gui/gui_end_axis.tscn"]
+layout_mode = 1
 
-[node name="GUIEndAllies" parent="GUIRect" unique_id=1799538278 instance_placeholder="res://gui/gui_end_allies.tscn"]
-layout_mode = 2
+[node name="GUIEndAllies" parent="FixedWidth" unique_id=1799538278 instance_placeholder="res://gui/gui_end_allies.tscn"]
+layout_mode = 1
 
-[node name="GUIEndWto" parent="GUIRect" unique_id=642609080 instance_placeholder="res://gui/gui_end_wto.tscn"]
-layout_mode = 2
+[node name="GUIEndWto" parent="FixedWidth" unique_id=642609080 instance_placeholder="res://gui/gui_end_wto.tscn"]
+layout_mode = 1
 
-[node name="GUIEndNato" parent="GUIRect" unique_id=1706292480 instance_placeholder="res://gui/gui_end_nato.tscn"]
-layout_mode = 2
+[node name="GUIEndNato" parent="FixedWidth" unique_id=1706292480 instance_placeholder="res://gui/gui_end_nato.tscn"]
+layout_mode = 1
 
-[node name="Control" type="Control" parent="GUIRect" unique_id=1782245039]
-layout_mode = 2
-
-[node name="ButtonBack" parent="GUIRect/Control" unique_id=1349729184 instance=ExtResource("1_v01nc")]
+[node name="ButtonBack" parent="FixedWidth" unique_id=2034275630 instance=ExtResource("4_2bnpi")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
-offset_top = -30.0
-offset_right = 32.0
 grow_horizontal = 1
 grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
+texture_res = ExtResource("5_74sbm")
+image_normal = SubResource("Resource_4yntp")
+image_pressed = SubResource("Resource_b4dmi")
+image_background = SubResource("Resource_oo0i1")
+rect = SubResource("Resource_7n0ay")
+rect_ipad = SubResource("Resource_drr22")
 
-[node name="GUIButton" parent="GUIRect/Control/ButtonBack" unique_id=2034275630 instance=ExtResource("4_2bnpi")]
-layout_mode = 2
-texture_normal = ExtResource("5_p170c")
-texture_pressed = ExtResource("6_wbcbj")
-texture_background = ExtResource("7_qn48w")
-
-[connection signal="pressed" from="GUIRect/Control/ButtonBack/GUIButton" to="." method="_on_gui_button_back_pressed"]
+[connection signal="pressed" from="FixedWidth/ButtonBack" to="." method="_on_gui_button_back_pressed"]

@@ -4,14 +4,45 @@
 [ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://game_res_render/ai_commander_medal.tscn" id="1_wuq0w"]
 [ext_resource type="Script" uid="uid://c61bupitgwiku" path="res://gui_defeated.gd" id="1_ydi4n"]
 [ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://game_res_render/commander_medal.tscn" id="2_f1uq0"]
-[ext_resource type="Resource" uid="uid://eoo8e238q75f" path="res://resources/assets/game_gui_defeated_res/texture_res.tres" id="2_l3fon"]
+[ext_resource type="Resource" uid="uid://eoo8e238q75f" path="res://resources/assets/game_gui_defeated_res/texture_res.tres" id="2_m2o1a"]
 [ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="2_y8yra"]
 [ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://gui_button_ex.tscn" id="3_ywyf6"]
 [ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="4_2qn58"]
-[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://resources/assets/logo_gui_res/buttontext_ok.png.tres" id="4_8iexs"]
-[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://resources/assets/logo_gui_res/buttontext_ok_press.png.tres" id="5_e2dqc"]
-[ext_resource type="Texture2D" uid="uid://c5scjcg2j0bqx" path="res://resources/assets/logo_gui_res/green_normal.png.tres" id="6_ydi4n"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="9_6vb1t"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="10_xsmeb"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="11_m2o1a"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="12_6vb1t"]
+
+[sub_resource type="Resource" id="Resource_1scgp"]
+script = ExtResource("10_xsmeb")
+name = "buttontext_ok.png"
+
+[sub_resource type="Resource" id="Resource_pgo8h"]
+script = ExtResource("10_xsmeb")
+name = "buttontext_ok_press.png"
+
+[sub_resource type="Resource" id="Resource_v0skf"]
+script = ExtResource("10_xsmeb")
+name = "green_normal.png"
+
+[sub_resource type="Resource" id="Resource_bvffp"]
+script = ExtResource("10_xsmeb")
+name = "ui1_hd.webp"
+
+[sub_resource type="Texture2D" id="Texture2D_g71tu"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("12_6vb1t")
+asset = SubResource("Resource_bvffp")
+res_scale = 2.0
+
+[sub_resource type="Texture2D" id="Texture2D_6vb1t"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("11_m2o1a")
+texture = SubResource("Texture2D_g71tu")
+region = Rect2(505.5, 51.5, 67.5, 36)
+origin = Vector2(1.5, 0.5)
 
 [node name="GUIDefeated" type="Control" unique_id=172360110]
 layout_mode = 3
@@ -21,8 +52,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ydi4n")
-texture_res = ExtResource("2_y8yra")
-flag_texture_res = ExtResource("2_l3fon")
+texture_res = ExtResource("2_m2o1a")
 
 [node name="Fade" parent="." unique_id=741495168 instance=ExtResource("4_2qn58")]
 alpha = 0.0
@@ -72,12 +102,15 @@ offset_right = 125.0
 offset_bottom = 172.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_text_not_pressed = ExtResource("4_8iexs")
-texture_text_pressed = ExtResource("5_e2dqc")
+image_text_normal = SubResource("Resource_1scgp")
+image_text_pressed = SubResource("Resource_pgo8h")
 image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
-texture_normal = ExtResource("6_ydi4n")
-texture_pressed = ExtResource("6_ydi4n")
+texture_res = ExtResource("2_y8yra")
+image_normal = SubResource("Resource_v0skf")
+image_pressed = SubResource("Resource_v0skf")
+texture_normal = SubResource("Texture2D_6vb1t")
+texture_pressed = SubResource("Texture2D_6vb1t")
 
 [connection signal="back_pressed" from="." to="." method="_on_button_ok_pressed"]
 [connection signal="back_pressed" from="Fade" to="." method="_on_button_ok_pressed"]

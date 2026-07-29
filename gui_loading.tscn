@@ -1,10 +1,20 @@
 [gd_scene format=3 uid="uid://bhdgsyd0pgf1d"]
 
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://app/src/main/cpp/gui/gui_rect_container.tscn" id="2_2y8tv"]
-[ext_resource type="Texture2D" uid="uid://ces6dlv70o7bo" path="res://app/src/main/cpp/resources/assets/texture/loading.tres" id="3_2vxlu"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_1xgrb"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="2_pjv0x"]
+[ext_resource type="Texture2D" uid="uid://ces6dlv70o7bo" path="res://resources/assets/texture/loading.tres" id="3_2vxlu"]
+
+[sub_resource type="Resource" id="Resource_464ft"]
+script = ExtResource("2_pjv0x")
+rect = Rect2(-76, -20, 78, 11)
+
+[sub_resource type="Resource" id="Resource_ho5yt"]
+script = ExtResource("2_pjv0x")
+rect = Rect2(-174, -38, 156, 22)
 
 [sub_resource type="Animation" id="Animation_2vxlu"]
 resource_name = "fade_in"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -12,7 +22,7 @@ tracks/0/path = NodePath(".:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 1.0]
@@ -32,18 +42,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GUIRect" parent="." unique_id=2065346353 instance=ExtResource("2_2y8tv")]
+[node name="GUIElement" parent="." unique_id=1627139554 instance=ExtResource("1_1xgrb")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
+offset_left = -76.0
+offset_top = -20.0
+offset_right = 2.0
+offset_bottom = -9.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(-174, -38, 156, 22)
-rect = Rect2(-76, -20, 78, 11)
+rect = SubResource("Resource_464ft")
+rect_ipad = SubResource("Resource_ho5yt")
 
-[node name="TextureRect" type="TextureRect" parent="GUIRect" unique_id=412329058]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="GUIElement" unique_id=412329058]
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 11.0
 texture = ExtResource("3_2vxlu")
 expand_mode = 1
 stretch_mode = 2

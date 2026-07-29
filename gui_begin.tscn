@@ -3,18 +3,101 @@
 [ext_resource type="Script" uid="uid://diyd1nbtjt7s4" path="res://gui_begin.gd" id="1_1x8k7"]
 [ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="2_1x8k7"]
 [ext_resource type="Texture2D" uid="uid://irajadqr0cpm" path="res://resources/assets/logo_gui_res/roundstart_board.png.tres" id="2_7ujwe"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_bq5nl"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="4_00kvo"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="5_bskrj"]
 [ext_resource type="PackedScene" uid="uid://c5ire5b7or3k5" path="res://gui_tech.tscn" id="5_lusf5"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="6_00kvo"]
 [ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="7_1x8k7"]
 [ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://gui_button_ex.tscn" id="7_2258h"]
-[ext_resource type="Texture2D" uid="uid://dyy2j0q616lyk" path="res://resources/assets/logo_gui_res/buttontext_ok.png.tres" id="8_8rls6"]
-[ext_resource type="Texture2D" uid="uid://cst6trot6kddy" path="res://resources/assets/logo_gui_res/buttontext_ok_press.png.tres" id="9_2qs2d"]
-[ext_resource type="Texture2D" uid="uid://c5scjcg2j0bqx" path="res://resources/assets/logo_gui_res/green_normal.png.tres" id="10_s2ojb"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="10_4x52i"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="11_gfhiv"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="11_jaih1"]
-[ext_resource type="Texture2D" uid="uid://b22vhptb88uen" path="res://resources/assets/logo_gui_res/buttontext_bank.png.tres" id="12_1x8k7"]
-[ext_resource type="Texture2D" uid="uid://cvvbmispgjgtb" path="res://resources/assets/logo_gui_res/buttontext_bank_press.png.tres" id="13_uwnyg"]
-[ext_resource type="Texture2D" uid="uid://carm17vg5uwio" path="res://resources/assets/logo_gui_res/blue_normal.png.tres" id="14_hlywc"]
+[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="12_ti42w"]
+
+[sub_resource type="Resource" id="Resource_bhsn6"]
+script = ExtResource("5_bskrj")
+
+[sub_resource type="Resource" id="Resource_priee"]
+script = ExtResource("5_bskrj")
+scale = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_8tc1c"]
+script = ExtResource("5_bskrj")
+
+[sub_resource type="Resource" id="Resource_jcpl3"]
+script = ExtResource("5_bskrj")
+scale = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_074fc"]
+script = ExtResource("5_bskrj")
+
+[sub_resource type="Resource" id="Resource_6qlyq"]
+script = ExtResource("5_bskrj")
+scale = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_d5tfe"]
+script = ExtResource("5_bskrj")
+
+[sub_resource type="Resource" id="Resource_ob4e0"]
+script = ExtResource("5_bskrj")
+scale = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_g2mqt"]
+script = ExtResource("5_bskrj")
+
+[sub_resource type="Resource" id="Resource_c0vhc"]
+script = ExtResource("5_bskrj")
+scale = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_dcvdl"]
+script = ExtResource("5_bskrj")
+
+[sub_resource type="Resource" id="Resource_3i02p"]
+script = ExtResource("5_bskrj")
+scale = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_1scgp"]
+script = ExtResource("10_4x52i")
+name = "buttontext_ok.png"
+
+[sub_resource type="Resource" id="Resource_pgo8h"]
+script = ExtResource("10_4x52i")
+name = "buttontext_ok_press.png"
+
+[sub_resource type="Resource" id="Resource_v0skf"]
+script = ExtResource("10_4x52i")
+name = "green_normal.png"
+
+[sub_resource type="Resource" id="Resource_bvffp"]
+script = ExtResource("10_4x52i")
+name = "ui1_hd.webp"
+
+[sub_resource type="Texture2D" id="Texture2D_g71tu"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("12_ti42w")
+asset = SubResource("Resource_bvffp")
+res_scale = 2.0
+
+[sub_resource type="Texture2D" id="Texture2D_6vb1t"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("11_gfhiv")
+texture = SubResource("Texture2D_g71tu")
+region = Rect2(505.5, 51.5, 67.5, 36)
+origin = Vector2(1.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_40ofo"]
+script = ExtResource("10_4x52i")
+name = "buttontext_bank.png"
+
+[sub_resource type="Resource" id="Resource_47ai8"]
+script = ExtResource("10_4x52i")
+name = "buttontext_bank_press.png"
+
+[sub_resource type="Resource" id="Resource_a0tjr"]
+script = ExtResource("10_4x52i")
+name = "blue_normal.png"
 
 [node name="GUIBegin" type="Control" unique_id=276795201]
 layout_mode = 3
@@ -31,7 +114,7 @@ script = ExtResource("1_1x8k7")
 texture = ExtResource("2_7ujwe")
 centered = false
 
-[node name="MedalSoldiers" parent="." unique_id=1576520916 instance=ExtResource("2_bq5nl")]
+[node name="MedalSoldiers" parent="." unique_id=1627139554 instance=ExtResource("4_00kvo")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -42,14 +125,15 @@ offset_right = 30.0
 offset_bottom = 168.0
 grow_horizontal = 1
 grow_vertical = 1
-gui_scale_ipad = Vector2(0.5, 0.5)
+rect = SubResource("Resource_bhsn6")
+rect_ipad = SubResource("Resource_priee")
 
 [node name="TextureRect" type="TextureRect" parent="MedalSoldiers" unique_id=302538141]
-layout_mode = 2
+layout_mode = 0
 expand_mode = 1
 stretch_mode = 2
 
-[node name="MedalAirforce" parent="." unique_id=2097053803 instance=ExtResource("2_bq5nl")]
+[node name="MedalAirforce" parent="." unique_id=2083821507 instance=ExtResource("4_00kvo")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -60,14 +144,15 @@ offset_right = 54.0
 offset_bottom = 168.0
 grow_horizontal = 1
 grow_vertical = 1
-gui_scale_ipad = Vector2(0.5, 0.5)
+rect = SubResource("Resource_8tc1c")
+rect_ipad = SubResource("Resource_jcpl3")
 
 [node name="TextureRect" type="TextureRect" parent="MedalAirforce" unique_id=1449140460]
-layout_mode = 2
+layout_mode = 0
 expand_mode = 1
 stretch_mode = 2
 
-[node name="MedalCannon" parent="." unique_id=2081393038 instance=ExtResource("2_bq5nl")]
+[node name="MedalCannon" parent="." unique_id=627666453 instance=ExtResource("4_00kvo")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -78,14 +163,15 @@ offset_right = 78.0
 offset_bottom = 168.0
 grow_horizontal = 1
 grow_vertical = 1
-gui_scale_ipad = Vector2(0.5, 0.5)
+rect = SubResource("Resource_074fc")
+rect_ipad = SubResource("Resource_6qlyq")
 
 [node name="TextureRect" type="TextureRect" parent="MedalCannon" unique_id=697870178]
-layout_mode = 2
+layout_mode = 0
 expand_mode = 1
 stretch_mode = 2
 
-[node name="MedalPanzer" parent="." unique_id=1011255718 instance=ExtResource("2_bq5nl")]
+[node name="MedalPanzer" parent="." unique_id=1861332648 instance=ExtResource("4_00kvo")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -96,14 +182,15 @@ offset_right = 102.0
 offset_bottom = 168.0
 grow_horizontal = 1
 grow_vertical = 1
-gui_scale_ipad = Vector2(0.5, 0.5)
+rect = SubResource("Resource_d5tfe")
+rect_ipad = SubResource("Resource_ob4e0")
 
 [node name="TextureRect" type="TextureRect" parent="MedalPanzer" unique_id=1292116143]
-layout_mode = 2
+layout_mode = 0
 expand_mode = 1
 stretch_mode = 2
 
-[node name="MedalNavy" parent="." unique_id=1391035779 instance=ExtResource("2_bq5nl")]
+[node name="MedalNavy" parent="." unique_id=856299712 instance=ExtResource("4_00kvo")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -114,14 +201,15 @@ offset_right = 126.0
 offset_bottom = 168.0
 grow_horizontal = 1
 grow_vertical = 1
-gui_scale_ipad = Vector2(0.5, 0.5)
+rect = SubResource("Resource_g2mqt")
+rect_ipad = SubResource("Resource_c0vhc")
 
 [node name="TextureRect" type="TextureRect" parent="MedalNavy" unique_id=488991818]
-layout_mode = 2
+layout_mode = 0
 expand_mode = 1
 stretch_mode = 2
 
-[node name="MedalHonor" parent="." unique_id=927559756 instance=ExtResource("2_bq5nl")]
+[node name="MedalHonor" parent="." unique_id=1015450185 instance=ExtResource("4_00kvo")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -132,10 +220,11 @@ offset_right = 150.0
 offset_bottom = 168.0
 grow_horizontal = 1
 grow_vertical = 1
-gui_scale_ipad = Vector2(0.5, 0.5)
+rect = SubResource("Resource_dcvdl")
+rect_ipad = SubResource("Resource_3i02p")
 
 [node name="TextureRect" type="TextureRect" parent="MedalHonor" unique_id=1160762368]
-layout_mode = 2
+layout_mode = 0
 expand_mode = 1
 stretch_mode = 2
 
@@ -200,12 +289,15 @@ offset_right = 178.0
 offset_bottom = 257.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_text_not_pressed = ExtResource("8_8rls6")
-texture_text_pressed = ExtResource("9_2qs2d")
+image_text_normal = SubResource("Resource_1scgp")
+image_text_pressed = SubResource("Resource_pgo8h")
 image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
-texture_normal = ExtResource("10_s2ojb")
-texture_pressed = ExtResource("10_s2ojb")
+texture_res = ExtResource("7_1x8k7")
+image_normal = SubResource("Resource_v0skf")
+image_pressed = SubResource("Resource_v0skf")
+texture_normal = SubResource("Texture2D_6vb1t")
+texture_pressed = SubResource("Texture2D_6vb1t")
 
 [node name="ButtonBank" parent="." unique_id=1569546698 instance=ExtResource("11_jaih1")]
 layout_mode = 0
@@ -218,9 +310,10 @@ offset_right = 71.0
 offset_bottom = 257.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_normal = ExtResource("12_1x8k7")
-texture_pressed = ExtResource("13_uwnyg")
-texture_background = ExtResource("14_hlywc")
+texture_res = ExtResource("7_1x8k7")
+image_normal = SubResource("Resource_40ofo")
+image_pressed = SubResource("Resource_47ai8")
+image_background = SubResource("Resource_a0tjr")
 
 [connection signal="back_pressed" from="." to="." method="_on_button_ok_pressed"]
 [connection signal="back_pressed" from="Fade" to="." method="_on_button_ok_pressed"]

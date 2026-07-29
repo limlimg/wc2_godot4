@@ -135,7 +135,8 @@ func proc_motion() -> bool:
 					new_pos.x = target.x
 				if new_sign.y != target_sign.y:
 					new_pos.y = target.y
-				motion.node.position = new_pos
+				motion.node.position += new_pos - motion.cur
+				motion.cur = new_pos
 				if report:
 					report_any = true
 	return report_any

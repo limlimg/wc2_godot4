@@ -16,17 +16,15 @@ var campaign := -1:
 			for i in _items:
 				i.queue_free()
 			_items.clear()
-			if is_node_ready():
-				init()
+			init()
 
 
 signal battle_selected(battle: int)
 
-func _ready() -> void:
-	init()
-
-
 func init() -> void:
+	if not is_node_ready():
+		return
+	super()
 	if campaign == -1:
 		return
 	var num_battles = AppDelegate.get_num_battles(campaign)

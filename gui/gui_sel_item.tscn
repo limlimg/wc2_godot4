@@ -1,9 +1,20 @@
 [gd_scene format=3 uid="uid://c1rdjdnbkq2v"]
 
 [ext_resource type="Script" uid="uid://dsb0y4ax1t1dh" path="res://gui/gui_sel_item.gd" id="1_2s3h4"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_ogrdh"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="2_opkyq"]
 [ext_resource type="Texture2D" uid="uid://dg6hbf8mwqrwq" path="res://resources/assets/logo_gui_res/mark_locked.png.tres" id="3_2asny"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="3_jtl4x"]
 [ext_resource type="Texture2D" uid="uid://6mcfqarlnark" path="res://resources/assets/logo_gui_res/small_rankstar.png.tres" id="4_p240s"]
+
+[sub_resource type="Resource" id="Resource_nb7lm"]
+script = ExtResource("3_jtl4x")
+rect = Rect2(67, 22, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_v274g"]
+script = ExtResource("3_jtl4x")
+rect = Rect2(134, 44, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mf3m"]
 
@@ -28,8 +39,6 @@ mouse_filter = 2
 
 [node name="ButtonImage" type="TextureRect" parent="Control" unique_id=1928824000]
 layout_mode = 0
-expand_mode = 1
-stretch_mode = 2
 
 [node name="TextImage" type="TextureRect" parent="Control" unique_id=833545168]
 layout_mode = 1
@@ -39,20 +48,26 @@ anchor_bottom = 0.5
 expand_mode = 1
 stretch_mode = 2
 
-[node name="MarkLocked" parent="Control" unique_id=1576520916 instance=ExtResource("2_ogrdh")]
+[node name="MarkLocked" parent="Control" unique_id=1627139554 instance=ExtResource("2_opkyq")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_left = 67.0
+offset_top = 22.0
+offset_right = 67.0
+offset_bottom = 22.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(134, 44, 0, 0)
-rect = Rect2(67, 22, 0, 0)
-gui_scale_ipad = Vector2(0.8, 0.8)
-gui_scale = Vector2(0.8, 0.8)
+scale = Vector2(0.8, 0.8)
+rect = SubResource("Resource_nb7lm")
+rect_ipad = SubResource("Resource_v274g")
 
 [node name="TextureRect" type="TextureRect" parent="Control/MarkLocked" unique_id=521815329]
-layout_mode = 2
+layout_mode = 0
+offset_right = 26.0
+offset_bottom = 31.0
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_2asny")
 
 [node name="SmallRankStar" type="Sprite2D" parent="Control" unique_id=1368077084]

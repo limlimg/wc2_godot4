@@ -4,7 +4,7 @@ var _loading: Control
 var _loading_title: Control
 
 func _on_enter() -> void:
-	_loading = $Loading/GUIImage.create_instance()
+	_loading = $Loading.create_instance()
 	_loading_title = $LoadingTitle.create_instance()
 	$Tip/ecText.text = "tip {0}".format([randi_range(1, 11)])
 	GUIManager.instance().fade_in(-1)

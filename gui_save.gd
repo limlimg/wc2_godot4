@@ -5,7 +5,7 @@ var game_mode: int:
 	set(value):
 		if value != game_mode:
 			game_mode = value
-			_update_items()
+			init()
 
 
 @export
@@ -18,15 +18,20 @@ var loading: bool:
 
 var _selected := -1
 
-@onready var _list := [$Control/SaveItem/GUISaveItem, $Control/SaveItem2/GUISaveItem, $Control/SaveItem3/GUISaveItem, $Control/SaveItem4/GUISaveItem, $Control/SaveItem5/GUISaveItem, $Control/SaveItem6/GUISaveItem, $Control/AutoSaveItem/GUIAutoSaveItem]
+@onready var _list := [$GUISaveItem, $GUISaveItem2, $GUISaveItem3, $GUISaveItem4, $GUISaveItem5, $GUISaveItem6, $GUIAutoSaveItem]
 
 signal ok_pressed
 
-func _ready() -> void:
-	_update_items()
-
-
-func _update_items() -> void:
+func init() -> void:
+	if not is_node_ready():
+		return
+	super()
+	if ecGraphics.instance().content_scale_size_mode == 3:
+		s_texture_res.load_res("flag_hd.xml", false)
+	elif EC2dAppDelegate.g_content_scale_factor == 2.0:
+		s_texture_res.load_res("flag_hd.xml", true)
+	else:
+		s_texture_res.load_res("flag.xml", false)
 	for i in _list.size():
 		var save_name: String
 		if game_mode == 2:
@@ -51,30 +56,40 @@ func _update_items() -> void:
 			_list[i].minute = header.save_time_min
 	_update_enable()
 	_selected = -1
-	$ButtonOk/GUIButton.enable = false
+	$ButtonOk.enable = false
 
 
 func _update_enable() -> void:
 	if loading:
-		$Control/SaveItem/GUISaveItem.enable = not $Control/SaveItem/GUISaveItem.empty
-		$Control/SaveItem2/GUISaveItem.enable = not $Control/SaveItem2/GUISaveItem.empty
-		$Control/SaveItem3/GUISaveItem.enable = not $Control/SaveItem3/GUISaveItem.empty
-		$Control/SaveItem4/GUISaveItem.enable = not $Control/SaveItem4/GUISaveItem.empty
-		$Control/SaveItem5/GUISaveItem.enable = not $Control/SaveItem5/GUISaveItem.empty
-		$Control/SaveItem6/GUISaveItem.enable = not $Control/SaveItem6/GUISaveItem.empty
-		$Control/AutoSaveItem/GUIAutoSaveItem.enable = not $Control/AutoSaveItem/GUIAutoSaveItem.empty
+		$GUISaveItem.enable = not $GUISaveItem.empty
+		$GUISaveItem2.enable = not $GUISaveItem2.empty
+		$GUISaveItem3.enable = not $GUISaveItem3.empty
+		$GUISaveItem4.enable = not $GUISaveItem4.empty
+		$GUISaveItem5.enable = not $GUISaveItem5.empty
+		$GUISaveItem6.enable = not $GUISaveItem6.empty
+		$GUIAutoSaveItem.enable = not $GUIAutoSaveItem.empty
 	else:
-		$Control/SaveItem/GUISaveItem.enable = true
-		$Control/SaveItem2/GUISaveItem.enable = true
-		$Control/SaveItem3/GUISaveItem.enable = true
-		$Control/SaveItem4/GUISaveItem.enable = true
-		$Control/SaveItem5/GUISaveItem.enable = true
-		$Control/SaveItem6/GUISaveItem.enable = true
-		$Control/AutoSaveItem/GUIAutoSaveItem.enable = false
+		$GUISaveItem.enable = true
+		$GUISaveItem2.enable = true
+		$GUISaveItem3.enable = true
+		$GUISaveItem4.enable = true
+		$GUISaveItem5.enable = true
+		$GUISaveItem6.enable = true
+		$GUIAutoSaveItem.enable = false
 
 
-func _on_gui_save_item_pressed(item: int) -> void:
-	_sel_item(item)
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		if ecGraphics.instance().content_scale_size_mode == 3:
+			s_texture_res.unload_res("flag_hd.xml")
+		elif EC2dAppDelegate.g_content_scale_factor == 2.0:
+			s_texture_res.unload_res("flag_hd.xml")
+		else:
+			s_texture_res.unload_res("flag.xml")
+
+
+func _on_gui_save_item_pressed(source: Node) -> void:
+	_sel_item(_list.find(source))
 
 
 func _sel_item(item: int) -> void:
@@ -82,7 +97,7 @@ func _sel_item(item: int) -> void:
 	for i in _list.size():
 		_list[i].selected = i == item
 		_list[i].get_parent().show_behind_parent = i == item
-	$ButtonOk/GUIButton.enable = true
+	$ButtonOk.enable = true
 
 
 func _on_gui_button_ok_pressed() -> void:

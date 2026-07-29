@@ -2,12 +2,35 @@
 
 [ext_resource type="Script" uid="uid://clsohyo5himsx" path="res://gui_exit_warning.gd" id="1_6ytht"]
 [ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="2_kjn2k"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="3_5avr6"]
-[ext_resource type="Texture2D" uid="uid://ctj87p2f2ndcd" path="res://resources/assets/texture/board_locked.tres" id="3_kjn2k"]
 [ext_resource type="Texture2D" uid="uid://bi4s1a8uua7dp" path="res://resources/assets/texture/board_exit.tres" id="4_5avr6"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="5_3l6l5"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="5_kjn2k"]
-[ext_resource type="Texture2D" uid="uid://stjpuq26l3gi" path="res://resources/assets/logo_gui_res/button_cancleexit.png.tres" id="6_l4im6"]
-[ext_resource type="Texture2D" uid="uid://cgm24k31skmn" path="res://resources/assets/logo_gui_res/button_confirmexit.png.tres" id="7_ctosj"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="8_aujea"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="9_r4par"]
+
+[sub_resource type="Resource" id="Resource_mmhwl"]
+script = ExtResource("9_r4par")
+name = "button_cancleexit.png"
+
+[sub_resource type="Resource" id="Resource_8nbdp"]
+script = ExtResource("5_3l6l5")
+rect = Rect2(5, 95, 40, 38)
+
+[sub_resource type="Resource" id="Resource_lo0yr"]
+script = ExtResource("5_3l6l5")
+rect = Rect2(10, 190, 80, 76)
+
+[sub_resource type="Resource" id="Resource_fg6kk"]
+script = ExtResource("9_r4par")
+name = "button_confirmexit.png"
+
+[sub_resource type="Resource" id="Resource_uvya5"]
+script = ExtResource("5_3l6l5")
+rect = Rect2(175, 95, 40, 38)
+
+[sub_resource type="Resource" id="Resource_8tsxh"]
+script = ExtResource("5_3l6l5")
+rect = Rect2(350, 190, 80, 76)
 
 [node name="GUIExitWarning" type="Control" unique_id=986775281]
 layout_mode = 3
@@ -24,62 +47,43 @@ script = ExtResource("1_6ytht")
 texture = ExtResource("4_5avr6")
 centered = false
 
-[node name="BoardExit" parent="." unique_id=808960343 instance=ExtResource("3_5avr6")]
-visible = false
-layout_mode = 0
+[node name="CancleExit" parent="." unique_id=2034275630 instance=ExtResource("5_kjn2k")]
+layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 222.0
-offset_bottom = 126.0
+offset_left = 5.0
+offset_top = 95.0
+offset_right = 5.0
+offset_bottom = 95.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(-4, -4, 0, 0)
-rect = Rect2(-2, -2, 0, 0)
-
-[node name="TextureRect" type="TextureRect" parent="BoardExit" unique_id=1493583902]
-layout_mode = 2
-texture = ExtResource("3_kjn2k")
-expand_mode = 1
-stretch_mode = 2
-
-[node name="CancleExit" parent="." unique_id=681392948 instance=ExtResource("3_5avr6")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_right = 222.0
-offset_bottom = 126.0
-grow_horizontal = 1
-grow_vertical = 1
-rect_ipad = Rect2(10, 190, 80, 76)
-rect = Rect2(5, 95, 40, 38)
-
-[node name="GUIButton" parent="CancleExit" unique_id=2034275630 instance=ExtResource("5_kjn2k")]
-layout_mode = 2
-texture_normal = ExtResource("6_l4im6")
-texture_pressed = ExtResource("6_l4im6")
+texture_res = ExtResource("8_aujea")
+image_normal = SubResource("Resource_mmhwl")
+image_pressed = SubResource("Resource_mmhwl")
 text_offset = Vector2(20, 19)
+rect = SubResource("Resource_8nbdp")
+rect_ipad = SubResource("Resource_lo0yr")
 
-[node name="ConfirmExit" parent="." unique_id=91618747 instance=ExtResource("3_5avr6")]
-layout_mode = 0
+[node name="ConfirmExit" parent="." unique_id=1850582139 instance=ExtResource("5_kjn2k")]
+layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_right = 222.0
-offset_bottom = 126.0
+offset_left = 175.0
+offset_top = 95.0
+offset_right = 175.0
+offset_bottom = 95.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(350, 190, 80, 76)
-rect = Rect2(175, 95, 40, 38)
-
-[node name="GUIButton" parent="ConfirmExit" unique_id=1850582139 instance=ExtResource("5_kjn2k")]
-layout_mode = 2
-texture_normal = ExtResource("7_ctosj")
-texture_pressed = ExtResource("7_ctosj")
+texture_res = ExtResource("8_aujea")
+image_normal = SubResource("Resource_fg6kk")
+image_pressed = SubResource("Resource_fg6kk")
 text_offset = Vector2(20, 19)
+rect = SubResource("Resource_uvya5")
+rect_ipad = SubResource("Resource_8tsxh")
 
 [connection signal="back_pressed" from="." to="." method="_on_gui_button_cancel_pressed"]
 [connection signal="back_pressed" from="Fade" to="." method="_on_gui_button_cancel_pressed"]
-[connection signal="pressed" from="CancleExit/GUIButton" to="." method="_on_gui_button_cancel_pressed"]
-[connection signal="pressed" from="ConfirmExit/GUIButton" to="." method="_on_gui_button_confirm_pressed"]
+[connection signal="pressed" from="CancleExit" to="." method="_on_gui_button_cancel_pressed"]
+[connection signal="pressed" from="ConfirmExit" to="." method="_on_gui_button_confirm_pressed"]

@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://cdca5xgwncvi1"]
 
-[ext_resource type="PackedScene" uid="uid://jbmu7hxw0gjs" path="res://app/src/main/cpp/gui_medal_button.tscn" id="1_dwc4e"]
-[ext_resource type="Script" uid="uid://mhhmrdgt36oc" path="res://app/src/main/cpp/gui_war_medal.gd" id="2_2c0md"]
+[ext_resource type="PackedScene" uid="uid://jbmu7hxw0gjs" path="res://gui_medal_button.tscn" id="1_dwc4e"]
+[ext_resource type="Script" uid="uid://mhhmrdgt36oc" path="res://gui_war_medal.gd" id="2_2c0md"]
 
 [node name="GUIWarMedal" unique_id=2034275630 instance=ExtResource("1_dwc4e")]
 script = ExtResource("2_2c0md")
-texture_res = null
 medal = 0
 level = 0

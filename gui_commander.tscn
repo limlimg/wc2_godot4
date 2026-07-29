@@ -2,24 +2,189 @@
 
 [ext_resource type="Script" uid="uid://d3dnv1ituechi" path="res://gui_commander.gd" id="1_0mvmo"]
 [ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://resources/assets/texture/commonbg.tres" id="1_wbtjg"]
-[ext_resource type="PackedScene" uid="uid://bxv6ebgi6k62q" path="res://gui/gui_rect_container.tscn" id="2_cywcc"]
 [ext_resource type="Texture2D" uid="uid://c25787jdsu6ot" path="res://resources/assets/texture/commander_woodenbox.tres" id="3_j1tcj"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="3_ljmrf"]
+[ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="4_5uof3"]
 [ext_resource type="Texture2D" uid="uid://bh246sh0bhmcb" path="res://resources/assets/texture/board_commander_intro.tres" id="4_j1tcj"]
 [ext_resource type="Texture2D" uid="uid://cekghbbruv1hp" path="res://resources/assets/texture/commander.tres" id="5_0qww0"]
 [ext_resource type="PackedScene" uid="uid://clvmjkktsv3mo" path="res://ec_effect.tscn" id="7_y3l8f"]
 [ext_resource type="Resource" uid="uid://bef2rby8g6gtk" path="res://resources/assets/menu_gui_commander_res/effect_upgrade.tres" id="8_qwcpk"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="9_ljmrf"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="10_osaeu"]
-[ext_resource type="Texture2D" uid="uid://bxf0ybjmbtssy" path="res://resources/assets/logo_gui_res/buttontext_back.png.tres" id="11_ifc11"]
-[ext_resource type="Texture2D" uid="uid://cvq0j5n7kxwyu" path="res://resources/assets/logo_gui_res/buttontext_back_press.png.tres" id="12_sdtrk"]
-[ext_resource type="Texture2D" uid="uid://cjc1k5yvqbh5f" path="res://resources/assets/logo_gui_res/buttonboard_gray.png.tres" id="13_sl03c"]
+[ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="12_5w1ou"]
+[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="13_ljmrf"]
 [ext_resource type="PackedScene" uid="uid://bp1f7if3s8vf4" path="res://gui_medal.tscn" id="14_q38hj"]
 [ext_resource type="PackedScene" uid="uid://d37lhebrper7l" path="res://gui_upgrade_button.tscn" id="15_osaeu"]
 [ext_resource type="PackedScene" uid="uid://doku7gcg4y44n" path="res://gui_commander_medal.tscn" id="16_sdtrk"]
 [ext_resource type="PackedScene" uid="uid://cdca5xgwncvi1" path="res://gui_war_medal.tscn" id="17_sl03c"]
-[ext_resource type="Texture2D" uid="uid://fjj81vkkrtuv" path="res://resources/assets/logo_gui_res/blue_big.png.tres" id="18_n37v4"]
 [ext_resource type="PackedScene" uid="uid://bjcmxuu6rr2wj" path="res://gui_adorn_medal.tscn" id="18_sl03c"]
 [ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://resources/assets/menu_gui_res/texture_res.tres" id="21_2m5x3"]
+
+[sub_resource type="Resource" id="Resource_6trv1"]
+script = ExtResource("4_5uof3")
+rect = Rect2(-129, 158, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_1m3rn"]
+script = ExtResource("4_5uof3")
+rect = Rect2(-244, 390, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_ljmrf"]
+script = ExtResource("4_5uof3")
+rect = Rect2(-360, 0, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_5uof3"]
+script = ExtResource("4_5uof3")
+rect = Rect2(-684, 0, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_dh2r0"]
+script = ExtResource("4_5uof3")
+rect = Rect2(0, 5, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_7u5g5"]
+script = ExtResource("4_5uof3")
+rect = Rect2(0, 60, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_i7f0v"]
+script = ExtResource("4_5uof3")
+rect = Rect2(-175, 0, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_kxc2l"]
+script = ExtResource("4_5uof3")
+rect = Rect2(-350, 0, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_10oad"]
+script = ExtResource("4_5uof3")
+rect = Rect2(-298, 40, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_5m0ix"]
+script = ExtResource("4_5uof3")
+rect = Rect2(-592, 80, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_4yntp"]
+script = ExtResource("13_ljmrf")
+name = "buttontext_back.png"
+
+[sub_resource type="Resource" id="Resource_b4dmi"]
+script = ExtResource("13_ljmrf")
+name = "buttontext_back_press.png"
+
+[sub_resource type="Resource" id="Resource_oo0i1"]
+script = ExtResource("13_ljmrf")
+name = "buttonboard_gray.png"
+
+[sub_resource type="Resource" id="Resource_2ryeg"]
+script = ExtResource("4_5uof3")
+rect = Rect2(0, 0, 32, 30)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_e12ow"]
+script = ExtResource("4_5uof3")
+rect = Rect2(0, 0, 40, 38)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_5w1ou"]
+script = ExtResource("4_5uof3")
+rect = Rect2(36, 0, 70, 23)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_kwhv8"]
+script = ExtResource("4_5uof3")
+rect = Rect2(55, 0, 146, 50)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_j7c6n"]
+script = ExtResource("13_ljmrf")
+name = "blue_big.png"
+
+[sub_resource type="Resource" id="Resource_77jea"]
+script = ExtResource("4_5uof3")
+rect = Rect2(-75, 103, 64, 32)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_kho6i"]
+script = ExtResource("4_5uof3")
+rect = Rect2(-167, 212, 128, 64)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_3cd71"]
+script = ExtResource("4_5uof3")
+rect = Rect2(-80, 192, 50, 80)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_uty6d"]
+script = ExtResource("4_5uof3")
+rect = Rect2(-136, 454, 100, 160)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_cauwj"]
+script = ExtResource("4_5uof3")
+rect = Rect2(-8, 178, 31, 48)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_vo7m7"]
+script = ExtResource("4_5uof3")
+rect = Rect2(8, 430, 62, 96)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_xgm7q"]
+script = ExtResource("4_5uof3")
+rect = Rect2(44, 178, 31, 48)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_bwj1e"]
+script = ExtResource("4_5uof3")
+rect = Rect2(112, 430, 62, 96)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_tgbr2"]
+script = ExtResource("4_5uof3")
+rect = Rect2(96, 178, 31, 48)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_21nyh"]
+script = ExtResource("4_5uof3")
+rect = Rect2(216, 430, 62, 96)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_vyhe5"]
+script = ExtResource("4_5uof3")
+rect = Rect2(18, 228, 31, 48)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_hch80"]
+script = ExtResource("4_5uof3")
+rect = Rect2(60, 530, 62, 96)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_8p0v4"]
+script = ExtResource("4_5uof3")
+rect = Rect2(70, 228, 31, 48)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_fijsn"]
+script = ExtResource("4_5uof3")
+rect = Rect2(164, 530, 62, 96)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_0xjqv"]
+script = ExtResource("4_5uof3")
+rect = Rect2(122, 228, 31, 48)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_x1k3d"]
+script = ExtResource("4_5uof3")
+rect = Rect2(268, 530, 62, 96)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [node name="GUICommander" type="Control" unique_id=466496609]
 layout_mode = 3
@@ -41,248 +206,293 @@ texture = ExtResource("1_wbtjg")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="WoddenBox" parent="." unique_id=1378871828 instance=ExtResource("2_cywcc")]
+[node name="WoddenBox" parent="." unique_id=1627139554 instance=ExtResource("3_ljmrf")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.625
-rect_ipad = Rect2(-244, 390, 0, 0)
-rect = Rect2(-129, 158, 0, 0)
+anchor_right = 0.625
+anchor_bottom = 0.0
+offset_left = -129.0
+offset_top = 158.0
+offset_right = -129.0
+offset_bottom = 158.0
+rect = SubResource("Resource_6trv1")
+rect_ipad = SubResource("Resource_1m3rn")
 
 [node name="TextureRect" type="TextureRect" parent="WoddenBox" unique_id=445454815]
-layout_mode = 2
+layout_mode = 0
 texture = ExtResource("3_j1tcj")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="BoardCommanderIntro" parent="." unique_id=1739675094 instance=ExtResource("2_cywcc")]
+[node name="BoardCommanderIntro" parent="." unique_id=1829143869 instance=ExtResource("3_ljmrf")]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
-rect_ipad = Rect2(-684, 0, 0, 0)
-rect = Rect2(-360, 0, 0, 0)
+anchor_bottom = 0.0
+offset_left = -360.0
+offset_right = -360.0
+grow_horizontal = 0
+grow_vertical = 1
+rect = SubResource("Resource_ljmrf")
+rect_ipad = SubResource("Resource_5uof3")
 
 [node name="TextureRect" type="TextureRect" parent="BoardCommanderIntro" unique_id=1002724380]
-layout_mode = 2
+layout_mode = 0
 texture = ExtResource("4_j1tcj")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="Commander" parent="." unique_id=1627744289 instance=ExtResource("2_cywcc")]
+[node name="Commander" parent="." unique_id=488506995 instance=ExtResource("3_ljmrf")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
+offset_top = 5.0
+offset_bottom = 5.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(0, 60, 0, 0)
-rect = Rect2(0, 5, 0, 0)
+rect = SubResource("Resource_dh2r0")
+rect_ipad = SubResource("Resource_7u5g5")
 
 [node name="TextureRect" type="TextureRect" parent="Commander" unique_id=1601312815]
-layout_mode = 2
+layout_mode = 0
 texture = ExtResource("5_0qww0")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="Medal" parent="." unique_id=534469535 instance=ExtResource("2_cywcc")]
+[node name="Medal" parent="." unique_id=1047481146 instance=ExtResource("3_ljmrf")]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
-rect_ipad = Rect2(-350, 0, 0, 0)
-rect = Rect2(-175, 0, 0, 0)
+anchor_bottom = 0.0
+offset_left = -175.0
+offset_right = -175.0
+grow_horizontal = 0
+grow_vertical = 1
+rect = SubResource("Resource_i7f0v")
+rect_ipad = SubResource("Resource_kxc2l")
 
 [node name="ecText" parent="Medal" unique_id=1650770578 instance=ExtResource("9_ljmrf")]
-layout_mode = 2
+layout_mode = 0
+offset_left = -1.0
+offset_bottom = 23.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.7647059, 0.9019608, 0.9529412, 1)
 horizontal_alignment = 1
 font = NodePath("/root/g_Font7")
 color = Color(0.7647059, 0.9019608, 0.9529412, 1)
-alpha = 1.0
 spacing = Vector2i(1, 0)
 
-[node name="MedalIntro" parent="." unique_id=1903074849 instance=ExtResource("2_cywcc")]
+[node name="MedalIntro" parent="." unique_id=542376276 instance=ExtResource("3_ljmrf")]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
-rect_ipad = Rect2(-592, 80, 0, 0)
-rect = Rect2(-298, 40, 0, 0)
+anchor_bottom = 0.0
+offset_left = -298.0
+offset_top = 40.0
+offset_right = -298.0
+offset_bottom = 40.0
+grow_horizontal = 0
+grow_vertical = 1
+rect = SubResource("Resource_10oad")
+rect_ipad = SubResource("Resource_5m0ix")
 
 [node name="ecText" parent="MedalIntro" unique_id=926276399 instance=ExtResource("9_ljmrf")]
-layout_mode = 2
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 23.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.02745098, 0.19215687, 0.24313726, 1)
 font = NodePath("/root/g_Font2")
 color = Color(0.02745098, 0.19215687, 0.24313726, 1)
-alpha = 1.0
 spacing = null
 
 [node name="ecEffect" parent="." unique_id=1633173356 instance=ExtResource("7_y3l8f")]
 effect_res = ExtResource("8_qwcpk")
 
-[node name="ButtonBack" parent="." unique_id=232607346 instance=ExtResource("2_cywcc")]
+[node name="ButtonBack" parent="." unique_id=2034275630 instance=ExtResource("10_osaeu")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
-offset_top = -30.0
-offset_right = 32.0
 grow_horizontal = 1
 grow_vertical = 0
-rect_ipad = Rect2(0, 0, 40, 38)
-rect = Rect2(0, 0, 32, 30)
-
-[node name="GUIButton" parent="ButtonBack" unique_id=2034275630 instance=ExtResource("10_osaeu")]
-layout_mode = 2
-texture_normal = ExtResource("11_ifc11")
-texture_pressed = ExtResource("12_sdtrk")
-texture_background = ExtResource("13_sl03c")
+texture_res = ExtResource("12_5w1ou")
+image_normal = SubResource("Resource_4yntp")
+image_pressed = SubResource("Resource_b4dmi")
+image_background = SubResource("Resource_oo0i1")
 text_offset = Vector2(16, 15)
+rect = SubResource("Resource_2ryeg")
+rect_ipad = SubResource("Resource_e12ow")
 
-[node name="GUIMedal" parent="." unique_id=893062727 instance=ExtResource("2_cywcc")]
+[node name="GUIMedal" parent="." unique_id=509522628 instance=ExtResource("14_q38hj")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
+offset_left = 36.0
 offset_top = -23.0
-offset_right = 70.0
+offset_right = 106.0
 grow_horizontal = 1
 grow_vertical = 0
-rect_ipad = Rect2(55, 0, 146, 50)
-rect = Rect2(36, 0, 70, 23)
+rect = SubResource("Resource_5w1ou")
+rect_ipad = SubResource("Resource_kwhv8")
 
-[node name="GUIMedal" parent="GUIMedal" unique_id=509522628 instance=ExtResource("14_q38hj")]
-layout_mode = 2
-
-[node name="UpgradeButton" parent="." unique_id=1996812789 instance=ExtResource("2_cywcc")]
+[node name="GUIUpgradeButton" parent="." unique_id=418308926 instance=ExtResource("15_osaeu")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -75.0
+offset_top = 103.0
+offset_right = -75.0
+offset_bottom = 103.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(-167, 212, 128, 64)
-rect = Rect2(-75, 103, 64, 32)
-
-[node name="GUIUpgradeButton" parent="UpgradeButton" unique_id=418308926 instance=ExtResource("15_osaeu")]
-visible = false
-layout_mode = 2
-texture_normal = ExtResource("18_n37v4")
-texture_pressed = ExtResource("18_n37v4")
+texture_res = ExtResource("21_2m5x3")
+image_normal = SubResource("Resource_j7c6n")
+image_pressed = SubResource("Resource_j7c6n")
 text_offset = Vector2(272, 176)
+rect = SubResource("Resource_77jea")
+rect_ipad = SubResource("Resource_kho6i")
 
-[node name="CommanderMedal" parent="." unique_id=2065887925 instance=ExtResource("2_cywcc")]
+[node name="GUICommanderMedal" parent="." unique_id=1972906417 instance=ExtResource("16_sdtrk")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.625
+anchor_right = 0.625
+anchor_bottom = 0.0
+offset_left = -80.0
+offset_top = 192.0
+offset_right = -80.0
+offset_bottom = 192.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(-136, 454, 100, 160)
-rect = Rect2(-80, 192, 50, 80)
-
-[node name="GUICommanderMedal" parent="CommanderMedal" unique_id=1972906417 instance=ExtResource("16_sdtrk")]
-layout_mode = 2
-texture_res = ExtResource("21_2m5x3")
 selected = true
+texture_res = ExtResource("21_2m5x3")
+rect = SubResource("Resource_3cd71")
+rect_ipad = SubResource("Resource_uty6d")
 
-[node name="WarMedal" parent="." unique_id=726276465 instance=ExtResource("2_cywcc")]
+[node name="GUIWarMedal" parent="." unique_id=2042339179 instance=ExtResource("17_sl03c")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.625
+anchor_right = 0.625
+anchor_bottom = 0.0
+offset_left = -8.0
+offset_top = 178.0
+offset_right = -8.0
+offset_bottom = 178.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(8, 430, 62, 96)
-rect = Rect2(-8, 178, 31, 48)
-
-[node name="GUIWarMedal" parent="WarMedal" unique_id=2042339179 instance=ExtResource("17_sl03c")]
-layout_mode = 2
-texture_res = ExtResource("21_2m5x3")
 selected = true
+texture_res = ExtResource("21_2m5x3")
+rect = SubResource("Resource_cauwj")
+rect_ipad = SubResource("Resource_vo7m7")
 
-[node name="WarMedal2" parent="." unique_id=985326945 instance=ExtResource("2_cywcc")]
+[node name="GUIWarMedal2" parent="." unique_id=348816353 instance=ExtResource("17_sl03c")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.625
+anchor_right = 0.625
+anchor_bottom = 0.0
+offset_left = 44.0
+offset_top = 178.0
+offset_right = 44.0
+offset_bottom = 178.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(112, 430, 62, 96)
-rect = Rect2(44, 178, 31, 48)
-
-[node name="GUIWarMedal" parent="WarMedal2" unique_id=348816353 instance=ExtResource("17_sl03c")]
-layout_mode = 2
-texture_res = ExtResource("21_2m5x3")
 medal = 1
 selected = true
+texture_res = ExtResource("21_2m5x3")
+rect = SubResource("Resource_xgm7q")
+rect_ipad = SubResource("Resource_bwj1e")
 
-[node name="WarMedal3" parent="." unique_id=270023492 instance=ExtResource("2_cywcc")]
+[node name="GUIWarMedal3" parent="." unique_id=1360530764 instance=ExtResource("17_sl03c")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.625
+anchor_right = 0.625
+anchor_bottom = 0.0
+offset_left = 96.0
+offset_top = 178.0
+offset_right = 96.0
+offset_bottom = 178.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(216, 430, 62, 96)
-rect = Rect2(96, 178, 31, 48)
-
-[node name="GUIWarMedal" parent="WarMedal3" unique_id=1360530764 instance=ExtResource("17_sl03c")]
-layout_mode = 2
-texture_res = ExtResource("21_2m5x3")
 medal = 2
 selected = true
+texture_res = ExtResource("21_2m5x3")
+rect = SubResource("Resource_tgbr2")
+rect_ipad = SubResource("Resource_21nyh")
 
-[node name="WarMedal4" parent="." unique_id=2078373149 instance=ExtResource("2_cywcc")]
+[node name="GUIWarMedal4" parent="." unique_id=1416468943 instance=ExtResource("17_sl03c")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.625
+anchor_right = 0.625
+anchor_bottom = 0.0
+offset_left = 18.0
+offset_top = 228.0
+offset_right = 18.0
+offset_bottom = 228.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(60, 530, 62, 96)
-rect = Rect2(18, 228, 31, 48)
-
-[node name="GUIWarMedal" parent="WarMedal4" unique_id=1416468943 instance=ExtResource("17_sl03c")]
-layout_mode = 2
-texture_res = ExtResource("21_2m5x3")
 medal = 3
 selected = true
+texture_res = ExtResource("21_2m5x3")
+rect = SubResource("Resource_vyhe5")
+rect_ipad = SubResource("Resource_hch80")
 
-[node name="WarMedal5" parent="." unique_id=421200111 instance=ExtResource("2_cywcc")]
+[node name="GUIWarMedal5" parent="." unique_id=1335906854 instance=ExtResource("17_sl03c")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.625
+anchor_right = 0.625
+anchor_bottom = 0.0
+offset_left = 70.0
+offset_top = 228.0
+offset_right = 70.0
+offset_bottom = 228.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(164, 530, 62, 96)
-rect = Rect2(70, 228, 31, 48)
-
-[node name="GUIWarMedal" parent="WarMedal5" unique_id=1335906854 instance=ExtResource("17_sl03c")]
-layout_mode = 2
-texture_res = ExtResource("21_2m5x3")
 medal = 4
 selected = true
+texture_res = ExtResource("21_2m5x3")
+rect = SubResource("Resource_8p0v4")
+rect_ipad = SubResource("Resource_fijsn")
 
-[node name="WarMedal6" parent="." unique_id=1494089631 instance=ExtResource("2_cywcc")]
+[node name="GUIWarMedal6" parent="." unique_id=1850257452 instance=ExtResource("17_sl03c")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.625
+anchor_right = 0.625
+anchor_bottom = 0.0
+offset_left = 122.0
+offset_top = 228.0
+offset_right = 122.0
+offset_bottom = 228.0
 grow_horizontal = 1
 grow_vertical = 1
-rect_ipad = Rect2(268, 530, 62, 96)
-rect = Rect2(122, 228, 31, 48)
-
-[node name="GUIWarMedal" parent="WarMedal6" unique_id=1850257452 instance=ExtResource("17_sl03c")]
-layout_mode = 2
-texture_res = ExtResource("21_2m5x3")
 medal = 5
 selected = true
+texture_res = ExtResource("21_2m5x3")
+rect = SubResource("Resource_0xjqv")
+rect_ipad = SubResource("Resource_x1k3d")
 
 [node name="GUIAdornMedal" parent="." unique_id=1776806515 instance=ExtResource("18_sl03c")]
 layout_mode = 1
 
-[connection signal="pressed" from="ButtonBack/GUIButton" to="." method="_on_gui_button_pressed"]
-[connection signal="pressed" from="UpgradeButton/GUIUpgradeButton" to="." method="_on_gui_upgrade_button_pressed"]
-[connection signal="pressed" from="CommanderMedal/GUICommanderMedal" to="." method="_selected_medal" binds= [6]]
-[connection signal="pressed" from="WarMedal/GUIWarMedal" to="." method="_selected_medal" binds= [0]]
-[connection signal="pressed" from="WarMedal2/GUIWarMedal" to="." method="_selected_medal" binds= [1]]
-[connection signal="pressed" from="WarMedal3/GUIWarMedal" to="." method="_selected_medal" binds= [2]]
-[connection signal="pressed" from="WarMedal4/GUIWarMedal" to="." method="_selected_medal" binds= [3]]
-[connection signal="pressed" from="WarMedal5/GUIWarMedal" to="." method="_selected_medal" binds= [4]]
-[connection signal="pressed" from="WarMedal6/GUIWarMedal" to="." method="_selected_medal" binds= [5]]
+[connection signal="pressed" from="ButtonBack" to="." method="_on_gui_button_pressed"]
+[connection signal="pressed" from="GUIUpgradeButton" to="." method="_on_gui_upgrade_button_pressed"]
+[connection signal="pressed" from="GUICommanderMedal" to="." method="_selected_medal" flags=18]
+[connection signal="pressed" from="GUIWarMedal" to="." method="_selected_medal" flags=18]
+[connection signal="pressed" from="GUIWarMedal2" to="." method="_selected_medal" flags=18]
+[connection signal="pressed" from="GUIWarMedal3" to="." method="_selected_medal" flags=18]
+[connection signal="pressed" from="GUIWarMedal4" to="." method="_selected_medal" flags=18]
+[connection signal="pressed" from="GUIWarMedal5" to="." method="_selected_medal" flags=18]
+[connection signal="pressed" from="GUIWarMedal6" to="." method="_selected_medal" flags=18]
