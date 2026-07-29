@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://fclrsn5ajtfx"
+path="res://.godot/imported/font3_en_hd.fnt-80183b72a33cb1382c2f7aa671637478.res"
+
+[deps]
+
+source_file="res://assets/font3_en_hd.fnt"
+dest_files=["res://.godot/imported/font3_en_hd.fnt-80183b72a33cb1382c2f7aa671637478.res"]
+
+[params]
+

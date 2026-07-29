@@ -1,0 +1,16 @@
+[remap]
+
+importer="wc2.assets.xml.plist"
+importer_version=1
+type="Translation"
+uid="uid://srr3cw1gmj2f"
+path="res://.godot/imported/stringtable_kr.xml-a14de03566c00f9e147cc3c4219cb618.translation"
+
+[deps]
+
+source_file="res://assets/stringtable_kr.xml"
+dest_files=["res://.godot/imported/stringtable_kr.xml-a14de03566c00f9e147cc3c4219cb618.translation"]
+
+[params]
+
+locale="zh_Hans"

@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://c0twfwomrfy5f"
+path="res://.godot/imported/heavytank_fr_hd.xml-cec2a15cfa55339b34da5a33b94f021b.res"
+
+[deps]
+
+source_file="res://assets/heavytank_fr_hd.xml"
+dest_files=["res://.godot/imported/heavytank_fr_hd.xml-cec2a15cfa55339b34da5a33b94f021b.res"]
+
+[params]
+

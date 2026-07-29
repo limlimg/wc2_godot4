@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://bp54epfd158vp"
+path="res://.godot/imported/font6_ru.fnt-44c7c7eff25726fc635feb0815c20cf1.res"
+
+[deps]
+
+source_file="res://assets/font6_ru.fnt"
+dest_files=["res://.godot/imported/font6_ru.fnt-44c7c7eff25726fc635feb0815c20cf1.res"]
+
+[params]
+

@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://b1kxbmu22bj72"
+path="res://.godot/imported/iap_extra.xml-c1c832fce8116eb61fad432c86c20cb3.res"
+
+[deps]
+
+source_file="res://assets/iap_extra.xml"
+dest_files=["res://.godot/imported/iap_extra.xml-c1c832fce8116eb61fad432c86c20cb3.res"]
+
+[params]
+

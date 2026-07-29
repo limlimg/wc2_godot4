@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.effect"
+importer_version=1
+type="Resource"
+uid="uid://b1i1ue8uxvbid"
+path="res://.godot/imported/effect_strike5.xml-a267d8ec372b3d1287d2f6cb25631b89.res"
+
+[deps]
+
+source_file="res://assets/effect_strike5.xml"
+dest_files=["res://.godot/imported/effect_strike5.xml-a267d8ec372b3d1287d2f6cb25631b89.res"]
+
+[params]
+

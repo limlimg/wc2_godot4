@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.elib"
+importer_version=1
+type="Resource"
+uid="uid://dy4hx6uu1lyyt"
+path="res://.godot/imported/battleship_hd.bin-5f287eed20e0263a567eb8bf7346354d.res"
+
+[deps]
+
+source_file="res://assets/battleship_hd.bin"
+dest_files=["res://.godot/imported/battleship_hd.bin-5f287eed20e0263a567eb8bf7346354d.res"]
+
+[params]
+

@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://buliy0le4basu"
+path="res://.godot/imported/tutorails_ui_hd.xml-f983df6f3ae2e65b502400747ba79bef.res"
+
+[deps]
+
+source_file="res://assets/tutorails_ui_hd.xml"
+dest_files=["res://.godot/imported/tutorails_ui_hd.xml-f983df6f3ae2e65b502400747ba79bef.res"]
+
+[params]
+

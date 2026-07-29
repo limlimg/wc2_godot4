@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.areaenable"
+importer_version=1
+type="Resource"
+uid="uid://d3s1nmnt506af"
+path="res://.godot/imported/battle_allies9.bin-edacfe6649499702fcd12db811e6e705.res"
+
+[deps]
+
+source_file="res://assets/battle_allies9.bin"
+dest_files=["res://.godot/imported/battle_allies9.bin-edacfe6649499702fcd12db811e6e705.res"]
+
+[params]
+

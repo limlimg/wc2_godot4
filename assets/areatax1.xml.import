@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.areas"
+importer_version=1
+type="Resource"
+uid="uid://dewu7ecc8vibh"
+path="res://.godot/imported/areatax1.xml-32e90c691f5edb3ab89bca0a65e84031.res"
+
+[deps]
+
+source_file="res://assets/areatax1.xml"
+dest_files=["res://.godot/imported/areatax1.xml-32e90c691f5edb3ab89bca0a65e84031.res"]
+
+[params]
+

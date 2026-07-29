@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://be2njjxfraenx"
+path="res://.godot/imported/aircraftcarrier.xml-4d82d7f7d22805a1fed9b7d6e7cf54dc.res"
+
+[deps]
+
+source_file="res://assets/aircraftcarrier.xml"
+dest_files=["res://.godot/imported/aircraftcarrier.xml-4d82d7f7d22805a1fed9b7d6e7cf54dc.res"]
+
+[params]
+

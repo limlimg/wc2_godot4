@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.elib"
+importer_version=1
+type="Resource"
+uid="uid://diog1oo6lw7tb"
+path="res://.godot/imported/infantry_am_hd.bin-e5547eefb23fbe0fc62c089c21ce468d.res"
+
+[deps]
+
+source_file="res://assets/infantry_am_hd.bin"
+dest_files=["res://.godot/imported/infantry_am_hd.bin-e5547eefb23fbe0fc62c089c21ce468d.res"]
+
+[params]
+

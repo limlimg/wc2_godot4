@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://b7363ur7lawje"
+path="res://.godot/imported/destroyer_hd.xml-bdde1d5d9546252c90f1f154a8a319ab.res"
+
+[deps]
+
+source_file="res://assets/destroyer_hd.xml"
+dest_files=["res://.godot/imported/destroyer_hd.xml-bdde1d5d9546252c90f1f154a8a319ab.res"]
+
+[params]
+

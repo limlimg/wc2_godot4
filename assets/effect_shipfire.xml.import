@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.effect"
+importer_version=1
+type="Resource"
+uid="uid://c6l8vv0fldmqb"
+path="res://.godot/imported/effect_shipfire.xml-5e432f5011da57647492dea3e43e225f.res"
+
+[deps]
+
+source_file="res://assets/effect_shipfire.xml"
+dest_files=["res://.godot/imported/effect_shipfire.xml-5e432f5011da57647492dea3e43e225f.res"]
+
+[params]
+

@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://co7l2j4qtqybl"
+path="res://.godot/imported/cardtex_hd.xml-3b45b06a5cbca3330c767ae963cedf8c.res"
+
+[deps]
+
+source_file="res://assets/cardtex_hd.xml"
+dest_files=["res://.godot/imported/cardtex_hd.xml-3b45b06a5cbca3330c767ae963cedf8c.res"]
+
+[params]
+

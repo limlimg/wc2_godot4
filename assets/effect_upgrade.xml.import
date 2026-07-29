@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.effect"
+importer_version=1
+type="Resource"
+uid="uid://cdkgbjglavwhj"
+path="res://.godot/imported/effect_upgrade.xml-a67c61cb9cfcb21daea8151725e09bfa.res"
+
+[deps]
+
+source_file="res://assets/effect_upgrade.xml"
+dest_files=["res://.godot/imported/effect_upgrade.xml-a67c61cb9cfcb21daea8151725e09bfa.res"]
+
+[params]
+

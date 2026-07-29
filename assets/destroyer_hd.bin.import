@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.elib"
+importer_version=1
+type="Resource"
+uid="uid://d2n3qmv2rvv76"
+path="res://.godot/imported/destroyer_hd.bin-c8c9665ae5c23422ec932c79a2820fcf.res"
+
+[deps]
+
+source_file="res://assets/destroyer_hd.bin"
+dest_files=["res://.godot/imported/destroyer_hd.bin-c8c9665ae5c23422ec932c79a2820fcf.res"]
+
+[params]
+

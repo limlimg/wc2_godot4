@@ -1,0 +1,13 @@
+[remap]
+
+importer="wc2.assets.xml.battle"
+importer_version=1
+type="Resource"
+uid="uid://cs428vkg5gdxe"
+
+[deps]
+
+source_file="res://assets/battle_nato3.xml"
+
+[params]
+

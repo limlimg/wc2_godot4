@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://bxgjxmq6uqvai"
+path="res://.godot/imported/battlebg1_iPad.xml-ab40e1fcebb7ff6e610050994315fba0.res"
+
+[deps]
+
+source_file="res://assets/battlebg1_iPad.xml"
+dest_files=["res://.godot/imported/battlebg1_iPad.xml-ab40e1fcebb7ff6e610050994315fba0.res"]
+
+[params]
+

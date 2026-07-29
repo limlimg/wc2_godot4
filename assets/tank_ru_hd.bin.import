@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.elib"
+importer_version=1
+type="Resource"
+uid="uid://bvl4544gheh45"
+path="res://.godot/imported/tank_ru_hd.bin-81255c4aebb07633fc9b710ef9b7703e.res"
+
+[deps]
+
+source_file="res://assets/tank_ru_hd.bin"
+dest_files=["res://.godot/imported/tank_ru_hd.bin-81255c4aebb07633fc9b710ef9b7703e.res"]
+
+[params]
+

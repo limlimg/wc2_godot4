@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.effect"
+importer_version=1
+type="Resource"
+uid="uid://fgp57bsbo5d1"
+path="res://.godot/imported/effect_tankfire.xml-a42f8540c838eaabcf49c0d1c7fcf46a.res"
+
+[deps]
+
+source_file="res://assets/effect_tankfire.xml"
+dest_files=["res://.godot/imported/effect_tankfire.xml-a42f8540c838eaabcf49c0d1c7fcf46a.res"]
+
+[params]
+

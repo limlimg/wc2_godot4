@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://cuvemxicogt72"
+path="res://.godot/imported/font3_en.fnt-a42451b36a8d3cbaec17ad5eec4fb4f2.res"
+
+[deps]
+
+source_file="res://assets/font3_en.fnt"
+dest_files=["res://.godot/imported/font3_en.fnt-a42451b36a8d3cbaec17ad5eec4fb4f2.res"]
+
+[params]
+

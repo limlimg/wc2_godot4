@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.area"
+importer_version=1
+type="Resource"
+uid="uid://djxiyvygwhcan"
+path="res://.godot/imported/area1.bin-1cabc9819569dc7bc9ff2b1b8a3df01d.res"
+
+[deps]
+
+source_file="res://assets/area1.bin"
+dest_files=["res://.godot/imported/area1.bin-1cabc9819569dc7bc9ff2b1b8a3df01d.res"]
+
+[params]
+

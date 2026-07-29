@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://crfaoxmnkliew"
+path="res://.godot/imported/flag.xml-81738d05d0310ab75e72b4ffb3ef2430.res"
+
+[deps]
+
+source_file="res://assets/flag.xml"
+dest_files=["res://.godot/imported/flag.xml-81738d05d0310ab75e72b4ffb3ef2430.res"]
+
+[params]
+

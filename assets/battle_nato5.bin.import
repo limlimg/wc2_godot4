@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.areaenable"
+importer_version=1
+type="Resource"
+uid="uid://ldhnhpijmhth"
+path="res://.godot/imported/battle_nato5.bin-ab6ae3c1dc14f767c922f1ece38d61d2.res"
+
+[deps]
+
+source_file="res://assets/battle_nato5.bin"
+dest_files=["res://.godot/imported/battle_nato5.bin-ab6ae3c1dc14f767c922f1ece38d61d2.res"]
+
+[params]
+

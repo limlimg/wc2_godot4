@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://h31lood4y88b"
+path="res://.godot/imported/flag_hd.xml-e83b14ae4089df2f0be3cc2183821fcf.res"
+
+[deps]
+
+source_file="res://assets/flag_hd.xml"
+dest_files=["res://.godot/imported/flag_hd.xml-e83b14ae4089df2f0be3cc2183821fcf.res"]
+
+[params]
+

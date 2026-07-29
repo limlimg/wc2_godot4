@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.areaenable"
+importer_version=1
+type="Resource"
+uid="uid://dtc4lq3u3f16k"
+path="res://.godot/imported/battle_axis9.bin-4683e1cbe647de2b787f55f3ef3aeffa.res"
+
+[deps]
+
+source_file="res://assets/battle_axis9.bin"
+dest_files=["res://.godot/imported/battle_axis9.bin-4683e1cbe647de2b787f55f3ef3aeffa.res"]
+
+[params]
+

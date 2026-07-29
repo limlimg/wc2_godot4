@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.areaenable"
+importer_version=1
+type="Resource"
+uid="uid://2xhcyei4gkar"
+path="res://.godot/imported/conquest_8.bin-3dd9698d8043329c2198f2a63614018d.res"
+
+[deps]
+
+source_file="res://assets/conquest_8.bin"
+dest_files=["res://.godot/imported/conquest_8.bin-3dd9698d8043329c2198f2a63614018d.res"]
+
+[params]
+

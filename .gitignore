@@ -1,10 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
-.import/
 /android/
-*.import
-*.uid
-*.tmp
 
 # Game Assets
-/assets/
+/assets/*
+!/assets/*.import
+!/assets/*.uid

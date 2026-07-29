@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.elib"
+importer_version=1
+type="Resource"
+uid="uid://0b83o0yuhq8m"
+path="res://.godot/imported/aircraftcarrier_hd.bin-72fd4917784ff7ef3bd1704b5534eb26.res"
+
+[deps]
+
+source_file="res://assets/aircraftcarrier_hd.bin"
+dest_files=["res://.godot/imported/aircraftcarrier_hd.bin-72fd4917784ff7ef3bd1704b5534eb26.res"]
+
+[params]
+

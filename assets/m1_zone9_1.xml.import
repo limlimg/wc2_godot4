@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://di67ucbp4gk4"
+path="res://.godot/imported/m1_zone9_1.xml-c4c7f742bc567b59f0c2de636555ced3.res"
+
+[deps]
+
+source_file="res://assets/m1_zone9_1.xml"
+dest_files=["res://.godot/imported/m1_zone9_1.xml-c4c7f742bc567b59f0c2de636555ced3.res"]
+
+[params]
+

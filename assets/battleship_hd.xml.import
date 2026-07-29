@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://bhq3lkndkvib5"
+path="res://.godot/imported/battleship_hd.xml-23bf6ebc56a7064de8abeaa4d7e6e4da.res"
+
+[deps]
+
+source_file="res://assets/battleship_hd.xml"
+dest_files=["res://.godot/imported/battleship_hd.xml-23bf6ebc56a7064de8abeaa4d7e6e4da.res"]
+
+[params]
+

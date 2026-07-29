@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://fctheiweci5i"
+path="res://.godot/imported/font4_cn.fnt-13cc96b5945ecdc7f5231e061a25a42e.res"
+
+[deps]
+
+source_file="res://assets/font4_cn.fnt"
+dest_files=["res://.godot/imported/font4_cn.fnt-13cc96b5945ecdc7f5231e061a25a42e.res"]
+
+[params]
+

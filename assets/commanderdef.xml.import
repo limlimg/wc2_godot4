@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.commanders"
+importer_version=1
+type="Resource"
+uid="uid://d1ts3ywict18d"
+path="res://.godot/imported/commanderdef.xml-ac2c8bf7f7ec2214aa34499b019dbaf7.res"
+
+[deps]
+
+source_file="res://assets/commanderdef.xml"
+dest_files=["res://.godot/imported/commanderdef.xml-ac2c8bf7f7ec2214aa34499b019dbaf7.res"]
+
+[params]
+

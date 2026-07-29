@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.armies"
+importer_version=1
+type="Resource"
+uid="uid://dbdq2r2wc6ins"
+path="res://.godot/imported/armydef.xml-5c37be1151a1647d03a8296375a2cfdc.res"
+
+[deps]
+
+source_file="res://assets/armydef.xml"
+dest_files=["res://.godot/imported/armydef.xml-5c37be1151a1647d03a8296375a2cfdc.res"]
+
+[params]
+

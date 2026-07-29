@@ -1,0 +1,16 @@
+[remap]
+
+importer="wc2.assets.xml.plist"
+importer_version=1
+type="Translation"
+uid="uid://u5a46lw8vrk6"
+path="res://.godot/imported/stringtable_en_iPad.xml-b835bab99056a14050e0d405c2f110b5.translation"
+
+[deps]
+
+source_file="res://assets/stringtable_en_iPad.xml"
+dest_files=["res://.godot/imported/stringtable_en_iPad.xml-b835bab99056a14050e0d405c2f110b5.translation"]
+
+[params]
+
+locale="zh_Hans"

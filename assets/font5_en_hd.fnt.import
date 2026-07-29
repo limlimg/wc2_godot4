@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://fmrvdpk4biik"
+path="res://.godot/imported/font5_en_hd.fnt-755c2e33599e7fb77290e945cd016b44.res"
+
+[deps]
+
+source_file="res://assets/font5_en_hd.fnt"
+dest_files=["res://.godot/imported/font5_en_hd.fnt-755c2e33599e7fb77290e945cd016b44.res"]
+
+[params]
+

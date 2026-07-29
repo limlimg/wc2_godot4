@@ -1,0 +1,13 @@
+[remap]
+
+importer="wc2.assets.xml.battle"
+importer_version=1
+type="Resource"
+uid="uid://chardky5pvomu"
+
+[deps]
+
+source_file="res://assets/battle_wto1.xml"
+
+[params]
+

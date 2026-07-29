@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.script"
+importer_version=1
+type="Resource"
+uid="uid://bcemjq1f6lwta"
+path="res://.godot/imported/tutorails_script_iPad.xml-936b9de9bf40e72ec1c2e402854b4308.res"
+
+[deps]
+
+source_file="res://assets/tutorails_script_iPad.xml"
+dest_files=["res://.godot/imported/tutorails_script_iPad.xml-936b9de9bf40e72ec1c2e402854b4308.res"]
+
+[params]
+

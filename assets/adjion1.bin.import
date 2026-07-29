@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.adjoin"
+importer_version=1
+type="Resource"
+uid="uid://5uwxv8kid0yi"
+path="res://.godot/imported/adjion1.bin-5bff3daa5ef5fdd669f4c715e6792499.res"
+
+[deps]
+
+source_file="res://assets/adjion1.bin"
+dest_files=["res://.godot/imported/adjion1.bin-5bff3daa5ef5fdd669f4c715e6792499.res"]
+
+[params]
+

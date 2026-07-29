@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://8018x08s6bff"
+path="res://.godot/imported/battlename_tw_hd.xml-0edae72b1616b0b6b010d4463e518874.res"
+
+[deps]
+
+source_file="res://assets/battlename_tw_hd.xml"
+dest_files=["res://.godot/imported/battlename_tw_hd.xml-0edae72b1616b0b6b010d4463e518874.res"]
+
+[params]
+

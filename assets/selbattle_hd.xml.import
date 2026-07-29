@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://bkgeamg2ke44y"
+path="res://.godot/imported/selbattle_hd.xml-74ce4659014c2b94627587a636222dc1.res"
+
+[deps]
+
+source_file="res://assets/selbattle_hd.xml"
+dest_files=["res://.godot/imported/selbattle_hd.xml-74ce4659014c2b94627587a636222dc1.res"]
+
+[params]
+

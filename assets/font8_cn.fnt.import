@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://b7ja4agkhdw64"
+path="res://.godot/imported/font8_cn.fnt-2e5dba175c93da7f730d6b74d4d6eefa.res"
+
+[deps]
+
+source_file="res://assets/font8_cn.fnt"
+dest_files=["res://.godot/imported/font8_cn.fnt-2e5dba175c93da7f730d6b74d4d6eefa.res"]
+
+[params]
+

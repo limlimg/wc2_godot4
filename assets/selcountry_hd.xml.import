@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://cwva2xsj45v7l"
+path="res://.godot/imported/selcountry_hd.xml-9ec1497b0047c58db4962ecd1d59ff8d.res"
+
+[deps]
+
+source_file="res://assets/selcountry_hd.xml"
+dest_files=["res://.godot/imported/selcountry_hd.xml-9ec1497b0047c58db4962ecd1d59ff8d.res"]
+
+[params]
+

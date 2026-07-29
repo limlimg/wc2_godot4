@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://cxmpsperivdth"
+path="res://.godot/imported/battlebg2_hd.xml-5f6ce527ebcf02e59c54009e4be68f82.res"
+
+[deps]
+
+source_file="res://assets/battlebg2_hd.xml"
+dest_files=["res://.godot/imported/battlebg2_hd.xml-5f6ce527ebcf02e59c54009e4be68f82.res"]
+
+[params]
+

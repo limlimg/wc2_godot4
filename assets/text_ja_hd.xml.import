@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://ck8xaa556claw"
+path="res://.godot/imported/text_ja_hd.xml-a21dbfa763b1c66ccf81d00d4579d22b.res"
+
+[deps]
+
+source_file="res://assets/text_ja_hd.xml"
+dest_files=["res://.godot/imported/text_ja_hd.xml-a21dbfa763b1c66ccf81d00d4579d22b.res"]
+
+[params]
+

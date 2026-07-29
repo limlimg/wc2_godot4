@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.effect"
+importer_version=1
+type="Resource"
+uid="uid://bqtb4uouej46y"
+path="res://.godot/imported/effect_nuclearbomb.xml-ade6cde00d03bfc264df5980f77a1746.res"
+
+[deps]
+
+source_file="res://assets/effect_nuclearbomb.xml"
+dest_files=["res://.godot/imported/effect_nuclearbomb.xml-ade6cde00d03bfc264df5980f77a1746.res"]
+
+[params]
+

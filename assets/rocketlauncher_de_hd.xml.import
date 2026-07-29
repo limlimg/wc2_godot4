@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://p5p1uuyvkwli"
+path="res://.godot/imported/rocketlauncher_de_hd.xml-ffd02ad6ea18c2d902072c4c1f6885ba.res"
+
+[deps]
+
+source_file="res://assets/rocketlauncher_de_hd.xml"
+dest_files=["res://.godot/imported/rocketlauncher_de_hd.xml-ffd02ad6ea18c2d902072c4c1f6885ba.res"]
+
+[params]
+

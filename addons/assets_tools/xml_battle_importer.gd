@@ -47,7 +47,7 @@ func _get_resource_type() -> String:
 	return "Resource"
 
 
-func _getSave_extension() -> String:
+func _get_save_extension() -> String:
 	return "res"
 
 
@@ -232,5 +232,5 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 				push_error("Parse Error: Unrecoginzed name on line {0} of {1}".format([xml_list.row() + 1, source_file]))
 				return ERR_PARSE_ERROR
 		xml_list = xml_list.next_sibling_element()
-	var filename = save_path + "." + _getSave_extension()
+	var filename = save_path + "." + _get_save_extension()
 	return ResourceSaver.save(res_battle, filename)

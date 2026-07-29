@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://cm57yure6o4gu"
+path="res://.godot/imported/image_newgame_hd.xml-b7b1792f286959f20b633198e38257a1.res"
+
+[deps]
+
+source_file="res://assets/image_newgame_hd.xml"
+dest_files=["res://.godot/imported/image_newgame_hd.xml-b7b1792f286959f20b633198e38257a1.res"]
+
+[params]
+

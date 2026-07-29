@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.battlelist"
+importer_version=1
+type="Resource"
+uid="uid://c6s2rxtbbv3j5"
+path="res://.godot/imported/battlelist.xml-a84b2c8b9aa007a0b4397abb0a5098c0.res"
+
+[deps]
+
+source_file="res://assets/battlelist.xml"
+dest_files=["res://.godot/imported/battlelist.xml-a84b2c8b9aa007a0b4397abb0a5098c0.res"]
+
+[params]
+

@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.unitpositions"
+importer_version=1
+type="Resource"
+uid="uid://b4yse1fykn5be"
+path="res://.godot/imported/unitposdef.xml-076af6cf59c50e43d17452ece91eb7cf.res"
+
+[deps]
+
+source_file="res://assets/unitposdef.xml"
+dest_files=["res://.godot/imported/unitposdef.xml-076af6cf59c50e43d17452ece91eb7cf.res"]
+
+[params]
+

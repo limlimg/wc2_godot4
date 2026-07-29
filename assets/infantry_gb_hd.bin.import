@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.elib"
+importer_version=1
+type="Resource"
+uid="uid://bxs4f0aeudo6w"
+path="res://.godot/imported/infantry_gb_hd.bin-6e4f274676641b5a2a026add778b9e70.res"
+
+[deps]
+
+source_file="res://assets/infantry_gb_hd.bin"
+dest_files=["res://.godot/imported/infantry_gb_hd.bin-6e4f274676641b5a2a026add778b9e70.res"]
+
+[params]
+

@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://cdmd0qvfpfs5o"
+path="res://.godot/imported/text_kr_iPad_hd.xml-802d4583acf1fbc4b99e0627e1a905c4.res"
+
+[deps]
+
+source_file="res://assets/text_kr_iPad_hd.xml"
+dest_files=["res://.godot/imported/text_kr_iPad_hd.xml-802d4583acf1fbc4b99e0627e1a905c4.res"]
+
+[params]
+

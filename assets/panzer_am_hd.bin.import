@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.elib"
+importer_version=1
+type="Resource"
+uid="uid://b48c3ebk3h7xa"
+path="res://.godot/imported/panzer_am_hd.bin-cfd29b2841f290af16c00c238e22b489.res"
+
+[deps]
+
+source_file="res://assets/panzer_am_hd.bin"
+dest_files=["res://.godot/imported/panzer_am_hd.bin-cfd29b2841f290af16c00c238e22b489.res"]
+
+[params]
+

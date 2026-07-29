@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://gp7tkqhokxy8"
+path="res://.godot/imported/tank_ne_hd.xml-c95c0ecfbce2a74d3c8f2b1e77eb1fea.res"
+
+[deps]
+
+source_file="res://assets/tank_ne_hd.xml"
+dest_files=["res://.godot/imported/tank_ne_hd.xml-c95c0ecfbce2a74d3c8f2b1e77eb1fea.res"]
+
+[params]
+

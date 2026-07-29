@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://c6cglr6dv3fbg"
+path="res://.godot/imported/num1_hd.fnt-ff854f23c3e95ae95a290e78e58dfcf0.res"
+
+[deps]
+
+source_file="res://assets/num1_hd.fnt"
+dest_files=["res://.godot/imported/num1_hd.fnt-ff854f23c3e95ae95a290e78e58dfcf0.res"]
+
+[params]
+

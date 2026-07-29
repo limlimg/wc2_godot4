@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.script"
+importer_version=1
+type="Resource"
+uid="uid://chtcfksyagw22"
+path="res://.godot/imported/tutorails_script-512h.xml-179fb56589e1654132faad91e1367dcf.res"
+
+[deps]
+
+source_file="res://assets/tutorails_script-512h.xml"
+dest_files=["res://.godot/imported/tutorails_script-512h.xml-179fb56589e1654132faad91e1367dcf.res"]
+
+[params]
+

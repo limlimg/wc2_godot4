@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://bkxknxo026gef"
+path="res://.godot/imported/cruiser_hd.xml-6f8a842797834a5f1cf81329e8a134fb.res"
+
+[deps]
+
+source_file="res://assets/cruiser_hd.xml"
+dest_files=["res://.godot/imported/cruiser_hd.xml-6f8a842797834a5f1cf81329e8a134fb.res"]
+
+[params]
+

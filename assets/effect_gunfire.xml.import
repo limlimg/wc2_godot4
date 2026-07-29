@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.effect"
+importer_version=1
+type="Resource"
+uid="uid://bbhicoajjyj5l"
+path="res://.godot/imported/effect_gunfire.xml-7b3f83da493aa5d3d92cc88188b93c99.res"
+
+[deps]
+
+source_file="res://assets/effect_gunfire.xml"
+dest_files=["res://.godot/imported/effect_gunfire.xml-7b3f83da493aa5d3d92cc88188b93c99.res"]
+
+[params]
+

@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.effect"
+importer_version=1
+type="Resource"
+uid="uid://d4ejxxxyqrxbr"
+path="res://.godot/imported/effect_fortfire.xml-6a52e9f5fa7c0bec7ddb4f387652650a.res"
+
+[deps]
+
+source_file="res://assets/effect_fortfire.xml"
+dest_files=["res://.godot/imported/effect_fortfire.xml-6a52e9f5fa7c0bec7ddb4f387652650a.res"]
+
+[params]
+

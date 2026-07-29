@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://bp3tfgmljuohb"
+path="res://.godot/imported/panzer_fr_hd.xml-2cd2dcdaed8a1a11f139ac3898e61648.res"
+
+[deps]
+
+source_file="res://assets/panzer_fr_hd.xml"
+dest_files=["res://.godot/imported/panzer_fr_hd.xml-2cd2dcdaed8a1a11f139ac3898e61648.res"]
+
+[params]
+

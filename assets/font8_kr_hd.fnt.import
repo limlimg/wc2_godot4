@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://vbwgibjh08kc"
+path="res://.godot/imported/font8_kr_hd.fnt-128066788031f31ce1c7cfd4e25f34ae.res"
+
+[deps]
+
+source_file="res://assets/font8_kr_hd.fnt"
+dest_files=["res://.godot/imported/font8_kr_hd.fnt-128066788031f31ce1c7cfd4e25f34ae.res"]
+
+[params]
+

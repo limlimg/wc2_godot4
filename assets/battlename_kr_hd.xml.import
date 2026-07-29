@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://dlrs6612e2b62"
+path="res://.godot/imported/battlename_kr_hd.xml-a2c4217626ec484e2b758e0c0af88a9a.res"
+
+[deps]
+
+source_file="res://assets/battlename_kr_hd.xml"
+dest_files=["res://.godot/imported/battlename_kr_hd.xml-a2c4217626ec484e2b758e0c0af88a9a.res"]
+
+[params]
+

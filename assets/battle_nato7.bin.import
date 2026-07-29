@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.areaenable"
+importer_version=1
+type="Resource"
+uid="uid://c37qtat2edb47"
+path="res://.godot/imported/battle_nato7.bin-52013dc61bcbca9baf8612a87cd4f550.res"
+
+[deps]
+
+source_file="res://assets/battle_nato7.bin"
+dest_files=["res://.godot/imported/battle_nato7.bin-52013dc61bcbca9baf8612a87cd4f550.res"]
+
+[params]
+

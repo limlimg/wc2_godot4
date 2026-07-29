@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.effect"
+importer_version=1
+type="Resource"
+uid="uid://be3rgb8ua1wgl"
+path="res://.godot/imported/effect_airstrike.xml-3e02e445a4f9081b00f4d6f114aa3856.res"
+
+[deps]
+
+source_file="res://assets/effect_airstrike.xml"
+dest_files=["res://.godot/imported/effect_airstrike.xml-3e02e445a4f9081b00f4d6f114aa3856.res"]
+
+[params]
+

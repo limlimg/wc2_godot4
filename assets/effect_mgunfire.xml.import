@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.effect"
+importer_version=1
+type="Resource"
+uid="uid://c7s4my2nydljn"
+path="res://.godot/imported/effect_mgunfire.xml-7d438c43eaaa72761ba853669228595c.res"
+
+[deps]
+
+source_file="res://assets/effect_mgunfire.xml"
+dest_files=["res://.godot/imported/effect_mgunfire.xml-7d438c43eaaa72761ba853669228595c.res"]
+
+[params]
+

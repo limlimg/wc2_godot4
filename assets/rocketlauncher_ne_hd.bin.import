@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.elib"
+importer_version=1
+type="Resource"
+uid="uid://11i54pl8emlc"
+path="res://.godot/imported/rocketlauncher_ne_hd.bin-f4afc47db45fbc7d9db8a8ca5d69d14b.res"
+
+[deps]
+
+source_file="res://assets/rocketlauncher_ne_hd.bin"
+dest_files=["res://.godot/imported/rocketlauncher_ne_hd.bin-f4afc47db45fbc7d9db8a8ca5d69d14b.res"]
+
+[params]
+

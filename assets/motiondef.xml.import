@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.unitmotions"
+importer_version=1
+type="Resource"
+uid="uid://djhlwlnv3vokq"
+path="res://.godot/imported/motiondef.xml-44dea3c8fe54bed38882a772ce67439f.res"
+
+[deps]
+
+source_file="res://assets/motiondef.xml"
+dest_files=["res://.godot/imported/motiondef.xml-44dea3c8fe54bed38882a772ce67439f.res"]
+
+[params]
+

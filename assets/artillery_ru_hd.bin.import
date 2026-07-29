@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.elib"
+importer_version=1
+type="Resource"
+uid="uid://dbkdo2glhxxlq"
+path="res://.godot/imported/artillery_ru_hd.bin-7c056e6ddf357b3a99b62b2f06ac5b1d.res"
+
+[deps]
+
+source_file="res://assets/artillery_ru_hd.bin"
+dest_files=["res://.godot/imported/artillery_ru_hd.bin-7c056e6ddf357b3a99b62b2f06ac5b1d.res"]
+
+[params]
+

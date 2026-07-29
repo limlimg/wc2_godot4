@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.areaenable"
+importer_version=1
+type="Resource"
+uid="uid://d3nrh735am6rg"
+path="res://.godot/imported/tutorails.bin-a7b599a160608ccd6162a112ee71a40b.res"
+
+[deps]
+
+source_file="res://assets/tutorails.bin"
+dest_files=["res://.godot/imported/tutorails.bin-a7b599a160608ccd6162a112ee71a40b.res"]
+
+[params]
+

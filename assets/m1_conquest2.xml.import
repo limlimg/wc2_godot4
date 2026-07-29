@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://cir7c5v2cd0cc"
+path="res://.godot/imported/m1_conquest2.xml-67eb103aa9a52b661a853ce793ec42a9.res"
+
+[deps]
+
+source_file="res://assets/m1_conquest2.xml"
+dest_files=["res://.godot/imported/m1_conquest2.xml-67eb103aa9a52b661a853ce793ec42a9.res"]
+
+[params]
+

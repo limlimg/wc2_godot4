@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://bnv31ofcokvjp"
+path="res://.godot/imported/mui_tw_hd.xml-623f350bf183248c30d8affd99a7fdc7.res"
+
+[deps]
+
+source_file="res://assets/mui_tw_hd.xml"
+dest_files=["res://.godot/imported/mui_tw_hd.xml-623f350bf183248c30d8affd99a7fdc7.res"]
+
+[params]
+

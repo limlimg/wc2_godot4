@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://b2e0yng6pxqpb"
+path="res://.godot/imported/font5_kr.fnt-227d9cb095bd17358af4e6415789a294.res"
+
+[deps]
+
+source_file="res://assets/font5_kr.fnt"
+dest_files=["res://.godot/imported/font5_kr.fnt-227d9cb095bd17358af4e6415789a294.res"]
+
+[params]
+

@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.elib"
+importer_version=1
+type="Resource"
+uid="uid://b3pjsj8my8lrq"
+path="res://.godot/imported/artillery_fr_hd.bin-cd3d984955b299c9c903c5ff59cb141e.res"
+
+[deps]
+
+source_file="res://assets/artillery_fr_hd.bin"
+dest_files=["res://.godot/imported/artillery_fr_hd.bin-cd3d984955b299c9c903c5ff59cb141e.res"]
+
+[params]
+

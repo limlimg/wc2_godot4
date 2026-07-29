@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://1w50echumf7g"
+path="res://.godot/imported/eff.xml-8df843dc88c2967cebf22ad66f4ec05e.res"
+
+[deps]
+
+source_file="res://assets/eff.xml"
+dest_files=["res://.godot/imported/eff.xml-8df843dc88c2967cebf22ad66f4ec05e.res"]
+
+[params]
+

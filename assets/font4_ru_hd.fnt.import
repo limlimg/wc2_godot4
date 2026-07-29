@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://dvcvo4b3wthlk"
+path="res://.godot/imported/font4_ru_hd.fnt-7294d4755b71feac54dad0ff9f026886.res"
+
+[deps]
+
+source_file="res://assets/font4_ru_hd.fnt"
+dest_files=["res://.godot/imported/font4_ru_hd.fnt-7294d4755b71feac54dad0ff9f026886.res"]
+
+[params]
+

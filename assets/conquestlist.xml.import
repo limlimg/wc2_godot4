@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.conquestlist"
+importer_version=1
+type="Resource"
+uid="uid://c2pm10wpaqqwx"
+path="res://.godot/imported/conquestlist.xml-d864edc819b053dba5e628b189950809.res"
+
+[deps]
+
+source_file="res://assets/conquestlist.xml"
+dest_files=["res://.godot/imported/conquestlist.xml-d864edc819b053dba5e628b189950809.res"]
+
+[params]
+

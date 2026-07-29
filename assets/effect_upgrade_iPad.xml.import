@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.effect"
+importer_version=1
+type="Resource"
+uid="uid://dlleshl43na67"
+path="res://.godot/imported/effect_upgrade_iPad.xml-87463dd6eb69611fd9c32823b9500131.res"
+
+[deps]
+
+source_file="res://assets/effect_upgrade_iPad.xml"
+dest_files=["res://.godot/imported/effect_upgrade_iPad.xml-87463dd6eb69611fd9c32823b9500131.res"]
+
+[params]
+

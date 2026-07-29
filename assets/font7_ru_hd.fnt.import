@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://b2uugholahbox"
+path="res://.godot/imported/font7_ru_hd.fnt-cc2d926d951644c8ba22500a697c812f.res"
+
+[deps]
+
+source_file="res://assets/font7_ru_hd.fnt"
+dest_files=["res://.godot/imported/font7_ru_hd.fnt-cc2d926d951644c8ba22500a697c812f.res"]
+
+[params]
+

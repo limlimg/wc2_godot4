@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.cards"
+importer_version=1
+type="Resource"
+uid="uid://cvy84j4snodu5"
+path="res://.godot/imported/carddef.xml-0c0433b76bfa1223e589612a49824294.res"
+
+[deps]
+
+source_file="res://assets/carddef.xml"
+dest_files=["res://.godot/imported/carddef.xml-0c0433b76bfa1223e589612a49824294.res"]
+
+[params]
+

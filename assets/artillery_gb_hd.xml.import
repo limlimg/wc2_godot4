@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://bgc1yjqtsd4bu"
+path="res://.godot/imported/artillery_gb_hd.xml-f591b46aa751694bd56f584cc65af1b7.res"
+
+[deps]
+
+source_file="res://assets/artillery_gb_hd.xml"
+dest_files=["res://.godot/imported/artillery_gb_hd.xml-f591b46aa751694bd56f584cc65af1b7.res"]
+
+[params]
+

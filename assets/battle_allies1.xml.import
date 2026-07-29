@@ -1,0 +1,13 @@
+[remap]
+
+importer="wc2.assets.xml.battle"
+importer_version=1
+type="Resource"
+uid="uid://f74qwr0gv4lo"
+
+[deps]
+
+source_file="res://assets/battle_allies1.xml"
+
+[params]
+

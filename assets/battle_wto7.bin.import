@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.areaenable"
+importer_version=1
+type="Resource"
+uid="uid://c7wxiubg4112m"
+path="res://.godot/imported/battle_wto7.bin-b335539c7d73210915076709140dbb71.res"
+
+[deps]
+
+source_file="res://assets/battle_wto7.bin"
+dest_files=["res://.godot/imported/battle_wto7.bin-b335539c7d73210915076709140dbb71.res"]
+
+[params]
+

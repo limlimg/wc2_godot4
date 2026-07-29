@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://cosvlvs846tow"
+path="res://.godot/imported/text_kr_hd.xml-07cc2f92b853659c1238d47494bab69a.res"
+
+[deps]
+
+source_file="res://assets/text_kr_hd.xml"
+dest_files=["res://.godot/imported/text_kr_hd.xml-07cc2f92b853659c1238d47494bab69a.res"]
+
+[params]
+

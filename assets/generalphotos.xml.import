@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.generals"
+importer_version=1
+type="Resource"
+uid="uid://c5eujw1a44dpq"
+path="res://.godot/imported/generalphotos.xml-038b1ea2fc6ef2aaf67eac1baba12ae6.res"
+
+[deps]
+
+source_file="res://assets/generalphotos.xml"
+dest_files=["res://.godot/imported/generalphotos.xml-038b1ea2fc6ef2aaf67eac1baba12ae6.res"]
+
+[params]
+

@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.bin.elib"
+importer_version=1
+type="Resource"
+uid="uid://cobveuuw4uelw"
+path="res://.godot/imported/heavytank_fr_hd.bin-81f4a2625a414c118ea3220530ef7877.res"
+
+[deps]
+
+source_file="res://assets/heavytank_fr_hd.bin"
+dest_files=["res://.godot/imported/heavytank_fr_hd.bin-81f4a2625a414c118ea3220530ef7877.res"]
+
+[params]
+

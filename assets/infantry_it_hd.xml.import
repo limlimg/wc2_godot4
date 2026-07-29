@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.texture"
+importer_version=1
+type="Resource"
+uid="uid://ccx8il6gj5g64"
+path="res://.godot/imported/infantry_it_hd.xml-adf768274419d6053e9c919f76c3a643.res"
+
+[deps]
+
+source_file="res://assets/infantry_it_hd.xml"
+dest_files=["res://.godot/imported/infantry_it_hd.xml-adf768274419d6053e9c919f76c3a643.res"]
+
+[params]
+

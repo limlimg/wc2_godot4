@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.xml.effect"
+importer_version=1
+type="Resource"
+uid="uid://dtfnq84nv7mwm"
+path="res://.godot/imported/effect_parachute.xml-9c3b9c6864205d1ef7ada62e3216bd85.res"
+
+[deps]
+
+source_file="res://assets/effect_parachute.xml"
+dest_files=["res://.godot/imported/effect_parachute.xml-9c3b9c6864205d1ef7ada62e3216bd85.res"]
+
+[params]
+
