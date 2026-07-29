@@ -10,22 +10,6 @@ script = ExtResource("1_qvxgr")
 
 [node name="CStateManager" parent="." unique_id=1651870662 groups=["_ZN13CStateManager8InstancevE"] instance=ExtResource("2_up4qs")]
 
-[node name="CLogoState" parent="CStateManager" unique_id=1619107626 instance_placeholder="res://c_logo_state.tscn"]
-visible = false
-layout_mode = 1
-
-[node name="CMenuState" parent="CStateManager" unique_id=54523483 instance_placeholder="res://c_menu_state.tscn"]
-visible = false
-layout_mode = 1
-
-[node name="CLoadState" parent="CStateManager" unique_id=1642615460 instance_placeholder="res://c_load_state.tscn"]
-visible = false
-layout_mode = 1
-
-[node name="CGameState" parent="CStateManager" unique_id=1645819512 instance_placeholder="res://c_game_state.tscn"]
-visible = false
-layout_mode = 1
-
 [node name="GUIManagerLayer" type="CanvasLayer" parent="." unique_id=1541116286]
 layer = 16
 

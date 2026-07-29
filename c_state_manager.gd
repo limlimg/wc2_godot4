@@ -61,7 +61,7 @@ func register_state(state: CBaseState) -> void:
 		return
 	state.hide()
 	state.set_process(false)
-	state.reparent(self)
+	add_child(state)
 	_states[state.state] = state
 
 
