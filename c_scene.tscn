@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://boe8je6i3v5xc"]
 
 [ext_resource type="Script" uid="uid://dwigbsm4seqr1" path="res://c_scene.gd" id="1_2l0sg"]
+[ext_resource type="PackedScene" uid="uid://jqqrcwjhx42l" path="res://c_camera.tscn" id="2_giqlr"]
 
 [node name="CScene" type="Control" unique_id=342875909]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_2l0sg")
 
-[node name="CCamera" parent="." unique_id=1077541885 instance_placeholder="res://c_camera.tscn"]
+[node name="CCamera" parent="." unique_id=1077541885 instance=ExtResource("2_giqlr")]
 layout_mode = 1
 offset_right = 480.0
 offset_bottom = 320.0
@@ -20,7 +21,6 @@ offset_right = 82.0
 offset_bottom = 82.0
 
 [node name="DisabledArea" type="Sprite2D" parent="CCamera/CBackground" unique_id=1705058765]
-z_index = -2
 centered = false
 
 [node name="CArea" parent="CCamera" unique_id=1183696436 instance_placeholder="res://c_area.tscn"]

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c4fcq7wy2b7qx"]
 
 [ext_resource type="Script" uid="uid://bpjgdshru2jnh" path="res://gui_main_menu.gd" id="1_fciw5"]
-[ext_resource type="Texture2D" uid="uid://6yn1umela560" path="res://resources/assets/texture/commonbg.tres" id="2_xc2c6"]
 [ext_resource type="Texture2D" uid="uid://i1akuqipfj3q" path="res://resources/assets/texture/mainbg.tres" id="2_xqjbv"]
 [ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="3_m8cyo"]
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="4_pibd6"]
@@ -737,16 +736,14 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_fciw5")
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1494828059]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1086215127]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_xc2c6")
-expand_mode = 1
-stretch_mode = 6
+color = Color(0, 0, 0, 1)
 
 [node name="FixedWidth" parent="." unique_id=1627139554 instance=ExtResource("3_m8cyo")]
 clip_contents = true

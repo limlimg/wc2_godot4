@@ -22,3 +22,5 @@ func init(map: int, map_rect: Rect2, scene_rect: Rect2) -> void:
 				_bgs.append(image)
 			j += 1
 		i += 1
+	position = scene_rect.position - Vector2(82.0, 82.0)
+	size = scene_rect.size + Vector2(164.0, 164.0)

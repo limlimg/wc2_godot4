@@ -3,6 +3,10 @@ extends Control
 
 var camera: CCamera
 var _area_mark := CAreaMark.new()
+var _background: Control
+var _camera: Control
+var _bomber: Node2D
+var _medals: Array[Node2D]
 var _area_data: AreaDataList
 var _adjoin: Adjoin
 var _area_enable: AreaEnable
@@ -10,16 +14,23 @@ var _areas: Dictionary[int, CArea]
 var _disabled_areas: Dictionary[int, Sprite2D]
 var _scene_rect: Rect2
 
+# TODO: implement editor methods?
+
 func init(areas_enable: String, map: int) -> void:
 	_area_mark.init(map)
 	_load_area_data(map)
-	_loadAdjoin(map)
+	_load_adjoin(map)
 	_init_areas(map, areas_enable)
 	_check_adjacent_area()
 	_scene_rect = _cal_scene_rect()
+	var real_scene := get_tree().get_first_node_in_group(&"g_Scene")
+	_background = real_scene.get_node(^"CCamera/CBackground").create_instance()
+	_background.init(map, Rect2(Vector2.ZERO, _area_mark.get_map_size()), _scene_rect)
 	_create_render_area_list()
-	$CCamera/CBackground.init(map, Rect2(Vector2.ZERO, _area_mark.get_map_size()), _scene_rect)
-	$CCamera.init(_scene_rect)
+	_init_area_image(map)
+	_camera = real_scene.get_node(^"CCamera")
+	_camera.init(_scene_rect)
+	_bomber = real_scene.get_node(^"CCamera/CBomber").create_instance()
 
 
 func _load_area_data(map: int) -> void:
@@ -29,7 +40,7 @@ func _load_area_data(map: int) -> void:
 	_area_data = load(path)
 
 
-func _loadAdjoin(map: int) -> void:
+func _load_adjoin(map: int) -> void:
 	var path = EC2dAppDelegate.get_asset_path("adjion{0}.bin".format([map]), "")
 	if path.is_empty():
 		return
@@ -58,9 +69,11 @@ func _load_area_tax(map: int) -> void:
 	if path.is_empty():
 		return
 	var area_tax: AreaTaxMap = load(path)
+	var real_scene := get_tree().get_first_node_in_group(&"g_Scene")
 	for k in area_tax.areas.keys():
 		if _area_enable == null or _area_enable.enable[k]:
-			var area: CArea = $CCamera/CArea.create_instance()
+			var area: CArea = real_scene.get_node(^"CCamera/CArea").create_instance()
+			area.position = _area_data.data[k].area_rect.position
 			var info := AreaInfo.new()
 			info.type = area_tax.areas[k].type
 			info.tax = area_tax.areas[k].tax
@@ -112,14 +125,56 @@ func _cal_scene_rect() -> Rect2:
 func _create_render_area_list() -> void:
 	for i in _area_data.data.size():
 		if _is_rect_in_scene(_area_data.data[i].area_rect) and not _area_enable.enable[i]:
-			var area: Sprite2D = $CCamera/CBackground/DisabledArea.duplicate()
-			area.position = _area_data.data[i].area_rect.position as Vector2 - $CCamera/CBackground.position
-			$CCamera/CBackground.add_child(area)
+			var proto := get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/CBackground/DisabledArea")
+			var area: Sprite2D = proto.duplicate()
+			area.position = _area_data.data[i].area_rect.position as Vector2 - _background.position
+			_background.add_child(area)
 			_disabled_areas[i] = area
 
 
 func _is_rect_in_scene(rect: Rect2) -> bool:
 	return _scene_rect.intersects(rect)
+
+
+func _init_area_image(map: int) -> void:
+	var zone_res := ecTextureRes.new()
+	var i := 1
+	var j := 1
+	var zone_name := "m{0}_zone{1}_{2}.xml".format([map, i, j])
+	var zone_path := EC2dAppDelegate.get_asset_path(zone_name, "")
+	while not zone_path.is_empty():
+		while not zone_path.is_empty():
+			zone_res.load_res(zone_name, false)
+			j += 1
+			zone_name = "m{0}_zone{1}_{2}.xml".format([map, i, j])
+			zone_path = EC2dAppDelegate.get_asset_path(zone_name, "")
+		i += 1
+		j = 1
+		zone_name = "m{0}_zone{1}_{2}.xml".format([map, i, j])
+		zone_path = EC2dAppDelegate.get_asset_path(zone_name, "")
+	i = 1
+	zone_name = "m{0}_conquest_{1}.xml".format([map, i])
+	zone_path = EC2dAppDelegate.get_asset_path(zone_name, "")
+	while not zone_path.is_empty():
+		zone_res.load_res(zone_name, false)
+		i += 1
+		zone_name = "m{0}_zone{1}_{2}.xml".format([map, i, j])
+		zone_path = EC2dAppDelegate.get_asset_path(zone_name, "")
+	for k in _areas.keys():
+		_areas[k].texture = zone_res.get_image("%04d.png"%k)
+	for k in _disabled_areas.keys():
+		_disabled_areas[k].texture = zone_res.get_image("%04d.png"%k)
+
+
+func release() -> void:
+	for i in _medals:
+		i.queue_free()
+	_medals.clear()
+	_bomber.queue_free()
+	_background.queue_free()
+	_area_data = null
+	_area_mark.release()
+	_clear_areas()
 
 
 func all_areas_encirclement() -> void:
@@ -139,7 +194,9 @@ func set_area_country(id: int, country: CCountry) -> void:
 
 
 func set_camera_to_area(id: int) -> void:
-	pass
+	var area := get_area(id)
+	if area != null:
+		_camera.set_pos(area.army_pos.x, area.army_pos.y, true)
 
 
 func clear_targets() -> void:
@@ -151,11 +208,17 @@ func reset_target() -> void:
 
 
 func move_camera_to_area(id: int) -> void:
-	pass
+	var area := get_area(id)
+	if area != null:
+		var area_rect := _area_data.data[area.id].area_rect
+		if not _camera.is_rect_in_visible_region(area_rect):
+			_camera.move_to(area.army_pos.x, area.army_pos.y, true)
 
 
 func move_camera_center_to_area(id: int) -> void:
-	pass
+	var area := get_area(id)
+	if area != null:
+		_camera.move_to(area.army_pos.x, area.army_pos.y, true)
 
 
 func adjacent_areas_encirclement(id: int) -> void:

@@ -5,7 +5,7 @@ func _init() -> void:
 	_application_will_finish_launching_with_options(Engine.get_main_loop(), {})
 
 
-static var g_content_scale_factor: float = 1.0 / ProjectSettings.get_setting("display/window/stretch/scale")
+static var g_content_scale_factor: float = ProjectSettings.get_setting("display/window/stretch/scale")
 
 func _application_will_finish_launching_with_options(_application: MainLoop, _launch_options: Dictionary) -> bool:
 	var window_size := DisplayServer.window_get_size()

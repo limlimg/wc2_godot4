@@ -51,7 +51,7 @@ func init(init_id: StringName, init_name: StringName) -> void:
 
 func remove_area(area_id: int) -> void:
 	_area_list.erase(area_id)
-	if AppDelegate.g_Scene.get_area(area_id).area_tax.type == 1:
+	if g_Scene.get_area(area_id).area_tax.type == 1:
 		_capital_list.erase(area_id)
 
 
@@ -59,7 +59,7 @@ func add_area(area_id: int) -> void:
 	if _find_area(area_id):
 		return
 	_area_list.append(area_id)
-	if AppDelegate.g_Scene.get_area(area_id).type == 1:
+	if g_Scene.get_area(area_id).type == 1:
 		_capital_list.append(area_id)
 
 
@@ -71,7 +71,7 @@ func get_highest_value_area() -> int:
 	var max_id := -1
 	var max_value := 0
 	for i in _area_list:
-		var area = AppDelegate.g_Scene.get_area(i)
+		var area = g_Scene.get_area(i)
 		if area.has_army_card(3):
 			return i
 		var value := CActionAssist.calc_area_value(area)
@@ -89,7 +89,7 @@ func _get_first_capital() -> int:
 
 func is_conquested() -> bool:
 	for i in _area_list:
-		var area = AppDelegate.g_Scene.get_area(i)
+		var area = g_Scene.get_area(i)
 		if not area.area_data.sea:
 			return false
 		if defeated == 1 and area.get_num_armies() > 0:
@@ -98,7 +98,7 @@ func is_conquested() -> bool:
 
 
 func _find_adjacent_area_id(id: int, has_army: bool) -> int:
-	for i in AppDelegate.g_Scene.get_num_adjacent_areas(id):
+	for i in g_Scene.get_num_adjacent_areas(id):
 		var area
 	return -1
 

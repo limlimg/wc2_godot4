@@ -53,7 +53,7 @@ func _on_gui_country_list_country_selected(country: int) -> void:
 
 func _on_button_ok_pressed() -> void:
 	g_GameManager.new_game(2, -1, 0, conquest)
-	g_GameManager.set_conquest_player_country_id($GUICountryList/GUICountryList.get_sel_country_id())
+	g_GameManager.set_conquest_player_country_id($GUICountryList.get_sel_country_id())
 	ok_pressed.emit()
 
 

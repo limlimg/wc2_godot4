@@ -2,6 +2,10 @@ extends Node2D
 
 var _tween: Tween
 
+func init():
+	pass
+
+
 func aircraft_carrier_bomb(_attack_area: int, defend_area: int) -> void:
 	bomb_area(defend_area, 4)
 

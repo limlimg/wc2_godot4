@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://u4yufgjyunel"]
 
-[ext_resource type="Script" uid="uid://bauwlmhvhufvb" path="res://app/src/main/cpp/c_bomber.gd" id="1_2ba0p"]
-[ext_resource type="Texture2D" uid="uid://c771twh1nxc0e" path="res://app/src/main/cpp/resources/assets/game_res/fighter.png.tres" id="1_ffuae"]
-[ext_resource type="Texture2D" uid="uid://bt48anokkkh07" path="res://app/src/main/cpp/resources/assets/game_res/bomber.png.tres" id="2_2ba0p"]
-[ext_resource type="PackedScene" uid="uid://3kjay574huha" path="res://app/src/main/cpp/ec_effect_manager.tscn" id="4_mejs8"]
+[ext_resource type="Script" uid="uid://bauwlmhvhufvb" path="res://c_bomber.gd" id="1_2ba0p"]
+[ext_resource type="Texture2D" uid="uid://c771twh1nxc0e" path="res://resources/assets/game_res/fighter.png.tres" id="1_ffuae"]
+[ext_resource type="Texture2D" uid="uid://bt48anokkkh07" path="res://resources/assets/game_res/bomber.png.tres" id="2_2ba0p"]
+[ext_resource type="PackedScene" uid="uid://3kjay574huha" path="res://ec_effect_manager.tscn" id="4_mejs8"]
 
 [node name="CBomber" type="Node2D" unique_id=511489610]
 script = ExtResource("1_2ba0p")

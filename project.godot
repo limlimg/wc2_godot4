@@ -47,12 +47,12 @@ AppDelegate="*uid://ca4a33l6mf8ec"
 
 window/size/viewport_width=480
 window/size/viewport_height=320
-window/size/resizable=false
 window/size/window_width_override=1024
 window/size/window_height_override=768
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
-window/stretch/scale=0.5
+window/stretch/scale=2.0
+window/handheld/orientation=4
 
 [editor_plugins]
 

@@ -96,9 +96,14 @@ func _show_dlg_id(id: int) -> void:
 
 
 func _show_dlg(dlg: String) -> void:
-	$Dlg/ecUniFont/Label.text = dlg
+	$Dlg/Font8/Label.text = dlg
 	show()
 	CSoundBox.get_instance().play_se("btn.wav")
+
+
+func _on_button_pressed() -> void:
+	if _current_cmd < _cmds.tutorial_script.size() - 1:
+		_skip_cmd(_current_cmd)
 
 
 func _skip_cmd(skip_cmd: int) -> void:

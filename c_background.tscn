@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://boj57qigyh7vy"]
 
-[ext_resource type="Script" uid="uid://dehq8p02n3txr" path="res://app/src/main/cpp/c_background.gd" id="1_c1qka"]
-[ext_resource type="Texture2D" uid="uid://dbnvrq6amoxr1" path="res://app/src/main/cpp/resources/assets/texture/box2.tres" id="1_gsco7"]
-[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://app/src/main/cpp/ec_image_attr.gd" id="1_qb5dj"]
-[ext_resource type="Texture2D" uid="uid://dsye1p7mwml1" path="res://app/src/main/cpp/resources/assets/texture/box1.tres" id="1_slcnx"]
-[ext_resource type="Texture2D" uid="uid://djq7y8vw2bvkv" path="res://app/src/main/cpp/resources/assets/texture/box3.tres" id="3_d8gdt"]
+[ext_resource type="Script" uid="uid://dehq8p02n3txr" path="res://c_background.gd" id="1_c1qka"]
+[ext_resource type="Texture2D" uid="uid://dbnvrq6amoxr1" path="res://resources/assets/texture/box2.tres" id="1_gsco7"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="1_qb5dj"]
+[ext_resource type="Texture2D" uid="uid://dsye1p7mwml1" path="res://resources/assets/texture/box1.tres" id="1_slcnx"]
+[ext_resource type="Texture2D" uid="uid://djq7y8vw2bvkv" path="res://resources/assets/texture/box3.tres" id="3_d8gdt"]
 
 [sub_resource type="Texture2D" id="Texture2D_gs8vj"]
 resource_local_to_scene = false
@@ -22,6 +22,7 @@ script = ExtResource("1_c1qka")
 
 [node name="Background" type="Control" parent="." unique_id=1516750885]
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 82.0

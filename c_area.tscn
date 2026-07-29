@@ -5,6 +5,7 @@
 [node name="CArea" type="Sprite2D" unique_id=1183696436]
 z_index = -2
 y_sort_enabled = true
+centered = false
 script = ExtResource("1_0tvyd")
 
 [node name="Flag" type="Node2D" parent="." unique_id=811864936]

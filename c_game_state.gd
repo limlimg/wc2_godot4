@@ -78,6 +78,7 @@ func _on_enter() -> void:
 	if g_GameManager.game_mode == 5:
 		_gui_tutorials = $GUITutorails.create_instance()
 		_gui_tutorials.reparent(gui_manager)
+		get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
 	else:
 		_gui_dialogue = $GUIDialogue.create_instance()
 		_gui_dialogue.reparent(gui_manager)
@@ -120,6 +121,7 @@ func _update_ai_progress() -> void:
 
 func _on_exit() -> void:
 	GUIMotionManager.instance().clear_motion()
+	get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP_HEIGHT
 	GUIManager.instance().free_all_child()
 
 
