@@ -1,0 +1,16 @@
+[remap]
+
+importer="wc2.assets.xml.plist"
+importer_version=1
+type="Translation"
+uid="uid://b8uqwhk4tloi5"
+path="res://.godot/imported/Localizable.strings-ce26c688f4c04dfad6f9f3ae3ade1c3c.translation"
+
+[deps]
+
+source_file="res://assets/ja.lproj/Localizable.strings"
+dest_files=["res://.godot/imported/Localizable.strings-ce26c688f4c04dfad6f9f3ae3ade1c3c.translation"]
+
+[params]
+
+locale="ja"

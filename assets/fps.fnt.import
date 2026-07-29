@@ -1,14 +1,3 @@
 [remap]
 
-importer="wc2.assets.fnt"
-importer_version=1
-type="FontFile"
-uid="uid://8iifjxtnqhru"
-valid=false
-
-[deps]
-
-source_file="res://assets/fps.fnt"
-
-[params]
-
+importer="skip"

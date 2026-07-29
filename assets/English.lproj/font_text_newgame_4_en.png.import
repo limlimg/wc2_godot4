@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://b5onpn014prap"
+path="res://.godot/imported/font_text_newgame_4_en.png-c74c438975d8d85110abc0afacb43c4f.image"
+
+[deps]
+
+source_file="res://assets/English.lproj/font_text_newgame_4_en.png"
+dest_files=["res://.godot/imported/font_text_newgame_4_en.png-c74c438975d8d85110abc0afacb43c4f.image"]
+
+[params]
+

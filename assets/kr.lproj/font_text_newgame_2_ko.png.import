@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://ddcvol6he3pic"
+path="res://.godot/imported/font_text_newgame_2_ko.png-c65a461a7222ee826cbd382d9885257b.image"
+
+[deps]
+
+source_file="res://assets/kr.lproj/font_text_newgame_2_ko.png"
+dest_files=["res://.godot/imported/font_text_newgame_2_ko.png-c65a461a7222ee826cbd382d9885257b.image"]
+
+[params]
+

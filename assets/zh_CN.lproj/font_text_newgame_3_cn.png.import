@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://buiuc5a517vxi"
+path="res://.godot/imported/font_text_newgame_3_cn.png-6296f7d3e784d2781eeb1802c49a3e77.image"
+
+[deps]
+
+source_file="res://assets/zh_CN.lproj/font_text_newgame_3_cn.png"
+dest_files=["res://.godot/imported/font_text_newgame_3_cn.png-6296f7d3e784d2781eeb1802c49a3e77.image"]
+
+[params]
+

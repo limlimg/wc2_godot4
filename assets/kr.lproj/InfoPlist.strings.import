@@ -1,0 +1,16 @@
+[remap]
+
+importer="wc2.assets.xml.plist"
+importer_version=1
+type="Translation"
+uid="uid://c3k0hmvxbhtut"
+path="res://.godot/imported/InfoPlist.strings-7d5517709ed55469fe803bbbe403d8bb.translation"
+
+[deps]
+
+source_file="res://assets/kr.lproj/InfoPlist.strings"
+dest_files=["res://.godot/imported/InfoPlist.strings-7d5517709ed55469fe803bbbe403d8bb.translation"]
+
+[params]
+
+locale="ko"

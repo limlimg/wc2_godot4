@@ -3,6 +3,10 @@
 /android/
 
 # Game Assets
-/assets/*
-!/assets/*.import
+/assets/*.*
+!/assets/*.lproj/
+/assets/*.lproj/*
+!/assets/*.lproj/*.uid
+!/assets/*.lproj/*.import
 !/assets/*.uid
+!/assets/*/*.import

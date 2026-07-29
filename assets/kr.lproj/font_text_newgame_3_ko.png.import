@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://b7dlx7xhphqj5"
+path="res://.godot/imported/font_text_newgame_3_ko.png-d3e31cad75e9e96a924c1a7069e51a6d.image"
+
+[deps]
+
+source_file="res://assets/kr.lproj/font_text_newgame_3_ko.png"
+dest_files=["res://.godot/imported/font_text_newgame_3_ko.png-d3e31cad75e9e96a924c1a7069e51a6d.image"]
+
+[params]
+

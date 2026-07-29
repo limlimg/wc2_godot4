@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://2v8870xdjapt"
+path="res://.godot/imported/font_text_newgame_3_en_hd.fnt-24b52efa93c13fa3d74d652c2c1f32d2.res"
+
+[deps]
+
+source_file="res://assets/ru.lproj/font_text_newgame_3_en_hd.fnt"
+dest_files=["res://.godot/imported/font_text_newgame_3_en_hd.fnt-24b52efa93c13fa3d74d652c2c1f32d2.res"]
+
+[params]
+

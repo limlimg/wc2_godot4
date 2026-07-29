@@ -1,17 +1,15 @@
 [remap]
 
-importer="font_data_bmfont"
+importer="wc2.assets.fnt"
+importer_version=1
 type="FontFile"
 uid="uid://de7p64x75fvba"
-path="res://.godot/imported/num2.fnt-3340f2bd5e1c7980757cb0858e1e96ed.fontdata"
+path="res://.godot/imported/num2.fnt-3340f2bd5e1c7980757cb0858e1e96ed.res"
 
 [deps]
 
 source_file="res://assets/num2.fnt"
-dest_files=["res://.godot/imported/num2.fnt-3340f2bd5e1c7980757cb0858e1e96ed.fontdata"]
+dest_files=["res://.godot/imported/num2.fnt-3340f2bd5e1c7980757cb0858e1e96ed.res"]
 
 [params]
 
-fallbacks=[]
-compress=true
-scaling_mode=2

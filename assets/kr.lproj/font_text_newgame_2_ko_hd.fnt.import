@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://demodhxb7dn6d"
+path="res://.godot/imported/font_text_newgame_2_ko_hd.fnt-885cbeaf90a56c70d9fb15d6f82bc946.res"
+
+[deps]
+
+source_file="res://assets/kr.lproj/font_text_newgame_2_ko_hd.fnt"
+dest_files=["res://.godot/imported/font_text_newgame_2_ko_hd.fnt-885cbeaf90a56c70d9fb15d6f82bc946.res"]
+
+[params]
+

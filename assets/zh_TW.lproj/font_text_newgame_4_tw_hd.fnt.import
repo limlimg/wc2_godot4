@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://coucwcutcwa54"
+path="res://.godot/imported/font_text_newgame_4_tw_hd.fnt-dfff6aa2812942737b03089f17c2f2e4.res"
+
+[deps]
+
+source_file="res://assets/zh_TW.lproj/font_text_newgame_4_tw_hd.fnt"
+dest_files=["res://.godot/imported/font_text_newgame_4_tw_hd.fnt-dfff6aa2812942737b03089f17c2f2e4.res"]
+
+[params]
+

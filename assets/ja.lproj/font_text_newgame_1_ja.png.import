@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://csum3ryi11wvf"
+path="res://.godot/imported/font_text_newgame_1_ja.png-aca59ca7d50477f6a2557e182f8cbe7e.image"
+
+[deps]
+
+source_file="res://assets/ja.lproj/font_text_newgame_1_ja.png"
+dest_files=["res://.godot/imported/font_text_newgame_1_ja.png-aca59ca7d50477f6a2557e182f8cbe7e.image"]
+
+[params]
+

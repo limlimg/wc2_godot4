@@ -1,0 +1,16 @@
+[remap]
+
+importer="wc2.assets.xml.plist"
+importer_version=1
+type="Translation"
+uid="uid://bu1yfstsnd0cn"
+path="res://.godot/imported/locstrings.xml-6c984274df5c010f5eec38c3272fb1f5.translation"
+
+[deps]
+
+source_file="res://assets/ja.lproj/locstrings.xml"
+dest_files=["res://.godot/imported/locstrings.xml-6c984274df5c010f5eec38c3272fb1f5.translation"]
+
+[params]
+
+locale="en"

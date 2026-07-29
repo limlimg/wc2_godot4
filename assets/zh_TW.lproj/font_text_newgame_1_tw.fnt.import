@@ -1,0 +1,15 @@
+[remap]
+
+importer="wc2.assets.fnt"
+importer_version=1
+type="FontFile"
+uid="uid://r31s0im415f2"
+path="res://.godot/imported/font_text_newgame_1_tw.fnt-884093e8394c05aed80a300f0b6dbb7e.res"
+
+[deps]
+
+source_file="res://assets/zh_TW.lproj/font_text_newgame_1_tw.fnt"
+dest_files=["res://.godot/imported/font_text_newgame_1_tw.fnt-884093e8394c05aed80a300f0b6dbb7e.res"]
+
+[params]
+
