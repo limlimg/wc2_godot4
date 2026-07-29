@@ -26,7 +26,8 @@ var spacing := Vector2i.ZERO:
 func _on_asset_changed() -> void:
 	if asset != null:
 		if Engine.is_editor_hint():
-			return
+			if not init(asset.name, false):
+				init(asset.name_hd, true)
 		else:
 			var font_name := asset.get_resolved_name()
 			if not font_name.is_empty():
@@ -35,8 +36,6 @@ func _on_asset_changed() -> void:
 
 
 func init(font_name: String, hd: bool) -> bool:
-	if Engine.is_editor_hint():
-		return false
 	var cache_old_theme := theme
 	theme = null
 	var path := EC2dAppDelegate.get_asset_path(font_name, "")
