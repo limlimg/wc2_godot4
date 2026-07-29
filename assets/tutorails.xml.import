@@ -4,10 +4,12 @@ importer="wc2.assets.xml.battle"
 importer_version=1
 type="Resource"
 uid="uid://bx6r7noexrn4p"
+path="res://.godot/imported/tutorails.xml-e864b1cb44e6bc06e77f027f760e700d.res"
 
 [deps]
 
 source_file="res://assets/tutorails.xml"
+dest_files=["res://.godot/imported/tutorails.xml-e864b1cb44e6bc06e77f027f760e700d.res"]
 
 [params]
 

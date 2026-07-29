@@ -1,32 +1,21 @@
 ### Before you start
 
-extract the assets folder from the original apk package and put it under app/src/main/
+extract the `assets` folder from the original apk package and put it under the project root, merging with the folder with the same name.
+
+You will see "Error importing 'res://assets/carddef.xml'" which is because the original carddef.xml does include a syntax error (missing a quote on line 12). Please fix it.
 
 ===============================================================================
 
 ### Project structure
 
-`core/` contains code that mimic android APIs
+The root folder contains scenes and scripts corresponding to classed in the original code. Lifecycle management mirrors the api of ios ApplicationDelegate and is implemented in ec_2d_app_delegate.gd. Updating and rendering are handled by node callbacks so there is no single entry point.
 
-`app/src/main/java/` contains code that corresponds to the java code in classes.dex in the original game.
+`assets` folder contains resource metadata for assets that are not uploaded to the repo and need to be added from an original apk package.
 
-Those two folders probably don't need further work.
+`addons` folder contains an add on `assets_tools`. It includes resource importers which convert assets from `assets` folder to Godot internal formats that can be loaded faster at runtime.
 
-Code that corresponds to the native code in libworld-conqueror-2.so in the original game is placed directly under `app/src/main/cpp/`. `native-lib.gd` contains global functions including Java_* functions which are entry points to the native code. API classes ecGraphics, ecSoundBox and ecFile have been implemented, so the rest of the project should be able to be done by merely translating the original native code.
+`resources/imported` folder contains scripts that define the output of aforementioned importers.
 
-Beyond that, currently this repo contains many efforts to fit the implementation to the mechanism of Godot engine. These may need to be refactored if doing the rest of the project by translating the original native code:
-- CLogoState -> main scene
-- CMenuState, CLoadState, CGameState -> scene to switch to
-- GUIElement -> Control Node
-- transition/animation handled by Update/OnUpdate -> Tween
-- rendering -> Sprite/TextureRect nodes
-- input handling -> Godot input handling
-- GUIElement sending Event to its parent -> signal
+`resources/assets` folder contains resources and scripts that pack different versions of an asset (e.g. mainbg.webp, mainbg_iPad.webp, mainbg-640h.webp and mainbg-568h.webp) into a single resource that can be used in the editor.
 
-This also leads to the other folders in this repo:
-
-`addons/assets_tools/` contains ResourceImporters that parse the assets files in the editor so that they are converted to Godot Resource format in the exported game which can be loaded faster.
-
-`app/src/main/cpp/imported_containers/` defines the Resource classes that are the result of said import.
-
-`app/src/main/cpp/scene_system_resource/` contains code and resources that handles the GUI layout and the loading of textures, images and fonts that are dependent on the size (aspect ratio actually) of the screen/window.
+`gui`, `area_render` and `game_res_render` contain scenes and scripts that does not correspond to original classes. Thoses in `gui` are used with GUIElements. Those in `area_render` correspond to CArea::Render* functions. Those in `game_res_render` correspond to CGameRes::Render* functions.

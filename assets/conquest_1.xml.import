@@ -4,10 +4,12 @@ importer="wc2.assets.xml.battle"
 importer_version=1
 type="Resource"
 uid="uid://ceinqy3irvb0f"
+path="res://.godot/imported/conquest_1.xml-a4bded506be74b9277b83b983ee8b2ae.res"
 
 [deps]
 
 source_file="res://assets/conquest_1.xml"
+dest_files=["res://.godot/imported/conquest_1.xml-a4bded506be74b9277b83b983ee8b2ae.res"]
 
 [params]
 

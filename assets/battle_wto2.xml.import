@@ -4,10 +4,12 @@ importer="wc2.assets.xml.battle"
 importer_version=1
 type="Resource"
 uid="uid://skx6p4v7bk3v"
+path="res://.godot/imported/battle_wto2.xml-70fbd5c046f82bce8565c230c257a027.res"
 
 [deps]
 
 source_file="res://assets/battle_wto2.xml"
+dest_files=["res://.godot/imported/battle_wto2.xml-70fbd5c046f82bce8565c230c257a027.res"]
 
 [params]
 

@@ -4,10 +4,12 @@ importer="wc2.assets.xml.battle"
 importer_version=1
 type="Resource"
 uid="uid://ddfsdtxl6bncl"
+path="res://.godot/imported/battle_allies6.xml-9877a7c08cb158b1fdf39787eef8d64a.res"
 
 [deps]
 
 source_file="res://assets/battle_allies6.xml"
+dest_files=["res://.godot/imported/battle_allies6.xml-9877a7c08cb158b1fdf39787eef8d64a.res"]
 
 [params]
 

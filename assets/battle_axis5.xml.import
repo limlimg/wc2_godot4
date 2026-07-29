@@ -4,10 +4,12 @@ importer="wc2.assets.xml.battle"
 importer_version=1
 type="Resource"
 uid="uid://uoh1ukpjvix2"
+path="res://.godot/imported/battle_axis5.xml-5c6d2e20004a52bc0f45887d355cb020.res"
 
 [deps]
 
 source_file="res://assets/battle_axis5.xml"
+dest_files=["res://.godot/imported/battle_axis5.xml-5c6d2e20004a52bc0f45887d355cb020.res"]
 
 [params]
 
