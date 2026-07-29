@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cgnurbokkckv2"]
 
-[ext_resource type="Script" uid="uid://bumuu278eohyd" path="res://app/src/main/cpp/ec_label_text.gd" id="1_r1xjj"]
+[ext_resource type="Script" uid="uid://bumuu278eohyd" path="res://ec_label_text.gd" id="1_r1xjj"]
+[ext_resource type="PackedScene" uid="uid://cr754csw241vl" path="res://ec_image.tscn" id="2_wf4c3"]
 
-[node name="ecLabelText" type="Control" unique_id=69036487]
-clip_contents = true
+[node name="ecLabelText" type="Control" unique_id=1702976495]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_r1xjj")
-alpha = 1.0
+
+[node name="ecImage" parent="." unique_id=1117931184 instance=ExtResource("2_wf4c3")]
 
 [connection signal="resized" from="." to="." method="init"]

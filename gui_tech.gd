@@ -18,7 +18,7 @@ func _process(delta: float) -> void:
 
 
 func _on_update(_delta: float) -> void:
-	var country := g_GameManager.get_cur_country()
+	var country = g_GameManager.get_cur_country()
 	if country != null and _tech != country.tech_level:
 		_tech = country.tech_level
 		var res := texture_res

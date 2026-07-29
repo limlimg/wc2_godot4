@@ -21,7 +21,7 @@ var _bars: Array[TextureRect]
 func set_cur_country_name(value):
 	if value != cur_country_name:
 		cur_country_name = value
-		var image := g_GameRes.get_flag_image("flag_{0}.png".format([value]))
+		var image = g_GameRes.get_flag_image("flag_{0}.png".format([value]))
 		if image != null:
 			$Flag.texture = image
 		else:

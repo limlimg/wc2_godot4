@@ -57,7 +57,7 @@ func _on_enter() -> void:
 	_gui_buy_card.reparent(gui_manager)
 	_gui_ai_progress = $GUIAIProgress.create_instance()
 	_gui_ai_progress.reparent(gui_manager)
-	var cur_country := g_GameManager.get_cur_country()
+	var cur_country = g_GameManager.get_cur_country()
 	if cur_country != null and not cur_country.ai:
 		_gui_ai_progress.hide()
 	else:
@@ -112,7 +112,7 @@ func _on_enter() -> void:
 
 
 func _update_ai_progress() -> void:
-	var cur_country := g_GameManager.get_cur_country()
+	var cur_country = g_GameManager.get_cur_country()
 	if cur_country != null and not cur_country.ai:
 		_gui_ai_progress.set_cur_country_name(cur_country.name)
 		_gui_ai_progress.progress = CActionAI.instance().ai_progress_percentage

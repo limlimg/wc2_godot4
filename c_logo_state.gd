@@ -20,7 +20,7 @@ func _on_enter() -> void:
 		gui_manager.load_texture_res("ui2_hd.xml", true)
 	else:
 		gui_manager.load_texture_res("ui2.xml", false)
-	var loc := g_LocalizableStrings.get_string(&"language")
+	var loc = g_LocalizableStrings.get_string(&"language")
 	if graphics.content_scale_size_mode == 3:
 		if EC2dAppDelegate.g_content_scale_factor == 2.0:
 			gui_manager.load_texture_res("text_{0}_iPad_hd.xml".format([loc]), true)

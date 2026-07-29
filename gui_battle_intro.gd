@@ -56,8 +56,8 @@ func _set_battle() -> void:
 	var battle_key_name = AppDelegate.get_battle_key_name(campaign, battle)
 	var battle_def := CObjectDef.instance().get_battle_def(battle_key_name)
 	$Font4/Age/Num7/Label.text = battle_def.age
-	var v1 := string_table.get_string("victory days1")
-	var v2 := string_table.get_string("victory days2")
+	var v1 = string_table.get_string("victory days1")
+	var v2 = string_table.get_string("victory days2")
 	var v := $Font4/VictoryDays/Label
 	var gv := $Font4/GreatVictoryDays/Label
 	if not v1.is_empty():

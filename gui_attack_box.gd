@@ -20,11 +20,11 @@ var defend := -1:
 
 
 func _set_attack(area_id: int, flag: Sprite2D, ui_army) -> void:
-	var area := g_Scene.get_area(area_id)
-	var country := area.country
+	var area = g_Scene.get_area(area_id)
+	var country = area.country
 	var flag_name := "flag_{0}.png".format([country.name])
 	flag.texture = g_GameRes.get_flag_image(flag_name)
-	var army := area.get_army(0)
+	var army = area.get_army(0)
 	ui_army.country = country.name
 	ui_army.id = army.def.id
 	ui_army.durability = army.durability

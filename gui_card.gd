@@ -99,7 +99,7 @@ func init() -> void:
 	set_price(def.price)
 	set_industry(def.industry)
 	if def.type <= 1:
-		var country := g_GameManager.get_local_player_country()
+		var country = g_GameManager.get_local_player_country()
 		if country != null:
 			var army := CObjectDef.instance().get_army_def(def.id, country.name)
 			var atk := "{0}-{1}".format([army.minatk, army.maxatk])

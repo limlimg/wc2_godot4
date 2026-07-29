@@ -38,14 +38,14 @@ func _get_sel_card() -> CardDef:
 func _can_buy_sel_card() -> bool:
 	if _selected_card < 0:
 		return false
-	var country := g_GameManager.get_cur_country()
+	var country = g_GameManager.get_cur_country()
 	if country == null:
 		return false
 	return country.can_buy_card(CObjectDef.instance().get_card_def(_selected_card))
 
 
 func reset_card_state() -> void:
-	var country := g_GameManager.get_cur_country()
+	var country = g_GameManager.get_cur_country()
 	if country == null or country.ai:
 		return
 	for i in _tabs:
@@ -87,7 +87,7 @@ func reset_card_state() -> void:
 				else:
 					card.time = country.commander_round
 			else:
-				var time := country.get_card_rounds(card.def.id)
+				var time = country.get_card_rounds(card.def.id)
 				if time > 0:
 					should_enable = false
 				card.enable = should_enable
@@ -98,7 +98,7 @@ func reset_card_state() -> void:
 
 
 func reset_card_target() -> void:
-	var country := g_GameManager.get_cur_country()
+	var country = g_GameManager.get_cur_country()
 	if country != null and _targeting and _selected_card >= 0:
 		AppDelegate.g_Scene.clear_targets()
 		country.set_card_targets(CObjectDef.instance().get_card_def(_selected_card))
@@ -124,7 +124,7 @@ func _on_gui_button_back_pressed() -> void:
 func _on_gui_button_ok_pressed() -> void:
 	var card := _get_sel_card()
 	if card != null and _can_buy_sel_card():
-		var country := g_GameManager.get_cur_country()
+		var country = g_GameManager.get_cur_country()
 		var target := CObjectDef.instance().get_card_target_type(card)
 		if target == 1 or target == 5:
 			_targeting = true

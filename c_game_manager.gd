@@ -135,7 +135,7 @@ func battle_victory() -> void:
 	if star == 0:
 		return
 	g_Commander.set_battle_played(campaign, battle)
-	var old_star := g_Commander.get_num_battle_stars(campaign, battle)
+	var old_star = g_Commander.get_num_battle_stars(campaign, battle)
 	if old_star <= 0:
 		if star == 5:
 			campaign_reward_medal = 50

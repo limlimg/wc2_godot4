@@ -11,8 +11,8 @@ signal army_targeted(index: int)
 func set_area(value: int) -> void:
 	if value != area:
 		area = value
-		var c_area := g_Scene.get_area(value)
-		var army_count := c_area.get_num_armies()
+		var c_area = g_Scene.get_area(value)
+		var army_count = c_area.get_num_armies()
 		for i in $VBoxContainer.get_child_count():
 			var node := get_child(i)
 			if i < army_count:

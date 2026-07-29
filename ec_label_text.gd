@@ -1,4 +1,3 @@
-@tool
 extends Control
 
 @export
@@ -6,7 +5,6 @@ var font_name: String:
 	set(value):
 		if value != font_name:
 			font_name = value
-			_font.font_names = [value]
 			init()
 
 
@@ -35,39 +33,29 @@ var color: Color = Color.WHITE:
 	set = set_color
 
 @export
-var alpha: float:
+var alpha := 1.0:
 	get = get_alpha,
 	set = set_alpha
 
-var _text_paragraph := TextParagraph.new()
-var _font := SystemFont.new()
-
 func init():
-	_text_paragraph.clear()
-	match alignment:
-		HorizontalAlignment.HORIZONTAL_ALIGNMENT_RIGHT:
-			_text_paragraph.alignment = HORIZONTAL_ALIGNMENT_RIGHT
-		HorizontalAlignment.HORIZONTAL_ALIGNMENT_CENTER:
-			_text_paragraph.alignment = HORIZONTAL_ALIGNMENT_CENTER
-		_:
-			_text_paragraph.alignment = HORIZONTAL_ALIGNMENT_LEFT
-	_text_paragraph.width = size.y
+	color = Color.WHITE
 	if not text.is_empty():
-		@warning_ignore("integer_division")
-		_text_paragraph.add_string(text, _font, font_size)
-	queue_redraw()
+		$ecImage.texture = AppDelegate.ec_texture_with_string(text, font_name, font_size, alignment, size.x, size.y)
 
 
 func set_text(value: String) -> void:
 	if value != text:
 		text = value
-		init()
+		if not value.is_empty():
+			$ecImage.texture = AppDelegate.ec_texture_with_string(value, font_name, font_size, alignment, size.x, size.y)
+		else:
+			$ecImage.texture = null
 
 
 func set_color(value: Color) -> void:
 	if value != color:
 		color = value
-		queue_redraw()
+		$ecImage.set_color(value, -1)
 
 
 func get_alpha() -> float:
@@ -79,10 +67,4 @@ func set_alpha(value: float) -> void:
 
 
 func draw_text(x: float, y: float) -> void:
-	ecGraphics.instance().render_text(_text_paragraph, x, y, color)
-
-
-func _draw() -> void:
-	ecGraphics.instance().render_begin(self)
-	draw_text(0.0, 0.0)
-	ecGraphics.instance().render_end()
+	$ecImage.render(x, y)

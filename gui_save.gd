@@ -38,7 +38,7 @@ func init() -> void:
 			save_name = "conquest{0}.sav".format([i])
 		else:
 			save_name = "game{0}.sav".format([i])
-		var header := g_GameManager.get_save_header(save_name)
+		var header = g_GameManager.get_save_header(save_name)
 		if header != null:
 			var country: String
 			if header.game_mode == 4:

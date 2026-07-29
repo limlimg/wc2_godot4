@@ -10,7 +10,7 @@ func init() -> void:
 
 func refresh() -> void:
 	$GUICommanderMedal.rank = g_Commander.rank
-	var level := g_Commander.get_war_medal_level(WARMEDAL_ID.INFANTRY_MEDAL)
+	var level = g_Commander.get_war_medal_level(WARMEDAL_ID.INFANTRY_MEDAL)
 	$GUIWarMedal.level = level
 	$GUIWarMedal.visible = level > 0
 	level = g_Commander.get_war_medal_level(WARMEDAL_ID.AIR_FORCE_MEDAL)

@@ -54,13 +54,13 @@ func _ec_game_init(content_scale_width: int, content_scale_height: int, orientat
 		string_table_key = &"stringtable iPad"
 	else:
 		string_table_key = &"stringtable"
-	var string_table_name := g_LocalizableStrings.get_string(string_table_key)
+	var string_table_name = g_LocalizableStrings.get_string(string_table_key)
 	g_StringTable.load_table(string_table_name)
 	CObjectDef.instance().init()
 	g_Commander.load()
 	CSoundBox.get_instance().load_se("btn.wav")
 	g_Font1.init("font1.fnt", false)
-	var language := g_LocalizableStrings.get_string("language")
+	var language = g_LocalizableStrings.get_string("language")
 	if ecGraphics.instance().content_scale_size_mode == 3:
 		g_Font2.init("font2_{0}_hd.fnt".format([language]), false)
 		g_Font3.init("font3_{0}_hd.fnt".format([language]), false)
@@ -215,20 +215,27 @@ static func get_asset_path(asset_name: String, extension: String) -> String:
 				return i
 	return ""
 
-var _texture_with_string_queue: Array[Callable]
+var _texture_with_string_idle := true
 var _texture_with_string_viewport: SubViewport
 var _texture_with_string_label: Label
 
 func ec_texture_with_string(string: String, font_name: String, font_size: int, alignment: int, width: int, height: int) -> ecTexture:
-	if _texture_with_string_viewport == null:
-		_texture_with_string_viewport = SubViewport.new()
-		_texture_with_string_viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
-		_texture_with_string_label = Label.new()
-		_texture_with_string_label.autowrap_mode = TextServer.AUTOWRAP_WORD
-		_texture_with_string_viewport.add_child(_texture_with_string_label)
-		(Engine.get_main_loop() as SceneTree).root.add_child(_texture_with_string_viewport)
-	var texture := ImageTexture.new()
-	_texture_with_string_queue.push_back(func ():
+	var _ec_texture := ecTexture.new()
+	(func ():
+		if not is_node_ready():
+			await ready
+		if _texture_with_string_viewport == null:
+			_texture_with_string_viewport = SubViewport.new()
+			_texture_with_string_viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
+			_texture_with_string_label = Label.new()
+			_texture_with_string_label.set_anchors_preset(Control.PRESET_FULL_RECT)
+			_texture_with_string_label.add_theme_font_override(&"font", SystemFont.new())
+			_texture_with_string_label.autowrap_mode = TextServer.AUTOWRAP_WORD
+			_texture_with_string_viewport.add_child(_texture_with_string_label)
+			add_child(_texture_with_string_viewport)
+		while not _texture_with_string_idle:
+			await get_tree().process_frame
+		_texture_with_string_idle = false
 		_texture_with_string_viewport.size = Vector2i(width, height)
 		_texture_with_string_label.text = string
 		_texture_with_string_label.get_theme_font(&"font").font_names = [font_name]
@@ -243,18 +250,10 @@ func ec_texture_with_string(string: String, font_name: String, font_size: int, a
 				_texture_with_string_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 		_texture_with_string_viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 		await RenderingServer.frame_post_draw
-		(func ():
-			texture.set_image(_texture_with_string_viewport.get_texture().get_image())
-			if not _texture_with_string_queue.is_empty():
-				_texture_with_string_queue.pop_front().call()
-			).call_deferred()
-		)
-	if _texture_with_string_queue.is_empty():
-		_texture_with_string_queue.pop_front().call()
-	var _ec_texture := ecTexture.new()
-	_ec_texture.texture = texture
-	_ec_texture.w = width
-	_ec_texture.h = height
+		_ec_texture.texture = ImageTexture.create_from_image(_texture_with_string_viewport.get_texture().get_image())
+		_texture_with_string_idle = true
+		).call()
+	_ec_texture.size_override = Vector2i(width, height)
 	return _ec_texture
 
 
@@ -282,10 +281,11 @@ static func ec_texture_load(texture_name: String) -> ecTexture:
 		texture = load(path) as Texture2D
 		var ec_texture := ecTexture.new()
 		ec_texture.texture = texture
-		if is_2x:
-			ec_texture.size_override = texture.get_size() / 2
-		else:
-			ec_texture.size_override = texture.get_size()
+		if texture != null:
+			if is_2x:
+				ec_texture.size_override = texture.get_size() / 2
+			else:
+				ec_texture.size_override = texture.get_size()
 		return ec_texture
 	else:
 		if ResourceLoader.load_threaded_get_status(path) == ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:

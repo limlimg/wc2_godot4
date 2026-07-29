@@ -66,7 +66,7 @@ func bomb_area(area_id: int, action_type: int) -> void:
 			card = CObjectDef.instance().get_card_def(11)
 		elif action_type == 3:
 			card = CObjectDef.instance().get_card_def(13)
-	var country := g_GameManager.get_cur_country()
+	var country = g_GameManager.get_cur_country()
 	if country != null:
 		if action_type != 4:
 			_tween.tween_callback(country.use_card.bind(card, area_id, 0))
@@ -101,7 +101,7 @@ func airborne(area_id: int) -> void:
 	sub_tween.tween_interval(0.632)
 	_tween.parallel().tween_subtween(sub_tween)
 	card = CObjectDef.instance().get_card_def(12)
-	var country := g_GameManager.get_cur_country()
+	var country = g_GameManager.get_cur_country()
 	if country != null:
 		_tween.tween_callback(country.use_card.bind(card, area_id, 0))
 

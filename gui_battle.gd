@@ -31,14 +31,14 @@ func battle_start() -> void:
 func _reset_battle() -> void:
 	if attack_area < 0 or defend_area < 0:
 		return
-	var area1 := g_Scene.get_area(attack_area)
+	var area1 = g_Scene.get_area(attack_area)
 	if area1 == null:
 		return
-	var area2 := g_Scene.get_area(defend_area)
+	var area2 = g_Scene.get_area(defend_area)
 	if area2 == null:
 		return
-	var army1 := area1.get_army(0)
-	var army2 := area2.get_army(0)
+	var army1 = area1.get_army(0)
+	var army2 = area2.get_army(0)
 	var army1_other := CObjectDef.instance().get_army_def(army1.def.id, "others")
 	var army2_other := CObjectDef.instance().get_army_def(army2.def.id, "others")
 	$Left/CBattleScene.set_battle_area(attack_area)

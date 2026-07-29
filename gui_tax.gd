@@ -19,7 +19,7 @@ var industry := 0:
 	set = set_industry
 
 func set_area(id: int) -> void:
-	var area := g_Scene.get_area(id)
+	var area = g_Scene.get_area(id)
 	set_money(area.get_real_tax())
 	set_industry(area.get_industry())
 	var installation = area.installation
@@ -30,11 +30,11 @@ func set_area(id: int) -> void:
 	if area.has_army_card(3):
 		$WithCommander.visible = true
 		$WithoutCommander.visible = false
-		var country := area.country
+		var country = area.country
 		if country.ai:
 			$WithCommander/IsAI.visible = true
 			$WithCommander/NotAI.visible = false
-			var commander := country.get_commander_name()
+			var commander = country.get_commander_name()
 			if not commander.is_empty():
 				var photo := CObjectDef.instance().get_general_photo(commander)
 				var photo_name := "general_common.png"

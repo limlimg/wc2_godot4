@@ -110,7 +110,7 @@ func _set_info() -> void:
 		$Time/ecText.text = _make_time_string()
 		if game_mode != 2:
 			var campaign_key := "alliance name {0}".format([campaign + 1])
-			var campaign_name := g_StringTable.get_string(campaign_key)
+			var campaign_name = g_StringTable.get_string(campaign_key)
 			$Name/ecText.text = "{0} {1}".format([campaign_name, battle + 1])
 		else:
 			$Name/ecText.text = "conquest name {0}".format([battle + 1])

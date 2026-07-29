@@ -18,7 +18,7 @@ func init():
 	if not is_node_ready():
 		return
 	super()
-	var loc := g_LocalizableStrings.get_string(&"language")
+	var loc = g_LocalizableStrings.get_string(&"language")
 	var graphics := ecGraphics.instance()
 	var gui_manager := GUIManager.instance()
 	if graphics.content_scale_size_mode == 3:
@@ -46,7 +46,7 @@ func init():
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
-		var loc := g_LocalizableStrings.get_string(&"language")
+		var loc = g_LocalizableStrings.get_string(&"language")
 		var graphics := ecGraphics.instance()
 		var gui_manager := GUIManager.instance()
 		if graphics.content_scale_size_mode == 3:

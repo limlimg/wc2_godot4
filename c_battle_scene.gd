@@ -30,10 +30,10 @@ func set_battle_area(value: int) -> void:
 	if value == battle_area:
 		return
 	battle_area = value
-	var area := g_Scene.get_area(value)
+	var area = g_Scene.get_area(value)
 	if area == null:
 		return
-	var army := area.get_army(0)
+	var army = area.get_army(0)
 	if army == null:
 		return
 	var bg_name: String
@@ -120,11 +120,11 @@ func _release_units() -> void:
 
 
 func _create_units() -> void:
-	var area := g_Scene.get_area(battle_area)
-	var army := area.get_army(0)
-	var army_id := army.def.id
-	var army_name := army.def.name
-	var country_name := army.country.name
+	var area = g_Scene.get_area(battle_area)
+	var army = area.get_army(0)
+	var army_id = army.def.id
+	var army_name = army.def.name
+	var country_name = army.country.name
 	var motions: UnitMotions
 	var positions: UnitPositions
 	var object_def := CObjectDef.instance()
@@ -145,7 +145,7 @@ func _create_units() -> void:
 		unit_res.load_res(res + ".xml", false)
 		unit_lib.load_data(res + ".bin")
 	unit_lib.texture_res = unit_res
-	var num_dices := army.get_num_dices()
+	var num_dices = army.get_num_dices()
 	for i in 5:
 		if i < num_dices or army.is_navy():
 			var unit = $Units/CBattleUnit.create_instance()
@@ -171,7 +171,7 @@ func attack() -> void:
 		_attack_tween.tween_callback(_fort.attack)
 	for i in _units.size():
 		if i == 0:
-			var army := g_Scene.get_area(battle_area).get_army(0)
+			var army = g_Scene.get_area(battle_area).get_army(0)
 			if army != null and army.def.id > 1:
 				_attack_tween.tween_callback(get_node(opposite_scene).start_effect.bind(_units.size() + 1))
 		else:

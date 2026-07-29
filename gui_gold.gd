@@ -21,7 +21,7 @@ func set_industry(value: int) -> void:
 
 
 func _process(_delta: float) -> void:
-	var country := g_GameManager.get_cur_country()
+	var country = g_GameManager.get_cur_country()
 	if country != null:
 		set_money(country.money)
 		set_industry(country.industry)

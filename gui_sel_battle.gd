@@ -39,7 +39,7 @@ func init() -> void:
 	if not is_node_ready():
 		return
 	super()
-	var loc := g_LocalizableStrings.get_string(&"language")
+	var loc = g_LocalizableStrings.get_string(&"language")
 	if ecGraphics.instance().content_scale_size_mode == 3:
 		s_texture_res.load_res("selbattle_hd.xml", false)
 		s_texture_res.load_res("battlename_{0}_hd.xml".format([loc]), false)
@@ -65,7 +65,7 @@ func init() -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
-		var loc := g_LocalizableStrings.get_string(&"language")
+		var loc = g_LocalizableStrings.get_string(&"language")
 		if ecGraphics.instance().content_scale_size_mode == 3:
 			s_texture_res.unload_res("selbattle_hd.xml")
 			s_texture_res.unload_res("battlename_{0}_hd.xml".format([loc]))

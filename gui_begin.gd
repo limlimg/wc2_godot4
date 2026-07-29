@@ -66,7 +66,7 @@ func reset_data() -> void:
 	else:
 		round_text = "ROUND {0}".format([g_GameManager.current_round + 1])
 	$CenterContainer/RoundStartBoard/Round.text = round_text
-	var country := g_GameManager.get_cur_country()
+	var country = g_GameManager.get_cur_country()
 	if country != null:
 		$CenterContainer/RoundStartBoard/Taxes.text = "{0}".format([country.get_taxes()])
 		$CenterContainer/RoundStartBoard/Industrys.text = "{0}".format([country.get_industrys()])
@@ -80,7 +80,7 @@ func _process(delta: float) -> void:
 
 
 func _on_update(_delta: float) -> void:
-	var country := g_GameManager.get_cur_country()
+	var country = g_GameManager.get_cur_country()
 	if country == null:
 		return
 	medal_soldiers = country.get_war_medal_level(WARMEDAL_ID.INFANTRY_MEDAL)
