@@ -403,7 +403,9 @@ const _COMMANDER_ABILITY = [
 func get_commander_ability(level: int) -> Array[int]:
 	if level > 14:
 		level = 14
-	return _COMMANDER_ABILITY[level]
+	var a: Array[int]
+	a.append_array(_COMMANDER_ABILITY[level])
+	return a
 
 
 const _ARMY_ABILITY = [
@@ -417,4 +419,6 @@ const _ARMY_ABILITY = [
 func get_army_ability(level: int) -> Array[int]:
 	if level > 4:
 		level = 4
-	return _ARMY_ABILITY[level]
+	var a: Array[int]
+	a.append_array(_ARMY_ABILITY[level])
+	return a

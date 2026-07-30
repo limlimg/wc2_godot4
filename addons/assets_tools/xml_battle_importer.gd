@@ -201,7 +201,9 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 						res_army.type = type
 						res_army.cards = cards
 						res_army.level = level
-						res_area.army.append(res_army)
+						var a := res_area.army
+						a.append(res_army)
+						res_area.army = a
 						xml_army = xml_army.next_sibling_element()
 					res_battle.area.append(res_area)
 					xml_area = xml_area.next_sibling_element()

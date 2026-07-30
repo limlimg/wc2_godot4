@@ -4,23 +4,9 @@ extends Sprite2D
 var id: int
 var type: int
 var tax: int
-
-var army_pos: Vector2:
-	get():
-		return $Army.position + position
-	set(value):
-		$Army.position = value - position
-
-
-var construction_pos: Vector2:
-	get():
-		return $Flag.position + position
-	set(value):
-		$Flag.position = value - position
-	
-
+var army_pos: Vector2
+var construction_pos: Vector2
 var installation_pos: Vector2
-
 var sea: int
 
 var construction: int:
@@ -56,31 +42,23 @@ var _armies: Array[CArmy]:
 	set(value):
 		if value != _armies:
 			_armies = value
-			_render_army()
+			_render()
 
 
-var arrow_texture: Texture2D:
-	get():
-		return $Army/Arrow.texture
+var _army_offset: Vector2:
 	set(value):
-		$Army/Arrow.texture = value
-		$Army/ArrowShadow.visible = value != null
+		if value != _army_offset:
+			_army_offset = value
+			_render()
 
 
-var arrow_offset: float:
-	get():
-		return $Army/Arrow.position.y
-	set(value):
-		$Army/Arrow.position.y = value
-		$Army/ArrowShadow.position = Vector2(value / 2, value / 2)
-
-
-var _building: Node2D
-var _flag: Node2D
-var _army: Node2D
+var arrow_texture: Texture2D
+var arrow_offset: float
 var _tween_moving_army: Tween
-
-signal complained(complainer: StringName)
+var _canvas_item_flag: RID
+var _canvas_item_building: RID
+var _canvas_item_army: RID
+var _canvas_item_arrow: RID
 
 func init(init_id: int, info: AreaInfo) -> void:
 	id = init_id
@@ -94,15 +72,22 @@ func init(init_id: int, info: AreaInfo) -> void:
 	level = info.level
 	country = null
 	_armies.clear()
-	if _building != null:
-		_building.queue_free()
-		_building = null
-	if _flag != null:
-		_flag.queue_free()
-		_flag = null
-	if _army != null:
-		_army.queue_free()
-		_army = null
+	var canvas_item_self := get_canvas_item()
+	if not _canvas_item_flag.is_valid():
+		_canvas_item_flag = RenderingServer.canvas_item_create()
+	RenderingServer.canvas_item_set_parent(_canvas_item_flag, canvas_item_self)
+	RenderingServer.canvas_item_set_z_index(_canvas_item_flag, 2)
+	if not _canvas_item_building.is_valid():
+		_canvas_item_building = RenderingServer.canvas_item_create()
+	RenderingServer.canvas_item_set_parent(_canvas_item_building, _canvas_item_flag)
+	RenderingServer.canvas_item_set_z_index(_canvas_item_building, -1)
+	if not _canvas_item_army.is_valid():
+		_canvas_item_army = RenderingServer.canvas_item_create()
+	RenderingServer.canvas_item_set_parent(_canvas_item_army, canvas_item_self)
+	RenderingServer.canvas_item_set_z_index(_canvas_item_army, 2)
+	if not _canvas_item_arrow.is_valid():
+		_canvas_item_arrow = RenderingServer.canvas_item_create()
+	RenderingServer.canvas_item_set_parent(_canvas_item_arrow, _canvas_item_army)
 	_render_building()
 	_render()
 
@@ -216,7 +201,7 @@ func add_army(army: CArmy, at_bottom: bool) -> bool:
 		_armies.append(army)
 	else:
 		_armies.push_front(army)
-	_render_army()
+	_render()
 	return true
 
 
@@ -224,7 +209,7 @@ func remove_army(army: CArmy) -> void:
 	var idx := get_army_idx(army)
 	if idx > 0:
 		_armies.remove_at(idx)
-		_render_army()
+		_render()
 
 
 func get_army_idx(army: CArmy) -> int:
@@ -243,19 +228,19 @@ func move_army_to_front(army, animated: bool) -> void:
 	for i in army:
 		_armies[army - i] = _armies[army - i - 1]
 	_armies[0] = moved_army
-	_render_army()
+	_render()
 	if animated:
 		_tween_moving_army = create_tween()
 		_tween_moving_army.tween_method(_move_to_front, 0.0, 2.0 * PI, 0.5)
 		_tween_moving_army.tween_callback(AppDelegate.g_Scene.reset_target)
 	else:
-		_army.position = Vector2.ZERO
+		_army_offset = Vector2.ZERO
 
 
 func _move_to_front(angle: float) -> void:
 	var x := cos(angle) * 12.0 - 12.0
 	var y := sin(angle) * 12.0 if angle <= PI else sin(angle) * 24.0
-	_army.position = Vector2(x, y)
+	_army_offset = Vector2(x, y)
 
 
 func draft_army(army_id: int) -> void:
@@ -272,9 +257,9 @@ func draft_army(army_id: int) -> void:
 	if _tween_moving_army != null:
 		_tween_moving_army.kill()
 	_tween_moving_army = create_tween()
-	_army.position = Vector2(0.0, -60.0)
+	_army_offset = Vector2(0.0, -60.0)
 	AppDelegate.g_SoundRes.play_char_se(SND_EFFECT.DRAFT_WAV)
-	_tween_moving_army.tween_property(_army, ^"position", Vector2.ZERO, 0.1875)
+	_tween_moving_army.tween_property(self, ^"_army_offset", Vector2.ZERO, 0.1875)
 	_tween_moving_army.tween_callback(AppDelegate.g_Scene.adjacent_areas_encirclement.bind(id))
 
 
@@ -314,16 +299,18 @@ func _set_move_in_army(from: CArea, army: CArmy, will_occupy: bool, will_compain
 		army.direction = 1.0
 	else:
 		army.direction = -1.0
-	_render_army()
+	_render()
 	if _tween_moving_army != null:
 		_tween_moving_army.kill()
 	_tween_moving_army = create_tween()
-	_army.position = to_pos - from_pos
+	_army_offset = to_pos - from_pos
 	_tween_moving_army.tween_property($Army, ^"position", Vector2.ZERO, 0.25)
 	if will_occupy:
 		_tween_moving_army.tween_callback(AppDelegate.g_SoundRes.play_char_se.bind(SND_EFFECT.OCCUPY_WAV))
 	if will_compain and not compainer.is_empty():
-		_tween_moving_army.tween_callback(complained.emit.bind(compainer))
+		_tween_moving_army.tween_callback(func ():
+			var dlg := "commander complain {0}".format([randi_range(0, 1)])
+			CStateManager.instance().get_state_ptr(EState.GAME).show_dialogue(dlg, compainer, false))
 	if _armies.is_empty():
 		_tween_moving_army.tween_callback(AppDelegate.g_Scene.adjacent_areas_encirclement.bind(id))
 
@@ -347,13 +334,13 @@ func occupy_area(to: CArea) -> void:
 
 func clear_all_army() -> void:
 	_armies.clear()
-	_render_army()
+	_render()
 
 
 func set_army_dir(idx: int, dir: float) -> void:
 	if idx < _armies.size():
 		_armies[idx].direction = dir
-		_render_army()
+		_render()
 
 
 func add_army_card(idx: int, card: int) -> void:
@@ -361,7 +348,7 @@ func add_army_card(idx: int, card: int) -> void:
 		var army := _armies[idx]
 		if army != null:
 			army.cards |= 1 << card
-			_render_army()
+			_render()
 
 
 func _del_army_card(idx: int, card: int) -> void:
@@ -369,7 +356,7 @@ func _del_army_card(idx: int, card: int) -> void:
 		var army := _armies[idx]
 		if army != null:
 			army.cards &= ~(1 << card)
-			_render_army()
+			_render()
 
 
 func has_army_card(idx: int, card: int = -1) -> bool:
@@ -392,7 +379,7 @@ func revert_army_strength(idx: int) -> void:
 		var army := _armies[idx]
 		if army != null:
 			army.strength = army.get_max_strength()
-			_render_army()
+			_render()
 
 
 func lost_army_strength(idx: int, value: int) -> bool:
@@ -409,7 +396,7 @@ func lost_army_strength(idx: int, value: int) -> bool:
 			country.be_conquested_by(null)
 		return true
 	else:
-		_render_army()
+		_render()
 		return false
 
 
@@ -418,13 +405,13 @@ func _add_army_strength(idx: int, value: int) -> void:
 		var army := _armies[idx]
 		if army != null:
 			army.add_strength(value)
-			_render_army()
+			_render()
 
 
 func all_army_poisoning() -> void:
 	for i in _armies:
 		i.poisoning()
-	_render_army()
+	_render()
 
 
 func upgrade_army(idx: int) -> void:
@@ -432,13 +419,13 @@ func upgrade_army(idx: int) -> void:
 		var army := _armies[idx]
 		if army != null:
 			army.upgrade()
-			_render_army()
+			_render()
 
 
 func _set_all_army_movement(value: int) -> void:
 	for i in _armies:
 		i.movement = value
-	_render_army()
+	_render()
 
 
 func is_active() -> bool:
@@ -484,60 +471,64 @@ func encirclement() -> void:
 		for i in _armies:
 			if i.morale == 1:
 				i.set_morale(0)
-	_render_army()
+	_render()
 
 
 func _render_building() -> void:
-	if country == null:
-		if _building != null:
-			_building.queue_free()
-			_building = null
-	else:
-		if _building == null:
-			_building = $Flag/Building.create_instance()
-			_building.installation_pos = installation_pos
-			_building.area_type = type
-		_building.construction_type = construction
-		_building.construction_level = level
-		_building.installation_type = installation
+	ecGraphics.instance().render_begin(_canvas_item_building)
+	if type == 2:
+		g_GameRes.render_port(construction_pos.x, construction_pos.y)
+	elif country != null:
+		g_GameRes.render_construction(construction, level, construction_pos.x, construction_pos.y)
+		g_GameRes.render_installation(construction, construction_pos.x, construction_pos.y)
+	ecGraphics.instance().render_end()
 
 
 func _render() -> void:
-	if country == null:
-		if _flag != null:
-			_flag.queue_free()
-			_flag = null
-	else:
-		if _flag == null:
-			_flag = $Flag/Flag.create_instance()
-		_flag.country_name = country.name
-	_render_army()
+	if country != null:
+		ecGraphics.instance().render_begin(_canvas_item_flag)
+		g_GameRes.render_flag(country.name, construction_pos.x, construction_pos.y)
+		ecGraphics.instance().render_end()
+		ecGraphics.instance().render_begin(_canvas_item_army)
+		var _moving_army := _tween_moving_army != null and _tween_moving_army.is_running()
+		var i := 1 if _moving_army else 0
+		if _armies.size() > i:
+			_render_army(army_pos.x, army_pos.y, _armies.size() - i, _armies[i])
+		if _moving_army:
+			var pos := army_pos + _army_offset
+			_render_army(pos.x, pos.y, 1, _armies[i])
+		ecGraphics.instance().render_end()
 
 
-func _render_army() -> void:
-	if country == null or _armies.is_empty():
-		if _army != null:
-			_army.queue_free()
-			_army = null
-	else:
-		if _army == null:
-			_army = $Army/Army.create_instance()
-		_army.country = country.name
-		_army.alliance = country.alliance
-		_army.stack = _armies.size()
-		var army := _armies[0]
-		_army.id = army.def.id
-		_army.is_navy = army.is_navy()
-		_army.sea = sea
-		_army.direction = army.direction
-		_army.stength = army.strength
-		_army.max_strength = army.get_max_strength()
-		_army.movement = army.movement
-		_army.cards = army.cards
-		_army.level = army.level
-		_army.commander_level = country.get_commander_level()
-		_army.morale = army.morale
-		_army.ai = country.ai
+func _render_army(x: float, y: float, stack: int, army: CArmy) -> void:
+	var morale_color: Color
+	match army.morale:
+		1:
+			if army.movement > 0:
+				morale_color = Color.from_rgba8(0xFF, 0x40, 0x40)
+			else:
+				morale_color = Color.from_rgba8(0xC0, 0x40, 0x40)
+		2:
+			if army.movement > 0:
+				morale_color = Color.from_rgba8(0x40, 0x40, 0xFF)
+			else:
+				morale_color = Color.from_rgba8(0x40, 0x40, 0xC0)
+		1:
+			if army.movement > 0:
+				morale_color = Color.from_rgba8(0xFF, 0xFF, 0xFF)
+			else:
+				morale_color = Color.from_rgba8(0xC0, 0xC0, 0xC0)
+	g_GameRes.render_army(country.name, country.alliance, _armies.size(), x, y, army.def.id, morale_color, sea, army.direction)
+	if army.is_navy():
+		y += 8.0
+	elif sea != 0 and army.cards & (1<<2) != 0:
+		y += 4.0
+	g_GameRes.render_army_info(stack, x, y, army.strength, army.get_max_strength(), army.movement, army.cards, army.level)
+	if army.cards & (1<<3) != 0:
+		if country.ai:
+			g_GameRes.render_ai_commander_medal(stack, x, y, country.name, country.alliance)
+		else:
+			g_GameRes.render_commander_medal(stack, x, y, country.get_commander_level())
 
 
 func turn_begin() -> void:
@@ -545,7 +536,7 @@ func turn_begin() -> void:
 		i.turn_begin()
 		if sea and i.movement > 1:
 			i.movement = 1
-	_render_army()
+	_render()
 
 
 func turn_end() -> void:
@@ -575,7 +566,7 @@ func turn_end() -> void:
 			level_add = maxi(AppDelegate.get_commander_ability(country.get_commander_level())[2], level_add)
 		i.add_strength(level_add)
 		i.turn_end()
-	_render_army()
+	_render()
 
 
 func save_area(info: SaveAreaInfo) -> void:

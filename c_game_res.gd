@@ -73,3 +73,27 @@ func get_flag_image(image_name: StringName) -> ecImageAttr:
 
 func get_battle_bg(bg_name: StringName) -> ecImageAttr:
 	return null
+
+
+func render_port(x: float, y: float) -> void:
+	pass
+
+
+func render_construction(type: int, level: int, x: float, y: float)-> void:
+	pass
+
+
+func render_installation(type: int, x: float, y: float)-> void:
+	pass
+
+
+func render_flag(country_name: StringName, x: float, y: float)-> void:
+	pass
+
+
+func render_army(country: String, alliance: int, stack: int, x: float, y: float, id: int, color: Color, sea: int, dir: float) -> void:
+	pass
+
+
+func render_army_info(stack: int, x: float, y: float, strength: int, max_strength: int, movement: int, cards: int, level: int) -> void:
+	pass

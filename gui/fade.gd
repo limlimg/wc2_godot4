@@ -7,7 +7,7 @@ var alpha := 0.5:
 	set(value):
 		alpha = value
 		visible = alpha != 0
-		queue_redraw()
+		$Node2D.queue_redraw()
 
 
 func _ready() -> void:
@@ -21,8 +21,8 @@ func _ready() -> void:
 	$Control.size = Vector2(max(v0.x, v1.x, v2.x, v3.x), max(v0.y, v1.y, v2.y, v3.y)) - $Control.position
 
 
-func _draw() -> void:
-	ecGraphics.instance().render_begin(self)
+func _on_node_2d_draw() -> void:
+	ecGraphics.instance().render_begin($Node2D.get_canvas_item())
 	ecGraphics.instance().fade(alpha)
 	ecGraphics.instance().render_end()
 

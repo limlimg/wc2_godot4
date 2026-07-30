@@ -29,9 +29,17 @@ var content_scale_size_mode: int
 var _blend_mode := 2
 var _render_shape := 3
 var _bound_texture: Texture2D
+var _indices: PackedInt32Array
+var _points: PackedVector2Array
+var _colors: PackedColorArray
+var _uvs: PackedVector2Array
+var _count: int
 var fade_color: Color
 var _texture_cache: Dictionary[String, WeakRef]
-var _rendering_canvas_item: CanvasItem
+var _rendering_canvas_item: RID
+var _material_add := CanvasItemMaterial.new()
+var _material_mix := CanvasItemMaterial.new()
+var _material_mul := CanvasItemMaterial.new()
 
 static func instance() -> ecGraphics:
 	return _instance
@@ -62,6 +70,13 @@ func init(content_scale_width: int, content_scale_height: int, _orientation: int
 			content_scale_size_mode = 2
 	else:
 		content_scale_size_mode = 1
+	_material_add.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+	_material_mix.blend_mode = CanvasItemMaterial.BLEND_MODE_MIX
+	_material_mul.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
+	_indices.resize(4000)
+	_points.resize(4000)
+	_colors.resize(4000)
+	_uvs.resize(4000)
 	var window := (Engine.get_main_loop() as SceneTree).root
 	await window.ready
 	var window_content_x = content_scale_width * AppDelegate.g_content_scale_factor
@@ -107,35 +122,29 @@ func free_texture(texture_name: StringName) -> void:
 		_texture_cache.erase(texture_name)
 
 
-func get_rendering_canvas_item() -> CanvasItem:
-	return _rendering_canvas_item
-
-
-func render_begin(canvas_item: CanvasItem):
+func render_begin(canvas_item: RID):
 	_rendering_canvas_item = canvas_item
 	_bound_texture = null
-	if _blend_mode != 2:
-		if canvas_item.material == null:
-			canvas_item.material = CanvasItemMaterial.new()
-		match _blend_mode:
-			1:
-				canvas_item.material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
-			3:
-				canvas_item.material.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
-			_:
-				canvas_item.material.blend_mode = CanvasItemMaterial.BLEND_MODE_MIX
+	match _blend_mode:
+		1:
+			RenderingServer.canvas_item_set_material(canvas_item, _material_add.get_rid())
+		3:
+			RenderingServer.canvas_item_set_material(canvas_item, _material_mul.get_rid())
+		_:
+			RenderingServer.canvas_item_set_material(canvas_item, _material_mix.get_rid())
+	RenderingServer.canvas_item_clear(canvas_item)
 
 
 func render_end():
 	_flush()
-	_rendering_canvas_item = null
+	_rendering_canvas_item = RID()
 
 
 func set_view_point(x: float, y: float, scale: float):
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
-	if _rendering_canvas_item == null:
-		return
 	_flush()
+	if not _rendering_canvas_item.is_valid():
+		return
 	var transform = Transform2D.IDENTITY
 	if orientation == 3:
 		transform = transform.rotated_local(deg_to_rad(90.0))
@@ -146,12 +155,10 @@ func set_view_point(x: float, y: float, scale: float):
 	transform = transform.scaled_local(Vector2(scale, scale))
 	#transform = transform.scaled_local(Vector2(_width_multiplier, _height_multiplier))
 	transform = transform.translated_local(Vector2(-x, -y))
-	_rendering_canvas_item.draw_set_transform_matrix(transform)
+	RenderingServer.canvas_item_add_set_transform(_rendering_canvas_item, transform)
 
 
 func bind_texture(texture: Texture2D):
-	if _rendering_canvas_item == null:
-		return
 	if texture is ecTexture:
 		texture = texture.texture
 	if texture != _bound_texture:
@@ -160,90 +167,93 @@ func bind_texture(texture: Texture2D):
 
 
 func set_blend_mode(value: int) -> void:
-	if _rendering_canvas_item == null:
-		return
-	if _rendering_canvas_item.material == null:
-		_rendering_canvas_item.material = CanvasItemMaterial.new()
 	if value != _blend_mode:
 		_blend_mode = value
-		match value:
+		if not _rendering_canvas_item.is_valid():
+			return
+		match _blend_mode:
 			1:
-				_rendering_canvas_item.material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
+				RenderingServer.canvas_item_set_material(_rendering_canvas_item, _material_add.get_rid())
 			3:
-				_rendering_canvas_item.material.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
+				RenderingServer.canvas_item_set_material(_rendering_canvas_item, _material_mul.get_rid())
 			_:
-				_rendering_canvas_item.material.blend_mode = CanvasItemMaterial.BLEND_MODE_MIX
+				RenderingServer.canvas_item_set_material(_rendering_canvas_item, _material_mix.get_rid())
 
 
 func render_line(line: ecLine):
-	if _rendering_canvas_item == null:
-		return
-	if _render_shape != 2:
+	if _render_shape != 2 or _count > 3998:
 		_flush()
 		_render_shape = 2
-	# Leave batching to be handled by the engine
-	_rendering_canvas_item.draw_primitive(line.points, line.colors, line.uvs, _bound_texture)
+	for i in 2:
+		_points[_count] = line.points[i]
+		_colors[_count] = line.colors[i]
+		_count += 1
 
 
 func render_triple(triple: ecTriple):
-	if _rendering_canvas_item == null:
-		return
-	if _render_shape != 3:
+	if _render_shape != 3 or _count > 3997:
 		_flush()
 		_render_shape = 3
-	# Leave batching to be handled by the engine
-	_rendering_canvas_item.draw_primitive(triple.points, triple.colors, triple.uvs, _bound_texture)
+	for i in 3:
+		_indices[_count] = _count
+		_points[_count] = triple.points[i]
+		_colors[_count] = triple.colors[i]
+		_uvs[_count] = triple.uvs[i]
+		_count += 1
 
 
 func render_quad(quad: ecQuad):
-	if _rendering_canvas_item == null:
-		return
-	if _render_shape != 3:
+	if _render_shape != 3 or _count > 3994:
 		_flush()
 		_render_shape = 3
-	# Leave batching to be handled by the engine
-	_rendering_canvas_item.draw_primitive(quad.points, quad.colors, quad.uvs, _bound_texture)
+	for i in [1, 0, 2, 0, 3, 2]:
+		_indices[_count] = _count
+		_points[_count] = quad.points[i]
+		_colors[_count] = quad.colors[i]
+		_uvs[_count] = quad.uvs[i]
+		_count += 1
 
 
 func render_rect(x: float, y: float, width: float, height: float, color: Color):
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
-	if _rendering_canvas_item == null:
-		return
 	_flush()
-	_rendering_canvas_item.draw_rect(Rect2(x, y, width, height), color)
+	if not _rendering_canvas_item.is_valid():
+		return
+	RenderingServer.canvas_item_add_rect(_rendering_canvas_item, Rect2(x, y, width, height), color)
 
 
 func render_circle(x: float, y: float, radius: float, color: Color):
 	# g_content_scale_factor is stored to window.content_scale_factor so the values in this function should NOT care about it
-	if _rendering_canvas_item == null:
-		return
 	_flush()
-	_rendering_canvas_item.draw_circle(Vector2(x, y), radius, color)
+	if not _rendering_canvas_item.is_valid():
+		return
+	RenderingServer.canvas_item_add_circle(_rendering_canvas_item, Vector2(x, y), radius, color)
 
 
 func render_text(font: Font, x: float, y: float, text: String, alignment: HorizontalAlignment, font_size: int, color: Color) -> void:
-	if _rendering_canvas_item == null:
+	if not _rendering_canvas_item.is_valid():
 		return
 	_flush()
-	font.draw_string(_rendering_canvas_item.get_canvas_item(), Vector2(x, y), text, alignment, -1, font_size, color)
+	font.draw_string(_rendering_canvas_item, Vector2(x, y), text, alignment, -1, font_size, color)
 
 
 func fade(alpha: float):
-	if _rendering_canvas_item == null:
+	if not _rendering_canvas_item.is_valid():
 		return
 	var color := Color(fade_color, alpha)
-	var trans_inv := _rendering_canvas_item.get_global_transform_with_canvas().affine_inverse()
-	var view_size := _rendering_canvas_item.get_viewport().get_visible_rect().size
-	var v0 := trans_inv * Vector2.ZERO
-	var v1 := trans_inv * Vector2(view_size.x, 0.0)
-	var v2 := trans_inv * Vector2(view_size.x, view_size.y)
-	var v3 := trans_inv * Vector2(0.0, view_size.y)
-	var pos := Vector2(min(v0.x, v1.x, v2.x, v3.x), min(v0.y, v1.y, v2.y, v3.y))
-	var size := Vector2(max(v0.x, v1.x, v2.x, v3.x), max(v0.y, v1.y, v2.y, v3.y)) - pos
-	render_rect(pos.x, pos.y, size.x, size.y, color)
+	var view_size := (Engine.get_main_loop() as SceneTree).root.get_visible_rect().size
+	render_rect(0.0, 0.0, view_size.x, view_size.y, color)
 
 
 func _flush():
+	if _count > 0:
+		if _render_shape == 2:
+			RenderingServer.canvas_item_add_multiline(_rendering_canvas_item, _points.slice(0, _count), _colors.slice(0, _count))
+		elif _render_shape == 3:
+			if _bound_texture != null:
+				@warning_ignore("integer_division")
+				RenderingServer.canvas_item_add_triangle_array(_rendering_canvas_item, _indices, _points, _colors, _uvs, [], [], _bound_texture.get_rid(), _count / 3)
+		_count = 0
 	# The engine is too aggresive in batching that a second call to draw_primitive ignores the texture parameter.
 	# The following clams it down before changing texture. 
-	_rendering_canvas_item.draw_rect(Rect2(), Color.TRANSPARENT)
+	#_rendering_canvas_item.draw_rect(Rect2(), Color.TRANSPARENT)

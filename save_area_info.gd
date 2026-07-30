@@ -59,15 +59,17 @@ var country: StringName
 @export
 var army: Array[SaveArmyInfo]:
 	get():
-		var a: Array[SaveArmyInfo]
-		for i in min(army_count, 4):
-			var x := SaveArmyInfo.new()
+		army_count = min(army.size(), 4)
+		army.resize(army_count)
+		for i in army_count:
+			var x := army[i]
 			x._mem = _mem
 			x._offset = _offset + 24 + 44 * i
-			a.append(x)
-		return a
+		return army
 	set(value):
-		for i in min(value.size(), 4):
+		army = value
+		army_count = min(value.size(), 4)
+		for i in army_count:
 			if value[i]._mem != _mem or value[i]._offset != _offset + 24 + 44 * i:
 				_mem.encode_u64(_offset + 24 + 44 * i, value[i]._mem.decode_u64(value[i]._offset))
 				_mem.encode_u64(_offset + 32 + 44 * i, value[i]._mem.decode_u64(value[i]._offset + 8))

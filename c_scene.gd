@@ -21,11 +21,11 @@ func init(areas_enable: String, map: int) -> void:
 	_area_mark.init(map)
 	_load_area_data(map)
 	_load_adjoin(map)
+	var real_scene := get_tree().get_first_node_in_group(&"g_Scene")
+	_background = real_scene.get_node(^"CCamera/CBackground").create_instance()
 	_init_areas(map, areas_enable)
 	_check_adjacent_area()
 	_scene_rect = _cal_scene_rect()
-	var real_scene := get_tree().get_first_node_in_group(&"g_Scene")
-	_background = real_scene.get_node(^"CCamera/CBackground").create_instance()
 	_background.init(map, Rect2(Vector2.ZERO, _area_mark.get_map_size()), _scene_rect)
 	_create_render_area_list()
 	_init_area_image(map)
@@ -70,11 +70,10 @@ func _load_area_tax(map: int) -> void:
 	if path.is_empty():
 		return
 	var area_tax: AreaTaxMap = load(path)
-	var real_scene := get_tree().get_first_node_in_group(&"g_Scene")
 	for k in area_tax.areas.keys():
 		if _area_enable == null or _area_enable.enable[k]:
-			var area: CArea = real_scene.get_node(^"CCamera/CArea").create_instance()
-			area.position = _area_data.data[k].area_rect.position
+			var area = get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/CArea").create_instance()
+			area.offset = _area_data.data[k].area_rect.position
 			var info := AreaInfo.new()
 			info.type = area_tax.areas[k].type
 			info.tax = area_tax.areas[k].tax
@@ -160,13 +159,15 @@ func _init_area_image(map: int) -> void:
 		zone_path = EC2dAppDelegate.get_asset_path(zone_name, "")
 	for k in _areas.keys():
 		_areas[k].texture = zone_res.get_image("%04d.png"%k)
-	var parent := _background.get_canvas_item()
+	var parent_node := Node2D.new()
+	_background.add_child(parent_node)
+	var parent := parent_node.get_canvas_item()
 	for k in _disabled_areas.keys():
 		var texture := zone_res.get_image("%04d.png"%k)
 		_disabled_areas[k] = texture
 		if texture.texture is ecTexture and texture.texture.texture != null:
-			while texture.texture.texture.texture == null:
-				await texture.texture.texture.changed
+			while not texture.get_rid().is_valid():
+				await texture.changed
 			var canvas_item := RenderingServer.canvas_item_create()
 			RenderingServer.canvas_item_set_parent(canvas_item, parent)
 			_canvas_item_disabled_areas[k] = canvas_item

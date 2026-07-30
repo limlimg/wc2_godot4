@@ -101,45 +101,38 @@ stretch_mode = 1
 [node name="Box1" type="TextureRect" parent="." unique_id=770530219]
 z_index = 1
 layout_mode = 1
+anchors_preset = -1
 texture = ExtResource("1_slcnx")
-expand_mode = 1
 stretch_mode = 2
 
 [node name="Box2" type="TextureRect" parent="." unique_id=1819219443]
 z_index = 1
 layout_mode = 1
-anchors_preset = 1
+anchors_preset = -1
 anchor_left = 1.0
 anchor_right = 1.0
-grow_horizontal = 0
 rotation = 1.5707964
 texture = ExtResource("1_slcnx")
-expand_mode = 1
 stretch_mode = 2
 
 [node name="Box3" type="TextureRect" parent="." unique_id=445940874]
 z_index = 1
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
-rotation = 3.1415927
+rotation = -3.1415927
 texture = ExtResource("1_slcnx")
-expand_mode = 1
 stretch_mode = 2
 
 [node name="Box4" type="TextureRect" parent="." unique_id=168957149]
 z_index = 1
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
-grow_vertical = 0
 rotation = 4.712389
 texture = ExtResource("1_slcnx")
-expand_mode = 1
 stretch_mode = 2

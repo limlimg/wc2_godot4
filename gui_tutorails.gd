@@ -7,8 +7,6 @@ var _cmds: TutorialCmdList
 var _current_cmd: int
 var _tween: Tween
 
-signal select_area_executed(id: int)
-signal unselect_area_executed
 signal exit_executed
 
 func init() -> void:
@@ -35,20 +33,19 @@ func _exe_cmd(index: int) -> void:
 	var cmd := _cmds.tutorial_script[index]
 	match cmd.name:
 		"sel area":
-			select_area_executed.emit(cmd.id)
+			g_Scene.select_area(cmd.id)
 			_exe_cmd(index + 1)
 		"unsel area":
-			unselect_area_executed.emit()
+			g_Scene.unselect_area()
 			_exe_cmd(index + 1)
 		"moveto area":
 			if ecGraphics.instance().content_scale_size_mode == 3:
 				g_Scene.move_camera_to_area(cmd.id)
 			else:
 				g_Scene.move_camera_center_to_area(cmd.id)
-			var waiting_cmd := _current_cmd
 			while g_Scene.is_moving():
 				await get_tree().process_frame
-			_skip_cmd(waiting_cmd)
+			_exe_cmd(index + 1)
 		"finger at":
 			$Hand.visible = true
 			$Hand.position = Vector2(cmd.x, cmd.y)
@@ -56,7 +53,7 @@ func _exe_cmd(index: int) -> void:
 		"finger to":
 			_tween = create_tween()
 			_tween.tween_property($Hand, "position", Vector2(cmd.x, cmd.y), 1.0)
-			_tween.tween_callback(_skip_cmd.bind(_current_cmd))
+			_tween.tween_callback(_exe_cmd.bind(index + 1))
 		"hide finger":
 			$Hand.visible = false
 			_exe_cmd(index + 1)
@@ -99,13 +96,3 @@ func _show_dlg(dlg: String) -> void:
 	$Dlg/Font8/Label.text = dlg
 	show()
 	CSoundBox.get_instance().play_se("btn.wav")
-
-
-func _on_button_pressed() -> void:
-	if _current_cmd < _cmds.tutorial_script.size() - 1:
-		_skip_cmd(_current_cmd)
-
-
-func _skip_cmd(skip_cmd: int) -> void:
-	if _current_cmd == skip_cmd:
-		_exe_cmd(_current_cmd + 1)

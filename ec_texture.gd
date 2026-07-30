@@ -18,8 +18,12 @@ var asset: AssetRegistry:
 var texture: Texture2D:
 	set(value):
 		if value != texture:
+			if texture != null:
+				texture.changed.disconnect(_on_texture_changed)
 			texture = value
-			emit_changed()
+			_on_texture_changed()
+			if value != null:
+				value.changed.connect(_on_texture_changed)
 
 
 @export
@@ -32,46 +36,28 @@ var size_override: Vector2:
 @export
 var res_scale := 1.0
 
-var _clone_from: ecTexture:
-	set(value):
-		if value != _clone_from:
-			if _clone_from != null:
-				_clone_from.changed.disconnect(_on_clone_changed)
-			_clone_from = value
-			_on_clone_changed()
-			if value != null:
-				value.changed.connect(_on_clone_changed)
-
-
 func _on_asset_changed() -> void:
 	if asset != null:
-		var clone_texture: ecTexture
 		if Engine.is_editor_hint():
-			clone_texture = ecGraphics.instance().load_texture(asset.name)
-			if clone_texture == null:
-				clone_texture = ecGraphics.instance().load_texture(asset.name_hd)
-			if clone_texture != null:
-				texture = clone_texture.texture
-				size_override = clone_texture.size_override / res_scale
-			else:
-				texture = null
-				size_override = Vector2.ZERO
+			texture = ecGraphics.instance().load_texture(asset.name)
+			if texture == null:
+				texture = ecGraphics.instance().load_texture(asset.name_hd)
 		else:
 			var name := asset.get_resolved_name()
 			if not name.is_empty():
-				_clone_from = ecGraphics.instance().load_texture(name)
+				texture = ecGraphics.instance().load_texture(name)
 	notify_property_list_changed()
-
-
-func _on_clone_changed() -> void:
-	texture = _clone_from.texture
-	size_override = _clone_from.size_override / res_scale
 
 
 func _validate_property(property: Dictionary) -> void:
 	if asset != null and (property.name == "texture" or property.name == "size_override"):
 		property.usage &= ~PROPERTY_USAGE_STORAGE
 		property.usage |= PROPERTY_USAGE_READ_ONLY
+
+
+func _on_texture_changed() -> void:
+	if texture is ecTexture:
+		size_override = texture.size_override / res_scale
 
 
 func _draw(to_canvas_item: RID, pos: Vector2, modulate: Color, transpose: bool) -> void:
@@ -113,3 +99,9 @@ func _has_alpha() -> bool:
 	if texture == null:
 		return false
 	return texture.has_alpha()
+
+
+func _get_rid() -> RID:
+	if texture == null:
+		return RID()
+	return texture.get_rid()

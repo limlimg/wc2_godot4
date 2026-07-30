@@ -101,12 +101,13 @@ func _on_enter() -> void:
 		_gui_battle_intro.reparent(gui_manager)
 		_gui_battle_intro.campaign = g_GameManager.campaign
 		_gui_battle_intro.battle = g_GameManager.battle
-		_gui_battle_intro.ok_pressed.connect(_on_gui_gui_battle_intro_ok_pressed)
-	else:
-		motion.active_motion(motion1, 0)
-		motion.active_motion(motion2, 0)
-		motion.active_motion(motion3, 0)
-		motion.active_motion(motion4, 0)
+		await _gui_battle_intro.ok_pressed
+		GUIManager.instance().safe_free_child(_gui_battle_intro)
+		_gui_battle_intro = null
+	motion.active_motion(motion1, 0)
+	motion.active_motion(motion2, 0)
+	motion.active_motion(motion3, 0)
+	motion.active_motion(motion4, 0)
 	if g_GameManager.game_mode == 4:
 		# TODO: send multiplayer data
 		pass
@@ -123,13 +124,6 @@ func _on_exit() -> void:
 	GUIMotionManager.instance().clear_motion()
 	get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP_HEIGHT
 	GUIManager.instance().free_all_child()
-
-
-func _on_gui_gui_battle_intro_ok_pressed() -> void:
-	if g_GameManager.game_mode == 1:
-		$AnimationPlayer.play(&"move_in")
-		GUIManager.instance().safe_free_child(_gui_battle_intro)
-		_gui_battle_intro = null
 
 
 func _on_area_complained(complainer: StringName) -> void:

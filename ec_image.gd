@@ -173,7 +173,7 @@ func _set_texture_rect(rect: ecTextureRect) -> void:
 
 
 func _draw() -> void:
-	ecGraphics.instance().render_begin(self)
+	ecGraphics.instance().render_begin(self.get_canvas_item())
 	render(0.0, 0.0)
 	ecGraphics.instance().render_end()
 

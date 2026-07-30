@@ -128,3 +128,9 @@ func _has_alpha() -> bool:
 	if texture == null:
 		return false
 	return texture.has_alpha()
+
+
+func _get_rid() -> RID:
+	if texture == null:
+		return RID()
+	return texture.get_rid()

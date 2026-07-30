@@ -100,3 +100,7 @@ func is_rect_in_visible_region(rect: Rect2) -> bool:
 	visible_region.position = $Camera2D.position - view_size / 2
 	visible_region.size = view_size
 	return visible_region.intersects(rect)
+
+
+func is_moving() -> bool:
+	return _move_tween != null and _move_tween.is_running()
