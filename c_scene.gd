@@ -11,8 +11,9 @@ var _area_data: AreaDataList
 var _adjoin: Adjoin
 var _area_enable: AreaEnable
 var _areas: Dictionary[int, CArea]
-var _disabled_areas: Dictionary[int, Sprite2D]
+var _disabled_areas: Dictionary[int, Texture2D]
 var _scene_rect: Rect2
+var _canvas_item_disabled_areas: Dictionary[int, RID]
 
 # TODO: implement editor methods?
 
@@ -89,8 +90,9 @@ func _clear_areas() -> void:
 	for i in _areas.values():
 		i.queue_free()
 	_areas.clear()
-	for i in _disabled_areas.values():
-		i.queue_free()
+	for i in _canvas_item_disabled_areas.values():
+		RenderingServer.free_rid(i)
+	_canvas_item_disabled_areas.clear()
 	_disabled_areas.clear()
 
 
@@ -125,11 +127,7 @@ func _cal_scene_rect() -> Rect2:
 func _create_render_area_list() -> void:
 	for i in _area_data.data.size():
 		if _is_rect_in_scene(_area_data.data[i].area_rect) and not _area_enable.enable[i]:
-			var proto := get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/CBackground/DisabledArea")
-			var area: Sprite2D = proto.duplicate()
-			area.position = _area_data.data[i].area_rect.position as Vector2 - _background.position
-			_background.add_child(area)
-			_disabled_areas[i] = area
+			_disabled_areas[i] = null
 
 
 func _is_rect_in_scene(rect: Rect2) -> bool:
@@ -162,8 +160,17 @@ func _init_area_image(map: int) -> void:
 		zone_path = EC2dAppDelegate.get_asset_path(zone_name, "")
 	for k in _areas.keys():
 		_areas[k].texture = zone_res.get_image("%04d.png"%k)
+	var parent := _background.get_canvas_item()
 	for k in _disabled_areas.keys():
-		_disabled_areas[k].texture = zone_res.get_image("%04d.png"%k)
+		var texture := zone_res.get_image("%04d.png"%k)
+		_disabled_areas[k] = texture
+		if texture.texture is ecTexture and texture.texture.texture != null:
+			while texture.texture.texture.texture == null:
+				await texture.texture.texture.changed
+			var canvas_item := RenderingServer.canvas_item_create()
+			RenderingServer.canvas_item_set_parent(canvas_item, parent)
+			_canvas_item_disabled_areas[k] = canvas_item
+			texture.draw(canvas_item, _area_data.data[k].area_rect.position as Vector2 - _background.position)
 
 
 func release() -> void:
@@ -230,4 +237,13 @@ func get_num_adjacent_areas(id: int) -> int:
 
 
 func is_moving() -> bool:
-	return true
+	return _camera.is_moving()
+
+
+func select_area(area) -> void:
+	if typeof(area) == TYPE_INT:
+		area = get_area(area)
+
+
+func unselect_area() -> void:
+	pass

@@ -20,9 +20,6 @@ offset_top = -82.0
 offset_right = 82.0
 offset_bottom = 82.0
 
-[node name="DisabledArea" type="Sprite2D" parent="CCamera/CBackground" unique_id=1705058765]
-centered = false
-
 [node name="CArea" parent="CCamera" unique_id=1183696436 instance_placeholder="res://c_area.tscn"]
 
 [node name="SelectedOverlay" type="Node2D" parent="CCamera" unique_id=978128942]
