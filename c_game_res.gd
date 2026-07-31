@@ -7,6 +7,11 @@ var _flag_res: ecTextureRes
 var _eff_res: ecTextureRes
 var _effect_cache: Array[ecEffectRes]
 var card_d_research: Dictionary[int, Texture2D]
+var arrow_shadow: Texture2D
+var arrow_green: Texture2D
+var arrow_yellow: Texture2D
+var arrow_blue: Texture2D
+var arrow_red: Texture2D
 
 func load_res() -> void:
 	_army_res = load("res://resources/assets/game_res/army.tres")

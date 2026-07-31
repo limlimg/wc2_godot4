@@ -13,3 +13,5 @@ script = ExtResource("1_n23jt")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2002065743]
 enabled = false
+
+[connection signal="resized" from="." to="." method="_on_resized"]

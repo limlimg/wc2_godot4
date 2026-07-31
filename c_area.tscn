@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bo30ju3xnqjh7" path="res://c_area.gd" id="1_0tvyd"]
 
 [node name="CArea" type="Sprite2D" unique_id=1183696436]
+self_modulate = Color(0, 0, 1, 0)
 z_index = -2
 y_sort_enabled = true
 centered = false

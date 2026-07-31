@@ -34,6 +34,8 @@ var country: CCountry:
 	set(value):
 		if value != country:
 			country = value
+			if not flashing_red:
+				self_modulate = value.color if value != null and sea == 0 else Color(Color.BLUE, 0.0)
 			_render_building()
 			_render()
 
@@ -52,9 +54,59 @@ var _army_offset: Vector2:
 			_render()
 
 
-var arrow_texture: Texture2D
-var arrow_offset: float
+var flashing: bool:
+	set(value):
+		if value != flashing:
+			flashing = value
+			if _tween_arrow != null:
+				_tween_arrow.kill()
+			if value:
+				_tween_arrow = create_tween()
+				_tween_arrow.set_loops()
+				self_modulate.a = 0.8
+				_tween_arrow.tween_property(self, ^"self_modulate.a", 0.5, 0.3)
+				_tween_arrow.tween_property(self, ^"self_modulate.a", 0.8, 0.3)
+			else:
+				_tween_arrow = null
+				if country != null and sea != 0:
+					self_modulate.a = country.color.a
+				else:
+					self_modulate.a = 0.0
+
+
+var flashing_red: bool:
+	set(value):
+		if value != flashing:
+			flashing = value
+			if value:
+				self_modulate = Color.from_rgba8(0xFF, 0x80, 0x80)
+			else:
+				self_modulate = country.color if country != null and sea == 0 else Color(Color.BLUE, 0.0)
+
+
+var arrow_texture: Texture2D:
+	set(value):
+		if value != arrow_texture:
+			arrow_texture = value
+			RenderingServer.canvas_item_clear(_canvas_item_arrow)
+			if _tween_arrow != null:
+				_tween_arrow.kill()
+			if value != null:
+				_tween_arrow = create_tween()
+				_tween_arrow.set_loops()
+				_tween_arrow.tween_method(func (arrow_offset: float):
+					arrow_offset = -20.0 + absf(arrow_offset)
+					var shadow := g_GameRes.arrow_shadow
+					shadow.draw_rect(_canvas_item_arrow, Rect2(Vector2(-arrow_offset, arrow_offset) * 0.5, shadow.get_size() * EC2dAppDelegate.g_content_scale_factor), false)
+					arrow_texture.draw(_canvas_item_arrow, Vector2(0.0, arrow_offset))
+				, -20.0, 20.0, 0.4)
+			else:
+				_tween_arrow = null
+
+
+var _tween_flashing: Tween
 var _tween_moving_army: Tween
+var _tween_arrow: Tween
 var _canvas_item_flag: RID
 var _canvas_item_building: RID
 var _canvas_item_army: RID
@@ -232,7 +284,7 @@ func move_army_to_front(army, animated: bool) -> void:
 	if animated:
 		_tween_moving_army = create_tween()
 		_tween_moving_army.tween_method(_move_to_front, 0.0, 2.0 * PI, 0.5)
-		_tween_moving_army.tween_callback(AppDelegate.g_Scene.reset_target)
+		_tween_moving_army.tween_callback(g_Scene.reset_target)
 	else:
 		_army_offset = Vector2.ZERO
 
@@ -260,7 +312,7 @@ func draft_army(army_id: int) -> void:
 	_army_offset = Vector2(0.0, -60.0)
 	AppDelegate.g_SoundRes.play_char_se(SND_EFFECT.DRAFT_WAV)
 	_tween_moving_army.tween_property(self, ^"_army_offset", Vector2.ZERO, 0.1875)
-	_tween_moving_army.tween_callback(AppDelegate.g_Scene.adjacent_areas_encirclement.bind(id))
+	_tween_moving_army.tween_callback(g_Scene.adjacent_areas_encirclement.bind(id))
 
 
 func move_army_to(to: CArea) -> void:
@@ -288,7 +340,7 @@ func move_army_to(to: CArea) -> void:
 		army.movement -= 1
 	to._set_move_in_army(self, army, will_occupy, will_compain, compainer)
 	if _armies.is_empty():
-		AppDelegate.g_Scene.adjacent_areas_encirclement(id)
+		g_Scene.adjacent_areas_encirclement(id)
 
 
 func _set_move_in_army(from: CArea, army: CArmy, will_occupy: bool, will_compain: bool, compainer: StringName) -> void:
@@ -312,7 +364,7 @@ func _set_move_in_army(from: CArea, army: CArmy, will_occupy: bool, will_compain
 			var dlg := "commander complain {0}".format([randi_range(0, 1)])
 			CStateManager.instance().get_state_ptr(EState.GAME).show_dialogue(dlg, compainer, false))
 	if _armies.is_empty():
-		_tween_moving_army.tween_callback(AppDelegate.g_Scene.adjacent_areas_encirclement.bind(id))
+		_tween_moving_army.tween_callback(g_Scene.adjacent_areas_encirclement.bind(id))
 
 
 func occupy_area(to: CArea) -> void:
@@ -329,7 +381,7 @@ func occupy_area(to: CArea) -> void:
 	remove_army(army)
 	to._set_move_in_army(self, army, will_occupy, false, &"")
 	if _armies.is_empty():
-		AppDelegate.g_Scene.adjacent_areas_encirclement(id)
+		g_Scene.adjacent_areas_encirclement(id)
 
 
 func clear_all_army() -> void:
@@ -430,7 +482,7 @@ func _set_all_army_movement(value: int) -> void:
 
 func is_active() -> bool:
 	for i in _armies:
-		if i.ai_active:
+		if i.movement > 0 and i.ai_active:
 			return true
 	return false
 
@@ -454,8 +506,8 @@ func is_army_active(idx: int) -> bool:
 func check_encirclement() -> bool:
 	if country == null:
 		return false
-	for i in AppDelegate.g_Scene.get_num_adjacent_areas(id):
-		var adj_area: CArea = AppDelegate.g_Scene.get_adjacent_area(id, i)
+	for i in g_Scene.get_num_adjacent_areas(id):
+		var adj_area: CArea = g_Scene.get_adjacent_area(id, i)
 		if adj_area.country == null\
 			or adj_area.country.alliance == 4 or adj_area.country.alliance == country.alliance\
 			or adj_area._armies.is_empty():

@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://85l7t818byo7"]
 
-[ext_resource type="Script" uid="uid://dshqddyqj47ml" path="res://app/src/main/cpp/c_medal.gd" id="1_31vyg"]
-[ext_resource type="Texture2D" uid="uid://c0nb7oo1ywbjf" path="res://app/src/main/cpp/resources/assets/game_res/medal.png.tres" id="2_npbb7"]
-[ext_resource type="Texture2D" uid="uid://cs3opri1s8dvi" path="res://app/src/main/cpp/resources/assets/game_res/medal_light.png.tres" id="3_31vyg"]
+[ext_resource type="Texture2D" uid="uid://c0nb7oo1ywbjf" path="res://resources/assets/game_res/medal.png.tres" id="2_npbb7"]
+[ext_resource type="Texture2D" uid="uid://cs3opri1s8dvi" path="res://resources/assets/game_res/medal_light.png.tres" id="3_31vyg"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qt4r0"]
 blend_mode = 1
@@ -57,6 +56,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_31vyg"]
 resource_name = "float_away"
@@ -85,6 +96,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, -60.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8cipn"]
 _data = {
@@ -93,7 +116,6 @@ _data = {
 }
 
 [node name="CMedal" type="Node2D" unique_id=1613117480]
-script = ExtResource("1_31vyg")
 
 [node name="Medal" type="Sprite2D" parent="." unique_id=1157048020]
 texture = ExtResource("2_npbb7")

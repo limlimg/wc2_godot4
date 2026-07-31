@@ -177,3 +177,7 @@ func be_conquested_by(conqueror: CCountry) -> void:
 
 func commander_die() -> void:
 	pass
+
+
+func airstrike_radius() -> float:
+	return 0.0

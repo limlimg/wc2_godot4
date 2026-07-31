@@ -6,6 +6,20 @@ const _MOVE_SPEED = [0.012, 0.015, 0.02, 0.026, 0.034]
 var scene_rect: Rect2:
 	set = set_scene_rect
 
+var camera_position: Vector2:
+	get():
+		return $Camera2D.position
+	set(value):
+		$Camera2D.position = value
+
+
+var camera_zoom: Vector2:
+	get():
+		return $Camera2D.zoom
+	set(value):
+		$Camera2D.zoom = value
+
+
 var _move_tween: Tween
 
 func _notification(what: int) -> void:
@@ -104,3 +118,9 @@ func is_rect_in_visible_region(rect: Rect2) -> bool:
 
 func is_moving() -> bool:
 	return _move_tween != null and _move_tween.is_running()
+
+
+func _on_resized() -> void:
+	var pos = $Camera2D.position
+	var zoom = $Camera2D.zoom.x
+	set_pos_and_scale(pos.x, pos.y, zoom)

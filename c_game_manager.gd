@@ -213,8 +213,8 @@ func init_battle() -> void:
 	var sea_area_count := 0
 	for i in g_Scene.get_num_areas():
 		var area: CArea = g_Scene.get_area(i)
-		if area.enable:
-			if area.country != null and area.country.ai and area.army.size() > 0:
+		if area != null:
+			if area.country != null and area.country.ai and area.get_num_armies() > 0:
 				ai_area_with_army_count += 1
 			if area.sea != 0:
 				sea_area_count += 1

@@ -116,7 +116,12 @@ script = ExtResource("1_i7u21")
 state = 4
 
 [node name="CScene" parent="." unique_id=1283259973 groups=["g_Scene"] instance=ExtResource("2_3m502")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ecEffectManager" parent="." unique_id=11432247 groups=["_ZN15ecEffectManager8InstancevE"] instance=ExtResource("3_j4ryw")]
 
