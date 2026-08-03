@@ -29,6 +29,10 @@ func _init() -> void:
 	_player_country_name.resize(4)
 
 
+func release() -> void:
+	_clear_battle()
+
+
 func _get_player_country_name(player_no: int) -> String:
 	if player_no > 3:
 		return ""
@@ -101,28 +105,59 @@ func is_last_battle() -> bool:
 	return game_mode == 1 and battle == AppDelegate.get_num_battles(campaign) - 1
 
 
-# TODO: _get_num_countries
+func _get_num_countries() -> int:
+	return _all_country.size()
 
 
-# TODO: get_country_by_index
+func get_country_by_index(index: int) -> CCountry:
+	return _all_country[index]
 
 
-# TODO: get_player_country
+func get_player_country() -> CCountry:
+	for i in _all_country:
+		if not i.ai:
+			return i
+	return null
 
 
-# TODO: _get_num_dialogue
+# TODO: is_local_player_country
 
 
-# TODO: _get_dialogue_by_index
+func get_cur_dialogue_string() -> String:
+	var def := get_cur_dialogue()
+	if def == null:
+		return ""
+	match campaign:
+		0:
+			return "axis battle {0} {1} {2}".format([campaign + 1, def.commander, def.index])
+		1:
+			return "allies battle {0} {1} {2}".format([campaign + 1, def.commander, def.index])
+		2:
+			return "wto battle {0} {1} {2}".format([campaign + 1, def.commander, def.index])
+		3:
+			return "nato battle {0} {1} {2}".format([campaign + 1, def.commander, def.index])
+	return ""
+
+
+func get_cur_dialogue() -> DialogueDef:
+	if _current_dialogue >= _get_num_dialogue():
+		return null
+	return _get_dialogue_by_index(_current_dialogue)
+
+
+func _get_num_dialogue() -> int:
+	return _dialogue.size()
+
+
+func _get_dialogue_by_index(index: int) -> DialogueDef:
+	return _dialogue[index]
+
+
+func next_dialogue() -> void:
+	_current_dialogue += 1
 
 
 # TODO: _save_battle
-
-
-# TODO: get_cur_dialogue
-
-
-# TODO: next_dialogue
 
 
 # TODO: check_and_set_result
@@ -171,6 +206,19 @@ func get_num_victory_stars() -> int:
 
 
 # TODO: is_manipulate
+
+
+func turn_begin() -> void:
+	var country := get_cur_country()
+	if country == null:
+		return
+	country.turn_begin()
+	var game: CGameState = CStateManager.instance().get_state_ptr(EState.GAME)
+	game.update_action_info()
+	if country.ai:
+		return
+	# TODO
+
 
 
 # TODO: _turn_end
@@ -278,9 +326,16 @@ func _load_battle(file_name: String) -> void:
 
 
 func _clear_battle() -> void:
+	for i in _all_country:
+		i.queue_free()
 	_all_country.clear()
 	_belligerent_country.clear()
 	_dialogue.clear()
+
+
+func next_battle() -> void:
+	# probably used by ew3 empiror mode
+	pass
 
 
 func _find_country(id: StringName) -> CCountry:
@@ -367,7 +422,3 @@ func _real_load_game(file_name: String) -> void:
 
 func get_local_player_country() -> CCountry:
 	return null
-
-
-func turn_begin() -> void:
-	pass

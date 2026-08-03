@@ -1,7 +1,13 @@
 class_name CArea
-extends Sprite2D
+extends Node2D
 
-var id: int
+var id: int:
+	get():
+		return name.to_int()
+	set(value):
+		name = str(value)
+
+
 var type: int
 var tax: int
 var army_pos: Vector2
@@ -35,7 +41,9 @@ var country: CCountry:
 		if value != country:
 			country = value
 			if not flashing_red:
-				self_modulate = value.color if value != null and sea == 0 else Color(Color.BLUE, 0.0)
+				self_modulate = value.color if value != null else Color.BLUE
+				if value == null or sea != 0:
+					self_modulate.a = 0.0
 			_render_building()
 			_render()
 
@@ -58,17 +66,18 @@ var flashing: bool:
 	set(value):
 		if value != flashing:
 			flashing = value
-			if _tween_arrow != null:
-				_tween_arrow.kill()
+			if _tween_flashing != null:
+				_tween_flashing.kill()
 			if value:
-				_tween_arrow = create_tween()
-				_tween_arrow.set_loops()
+				_tween_flashing = create_tween()
+				_tween_flashing.set_loops()
 				self_modulate.a = 0.8
-				_tween_arrow.tween_property(self, ^"self_modulate.a", 0.5, 0.3)
-				_tween_arrow.tween_property(self, ^"self_modulate.a", 0.8, 0.3)
+				_tween_flashing.tween_property(self, ^"self_modulate:a", 0.5, 0.3)
+				_tween_flashing.tween_property(self, ^"self_modulate:a", 0.8, 0.3)
 			else:
-				_tween_arrow = null
-				if country != null and sea != 0:
+				flashing_red = false
+				_tween_flashing = null
+				if country != null and sea == 0:
 					self_modulate.a = country.color.a
 				else:
 					self_modulate.a = 0.0
@@ -76,12 +85,15 @@ var flashing: bool:
 
 var flashing_red: bool:
 	set(value):
-		if value != flashing:
-			flashing = value
+		if value != flashing_red:
+			flashing_red = value
 			if value:
+				flashing = true
 				self_modulate = Color.from_rgba8(0xFF, 0x80, 0x80)
 			else:
-				self_modulate = country.color if country != null and sea == 0 else Color(Color.BLUE, 0.0)
+				self_modulate = country.color if country != null else Color.BLUE
+				if country == null or sea != 0:
+					self_modulate.a = 0.0
 
 
 var arrow_texture: Texture2D:
@@ -142,6 +154,18 @@ func init(init_id: int, info: AreaInfo) -> void:
 	RenderingServer.canvas_item_set_parent(_canvas_item_arrow, _canvas_item_army)
 	_render_building()
 	_render()
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		if not _canvas_item_flag.is_valid():
+			RenderingServer.free_rid(_canvas_item_flag)
+		if not _canvas_item_building.is_valid():
+			RenderingServer.free_rid(_canvas_item_building)
+		if not _canvas_item_army.is_valid():
+			RenderingServer.free_rid(_canvas_item_army)
+		if not _canvas_item_arrow.is_valid():
+			RenderingServer.free_rid(_canvas_item_arrow)
 
 
 func can_construct(construct_type: int) -> bool:
@@ -295,12 +319,12 @@ func _move_to_front(angle: float) -> void:
 	_army_offset = Vector2(x, y)
 
 
-func draft_army(army_id: int) -> void:
+func draft_army(army_id: int) -> CArmy:
 	if _armies.size() > 3 or country == null:
-		return
+		return null
 	var army_def := CObjectDef.instance().get_army_def(army_id, country.name)
 	if army_def == null:
-		return
+		return null
 	var new_army := CArmy.new()
 	new_army.def = army_def
 	new_army.country = country
@@ -313,6 +337,7 @@ func draft_army(army_id: int) -> void:
 	AppDelegate.g_SoundRes.play_char_se(SND_EFFECT.DRAFT_WAV)
 	_tween_moving_army.tween_property(self, ^"_army_offset", Vector2.ZERO, 0.1875)
 	_tween_moving_army.tween_callback(g_Scene.adjacent_areas_encirclement.bind(id))
+	return new_army
 
 
 func move_army_to(to: CArea) -> void:

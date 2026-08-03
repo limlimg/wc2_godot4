@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://3kjay574huha" path="res://ec_effect_manager.tscn" id="4_mejs8"]
 
 [node name="CBomber" type="Node2D" unique_id=511489610]
+visible = false
 script = ExtResource("1_2ba0p")
 
 [node name="Plane" type="Node2D" parent="." unique_id=758058645]

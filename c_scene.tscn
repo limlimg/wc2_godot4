@@ -8,26 +8,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath(".:self_modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"update": 1,
+"values": [1.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:self_modulate:a")
+tracks/1/path = NodePath(".:scale:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1.0]
+"values": [0.19999999]
 }
 
 [sub_resource type="Animation" id="Animation_qkbiv"]
@@ -38,14 +38,14 @@ step = 0.037
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath(".:scale:y")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8889),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.8888889, 2.2888),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.2, 1), Vector2(1, 1)]
+"values": [0.19999999, 1.0, 1.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -54,10 +54,10 @@ tracks/1/path = NodePath(".:self_modulate:a")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.8888889, 2.2778),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.8888889, 2.2778),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [1.0, 0.0]
+"values": [1.0, 1.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nteqi"]
@@ -73,8 +73,6 @@ script = ExtResource("1_2l0sg")
 
 [node name="CCamera" parent="." unique_id=1077541885 instance=ExtResource("2_giqlr")]
 layout_mode = 1
-offset_right = 480.0
-offset_bottom = 320.0
 
 [node name="CBackground" parent="CCamera" unique_id=1763912598 instance_placeholder="res://c_background.tscn"]
 layout_mode = 0
@@ -83,27 +81,31 @@ offset_top = -82.0
 offset_right = 82.0
 offset_bottom = 82.0
 
-[node name="CArea" parent="CCamera" unique_id=1183696436 instance_placeholder="res://c_area.tscn"]
+[node name="Areas" type="Node2D" parent="CCamera" unique_id=1826169589]
+
+[node name="CArea" parent="CCamera/Areas" unique_id=1183696436 instance_placeholder="res://c_area.tscn"]
 
 [node name="SelectedOverlay" type="Node2D" parent="CCamera" unique_id=978128942]
-visible = false
 
-[node name="Arrow" type="TextureRect" parent="CCamera/SelectedOverlay" unique_id=1941739946]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -22.0
-offset_right = 1.0
-offset_bottom = 22.0
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0, 0.5)
+[node name="Arrow" type="Node2D" parent="CCamera/SelectedOverlay" unique_id=681593986]
+
+[node name="TextureRect" type="TextureRect" parent="CCamera/SelectedOverlay/Arrow" unique_id=1645406283]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.0
+offset_right = 22.0
+offset_bottom = 459.5
+grow_horizontal = 2
+scale = Vector2(1, 0.19999999)
+pivot_offset = Vector2(-22, 0)
 expand_mode = 1
+flip_v = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CCamera/SelectedOverlay/Arrow" unique_id=1336143481]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CCamera/SelectedOverlay/Arrow" unique_id=1361032964]
+root_node = NodePath("../TextureRect")
 libraries/ = SubResource("AnimationLibrary_nteqi")
 
 [node name="CMedal" parent="CCamera" unique_id=1613117480 instance_placeholder="res://c_medal.tscn"]
 
 [node name="CBomber" parent="CCamera" unique_id=511489610 instance_placeholder="res://c_bomber.tscn"]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1646489199]

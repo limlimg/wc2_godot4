@@ -1,10 +1,7 @@
-[gd_scene format=3 uid="uid://cmnci1ox4l6s1"]
+[gd_scene format=3 uid="uid://dywfl4yhb6cdk"]
 
-[ext_resource type="Script" uid="uid://bo30ju3xnqjh7" path="res://c_area.gd" id="1_0tvyd"]
-
-[node name="CArea" type="Sprite2D" unique_id=1183696436]
+[node name="CArea" type="Node2D" unique_id=1702288544]
 self_modulate = Color(0, 0, 1, 0)
 z_index = -2
 y_sort_enabled = true
-centered = false
 script = ExtResource("1_0tvyd")

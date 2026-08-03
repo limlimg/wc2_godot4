@@ -2,8 +2,8 @@ class_name CScene
 extends Control
 
 var _area_enable: AreaEnable
-var _areas: Dictionary[int, CArea]
-var _disabled_areas: Dictionary[int, Texture2D]
+var _area_list: Array[CArea]
+var _render_area_list: Dictionary[int, Texture2D]
 var _selected_area: CArea
 var _area_data: AreaDataList
 var _area_mark := CAreaMark.new()
@@ -14,7 +14,7 @@ var _medals: Array[Node2D]
 var _adjoin: Adjoin
 var _scene_rect: Rect2
 var _canvas_item_disabled_areas: Dictionary[int, RID]
-var _arrow: Array[Control]
+var _arrow: Array[CanvasItem]
 var _tween_v_arrow: Array[Tween]
 
 # TODO: implement editor methods?
@@ -76,8 +76,7 @@ func _load_area_tax(map: int) -> void:
 	var area_tax: AreaTaxMap = load(path)
 	for k in area_tax.areas.keys():
 		if _area_enable == null or _area_enable.enable[k]:
-			var area = get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/CArea").create_instance()
-			area.offset = _area_data.data[k].area_rect.position
+			var area = get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/Areas/CArea").create_instance()
 			var info := AreaInfo.new()
 			info.type = area_tax.areas[k].type
 			info.tax = area_tax.areas[k].tax
@@ -86,17 +85,20 @@ func _load_area_tax(map: int) -> void:
 			info.installation_pos = _area_data.data[k].installation_position
 			info.sea = _area_data.data[k].sea
 			area.init(k, info)
-			_areas[k] = area
+			_area_list.append(area)
+		else:
+			_area_list.append(null)
 
 
 func _clear_areas() -> void:
-	for i in _areas.values():
-		i.queue_free()
-	_areas.clear()
+	for i in _area_list:
+		if i != null:
+			i.queue_free()
+	_area_list.clear()
 	for i in _canvas_item_disabled_areas.values():
 		RenderingServer.free_rid(i)
 	_canvas_item_disabled_areas.clear()
-	_disabled_areas.clear()
+	_render_area_list.clear()
 
 
 func _load_area_enable(areas_enable: String) -> void:
@@ -129,8 +131,8 @@ func _cal_scene_rect() -> Rect2:
 
 func _create_render_area_list() -> void:
 	for i in _area_data.data.size():
-		if _is_rect_in_scene(_area_data.data[i].area_rect) and not _area_enable.enable[i]:
-			_disabled_areas[i] = null
+		if _is_rect_in_scene(_area_data.data[i].area_rect):
+			_render_area_list[i] = null
 
 
 func _is_rect_in_scene(rect: Rect2) -> bool:
@@ -161,21 +163,31 @@ func _init_area_image(map: int) -> void:
 		i += 1
 		zone_name = "m{0}_zone{1}_{2}.xml".format([map, i, j])
 		zone_path = EC2dAppDelegate.get_asset_path(zone_name, "")
-	for k in _areas.keys():
-		_areas[k].texture = zone_res.get_image("%04d.png"%k)
-	var parent_node := Node2D.new()
-	_background.add_child(parent_node)
-	var parent := parent_node.get_canvas_item()
-	for k in _disabled_areas.keys():
-		var texture := zone_res.get_image("%04d.png"%k)
-		_disabled_areas[k] = texture
+	var disabled_area_parent_node := Node2D.new()
+	_background.add_child(disabled_area_parent_node)
+	var disabled_area_parent := disabled_area_parent_node.get_canvas_item()
+	for k in _render_area_list.keys():
+		var texture: Texture2D = zone_res.get_image("%04d.png"%k)
+		if EC2dAppDelegate.g_content_scale_factor == 1.0:
+			var ec_texture := ecTexture.new()
+			ec_texture.texture = texture
+			ec_texture.size_override = texture.get_size() * 2
+			texture = ec_texture
+		_render_area_list[k] = texture
 		if texture.texture is ecTexture and texture.texture.texture != null:
 			while not texture.get_rid().is_valid():
 				await texture.changed
-			var canvas_item := RenderingServer.canvas_item_create()
-			RenderingServer.canvas_item_set_parent(canvas_item, parent)
-			_canvas_item_disabled_areas[k] = canvas_item
-			var pos := _area_data.data[k].area_rect.position as Vector2 - _background.position
+			var canvas_item: RID
+			var pos := _area_data.data[k].area_rect.position as Vector2
+			if _area_enable == null or _area_enable.enable[k]:
+				_area_list[k].queue_redraw()
+				await _area_list[k].draw
+				canvas_item = _area_list[k].get_canvas_item()
+			else:
+				canvas_item = RenderingServer.canvas_item_create()
+				RenderingServer.canvas_item_set_parent(canvas_item, disabled_area_parent)
+				_canvas_item_disabled_areas[k] = canvas_item
+				pos -= _background.position
 			if EC2dAppDelegate.g_content_scale_factor != 1.0:
 				texture.draw(canvas_item, pos)
 			else:
@@ -215,7 +227,7 @@ func is_moving() -> bool:
 
 
 func get_num_areas() -> int:
-	return _areas.size()
+	return _area_data.data.size()
 
 
 func screen_to_area(x: float, y: float) -> CArea:
@@ -223,7 +235,7 @@ func screen_to_area(x: float, y: float) -> CArea:
 
 
 func get_area(id: int) -> CArea:
-	return _areas.get(id)
+	return _area_list.get(id)
 
 
 func set_camera_to_area(id: int) -> void:
@@ -260,7 +272,7 @@ func move_camera_between_area(id1: int, id2: int) -> void:
 
 
 func set_area_country(id: int, country: CCountry) -> void:
-	var area = _areas.get(id)
+	var area = _area_list.get(id)
 	if area != null:
 		area.country = country
 
@@ -274,10 +286,26 @@ func select_area(area) -> void:
 		area = get_area(area)
 	unselect_area()
 	_selected_area = area
+	area.flashing = true
+	var circle := get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/SelectedOverlay")
+	if area.construction == 3:
+		circle.queue_redraw()
+		circle.draw.connect(
+			circle.draw_circle.bind(area.construction_pos, _selected_area.country.airstrike_radius(), Color.from_rgba8(0, 0, 0, 0x4F))
+			, CONNECT_ONE_SHOT)
+	elif _selected_area.sea and _selected_area.get_num_armies() > 0 and _selected_area.get_army(0).def.id == 9:
+		circle.queue_redraw()
+		circle.draw.connect(
+			circle.draw_circle.bind(area.army_pos, _selected_area.country.airstrike_radius(), Color.from_rgba8(0, 0, 0x80, 0x4F))
+			, CONNECT_ONE_SHOT)
 	_set_sel_area_target(area)
 
 
 func unselect_area() -> void:
+	if _selected_area != null:
+		var circle := get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/SelectedOverlay")
+		circle.queue_redraw()
+		_selected_area.flashing = false
 	_selected_area = null
 	clear_targets()
 
@@ -289,8 +317,9 @@ func reset_target() -> void:
 
 
 func clear_targets() -> void:
-	for i in _areas.values():
-		i.arrow_texture = null
+	for i in _area_list:
+		if i != null:
+			i.arrow_texture = null
 	for i in _arrow:
 		i.queue_free()
 	_arrow.clear()
@@ -304,22 +333,27 @@ func _set_sel_area_target(sel_area: CArea) -> void:
 	var country := sel_area.country
 	if country == null or country.ai:
 		return
-	get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/SelectedOverlay").position = sel_area.army_pos
 	var sel_area_id := sel_area.id
 	var army_id := sel_area.get_army(0).def.id
 	for i in get_num_adjacent_areas(sel_area_id):
 		var adj_area_id := _get_adjacent_area_id(sel_area_id, i)
 		if check_moveable(sel_area_id, adj_area_id, 0):
-			_create_arrow(sel_area_id, adj_area_id).texture = g_GameRes.arrow_blue
+			var arrow := _create_arrow(sel_area_id, adj_area_id)
+			arrow.texture = g_GameRes.arrow_blue
+			arrow.position += g_GameRes.arrow_blue.origin
+			arrow.pivot_offset -= g_GameRes.arrow_blue.origin
 		elif army_id != 3 and army_id != 9 and check_attackable(sel_area_id, adj_area_id, 0):
-			_create_arrow(sel_area_id, adj_area_id).texture = g_GameRes.arrow_red
+			var arrow := _create_arrow(sel_area_id, adj_area_id)
+			arrow.texture = g_GameRes.arrow_red
+			arrow.position += g_GameRes.arrow_red.origin
+			arrow.pivot_offset -= g_GameRes.arrow_red.origin
 		for j in get_num_adjacent_areas(adj_area_id):
 			var area_2_id := _get_adjacent_area_id(adj_area_id, i)
 			if check_attackable(sel_area_id, area_2_id, 0):
 				get_area(area_2_id).arrow_texture = g_GameRes.arrow_yellow
 	if army_id == 9:
-		for i in _areas.values():
-			if i.country != null and i.country.alliance != sel_area.country.alliance and i.get_num_armies() > 0:
+		for i in _area_list:
+			if i != null and i.country != null and i.country.alliance != sel_area.country.alliance and i.get_num_armies() > 0:
 				var d := _get_two_areas_distance(sel_area_id, i.id)
 				if d <= 0.0:
 					continue
@@ -424,17 +458,19 @@ func _get_two_areas_distance_square(id1: int, id2: int) -> float:
 
 func _create_arrow(from: int, to: int) -> TextureRect:
 	var proto := get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/SelectedOverlay/Arrow")
-	var from_area := _areas[from]
+	var from_area := _area_list[from]
 	var from_pos := from_area.army_pos
-	var to_area := _areas[to]
+	var to_area := _area_list[to]
 	var to_pos := to_area.army_pos
 	var arrow := proto.duplicate()
+	proto.add_sibling(arrow)
+	arrow.position += from_pos
 	var d := from_pos.distance_to(to_pos)
-	arrow.size.x = d
-	arrow.rotation = asin((to_pos - from_pos).y / d)
+	arrow.get_node(^"TextureRect").size.y = d
+	arrow.rotation = (to_pos - from_pos).angle() - PI / 2
 	arrow.get_node(^"AnimationPlayer").play(&"horizontal_arrow")
 	_arrow.append(arrow)
-	return arrow
+	return arrow.get_node(^"TextureRect")
 
 
 func _set_area_v_arrow(area: CArea) -> void:
@@ -448,8 +484,9 @@ func _set_area_v_arrow(area: CArea) -> void:
 
 
 func all_areas_encirclement() -> void:
-	for i in _areas.values():
-		i.encirclement()
+	for i in _area_list:
+		if i != null:
+			i.encirclement()
 
 
 func adjacent_areas_encirclement(id: int) -> void:
@@ -465,16 +502,16 @@ func airborne(id: int) -> void:
 	_bomber.airborne(id)
 
 
-func aircraft_carrier_bomb(id: int) -> void:
+func aircraft_carrier_bomb(attack_area: int, defend_area: int) -> void:
 	if _bomber == null:
 		return
-	_bomber.aircraft_carrier_bomb(id)
+	_bomber.aircraft_carrier_bomb(attack_area, defend_area)
 
 
-func bomb_area(id: int) -> void:
+func bomb_area(id: int, action_type: int) -> void:
 	if _bomber == null:
 		return
-	_bomber.bomb_area(id)
+	_bomber.bomb_area(id, action_type)
 
 
 func is_bombing(id: int) -> bool:

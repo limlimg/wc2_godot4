@@ -62,7 +62,7 @@ var defeated: int:
 		_mem.encode_u32(_offset + 24, value)
 
 
-var cards_round: PackedInt32Array:
+var card_rounds: PackedInt32Array:
 	get():
 		return _mem.slice(_offset + 28, _offset + 140).to_int32_array()
 	set(value):
@@ -122,7 +122,7 @@ var tax_factor: float:
 		_mem.encode_float(_offset + 176, value)
 
 
-var enemies_destroyed: PackedInt32Array:
+var destroy: PackedInt32Array:
 	get():
 		return _mem.slice(_offset + 180, _offset + 220).to_int32_array()
 	set(value):
@@ -175,7 +175,7 @@ var borrowed_loan: bool:
 		_mem.encode_u8(_offset + 273, 1 if value else 0)
 
 
-var is_defeated: bool:
+var conquested: bool:
 	get():
 		return _mem.decode_u8(_offset + 274) != 0
 	set(value):

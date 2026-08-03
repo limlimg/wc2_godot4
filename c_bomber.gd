@@ -23,6 +23,7 @@ func bomb_area(area_id: int, action_type: int) -> void:
 	var card: CardDef
 	if _tween != null:
 		_tween.kill()
+	show()
 	_tween = create_tween()
 	_tween.tween_method(_update_plane_pos, t0, t1, t1 - t0)
 	if action_type == 1 or action_type == 4:
@@ -78,6 +79,7 @@ func bomb_area(area_id: int, action_type: int) -> void:
 			var fight := CFight.new()
 			fight.air_strikes_attack(country, area_id, action_type)
 			fight.apply_result())
+	_tween.tween_callback(hide)
 
 
 func airborne(area_id: int) -> void:
@@ -93,6 +95,7 @@ func airborne(area_id: int) -> void:
 	var card: CardDef
 	if _tween != null:
 		_tween.kill()
+	show()
 	_tween = create_tween()
 	_tween.tween_method(_update_plane_pos, t0, t1, t1 - t0)
 	var sub_tween := create_tween()
@@ -108,6 +111,7 @@ func airborne(area_id: int) -> void:
 	var country = g_GameManager.get_cur_country()
 	if country != null:
 		_tween.tween_callback(country.use_card.bind(card, area_id, 0))
+	_tween.tween_callback(hide)
 
 
 func _update_plane_pos(t: float) -> void:

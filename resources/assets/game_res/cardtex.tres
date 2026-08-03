@@ -7,7 +7,6 @@
 script = ExtResource("1_aa6xg")
 name = "cardtex.xml"
 name_hd = "cardtex_hd.xml"
-metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
 
 [resource]
 script = ExtResource("2_xeguk")

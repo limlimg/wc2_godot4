@@ -132,3 +132,11 @@ func _on_area_complained(complainer: StringName) -> void:
 
 func show_dialogue(dlg: String, general: StringName, left: bool) -> void:
 	_gui_dialogue.show_dlg(dlg, general, left)
+
+
+func update_action_info() -> void:
+	pass
+
+
+func start_battle(start_area: int, target_area: int, animated: bool) -> void:
+	pass

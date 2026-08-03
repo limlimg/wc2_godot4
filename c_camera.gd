@@ -20,6 +20,8 @@ var camera_zoom: Vector2:
 		$Camera2D.zoom = value
 
 
+var _target_pos: Vector2
+var _target_zoom := 1.0
 var _move_tween: Tween
 
 func _notification(what: int) -> void:
@@ -38,6 +40,7 @@ func set_scene_rect(value: Rect2) -> void:
 
 
 func set_pos(x: float, y: float, exclude_box: bool) -> void:
+	_target_pos = Vector2(x, y)
 	$Camera2D.position = _clamp_pos(x, y, exclude_box)
 
 
@@ -64,7 +67,9 @@ func _clamp_pos(x: float, y: float, exclude_box: bool) -> Vector2:
 	return Vector2(x, y)
 
 
-func set_pos_and_scale(x: float, y: float, zoom: bool) -> void:
+func set_pos_and_scale(x: float, y: float, zoom: float) -> void:
+	_target_pos = Vector2(x, y)
+	_target_zoom = zoom
 	var min_scale := 0.5 if EC2dAppDelegate.g_content_scale_factor == 2.0 else 0.68
 	if min_scale < size.x / scene_rect.size.x:
 		min_scale = size.x / scene_rect.size.x
@@ -72,16 +77,19 @@ func set_pos_and_scale(x: float, y: float, zoom: bool) -> void:
 		min_scale = size.y / scene_rect.size.y
 	zoom = maxf(zoom, min_scale)
 	$Camera2D.zoom = Vector2(zoom, zoom)
-	set_pos(x, y, true)
+	$Camera2D.position = _clamp_pos(x, y, true)
 
 
 func move(x: float, y: float, exclude_box: bool) -> void:
 	var pos = $Camera2D.position
 	pos += Vector2(x, y) / $Camera2D.zoom
-	set_pos(pos.x, pos.y, exclude_box)
+	_target_pos = pos
+	$Camera2D.position = _clamp_pos(pos.x, pos.y, exclude_box)
 
 
 func set_auto_fix_pos(value: bool) -> void:
+	_target_pos.x = clampf(_target_pos.x, scene_rect.position.x, scene_rect.end.x)
+	_target_pos.y = clampf(_target_pos.y, scene_rect.position.y, scene_rect.end.y)
 	if value:
 		if _move_tween != null:
 			_move_tween.kill()
@@ -96,6 +104,7 @@ func set_auto_fix_pos(value: bool) -> void:
 
 
 func move_to(x: float, y: float, exclude_box: bool) -> void:
+	_target_pos = Vector2(x, y)
 	if _move_tween != null:
 		_move_tween.kill()
 	_move_tween = create_tween()
@@ -121,6 +130,4 @@ func is_moving() -> bool:
 
 
 func _on_resized() -> void:
-	var pos = $Camera2D.position
-	var zoom = $Camera2D.zoom.x
-	set_pos_and_scale(pos.x, pos.y, zoom)
+	set_pos_and_scale(_target_pos.x, _target_pos.y, _target_zoom)

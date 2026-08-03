@@ -16,6 +16,11 @@ var arrow_red: Texture2D
 func load_res() -> void:
 	_army_res = load("res://resources/assets/game_res/army.tres")
 	_cardtex_res = load("res://resources/assets/game_res/cardtex.tres")
+	arrow_shadow = _army_res.get_image(&"arrowshadow.png")
+	arrow_green = _army_res.get_image(&"arrow_green.png")
+	arrow_yellow = _army_res.get_image(&"arrow_yellow.png")
+	arrow_blue = _army_res.get_image(&"arrow_blue.png")
+	arrow_red = _army_res.get_image(&"arrow_red.png")
 	var regex_card_d_research := RegEx.create_from_string("card_d_research_([0-9]+).png")
 	for i in _cardtex_res.get_keys():
 		var regex_match: RegExMatch
@@ -44,8 +49,10 @@ func load_res() -> void:
 
 
 func release() -> void:
+	ecEffectManager.instance().remove_all()
 	_army_res = null
 	_cardtex_res = null
+	card_d_research.clear()
 	_battlebg_res = null
 	_flag_res = null
 	_eff_res = null
