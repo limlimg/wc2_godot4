@@ -2,48 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bo63r12xqtvg7" path="res://gui_manager.gd" id="1_o8ok3"]
 [ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="2_aqje5"]
-
-[sub_resource type="Animation" id="Animation_dnrvd"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_tw6x4"]
-resource_name = "fade_in"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Fade/Fade:alpha")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_d060b"]
-resource_name = "fade_out"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Fade/Fade:alpha")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_aqje5"]
-_data = {
-&"RESET": SubResource("Animation_dnrvd"),
-&"fade_in": SubResource("Animation_tw6x4"),
-&"fade_out": SubResource("Animation_d060b")
-}
+[ext_resource type="PackedScene" uid="uid://d2ake044dm8mq" path="res://gui_image.tscn" id="3_6xnkp"]
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="4_g7yfa"]
+[ext_resource type="PackedScene" uid="uid://bc0r4i3w2pyf6" path="res://gui_scroll_bar.tscn" id="5_aa0nb"]
 
 [node name="GUIManager" type="Control" unique_id=510783743]
 layout_mode = 3
@@ -70,18 +31,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GUIImage" parent="Prototype" unique_id=2123851549 instance_placeholder="res://gui_image.tscn"]
+[node name="GUIImage" parent="Prototype" unique_id=2123851549 instance=ExtResource("3_6xnkp")]
+layout_mode = 1
+texture_res = null
+
+[node name="GUIButton" parent="Prototype" unique_id=2034275630 instance=ExtResource("4_g7yfa")]
 layout_mode = 1
 
-[node name="GUIButton" parent="Prototype" unique_id=2034275630 instance_placeholder="res://gui_button.tscn"]
-layout_mode = 1
-text_offset = Vector2(240, 160)
-
-[node name="GUIScrollBar" parent="Prototype" unique_id=1159300293 instance_placeholder="res://gui_scroll_bar.tscn"]
+[node name="GUIScrollBar" parent="Prototype" unique_id=1159300293 instance=ExtResource("5_aa0nb")]
 layout_mode = 1
 horizontal = true
 max_value = 100.0
 value = 50.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=930970644]
-libraries/ = SubResource("AnimationLibrary_aqje5")

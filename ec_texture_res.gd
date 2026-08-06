@@ -85,13 +85,13 @@ func load_res(file_name: String, hd: bool) -> bool:
 		return false
 	var add_images := res.images
 	if hd:
+		var placeholder_texture := ecTexture.new()
+		placeholder_texture.res_scale = 2.0
 		for k in res.images.keys():
 			if k in images:
 				continue
 			var hd_attr := res.images[k].duplicate()
-			if hd_attr.texture.res_scale == 1.0:
-				hd_attr.texture.size_override /= 2.0
-				hd_attr.texture.res_scale = 2.0
+			hd_attr.texture = placeholder_texture
 			hd_attr.region.position /= 2
 			hd_attr.region.size /= 2
 			hd_attr.origin /= 2
@@ -122,7 +122,14 @@ func get_image(image_name: StringName) -> ecImageAttr:
 		return null
 	var image = images[image_name]
 	if image_name in image_texture:
-		image.texture.asset.name = image_texture[image_name]
+		var hd = (image.texture != null) and (image.texture.res_scale != 1.0)
+		if Engine.is_editor_hint():
+			image.texture = EC2dAppDelegate.ec_texture_load(image_texture[image_name])
+		else:
+			image.texture = ecGraphics.instance().load_texture(image_texture[image_name])
+		if hd and image.texture.res_scale == 1.0:
+			image.texture.size_override /= 2.0
+			image.texture.res_scale = 2.0
 	return image
 
 

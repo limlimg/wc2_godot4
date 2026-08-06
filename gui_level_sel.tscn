@@ -43,6 +43,8 @@ anchor_bottom = 0.0
 offset_top = 5.0
 offset_right = 20.0
 offset_bottom = 5.0
+grow_horizontal = 1
+grow_vertical = 1
 rect = SubResource("Resource_g8bm0")
 rect_ipad = SubResource("Resource_eb15d")
 
@@ -52,6 +54,3 @@ offset_right = 20.0
 texture = ExtResource("3_33hhi")
 expand_mode = 1
 stretch_mode = 2
-
-[connection signal="touch_began" from="." to="." method="_on_touch"]
-[connection signal="touch_moved" from="." to="." method="_on_touch"]

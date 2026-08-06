@@ -5,9 +5,9 @@ extends "res://gui_element.gd"
 @export
 var vertical := true:
 	get():
-		return $CTouchInertia/ScrollContainer/BoxContainer.vertical
+		return $ScrollContainer/BoxContainer.vertical
 	set(value):
-		$CTouchInertia/ScrollContainer/BoxContainer.vertical = value
+		$ScrollContainer/BoxContainer.vertical = value
 
 
 @export
@@ -16,8 +16,8 @@ var separation_ipad: int:
 		if value != separation_ipad:
 			separation_ipad = value
 			if ecGraphics.instance().content_scale_size_mode == 3:
-				$CTouchInertia/ScrollContainer/BoxContainer.remove_theme_constant_override(&"separation")
-				$CTouchInertia/ScrollContainer/BoxContainer.add_theme_constant_override(&"separation", value)
+				$ScrollContainer/BoxContainer.remove_theme_constant_override(&"separation")
+				$ScrollContainer/BoxContainer.add_theme_constant_override(&"separation", value)
 
 
 @export
@@ -26,8 +26,8 @@ var separation: int:
 		if value != separation:
 			separation = value
 			if ecGraphics.instance().content_scale_size_mode != 3:
-				$CTouchInertia/ScrollContainer/BoxContainer.remove_theme_constant_override(&"separation")
-				$CTouchInertia/ScrollContainer/BoxContainer.add_theme_constant_override(&"separation", value)
+				$ScrollContainer/BoxContainer.remove_theme_constant_override(&"separation")
+				$ScrollContainer/BoxContainer.add_theme_constant_override(&"separation", value)
 
 
 var _selected_item := -1
@@ -36,69 +36,74 @@ var _items: Array[Node]
 
 signal item_touched(item: int)
 
-func _on_c_touch_inertia_touch_began(_position: Vector2) -> void:
-	set_physics_process(false)
-
-
-func _on_c_touch_inertia_touch_ended(pos: Vector2, moved: bool) -> void:
-	if not moved:
-		pos = get_global_transform() * pos
-		var sel_item := _gel_sel_item(pos.x, pos.y)
-		if sel_item >= 0 and sel_item != _selected_item:
-			item_touched.emit(sel_item)
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		if event.is_pressed():
+			$CTouchInertia.touch_begin(event.position.x, event.position.y, event.index)
+			accept_event()
+		else:
+			if $CTouchInertia.touch_end(event.position.x, event.position.y, event.index):
+				var pos = get_global_transform() * event.position
+				var sel_item := _gel_sel_item(pos.x, pos.y)
+				if sel_item >= 0 and sel_item != _selected_item:
+					item_touched.emit(sel_item)
+				accept_event()
+	elif event is InputEventScreenDrag:
+		if $CTouchInertia.touch_move(event.position.x, event.position.y, event.index):
+			if vertical:
+				_add_scroll(-event.relative.y)
+			else:
+				_add_scroll(-event.relative.x)
 
 
 func _gel_sel_item(x: float, y: float) -> int:
-	var a := $CTouchInertia/ScrollContainer/BoxContainer.get_children()
+	var a := $ScrollContainer/BoxContainer.get_children()
 	for i in a.size():
 		if a[i] is Control and (a[i].get_global_transform() * Rect2(Vector2.ZERO, a[i].size)).has_point(Vector2(x, y)):
 			return i
 	return -1
 
 
-func _on_c_touch_inertia_inertia_ended() -> void:
-	set_physics_process(true)
-
-
-func _physics_process(delta: float) -> void:
-	var d: float
-	if vertical:
-		d = $CTouchInertia/ScrollContainer.position.y
+func _process(delta: float) -> void:
+	$CTouchInertia.update(delta)
+	if $CTouchInertia.touching:
+		return
+	var speed = $CTouchInertia.get_speed()
+	if speed:
+		if vertical:
+			_add_scroll(-speed.y)
+		else:
+			_add_scroll(-speed.x)
 	else:
-		d = $CTouchInertia/ScrollContainer.position.x
-	if d < 0.0:
-		_add_scroll(min(d * delta * 5.0, -0.4))
-	elif d > 0.0:
-		_add_scroll(max(d * delta * 5.0, 0.4))
-	else:
-		set_physics_process(false)
-
-
-func _on_c_touch_inertia_touch_moved(relative: Vector2) -> void:
-	if vertical:
-		_add_scroll(-relative.y)
-	else:
-		_add_scroll(-relative.x)
+		var d: float
+		if vertical:
+			d = $ScrollContainer.position.y
+		else:
+			d = $ScrollContainer.position.x
+		if d < 0.0:
+			_add_scroll(min(d * delta * 5.0, -0.4))
+		elif d > 0.0:
+			_add_scroll(max(d * delta * 5.0, 0.4))
 
 
 func _add_scroll(delta: float) -> void:
 	if delta == 0.0:
 		return
 	if vertical:
-		var overflow: float = $CTouchInertia/ScrollContainer.position.y
-		var scroll: Range = $CTouchInertia/ScrollContainer.get_v_scroll_bar()
+		var overflow: float = $ScrollContainer.position.y
+		var scroll: Range = $ScrollContainer.get_v_scroll_bar()
 		var scroll_min := scroll.min_value
 		var scroll_max: float = max(scroll.max_value - size.y, scroll_min)
 		overflow = _calc_overflow(delta, overflow, scroll.value, scroll_min, scroll_max)
-		$CTouchInertia/ScrollContainer.position.y = overflow
+		$ScrollContainer.position.y = overflow
 		scroll.value = _calc_scroll(overflow, scroll_min, scroll_max)
 	else:
-		var overflow: float = $CTouchInertia/ScrollContainer.position.x
-		var scroll: Range = $CTouchInertia/ScrollContainer.get_h_scroll_bar()
+		var overflow: float = $ScrollContainer.position.x
+		var scroll: Range = $ScrollContainer.get_h_scroll_bar()
 		var scroll_min := scroll.min_value
 		var scroll_max: float = max(scroll.max_value - size.x, scroll_min)
 		overflow = _calc_overflow(delta, overflow, scroll.value, scroll_min, scroll_max)
-		$CTouchInertia/ScrollContainer.position.x = overflow
+		$ScrollContainer.position.x = overflow
 		scroll.value = _calc_scroll(overflow, scroll_min, scroll_max)
 
 
@@ -133,11 +138,11 @@ func clear_item() -> void:
 
 func add_item(item: Node) -> void:
 	_items.append(item)
-	$CTouchInertia/ScrollContainer/BoxContainer.add_child(item)
+	$ScrollContainer/BoxContainer.add_child(item)
 
 
 func get_items() -> Array[Node]:
-	return $CTouchInertia/ScrollContainer/BoxContainer.get_children()
+	return $ScrollContainer/BoxContainer.get_children()
 
 
 func set_select(index: int) -> void:

@@ -79,7 +79,7 @@ script = ExtResource("12_ti42w")
 asset = SubResource("Resource_bvffp")
 res_scale = 2.0
 
-[sub_resource type="Texture2D" id="Texture2D_6vb1t"]
+[sub_resource type="Texture2D" id="Texture2D_47ai8"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("11_gfhiv")
@@ -275,8 +275,8 @@ offset_top = 56.0
 offset_right = 40.0
 offset_bottom = 86.0
 grow_vertical = 1
-texture_res = ExtResource("7_1x8k7")
 show_board = false
+texture_res = ExtResource("7_1x8k7")
 
 [node name="ButtonOk" parent="." unique_id=2034275630 instance=ExtResource("7_2258h")]
 layout_mode = 0
@@ -293,11 +293,11 @@ image_text_normal = SubResource("Resource_1scgp")
 image_text_pressed = SubResource("Resource_pgo8h")
 image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
-texture_res = ExtResource("7_1x8k7")
 image_normal = SubResource("Resource_v0skf")
 image_pressed = SubResource("Resource_v0skf")
-texture_normal = SubResource("Texture2D_6vb1t")
-texture_pressed = SubResource("Texture2D_6vb1t")
+texture_normal = SubResource("Texture2D_47ai8")
+texture_pressed = SubResource("Texture2D_47ai8")
+texture_res = ExtResource("7_1x8k7")
 
 [node name="ButtonBank" parent="." unique_id=1569546698 instance=ExtResource("11_jaih1")]
 layout_mode = 0
@@ -310,12 +310,11 @@ offset_right = 71.0
 offset_bottom = 257.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("7_1x8k7")
 image_normal = SubResource("Resource_40ofo")
 image_pressed = SubResource("Resource_47ai8")
 image_background = SubResource("Resource_a0tjr")
+texture_res = ExtResource("7_1x8k7")
 
-[connection signal="back_pressed" from="." to="." method="_on_button_ok_pressed"]
 [connection signal="back_pressed" from="Fade" to="." method="_on_button_ok_pressed"]
 [connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]
 [connection signal="pressed" from="ButtonBank" to="." method="_on_button_bank_pressed"]

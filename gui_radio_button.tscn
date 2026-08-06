@@ -8,7 +8,8 @@ script = ExtResource("2_1i85k")
 selected = false
 text_align = 1
 
-[node name="Label" parent="." index="3" unique_id=1317756632]
+[node name="ecText" parent="." index="3" unique_id=1650770578]
+offset_right = -0.5
 grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 horizontal_alignment = 1

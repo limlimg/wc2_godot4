@@ -200,12 +200,12 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("7_ngy6y")
 image_normal = SubResource("Resource_4yntp")
 image_pressed = SubResource("Resource_b4dmi")
 image_background = SubResource("Resource_oo0i1")
 rect = SubResource("Resource_upv2v")
 rect_ipad = SubResource("Resource_ewkda")
+texture_res = ExtResource("7_ngy6y")
 
 [node name="ButtonOk" parent="." unique_id=112910976 instance=ExtResource("5_igfu0")]
 layout_mode = 1
@@ -214,12 +214,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_res = ExtResource("7_ngy6y")
 image_normal = SubResource("Resource_1scgp")
 image_pressed = SubResource("Resource_1scgp")
 image_background = SubResource("Resource_i5xih")
 rect = SubResource("Resource_xevht")
 rect_ipad = SubResource("Resource_50lxd")
+texture_res = ExtResource("7_ngy6y")
 
 [node name="Music" parent="." unique_id=2087203300 instance=ExtResource("11_i1u1b")]
 layout_mode = 1
@@ -233,7 +233,6 @@ offset_right = -158.0
 offset_bottom = 82.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("10_nsfuo")
 image_normal = SubResource("Resource_ikmsq")
 image_pressed = SubResource("Resource_ikmsq")
 horizontal = true
@@ -243,6 +242,7 @@ grabber_size_ipad = Vector2(26, 42)
 grabber_size = Vector2(13, 21)
 rect = SubResource("Resource_ngy6y")
 rect_ipad = SubResource("Resource_r1apu")
+texture_res = ExtResource("10_nsfuo")
 
 [node name="SFX" parent="." unique_id=1952883568 instance=ExtResource("11_i1u1b")]
 layout_mode = 1
@@ -256,7 +256,6 @@ offset_right = 42.0
 offset_bottom = 82.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("10_nsfuo")
 image_normal = SubResource("Resource_ikmsq")
 image_pressed = SubResource("Resource_ikmsq")
 horizontal = true
@@ -266,6 +265,7 @@ grabber_size_ipad = Vector2(26, 42)
 grabber_size = Vector2(13, 21)
 rect = SubResource("Resource_d0ynr")
 rect_ipad = SubResource("Resource_nsfuo")
+texture_res = ExtResource("10_nsfuo")
 
 [node name="AnimationButton" parent="." unique_id=1535915774 instance=ExtResource("5_igfu0")]
 layout_mode = 1
@@ -299,9 +299,9 @@ image_text_normal = SubResource("Resource_0i0yp")
 image_text_pressed = SubResource("Resource_0i0yp")
 image_position_ipad = Vector2(-6, -5)
 image_position = Vector2(-6, -5)
-texture_res = ExtResource("7_ngy6y")
 rect = SubResource("Resource_eonad")
 rect_ipad = SubResource("Resource_6xjs3")
+texture_res = ExtResource("7_ngy6y")
 
 [node name="GameSpeed" parent="." unique_id=528832786 instance=ExtResource("15_mooxn")]
 layout_mode = 1
@@ -330,10 +330,10 @@ offset_top = 54.0
 offset_right = -104.0
 offset_bottom = 54.0
 grow_vertical = 1
-texture_res = ExtResource("7_ngy6y")
 asset = SubResource("Resource_nk5su")
 rect = SubResource("Resource_4pvh2")
 rect_ipad = SubResource("Resource_00orp")
+texture_res = ExtResource("7_ngy6y")
 
 [node name="TextSFX" parent="." unique_id=2117732028 instance=ExtResource("13_knly8")]
 layout_mode = 1
@@ -346,10 +346,10 @@ offset_top = 54.0
 offset_right = 95.0
 offset_bottom = 54.0
 grow_vertical = 1
-texture_res = ExtResource("7_ngy6y")
 asset = SubResource("Resource_vqnl5")
 rect = SubResource("Resource_l12k1")
 rect_ipad = SubResource("Resource_aajrt")
+texture_res = ExtResource("7_ngy6y")
 
 [node name="TextAnimation" parent="." unique_id=1267847731 instance=ExtResource("13_knly8")]
 layout_mode = 1
@@ -362,10 +362,10 @@ offset_top = 157.0
 offset_right = -104.0
 offset_bottom = 157.0
 grow_vertical = 1
-texture_res = ExtResource("7_ngy6y")
 asset = SubResource("Resource_054k6")
 rect = SubResource("Resource_lioqd")
 rect_ipad = SubResource("Resource_80glp")
+texture_res = ExtResource("7_ngy6y")
 
 [node name="TextSpeed" parent="." unique_id=1946059887 instance=ExtResource("13_knly8")]
 layout_mode = 1
@@ -378,12 +378,11 @@ offset_top = 222.0
 offset_right = -104.0
 offset_bottom = 222.0
 grow_vertical = 1
-texture_res = ExtResource("7_ngy6y")
 asset = SubResource("Resource_dxid3")
 rect = SubResource("Resource_knly8")
 rect_ipad = SubResource("Resource_dqttm")
+texture_res = ExtResource("7_ngy6y")
 
-[connection signal="back_pressed" from="." to="." method="_on_gui_button_back_pressed"]
 [connection signal="pressed" from="ButtonBack" to="." method="_on_gui_button_back_pressed"]
 [connection signal="pressed" from="ButtonOk" to="." method="_on_gui_button_ok_pressed"]
 [connection signal="pressed" from="AnimationButton" to="." method="_set_animation" binds= [true]]

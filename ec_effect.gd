@@ -16,8 +16,6 @@ var effect_res: ecEffectRes:
 				value.changed.connect(init)
 
 
-signal stopped
-
 func _ready() -> void:
 	init()
 
@@ -26,7 +24,6 @@ func init() -> void:
 	for i in _particles:
 		i.queue_free()
 	_particles.clear()
-	stopped.emit()
 	if effect_res != null and effect_res.texture_res != null:
 		for i in effect_res.emitter:
 			var particle = $ecParticleSystem.create_instance()
@@ -48,12 +45,6 @@ func fire() -> void:
 func stop(stop_existing: bool) -> void:
 	for i in _particles:
 		i.stop(stop_existing)
-	_on_stopped()
-
-
-func _on_stopped() -> void:
-	if not is_live():
-		stopped.emit()
 
 
 func is_live() -> bool:
@@ -66,3 +57,8 @@ func is_live() -> bool:
 func move_to(x: float, y: float, move_existing: bool) -> void:
 	for i in _particles:
 		i.move_to(x, y, move_existing)
+
+
+func update(delta: float) -> void:
+	for i in _particles:
+		i.update(delta)

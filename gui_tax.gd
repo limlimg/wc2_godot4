@@ -8,9 +8,6 @@ const _INSTALLATION_STAMP = [
 ]
 
 @export
-var texture_res: ecTextureRes
-
-@export
 var money := 0:
 	set = set_money
 

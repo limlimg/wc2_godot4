@@ -6,26 +6,18 @@ var attack_area: int
 @export
 var defend_area: int
 
-var _fight: CFight
-var _tween: Tween
+var _battle_state: int
+var _fight_state: int
+var _second_attack_time: float
+var _start_attack_time: float
+var _fight := CFight.new()
 
 func battle_start() -> void:
+	# TODO: set stats
 	_reset_battle()
 	_fight.first_attack(attack_area, defend_area)
-	$AnimationPlayer.play(&"move_in")
-	var anim_name: StringName = await $AnimationPlayer.animation_finished
-	if anim_name == &"move_in":
-		if _tween != null:
-			_tween.kill()
-		_tween.tween_interval(0.1)
-		_tween.tween_callback(func ():
-			$Left/CBattleScene.attack()
-			if _fight.can_counter:
-				$Right/CBattleScene.attack()
-				$Right/CBattleScene.attack_completed.connect(_on_battle_scene_attack_completed, CONNECT_ONE_SHOT)
-			await $Left/CBattleScene.attack_completed
-			_on_battle_scene_attack_completed())
-		_tween_second_attack()
+	_battle_state = 1
+	_fight_state = 0
 
 
 func _reset_battle() -> void:
@@ -53,42 +45,78 @@ func _reset_battle() -> void:
 	$Right/MinAttack.color = Color.GREEN if army2.def.minatk > army2_other.minatk else Color.WHITE
 	$Right/MaxAttack.text = "{0}".format([army2.def.maxatk])
 	$Right/MaxAttack.color = Color.GREEN if army2.def.maxatk > army2_other.maxatk else Color.WHITE
-	$AnimationPlayer.play(&"RESET")
+	$Left.position.x = -size.x / 2
+	$Right.position.x = 3 * size.x / 2
 
 
-func _tween_second_attack() -> void:
-	_tween.tween_interval(1.5)
-	_tween.tween_callback(func ():
-		_fight.apply_result()
-		if _fight.attack_army_second_attack or _fight.defend_army_second_attack:
-			_fight.second_attack()
-			_tween.tween_interval(0.1)
-			_tween.tween_callback(func ():
+func _process(delta: float) -> void:
+	if _fight.battle_started:
+		_fight.battle_started = false
+	elif _battle_state != 0:
+		$Left/CBattleScene.update(delta)
+		$Right/CBattleScene.update(delta)
+		var v := 2500.0 if ecGraphics.instance().content_scale_size_mode == 3 else 1000.0
+		match _battle_state:
+			1:
+				var x := minf($Left.position.x + v * delta, 0.0)
+				$Left.position.x = x
+				$Right.position.x = size.x - x
+				if x >= 0.0:
+					_fight_state = 0
+					_battle_state = 2
+					_start_attack_time = 0.0
+					_second_attack_time = 0.0
+			2:
+				_update_fighting(delta)
+			3:
+				var dest := -size.x / 2
+				var x := maxf($Left.position.x - v * delta, dest)
+				$Left.position.x = x
+				$Right.position.x = size.x - x
+				if x <= dest:
+					_battle_state = 0
+					hide()
+					$Left/CBattleScene.clear_craters()
+					$Right/CBattleScene.clear_craters()
+					$Left/CBattleScene.clear_effect()
+					$Right/CBattleScene.clear_effect()
+					_fight.battle_started = false
+
+
+func _update_fighting(delta: float) -> void:
+	if _fight_state == 0:
+		_start_attack_time += delta
+		if _start_attack_time > 0.1:
+			_fight_state = 1
+			if _fight.attack_index == 0:
+				$Left/CBattleScene.attack()
+				if _fight.can_counter:
+					$Right/CBattleScene.attack()
+			else:
 				if _fight.second_attack_side == 0:
 					$Left/CBattleScene.attack()
-					await $Left/CBattleScene.attack_completed
-					_on_battle_scene_attack_completed()
 				else:
 					$Right/CBattleScene.attack()
-					await $Right/CBattleScene.attack_completed
-					_on_battle_scene_attack_completed())
-			_tween_second_attack()
+	else:
+		if $Left/CBattleScene.is_attacking() or $Right/CBattleScene.is_attacking():
+			if _fight_state != 2:
+				return
 		else:
-			_battle_finish())
-
-
-func _on_battle_scene_attack_completed() -> void:
-	if not $Left/CBattleScene.is_attacking() and not $Right/CBattleScene.is_attacking():
-		$Left/CBattleScene.destroy_units(_fight.attack_army_lost_dice)
-		$Right/CBattleScene.destroy_units(_fight.defend_army_lost_dice)
+			if _fight_state == 1:
+				$Left/CBattleScene.destroy_units(_fight.attack_army_lost_dice)
+				$Right/CBattleScene.destroy_units(_fight.defend_army_lost_dice)
+			_fight_state = 2
+			_second_attack_time += delta
+			if _second_attack_time > 1.5:
+				_fight.apply_result()
+				if _fight.attack_army_second_attack or _fight.defend_army_second_attack:
+					_fight.second_attack()
+					_start_attack_time = 0.0
+					_fight_state = 0
+					_second_attack_time = 0.0
+				else:
+					_battle_finish()
 
 
 func _battle_finish() -> void:
-	$AnimationPlayer.play("move_out")
-	var anim_name: StringName = await $AnimationPlayer.animation_finished
-	if anim_name == &"move_out":
-		hide()
-		$Left/CBattleScene.clear_craters()
-		$Right/CBattleScene.clear_craters()
-		$Left/CBattleScene.clear_effect()
-		$Right/CBattleScene.clear_effect()
+	_battle_state = 3

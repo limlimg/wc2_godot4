@@ -3,23 +3,6 @@ class_name GUIScrollBar
 extends GUIElement
 
 @export
-var texture_res: ecTextureRes:
-	set(value):
-		if value != texture_res:
-			if texture_res != null:
-				texture_res.changed.disconnect(init)
-			elif not Engine.is_editor_hint():
-				if s_texture_res.changed.is_connected(init):
-					s_texture_res.changed.disconnect(init)
-			texture_res = value
-			init()
-			if value != null:
-				value.changed.connect(init)
-			elif not Engine.is_editor_hint():
-				s_texture_res.changed.connect(init)
-
-
-@export
 var image_normal: AssetRegistry:
 	set(value):
 		if value != image_normal:
@@ -120,8 +103,10 @@ func init() -> void:
 	if res == null:
 		res = s_texture_res
 	if res != null:
-		texture_normal = res.get_image(image_normal.get_resolved_name())
-		texture_pressed = res.get_image(image_pressed.get_resolved_name())
+		if image_normal != null:
+			texture_normal = res.get_image(image_normal.get_resolved_name())
+		if image_pressed != null:
+			texture_pressed = res.get_image(image_pressed.get_resolved_name())
 	notify_property_list_changed()
 
 

@@ -49,7 +49,6 @@ resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("12_re5ym")
 asset = SubResource("Resource_bvffp")
-res_scale = 2.0
 
 [sub_resource type="Texture2D" id="Texture2D_678ko"]
 resource_local_to_scene = false
@@ -177,10 +176,10 @@ offset_right = 240.0
 offset_bottom = 192.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("5_0capv")
 asset = SubResource("Resource_8kvfc")
 rect = SubResource("Resource_vdbs8")
 rect_ipad = SubResource("Resource_miapv")
+texture_res = ExtResource("5_0capv")
 
 [node name="ButtonOK" parent="." unique_id=493498822 instance=ExtResource("4_cl8ju")]
 layout_mode = 0
@@ -197,13 +196,13 @@ image_text_normal = SubResource("Resource_1scgp")
 image_text_pressed = SubResource("Resource_pgo8h")
 image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
-texture_res = ExtResource("5_0capv")
 image_normal = SubResource("Resource_v0skf")
 image_pressed = SubResource("Resource_v0skf")
 texture_normal = SubResource("Texture2D_678ko")
 texture_pressed = SubResource("Texture2D_678ko")
 rect = SubResource("Resource_hntj7")
 rect_ipad = SubResource("Resource_0capv")
+texture_res = ExtResource("5_0capv")
 
 [node name="BattleName" parent="." unique_id=1627139554 instance=ExtResource("11_re5ym")]
 layout_mode = 0
@@ -373,6 +372,5 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.2, 0.19215687, 0.24313726, 1)
 
-[connection signal="back_pressed" from="." to="." method="_on_gui_button_ex_pressed"]
 [connection signal="back_pressed" from="Fade" to="." method="_on_gui_button_ex_pressed"]
 [connection signal="pressed" from="ButtonOK" to="." method="_on_gui_button_ex_pressed"]

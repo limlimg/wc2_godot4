@@ -34,9 +34,8 @@ resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("12_6vb1t")
 asset = SubResource("Resource_bvffp")
-res_scale = 2.0
 
-[sub_resource type="Texture2D" id="Texture2D_6vb1t"]
+[sub_resource type="Texture2D" id="Texture2D_m2o1a"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("11_m2o1a")
@@ -106,12 +105,11 @@ image_text_normal = SubResource("Resource_1scgp")
 image_text_pressed = SubResource("Resource_pgo8h")
 image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
-texture_res = ExtResource("2_y8yra")
 image_normal = SubResource("Resource_v0skf")
 image_pressed = SubResource("Resource_v0skf")
-texture_normal = SubResource("Texture2D_6vb1t")
-texture_pressed = SubResource("Texture2D_6vb1t")
+texture_normal = SubResource("Texture2D_m2o1a")
+texture_pressed = SubResource("Texture2D_m2o1a")
+texture_res = ExtResource("2_y8yra")
 
-[connection signal="back_pressed" from="." to="." method="_on_button_ok_pressed"]
 [connection signal="back_pressed" from="Fade" to="." method="_on_button_ok_pressed"]
 [connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]

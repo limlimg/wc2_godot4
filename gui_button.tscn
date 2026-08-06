@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dmysnlqa41guv"]
 
 [ext_resource type="Script" uid="uid://cfykx5f1m6cjg" path="res://gui_button.gd" id="1_0hq7w"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="2_62fdp"]
 
 [node name="GUIButton" type="Control" unique_id=2034275630]
 layout_mode = 3
@@ -35,7 +36,7 @@ grow_vertical = 2
 mouse_filter = 1
 ignore_texture_size = true
 
-[node name="Label" type="Label" parent="." unique_id=1317756632]
+[node name="ecText" parent="." unique_id=1650770578 instance=ExtResource("2_62fdp")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

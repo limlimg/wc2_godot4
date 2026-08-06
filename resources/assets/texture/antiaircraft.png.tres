@@ -2,25 +2,17 @@
 
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_60elq"]
 [ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="1_u6pd3"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="2_u6pd3"]
 
-[sub_resource type="Resource" id="Resource_u6pd3"]
+[sub_resource type="Resource" id="Resource_b58ui"]
 script = ExtResource("1_60elq")
 name = "antiaircraft.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Texture2D" id="Texture2D_6ofta"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_u6pd3")
-asset = SubResource("Resource_u6pd3")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
 
 [resource]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("1_u6pd3")
-texture = SubResource("Texture2D_6ofta")
+image = SubResource("Resource_b58ui")
 region = Rect2(1, 0, 76, 70)
 origin = Vector2(45, 70)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"

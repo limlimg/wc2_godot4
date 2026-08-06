@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_0eso1"]
 [ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_33xtj"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="3_es0m7"]
 [ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://ec_texture_res.gd" id="4_grury"]
 
 [sub_resource type="Resource" id="Resource_uk4b2"]
@@ -12,24 +11,10 @@ name_hd = "commander_hd.png"
 name_ipad = "commander@2x.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="Resource" id="Resource_u1lw0"]
-script = ExtResource("1_0eso1")
-name = "commander.png"
-name_ipad = "commander@2x.png"
-metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Texture2D" id="Texture2D_i4ayr"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("3_es0m7")
-asset = SubResource("Resource_u1lw0")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
-
 [sub_resource type="Texture2D" id="Texture2D_tcvyn"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_33xtj")
-texture = SubResource("Texture2D_i4ayr")
 region = Rect2(0, 0, 214, 315)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
@@ -37,7 +22,6 @@ metadata/_custom_type_script = "uid://bvddy3vjuki27"
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_33xtj")
-texture = SubResource("Texture2D_i4ayr")
 region = Rect2(0, 0, 479, 708)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
@@ -45,12 +29,16 @@ metadata/_custom_type_script = "uid://bvddy3vjuki27"
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_33xtj")
-texture = SubResource("Texture2D_i4ayr")
 region = Rect2(25.5, 0, 214, 315)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
 [sub_resource type="Resource" id="Resource_hl5vs"]
 script = ExtResource("4_grury")
+image_texture = Dictionary[StringName, String]({
+&"commander.png": "commander.png",
+&"commander@2x.png": "commander@2x.png",
+&"commander_hd.png": "commander.png"
+})
 images = Dictionary[StringName, ExtResource("2_33xtj")]({
 &"commander.png": SubResource("Texture2D_tcvyn"),
 &"commander@2x.png": SubResource("Texture2D_0m7lr"),

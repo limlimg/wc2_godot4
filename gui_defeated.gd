@@ -1,8 +1,5 @@
 extends GUIElement
 
-@export
-var texture_res: ecTextureRes
-
 var _tween_auto_close: Tween
 
 signal ok_pressed

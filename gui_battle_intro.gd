@@ -72,6 +72,7 @@ func _on_gui_button_ex_pressed() -> void:
 	ok_pressed.emit()
 
 
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_VISIBILITY_CHANGED:
-		$Fade.visible = visible
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action(&"ui_cancel"):
+		ok_pressed.emit()
+		accept_event()

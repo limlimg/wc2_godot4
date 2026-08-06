@@ -3,23 +3,6 @@ class_name GUIButton
 extends GUIElement
 
 @export
-var texture_res: ecTextureRes:
-	set(value):
-		if value != texture_res:
-			if texture_res != null:
-				texture_res.changed.disconnect(init)
-			elif not Engine.is_editor_hint():
-				if s_texture_res.changed.is_connected(init):
-					s_texture_res.changed.disconnect(init)
-			texture_res = value
-			init()
-			if value != null:
-				value.changed.connect(init)
-			elif not Engine.is_editor_hint():
-				s_texture_res.changed.connect(init)
-
-
-@export
 var image_normal: AssetRegistry:
 	set(value):
 		if value != image_normal:
@@ -77,6 +60,14 @@ var image_text_image: AssetRegistry:
 			init()
 			if value != null:
 				value.changed.connect(init, CONNECT_REFERENCE_COUNTED)
+
+
+@export
+var font: NodePath:
+	get():
+		return $ecText.font
+	set(value):
+		$ecText.font = value
 
 
 @export
@@ -162,9 +153,9 @@ var text: String:
 @export
 var text_font: Theme:
 	get():
-		return $Label.theme
+		return $ecText.theme
 	set(value):
-		$Label.theme = value
+		$ecText.theme = value
 
 
 @export
@@ -302,46 +293,46 @@ func _set_background(image_name: StringName) -> void:
 
 
 func get_text() -> String:
-	return $Label.text
+	return $ecText.text
 
 
 func set_text(value: String) -> void:
-	$Label.text = value
+	$ecText.text = value
 
 
 func get_text_color() -> Color:
-	return $Label.get_theme_color(&"font_color")
+	return $ecText.get_theme_color(&"font_color")
 
 
 func set_text_color(value: Color) -> void:
-	$Label.remove_theme_color_override(&"font_color")
-	$Label.add_theme_color_override(&"font_color", value)
+	$ecText.remove_theme_color_override(&"font_color")
+	$ecText.add_theme_color_override(&"font_color", value)
 
 
 func get_text_offset() -> Vector2:
-	return Vector2($Label.offset_left, $Label.offset_top)
+	return Vector2($ecText.offset_left, $ecText.offset_top)
 
 
 func set_text_offset(value: Vector2) -> void:
-	$Label.offset_left = value.x
-	$Label.offset_right = value.x
-	$Label.offset_top = value.y
-	$Label.offset_bottom = value.y
+	$ecText.offset_left = value.x
+	$ecText.offset_right = value.x
+	$ecText.offset_top = value.y
+	$ecText.offset_bottom = value.y
 
 
 func get_text_align() -> HorizontalAlignment:
-	return $Label.horizontal_alignment
+	return $ecText.horizontal_alignment
 
 
 func set_text_align(value: HorizontalAlignment) -> void:
-	$Label.horizontal_alignment = value
+	$ecText.horizontal_alignment = value
 	match value:
 		HORIZONTAL_ALIGNMENT_RIGHT:
-			$Label.grow_horizontal = GROW_DIRECTION_END
+			$ecText.grow_horizontal = GROW_DIRECTION_END
 		HORIZONTAL_ALIGNMENT_CENTER:
-			$Label.grow_horizontal = GROW_DIRECTION_BOTH
+			$ecText.grow_horizontal = GROW_DIRECTION_BOTH
 		_:
-			$Label.grow_horizontal = GROW_DIRECTION_BEGIN
+			$ecText.grow_horizontal = GROW_DIRECTION_BEGIN
 
 
 #func set_text_image(image_name: StringName) -> void:

@@ -21,10 +21,11 @@ var _units: Array[Node2D]
 var _destroyed_units: Array[Node2D]
 var _craters: Array[Sprite2D]
 var _effects: Array[Node2D]
-var _attack_tween: Tween
-var _effect_tween: Tween
-
-signal attack_completed
+var _attacking: bool
+var _attack_time: float
+var _attack_index: int
+var _effect_to_fire: int
+var _effect_timer: float
 
 func set_battle_area(value: int) -> void:
 	if value == battle_area:
@@ -163,29 +164,35 @@ func _create_units() -> void:
 
 
 func attack() -> void:
-	if _attack_tween != null:
-		_attack_tween.kill()
-	_attack_tween = create_tween()
-	_attack_tween.tween_interval(0.2)
-	if _fort != null:
-		_attack_tween.tween_callback(_fort.attack)
-	for i in _units.size():
-		if i == 0:
-			var army = g_Scene.get_area(battle_area).get_army(0)
-			if army != null and army.def.id > 1:
-				_attack_tween.tween_callback(get_node(opposite_scene).start_effect.bind(_units.size() + 1))
-		else:
-			_attack_tween.tween_interval(0.2)
-		_attack_tween.tween_callback(_units[i].attack)
+	if _units.is_empty():
+		return
+	_attacking = true
+	_attack_index = 0
+	_attack_time = 0.0
 
 
-func start_effect(num: int) -> void:
-	if _effect_tween != null:
-		_effect_tween.kill()
-	_effect_tween = create_tween()
-	for i in num:
-		_effect_tween.tween_interval(1.4 if i == 0 else 0.2)
-		_effect_tween.tween_callback(func ():
+func update(delta: float) -> void:
+	if _attacking:
+		_attack_time += delta
+		if _attack_time > 0.2:
+			_attack_time -= 0.2
+			var unit := _units[_attack_index]
+			if unit != null:
+				unit.attack()
+				if _attack_index == 0:
+					var army = g_Scene.get_area(battle_area).get_army(0)
+					if army != 0 and army.def.id > 1:
+						get_node(opposite_scene).start_effect(_units.size() + 1)
+					if _fort != null:
+						_fort.attack()
+				_attack_index += 1
+				if _attack_index >= _units.size() or _units[_attack_index] == null:
+					_attacking = false
+	if _effect_to_fire > 0:
+		_effect_timer -= delta
+		if _effect_timer <= 0.0:
+			_effect_to_fire -= 1
+			_effect_timer = 0.2
 			var rand_x := randi_range(0, 119) + 20.0
 			var rand_y := randi_range(280 - 30 * _units.size(), 299)
 			var rand_effect := randi_range(0, 4)
@@ -218,7 +225,25 @@ func start_effect(num: int) -> void:
 					4:
 						_add_effect("effect_strike5.xml", rand_x, rand_y)
 						_add_crater("crater2.png", rand_x, rand_y, 0.6)
-			g_SoundRes.play_char_se(SND_EFFECT.STRIKE_WAV))
+			g_SoundRes.play_char_se(SND_EFFECT.STRIKE_WAV)
+	for i in _units:
+		i.update(delta)
+	if _fort:
+		_fort.update(delta)
+	var i := 0
+	while i < _effects.size():
+		var effect := _effects[i]
+		effect.update(delta)
+		if effect.is_live():
+			i += 1
+		else:
+			effect.queue_free()
+			_effects.remove_at(i)
+
+
+func start_effect(num: int) -> void:
+	_effect_to_fire = num
+	_effect_timer = 1.4
 
 
 func _add_effect(effect_name: String, x: float, y: float) -> void:
@@ -253,18 +278,13 @@ func clear_craters() -> void:
 		i.queue_free()
 
 
-func _on_battle_unit_attack_completed() -> void:
-	if not is_attacking():
-		attack_completed.emit()
-
-
 func is_attacking() -> bool:
-	if _attack_tween != null and _attack_tween.is_running():
+	if _attacking:
 		return true
 	for i in _units:
 		if i.is_attacking():
 			return true
-	if _effect_tween != null and _effect_tween.is_running():
+	if _effect_to_fire > 0:
 		return true
 	return false
 

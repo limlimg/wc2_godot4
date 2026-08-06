@@ -12,6 +12,8 @@ var _targeting_army := false
 	$GUICardList5
 ]
 
+signal back_pressed
+
 func _sel_card(tab: int, index: int) -> void:
 	_selected_card = -1
 	if tab >= 0 and index >= 0:
@@ -142,7 +144,7 @@ func _on_gui_button_ok_pressed() -> void:
 			if g_GameManager.game_mode == 4:
 				# TODO: send multiplayer data
 				pass
-		if card.id == 21: # research
+		if card.id == CARD_ID.RESEARCH_CARD:
 			reset_card_state()
 		else:
 			hide()

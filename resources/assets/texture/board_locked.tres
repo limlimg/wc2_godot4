@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_1iu5s"]
 [ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_aj8f5"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="3_c4dgb"]
 [ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://ec_texture_res.gd" id="4_yqnbb"]
 
 [sub_resource type="Resource" id="Resource_44107"]
@@ -11,18 +10,10 @@ name = "board_locked.png"
 name_ipad = "board_locked@2x.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="Texture2D" id="Texture2D_yqnbb"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("3_c4dgb")
-asset = SubResource("Resource_44107")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
-
 [sub_resource type="Texture2D" id="Texture2D_cankv"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_aj8f5")
-texture = SubResource("Texture2D_yqnbb")
 region = Rect2(0, 0, 227, 131)
 origin = Vector2(2, 2)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
@@ -31,13 +22,16 @@ metadata/_custom_type_script = "uid://bvddy3vjuki27"
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_aj8f5")
-texture = SubResource("Texture2D_yqnbb")
 region = Rect2(0, 0, 454, 262)
 origin = Vector2(4, 4)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
 [sub_resource type="Resource" id="Resource_0lyoc"]
 script = ExtResource("4_yqnbb")
+image_texture = Dictionary[StringName, String]({
+&"board_locked.png": "board_locked.png",
+&"board_locked@2x.png": "board_locked@2x.png"
+})
 images = Dictionary[StringName, ExtResource("2_aj8f5")]({
 &"board_locked.png": SubResource("Texture2D_cankv"),
 &"board_locked@2x.png": SubResource("Texture2D_gs0ia")

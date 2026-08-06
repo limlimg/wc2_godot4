@@ -10,13 +10,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource("1_u6nvb")
 
 [node name="CTouchInertia" parent="." unique_id=861780580 instance=ExtResource("2_st7b2")]
-layout_mode = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CTouchInertia" unique_id=10035342]
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=10035342]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 15
@@ -28,14 +27,9 @@ follow_focus = true
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 
-[node name="BoxContainer" type="BoxContainer" parent="CTouchInertia/ScrollContainer" unique_id=544251423]
+[node name="BoxContainer" type="BoxContainer" parent="ScrollContainer" unique_id=544251423]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 vertical = true
-
-[connection signal="inertia_ended" from="CTouchInertia" to="." method="_on_c_touch_inertia_inertia_ended"]
-[connection signal="touch_began" from="CTouchInertia" to="." method="_on_c_touch_inertia_touch_began"]
-[connection signal="touch_ended" from="CTouchInertia" to="." method="_on_c_touch_inertia_touch_ended"]
-[connection signal="touch_moved" from="CTouchInertia" to="." method="_on_c_touch_inertia_touch_moved"]

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bt48anokkkh07" path="res://resources/assets/game_res/bomber.png.tres" id="2_2ba0p"]
 [ext_resource type="PackedScene" uid="uid://3kjay574huha" path="res://ec_effect_manager.tscn" id="4_mejs8"]
 
-[node name="CBomber" type="Node2D" unique_id=511489610]
+[node name="CBomber" type="Node2D" unique_id=180358466]
 visible = false
 script = ExtResource("1_2ba0p")
 

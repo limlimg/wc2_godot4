@@ -43,13 +43,18 @@ func _on_exit() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not _entered:
+		return
 	if event is InputEventScreenTouch:
 		if event.pressed:
 			_touch_begin(event.position.x, event.position.y, event.index)
+			get_viewport().set_input_as_handled()
 		else:
 			_touch_end(event.position.x, event.position.y, event.index)
+			get_viewport().set_input_as_handled()
 	elif event is InputEventScreenDrag:
 		_touch_move(event.position.x, event.position.y, event.index)
+		get_viewport().set_input_as_handled()
 	elif event.is_action_pressed(&"ui_cancel"):
 		if _back_pressed():
 			get_viewport().set_input_as_handled()

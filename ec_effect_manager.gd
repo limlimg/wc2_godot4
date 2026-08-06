@@ -2,6 +2,7 @@ class_name ecEffectManager
 extends Node2D
 
 var _effects: Array[Node2D]
+var _auto_remove_effects: Array[Node2D]
 
 static func instance() -> ecEffectManager:
 	return (Engine.get_main_loop() as SceneTree).get_first_node_in_group(&"_ZN15ecEffectManager8InstancevE")
@@ -11,12 +12,7 @@ func add_effect(file: String, auto_remove: bool) -> ecEffect:
 	var node := create_effect(file)
 	_effects.append(node)
 	if auto_remove:
-		(func ():
-			if node.is_live():
-				node.stopped.connect(_remove.bind(node))
-			else:
-				_remove(node)
-			).call_deferred()
+		_auto_remove_effects.append(node)
 	return node
 
 
@@ -39,3 +35,16 @@ func _remove(node: Node) -> void:
 	_effects[_effects.find(node)] = _effects[-1]
 	_effects.pop_back()
 	node.queue_free()
+
+
+func update(delta: float) -> void:
+	var i := 0
+	while i < _effects.size():
+		var p := _effects[i]
+		p.update(delta)
+		if not p.is_live() and p in _auto_remove_effects:
+			p.queue_free()
+			_auto_remove_effects.erase(p)
+			_effects.remove_at(i)
+		else:
+			i += 1

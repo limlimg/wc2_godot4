@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://jbmu7hxw0gjs"]
+
+[ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="1_utj8q"]
+[ext_resource type="Script" uid="uid://brlw6mi7xb5d5" path="res://gui/gui_medal_button.gd" id="2_ssx07"]
+[ext_resource type="Texture2D" uid="uid://mav2dvk3j566" path="res://resources/assets/logo_gui_res/medal_arrow.png.tres" id="4_qtr3v"]
+
+[node name="GUIMedalButton" unique_id=2034275630 instance=ExtResource("1_utj8q")]
+script = ExtResource("2_ssx07")
+selected = false
+arrow_color = Color(1, 1, 1, 1)
+
+[node name="ecText" parent="." index="3" unique_id=1650770578]
+offset_right = -0.5
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="Medal" type="TextureRect" parent="." index="5" unique_id=1865123603]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Arrow" type="TextureRect" parent="Medal" index="0" unique_id=811429696]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -315.5884
+offset_bottom = -315.5884
+texture = ExtResource("4_qtr3v")
+expand_mode = 1
+stretch_mode = 2

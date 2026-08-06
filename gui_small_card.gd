@@ -1,9 +1,6 @@
 extends GUIElement
 
 @export
-var texture_res: ecTextureRes
-
-@export
 var card: CardDef:
 	set = set_card
 

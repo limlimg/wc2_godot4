@@ -52,7 +52,7 @@ script = ExtResource("2_muesp")
 need_medal = 0
 text_offset = Vector2(240, 160)
 
-[node name="Label" parent="." index="3" unique_id=1317756632]
+[node name="ecText" parent="." index="3" unique_id=1650770578]
 offset_left = 240.0
 offset_top = 160.0
 offset_right = 240.0
@@ -101,7 +101,7 @@ texture = ExtResource("4_e8pok")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="NeedMedal" parent="GUIElement/HBoxContainer" index="1" unique_id=1650770578 instance=ExtResource("5_18k73")]
+[node name="NeedMedal" parent="GUIElement/HBoxContainer" index="1" unique_id=88150332 instance=ExtResource("5_18k73")]
 layout_mode = 2
 size_flags_vertical = 0
 font = NodePath("/root/g_Num1")

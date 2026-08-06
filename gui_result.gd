@@ -2,6 +2,7 @@ extends GUIElement
 
 signal next_pressed
 signal restart_pressed
+signal back_pressed
 
 @export
 var show_restart: bool:

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c2o7l5cd0x8vw" path="res://c_logo_state.gd" id="1_b54l6"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="3_16a6w"]
 [ext_resource type="Script" uid="uid://8hwlr3pkh8ko" path="res://ec_texture_rect.gd" id="4_0t5le"]
+[ext_resource type="PackedScene" uid="uid://cvq6i6u27y6x7" path="res://i_event_receiver.tscn" id="5_0t5le"]
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="5_setpe"]
 
 [sub_resource type="Resource" id="Resource_hwx6b"]
@@ -60,3 +61,9 @@ texture_rect = SubResource("Resource_c5klu")
 texture_rect_ipad = SubResource("Resource_62g6t")
 rect = SubResource("Resource_1kvt5")
 rect_ipad = SubResource("Resource_fto0o")
+texture_res = null
+
+[node name="IEventReceiver" parent="." unique_id=817525215 instance=ExtResource("5_0t5le")]
+
+[connection signal="faded_in" from="IEventReceiver" to="." method="_on_i_event_receiver_faded_in"]
+[connection signal="faded_out" from="IEventReceiver" to="." method="_on_i_event_receiver_faded_out"]

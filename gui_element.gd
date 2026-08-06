@@ -71,13 +71,10 @@ var rect_568h: GUIRect:
 			if value != null:
 				value.changed.connect(init)
 
+@export
+var texture_res: ecTextureRes
 
 var _handle: int
-
-signal touch_began(pos: Vector2, index: int)
-signal touch_moved(pos: Vector2, index: int)
-signal touch_ended(pos: Vector2, index: int)
-signal back_pressed
 
 func _ready() -> void:
 	_next_handle += 1
@@ -176,15 +173,3 @@ func _find_by_handle(handle: int) -> GUIElement:
 			if result != null:
 				return result
 	return null
-
-
-func _gui_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		if event.pressed:
-			touch_began.emit(event.position, event.index)
-		else:
-			touch_ended.emit(event.position, event.index)
-	elif event is InputEventScreenDrag:
-		touch_moved.emit(event.position, event.index)
-	elif event.is_action(&"ui_cancel"):
-		back_pressed.emit()

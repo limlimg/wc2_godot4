@@ -21,20 +21,20 @@ extends GUIElement
 ## PostEvent is not implemented because the original event system is not used
 ## any more.
 
-var _fade_order := 0
-
-signal faded_in(cause: int)
-signal faded_out(cause: int)
+var event_receiver: IEventReceiver
+var _fading_overlay: Node
+var _fading: int
+var _fading_cause: int
 
 static func instance() -> GUIManager:
 	return (Engine.get_main_loop() as SceneTree).get_first_node_in_group(&"_ZN10GUIManager8InstancevE")
 
 
 func _ready() -> void:
-	for i in [$Fade, $Prototype, $AnimationPlayer]:
+	for i in [$Fade, $Prototype]:
 		# make these nodes internal for immunity to free_all_child
 		remove_child(i)
-		add_child(i, true, Node.INTERNAL_MODE_BACK)
+		add_child(i, true, Node.INTERNAL_MODE_FRONT)
 
 
 func init() -> void:
@@ -59,79 +59,87 @@ func safe_free_child(child: Node) -> void:
 
 
 ## The original method has more parameter for specifying texture format.
-func add_image_texture(texture_name: String, attr: ecTextureRect, gui_rect: Rect2,
+func add_image(texture_name: String, attr: ecTextureRect, gui_rect: GUIRect,
 		parent:Node) -> GUIImage:
-	var image = $Prototype/GUIImage.create_instance()
+	var image = $Prototype/GUIImage.duplicate()
 	image.rect = gui_rect
-	if not image.set_image(texture_name, attr):
-		image.free()
-		return null
+	var asset := AssetRegistry.new()
+	asset.name = texture_name
+	image.asset = asset
+	image.texture_rect = attr
 	if parent == null:
 		parent = self
-	image.reparent(parent)
-	return image
-
-
-func add_image(texture_name: String, gui_rect: Rect2, parent:Node) -> GUIImage:
-	var image = $Prototype/GUIImage.create_instance()
-	image.rect = gui_rect
-	if not image.set_image(texture_name):
-		image.free()
-		return null
-	if parent == null:
-		parent = self
-	image.reparent(parent)
+	parent.add_child(image)
 	return image
 
 
 func add_button(normal_image_name: StringName, pressed_image_name: StringName,
-		gui_rect: Rect2, parent:Node, font: ecUniFont) -> GUIButton:
-	var button = $Prototype/GUIButton.create_instance()
-	button.init(normal_image_name, pressed_image_name, gui_rect, font)
+		gui_rect: GUIRect, parent:Node, font: NodePath) -> GUIButton:
+	var button = $Prototype/GUIButton.duplicate()
+	button.rect = gui_rect
+	var asset := AssetRegistry.new()
+	asset.name = normal_image_name
+	button.image_normal = asset
+	asset = AssetRegistry.new()
+	asset.name = pressed_image_name
+	button.image_pressed = asset
+	button.font = font
 	if parent == null:
 		parent = self
-	parent.reparent(button)
+	parent.add_child(button)
 	return button
 
 
-func add_scroll_bar(gui_rect: Rect2, parent:Node, normal_image_name: StringName,
+func add_scroll_bar(gui_rect: GUIRect, parent:Node, normal_image_name: StringName,
 		pressed_image_name: StringName, grabber_size_w: int,
 		grabber_size_h: int, default_value: int, set_max_value: int,
 		is_horizontal: bool) -> GUIScrollBar:
-	var scroll_bar = $Prototype/GUIScrollBar.create_instance()
-	scroll_bar.init(gui_rect, normal_image_name, pressed_image_name, grabber_size_w,
-		grabber_size_h, default_value, set_max_value, is_horizontal)
+	var scroll_bar = $Prototype/GUIScrollBar.duplicate()
+	scroll_bar.rect = gui_rect
+	var asset := AssetRegistry.new()
+	asset.name = normal_image_name
+	scroll_bar.image_normal = asset
+	asset = AssetRegistry.new()
+	asset.name = pressed_image_name
+	scroll_bar.image_pressed = asset
+	scroll_bar.grabber_size_ipad = Vector2(grabber_size_w, grabber_size_h)
+	scroll_bar.grabber_size = Vector2(grabber_size_w, grabber_size_h)
+	scroll_bar.value = default_value
+	scroll_bar.max_value = set_max_value
+	scroll_bar.horizontal = is_horizontal
 	if parent == null:
 		parent = self
-	parent.reparent(scroll_bar)
+	parent.add_child(scroll_bar)
 	return scroll_bar
 
 
-func fade_in(cause: int) -> void:
-	_fade_order += 1
-	if $AnimationPlayer.is_playing():
-		$AnimationPlayer.animation_finished.emit(&"fade_out") # to remove overlay
-	if $Fade/Fade.alpha != 0.0:
-		$AnimationPlayer.play_section(&"fade_in", (1.0 - $Fade/Fade.alpha) * 0.4)
-	else:
-		$AnimationPlayer.animation_finished.emit.call_deferred(&"fade_in")
-	var waiting_fade_order := _fade_order
-	var anim_name: StringName = await $AnimationPlayer.animation_finished
-	if anim_name == &"fade_in" and _fade_order == waiting_fade_order:
-		faded_in.emit(cause)
-
-
 func fade_out(cause: int, overlay: Control) -> void:
-	_fade_order += 1
+	_fading_cause = cause
+	_fading = 2
+	if _fading_overlay != null:
+		_fading_overlay.queue_free()
 	if overlay != null:
 		overlay.reparent($Fade, false)
-	if $Fade/Fade.alpha != 1.0:
-		$AnimationPlayer.play_section(&"fade_out", ($Fade/Fade.alpha) * 0.4)
-	else:
-		$AnimationPlayer.animation_finished.emit.call_deferred(&"fade_out")
-	var waiting_fade_order := _fade_order
-	var anim_name: StringName = await $AnimationPlayer.animation_finished
-	if overlay != null:
-		overlay.queue_free()
-	if anim_name == &"fade_out" and _fade_order == waiting_fade_order:
-		faded_out.emit(cause)
+		_fading_overlay = overlay
+
+
+func fade_in(cause: int) -> void:
+	_fading_cause = cause
+	_fading = 1
+
+
+func _process(delta: float) -> void:
+	if _fading == 1:
+		var a := maxf($Fade/Fade.alpha - 2.5 * delta, 0.0)
+		$Fade/Fade.alpha = a
+		if a <= 0.0:
+			_fading = 0
+			event_receiver.emit_faded_in(_fading_cause)
+	elif _fading == 2:
+		var a := minf($Fade/Fade.alpha + 2.5 * delta, 1.0)
+		$Fade/Fade.alpha = a
+		if a >= 1.0:
+			if _fading_overlay != null:
+				_fading_overlay.queue_free()
+			_fading = 0
+			event_receiver.emit_faded_out(_fading_cause)

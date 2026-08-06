@@ -24,7 +24,6 @@ func add_text(x: float, y: float, text: String, color: Color) -> void:
 	node.position = Vector2(x, y)
 	node.set_text(text)
 	node.set_color(color)
-	node.hidden.connect(_remove.bind(node))
 	_texts.append(node)
 
 
@@ -35,11 +34,16 @@ func release() -> void:
 			scene_node.release()
 			return
 	$Num2.release()
-	while not _texts.is_empty():
-		_remove(_texts[-1])
+	for i in _texts:
+		i.queue_free()
+	_texts.clear()
 
 
-func _remove(node: Node) -> void:
-	_texts[_texts.find(node)] = _texts[-1]
-	_texts.pop_back()
-	node.queue_free()
+func update(delta: float) -> void:
+	var i := 0
+	while i < _texts.size():
+		if _texts[i].update(delta):
+			i += 1
+		else:
+			_texts[i].queue_free()
+			_texts.remove_at(i)

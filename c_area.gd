@@ -1,13 +1,7 @@
 class_name CArea
-extends Node2D
+extends Object
 
-var id: int:
-	get():
-		return name.to_int()
-	set(value):
-		name = str(value)
-
-
+var id: int
 var type: int
 var tax: int
 var army_pos: Vector2
@@ -40,10 +34,6 @@ var country: CCountry:
 	set(value):
 		if value != country:
 			country = value
-			if not flashing_red:
-				self_modulate = value.color if value != null else Color.BLUE
-				if value == null or sea != 0:
-					self_modulate.a = 0.0
 			_render_building()
 			_render()
 
@@ -55,6 +45,10 @@ var _armies: Array[CArmy]:
 			_render()
 
 
+var _army_drafting: bool
+var army_moving_in: bool
+var _army_moving_to_front: bool
+
 var _army_offset: Vector2:
 	set(value):
 		if value != _army_offset:
@@ -62,67 +56,15 @@ var _army_offset: Vector2:
 			_render()
 
 
-var flashing: bool:
-	set(value):
-		if value != flashing:
-			flashing = value
-			if _tween_flashing != null:
-				_tween_flashing.kill()
-			if value:
-				_tween_flashing = create_tween()
-				_tween_flashing.set_loops()
-				self_modulate.a = 0.8
-				_tween_flashing.tween_property(self, ^"self_modulate:a", 0.5, 0.3)
-				_tween_flashing.tween_property(self, ^"self_modulate:a", 0.8, 0.3)
-			else:
-				flashing_red = false
-				_tween_flashing = null
-				if country != null and sea == 0:
-					self_modulate.a = country.color.a
-				else:
-					self_modulate.a = 0.0
-
-
-var flashing_red: bool:
-	set(value):
-		if value != flashing_red:
-			flashing_red = value
-			if value:
-				flashing = true
-				self_modulate = Color.from_rgba8(0xFF, 0x80, 0x80)
-			else:
-				self_modulate = country.color if country != null else Color.BLUE
-				if country == null or sea != 0:
-					self_modulate.a = 0.0
-
-
-var arrow_texture: Texture2D:
-	set(value):
-		if value != arrow_texture:
-			arrow_texture = value
-			RenderingServer.canvas_item_clear(_canvas_item_arrow)
-			if _tween_arrow != null:
-				_tween_arrow.kill()
-			if value != null:
-				_tween_arrow = create_tween()
-				_tween_arrow.set_loops()
-				_tween_arrow.tween_method(func (arrow_offset: float):
-					arrow_offset = -20.0 + absf(arrow_offset)
-					var shadow := g_GameRes.arrow_shadow
-					shadow.draw_rect(_canvas_item_arrow, Rect2(Vector2(-arrow_offset, arrow_offset) * 0.5, shadow.get_size() * EC2dAppDelegate.g_content_scale_factor), false)
-					arrow_texture.draw(_canvas_item_arrow, Vector2(0.0, arrow_offset))
-				, -20.0, 20.0, 0.4)
-			else:
-				_tween_arrow = null
-
-
-var _tween_flashing: Tween
-var _tween_moving_army: Tween
-var _tween_arrow: Tween
+var _army_moving_in_timer: float
+var _army_moving_in_will_occupy: bool
+var _army_moving_in_will_complain: bool
+var _army_moving_in_complainer: StringName
+var canvas_item_root: RID
 var _canvas_item_flag: RID
 var _canvas_item_building: RID
 var _canvas_item_army: RID
-var _canvas_item_arrow: RID
+var canvas_item_arrow: RID
 
 func init(init_id: int, info: AreaInfo) -> void:
 	id = init_id
@@ -136,10 +78,14 @@ func init(init_id: int, info: AreaInfo) -> void:
 	level = info.level
 	country = null
 	_armies.clear()
-	var canvas_item_self := get_canvas_item()
+	if not canvas_item_root.is_valid():
+		canvas_item_root = RenderingServer.canvas_item_create()
+	#_zone_color = Color(Color.BLUE, 0.0)
+	RenderingServer.canvas_item_set_z_index(canvas_item_root, -2)
+	RenderingServer.canvas_item_set_sort_children_by_y(canvas_item_root, true)
 	if not _canvas_item_flag.is_valid():
 		_canvas_item_flag = RenderingServer.canvas_item_create()
-	RenderingServer.canvas_item_set_parent(_canvas_item_flag, canvas_item_self)
+	RenderingServer.canvas_item_set_parent(_canvas_item_flag, canvas_item_root)
 	RenderingServer.canvas_item_set_z_index(_canvas_item_flag, 2)
 	if not _canvas_item_building.is_valid():
 		_canvas_item_building = RenderingServer.canvas_item_create()
@@ -147,11 +93,11 @@ func init(init_id: int, info: AreaInfo) -> void:
 	RenderingServer.canvas_item_set_z_index(_canvas_item_building, -1)
 	if not _canvas_item_army.is_valid():
 		_canvas_item_army = RenderingServer.canvas_item_create()
-	RenderingServer.canvas_item_set_parent(_canvas_item_army, canvas_item_self)
+	RenderingServer.canvas_item_set_parent(_canvas_item_army, canvas_item_root)
 	RenderingServer.canvas_item_set_z_index(_canvas_item_army, 2)
-	if not _canvas_item_arrow.is_valid():
-		_canvas_item_arrow = RenderingServer.canvas_item_create()
-	RenderingServer.canvas_item_set_parent(_canvas_item_arrow, _canvas_item_army)
+	if not canvas_item_arrow.is_valid():
+		canvas_item_arrow = RenderingServer.canvas_item_create()
+	RenderingServer.canvas_item_set_parent(canvas_item_arrow, _canvas_item_army)
 	_render_building()
 	_render()
 
@@ -164,8 +110,8 @@ func _notification(what: int) -> void:
 			RenderingServer.free_rid(_canvas_item_building)
 		if not _canvas_item_army.is_valid():
 			RenderingServer.free_rid(_canvas_item_army)
-		if not _canvas_item_arrow.is_valid():
-			RenderingServer.free_rid(_canvas_item_arrow)
+		if not canvas_item_arrow.is_valid():
+			RenderingServer.free_rid(canvas_item_arrow)
 
 
 func can_construct(construct_type: int) -> bool:
@@ -297,26 +243,16 @@ func move_army_to_front(army, animated: bool) -> void:
 		army = get_army_idx(army)
 	if army is not int or army <= 0:
 		return
-	if _tween_moving_army != null:
-		_tween_moving_army.kill()
-		_tween_moving_army = null
 	var moved_army := _armies[army]
 	for i in army:
 		_armies[army - i] = _armies[army - i - 1]
 	_armies[0] = moved_army
 	_render()
 	if animated:
-		_tween_moving_army = create_tween()
-		_tween_moving_army.tween_method(_move_to_front, 0.0, 2.0 * PI, 0.5)
-		_tween_moving_army.tween_callback(g_Scene.reset_target)
+		_army_moving_to_front = true
+		_army_offset = Vector2(0.0, -12.0)
 	else:
 		_army_offset = Vector2.ZERO
-
-
-func _move_to_front(angle: float) -> void:
-	var x := cos(angle) * 12.0 - 12.0
-	var y := sin(angle) * 12.0 if angle <= PI else sin(angle) * 24.0
-	_army_offset = Vector2(x, y)
 
 
 func draft_army(army_id: int) -> CArmy:
@@ -330,13 +266,9 @@ func draft_army(army_id: int) -> CArmy:
 	new_army.country = country
 	new_army.ai_active = true
 	add_army(new_army, false)
-	if _tween_moving_army != null:
-		_tween_moving_army.kill()
-	_tween_moving_army = create_tween()
+	_army_drafting = true
 	_army_offset = Vector2(0.0, -60.0)
-	AppDelegate.g_SoundRes.play_char_se(SND_EFFECT.DRAFT_WAV)
-	_tween_moving_army.tween_property(self, ^"_army_offset", Vector2.ZERO, 0.1875)
-	_tween_moving_army.tween_callback(g_Scene.adjacent_areas_encirclement.bind(id))
+	g_SoundRes.play_char_se(SND_EFFECT.DRAFT_WAV)
 	return new_army
 
 
@@ -369,27 +301,19 @@ func move_army_to(to: CArea) -> void:
 
 
 func _set_move_in_army(from: CArea, army: CArmy, will_occupy: bool, will_compain: bool, compainer: StringName) -> void:
-	_armies.push_front(army)
 	var from_pos := from.army_pos
 	var to_pos := army_pos
+	_army_offset = to_pos - from_pos
+	_army_moving_in_will_occupy = will_occupy
 	if from_pos.x <= to_pos.x:
 		army.direction = 1.0
 	else:
 		army.direction = -1.0
+	_armies.push_front(army)
+	army_moving_in = true
+	_army_moving_in_will_complain = will_compain
+	_army_moving_in_complainer = compainer
 	_render()
-	if _tween_moving_army != null:
-		_tween_moving_army.kill()
-	_tween_moving_army = create_tween()
-	_army_offset = to_pos - from_pos
-	_tween_moving_army.tween_property($Army, ^"position", Vector2.ZERO, 0.25)
-	if will_occupy:
-		_tween_moving_army.tween_callback(AppDelegate.g_SoundRes.play_char_se.bind(SND_EFFECT.OCCUPY_WAV))
-	if will_compain and not compainer.is_empty():
-		_tween_moving_army.tween_callback(func ():
-			var dlg := "commander complain {0}".format([randi_range(0, 1)])
-			CStateManager.instance().get_state_ptr(EState.GAME).show_dialogue(dlg, compainer, false))
-	if _armies.is_empty():
-		_tween_moving_army.tween_callback(g_Scene.adjacent_areas_encirclement.bind(id))
 
 
 func occupy_area(to: CArea) -> void:
@@ -551,6 +475,39 @@ func encirclement() -> void:
 	_render()
 
 
+func update(delta: float) -> void:
+	if _army_drafting:
+		var y := minf(_army_offset.y + 320.0 * delta, 0.0)
+		_army_offset.y = y
+		if y >= 0.0:
+			_army_drafting = false
+			g_Scene.adjacent_areas_encirclement(id)
+		_render()
+	if army_moving_in:
+		if _army_moving_in_timer > delta:
+			_army_offset = _army_offset.lerp(Vector2.ZERO, delta / _army_moving_in_timer)
+			_army_moving_in_timer -= delta
+		else:
+			_army_offset = Vector2.ZERO
+			army_moving_in = false
+			if _army_moving_in_will_occupy:
+				g_SoundRes.play_char_se(SND_EFFECT.OCCUPY_WAV)
+			if _army_moving_in_will_complain and not _army_moving_in_complainer.is_empty():
+					var dlg := "commander complain {0}".format([randi_range(0, 1)])
+					CStateManager.instance().get_state_ptr(EState.GAME).show_dialogue(dlg, _army_moving_in_complainer, false)
+			if _armies.size() == 1:
+				g_Scene.adjacent_areas_encirclement.bind(id)
+		_render()
+	if _army_moving_to_front:
+		var a := maxf(_army_offset.angle() + 12 * delta, 5.96902597 + PI / 2)
+		_army_offset = Vector2.from_angle(a) * (12.0 * sin(0.75 * PI - 0.5 * a) if a > PI else 12.0)
+		if a >= 5.96902597 + PI / 2:
+			_army_offset = Vector2.ZERO
+			_army_moving_to_front = false
+			g_Scene.reset_target()
+		_render()
+
+
 func _render_building() -> void:
 	ecGraphics.instance().render_begin(_canvas_item_building)
 	if type == 2:
@@ -567,7 +524,7 @@ func _render() -> void:
 		g_GameRes.render_flag(country.name, construction_pos.x, construction_pos.y)
 		ecGraphics.instance().render_end()
 		ecGraphics.instance().render_begin(_canvas_item_army)
-		var _moving_army := _tween_moving_army != null and _tween_moving_army.is_running()
+		var _moving_army := _army_drafting or army_moving_in or _army_moving_to_front
 		var i := 1 if _moving_army else 0
 		if _armies.size() > i:
 			_render_army(army_pos.x, army_pos.y, _armies.size() - i, _armies[i])

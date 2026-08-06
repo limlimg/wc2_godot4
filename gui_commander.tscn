@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="4_5uof3"]
 [ext_resource type="Texture2D" uid="uid://bh246sh0bhmcb" path="res://resources/assets/texture/board_commander_intro.tres" id="4_j1tcj"]
 [ext_resource type="Texture2D" uid="uid://cekghbbruv1hp" path="res://resources/assets/texture/commander.tres" id="5_0qww0"]
-[ext_resource type="PackedScene" uid="uid://clvmjkktsv3mo" path="res://ec_effect.tscn" id="7_y3l8f"]
 [ext_resource type="Resource" uid="uid://bef2rby8g6gtk" path="res://resources/assets/menu_gui_commander_res/effect_upgrade.tres" id="8_qwcpk"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="9_ljmrf"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="10_osaeu"]
@@ -310,7 +309,7 @@ font = NodePath("/root/g_Font2")
 color = Color(0.02745098, 0.19215687, 0.24313726, 1)
 spacing = null
 
-[node name="ecEffect" parent="." unique_id=1633173356 instance=ExtResource("7_y3l8f")]
+[node name="ecEffect" parent="." unique_id=1633173356 instance_placeholder="res://ec_effect.tscn"]
 effect_res = ExtResource("8_qwcpk")
 
 [node name="ButtonBack" parent="." unique_id=2034275630 instance=ExtResource("10_osaeu")]
@@ -320,13 +319,13 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("12_5w1ou")
 image_normal = SubResource("Resource_4yntp")
 image_pressed = SubResource("Resource_b4dmi")
 image_background = SubResource("Resource_oo0i1")
 text_offset = Vector2(16, 15)
 rect = SubResource("Resource_2ryeg")
 rect_ipad = SubResource("Resource_e12ow")
+texture_res = ExtResource("12_5w1ou")
 
 [node name="GUIMedal" parent="." unique_id=509522628 instance=ExtResource("14_q38hj")]
 layout_mode = 1
@@ -353,12 +352,12 @@ offset_right = -75.0
 offset_bottom = 103.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("21_2m5x3")
 image_normal = SubResource("Resource_j7c6n")
 image_pressed = SubResource("Resource_j7c6n")
 text_offset = Vector2(272, 176)
 rect = SubResource("Resource_77jea")
 rect_ipad = SubResource("Resource_kho6i")
+texture_res = ExtResource("21_2m5x3")
 
 [node name="GUICommanderMedal" parent="." unique_id=1972906417 instance=ExtResource("16_sdtrk")]
 layout_mode = 1
@@ -373,9 +372,9 @@ offset_bottom = 192.0
 grow_horizontal = 1
 grow_vertical = 1
 selected = true
-texture_res = ExtResource("21_2m5x3")
 rect = SubResource("Resource_3cd71")
 rect_ipad = SubResource("Resource_uty6d")
+texture_res = ExtResource("21_2m5x3")
 
 [node name="GUIWarMedal" parent="." unique_id=2042339179 instance=ExtResource("17_sl03c")]
 layout_mode = 1
@@ -390,9 +389,9 @@ offset_bottom = 178.0
 grow_horizontal = 1
 grow_vertical = 1
 selected = true
-texture_res = ExtResource("21_2m5x3")
 rect = SubResource("Resource_cauwj")
 rect_ipad = SubResource("Resource_vo7m7")
+texture_res = ExtResource("21_2m5x3")
 
 [node name="GUIWarMedal2" parent="." unique_id=348816353 instance=ExtResource("17_sl03c")]
 layout_mode = 1
@@ -408,9 +407,9 @@ grow_horizontal = 1
 grow_vertical = 1
 medal = 1
 selected = true
-texture_res = ExtResource("21_2m5x3")
 rect = SubResource("Resource_xgm7q")
 rect_ipad = SubResource("Resource_bwj1e")
+texture_res = ExtResource("21_2m5x3")
 
 [node name="GUIWarMedal3" parent="." unique_id=1360530764 instance=ExtResource("17_sl03c")]
 layout_mode = 1
@@ -426,9 +425,9 @@ grow_horizontal = 1
 grow_vertical = 1
 medal = 2
 selected = true
-texture_res = ExtResource("21_2m5x3")
 rect = SubResource("Resource_tgbr2")
 rect_ipad = SubResource("Resource_21nyh")
+texture_res = ExtResource("21_2m5x3")
 
 [node name="GUIWarMedal4" parent="." unique_id=1416468943 instance=ExtResource("17_sl03c")]
 layout_mode = 1
@@ -444,9 +443,9 @@ grow_horizontal = 1
 grow_vertical = 1
 medal = 3
 selected = true
-texture_res = ExtResource("21_2m5x3")
 rect = SubResource("Resource_vyhe5")
 rect_ipad = SubResource("Resource_hch80")
+texture_res = ExtResource("21_2m5x3")
 
 [node name="GUIWarMedal5" parent="." unique_id=1335906854 instance=ExtResource("17_sl03c")]
 layout_mode = 1
@@ -462,9 +461,9 @@ grow_horizontal = 1
 grow_vertical = 1
 medal = 4
 selected = true
-texture_res = ExtResource("21_2m5x3")
 rect = SubResource("Resource_8p0v4")
 rect_ipad = SubResource("Resource_fijsn")
+texture_res = ExtResource("21_2m5x3")
 
 [node name="GUIWarMedal6" parent="." unique_id=1850257452 instance=ExtResource("17_sl03c")]
 layout_mode = 1
@@ -480,9 +479,9 @@ grow_horizontal = 1
 grow_vertical = 1
 medal = 5
 selected = true
-texture_res = ExtResource("21_2m5x3")
 rect = SubResource("Resource_0xjqv")
 rect_ipad = SubResource("Resource_x1k3d")
+texture_res = ExtResource("21_2m5x3")
 
 [node name="GUIAdornMedal" parent="." unique_id=1776806515 instance=ExtResource("18_sl03c")]
 layout_mode = 1

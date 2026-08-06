@@ -20,6 +20,7 @@ var _gui_battle: Control
 var _gui_tutorials: Control
 var _gui_dialogue: Control
 var _gui_battle_intro: Control
+var _motion: Array
 
 static func init_game() -> void:
 	g_SoundRes.load_res()
@@ -35,6 +36,7 @@ static func init_game() -> void:
 
 func _on_enter() -> void:
 	var gui_manager := GUIManager.instance()
+	gui_manager.event_receiver = $IEventReceiver
 	_button_round = $ButtonRound.create_instance()
 	_button_round.reparent(gui_manager)
 	_button_card = $ButtonCard.create_instance()
@@ -84,30 +86,31 @@ func _on_enter() -> void:
 		_gui_dialogue.reparent(gui_manager)
 	var motion := GUIMotionManager.instance()
 	var target := _button_round.position - _button_round.size
-	var motion1 := motion.add_motion_from_current_position(_button_round, target.x, target.y, 3.0, 0)
+	_motion.append(motion.add_motion_from_current_position(_button_round, target.x, target.y, 3.0, 0))
 	target = _button_card.position - _button_card.size
-	var motion2 := motion.add_motion_from_current_position(_button_card, 0.0, target.y, 3.0, 0)
+	_motion.append(motion.add_motion_from_current_position(_button_card, 0.0, target.y, 3.0, 0))
 	target = _button_pause.position - _button_pause.size
-	var motion3 := motion.add_motion_from_current_position(_button_pause, target.x, 0.0, 3.0, 0)
-	var motion4 := motion.add_motion_from_current_position(_gui_gold, 0.0, 0.0, 3.0, 0)
+	_motion.append(motion.add_motion_from_current_position(_button_pause, target.x, 0.0, 3.0, 0))
+	_motion.append(motion.add_motion_from_current_position(_gui_gold, 0.0, 0.0, 3.0, 0))
 	CSoundBox.get_instance().load_music("battle{0}.mp3".format([randi_range(1, 4)]), "")
 	CSoundBox.get_instance().play_music(true)
 	GUIManager.instance().fade_in(1)
 	if g_GameManager.is_new_game and g_GameManager.game_mode != 4:
 		g_GameManager.turn_begin()
-	await GUIManager.instance().faded_in
+
+
+func _on_i_event_receiver_faded_in(_cause: int) -> void:
 	if g_GameManager.game_mode == 1:
 		_gui_battle_intro = $GUIBattleIntro.create_instance()
-		_gui_battle_intro.reparent(gui_manager)
+		_gui_battle_intro.reparent(GUIManager.instance())
 		_gui_battle_intro.campaign = g_GameManager.campaign
 		_gui_battle_intro.battle = g_GameManager.battle
 		await _gui_battle_intro.ok_pressed
 		GUIManager.instance().safe_free_child(_gui_battle_intro)
 		_gui_battle_intro = null
-	motion.active_motion(motion1, 0)
-	motion.active_motion(motion2, 0)
-	motion.active_motion(motion3, 0)
-	motion.active_motion(motion4, 0)
+	var motion := GUIMotionManager.instance()
+	for i in _motion:
+		motion.active_motion(i, 0)
 	if g_GameManager.game_mode == 4:
 		# TODO: send multiplayer data
 		pass
@@ -140,3 +143,7 @@ func update_action_info() -> void:
 
 func start_battle(start_area: int, target_area: int, animated: bool) -> void:
 	pass
+
+
+func _process(delta: float) -> void:
+	g_Scene.update(delta)

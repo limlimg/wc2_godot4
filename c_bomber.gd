@@ -1,121 +1,117 @@
 extends Node2D
 
-var _tween: Tween
+var _start_area: int
+var _target_area: int
+var _target_x: float
+var _effect_timer: float
+var _effect_ended: bool
+var _effect_playing: bool
+var _is_airborne: bool
+var _action_type: int
+var _air_strike_shot: int
 
 func init():
 	pass
 
 
-func aircraft_carrier_bomb(_attack_area: int, defend_area: int) -> void:
+func aircraft_carrier_bomb(attack_area: int, defend_area: int) -> void:
 	bomb_area(defend_area, 4)
+	_start_area = attack_area
 
 
 func bomb_area(area_id: int, action_type: int) -> void:
-	var camera: CCamera = AppDelegate.g_Scene.camera
-	var area: CArea = AppDelegate.g_Scene.get_area(area_id)
-	var target_pos := area.army_pos
-	var start_pos := target_pos
-	start_pos.x = minf(-camera.position.x / camera.scale.x - 100, target_pos.x - 400)
-	var t0 := _t_s(start_pos.x - target_pos.x)
-	var end_pos := target_pos
-	end_pos.x = maxf((-camera.position.x + camera.size.x) / camera.scale.x + 100, target_pos.x + 400)
-	var t1 := _t_s(end_pos.x - target_pos.x)
-	var card: CardDef
-	if _tween != null:
-		_tween.kill()
+	_target_area = area_id
+	var target_pos :=g_Scene.get_area(area_id).army_pos
+	_target_x = target_pos.x
+	$Plane.position.y = target_pos.y
+	var camera: CCamera = g_Scene.camera
+	var start_x = minf((camera.position.x - camera.size.x / 2) / camera.camera_zoom.x - 100.0, _target_x - 400.0)
+	$Plane.position.x = start_x
+	_action_type = action_type
+	visible = true
 	show()
-	_tween = create_tween()
-	_tween.tween_method(_update_plane_pos, t0, t1, t1 - t0)
-	if action_type == 1 or action_type == 4:
-		$Plane/Fighter.visible = true
-		$Plane/Bomber.visible = false
-		var sub_tween := create_tween()
-		var strike_x := target_pos.x - 150
-		sub_tween.tween_interval(_t_s(strike_x) - t0)
-		sub_tween.tween_callback(func ():
-			var effect = $ecEffectManager.add_effect("effect_airstrike.xml", true)
-			var y = $Plane.position.y + randi_range(-5, 4)
-			effect.fire_at(target_pos.x - 50, y, 0.0)
-		)
-		sub_tween.tween_interval(0.0625)
-		sub_tween.tween_callback(func ():
-			var effect = $ecEffectManager.add_effect("effect_airstrike.xml", true)
-			var y = $Plane.position.y + randi_range(-5, 4)
-			effect.fire_at(target_pos.x - 30, y, 0.0)
-			AppDelegate.g_SoundRes.play_char_se(SND_EFFECT.MACHINE_GUN_WAV)
-		)
-		sub_tween.tween_interval(0.0625)
-		sub_tween.tween_callback(func ():
-			var effect = $ecEffectManager.add_effect("effect_airstrike.xml", true)
-			var y = $Plane.position.y + randi_range(-5, 4)
-			effect.fire_at(target_pos.x - 10, y, 0.0)
-			AppDelegate.g_SoundRes.play_char_se(SND_EFFECT.MACHINE_GUN_WAV)
-		)
-		sub_tween.tween_interval(0.0625)
-		sub_tween.tween_callback(func ():
-			var effect = $ecEffectManager.add_effect("effect_airstrike.xml", true)
-			var y = $Plane.position.y + randi_range(-5, 4)
-			effect.fire_at(target_pos.x + 10, y, 0.0)
-			AppDelegate.g_SoundRes.play_char_se(SND_EFFECT.MACHINE_GUN_WAV)
-		)
-		_tween.parallel().tween_subtween(sub_tween)
-		if action_type == 1:
-			card = CObjectDef.instance().get_card_def(10)
-	else:
-		$Plane/Fighter.visible = false
-		$Plane/Bomber.visible = true
-		var sub_tween := create_tween()
-		sub_tween.tween_interval(-t0 + 0.258)
-		_tween.parallel().tween_subtween(sub_tween)
-		if action_type == 2:
-			card = CObjectDef.instance().get_card_def(11)
-		elif action_type == 3:
-			card = CObjectDef.instance().get_card_def(13)
-	var country = g_GameManager.get_cur_country()
-	if country != null:
-		if action_type != 4:
-			_tween.tween_callback(country.use_card.bind(card, area_id, 0))
-		_tween.tween_callback(func ():
-			var fight := CFight.new()
-			fight.air_strikes_attack(country, area_id, action_type)
-			fight.apply_result())
-	_tween.tween_callback(hide)
+	_effect_ended = false
+	_effect_playing = false
+	_is_airborne = false
+	_air_strike_shot = 0
 
 
 func airborne(area_id: int) -> void:
-	var camera: CCamera = AppDelegate.g_Scene.camera
-	var area: CArea = AppDelegate.g_Scene.get_area(area_id)
-	var target_pos := area.army_pos
-	var start_pos := target_pos
-	start_pos.x = minf(-camera.position.x / camera.scale.x - 100, target_pos.x - 400)
-	var t0 := _t_s(start_pos.x)
-	var end_pos := target_pos
-	end_pos.x = maxf((-camera.position.x + camera.size.x) / camera.scale.x + 100, target_pos.x + 400)
-	var t1 := _t_s(end_pos.x)
-	var card: CardDef
-	if _tween != null:
-		_tween.kill()
-	show()
-	_tween = create_tween()
-	_tween.tween_method(_update_plane_pos, t0, t1, t1 - t0)
-	var sub_tween := create_tween()
-	sub_tween.tween_interval(-t0)
-	sub_tween.tween_callback(func ():
-		var effect = $ecEffectManager.add_effect("effect_parachute.xml", true)
-		var y = $Plane.position.y - 60
-		effect.fire_at(target_pos.x, y, 0.0)
-	)
-	sub_tween.tween_interval(0.632)
-	_tween.parallel().tween_subtween(sub_tween)
-	card = CObjectDef.instance().get_card_def(12)
-	var country = g_GameManager.get_cur_country()
-	if country != null:
-		_tween.tween_callback(country.use_card.bind(card, area_id, 0))
-	_tween.tween_callback(hide)
+	_target_area = area_id
+	var target_pos :=g_Scene.get_area(area_id).army_pos
+	_target_x = target_pos.x
+	$Plane.position.y = target_pos.y
+	var camera: CCamera = g_Scene.camera
+	var start_x = minf((camera.position.x - camera.size.x / 2) / camera.camera_zoom.x - 100.0, _target_x - 400.0)
+	$Plane.position.x = start_x
+	visible = true
+	_is_airborne = true
+	_effect_ended = false
+	_effect_playing = false
+	_air_strike_shot = 0
 
 
-func _update_plane_pos(t: float) -> void:
-	$Plane.position.x = _s_t(t)
+func is_bombing() -> bool:
+	return visible or _effect_playing
+
+
+func update(delta: float) -> void:
+	if not visible:
+		return
+	var t0 := _t_s($Plane.position.x - _target_x)
+	var t := t0 + delta
+	$Plane.position.x = _s_t(t) + _target_x
+	var camera: CCamera = g_Scene.camera
+	var end_x = maxf((camera.position.x + camera.size.x / 2) / camera.camera_zoom.x + 100.0, _target_x + 400.0)
+	if $Plane.position.x > end_x and _effect_ended:
+		visible = false
+	if not _effect_playing:
+		if _is_airborne:
+			if t0 < 0.0 and t >= 0.0:
+				_effect_playing = true
+				_effect_timer = sqrt(0.4)
+				var effect = $ecEffectManager.add_effect("effect_parachute.xml", true)
+				var y = $Plane.position.y - 60
+				effect.fire_at(_target_x, y, 0.0)
+		elif _action_type == 1 or _action_type == 4:
+			if _air_strike_shot <= 4:
+				if t > _t_s((_air_strike_shot - 3) * -50.0):
+					var effect = $ecEffectManager.add_effect("effect_airstrike.xml", true)
+					var y = $Plane.position.y + randi_range(-5, 4)
+					effect.fire_at(_target_x - 50.0 + 20.0 * _air_strike_shot, y, 0.0)
+					if _air_strike_shot != 0:
+						g_SoundRes.play_char_se(SND_EFFECT.MACHINE_GUN_WAV)
+					_air_strike_shot += 1
+			else:
+				_effect_playing = true
+				_effect_timer = sqrt(1.0 / 15.0)
+	else:
+		_effect_timer -= delta
+		if _effect_timer <= 0.0:
+			_effect_ended = true
+			_effect_playing = false
+			var country = g_GameManager.get_cur_country()
+			if country != null:
+				if _is_airborne:
+					var card := CObjectDef.instance().get_card_def(CARD_ID.AIRBORNE_FORCE_CARD)
+					if card != null:
+						country.use_card(card, _target_area, 0)
+				else:
+					var fight := CFight.new()
+					if _action_type != 4:
+						var card: CardDef
+						match _action_type:
+							1:
+								card = CObjectDef.instance().get_card_def(CARD_ID.AIR_STRIKE_CARD)
+							2:
+								card = CObjectDef.instance().get_card_def(CARD_ID.BOMBER_CARD)
+							3:
+								card = CObjectDef.instance().get_card_def(CARD_ID.NUCLEAR_BOMB_CARD)
+						country.use_card(card, _target_area, 0)
+						fight.air_strikes_attack(country, _target_area, _action_type)
+					else:
+						fight.air_strikes_attack(_start_area, _target_area)
+					fight.apply_result()
 
 
 static func _s_t(t: float) -> float:
@@ -134,7 +130,3 @@ static func _t_s(s: float) -> float:
 		return (log(s / 400) + 1) / 2
 	else:
 		return s / 800
-
-
-func is_bombing() -> bool:
-	return _tween != null and _tween.is_running()

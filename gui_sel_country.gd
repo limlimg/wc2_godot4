@@ -13,6 +13,7 @@ var conquest: int:
 var _country := -1
 
 signal ok_pressed
+signal back_pressed
 
 func init() -> void:
 	if not is_node_ready():
@@ -59,3 +60,9 @@ func _on_button_ok_pressed() -> void:
 
 func _on_button_back_pressed() -> void:
 	back_pressed.emit()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action(&"ui_cancel"):
+		back_pressed.emit()
+		accept_event()

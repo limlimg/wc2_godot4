@@ -420,12 +420,12 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("11_5c726")
 image_normal = SubResource("Resource_4yntp")
 image_pressed = SubResource("Resource_b4dmi")
 image_background = SubResource("Resource_oo0i1")
 rect = SubResource("Resource_xcy0r")
 rect_ipad = SubResource("Resource_st14v")
+texture_res = ExtResource("11_5c726")
 
 [node name="ButtonNext" parent="." unique_id=371228801 instance=ExtResource("7_6ecye")]
 layout_mode = 1
@@ -434,12 +434,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_res = ExtResource("11_5c726")
 image_normal = SubResource("Resource_hcepd")
 image_pressed = SubResource("Resource_5d1ry")
 image_background = SubResource("Resource_i5xih")
 rect = SubResource("Resource_sn6xh")
 rect_ipad = SubResource("Resource_wuclp")
+texture_res = ExtResource("11_5c726")
 
 [node name="ButtonRestart" parent="." unique_id=1057019128 instance=ExtResource("7_6ecye")]
 layout_mode = 1
@@ -450,12 +450,12 @@ anchor_bottom = 0.0
 offset_top = 280.0
 offset_bottom = 280.0
 grow_vertical = 1
-texture_res = ExtResource("11_5c726")
 image_normal = SubResource("Resource_udnci")
 image_pressed = SubResource("Resource_4res3")
 image_background = SubResource("Resource_q8pui")
 rect = SubResource("Resource_lvfr7")
 rect_ipad = SubResource("Resource_c8sf4")
+texture_res = ExtResource("11_5c726")
 
 [node name="TextRating" parent="." unique_id=1342067132 instance=ExtResource("16_5d1ry")]
 layout_mode = 1
@@ -468,10 +468,10 @@ offset_right = -172.0
 offset_bottom = 108.0
 grow_horizontal = 0
 grow_vertical = 1
-texture_res = ExtResource("11_5c726")
 asset = SubResource("Resource_vqnl5")
 rect = SubResource("Resource_xkfvt")
 rect_ipad = SubResource("Resource_oy3i1")
+texture_res = ExtResource("11_5c726")
 
 [node name="TextRound" parent="." unique_id=52997230 instance=ExtResource("16_5d1ry")]
 layout_mode = 1
@@ -484,10 +484,10 @@ offset_right = -254.0
 offset_bottom = 55.0
 grow_horizontal = 0
 grow_vertical = 1
-texture_res = ExtResource("11_5c726")
 asset = SubResource("Resource_vp3xw")
 rect = SubResource("Resource_5c726")
 rect_ipad = SubResource("Resource_v6nd6")
+texture_res = ExtResource("11_5c726")
 
 [node name="TextMedals" parent="." unique_id=1405838178 instance=ExtResource("16_5d1ry")]
 layout_mode = 1
@@ -500,10 +500,10 @@ offset_right = -254.0
 offset_bottom = 193.0
 grow_horizontal = 0
 grow_vertical = 1
-texture_res = ExtResource("11_5c726")
 asset = SubResource("Resource_412sn")
 rect = SubResource("Resource_a0fx3")
 rect_ipad = SubResource("Resource_kt1hs")
+texture_res = ExtResource("11_5c726")
 
 [node name="Rank" parent="." unique_id=352001970 instance=ExtResource("16_5d1ry")]
 visible = false
@@ -517,10 +517,10 @@ offset_right = -264.0
 offset_bottom = 143.0
 grow_horizontal = 0
 grow_vertical = 1
-texture_res = ExtResource("11_5c726")
 asset = SubResource("Resource_p7f2j")
 rect = SubResource("Resource_pnrcw")
 rect_ipad = SubResource("Resource_2d8mo")
+texture_res = ExtResource("11_5c726")
 
 [node name="Rank2" parent="." unique_id=1542040794 instance=ExtResource("16_5d1ry")]
 layout_mode = 1
@@ -533,10 +533,10 @@ offset_right = -264.0
 offset_bottom = 143.0
 grow_horizontal = 0
 grow_vertical = 1
-texture_res = ExtResource("11_5c726")
 asset = SubResource("Resource_ccj6v")
 rect = SubResource("Resource_kia5c")
 rect_ipad = SubResource("Resource_7jcb4")
+texture_res = ExtResource("11_5c726")
 
 [node name="GUIAdornMedal" parent="." unique_id=1776806515 instance=ExtResource("23_2kfc3")]
 layout_mode = 1

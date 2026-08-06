@@ -98,7 +98,10 @@ func retry_game() -> void:
 	is_new_game = true
 
 
-# TODO: save_game
+func save_game(save_file: String) -> void:
+	if game_mode == 4 or game_mode == 5:
+		return
+	
 
 
 func is_last_battle() -> bool:

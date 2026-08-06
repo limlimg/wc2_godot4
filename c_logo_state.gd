@@ -1,6 +1,12 @@
 extends CBaseState
 
+var _faded_in: bool
+var _logo_time: float
+var _faded_out: bool
+var _black_time: float
+
 func _on_enter() -> void:
+	GUIManager.instance().event_receiver = $IEventReceiver
 	$GUIImage.create_instance().reparent(GUIManager.instance())
 	g_GameSettings.load_settings()
 	var sound_box := CSoundBox.get_instance()
@@ -36,15 +42,31 @@ func _on_enter() -> void:
 		#gui_manager.load_texture_res("image_newgame_hd.xml", true)
 	#else:
 		#gui_manager.load_texture_res("image_newgame.xml", false)
-	var tween := create_tween()
-	tween.tween_interval(2.1)
-	tween.tween_callback(GUIManager.instance().fade_out.bind(-1, null))
-	await GUIManager.instance().faded_out
-	tween = create_tween()
-	tween.tween_interval(1.0)
-	# TODO: initialize player manager
-	tween.tween_callback(CStateManager.instance().set_cur_state.bind(EState.MENU))
+	_faded_in = true
+	_faded_out = false
 
 
 func _on_exit() -> void:
 	GUIManager.instance().free_all_child()
+
+
+func _on_i_event_receiver_faded_in(_cause: int) -> void:
+	_faded_in = true
+
+
+func _on_i_event_receiver_faded_out(_cause: int) -> void:
+	_faded_out = true
+
+
+func _process(delta: float) -> void:
+	if _logo_time >= 0.0:
+		_logo_time += delta
+	if _logo_time > 2.1 and _faded_in:
+		GUIManager.instance().fade_out(-1, null)
+		_logo_time = -1.0
+	if _faded_out:
+		_black_time += delta
+		if _black_time > 1.0:
+			# TODO: initialize player manager
+			CStateManager.instance().set_cur_state(EState.MENU)
+			_faded_out = false

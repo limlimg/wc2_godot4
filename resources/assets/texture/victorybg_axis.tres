@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_ewpmx"]
 [ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_2meok"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="2_rweml"]
 [ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://ec_texture_res.gd" id="4_q7o7k"]
 
 [sub_resource type="Resource" id="Resource_8bmli"]
@@ -13,18 +12,10 @@ name_640h = "victorybg_axis-640h.webp"
 name_568h = "victorybg_axis-568h.webp"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="Texture2D" id="Texture2D_2meok"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_rweml")
-asset = SubResource("Resource_8bmli")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
-
 [sub_resource type="Texture2D" id="Texture2D_gioq0"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_2meok")
-texture = SubResource("Texture2D_2meok")
 region = Rect2(0, 0, 568, 320)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
@@ -32,7 +23,6 @@ metadata/_custom_type_script = "uid://bvddy3vjuki27"
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_2meok")
-texture = SubResource("Texture2D_2meok")
 region = Rect2(0, 0, 640, 320)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
@@ -40,7 +30,6 @@ metadata/_custom_type_script = "uid://bvddy3vjuki27"
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_2meok")
-texture = SubResource("Texture2D_2meok")
 region = Rect2(0, 0, 480, 320)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
@@ -48,12 +37,17 @@ metadata/_custom_type_script = "uid://bvddy3vjuki27"
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_2meok")
-texture = SubResource("Texture2D_2meok")
 region = Rect2(0, 0, 1024, 768)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
 [sub_resource type="Resource" id="Resource_rqkki"]
 script = ExtResource("4_q7o7k")
+image_texture = Dictionary[StringName, String]({
+&"victorybg_axis-568h.webp": "victorybg_axis-568h.webp",
+&"victorybg_axis-640h.webp": "victorybg_axis-640h.webp",
+&"victorybg_axis.webp": "victorybg_axis.webp",
+&"victorybg_axis_iPad.webp": "victorybg_axis_iPad.webp"
+})
 images = Dictionary[StringName, ExtResource("2_2meok")]({
 &"victorybg_axis-568h.webp": SubResource("Texture2D_gioq0"),
 &"victorybg_axis-640h.webp": SubResource("Texture2D_2a24a"),

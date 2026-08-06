@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="4_2bnpi"]
 [ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="5_74sbm"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="6_h6kcb"]
+[ext_resource type="Script" uid="uid://8hwlr3pkh8ko" path="res://ec_texture_rect.gd" id="6_nqj5j"]
+[ext_resource type="Texture2D" uid="uid://cgw5x0rgfrojx" path="res://resources/assets/texture/victory.tres" id="7_otebj"]
+[ext_resource type="PackedScene" uid="uid://dr76fdoysjvb3" path="res://ec_uni_font.tscn" id="8_5loo4"]
 
 [sub_resource type="Resource" id="Resource_yaqsy"]
 script = ExtResource("3_v8bo1")
@@ -24,6 +27,80 @@ metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 script = ExtResource("3_v8bo1")
 rect = Rect2(0, 0, 568, 320)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_k40bo"]
+script = ExtResource("6_h6kcb")
+name = "victorybg_axis.webp"
+name_ipad = "victorybg_axis_iPad.webp"
+name_640h = "victorybg_axis-640h.webp"
+name_568h = "victorybg_axis-568h.webp"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Resource" id="Resource_nx1i8"]
+script = ExtResource("6_nqj5j")
+region = Rect2(0, 0, 480, 320)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_e15fd"]
+script = ExtResource("6_nqj5j")
+region = Rect2(0, 0, 1024, 768)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_drqnm"]
+script = ExtResource("6_nqj5j")
+region = Rect2(0, 0, 640, 320)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_k17nk"]
+script = ExtResource("6_nqj5j")
+region = Rect2(0, 0, 568, 320)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_42hn1"]
+script = ExtResource("6_h6kcb")
+name = "victorybg_allies.webp"
+name_ipad = "victorybg_allies_iPad.webp"
+name_640h = "victorybg_allies-640h.webp"
+name_568h = "victorybg_allies-568h.webp"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Resource" id="Resource_ruaug"]
+script = ExtResource("6_h6kcb")
+name = "victorybg_wto.webp"
+name_ipad = "victorybg_wto_iPad.webp"
+name_640h = "victorybg_wto-640h.webp"
+name_568h = "victorybg_wto-568h.webp"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Resource" id="Resource_vek4m"]
+script = ExtResource("6_h6kcb")
+name = "victorybg_nato.webp"
+name_ipad = "victorybg_nato_iPad.webp"
+name_640h = "victorybg_nato-640h.webp"
+name_568h = "victorybg_nato-568h.webp"
+metadata/_custom_type_script = "uid://b0stiqify0vh6"
+
+[sub_resource type="Resource" id="Resource_gtnlv"]
+script = ExtResource("3_v8bo1")
+rect = Rect2(0, 30, 0, 0)
+
+[sub_resource type="Resource" id="Resource_jodly"]
+script = ExtResource("3_v8bo1")
+rect = Rect2(0, 96, 0, 0)
+
+[sub_resource type="Resource" id="Resource_3kmpw"]
+script = ExtResource("3_v8bo1")
+rect = Rect2(-210, 70, 0, 0)
+
+[sub_resource type="Resource" id="Resource_m1xlx"]
+script = ExtResource("3_v8bo1")
+rect = Rect2(-439, 187, 0, 0)
+
+[sub_resource type="Resource" id="Resource_l7d67"]
+script = ExtResource("6_h6kcb")
+name = "font4_en.fnt"
+name_hd = "font4_en_hd.fnt"
+name_ipad = "font4_en_hd.fnt"
 
 [sub_resource type="Resource" id="Resource_4yntp"]
 script = ExtResource("6_h6kcb")
@@ -79,17 +156,85 @@ rect_ipad = SubResource("Resource_nqj5j")
 rect_640h = SubResource("Resource_otebj")
 rect_568h = SubResource("Resource_5loo4")
 
-[node name="GUIEndAxis" parent="FixedWidth" unique_id=270133824 instance_placeholder="res://gui/gui_end_axis.tscn"]
+[node name="VictoryBgAxis" parent="FixedWidth" unique_id=1342067132 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 1
+asset = SubResource("Resource_k40bo")
+texture_rect = SubResource("Resource_nx1i8")
+texture_rect_ipad = SubResource("Resource_e15fd")
+texture_rect_640h = SubResource("Resource_drqnm")
+texture_rect_568h = SubResource("Resource_k17nk")
+texture_res = null
 
-[node name="GUIEndAllies" parent="FixedWidth" unique_id=1799538278 instance_placeholder="res://gui/gui_end_allies.tscn"]
+[node name="VictoryBgAllies" parent="FixedWidth" unique_id=234938147 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 1
+asset = SubResource("Resource_42hn1")
+texture_rect = SubResource("Resource_nx1i8")
+texture_rect_ipad = SubResource("Resource_e15fd")
+texture_rect_640h = SubResource("Resource_drqnm")
+texture_rect_568h = SubResource("Resource_k17nk")
+texture_res = null
 
-[node name="GUIEndWto" parent="FixedWidth" unique_id=642609080 instance_placeholder="res://gui/gui_end_wto.tscn"]
+[node name="VictoryBgWto" parent="FixedWidth" unique_id=1325813625 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 1
+asset = SubResource("Resource_ruaug")
+texture_rect = SubResource("Resource_nx1i8")
+texture_rect_ipad = SubResource("Resource_e15fd")
+texture_rect_640h = SubResource("Resource_drqnm")
+texture_rect_568h = SubResource("Resource_k17nk")
+texture_res = null
 
-[node name="GUIEndNato" parent="FixedWidth" unique_id=1706292480 instance_placeholder="res://gui/gui_end_nato.tscn"]
+[node name="VictoryBgNato" parent="FixedWidth" unique_id=1513660418 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 1
+asset = SubResource("Resource_vek4m")
+texture_rect = SubResource("Resource_nx1i8")
+texture_rect_ipad = SubResource("Resource_e15fd")
+texture_rect_640h = SubResource("Resource_drqnm")
+texture_rect_568h = SubResource("Resource_k17nk")
+texture_res = null
+
+[node name="Victroy" parent="FixedWidth" unique_id=729479981 instance=ExtResource("2_bcayu")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_top = 30.0
+offset_bottom = 30.0
+grow_vertical = 1
+rect = SubResource("Resource_gtnlv")
+rect_ipad = SubResource("Resource_jodly")
+
+[node name="TextureRect" type="TextureRect" parent="FixedWidth/Victroy" unique_id=350219830]
+layout_mode = 0
+texture = ExtResource("7_otebj")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="TextVictroy" parent="FixedWidth" unique_id=839610297 instance=ExtResource("2_bcayu")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -210.0
+offset_top = 70.0
+offset_right = -210.0
+offset_bottom = 70.0
+grow_vertical = 1
+rect = SubResource("Resource_3kmpw")
+rect_ipad = SubResource("Resource_m1xlx")
+
+[node name="ecUniFont" parent="FixedWidth/TextVictroy" unique_id=1248850266 instance=ExtResource("8_5loo4")]
+layout_mode = 0
+asset = SubResource("Resource_l7d67")
+
+[node name="Label" type="Label" parent="FixedWidth/TextVictroy/ecUniFont" unique_id=1989081563]
+layout_mode = 0
+offset_right = 65.0
+offset_bottom = 15.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "victory allies"
 
 [node name="ButtonBack" parent="FixedWidth" unique_id=2034275630 instance=ExtResource("4_2bnpi")]
 layout_mode = 1
@@ -98,11 +243,11 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("5_74sbm")
 image_normal = SubResource("Resource_4yntp")
 image_pressed = SubResource("Resource_b4dmi")
 image_background = SubResource("Resource_oo0i1")
 rect = SubResource("Resource_7n0ay")
 rect_ipad = SubResource("Resource_drr22")
+texture_res = ExtResource("5_74sbm")
 
 [connection signal="pressed" from="FixedWidth/ButtonBack" to="." method="_on_gui_button_back_pressed"]

@@ -22,6 +22,26 @@ name = "board_selbattle.webp"
 name_ipad = "board_selbattle_iPad.webp"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
+[sub_resource type="Resource" id="Resource_6lvsi"]
+script = ExtResource("9_gbj1g")
+region = Rect2(0, 0, 144, 320)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_v4jtg"]
+script = ExtResource("9_gbj1g")
+region = Rect2(0, 0, 288, 768)
+metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
+
+[sub_resource type="Resource" id="Resource_c3y2v"]
+script = ExtResource("5_pbuu2")
+rect = Rect2(0, 0, 144, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_x3vk5"]
+script = ExtResource("5_pbuu2")
+rect = Rect2(0, 0, 288, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
 [sub_resource type="Texture2D" id="Texture2D_hto1p"]
 resource_local_to_scene = false
 resource_name = ""
@@ -52,26 +72,6 @@ images = Dictionary[StringName, ExtResource("6_t4vqn")]({
 &"board_selbattle_iPad.webp": SubResource("Texture2D_mhhk0")
 })
 metadata/_custom_type_script = "uid://chtcq7m8aw4se"
-
-[sub_resource type="Resource" id="Resource_6lvsi"]
-script = ExtResource("9_gbj1g")
-region = Rect2(0, 0, 144, 320)
-metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
-
-[sub_resource type="Resource" id="Resource_v4jtg"]
-script = ExtResource("9_gbj1g")
-region = Rect2(0, 0, 288, 768)
-metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
-
-[sub_resource type="Resource" id="Resource_c3y2v"]
-script = ExtResource("5_pbuu2")
-rect = Rect2(0, 0, 144, 0)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_x3vk5"]
-script = ExtResource("5_pbuu2")
-rect = Rect2(0, 0, 288, 0)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [sub_resource type="Resource" id="Resource_1nx8i"]
 script = ExtResource("5_pbuu2")
@@ -177,12 +177,12 @@ layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 grow_horizontal = 0
-texture_res = SubResource("Resource_hu8uk")
 asset = SubResource("Resource_cekmy")
 texture_rect = SubResource("Resource_6lvsi")
 texture_rect_ipad = SubResource("Resource_v4jtg")
 rect = SubResource("Resource_c3y2v")
 rect_ipad = SubResource("Resource_x3vk5")
+texture_res = SubResource("Resource_hu8uk")
 
 [node name="Logo" parent="." unique_id=1627139554 instance=ExtResource("4_v4jtg")]
 layout_mode = 1
@@ -223,12 +223,12 @@ offset_left = 5.0
 offset_right = 5.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("13_c3y2v")
 image_normal = SubResource("Resource_hcepd")
 image_pressed = SubResource("Resource_wdt8c")
 image_background = SubResource("Resource_yc31o")
 rect = SubResource("Resource_q5i34")
 rect_ipad = SubResource("Resource_cii06")
+texture_res = ExtResource("13_c3y2v")
 
 [node name="ButtonOk" parent="." unique_id=2034275630 instance=ExtResource("12_o5ukl")]
 layout_mode = 1
@@ -237,12 +237,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_res = ExtResource("13_c3y2v")
 image_normal = SubResource("Resource_1scgp")
 image_pressed = SubResource("Resource_pgo8h")
 image_background = SubResource("Resource_i5xih")
 rect = SubResource("Resource_s03bl")
 rect_ipad = SubResource("Resource_gbj1g")
+texture_res = ExtResource("13_c3y2v")
 
 [node name="ButtonBack" parent="." unique_id=1417427015 instance=ExtResource("12_o5ukl")]
 layout_mode = 1
@@ -251,12 +251,12 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("13_c3y2v")
 image_normal = SubResource("Resource_4yntp")
 image_pressed = SubResource("Resource_b4dmi")
 image_background = SubResource("Resource_oo0i1")
 rect = SubResource("Resource_s03bl")
 rect_ipad = SubResource("Resource_gbj1g")
+texture_res = ExtResource("13_c3y2v")
 
 [node name="GUIBattleIntro" parent="." unique_id=2130276311 instance=ExtResource("27_aptrf")]
 visible = false

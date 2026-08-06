@@ -12,7 +12,8 @@ texture_text_pressed = null
 image_position_ipad = Vector2(0, 0)
 image_position = Vector2(0, 0)
 
-[node name="Label" parent="." index="3" unique_id=1317756632]
+[node name="ecText" parent="." index="3" unique_id=1650770578]
+offset_right = -0.5
 grow_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 

@@ -18,9 +18,5 @@ func set_medal(value: int) -> void:
 		$GUIElement/ecText.set_text(str(value))
 
 
-func _process(delta: float) -> void:
-	_on_update(delta)
-
-
-func _on_update(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	set_medal(g_Commander.medal)

@@ -147,12 +147,12 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("6_osks2")
 image_normal = SubResource("Resource_4yntp")
 image_pressed = SubResource("Resource_b4dmi")
 image_background = SubResource("Resource_oo0i1")
 rect = SubResource("Resource_vy8mv")
 rect_ipad = SubResource("Resource_ct8jq")
+texture_res = ExtResource("6_osks2")
 
 [node name="TextBank" parent="." unique_id=1342067132 instance=ExtResource("8_wgm66")]
 layout_mode = 1
@@ -163,10 +163,10 @@ anchor_bottom = 0.0
 offset_top = 80.0
 offset_bottom = 80.0
 grow_vertical = 1
-texture_res = ExtResource("9_5wwva")
 asset = SubResource("Resource_054k6")
 rect = SubResource("Resource_0al2d")
 rect_ipad = SubResource("Resource_2mpbq")
+texture_res = ExtResource("9_5wwva")
 
 [node name="ButtonIndustrial10" parent="." unique_id=1165618794 instance=ExtResource("3_45dr7")]
 layout_mode = 1
@@ -180,12 +180,12 @@ offset_right = -138.0
 offset_bottom = 159.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("6_osks2")
 image_normal = SubResource("Resource_hcepd")
 image_pressed = SubResource("Resource_hcepd")
 grey_when_pressed = true
 rect = SubResource("Resource_ibyjv")
 rect_ipad = SubResource("Resource_25ame")
+texture_res = ExtResource("6_osks2")
 
 [node name="ButtonIndustrial50" parent="." unique_id=577318757 instance=ExtResource("3_45dr7")]
 layout_mode = 1
@@ -199,12 +199,12 @@ offset_right = 38.0
 offset_bottom = 159.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("6_osks2")
 image_normal = SubResource("Resource_wgm66")
 image_pressed = SubResource("Resource_wgm66")
 grey_when_pressed = true
 rect = SubResource("Resource_48e0u")
 rect_ipad = SubResource("Resource_4muis")
+texture_res = ExtResource("6_osks2")
 
 [node name="ButtonMoney20" parent="." unique_id=2134155205 instance=ExtResource("3_45dr7")]
 layout_mode = 1
@@ -218,12 +218,12 @@ offset_right = -138.0
 offset_bottom = 109.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("6_osks2")
 image_normal = SubResource("Resource_qxn7w")
 image_pressed = SubResource("Resource_qxn7w")
 grey_when_pressed = true
 rect = SubResource("Resource_kg4sb")
 rect_ipad = SubResource("Resource_j8pqp")
+texture_res = ExtResource("6_osks2")
 
 [node name="ButtonMoney100" parent="." unique_id=1931221154 instance=ExtResource("3_45dr7")]
 layout_mode = 1
@@ -237,13 +237,14 @@ offset_right = 38.0
 offset_bottom = 109.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("6_osks2")
 image_normal = SubResource("Resource_74ewt")
 image_pressed = SubResource("Resource_74ewt")
 grey_when_pressed = true
 rect = SubResource("Resource_l5osh")
 rect_ipad = SubResource("Resource_rooko")
+texture_res = ExtResource("6_osks2")
 
+[connection signal="pressed" from="ButtonBack" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="ButtonIndustrial10" to="." method="_on_gui_button_industry_10_pressed"]
 [connection signal="pressed" from="ButtonIndustrial50" to="." method="_on_gui_button_industry_50_pressed"]
 [connection signal="pressed" from="ButtonMoney20" to="." method="_on_gui_button_money_20_pressed"]

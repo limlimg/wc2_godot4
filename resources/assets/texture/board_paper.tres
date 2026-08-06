@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_bfdwb"]
 [ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_or1vm"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="3_y5sgd"]
 [ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://ec_texture_res.gd" id="4_7xg70"]
 
 [sub_resource type="Resource" id="Resource_lj8t0"]
@@ -13,18 +12,10 @@ name_640h = "board_paper-640h.webp"
 name_568h = "board_paper-568h.webp"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="Texture2D" id="Texture2D_03ols"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("3_y5sgd")
-asset = SubResource("Resource_lj8t0")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
-
 [sub_resource type="Texture2D" id="Texture2D_x6gfx"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_or1vm")
-texture = SubResource("Texture2D_03ols")
 region = Rect2(0, 0, 568, 201)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
@@ -32,7 +23,6 @@ metadata/_custom_type_script = "uid://bvddy3vjuki27"
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_or1vm")
-texture = SubResource("Texture2D_03ols")
 region = Rect2(0, 0, 640, 201)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
@@ -40,7 +30,6 @@ metadata/_custom_type_script = "uid://bvddy3vjuki27"
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_or1vm")
-texture = SubResource("Texture2D_03ols")
 region = Rect2(0, 0, 461, 191)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
@@ -48,12 +37,17 @@ metadata/_custom_type_script = "uid://bvddy3vjuki27"
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_or1vm")
-texture = SubResource("Texture2D_03ols")
 region = Rect2(0, 0, 1013, 206)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
 [sub_resource type="Resource" id="Resource_ky2ma"]
 script = ExtResource("4_7xg70")
+image_texture = Dictionary[StringName, String]({
+&"board_paper-568h.webp": "board_paper-568h.webp",
+&"board_paper-640h.webp": "board_paper-640h.webp",
+&"board_paper.webp": "board_paper.webp",
+&"board_paper_iPad.webp": "board_paper_iPad.webp"
+})
 images = Dictionary[StringName, ExtResource("2_or1vm")]({
 &"board_paper-568h.webp": SubResource("Texture2D_x6gfx"),
 &"board_paper-640h.webp": SubResource("Texture2D_eh6q4"),

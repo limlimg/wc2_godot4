@@ -32,9 +32,8 @@ resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("9_kpifn")
 asset = SubResource("Resource_bvffp")
-res_scale = 2.0
 
-[sub_resource type="Texture2D" id="Texture2D_x83h0"]
+[sub_resource type="Texture2D" id="Texture2D_m2o1a"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("8_lm7xa")
@@ -96,11 +95,11 @@ image_text_normal = SubResource("Resource_1scgp")
 image_text_pressed = SubResource("Resource_pgo8h")
 image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
-texture_res = ExtResource("7_qvtfe")
 image_normal = SubResource("Resource_v0skf")
 image_pressed = SubResource("Resource_v0skf")
-texture_normal = SubResource("Texture2D_x83h0")
-texture_pressed = SubResource("Texture2D_x83h0")
+texture_normal = SubResource("Texture2D_m2o1a")
+texture_pressed = SubResource("Texture2D_m2o1a")
+texture_res = ExtResource("7_qvtfe")
 
 [node name="ButtonCancel" parent="." unique_id=932974651 instance=ExtResource("8_omktk")]
 layout_mode = 0
@@ -113,11 +112,10 @@ offset_right = 77.0
 offset_bottom = 175.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("7_qvtfe")
 image_normal = SubResource("Resource_hl1tj")
 image_pressed = SubResource("Resource_d4ylm")
 image_background = SubResource("Resource_aupwa")
+texture_res = ExtResource("7_qvtfe")
 
 [connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]
-[connection signal="back_pressed" from="ButtonCancel" to="." method="_on_button_cancel_pressed"]
 [connection signal="pressed" from="ButtonCancel" to="." method="_on_button_cancel_pressed"]

@@ -70,8 +70,6 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 	if load(texture_path) as Texture2D == null:
 		push_error("Error: failed to validate texture {0} for {1}".format([texture_name, source_file]))
 		return FAILED
-	var ec_texture := ecTexture.new()
-	ec_texture.asset = AssetRegistry.new()
 	var xml_images := doc.first_child_element("Images")
 	if xml_images == null:
 		push_error("Parse Error: Failed to find <Images> in {0}".format([source_file]))
@@ -102,7 +100,6 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		if xml_image.query_float_attribute("refy", p) == xml_image.TIXML_SUCCESS:
 			refy = p.pop_back()
 		var res_image := ecImageAttr.new()
-		res_image.texture = ec_texture
 		res_image.region = Rect2(x, y, w, h)
 		res_image.origin = Vector2(refx, refy)
 		res_texture.images[name] = res_image

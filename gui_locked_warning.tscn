@@ -56,6 +56,8 @@ offset_left = -2.0
 offset_top = -2.0
 offset_right = 225.0
 offset_bottom = 129.0
+grow_horizontal = 1
+grow_vertical = 1
 rect = SubResource("Resource_ojymw")
 rect_ipad = SubResource("Resource_l6xut")
 
@@ -73,6 +75,8 @@ offset_left = 16.0
 offset_top = 60.0
 offset_right = 16.0
 offset_bottom = 60.0
+grow_horizontal = 1
+grow_vertical = 1
 rect = SubResource("Resource_xvlg8")
 rect_ipad = SubResource("Resource_d4slx")
 
@@ -100,6 +104,5 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_k7wgp")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_3gx5n")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_flmrv")
 
-[connection signal="back_pressed" from="." to="." method="_on_button_pressed"]
 [connection signal="back_pressed" from="Fade" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -1,6 +1,5 @@
 extends GUIElement
 
-
 func init() -> void:
 	if not is_node_ready():
 		return

@@ -36,11 +36,11 @@ func init():
 	var commander := g_Commander
 	if commander.get_num_played_battles(0) < AppDelegate.get_num_battles(0)\
 			and commander.get_num_played_battles(1) < AppDelegate.get_num_battles(1):
-		$FixedWidth/SelCampaigns/ButtonWto.grey_scale = 0.7
-		$FixedWidth/SelCampaigns/ButtonNato.grey_scale = 0.7
+		$FixedWidth/SelCampaigns/Left/ButtonWto.grey_scale = 0.7
+		$FixedWidth/SelCampaigns/Right/ButtonNato.grey_scale = 0.7
 	else:
-		$FixedWidth/SelCampaigns/ButtonWto/Locked/TextureRect.visible = false
-		$FixedWidth/SelCampaigns/ButtonNato/Locked/TextureRect.visible = false
+		$FixedWidth/SelCampaigns/Left/ButtonWto/Locked.visible = false
+		$FixedWidth/SelCampaigns/Right/ButtonNato/Locked.visible = false
 	# NOTTODO: refresh the "new" highlight of the more games button
 
 
@@ -64,7 +64,7 @@ func _notification(what: int) -> void:
 
 
 func move_in_main_buttons() -> void:
-	_move_button(1)
+	_state = 1
 
 
 func refresh_new_tip() -> void:
@@ -87,7 +87,7 @@ func show_ad() -> void:
 func _on_button_campaign_pressed() -> void:
 	if _state == 0:
 		# NOTTODO: hide more game and mail button
-		_move_button(2)
+		_state = 2
 		CSoundBox.get_instance().play_se("main_interface.wav")
 
 
@@ -103,14 +103,14 @@ func _on_button_load_campaign_pressed() -> void:
 
 func _on_button_campaign_back_pressed() -> void:
 	if _state == 0:
-		_move_button(4)
+		_state = 4
 		CSoundBox.get_instance().play_se("main_interface.wav")
 
 
 func _on_button_conquest_pressed() -> void:
 	if _state == 0:
 		# NOTTODO: hide more game and mail button
-		_move_button(7)
+		_state = 7
 		CSoundBox.get_instance().play_se("main_interface.wav")
 
 
@@ -126,14 +126,14 @@ func _on_button_load_conquest_pressed() -> void:
 
 func _on_button_conquest_back_pressed() -> void:
 	if _state == 0:
-		_move_button(9)
+		_state = 9
 		CSoundBox.get_instance().play_se("main_interface.wav")
 
 
 func _on_button_multi_player_pressed() -> void:
 	if _state == 0:
 		# NOTTODO: hide more game and mail button
-		_move_button(6)
+		_state = 6
 		CSoundBox.get_instance().play_se("main_interface.wav")
 
 
@@ -167,7 +167,7 @@ func _on_button_local_back_pressed() -> void:
 func _on_button_multi_player_back_pressed() -> void:
 	if _state == 0:
 		# NOTTODO: show more game button and mail button and refresh new highlight
-		_move_button(5)
+		_state = 5
 		CSoundBox.get_instance().play_se("main_interface.wav")
 
 
@@ -191,51 +191,83 @@ func _on_button_quit_pressed() -> void:
 		quit_pressed.emit()
 
 
-func _move_button(state: int) -> void:
-	_state = state
-	match state:
+func _process(delta: float) -> void:
+	var v := 800.0 if ecGraphics.instance().content_scale_size_mode == 3 else 400.0
+	match _state:
 		1:
-			$AnimationPlayer.play(&"move_main")
-			await $AnimationPlayer.animation_finished
-			_move_button(0)
+			var dest = -$FixedWidth/MainButton.size.x
+			var x := maxf($FixedWidth/MainButton/VBoxContainer.position.x - v * delta, dest)
+			$FixedWidth/MainButton/VBoxContainer.position.x = x
+			if x <= dest:
+				_state = 0
 		2:
-			$AnimationPlayer.play_backwards(&"move_main")
-			await $AnimationPlayer.animation_finished
-			_move_button(3)
+			var dest = 0.0
+			var x := minf($FixedWidth/MainButton/VBoxContainer.position.x + v * delta, dest)
+			$FixedWidth/MainButton/VBoxContainer.position.x = x
+			if x >= dest:
+				_state = 3
+				$FixedWidth/SelCampaigns.show()
 		3:
-			$AnimationPlayer.play(&"move_campaign")
-			await $AnimationPlayer.animation_finished
-			_move_button(0)
+			var dest = $FixedWidth.size.x / 2
+			var x := minf($FixedWidth/SelCampaigns/Left.position.x + 2 * v * delta, dest)
+			$FixedWidth/SelCampaigns/Left.position.x = x
+			$FixedWidth/SelCampaigns/Right.position.x = $FixedWidth.size.x - x
+			if x >= dest:
+				_state = 0
 		4:
-			$AnimationPlayer.play_backwards(&"move_campaign")
-			await $AnimationPlayer.animation_finished
-			_move_button(5)
+			var dest = 0.0
+			var x := maxf($FixedWidth/SelCampaigns/Left.position.x - 2 * v * delta, dest)
+			$FixedWidth/SelCampaigns/Left.position.x = x
+			$FixedWidth/SelCampaigns/Right.position.x = $FixedWidth.size.x - x
+			if x <= dest:
+				_state = 5
+				$FixedWidth/SelCampaigns.hide()
+				# NOTTODO: show mail and more game buttons
 		5:
-			_move_button(1)
+			var dest = -$FixedWidth/MainButton.size.x
+			var x := maxf($FixedWidth/MainButton/VBoxContainer.position.x - v * delta, dest)
+			$FixedWidth/MainButton/VBoxContainer.position.x = x
+			if x <= dest:
+				_state = 0
 		6:
-			$AnimationPlayer.play_backwards(&"move_main")
-			await $AnimationPlayer.animation_finished
-			$SelMultiplayer.show()
-			_move_button(0)
+			var dest = 0.0
+			var x := minf($FixedWidth/MainButton/VBoxContainer.position.x + v * delta, dest)
+			$FixedWidth/MainButton/VBoxContainer.position.x = x
+			if x >= dest:
+				$SelMultiplayer.show()
+				_state = 0
 		7:
-			$AnimationPlayer.play_backwards(&"move_main")
-			await $AnimationPlayer.animation_finished
-			_move_button(8)
+			var dest = 0.0
+			var x := minf($FixedWidth/MainButton/VBoxContainer.position.x + v * delta, dest)
+			$FixedWidth/MainButton/VBoxContainer.position.x = x
+			if x >= dest:
+				_state = 8
+				$FixedWidth/SelConquest.show()
 		8:
-			$AnimationPlayer.play(&"move_conquest")
-			await $AnimationPlayer.animation_finished
-			_move_button(0)
+			var dest = $FixedWidth.size.x / 2
+			var x := minf($FixedWidth/SelConquest/Left.position.x + 2 * v * delta, dest)
+			$FixedWidth/SelConquest/Left.position.x = x
+			$FixedWidth/SelConquest/Right.position.x = $FixedWidth.size.x - x
+			if x >= dest:
+				_state = 0
 		9:
-			$AnimationPlayer.play_backwards(&"move_conquest")
-			await $AnimationPlayer.animation_finished
-			_move_button(5)
+			var dest = 0.0
+			var x := maxf($FixedWidth/SelConquest/Left.position.x - 2 * v * delta, dest)
+			$FixedWidth/SelConquest/Left.position.x = x
+			$FixedWidth/SelConquest/Right.position.x = $FixedWidth.size.x - x
+			if x <= dest:
+				_state = 5
+				$FixedWidth/SelConquest.hide()
+				# NOTTODO: show mail and more game buttons
 
 
-func _on_back_pressed() -> void:
-	if _state == 0:
-		for button in [$FixedWidth/SelCampaigns/ButtonBack, $FixedWidth/SelConquest/ButtonBack]:
-			if button.is_visible_in_tree():
-				button.pressed.emit()
-				accept_event()
-				return
-		quit_pressed.emit()
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action(&"ui_cancel"):
+		if _state == 0:
+			for button in [$FixedWidth/SelCampaigns/ButtonBack, $FixedWidth/SelConquest/ButtonBack]:
+				if button.is_visible_in_tree():
+					button.pressed.emit()
+					accept_event()
+					return
+			quit_pressed.emit()
+			accept_event()

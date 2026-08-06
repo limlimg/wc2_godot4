@@ -149,12 +149,12 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("4_y86r8")
 image_normal = SubResource("Resource_4yntp")
 image_pressed = SubResource("Resource_b4dmi")
 image_background = SubResource("Resource_oo0i1")
 rect = SubResource("Resource_b6fe3")
 rect_ipad = SubResource("Resource_m73mc")
+texture_res = ExtResource("4_y86r8")
 
 [node name="ButtonOk" parent="." unique_id=254315075 instance=ExtResource("3_43u7i")]
 layout_mode = 1
@@ -163,12 +163,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_res = ExtResource("4_y86r8")
 image_normal = SubResource("Resource_1scgp")
 image_pressed = SubResource("Resource_pgo8h")
 image_background = SubResource("Resource_i5xih")
 rect = SubResource("Resource_b6fe3")
 rect_ipad = SubResource("Resource_m73mc")
+texture_res = ExtResource("4_y86r8")
 
 [node name="GUISaveItem" parent="." unique_id=84813601 instance=ExtResource("10_elaf6")]
 layout_mode = 1
@@ -183,11 +183,11 @@ offset_right = -242.0
 offset_bottom = -148.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("4_y86r8")
 image_normal = SubResource("Resource_uo6gt")
 image_pressed = SubResource("Resource_uo6gt")
 rect = SubResource("Resource_y86r8")
 rect_ipad = SubResource("Resource_h6187")
+texture_res = ExtResource("4_y86r8")
 
 [node name="GUISaveItem2" parent="." unique_id=864049145 instance=ExtResource("10_elaf6")]
 layout_mode = 1
@@ -202,11 +202,11 @@ offset_right = -242.0
 offset_bottom = -55.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("4_y86r8")
 image_normal = SubResource("Resource_uo6gt")
 image_pressed = SubResource("Resource_uo6gt")
 rect = SubResource("Resource_2ci0e")
 rect_ipad = SubResource("Resource_pb5r4")
+texture_res = ExtResource("4_y86r8")
 
 [node name="GUISaveItem3" parent="." unique_id=205932105 instance=ExtResource("10_elaf6")]
 layout_mode = 1
@@ -221,11 +221,11 @@ offset_right = -242.0
 offset_bottom = 38.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("4_y86r8")
 image_normal = SubResource("Resource_uo6gt")
 image_pressed = SubResource("Resource_uo6gt")
 rect = SubResource("Resource_b7mum")
 rect_ipad = SubResource("Resource_ipxdd")
+texture_res = ExtResource("4_y86r8")
 
 [node name="GUISaveItem4" parent="." unique_id=936653722 instance=ExtResource("10_elaf6")]
 layout_mode = 1
@@ -240,11 +240,11 @@ offset_right = 62.0
 offset_bottom = -148.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("4_y86r8")
 image_normal = SubResource("Resource_uo6gt")
 image_pressed = SubResource("Resource_uo6gt")
 rect = SubResource("Resource_gksh3")
 rect_ipad = SubResource("Resource_u6hwg")
+texture_res = ExtResource("4_y86r8")
 
 [node name="GUISaveItem5" parent="." unique_id=1460200486 instance=ExtResource("10_elaf6")]
 layout_mode = 1
@@ -259,11 +259,11 @@ offset_right = 62.0
 offset_bottom = -55.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("4_y86r8")
 image_normal = SubResource("Resource_uo6gt")
 image_pressed = SubResource("Resource_uo6gt")
 rect = SubResource("Resource_l8hdj")
 rect_ipad = SubResource("Resource_71wvs")
+texture_res = ExtResource("4_y86r8")
 
 [node name="GUISaveItem6" parent="." unique_id=2085961165 instance=ExtResource("10_elaf6")]
 layout_mode = 1
@@ -278,11 +278,11 @@ offset_right = 62.0
 offset_bottom = 38.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("4_y86r8")
 image_normal = SubResource("Resource_uo6gt")
 image_pressed = SubResource("Resource_uo6gt")
 rect = SubResource("Resource_xnw2o")
 rect_ipad = SubResource("Resource_lijg1")
+texture_res = ExtResource("4_y86r8")
 
 [node name="GUIAutoSaveItem" parent="." unique_id=559276820 instance=ExtResource("12_h7uv5")]
 layout_mode = 1
@@ -295,12 +295,12 @@ offset_left = 1.0
 offset_top = -12.0
 offset_right = 1.0
 offset_bottom = -12.0
-texture_res = ExtResource("9_vtfj7")
 image_normal = SubResource("Resource_5trkp")
 image_pressed = SubResource("Resource_5trkp")
 enable = false
 rect = SubResource("Resource_l85cj")
 rect_ipad = SubResource("Resource_a6wgm")
+texture_res = ExtResource("9_vtfj7")
 
 [connection signal="pressed" from="ButtonBack" to="." method="_on_gui_button_back_pressed"]
 [connection signal="pressed" from="ButtonOk" to="." method="_on_gui_button_ok_pressed"]

@@ -221,24 +221,6 @@ script = ExtResource("4_pibd6")
 rect = Rect2(-432, -440, 410, 138)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_28dc6"]
-script = ExtResource("9_hfp2u")
-name = "button_allies.png"
-
-[sub_resource type="Resource" id="Resource_x0e3y"]
-script = ExtResource("9_hfp2u")
-name = "m_buttontext_allies.png"
-
-[sub_resource type="Resource" id="Resource_gpofn"]
-script = ExtResource("4_pibd6")
-rect = Rect2(9, -207, 205, 69)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_cxwmx"]
-script = ExtResource("4_pibd6")
-rect = Rect2(18, -440, 410, 138)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
 [sub_resource type="Resource" id="Resource_n2hpq"]
 script = ExtResource("9_hfp2u")
 name = "button_wto.png"
@@ -270,6 +252,24 @@ metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 [sub_resource type="Resource" id="Resource_yagmd"]
 script = ExtResource("4_pibd6")
 rect = Rect2(300, 70, 0, 0)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_28dc6"]
+script = ExtResource("9_hfp2u")
+name = "button_allies.png"
+
+[sub_resource type="Resource" id="Resource_x0e3y"]
+script = ExtResource("9_hfp2u")
+name = "m_buttontext_allies.png"
+
+[sub_resource type="Resource" id="Resource_gpofn"]
+script = ExtResource("4_pibd6")
+rect = Rect2(9, -207, 205, 69)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_cxwmx"]
+script = ExtResource("4_pibd6")
+rect = Rect2(18, -440, 410, 138)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [sub_resource type="Resource" id="Resource_vkc8d"]
@@ -401,20 +401,6 @@ script = ExtResource("4_pibd6")
 rect = Rect2(-382, -474, 308, 94)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_fvs4e"]
-script = ExtResource("9_hfp2u")
-name = "button_conquest2.png"
-
-[sub_resource type="Resource" id="Resource_vqmow"]
-script = ExtResource("4_pibd6")
-rect = Rect2(38, -186, 154, 47)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_g3ykt"]
-script = ExtResource("4_pibd6")
-rect = Rect2(70, -474, 308, 94)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
 [sub_resource type="Resource" id="Resource_7q5a3"]
 script = ExtResource("9_hfp2u")
 name = "button_conquest3.png"
@@ -427,20 +413,6 @@ metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 [sub_resource type="Resource" id="Resource_awaol"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-382, -354, 308, 94)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_y37sl"]
-script = ExtResource("9_hfp2u")
-name = "button_conquest4.png"
-
-[sub_resource type="Resource" id="Resource_vxim4"]
-script = ExtResource("4_pibd6")
-rect = Rect2(38, -127, 154, 47)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_5jioe"]
-script = ExtResource("4_pibd6")
-rect = Rect2(70, -354, 308, 94)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [sub_resource type="Resource" id="Resource_4t0xo"]
@@ -457,20 +429,6 @@ script = ExtResource("4_pibd6")
 rect = Rect2(-382, -234, 308, 94)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_vr5cl"]
-script = ExtResource("9_hfp2u")
-name = "button_conquest6.png"
-
-[sub_resource type="Resource" id="Resource_iw1ne"]
-script = ExtResource("4_pibd6")
-rect = Rect2(38, -69, 154, 47)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_k4mar"]
-script = ExtResource("4_pibd6")
-rect = Rect2(70, -234, 308, 94)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
 [sub_resource type="Resource" id="Resource_v44nb"]
 script = ExtResource("9_hfp2u")
 name = "button_conquest7.png"
@@ -483,6 +441,48 @@ metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 [sub_resource type="Resource" id="Resource_j730w"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-382, -114, 308, 94)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_fvs4e"]
+script = ExtResource("9_hfp2u")
+name = "button_conquest2.png"
+
+[sub_resource type="Resource" id="Resource_vqmow"]
+script = ExtResource("4_pibd6")
+rect = Rect2(38, -186, 154, 47)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_g3ykt"]
+script = ExtResource("4_pibd6")
+rect = Rect2(70, -474, 308, 94)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_y37sl"]
+script = ExtResource("9_hfp2u")
+name = "button_conquest4.png"
+
+[sub_resource type="Resource" id="Resource_vxim4"]
+script = ExtResource("4_pibd6")
+rect = Rect2(38, -127, 154, 47)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_5jioe"]
+script = ExtResource("4_pibd6")
+rect = Rect2(70, -354, 308, 94)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_vr5cl"]
+script = ExtResource("9_hfp2u")
+name = "button_conquest6.png"
+
+[sub_resource type="Resource" id="Resource_iw1ne"]
+script = ExtResource("4_pibd6")
+rect = Rect2(38, -69, 154, 47)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_k4mar"]
+script = ExtResource("4_pibd6")
+rect = Rect2(70, -234, 308, 94)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [sub_resource type="Resource" id="Resource_hixxt"]
@@ -498,233 +498,6 @@ metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 script = ExtResource("4_pibd6")
 rect = Rect2(70, -114, 308, 94)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Animation" id="Animation_md641"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_7tqsn"]
-resource_name = "empty_to_campaign"
-length = 0.64
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FixedWidth/SelCampaigns/ButtonAxis:anchor_left")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FixedWidth/SelCampaigns/ButtonAllies:anchor_left")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FixedWidth/SelCampaigns/ButtonWto:anchor_left")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FixedWidth/SelCampaigns/ButtonNato:anchor_left")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.5]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("FixedWidth/SelCampaigns:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_kov84"]
-resource_name = "move_conquest"
-length = 0.64
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FixedWidth/SelConquest/GUIButton:anchor_left")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FixedWidth/SelConquest/GUIButton2:anchor_left")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FixedWidth/SelConquest/GUIButton3:anchor_left")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FixedWidth/SelConquest/GUIButton4:anchor_left")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.5]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("FixedWidth/SelConquest/GUIButton5:anchor_left")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.5]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("FixedWidth/SelConquest/GUIButton6:anchor_left")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.5]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("FixedWidth/SelConquest/GUIButton7:anchor_left")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.5]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("FixedWidth/SelConquest/GUIButton8:anchor_left")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.64),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.5]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("FixedWidth/SelConquest:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_digt4"]
-resource_name = "init_to_main"
-length = 0.26666668
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FixedWidth/MainButton/VBoxContainer:anchor_left")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.26666668),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FixedWidth/SelCampaigns:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FixedWidth/SelConquest:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kov84"]
-_data = {
-&"RESET": SubResource("Animation_md641"),
-&"move_campaign": SubResource("Animation_7tqsn"),
-&"move_conquest": SubResource("Animation_kov84"),
-&"move_main": SubResource("Animation_digt4")
-}
 
 [node name="GUIMainMenu" type="Control" unique_id=1723006033]
 layout_mode = 3
@@ -824,7 +597,6 @@ layout_mode = 1
 anchors_preset = 10
 anchor_bottom = 0.0
 grow_vertical = 1
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_1bai5")
 image_pressed = SubResource("Resource_1bai5")
 image_text_image = SubResource("Resource_ipdpm")
@@ -832,6 +604,7 @@ play_sound_when_pressed = false
 grey_when_pressed = true
 rect = SubResource("Resource_65s5d")
 rect_ipad = SubResource("Resource_o7pcd")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="ButtonConquest" parent="FixedWidth/MainButton/VBoxContainer" unique_id=761496810 instance=ExtResource("3_m8cyo")]
 layout_mode = 2
@@ -843,13 +616,13 @@ layout_mode = 1
 anchors_preset = 10
 anchor_bottom = 0.0
 grow_vertical = 1
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_i3glt")
 image_pressed = SubResource("Resource_i3glt")
 image_text_image = SubResource("Resource_0pocb")
 grey_when_pressed = true
 rect = SubResource("Resource_pyfsu")
 rect_ipad = SubResource("Resource_2u448")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="ButtonMultiPlayer" type="Node" parent="FixedWidth/MainButton/VBoxContainer" unique_id=1689164145]
 
@@ -863,13 +636,13 @@ layout_mode = 1
 anchors_preset = 10
 anchor_bottom = 0.0
 grow_vertical = 1
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_i3glt")
 image_pressed = SubResource("Resource_i3glt")
 image_text_image = SubResource("Resource_veywj")
 grey_when_pressed = true
 rect = SubResource("Resource_w4ujq")
 rect_ipad = SubResource("Resource_luqac")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="ButtonCommander" parent="FixedWidth/MainButton/VBoxContainer" unique_id=651290043 instance=ExtResource("3_m8cyo")]
 layout_mode = 2
@@ -881,13 +654,13 @@ layout_mode = 1
 anchors_preset = 10
 anchor_bottom = 0.0
 grow_vertical = 1
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_i3glt")
 image_pressed = SubResource("Resource_i3glt")
 image_text_image = SubResource("Resource_mxqe0")
 grey_when_pressed = true
 rect = SubResource("Resource_u5md1")
 rect_ipad = SubResource("Resource_p2eoj")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="ButtonOptions" parent="FixedWidth/MainButton/VBoxContainer" unique_id=1842379955 instance=ExtResource("3_m8cyo")]
 layout_mode = 2
@@ -899,13 +672,13 @@ layout_mode = 1
 anchors_preset = 10
 anchor_bottom = 0.0
 grow_vertical = 1
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_i3glt")
 image_pressed = SubResource("Resource_i3glt")
 image_text_image = SubResource("Resource_8iywl")
 grey_when_pressed = true
 rect = SubResource("Resource_lotck")
 rect_ipad = SubResource("Resource_7ovn5")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="ButtonQuit" parent="FixedWidth/MainButton/VBoxContainer" unique_id=1517231884 instance=ExtResource("3_m8cyo")]
 layout_mode = 2
@@ -917,13 +690,13 @@ layout_mode = 1
 anchors_preset = 10
 anchor_bottom = 0.0
 grow_vertical = 1
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_i3glt")
 image_pressed = SubResource("Resource_i3glt")
 image_text_image = SubResource("Resource_c2v50")
 grey_when_pressed = true
 rect = SubResource("Resource_uphqh")
 rect_ipad = SubResource("Resource_ch1cj")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="SelCampaigns" type="Control" parent="FixedWidth" unique_id=1547319078]
 visible = false
@@ -935,7 +708,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ButtonAxis" parent="FixedWidth/SelCampaigns" unique_id=1797155140 instance=ExtResource("5_tap4s")]
+[node name="Left" type="Control" parent="FixedWidth/SelCampaigns" unique_id=2087869273]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="ButtonAxis" parent="FixedWidth/SelCampaigns/Left" unique_id=1797155140 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -946,34 +727,15 @@ offset_right = -216.0
 offset_bottom = -207.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_lsubg")
 image_pressed = SubResource("Resource_lsubg")
 image_text_image = SubResource("Resource_juhfr")
 grey_when_pressed = true
 rect = SubResource("Resource_pydag")
 rect_ipad = SubResource("Resource_q0p4j")
-
-[node name="ButtonAllies" parent="FixedWidth/SelCampaigns" unique_id=1832071003 instance=ExtResource("5_tap4s")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = 9.0
-offset_top = -207.0
-offset_right = 9.0
-offset_bottom = -207.0
-grow_horizontal = 1
-grow_vertical = 1
 texture_res = ExtResource("8_n0fo1")
-image_normal = SubResource("Resource_28dc6")
-image_pressed = SubResource("Resource_28dc6")
-image_text_image = SubResource("Resource_x0e3y")
-grey_when_pressed = true
-rect = SubResource("Resource_gpofn")
-rect_ipad = SubResource("Resource_cxwmx")
 
-[node name="ButtonWto" parent="FixedWidth/SelCampaigns" unique_id=1263213743 instance=ExtResource("5_tap4s")]
+[node name="ButtonWto" parent="FixedWidth/SelCampaigns/Left" unique_id=1263213743 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -984,15 +746,15 @@ offset_right = -216.0
 offset_bottom = -130.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_n2hpq")
 image_pressed = SubResource("Resource_n2hpq")
 image_text_image = SubResource("Resource_ddyqb")
 grey_when_pressed = true
 rect = SubResource("Resource_k3yks")
 rect_ipad = SubResource("Resource_owmu2")
+texture_res = ExtResource("8_n0fo1")
 
-[node name="Locked" parent="FixedWidth/SelCampaigns/ButtonWto" unique_id=1342067132 instance=ExtResource("16_bhu7b")]
+[node name="Locked" parent="FixedWidth/SelCampaigns/Left/ButtonWto" unique_id=1342067132 instance=ExtResource("16_bhu7b")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -1003,12 +765,42 @@ offset_right = 150.0
 offset_bottom = 35.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("8_n0fo1")
 asset = SubResource("Resource_f24wr")
 rect = SubResource("Resource_frouh")
 rect_ipad = SubResource("Resource_yagmd")
+texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonNato" parent="FixedWidth/SelCampaigns" unique_id=1182738056 instance=ExtResource("5_tap4s")]
+[node name="Right" type="Control" parent="FixedWidth/SelCampaigns" unique_id=1297972995]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="ButtonAllies" parent="FixedWidth/SelCampaigns/Right" unique_id=1832071003 instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = 9.0
+offset_top = -207.0
+offset_right = 9.0
+offset_bottom = -207.0
+grow_horizontal = 1
+grow_vertical = 1
+image_normal = SubResource("Resource_28dc6")
+image_pressed = SubResource("Resource_28dc6")
+image_text_image = SubResource("Resource_x0e3y")
+grey_when_pressed = true
+rect = SubResource("Resource_gpofn")
+rect_ipad = SubResource("Resource_cxwmx")
+texture_res = ExtResource("8_n0fo1")
+
+[node name="ButtonNato" parent="FixedWidth/SelCampaigns/Right" unique_id=1182738056 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -1019,15 +811,15 @@ offset_right = 9.0
 offset_bottom = -130.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_vkc8d")
 image_pressed = SubResource("Resource_vkc8d")
 image_text_image = SubResource("Resource_1mydj")
 grey_when_pressed = true
 rect = SubResource("Resource_4ayim")
 rect_ipad = SubResource("Resource_5v80n")
+texture_res = ExtResource("8_n0fo1")
 
-[node name="Locked" parent="FixedWidth/SelCampaigns/ButtonNato" unique_id=831063312 instance=ExtResource("16_bhu7b")]
+[node name="Locked" parent="FixedWidth/SelCampaigns/Right/ButtonNato" unique_id=831063312 instance=ExtResource("16_bhu7b")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -1038,10 +830,10 @@ offset_right = 150.0
 offset_bottom = 35.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("8_n0fo1")
 asset = SubResource("Resource_f24wr")
 rect = SubResource("Resource_frouh")
 rect_ipad = SubResource("Resource_yagmd")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="ButtonLoad" parent="FixedWidth/SelCampaigns" unique_id=731053604 instance=ExtResource("5_tap4s")]
 layout_mode = 1
@@ -1052,12 +844,12 @@ anchor_right = 0.5
 offset_top = -8.0
 offset_bottom = -8.0
 grow_vertical = 0
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_cictn")
 image_pressed = SubResource("Resource_7o7ki")
 image_background = SubResource("Resource_40ofo")
 rect = SubResource("Resource_yc47k")
 rect_ipad = SubResource("Resource_ubb10")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="ButtonBack" parent="FixedWidth/SelCampaigns" unique_id=662656165 instance=ExtResource("5_tap4s")]
 layout_mode = 1
@@ -1066,13 +858,13 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("11_vqmow")
 image_normal = SubResource("Resource_4yntp")
 image_pressed = SubResource("Resource_b4dmi")
 image_background = SubResource("Resource_oo0i1")
 play_sound_when_pressed = false
 rect = SubResource("Resource_wud10")
 rect_ipad = SubResource("Resource_hinvy")
+texture_res = ExtResource("11_vqmow")
 
 [node name="SelMultiplayer" type="Control" parent="FixedWidth" unique_id=1487122513]
 visible = false
@@ -1093,13 +885,13 @@ anchor_right = 0.5
 offset_top = -138.0
 offset_bottom = -138.0
 grow_vertical = 0
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_eqlmj")
 image_pressed = SubResource("Resource_eqlmj")
 image_text_image = SubResource("Resource_w1w1i")
 grey_when_pressed = true
 rect = SubResource("Resource_0gp5r")
 rect_ipad = SubResource("Resource_wb121")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="ButtonLocal" parent="FixedWidth/SelMultiplayer" unique_id=340862691 instance=ExtResource("5_tap4s")]
 layout_mode = 1
@@ -1110,13 +902,13 @@ anchor_right = 0.5
 offset_top = -61.0
 offset_bottom = -61.0
 grow_vertical = 0
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_7fiyw")
 image_pressed = SubResource("Resource_7fiyw")
 image_text_image = SubResource("Resource_mb1ep")
 grey_when_pressed = true
 rect = SubResource("Resource_5tpy0")
 rect_ipad = SubResource("Resource_lfdbm")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="ButtonBack" parent="FixedWidth/SelMultiplayer" unique_id=123460645 instance=ExtResource("5_tap4s")]
 layout_mode = 1
@@ -1125,12 +917,12 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("11_vqmow")
 image_normal = SubResource("Resource_4yntp")
 image_pressed = SubResource("Resource_b4dmi")
 image_background = SubResource("Resource_oo0i1")
 rect = SubResource("Resource_wud10")
 rect_ipad = SubResource("Resource_hinvy")
+texture_res = ExtResource("11_vqmow")
 
 [node name="SelLocal" type="Control" parent="FixedWidth" unique_id=420819806]
 visible = false
@@ -1151,13 +943,13 @@ anchor_right = 0.5
 offset_top = -138.0
 offset_bottom = -138.0
 grow_vertical = 0
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_l0ch5")
 image_pressed = SubResource("Resource_l0ch5")
 image_text_image = SubResource("Resource_4rp43")
 grey_when_pressed = true
 rect = SubResource("Resource_0gp5r")
 rect_ipad = SubResource("Resource_wb121")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="ButtonJoin" parent="FixedWidth/SelLocal" unique_id=395242082 instance=ExtResource("5_tap4s")]
 layout_mode = 1
@@ -1168,13 +960,13 @@ anchor_right = 0.5
 offset_top = -61.0
 offset_bottom = -61.0
 grow_vertical = 0
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_4263l")
 image_pressed = SubResource("Resource_4263l")
 image_text_image = SubResource("Resource_viduq")
 grey_when_pressed = true
 rect = SubResource("Resource_5tpy0")
 rect_ipad = SubResource("Resource_lfdbm")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="ButtonBack" parent="FixedWidth/SelLocal" unique_id=128133234 instance=ExtResource("5_tap4s")]
 layout_mode = 1
@@ -1183,12 +975,12 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("11_vqmow")
 image_normal = SubResource("Resource_4yntp")
 image_pressed = SubResource("Resource_b4dmi")
 image_background = SubResource("Resource_oo0i1")
 rect = SubResource("Resource_wud10")
 rect_ipad = SubResource("Resource_hinvy")
+texture_res = ExtResource("11_vqmow")
 
 [node name="SelConquest" type="Control" parent="FixedWidth" unique_id=1001670368]
 visible = false
@@ -1200,7 +992,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="GUIButton" parent="FixedWidth/SelConquest" unique_id=526895503 instance=ExtResource("5_tap4s")]
+[node name="Left" type="Control" parent="FixedWidth/SelConquest" unique_id=1118960605]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="GUIButton" parent="FixedWidth/SelConquest/Left" unique_id=526895503 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -1211,14 +1011,79 @@ offset_right = -192.0
 offset_bottom = -186.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_wihq2")
 image_pressed = SubResource("Resource_wihq2")
 grey_when_pressed = true
 rect = SubResource("Resource_occyo")
 rect_ipad = SubResource("Resource_cm1vh")
+texture_res = ExtResource("8_n0fo1")
 
-[node name="GUIButton2" parent="FixedWidth/SelConquest" unique_id=1518118932 instance=ExtResource("5_tap4s")]
+[node name="GUIButton3" parent="FixedWidth/SelConquest/Left" unique_id=320396988 instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = -127.0
+offset_right = -192.0
+offset_bottom = -127.0
+grow_horizontal = 1
+grow_vertical = 0
+image_normal = SubResource("Resource_7q5a3")
+image_pressed = SubResource("Resource_7q5a3")
+grey_when_pressed = true
+rect = SubResource("Resource_nxjij")
+rect_ipad = SubResource("Resource_awaol")
+texture_res = ExtResource("8_n0fo1")
+
+[node name="GUIButton5" parent="FixedWidth/SelConquest/Left" unique_id=355060089 instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = -69.0
+offset_right = -192.0
+offset_bottom = -69.0
+grow_horizontal = 1
+grow_vertical = 0
+image_normal = SubResource("Resource_4t0xo")
+image_pressed = SubResource("Resource_4t0xo")
+grey_when_pressed = true
+rect = SubResource("Resource_gslb1")
+rect_ipad = SubResource("Resource_uren7")
+texture_res = ExtResource("8_n0fo1")
+
+[node name="GUIButton7" parent="FixedWidth/SelConquest/Left" unique_id=1420715327 instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = -10.0
+offset_right = -192.0
+offset_bottom = -10.0
+grow_horizontal = 1
+grow_vertical = 0
+image_normal = SubResource("Resource_v44nb")
+image_pressed = SubResource("Resource_v44nb")
+grey_when_pressed = true
+rect = SubResource("Resource_ss4x7")
+rect_ipad = SubResource("Resource_j730w")
+texture_res = ExtResource("8_n0fo1")
+
+[node name="Right" type="Control" parent="FixedWidth/SelConquest" unique_id=212924287]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="GUIButton2" parent="FixedWidth/SelConquest/Right" unique_id=1518118932 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -1229,32 +1094,14 @@ offset_right = 38.0
 offset_bottom = -186.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_fvs4e")
 image_pressed = SubResource("Resource_fvs4e")
 grey_when_pressed = true
 rect = SubResource("Resource_vqmow")
 rect_ipad = SubResource("Resource_g3ykt")
-
-[node name="GUIButton3" parent="FixedWidth/SelConquest" unique_id=320396988 instance=ExtResource("5_tap4s")]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 0.5
-offset_left = -192.0
-offset_top = -127.0
-offset_right = -192.0
-offset_bottom = -127.0
-grow_horizontal = 1
-grow_vertical = 0
 texture_res = ExtResource("8_n0fo1")
-image_normal = SubResource("Resource_7q5a3")
-image_pressed = SubResource("Resource_7q5a3")
-grey_when_pressed = true
-rect = SubResource("Resource_nxjij")
-rect_ipad = SubResource("Resource_awaol")
 
-[node name="GUIButton4" parent="FixedWidth/SelConquest" unique_id=649060181 instance=ExtResource("5_tap4s")]
+[node name="GUIButton4" parent="FixedWidth/SelConquest/Right" unique_id=649060181 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -1265,32 +1112,14 @@ offset_right = 38.0
 offset_bottom = -127.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_y37sl")
 image_pressed = SubResource("Resource_y37sl")
 grey_when_pressed = true
 rect = SubResource("Resource_vxim4")
 rect_ipad = SubResource("Resource_5jioe")
-
-[node name="GUIButton5" parent="FixedWidth/SelConquest" unique_id=355060089 instance=ExtResource("5_tap4s")]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 0.5
-offset_left = -192.0
-offset_top = -69.0
-offset_right = -192.0
-offset_bottom = -69.0
-grow_horizontal = 1
-grow_vertical = 0
 texture_res = ExtResource("8_n0fo1")
-image_normal = SubResource("Resource_4t0xo")
-image_pressed = SubResource("Resource_4t0xo")
-grey_when_pressed = true
-rect = SubResource("Resource_gslb1")
-rect_ipad = SubResource("Resource_uren7")
 
-[node name="GUIButton6" parent="FixedWidth/SelConquest" unique_id=1505949637 instance=ExtResource("5_tap4s")]
+[node name="GUIButton6" parent="FixedWidth/SelConquest/Right" unique_id=1505949637 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -1301,32 +1130,14 @@ offset_right = 38.0
 offset_bottom = -69.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_vr5cl")
 image_pressed = SubResource("Resource_vr5cl")
 grey_when_pressed = true
 rect = SubResource("Resource_iw1ne")
 rect_ipad = SubResource("Resource_k4mar")
-
-[node name="GUIButton7" parent="FixedWidth/SelConquest" unique_id=1420715327 instance=ExtResource("5_tap4s")]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 0.5
-offset_left = -192.0
-offset_top = -10.0
-offset_right = -192.0
-offset_bottom = -10.0
-grow_horizontal = 1
-grow_vertical = 0
 texture_res = ExtResource("8_n0fo1")
-image_normal = SubResource("Resource_v44nb")
-image_pressed = SubResource("Resource_v44nb")
-grey_when_pressed = true
-rect = SubResource("Resource_ss4x7")
-rect_ipad = SubResource("Resource_j730w")
 
-[node name="GUIButton8" parent="FixedWidth/SelConquest" unique_id=1163016298 instance=ExtResource("5_tap4s")]
+[node name="GUIButton8" parent="FixedWidth/SelConquest/Right" unique_id=1163016298 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -1337,12 +1148,12 @@ offset_right = 38.0
 offset_bottom = -10.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_hixxt")
 image_pressed = SubResource("Resource_hixxt")
 grey_when_pressed = true
 rect = SubResource("Resource_27e11")
 rect_ipad = SubResource("Resource_n8jkv")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="ButtonLoad" parent="FixedWidth/SelConquest" unique_id=212308257 instance=ExtResource("5_tap4s")]
 layout_mode = 1
@@ -1353,12 +1164,12 @@ anchor_right = 0.5
 offset_top = -8.0
 offset_bottom = -8.0
 grow_vertical = 0
-texture_res = ExtResource("8_n0fo1")
 image_normal = SubResource("Resource_cictn")
 image_pressed = SubResource("Resource_7o7ki")
 image_background = SubResource("Resource_40ofo")
 rect = SubResource("Resource_yc47k")
 rect_ipad = SubResource("Resource_ubb10")
+texture_res = ExtResource("8_n0fo1")
 
 [node name="ButtonBack" parent="FixedWidth/SelConquest" unique_id=1742304654 instance=ExtResource("5_tap4s")]
 layout_mode = 1
@@ -1367,12 +1178,12 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("11_vqmow")
 image_normal = SubResource("Resource_4yntp")
 image_pressed = SubResource("Resource_b4dmi")
 image_background = SubResource("Resource_oo0i1")
 rect = SubResource("Resource_wud10")
 rect_ipad = SubResource("Resource_hinvy")
+texture_res = ExtResource("11_vqmow")
 
 [node name="NewGameTip" type="Node" parent="FixedWidth" unique_id=2004220755]
 
@@ -1380,20 +1191,16 @@ rect_ipad = SubResource("Resource_hinvy")
 
 [node name="ButtonMoreGame" type="Node" parent="FixedWidth" unique_id=1671435569]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1491924843]
-libraries/ = SubResource("AnimationLibrary_kov84")
-
-[connection signal="back_pressed" from="." to="." method="_on_back_pressed"]
 [connection signal="pressed" from="FixedWidth/MainButton/VBoxContainer/ButtonCampaign/GUIButton" to="." method="_on_button_campaign_pressed"]
 [connection signal="pressed" from="FixedWidth/MainButton/VBoxContainer/ButtonConquest/GUIButton" to="." method="_on_button_conquest_pressed"]
 [connection signal="pressed" from="FixedWidth/MainButton/VBoxContainer/ButtonTutorial/GUIButton" to="." method="_on_button_tutorial_pressed"]
 [connection signal="pressed" from="FixedWidth/MainButton/VBoxContainer/ButtonCommander/GUIButton" to="." method="_on_button_commander_pressed"]
 [connection signal="pressed" from="FixedWidth/MainButton/VBoxContainer/ButtonOptions/GUIButton" to="." method="_on_button_options_pressed"]
 [connection signal="pressed" from="FixedWidth/MainButton/VBoxContainer/ButtonQuit/GUIButton" to="." method="_on_button_quit_pressed"]
-[connection signal="pressed" from="FixedWidth/SelCampaigns/ButtonAxis" to="." method="_on_button_sel_campaign_pressed" binds= [0]]
-[connection signal="pressed" from="FixedWidth/SelCampaigns/ButtonAllies" to="." method="_on_button_sel_campaign_pressed" binds= [1]]
-[connection signal="pressed" from="FixedWidth/SelCampaigns/ButtonWto" to="." method="_on_button_sel_campaign_pressed" binds= [2]]
-[connection signal="pressed" from="FixedWidth/SelCampaigns/ButtonNato" to="." method="_on_button_sel_campaign_pressed" binds= [3]]
+[connection signal="pressed" from="FixedWidth/SelCampaigns/Left/ButtonAxis" to="." method="_on_button_sel_campaign_pressed" binds= [0]]
+[connection signal="pressed" from="FixedWidth/SelCampaigns/Left/ButtonWto" to="." method="_on_button_sel_campaign_pressed" binds= [2]]
+[connection signal="pressed" from="FixedWidth/SelCampaigns/Right/ButtonAllies" to="." method="_on_button_sel_campaign_pressed" binds= [1]]
+[connection signal="pressed" from="FixedWidth/SelCampaigns/Right/ButtonNato" to="." method="_on_button_sel_campaign_pressed" binds= [3]]
 [connection signal="pressed" from="FixedWidth/SelCampaigns/ButtonLoad" to="." method="_on_button_load_campaign_pressed"]
 [connection signal="pressed" from="FixedWidth/SelCampaigns/ButtonBack" to="." method="_on_button_campaign_back_pressed"]
 [connection signal="pressed" from="FixedWidth/SelMultiplayer/ButtonGlobal" to="." method="_on_button_multi_player_global_pressed"]
@@ -1402,13 +1209,13 @@ libraries/ = SubResource("AnimationLibrary_kov84")
 [connection signal="pressed" from="FixedWidth/SelLocal/ButtonHost" to="." method="_on_button_multi_player_host_pressed"]
 [connection signal="pressed" from="FixedWidth/SelLocal/ButtonJoin" to="." method="_on_button_multi_player_join_pressed"]
 [connection signal="pressed" from="FixedWidth/SelLocal/ButtonBack" to="." method="_on_button_local_back_pressed"]
-[connection signal="pressed" from="FixedWidth/SelConquest/GUIButton" to="." method="_on_button_sel_conquest_pressed" binds= [0]]
-[connection signal="pressed" from="FixedWidth/SelConquest/GUIButton2" to="." method="_on_button_sel_conquest_pressed" binds= [1]]
-[connection signal="pressed" from="FixedWidth/SelConquest/GUIButton3" to="." method="_on_button_sel_conquest_pressed" binds= [2]]
-[connection signal="pressed" from="FixedWidth/SelConquest/GUIButton4" to="." method="_on_button_sel_conquest_pressed" binds= [3]]
-[connection signal="pressed" from="FixedWidth/SelConquest/GUIButton5" to="." method="_on_button_sel_conquest_pressed" binds= [4]]
-[connection signal="pressed" from="FixedWidth/SelConquest/GUIButton6" to="." method="_on_button_sel_conquest_pressed" binds= [5]]
-[connection signal="pressed" from="FixedWidth/SelConquest/GUIButton7" to="." method="_on_button_sel_conquest_pressed" binds= [6]]
-[connection signal="pressed" from="FixedWidth/SelConquest/GUIButton8" to="." method="_on_button_sel_conquest_pressed" binds= [7]]
+[connection signal="pressed" from="FixedWidth/SelConquest/Left/GUIButton" to="." method="_on_button_sel_conquest_pressed" binds= [0]]
+[connection signal="pressed" from="FixedWidth/SelConquest/Left/GUIButton3" to="." method="_on_button_sel_conquest_pressed" binds= [2]]
+[connection signal="pressed" from="FixedWidth/SelConquest/Left/GUIButton5" to="." method="_on_button_sel_conquest_pressed" binds= [4]]
+[connection signal="pressed" from="FixedWidth/SelConquest/Left/GUIButton7" to="." method="_on_button_sel_conquest_pressed" binds= [6]]
+[connection signal="pressed" from="FixedWidth/SelConquest/Right/GUIButton2" to="." method="_on_button_sel_conquest_pressed" binds= [1]]
+[connection signal="pressed" from="FixedWidth/SelConquest/Right/GUIButton4" to="." method="_on_button_sel_conquest_pressed" binds= [3]]
+[connection signal="pressed" from="FixedWidth/SelConquest/Right/GUIButton6" to="." method="_on_button_sel_conquest_pressed" binds= [5]]
+[connection signal="pressed" from="FixedWidth/SelConquest/Right/GUIButton8" to="." method="_on_button_sel_conquest_pressed" binds= [7]]
 [connection signal="pressed" from="FixedWidth/SelConquest/ButtonLoad" to="." method="_on_button_load_conquest_pressed"]
 [connection signal="pressed" from="FixedWidth/SelConquest/ButtonBack" to="." method="_on_button_conquest_back_pressed"]

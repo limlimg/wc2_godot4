@@ -8,13 +8,6 @@ const _CAMPAIGN_LOGO = [
 ]
 
 @export
-var texture_res: ecTextureRes:
-	set(value):
-		if value != texture_res:
-			texture_res = value
-			init()
-
-@export
 var game_mode: int:
 	set(value):
 		game_mode = value
@@ -34,6 +27,7 @@ var campaign: int:
 var _battle := -1
 
 signal ok_pressed
+signal back_pressed
 
 func init() -> void:
 	if not is_node_ready():
@@ -114,3 +108,9 @@ func _on_button_ok_pressed() -> void:
 
 func _on_button_back_pressed() -> void:
 	back_pressed.emit()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action(&"ui_cancel"):
+		back_pressed.emit()
+		accept_event()

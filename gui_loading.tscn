@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bhdgsyd0pgf1d"]
 
 [ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_1xgrb"]
+[ext_resource type="Script" uid="uid://c68l48fonibsv" path="res://gui_loading.gd" id="1_pjv0x"]
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="2_pjv0x"]
 [ext_resource type="Texture2D" uid="uid://ces6dlv70o7bo" path="res://resources/assets/texture/loading.tres" id="3_2vxlu"]
 
@@ -12,35 +13,14 @@ rect = Rect2(-76, -20, 78, 11)
 script = ExtResource("2_pjv0x")
 rect = Rect2(-174, -38, 156, 22)
 
-[sub_resource type="Animation" id="Animation_2vxlu"]
-resource_name = "fade_in"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate:a")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 0.0, 1.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_y0t58"]
-_data = {
-&"fade_in": SubResource("Animation_2vxlu")
-}
-
 [node name="GUILoading" type="Control" unique_id=1979438320]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_pjv0x")
 
 [node name="GUIElement" parent="." unique_id=1627139554 instance=ExtResource("1_1xgrb")]
 layout_mode = 1
@@ -57,13 +37,10 @@ rect = SubResource("Resource_464ft")
 rect_ipad = SubResource("Resource_ho5yt")
 
 [node name="TextureRect" type="TextureRect" parent="GUIElement" unique_id=412329058]
+self_modulate = Color(0, 0, 0, 0)
 layout_mode = 0
 offset_right = 78.0
 offset_bottom = 11.0
 texture = ExtResource("3_2vxlu")
 expand_mode = 1
 stretch_mode = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1734540431]
-libraries/ = SubResource("AnimationLibrary_y0t58")
-autoplay = &"fade_in"

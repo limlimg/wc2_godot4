@@ -34,3 +34,9 @@ func _on_gui_button_ok_pressed() -> void:
 func _set_animation(value: bool) -> void:
 	$AnimationButton.visible = not value
 	$AnimationCheck.visible = value
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action(&"ui_cancel"):
+		closed.emit()
+		accept_event()

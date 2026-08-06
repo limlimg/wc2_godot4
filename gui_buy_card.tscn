@@ -242,12 +242,12 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("10_0ixe0")
 image_normal = SubResource("Resource_4yntp")
 image_pressed = SubResource("Resource_b4dmi")
 image_background = SubResource("Resource_oo0i1")
 rect = SubResource("Resource_o5yjg")
 rect_ipad = SubResource("Resource_4cowc")
+texture_res = ExtResource("10_0ixe0")
 
 [node name="ButtonOk" parent="." unique_id=455475689 instance=ExtResource("6_kap0g")]
 layout_mode = 1
@@ -256,12 +256,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_res = ExtResource("10_0ixe0")
 image_normal = SubResource("Resource_1scgp")
 image_pressed = SubResource("Resource_pgo8h")
 image_background = SubResource("Resource_i5xih")
 rect = SubResource("Resource_6imnc")
 rect_ipad = SubResource("Resource_6ngeo")
+texture_res = ExtResource("10_0ixe0")
 
 [node name="GUICardList" parent="." unique_id=1866886249 instance=ExtResource("15_p3fxn")]
 layout_mode = 0
@@ -370,6 +370,7 @@ texture_rect_640h = SubResource("Resource_ebxaf")
 texture_rect_568h = SubResource("Resource_prwfy")
 rect = SubResource("Resource_vcjj3")
 rect_ipad = SubResource("Resource_dyn7p")
+texture_res = null
 
 [node name="GUITech" parent="." unique_id=895432528 instance=ExtResource("17_iypsr")]
 layout_mode = 1
@@ -381,9 +382,9 @@ offset_left = -40.0
 offset_right = 40.0
 offset_bottom = 30.0
 grow_vertical = 1
-texture_res = ExtResource("18_iypsr")
 rect = SubResource("Resource_7lva4")
 rect_ipad = SubResource("Resource_u1lup")
+texture_res = ExtResource("18_iypsr")
 
 [node name="GUIMedal" parent="." unique_id=642182575 instance=ExtResource("18_rm3xk")]
 layout_mode = 0

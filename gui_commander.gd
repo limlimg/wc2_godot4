@@ -1,5 +1,6 @@
 extends GUIElement
 
+var _effect: ecEffect
 var _select_medal := -1
 
 @onready var _list := [
@@ -12,6 +13,7 @@ var _select_medal := -1
 		$GUICommanderMedal
 	]
 
+signal back_pressed
 
 func init() -> void:
 	if not is_node_ready():
@@ -77,7 +79,10 @@ func _on_gui_upgrade_button_pressed() -> void:
 				pos = Vector2(554, 560)
 			else:
 				pos = Vector2(246, 244)
-			$ecEffect.fire_at(pos.x, pos.y, 0.0)
+			if _effect != null:
+				_effect.queue_free()
+			_effect = $ecEffect.create_instance()
+			_effect.fire_at(pos.x, pos.y, 0.0)
 			_set_commander_info()
 	elif g_Commander.check_upgrade_war_medal(_select_medal):
 		CSoundBox.get_instance().play_se("commander_lvup.wav")
@@ -85,5 +90,20 @@ func _on_gui_upgrade_button_pressed() -> void:
 		g_Commander.save()
 		var medal: Control = _list[_select_medal]
 		var pos = medal.global_position - global_position + medal.size / 2
-		$ecEffect.fire_at(pos.x, pos.y, 0.0)
+		_effect = $ecEffect.create_instance()
+		_effect.fire_at(pos.x, pos.y, 0.0)
 		_set_commander_info()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action(&"ui_cancel"):
+		back_pressed.emit()
+		accept_event()
+
+
+func _process(delta: float) -> void:
+	if _effect != null:
+		_effect.update(delta)
+		if not _effect.is_live():
+			_effect.queue_free()
+			_effect = null

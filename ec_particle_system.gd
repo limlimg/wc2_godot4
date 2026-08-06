@@ -39,34 +39,8 @@ class Particle:
 	@export
 	var lifespam: float
 	
-	var _life := 0.0
-	
-	signal stopped
-	
-	func _init() -> void:
-		centered = false
-		material = CanvasItemMaterial.new()
-	
-	
-	func _ready() -> void:
-		speed_shift_curve.bake()
-		gravity_shift_curve.bake()
-		scale_curve.bake()
-		rot_shift_curve.bake()
-		_life = 0.0
-	
-	
-	func _process(delta: float) -> void:
-		_life += delta
-		if _life > lifespam:
-			stopped.emit()
-			return
-		var t1 := _life / lifespam
-		position = speed * speed_shift_curve.sample_baked(t1)
-		position.y += gravity * gravity_shift_curve.sample_baked(t1)
-		rotation = initial_rot_angle + rot_speed * rot_shift_curve.sample_baked(t1)
-		scale = initial_scale * scale_curve.sample_baked(t1)
-		self_modulate = color * color_gradient.sample(t1)
+	@export
+	var life := 0.0
 
 
 @export
@@ -85,7 +59,8 @@ var emitter_attr: ecEmitterAttr:
 var texture_res: ecTextureRes
 
 var _live := false
-var _particles: Array[Sprite2D]
+var _particles: Array[Particle]
+var _particle_material: CanvasItemMaterial
 var _speed_shift_curve: Curve
 var _gravity_shift_curve: Curve
 var _rot_shift_curve: Curve
@@ -94,8 +69,6 @@ var _emitted_time := 0.0
 var _emitted_quantity := 0
 var _last_position: Vector2
 var _fire_at_angle: float
-
-signal stopped
 
 func _ready() -> void:
 	_emitted_time = 0.0
@@ -125,16 +98,6 @@ func stop(stop_existing: bool) -> void:
 		for i in _particles:
 			i.queue_free()
 		_particles.clear()
-	if not is_live():
-		stopped.emit()
-
-
-func _on_stopped(particle: Particle) -> void:
-	particle.queue_free()
-	_particles[_particles.find(particle)] = _particles[-1]
-	_particles.pop_back()
-	if not is_live():
-		stopped.emit()
 
 
 func is_live() -> bool:
@@ -153,7 +116,7 @@ func move_to(x: float, y: float, move_existing: bool) -> void:
 	position = target
 
 
-func _process(delta: float) -> void:
+func update(delta: float) -> void:
 	if emitter_attr == null:
 		return
 	var emitter_life := emitter_attr.emitter_life
@@ -163,42 +126,63 @@ func _process(delta: float) -> void:
 			_emitted_time = emitter_life
 			_live = false
 			set_process(false)
-	var target_quantity := _sample_curve_extended(_emission_curve, _emitted_time)
-	while _emitted_quantity < target_quantity - 1:
-		var particle = Particle.new()
-		particle.lifespam = randf_range(emitter_attr.particle_life_min, emitter_attr.particle_life_max)
-		var texture = texture_res.get_image(emitter_attr.image_file)
-		var texture_scale := Vector2.ONE
-		if texture != null:
-			particle.texture = texture
-			texture_scale = Vector2(emitter_attr.image_width, emitter_attr.image_height) / particle.texture.get_size()
-			particle.material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD if emitter_attr.image_blend == 1 else CanvasItemMaterial.BLEND_MODE_MIX
-		match emitter_attr.settings_type:
-			0:
-				particle.offset.x = randf_range(_last_position.x - position.x, 0.0) + randf_range(-2.0, 2.0)
-				particle.offset.y = randf_range(_last_position.y - position.y, 0.0) + randf_range(-2.0, 2.0)
-			2:
-				particle.offset.x = randf_range(_last_position.x - position.x, 0.0) + randf_range(-0.5, 0.5) * emitter_attr.settings_param_1
-				particle.offset.y = randf_range(_last_position.y - position.y, 0.0) + randf_range(-0.5, 0.5) * emitter_attr.settings_param_2
-		var speed_angle := _fire_at_angle + randf_range(emitter_attr.angle_min, emitter_attr.angle_max)
-		particle.speed = Vector2.from_angle(speed_angle) * randf_range(emitter_attr.speed_min, emitter_attr.speed_max)
-		particle.speed_shift_curve = _speed_shift_curve
-		particle.gravity = randf_range(emitter_attr.gravity_min, emitter_attr.gravity_max)
-		particle.gravity_shift_curve = _gravity_shift_curve
-		particle.initial_scale = texture_scale * randf_range(emitter_attr.scale_min, emitter_attr.scale_max)
-		particle.scale_curve = emitter_attr.life_track_scale
-		if emitter_attr.rot_angle_type == 1.0:
-			particle.initial_rot_angle = _fire_at_angle + speed_angle
-		else:
-			particle.initial_rot_angle = _fire_at_angle + randf_range(emitter_attr.rot_angle_min, emitter_attr.rot_angle_max)
-		particle.rot_speed = randf_range(emitter_attr.rot_speed_min, emitter_attr.rot_speed_max)
-		particle.rot_shift_curve = _rot_shift_curve
-		particle.color = emitter_attr.color_range.sample(randf_range(0.0, 1.0))
-		particle.color_gradient = emitter_attr.life_track_color
-		add_child(particle)
-		_particles.append(particle)
-		particle.stopped.connect(_on_stopped.bind(particle))
-		_emitted_quantity += 1
+	var i := 0
+	while i < _particles.size():
+		var particle := _particles[i]
+		particle.life += delta
+		if particle.life > particle.lifespam:
+			_particles.remove_at(i)
+			particle.queue_free()
+			continue
+		var t1 := particle.life / particle.lifespam
+		particle.position = particle.speed * particle.speed_shift_curve.sample_baked(t1)
+		particle.position.y += particle.gravity * particle.gravity_shift_curve.sample_baked(t1)
+		particle.rotation = particle.initial_rot_angle + particle.rot_speed * particle.rot_shift_curve.sample_baked(t1)
+		particle.scale = particle.initial_scale * particle.scale_curve.sample_baked(t1)
+		particle.self_modulate = particle.color * particle.color_gradient.sample(t1)
+		i += 1
+	if _live:
+		var target_quantity := _sample_curve_extended(_emission_curve, _emitted_time)
+		while _emitted_quantity < target_quantity - 1:
+			var particle = Particle.new()
+			particle.lifespam = randf_range(emitter_attr.particle_life_min, emitter_attr.particle_life_max)
+			var texture = texture_res.get_image(emitter_attr.image_file)
+			var texture_scale := Vector2.ONE
+			if texture != null:
+				particle.texture = texture
+				texture_scale = Vector2(emitter_attr.image_width, emitter_attr.image_height) / particle.texture.get_size()
+				particle.material = _particle_material
+			match emitter_attr.settings_type:
+				0:
+					particle.offset.x = randf_range(_last_position.x - position.x, 0.0) + randf_range(-2.0, 2.0)
+					particle.offset.y = randf_range(_last_position.y - position.y, 0.0) + randf_range(-2.0, 2.0)
+				2:
+					particle.offset.x = randf_range(_last_position.x - position.x, 0.0) + randf_range(-0.5, 0.5) * emitter_attr.settings_param_1
+					particle.offset.y = randf_range(_last_position.y - position.y, 0.0) + randf_range(-0.5, 0.5) * emitter_attr.settings_param_2
+			var speed_angle := _fire_at_angle + randf_range(emitter_attr.angle_min, emitter_attr.angle_max)
+			particle.speed = Vector2.from_angle(speed_angle) * randf_range(emitter_attr.speed_min, emitter_attr.speed_max)
+			particle.speed_shift_curve = _speed_shift_curve
+			particle.gravity = randf_range(emitter_attr.gravity_min, emitter_attr.gravity_max)
+			particle.gravity_shift_curve = _gravity_shift_curve
+			particle.initial_scale = texture_scale * randf_range(emitter_attr.scale_min, emitter_attr.scale_max)
+			particle.scale_curve = emitter_attr.life_track_scale
+			if emitter_attr.rot_angle_type == 1.0:
+				particle.initial_rot_angle = _fire_at_angle + speed_angle
+			else:
+				particle.initial_rot_angle = _fire_at_angle + randf_range(emitter_attr.rot_angle_min, emitter_attr.rot_angle_max)
+			particle.rot_speed = randf_range(emitter_attr.rot_speed_min, emitter_attr.rot_speed_max)
+			particle.rot_shift_curve = _rot_shift_curve
+			particle.color = emitter_attr.color_range.sample(randf_range(0.0, 1.0))
+			particle.color_gradient = emitter_attr.life_track_color
+			particle.centered = false
+			particle.speed_shift_curve.bake()
+			particle.gravity_shift_curve.bake()
+			particle.scale_curve.bake()
+			particle.rot_shift_curve.bake()
+			particle.life = 0.0
+			add_child(particle, false, Node.INTERNAL_MODE_BACK)
+			_particles.append(particle)
+			_emitted_quantity += 1
 
 
 func _on_emitter_attr_changed() -> void:
@@ -209,6 +193,9 @@ func _on_emitter_attr_changed() -> void:
 		_rot_shift_curve = curve
 		_emission_curve = curve
 		return
+	if _particle_material == null:
+		_particle_material = CanvasItemMaterial.new()
+	_particle_material.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD if emitter_attr.image_blend == 1 else CanvasItemMaterial.BLEND_MODE_MIX
 	var speed_curve := emitter_attr.life_track_speed
 	_speed_shift_curve = _integrate_curve(speed_curve)
 	var gravity_v_curve := _integrate_curve(emitter_attr.life_track_gravity)

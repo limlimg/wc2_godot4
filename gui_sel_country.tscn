@@ -104,6 +104,7 @@ texture_rect = SubResource("Resource_6lvsi")
 texture_rect_ipad = SubResource("Resource_v4jtg")
 rect = SubResource("Resource_l0004")
 rect_ipad = SubResource("Resource_bqlo8")
+texture_res = null
 
 [node name="GUICountryList" parent="." unique_id=1324926271 instance=ExtResource("5_555th")]
 layout_mode = 1
@@ -125,12 +126,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_res = ExtResource("12_444t6")
 image_normal = SubResource("Resource_1scgp")
 image_pressed = SubResource("Resource_pgo8h")
 image_background = SubResource("Resource_i5xih")
 rect = SubResource("Resource_svslp")
 rect_ipad = SubResource("Resource_x13eq")
+texture_res = ExtResource("12_444t6")
 
 [node name="ButtonBack" parent="." unique_id=1304652735 instance=ExtResource("6_a2ovt")]
 layout_mode = 1
@@ -139,12 +140,12 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("12_444t6")
 image_normal = SubResource("Resource_4yntp")
 image_pressed = SubResource("Resource_b4dmi")
 image_background = SubResource("Resource_oo0i1")
 rect = SubResource("Resource_svslp")
 rect_ipad = SubResource("Resource_x13eq")
+texture_res = ExtResource("12_444t6")
 
 [connection signal="country_selected" from="GUICountryList" to="." method="_on_gui_country_list_country_selected"]
 [connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]

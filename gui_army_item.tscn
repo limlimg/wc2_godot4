@@ -6,6 +6,11 @@
 
 [node name="GUIArmyItem" unique_id=2034275630 instance=ExtResource("1_kywap")]
 script = ExtResource("2_iele2")
+army = null
+
+[node name="ecText" parent="." index="3" unique_id=1650770578]
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 
 [node name="Control" type="Control" parent="." index="5" unique_id=1457018611]
 layout_mode = 1

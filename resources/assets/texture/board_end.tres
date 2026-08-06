@@ -1,28 +1,19 @@
 [gd_resource type="Texture2D" script_class="ecImageAttr" format=3 uid="uid://owchyquo87lp"]
 
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_m6euw"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="2_ukkgr"]
 [ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_y3val"]
 [ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://ec_texture_res.gd" id="4_avrmi"]
 
 [sub_resource type="Resource" id="Resource_2up2g"]
 script = ExtResource("1_m6euw")
 name = "board_end.png"
-name_ipad = "board_end_ipad.png"
+name_ipad = "board_end@2x.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Texture2D" id="Texture2D_sjena"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_ukkgr")
-asset = SubResource("Resource_2up2g")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
 
 [sub_resource type="Texture2D" id="Texture2D_kx48y"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_y3val")
-texture = SubResource("Texture2D_sjena")
 region = Rect2(2, 0, 1, 91)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
@@ -30,15 +21,18 @@ metadata/_custom_type_script = "uid://bvddy3vjuki27"
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_y3val")
-texture = SubResource("Texture2D_sjena")
 region = Rect2(1, 0, 2, 182)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
 [sub_resource type="Resource" id="Resource_ieruh"]
 script = ExtResource("4_avrmi")
+image_texture = Dictionary[StringName, String]({
+&"board_end.png": "board_end.png",
+&"board_end@2x.png": "board_end@2x.png"
+})
 images = Dictionary[StringName, ExtResource("2_y3val")]({
 &"board_end.png": SubResource("Texture2D_kx48y"),
-&"board_end_ipad.png": SubResource("Texture2D_qqhtr")
+&"board_end@2x.png": SubResource("Texture2D_qqhtr")
 })
 metadata/_custom_type_script = "uid://chtcq7m8aw4se"
 

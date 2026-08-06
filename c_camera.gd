@@ -20,6 +20,8 @@ var camera_zoom: Vector2:
 		$Camera2D.zoom = value
 
 
+var _move_timer: int
+var is_moving: bool
 var _target_pos: Vector2
 var _target_zoom := 1.0
 var _move_tween: Tween
@@ -91,26 +93,33 @@ func set_auto_fix_pos(value: bool) -> void:
 	_target_pos.x = clampf(_target_pos.x, scene_rect.position.x, scene_rect.end.x)
 	_target_pos.y = clampf(_target_pos.y, scene_rect.position.y, scene_rect.end.y)
 	if value:
-		if _move_tween != null:
-			_move_tween.kill()
-		_move_tween = create_tween()
-		var pos = $Camera2D.position
-		var target := _clamp_pos(pos.x, pos.y, true)
-		_move_tween.tween_property($Camera2D, ^"position", target, 1.0 / 0.1 / 60.0)
+		if Rect2(-0.1, -0.1, 0.2, 0.2).has_point(_target_pos - $Camera2D.position):
+			_move_timer = 10
+			is_moving = true
 	else:
-		if _move_tween != null:
-			_move_tween.kill()
-			_move_tween = null
+		is_moving = false
 
 
 func move_to(x: float, y: float, exclude_box: bool) -> void:
 	_target_pos = Vector2(x, y)
+	var speed = _MOVE_SPEED[g_GameSettings.speed - 1]
+	_move_timer = ceili(1.0 / speed)
+	is_moving = true
 	if _move_tween != null:
 		_move_tween.kill()
 	_move_tween = create_tween()
-	var speed = _MOVE_SPEED[g_GameSettings.speed - 1]
 	var target = _clamp_pos(x, y, exclude_box)
 	_move_tween.tween_property($Camera2D, ^"position", target, 1.0 / speed / 60.0)
+
+
+func update(_delta: float) -> void:
+	if not is_moving:
+		return
+	if _move_timer > 1:
+		$Camera2D.position = $Camera2D.position.lerp(_clamp_pos(_target_pos.x, _target_pos.y, false), 1.0 / _move_timer)
+	else:
+		$Camera2D.position = _clamp_pos(_target_pos.x, _target_pos.y, false)
+		is_moving = false
 
 
 func is_rect_in_camera(rect: Rect2) -> bool:
@@ -123,10 +132,6 @@ func is_rect_in_visible_region(rect: Rect2) -> bool:
 	visible_region.position = $Camera2D.position - view_size / 2
 	visible_region.size = view_size
 	return visible_region.intersects(rect)
-
-
-func is_moving() -> bool:
-	return _move_tween != null and _move_tween.is_running()
 
 
 func _on_resized() -> void:

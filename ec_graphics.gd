@@ -16,6 +16,8 @@ extends Object
 ## implemented because it is unused in the original code and complicated to
 ## implement using Godot's API (require multiple canvas items).
 
+const _BATCH_LIMIT = 96
+
 static var _instance := new()
 
 #var _width_multiplier: float
@@ -73,10 +75,10 @@ func init(content_scale_width: int, content_scale_height: int, _orientation: int
 	_material_add.blend_mode = CanvasItemMaterial.BLEND_MODE_ADD
 	_material_mix.blend_mode = CanvasItemMaterial.BLEND_MODE_MIX
 	_material_mul.blend_mode = CanvasItemMaterial.BLEND_MODE_MUL
-	_indices.resize(4000)
-	_points.resize(4000)
-	_colors.resize(4000)
-	_uvs.resize(4000)
+	_indices.resize(_BATCH_LIMIT)
+	_points.resize(_BATCH_LIMIT)
+	_colors.resize(_BATCH_LIMIT)
+	_uvs.resize(_BATCH_LIMIT)
 	var window := (Engine.get_main_loop() as SceneTree).root
 	await window.ready
 	var window_content_x = content_scale_width * AppDelegate.g_content_scale_factor
@@ -158,7 +160,7 @@ func set_view_point(x: float, y: float, scale: float):
 	RenderingServer.canvas_item_add_set_transform(_rendering_canvas_item, transform)
 
 
-func bind_texture(texture: Texture2D):
+func bind_texture(texture):
 	if texture is ecTexture:
 		texture = texture.texture
 	if texture != _bound_texture:
@@ -181,7 +183,7 @@ func set_blend_mode(value: int) -> void:
 
 
 func render_line(line: ecLine):
-	if _render_shape != 2 or _count > 3998:
+	if _render_shape != 2 or _count > _BATCH_LIMIT - 2:
 		_flush()
 		_render_shape = 2
 	for i in 2:
@@ -191,7 +193,7 @@ func render_line(line: ecLine):
 
 
 func render_triple(triple: ecTriple):
-	if _render_shape != 3 or _count > 3997:
+	if _render_shape != 3 or _count > _BATCH_LIMIT - 3:
 		_flush()
 		_render_shape = 3
 	for i in 3:
@@ -203,7 +205,7 @@ func render_triple(triple: ecTriple):
 
 
 func render_quad(quad: ecQuad):
-	if _render_shape != 3 or _count > 3994:
+	if _render_shape != 3 or _count > _BATCH_LIMIT - 6:
 		_flush()
 		_render_shape = 3
 	for i in [1, 0, 2, 0, 3, 2]:

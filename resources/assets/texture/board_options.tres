@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_0dtne"]
 [ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="2_a8vsn"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="3_idvn3"]
 [ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://ec_texture_res.gd" id="4_q8fcr"]
 
 [sub_resource type="Resource" id="Resource_qxs2d"]
@@ -11,18 +10,10 @@ name = "board_options.webp"
 name_ipad = "board_options@2x.webp"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="Texture2D" id="Texture2D_sk5df"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("3_idvn3")
-asset = SubResource("Resource_qxs2d")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
-
 [sub_resource type="Texture2D" id="Texture2D_uw16a"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_a8vsn")
-texture = SubResource("Texture2D_sk5df")
 region = Rect2(0, 0, 512, 279)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
@@ -30,12 +21,15 @@ metadata/_custom_type_script = "uid://bvddy3vjuki27"
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("2_a8vsn")
-texture = SubResource("Texture2D_sk5df")
 region = Rect2(0, 0, 1024, 558)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
 [sub_resource type="Resource" id="Resource_jhmpw"]
 script = ExtResource("4_q8fcr")
+image_texture = Dictionary[StringName, String]({
+&"board_options.webp": "board_options.webp",
+&"board_options@2x.webp": "board_options@2x.webp"
+})
 images = Dictionary[StringName, ExtResource("2_a8vsn")]({
 &"board_options.webp": SubResource("Texture2D_uw16a"),
 &"board_options@2x.webp": SubResource("Texture2D_qhid0")

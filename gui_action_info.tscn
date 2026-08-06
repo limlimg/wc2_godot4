@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bnrmqpxbn6rtm"]
 
-[ext_resource type="Script" uid="uid://co872n5xu7il2" path="res://app/src/main/cpp/gui_action_info.gd" id="1_d0jld"]
+[ext_resource type="Script" uid="uid://co872n5xu7il2" path="res://gui_action_info.gd" id="1_d0jld"]
 
 [node name="GUIActionInfo" type="Control" unique_id=2027985913]
 layout_mode = 3

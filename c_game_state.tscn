@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="4_r3slg"]
 [ext_resource type="Resource" uid="uid://dfe0w1ve8iqjk" path="res://resources/assets/game_gui_res/texture_res.tres" id="6_iyelv"]
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="6_j4ryw"]
+[ext_resource type="PackedScene" uid="uid://cvq6i6u27y6x7" path="res://i_event_receiver.tscn" id="8_j4ryw"]
 
 [sub_resource type="Resource" id="Resource_6de0u"]
 script = ExtResource("6_j4ryw")
@@ -240,12 +241,12 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("6_iyelv")
 image_normal = SubResource("Resource_v0skf")
 image_pressed = SubResource("Resource_rlpu7")
 image_background = SubResource("Resource_40ofo")
 rect = SubResource("Resource_r3slg")
 rect_ipad = SubResource("Resource_r11dq")
+texture_res = ExtResource("6_iyelv")
 
 [node name="ButtonPause" parent="." unique_id=1187276192 instance_placeholder="res://gui_button.tscn"]
 layout_mode = 1
@@ -254,12 +255,12 @@ anchor_left = 1.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-texture_res = ExtResource("6_iyelv")
 image_normal = SubResource("Resource_bymt8")
 image_pressed = SubResource("Resource_jgvbs")
 image_background = SubResource("Resource_gejxm")
 rect = SubResource("Resource_r3slg")
 rect_ipad = SubResource("Resource_r11dq")
+texture_res = ExtResource("6_iyelv")
 
 [node name="ButtonCard" parent="." unique_id=899432390 instance_placeholder="res://gui_button.tscn"]
 layout_mode = 1
@@ -268,13 +269,13 @@ anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 0
 grow_vertical = 1
-texture_res = ExtResource("6_iyelv")
 image_normal = SubResource("Resource_3m502")
 image_pressed = SubResource("Resource_j4ryw")
 image_background = SubResource("Resource_40ofo")
 play_sound_when_pressed = false
 rect = SubResource("Resource_r3slg")
 rect_ipad = SubResource("Resource_r11dq")
+texture_res = ExtResource("6_iyelv")
 
 [node name="ButtonRound" parent="." unique_id=2034275630 instance_placeholder="res://gui_button.tscn"]
 layout_mode = 1
@@ -283,12 +284,12 @@ anchor_left = 1.0
 anchor_top = 1.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("6_iyelv")
 image_normal = SubResource("Resource_3dd4c")
 image_pressed = SubResource("Resource_ifia7")
 image_background = SubResource("Resource_i5xih")
 rect = SubResource("Resource_r3slg")
 rect_ipad = SubResource("Resource_r11dq")
+texture_res = ExtResource("6_iyelv")
 
 [node name="GUIAttackBox" parent="." unique_id=1463077957 instance_placeholder="res://gui_attack_box.tscn"]
 visible = false
@@ -362,3 +363,7 @@ layout_mode = 1
 
 [node name="GUIEnd" parent="." unique_id=230513713 instance_placeholder="res://gui_end.tscn"]
 layout_mode = 1
+
+[node name="IEventReceiver" parent="." unique_id=817525215 instance=ExtResource("8_j4ryw")]
+
+[connection signal="faded_in" from="IEventReceiver" to="." method="_on_i_event_receiver_faded_in"]

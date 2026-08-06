@@ -22,7 +22,7 @@ func init() -> void:
 	for i in 28:
 		var card := CObjectDef.instance().get_card_def(i)
 		if card.type == tab:
-			var node = $CTouchInertia/ScrollContainer/BoxContainer/GUICard.create_instance()
+			var node = $ScrollContainer/BoxContainer/GUICard.create_instance()
 			node.def = card
 			_items.append(node)
 

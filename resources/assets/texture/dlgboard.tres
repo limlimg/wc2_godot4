@@ -2,24 +2,16 @@
 
 [ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="1_no8wo"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="1_yipqr"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="2_le03d"]
 
-[sub_resource type="Resource" id="Resource_12qp8"]
+[sub_resource type="Resource" id="Resource_cogsl"]
 script = ExtResource("1_yipqr")
 name = "dlgboard.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Texture2D" id="Texture2D_x5f2k"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("2_le03d")
-asset = SubResource("Resource_12qp8")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
 
 [resource]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("1_no8wo")
-texture = SubResource("Texture2D_x5f2k")
+image = SubResource("Resource_cogsl")
 region = Rect2(0, 0, 402, 87)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"

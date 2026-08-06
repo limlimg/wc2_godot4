@@ -4,11 +4,7 @@ extends GUIButton
 @export
 var army: CArmy
 
-func _process(delta: float) -> void:
-	_on_update(delta)
-
-
-func _on_update(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	if army == null or army.def == null:
 		return
 	var node = $Control/UIArmy

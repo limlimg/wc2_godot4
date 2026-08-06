@@ -3,23 +3,6 @@ class_name GUIImage
 extends GUIElement
 
 @export
-var texture_res: ecTextureRes:
-	set(value):
-		if value != texture_res:
-			if texture_res != null:
-				texture_res.changed.disconnect(init)
-			elif not Engine.is_editor_hint():
-				if s_texture_res.changed.is_connected(init):
-					s_texture_res.changed.disconnect(init)
-			texture_res = value
-			init()
-			if value != null:
-				value.changed.connect(init)
-			elif not Engine.is_editor_hint():
-				s_texture_res.changed.connect(init)
-
-
-@export
 var asset: AssetRegistry:
 	set(value):
 		if value != asset:
@@ -152,16 +135,17 @@ func _set_alpha(value: float) -> void:
 
 ## The original method has more parameter for specifying texture format.
 func set_image(texture_name: String, attr: ecTextureRect = null) -> bool:
-	var new_texture := ecGraphics.instance().load_texture(texture_name)
-	if new_texture == null:
+	var ec_texture := ecGraphics.instance().load_texture(texture_name)
+	if ec_texture == null:
 		texture = null
 		return false
+	texture = ecImageAttr.new()
+	texture.texture = ec_texture
 	if attr != null:
-		var new_image := ecImageAttr.new()
-		new_image.texture = texture
-		new_image.region = Rect2(attr.x, attr.y, attr.w, attr.h)
-		new_image.ref = Vector2(attr.refx, attr.refy)
-		texture = new_image
+		texture.region = Rect2(attr.x, attr.y, attr.w, attr.h)
+		texture.ref = Vector2(attr.refx, attr.refy)
 	else:
-		texture = new_texture
+		ec_texture.complete_loading()
+		texture.region = Rect2(Vector2.ZERO, ec_texture.size_override)
+		texture.ref = Vector2.ZERO
 	return true

@@ -13,6 +13,9 @@ var color: Color
 var ai: bool
 var _conquested: bool
 var _action := CountryAction.new()
+var _action_time: float
+var _action_delay_time: float
+var _waiting_camera: bool
 var tech_level: int
 var research_round: int
 var _card_rounds: PackedInt32Array
@@ -24,7 +27,6 @@ var commander_round: int
 var commander_alive: bool
 var _war_medal: PackedInt32Array
 var borrowed_loan: bool
-var _tween_action: Tween
 
 func init(init_id: StringName, init_name: StringName) -> void:
 	_area_list.clear()
@@ -171,8 +173,8 @@ func action(new_action: CountryAction) -> void:
 		_finish_action()
 	elif action_type == 6:
 			g_Scene.move_camera_to_area(_action.target_area)
-			while g_Scene.is_moving():
-				await g_GameManager.get_tree().process_frame
+			_action_delay_time = 0.0
+			_waiting_camera = true
 	elif action_type == 1 or action_type == 3 or action_type == 4 or action_type == 5:
 			if action_type == 3:
 				g_Scene.get_area(_action.start_area).flashing_red = true
@@ -182,15 +184,32 @@ func action(new_action: CountryAction) -> void:
 					g_Scene.move_camera_to_area(_action.target_area)
 				else:
 					g_Scene.move_camera_between_area(_action.start_area, _action.target_area)
-				while g_Scene.is_moving():
-					await g_GameManager.get_tree().process_frame
-			_do_action()
-	if action_type != 6:
-		if _tween_action != null:
-			_tween_action.kill()
-		_tween_action = g_GameManager.create_tween()
-		_tween_action.tween_interval(0.6)
-		_tween_action.tween_callback(_finish_action)
+				_action_delay_time = 0.0
+				_waiting_camera = true
+			else:
+				_do_action()
+
+
+func update(delta: float) -> void:
+	if _waiting_camera:
+		if _action_delay_time <= 0.0:
+			if g_Scene.is_moving():
+				return
+		else:
+			_action_time += delta
+			if g_Scene.is_moving() or _action_time < _action_delay_time:
+				return
+		_waiting_camera = false
+		_do_action()
+	else:
+		_action_time += delta
+		var action_type := _action.type
+		if action_type == 1 and g_Scene.get_area(_action.target_area).army_moving_in:
+			return
+		if action_type == 1 or action_type == 3 or action_type == 4 or action_type == 5:
+			if _action_time <= 0.6:
+				return
+		_finish_action()
 
 
 func _do_action() -> void:

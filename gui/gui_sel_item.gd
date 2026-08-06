@@ -3,14 +3,6 @@ extends GUIElement
 ## Common base class for GUIBattleItem and GUICountryItem.
 
 @export
-var texture_res: ecTextureRes:
-	set(value):
-		if value != texture_res:
-			texture_res = value
-			init()
-
-
-@export
 var button_texture: Texture2D:
 	get():
 		return $Control/ButtonImage.texture

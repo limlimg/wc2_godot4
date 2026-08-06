@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://m381toakgabg"]
 
-[ext_resource type="Script" uid="uid://b8jhroqd0dbe2" path="res://app/src/main/cpp/ec_element.gd" id="1_1qe1s"]
+[ext_resource type="Script" uid="uid://b8jhroqd0dbe2" path="res://ec_element.gd" id="1_1qe1s"]
 
 [node name="ecElement" type="Node2D" unique_id=455760921]
 script = ExtResource("1_1qe1s")

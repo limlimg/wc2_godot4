@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://dywfl4yhb6cdk"]
-
-[node name="CArea" type="Node2D" unique_id=1702288544]
-self_modulate = Color(0, 0, 1, 0)
-z_index = -2
-y_sort_enabled = true
-script = ExtResource("1_0tvyd")

@@ -53,7 +53,8 @@ var _item_data: ecItemData:
 	set = _reset_item
 	
 var _nodes: Array[Node2D]
-var _tween_play: Tween
+var _cur_frame_time: float
+var _playing: bool
 
 signal completed
 
@@ -95,6 +96,8 @@ func init() -> void:
 			_nodes.append(layer)
 	loop = 0
 	cur_frame = 0
+	_playing = false
+	_cur_frame_time = 0.0
 	shape_color = Color.WHITE
 
 
@@ -118,19 +121,14 @@ func reset() -> void:
 
 
 func play() -> void:
-	if _tween_play != null:
-		_tween_play.kill()
-	_tween_play = create_tween()
-	_tween_play.tween_interval(1.0 / lib.data.frame_rate)
-	_tween_play.tween_callback(next_frame)
-	_tween_play.set_loops()
+	_playing = true
 	if _item_data is ecMotionData:
 		for i in _nodes:
 			i.play()
 
 
 func next_frame() -> bool:
-	if _tween_play == null or _item_data == null\
+	if not _playing or _item_data == null\
 		or _item_data is not ecMotionData or loop == 2:
 			return false
 	for i in _nodes:
@@ -139,17 +137,14 @@ func next_frame() -> bool:
 	if cur_frame < _item_data.duration:
 		return false
 	if loop == 1:
-		_tween_play.kill()
-		_tween_play = null
+		_playing = false
 	cur_frame = 0
 	completed.emit()
 	return true
 
 
 func stop() -> void:
-	if _tween_play != null:
-		_tween_play.kill()
-		_tween_play = null
+	_playing = false
 	if _item_data is ecMotionData:
 		for i in _nodes:
 			i.stop()
@@ -167,3 +162,17 @@ func get_play_time() -> float:
 	if _item_data is ecMotionData:
 		return _item_data.duration / lib.data.frame_rate
 	return 0.0
+
+
+func update(delta: float) -> bool:
+	if not _playing or _item_data == null\
+		or _item_data is not ecMotionData or loop == 2:
+			return false
+	_cur_frame_time += delta
+	var end := false
+	var d := 1.0 / lib.data.frame_rate
+	while _cur_frame_time >= d:
+		if next_frame():
+			end = true
+		_cur_frame_time -= d
+	return end

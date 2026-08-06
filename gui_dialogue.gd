@@ -18,3 +18,8 @@ func hide_dlg() -> void:
 func _on_button_pressed() -> void:
 	hide_dlg()
 	pressed.emit()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action(&"ui_cancel"):
+		_on_button_pressed()

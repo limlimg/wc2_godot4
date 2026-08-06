@@ -2,14 +2,15 @@ extends GUIElement
 
 ## Common component of GUISelBattle and GUISelCountry.
 
-const _RES_PATH = "res://scene_system_resource/selbattle_res/"
-
-@export
-var texture_res: ecTextureRes
+const _CACHE_PATH = "res://scene_system_resource/selbattle_res/"
 
 var _center_pos: Vector2
-var _change_order := 0
-var _move_tween: Tween
+var _state: int
+var _next_flags: Array[FlagInfo]
+var _next_arrows: Array[FlagInfo]
+var _next_age: String
+var _next_age_pos: Vector2
+var _next_center_pos: Vector2
 
 func set_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: String, age_pos: Vector2, center_pos: Vector2) -> void:
 	_release_image_list()
@@ -21,12 +22,7 @@ func set_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: String, 
 		center_pos *= 2
 	$Minimap/ImageList/Num6.position = age_pos
 	_center_pos = center_pos
-	if $Minimap/ImageList.modulate.a == 0.0:
-		_move_tween = create_tween()
-		var dest := _clamp_pos(_center_pos)
-		_move_tween.tween_property($Minimap, "position", dest, dest.distance_to($Minimap.position) / 1000.0)
-		_move_tween.tween_callback(_on_moving_finished)
-	else:
+	if _state != 1:
 		$Minimap.position = _clamp_pos(center_pos)
 
 
@@ -48,7 +44,7 @@ func _create_element_nodes(data: Array[FlagInfo], image_prefix: String, prototyp
 		var image_attr := res.get_image(image_name)
 		if image_attr == null:
 			continue
-		var image_path := _RES_PATH + image_name
+		var image_path := _CACHE_PATH + image_name
 		var image: Texture2D
 		if not ResourceLoader.has_cached(image_path):
 			image = image_attr
@@ -77,26 +73,44 @@ func _clamp_pos(center_pos: Vector2) -> Vector2:
 	return -result
 
 
-func change_image_list(flags:Array[FlagInfo], arrows:Array[FlagInfo], age: String, age_pos: Vector2, center_pos: Vector2) -> void:
-	if _move_tween != null and _move_tween.is_valid():
-		_move_tween.kill()
-	if $AnimationPlayer.current_animation != &"fade_out":
-		$AnimationPlayer.stop()
-		$AnimationPlayer.play(&"fade_out")
-	_change_order += 1
-	var waiting_change_order := _change_order
-	var anim_name: StringName = await $AnimationPlayer.animation_finished
-	if anim_name == &"fade_out" and _change_order == waiting_change_order:
-		set_image_list(flags, arrows, age, age_pos, center_pos)
-
-
-func _on_moving_finished() -> void:
-	_move_tween = null
-	$AnimationPlayer.play(&"fade_in")
+func change_image_list(flags: Array[FlagInfo], arrows: Array[FlagInfo], age: String, age_pos: Vector2, center_pos: Vector2) -> void:
+	_state = 1
+	_next_flags = flags
+	_next_arrows = arrows
+	_next_age = age
+	_next_age_pos = age_pos
+	_next_center_pos = center_pos
 
 
 func _on_resized() -> void:
-	if _move_tween != null and _move_tween.is_valid() and _move_tween.is_running():
-		_move_tween.kill()
-		_on_moving_finished()
-	$Minimap.position = _clamp_pos(_center_pos)
+	$Minimap.position = _clamp_pos(-$Minimap.position)
+
+
+func _process(delta: float) -> void:
+	match _state:
+		1:
+			var a := maxf($Minimap/ImageList.modulate.a - 2.5 * delta, 0.0)
+			$Minimap/ImageList.modulate.a = a
+			if a <= 0.0:
+				$Minimap/ImageList/Arrows.modulate.a = 0.0
+				set_image_list(_next_flags, _next_arrows, _next_age, _next_age_pos, _next_center_pos)
+				_state = 2
+		2:
+			var v := 2000.0 if ecGraphics.instance().content_scale_size_mode == 3 else 1000.0
+			var d := v * delta
+			var dest := _clamp_pos(_center_pos)
+			if dest.distance_squared_to($Minimap.position) > d * d:
+				$Minimap.position += (dest - $Minimap.position).normalized() * d
+			else:
+				$Minimap.position = dest
+				_state = 3
+		3:
+			var a := minf($Minimap/ImageList.modulate.a + 2.0 * delta, 1.0)
+			$Minimap/ImageList.modulate.a = a
+			if a >= 1.0:
+				_state = 4
+		4:
+			var a := minf($Minimap/ImageList/Arrows.modulate.a + 1.5 * delta, 1.0)
+			$Minimap/ImageList/Arrows.modulate.a = a
+			if a >= 1.0:
+				_state = 0

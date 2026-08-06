@@ -1,14 +1,6 @@
 extends GUIElement
 
 @export
-var texture_res: ecTextureRes:
-	set(value):
-		if value != texture_res:
-			texture_res = value
-			_on_render()
-
-
-@export
 var medal_soldiers: int:
 	set(value):
 		if value != medal_soldiers:
@@ -75,11 +67,7 @@ func reset_data() -> void:
 		$CenterContainer/RoundStartBoard/ButtonBank.visible = not country.borrowed_loan
 
 
-func _process(delta: float) -> void:
-	_on_update(delta)
-
-
-func _on_update(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	var country = g_GameManager.get_cur_country()
 	if country == null:
 		return

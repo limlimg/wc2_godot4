@@ -1,5 +1,5 @@
 @tool
-extends "res://gui_medal_button.gd"
+extends "res://gui/gui_medal_button.gd"
 
 const _WAR_MEDAL_NAME = [
 	"soldiers",

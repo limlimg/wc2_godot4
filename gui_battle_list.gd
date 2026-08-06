@@ -32,7 +32,7 @@ func init() -> void:
 	if campaign != CAMPIAGN_MULTIPLAY:
 		played_battles = g_Commander.get_num_played_battles(campaign)
 	for i in num_battles:
-		var item = $CTouchInertia/ScrollContainer/BoxContainer/GUIBattleItem.create_instance()
+		var item = $ScrollContainer/BoxContainer/GUIBattleItem.create_instance()
 		item.campaign = campaign
 		item.battle = i
 		item.star = g_Commander.get_num_battle_stars(campaign, i)

@@ -1,9 +1,6 @@
 extends GUIElement
 
 @export
-var texture_res: ecTextureRes
-
-@export
 var show_board := true:
 	get():
 		return $TechnologyBoard.visible
@@ -14,10 +11,6 @@ var show_board := true:
 var _tech: int
 
 func _process(delta: float) -> void:
-	_on_update(delta)
-
-
-func _on_update(_delta: float) -> void:
 	var country = g_GameManager.get_cur_country()
 	if country != null and _tech != country.tech_level:
 		_tech = country.tech_level

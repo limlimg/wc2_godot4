@@ -1,5 +1,7 @@
 extends GUIElement
 
+signal back_pressed
+
 func _on_gui_button_industry_10_pressed() -> void:
 	if g_Commander.medal < 1:
 		return
@@ -46,3 +48,12 @@ func _on_gui_button_money_100_pressed() -> void:
 	country.industry += 60
 	country.borrowed_loan = true
 	CSoundBox.get_instance().play_se("buy.wav")
+
+
+func _on_button_back_pressed() -> void:
+	back_pressed.emit()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event.is_action(&"ui_cancel"):
+		back_pressed.emit()

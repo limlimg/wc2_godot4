@@ -58,12 +58,12 @@ offset_right = 5.0
 offset_bottom = 95.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("8_aujea")
 image_normal = SubResource("Resource_mmhwl")
 image_pressed = SubResource("Resource_mmhwl")
 text_offset = Vector2(20, 19)
 rect = SubResource("Resource_8nbdp")
 rect_ipad = SubResource("Resource_lo0yr")
+texture_res = ExtResource("8_aujea")
 
 [node name="ConfirmExit" parent="." unique_id=1850582139 instance=ExtResource("5_kjn2k")]
 layout_mode = 1
@@ -76,14 +76,13 @@ offset_right = 175.0
 offset_bottom = 95.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("8_aujea")
 image_normal = SubResource("Resource_fg6kk")
 image_pressed = SubResource("Resource_fg6kk")
 text_offset = Vector2(20, 19)
 rect = SubResource("Resource_uvya5")
 rect_ipad = SubResource("Resource_8tsxh")
+texture_res = ExtResource("8_aujea")
 
-[connection signal="back_pressed" from="." to="." method="_on_gui_button_cancel_pressed"]
 [connection signal="back_pressed" from="Fade" to="." method="_on_gui_button_cancel_pressed"]
 [connection signal="pressed" from="CancleExit" to="." method="_on_gui_button_cancel_pressed"]
 [connection signal="pressed" from="ConfirmExit" to="." method="_on_gui_button_confirm_pressed"]

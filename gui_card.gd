@@ -2,14 +2,6 @@ class_name GUICard
 extends GUIElement
 
 @export
-var texture_res: ecTextureRes:
-	set(value):
-		if value != texture_res:
-			texture_res = value
-			init()
-
-
-@export
 var def: CardDef:
 	set(value):
 		if value != def:

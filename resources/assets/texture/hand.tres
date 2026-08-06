@@ -2,25 +2,17 @@
 
 [ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="1_oxyhe"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="2_lgykv"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="3_yq1v2"]
 
-[sub_resource type="Resource" id="Resource_45k8b"]
+[sub_resource type="Resource" id="Resource_yo7li"]
 script = ExtResource("2_lgykv")
 name = "hand.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Texture2D" id="Texture2D_3phbo"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("3_yq1v2")
-asset = SubResource("Resource_45k8b")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
 
 [resource]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("1_oxyhe")
-texture = SubResource("Texture2D_3phbo")
+image = SubResource("Resource_yo7li")
 region = Rect2(1, 1, 44, 80)
 origin = Vector2(27, 6)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cp0rqwt3uf1t7" path="res://c_menu_state.gd" id="1_ehm5w"]
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="3_dtnok"]
+[ext_resource type="PackedScene" uid="uid://cvq6i6u27y6x7" path="res://i_event_receiver.tscn" id="4_5eoo2"]
 [ext_resource type="Resource" uid="uid://bvwn3gv4j4t85" path="res://resources/assets/menu_gui_selbattle_res/texture_res.tres" id="5_mwydp"]
 
 [sub_resource type="Resource" id="Resource_5eoo2"]
@@ -80,3 +81,8 @@ rect_ipad = SubResource("Resource_ppcga")
 
 [node name="GUILoading" parent="." unique_id=1979438320 instance_placeholder="res://gui_loading.tscn"]
 layout_mode = 1
+
+[node name="IEventReceiver" parent="." unique_id=817525215 instance=ExtResource("4_5eoo2")]
+
+[connection signal="faded_in" from="IEventReceiver" to="." method="_on_i_event_receiver_faded_in"]
+[connection signal="faded_out" from="IEventReceiver" to="." method="_on_i_event_receiver_faded_out"]
