@@ -180,7 +180,7 @@ func _application_will_enter_foreground(_application: MainLoop) -> void:
 	pass
 
 
-static func get_document_path(file_name: String) -> String:
+func get_document_path(file_name: String) -> String:
 	return "user://" + file_name
 
 

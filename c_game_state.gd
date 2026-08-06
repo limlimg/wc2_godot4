@@ -145,5 +145,17 @@ func start_battle(start_area: int, target_area: int, animated: bool) -> void:
 	pass
 
 
+func player_country_begin() -> void:
+	pass
+
+
+func hide_ai_progress() -> void:
+	pass
+
+
+func show_defeated(country: CCountry) -> void:
+	pass
+
+
 func _process(delta: float) -> void:
 	g_Scene.update(delta)

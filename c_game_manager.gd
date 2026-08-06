@@ -25,6 +25,8 @@ var victory: int
 var _great_victory: int
 var campaign_reward_medal: int
 
+# TODO: implement editor methods?
+
 func _init() -> void:
 	_player_country_name.resize(4)
 
@@ -81,7 +83,7 @@ func load_game(save_file_name: String) -> void:
 
 
 func get_save_header(save_file_name: String) -> SaveHeader:
-	var path = EC2dAppDelegate.get_document_path(save_file_name)
+	var path = AppDelegate.get_document_path(save_file_name)
 	var file := ecFile.new()
 	if not file.open(path, FileAccess.READ):
 		return null
@@ -101,7 +103,48 @@ func retry_game() -> void:
 func save_game(save_file: String) -> void:
 	if game_mode == 4 or game_mode == 5:
 		return
-	
+	var save := SaveHeader.new()
+	save.game_mode = game_mode
+	save.map = _map
+	save.areas_enable = _areas_enable
+	# TODO: save multiplayer country id (?)
+	save.battle_file_name = _battle_file_name
+	save.area_count = 0
+	var date_dict := Time.get_datetime_dict_from_system()
+	save.save_time_hour = date_dict["hour"]
+	save.save_time_min = date_dict["minute"]
+	save.save_time_year = date_dict["year"]
+	save.current_country = _current_country
+	save.country_count = _all_country.size()
+	save.camera_scale = g_Scene.camera.camera_zoom.x
+	save.save_time_month = date_dict["month"]
+	save.current_dialogue = _current_dialogue
+	save.camera_x = g_Scene.camera.camera_position.x
+	save.camera_y = g_Scene.camera.camera_position.y
+	save.random_reward_medal = random_reward_medal
+	save.current_round = current_round
+	save.save_time_day = date_dict["day"]
+	save.battle = battle
+	save.campaign = campaign
+	save.victory = victory
+	save.great_victory = _great_victory
+	var mem_country: PackedByteArray
+	var mem_area: PackedByteArray
+	var save_country := SaveCountryInfo.new()
+	var save_area := SaveAreaInfo.new()
+	for i in _all_country:
+		i.save_country(save_country)
+		mem_country.append_array(save_country._mem)
+		save.area_count += i.area_list.size()
+		for j in i.area_list:
+			g_Scene.get_area(j).save_area(save_area)
+			mem_area.append_array(save_area._mem)
+	var file := ecFile.new()
+	if file.open(AppDelegate.get_document_path(save_file), FileAccess.WRITE):
+		file.write(save._mem, 188)
+		file.write(mem_country, 276 * save.country_count)
+		file.write(mem_area, 200 * save.area_count)
+		file.close()
 
 
 func is_last_battle() -> bool:
@@ -143,12 +186,12 @@ func get_cur_dialogue_string() -> String:
 
 
 func get_cur_dialogue() -> DialogueDef:
-	if _current_dialogue >= _get_num_dialogue():
+	if _current_dialogue >= _get_num_dialogues():
 		return null
 	return _get_dialogue_by_index(_current_dialogue)
 
 
-func _get_num_dialogue() -> int:
+func _get_num_dialogues() -> int:
 	return _dialogue.size()
 
 
@@ -161,9 +204,6 @@ func next_dialogue() -> void:
 
 
 # TODO: _save_battle
-
-
-# TODO: check_and_set_result
 
 
 func battle_victory() -> void:
@@ -205,10 +245,69 @@ func get_num_victory_stars() -> int:
 	return star
 
 
-# TODO: _get_new_defeated_country
+func game_update(delta: float) -> void:
+	if not _local_game:
+		return
+	var country := get_cur_country()
+	if country == null:
+		return
+	if _game_ended:
+		return
+	country.update(delta)
+	if not country.is_action_finished():
+		return
+	var game := CStateManager.instance().get_state_ptr(EState.GAME)
+	var new_defeated_country := _get_new_defeated_country()
+	if new_defeated_country != null:
+		game.show_defeated(new_defeated_country)
+	elif game_mode == 4:
+		# TODO: multiplayer
+		pass
+	elif country.ai:
+		game.update_ai_progress()
+		_next()
 
 
-# TODO: is_manipulate
+func _next() -> void:
+	# TODO: ai and multiplayer
+	var country := get_cur_country()
+	if country != null:
+		if country.ai:
+			end_turn()
+
+
+func end_turn() -> void:
+	_turn_end()
+	var num_countries := _get_num_countries()
+	if num_countries > 0:
+		while true:
+			_current_country += 1
+			if _current_country >= num_countries:
+				_current_country = 0
+				current_round += 1
+				if game_mode == 4:
+					# TODO: don't even know what's going on here
+					pass
+				elif current_round >= victory:
+					_game_ended = true
+					_game_won = false
+					var game := CStateManager.instance().get_state_ptr(EState.GAME)
+					game.show_dialogue("commander failure 2", &"Guider", false)
+					return
+			if not get_cur_country().defeated:
+				break
+	var country := get_cur_country()
+	if country.is_local_player():
+		var game := CStateManager.instance().get_state_ptr(EState.GAME)
+		game.hide_ai_progress()
+	turn_begin()
+
+
+func _turn_end() -> void:
+	var country := get_cur_country()
+	if country == null:
+		return
+	country.turn_end()
 
 
 func turn_begin() -> void:
@@ -220,20 +319,17 @@ func turn_begin() -> void:
 	game.update_action_info()
 	if country.ai:
 		return
-	# TODO
-
-
-
-# TODO: _turn_end
-
-
-# TODO: end_turn
-
-
-# TODO: _next
-
-
-# TODO: _game_update
+	if game_mode == 4:
+		# TODO: multiplayer
+		pass
+	elif game_mode != 5:
+		game.player_country_begin()
+	var area := country.get_highest_value_area()
+	if area >= 0:
+		var action := CountryAction.new()
+		action.type = 6
+		action.target_area = area
+		country.action(action)
 
 
 func init_battle() -> void:
@@ -384,7 +480,7 @@ func get_cur_country() -> CCountry:
 func _real_load_game(file_name: String) -> void:
 	_clear_battle()
 	g_Scene.init(_areas_enable, _map)
-	var path = EC2dAppDelegate.get_document_path(file_name)
+	var path = AppDelegate.get_document_path(file_name)
 	var file := ecFile.new()
 	if file.open(path, FileAccess.READ):
 		var save := _get_save_header_from_file(file)
@@ -424,4 +520,67 @@ func _real_load_game(file_name: String) -> void:
 
 
 func get_local_player_country() -> CCountry:
+	for i in _all_country:
+		if i.is_local_player():
+			return i
 	return null
+
+
+func check_and_set_result() -> bool:
+	if current_round >= victory or _all_country.is_empty():
+		_game_ended = true
+		_game_won = false
+		return true
+	var ai_survive := false
+	var player_survive := false
+	var alliance_survice: Dictionary[int, bool]
+	var local_alliance: int
+	for i in _all_country:
+		if not i.is_conquested():
+			match i.alliance:
+				1:
+					alliance_survice[1] = true
+				2:
+					alliance_survice[2] = true
+				3:
+					alliance_survice[3] = true
+			if not i.ai:
+				player_survive = true
+			else:
+				ai_survive = true
+		if game_mode == 4:
+			if i.is_local_player():
+				local_alliance = i.alliance
+	if game_mode != 4:
+		if not player_survive:
+			_game_ended = true
+			_game_won = false
+			return true
+		if not ai_survive:
+			_game_ended = true
+			_game_won = true
+			return true
+	if alliance_survice.size() == 1:
+		_game_ended = true
+		_game_won = game_mode != 4 or alliance_survice.get(local_alliance, false)
+		return true
+	return false
+
+
+func _get_new_defeated_country() -> CCountry:
+	for i in _belligerent_country:
+		if not i.conquested and i.area_list.is_empty():
+			i.conquested = true
+			return i
+	return null
+
+
+func is_manipulate() -> bool:
+	var country = get_cur_country()
+	if country != null\
+		and (country.ai
+			or not country.is_action_finished()
+			or (game_mode == 4)): # TODO: multiplayer
+		return false
+	else:
+		return _local_game

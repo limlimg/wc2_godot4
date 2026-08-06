@@ -11,7 +11,7 @@ var flashing_red_area_id_2: int
 var _area_data: AreaDataList
 var _area_mark := CAreaMark.new()
 var _background: Control
-var _camera: Control
+var camera: Control
 var _bomber: Node2D
 var _medals: Array[Node2D]
 var _v_arrow_y := 0.0
@@ -38,8 +38,8 @@ func init(areas_enable: String, map: int) -> void:
 	_background.init(map, Rect2(Vector2.ZERO, _area_mark.get_map_size()), _scene_rect)
 	_create_render_area_list()
 	_init_area_image(map)
-	_camera = real_scene.get_node(^"CCamera")
-	_camera.init(_scene_rect)
+	camera = real_scene.get_node(^"CCamera")
+	camera.init(_scene_rect)
 	_bomber = real_scene.get_node(^"CCamera/CBomber").create_instance()
 	_flash_time = 0.0
 	real_scene.visibility_changed.connect(_render, CONNECT_ONE_SHOT)
@@ -217,7 +217,7 @@ func _render() -> void:
 
 
 func update(delta: float) -> void:
-	_camera.update(delta)
+	camera.update(delta)
 	if _bomber != null:
 		_bomber.update(delta)
 	var i := 0
@@ -285,19 +285,19 @@ func screen_area_id(x: float, y: float) -> int:
 
 
 func screen_to_scene(x: float, y: float) -> Vector2:
-	return _camera.camera_position + (Vector2(x, y) - _camera.size / 2) / _camera.camera_zoom
+	return camera.camera_position + (Vector2(x, y) - camera.size / 2) / camera.camera_zoom
 
 
 func move(x: float, y: float) -> void:
-	_camera.move(x, y, false)
+	camera.move(x, y, false)
 
 
 func move_to(x: float, y: float) -> void:
-	_camera.move_to(x, y, false)
+	camera.move_to(x, y, false)
 
 
 func is_moving() -> bool:
-	return _camera.is_moving
+	return camera.is_moving
 
 
 func get_num_areas() -> int:
@@ -315,21 +315,21 @@ func get_area(id: int) -> CArea:
 func set_camera_to_area(id: int) -> void:
 	var area := get_area(id)
 	if area != null:
-		_camera.set_pos(area.army_pos.x, area.army_pos.y, true)
+		camera.set_pos(area.army_pos.x, area.army_pos.y, true)
 
 
 func move_camera_to_area(id: int) -> void:
 	var area := get_area(id)
 	if area != null:
 		var area_rect := _area_data.data[area.id].area_rect
-		if not _camera.is_rect_in_visible_region(area_rect):
-			_camera.move_to(area.army_pos.x, area.army_pos.y, true)
+		if not camera.is_rect_in_visible_region(area_rect):
+			camera.move_to(area.army_pos.x, area.army_pos.y, true)
 
 
 func move_camera_center_to_area(id: int) -> void:
 	var area := get_area(id)
 	if area != null:
-		_camera.move_to(area.army_pos.x, area.army_pos.y, true)
+		camera.move_to(area.army_pos.x, area.army_pos.y, true)
 
 
 func move_camera_between_area(id1: int, id2: int) -> void:
@@ -342,7 +342,7 @@ func move_camera_between_area(id1: int, id2: int) -> void:
 	if _is_rect_in_scene(_area_data.data[id1].area_rect) and _is_rect_in_scene(_area_data.data[id2].area_rect):
 		return
 	var target := (area1.army_pos + area2.army_pos) / 2
-	_camera.move_to(target.x, target.y)
+	camera.move_to(target.x, target.y)
 
 
 func set_area_country(id: int, country: CCountry) -> void:

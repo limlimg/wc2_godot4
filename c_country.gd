@@ -2,7 +2,7 @@ class_name CCountry
 
 var alliance: int
 var defeated: int
-var _area_list: PackedInt32Array
+var area_list: PackedInt32Array
 var _capital_list: PackedInt32Array
 var money: int
 var industry: int
@@ -11,7 +11,7 @@ var id: StringName
 var name: StringName
 var color: Color
 var ai: bool
-var _conquested: bool
+var conquested: bool
 var _action := CountryAction.new()
 var _action_time: float
 var _action_delay_time: float
@@ -29,7 +29,7 @@ var _war_medal: PackedInt32Array
 var borrowed_loan: bool
 
 func init(init_id: StringName, init_name: StringName) -> void:
-	_area_list.clear()
+	area_list.clear()
 	_capital_list.clear()
 	id = init_id
 	name = init_name
@@ -40,7 +40,7 @@ func init(init_id: StringName, init_name: StringName) -> void:
 	industry = 0
 	research_round = 0
 	defeated = 0
-	_conquested = false
+	conquested = false
 	borrowed_loan = false
 	tech_level = 1
 	ai = true
@@ -56,7 +56,7 @@ func init(init_id: StringName, init_name: StringName) -> void:
 
 
 func remove_area(area_id: int) -> void:
-	_area_list.erase(area_id)
+	area_list.erase(area_id)
 	if g_Scene.get_area(area_id).area_tax.type == 1:
 		_capital_list.erase(area_id)
 
@@ -64,19 +64,19 @@ func remove_area(area_id: int) -> void:
 func add_area(area_id: int) -> void:
 	if _find_area(area_id):
 		return
-	_area_list.append(area_id)
+	area_list.append(area_id)
 	if g_Scene.get_area(area_id).type == 1:
 		_capital_list.append(area_id)
 
 
 func _find_area(area_id: int) -> bool:
-	return _area_list.has(area_id)
+	return area_list.has(area_id)
 
 
 func get_highest_value_area() -> int:
 	var max_id := -1
 	var max_value := 0
-	for i in _area_list:
+	for i in area_list:
 		var area = g_Scene.get_area(i)
 		if area.has_army_card(3):
 			return i
@@ -94,7 +94,7 @@ func _get_first_capital() -> int:
 
 
 func is_conquested() -> bool:
-	for i in _area_list:
+	for i in area_list:
 		var area = g_Scene.get_area(i)
 		if not area.area_data.sea:
 			return false
@@ -121,7 +121,7 @@ func _find_adjacent_land_area_id(area_id: int, has_army: bool) -> int:
 
 func get_num_airport() -> int:
 	var s := 0
-	for i in _area_list:
+	for i in area_list:
 		if g_Scene.get_area(i).construction == 3:
 			s += 1
 	return s
@@ -130,7 +130,7 @@ func get_num_airport() -> int:
 func get_min_dst_to_airport(from_id: int) -> float:
 	var d := INF
 	var from_area := g_Scene.get_area(from_id)
-	for i in _area_list:
+	for i in area_list:
 		var to_area := g_Scene.get_area(i)
 		if to_area.construction == 3:
 			d = min(d, from_area.army_pos.distance_squared_to(to_area.army_pos))
@@ -154,7 +154,7 @@ func _next_card_target() -> void:
 
 
 func turn_end() -> void:
-	for i in _area_list:
+	for i in area_list:
 		g_Scene.get_area(i).turn_end()
 	if not commander_alive and commander_round > 0:
 		commander_round -= 1
@@ -304,7 +304,7 @@ func save_country(info: SaveCountryInfo) -> void:
 	info.war_medal = _war_medal
 	info.commander_round = commander_round
 	info.borrowed_loan = borrowed_loan
-	info.conquested = _conquested
+	info.conquested = conquested
 
 
 func add_destroy(army_id: int) -> void:
@@ -331,7 +331,7 @@ func load_country(info: SaveCountryInfo) -> void:
 	_war_medal = info.war_medal
 	commander_round = info.commander_round
 	borrowed_loan = info.borrowed_loan
-	_conquested = info.conquested
+	conquested = info.conquested
 
 
 func set_commander(value: String) -> void:
@@ -665,7 +665,7 @@ func set_card_targets(card: CardDef) -> void:
 				else:
 					g_Scene.get_area(i).arrow_texture = g_GameRes.arrow_yellow
 	else:
-		for i in _area_list:
+		for i in area_list:
 			if check_card_target_area(card, i):
 				g_Scene.get_area(i).arrow_texture = g_GameRes.arrow_green
 
@@ -797,7 +797,7 @@ func turn_begin() -> void:
 	if g_GameManager.current_round > 0:
 		_collect_taxes()
 		_collect_industry()
-	for i in _area_list:
+	for i in area_list:
 		g_Scene.get_area(i).turn_begin()
 
 
@@ -807,7 +807,7 @@ func _collect_taxes() -> void:
 
 func get_taxes() -> int:
 	var s := 0
-	for i in _area_list:
+	for i in area_list:
 		s += g_Scene.get_area(i).get_real_tax()
 	var l := get_war_medal_level(WARMEDAL_ID.COMMERCE_MEDAL)
 	if l > 0:
@@ -823,7 +823,7 @@ func _collect_industry() -> void:
 
 func get_industrys() -> int:
 	var s := 0
-	for i in _area_list:
+	for i in area_list:
 		s += g_Scene.get_area(i).get_industry()
 	var l := get_war_medal_level(WARMEDAL_ID.COMMERCE_MEDAL)
 	if l > 0:
@@ -834,10 +834,10 @@ func get_industrys() -> int:
 
 
 func be_conquested_by(_conqueror: CCountry) -> void:
-	for i in _area_list:
+	for i in area_list:
 		g_Scene.get_area(i).clear_all_army()
 		g_Scene.set_area_country(i, null)
-	_area_list.clear()
+	area_list.clear()
 	_capital_list.clear()
 
 

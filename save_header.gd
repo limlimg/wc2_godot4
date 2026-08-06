@@ -209,3 +209,5 @@ var dialogue: Array[DialogueDef]
 
 func _init() -> void:
 	_mem.resize(188)
+	_mem.encode_u32(0, 0x45415359)
+	_mem.encode_u32(4, 1)
