@@ -13,36 +13,36 @@ var construction: int:
 	set(value):
 		if value != construction:
 			construction = value
-			_render_building()
+			render_building()
 
 
 var level: int:
 	set(value):
 		if value != level:
 			level = value
-			_render_building()
+			render_building()
 
 
 var installation: int:
 	set(value):
 		if value != installation:
 			installation = value
-			_render_building()
+			render_building()
 
 
 var country: CCountry:
 	set(value):
 		if value != country:
 			country = value
-			_render_building()
-			_render()
+			render_building()
+			render()
 
 
 var _armies: Array[CArmy]:
 	set(value):
 		if value != _armies:
 			_armies = value
-			_render()
+			render()
 
 
 var _army_drafting: bool
@@ -53,7 +53,7 @@ var _army_offset: Vector2:
 	set(value):
 		if value != _army_offset:
 			_army_offset = value
-			_render()
+			render()
 
 
 var _army_moving_in_timer: float
@@ -80,7 +80,6 @@ func init(init_id: int, info: AreaInfo) -> void:
 	_armies.clear()
 	if not canvas_item_root.is_valid():
 		canvas_item_root = RenderingServer.canvas_item_create()
-	#_zone_color = Color(Color.BLUE, 0.0)
 	RenderingServer.canvas_item_set_z_index(canvas_item_root, -2)
 	RenderingServer.canvas_item_set_sort_children_by_y(canvas_item_root, true)
 	if not _canvas_item_flag.is_valid():
@@ -98,8 +97,8 @@ func init(init_id: int, info: AreaInfo) -> void:
 	if not canvas_item_arrow.is_valid():
 		canvas_item_arrow = RenderingServer.canvas_item_create()
 	RenderingServer.canvas_item_set_parent(canvas_item_arrow, _canvas_item_army)
-	_render_building()
-	_render()
+	render_building()
+	render()
 
 
 func _notification(what: int) -> void:
@@ -223,7 +222,7 @@ func add_army(army: CArmy, at_bottom: bool) -> bool:
 		_armies.append(army)
 	else:
 		_armies.push_front(army)
-	_render()
+	render()
 	return true
 
 
@@ -231,7 +230,7 @@ func remove_army(army: CArmy) -> void:
 	var idx := get_army_idx(army)
 	if idx > 0:
 		_armies.remove_at(idx)
-		_render()
+		render()
 
 
 func get_army_idx(army: CArmy) -> int:
@@ -247,7 +246,7 @@ func move_army_to_front(army, animated: bool) -> void:
 	for i in army:
 		_armies[army - i] = _armies[army - i - 1]
 	_armies[0] = moved_army
-	_render()
+	render()
 	if animated:
 		_army_moving_to_front = true
 		_army_offset = Vector2(0.0, -12.0)
@@ -313,7 +312,7 @@ func _set_move_in_army(from: CArea, army: CArmy, will_occupy: bool, will_compain
 	army_moving_in = true
 	_army_moving_in_will_complain = will_compain
 	_army_moving_in_complainer = compainer
-	_render()
+	render()
 
 
 func occupy_area(to: CArea) -> void:
@@ -335,13 +334,13 @@ func occupy_area(to: CArea) -> void:
 
 func clear_all_army() -> void:
 	_armies.clear()
-	_render()
+	render()
 
 
 func set_army_dir(idx: int, dir: float) -> void:
 	if idx < _armies.size():
 		_armies[idx].direction = dir
-		_render()
+		render()
 
 
 func add_army_card(idx: int, card: int) -> void:
@@ -349,7 +348,7 @@ func add_army_card(idx: int, card: int) -> void:
 		var army := _armies[idx]
 		if army != null:
 			army.cards |= 1 << card
-			_render()
+			render()
 
 
 func _del_army_card(idx: int, card: int) -> void:
@@ -357,7 +356,7 @@ func _del_army_card(idx: int, card: int) -> void:
 		var army := _armies[idx]
 		if army != null:
 			army.cards &= ~(1 << card)
-			_render()
+			render()
 
 
 func has_army_card(idx: int, card: int = -1) -> bool:
@@ -380,7 +379,7 @@ func revert_army_strength(idx: int) -> void:
 		var army := _armies[idx]
 		if army != null:
 			army.strength = army.get_max_strength()
-			_render()
+			render()
 
 
 func lost_army_strength(idx: int, value: int) -> bool:
@@ -397,7 +396,7 @@ func lost_army_strength(idx: int, value: int) -> bool:
 			country.be_conquested_by(null)
 		return true
 	else:
-		_render()
+		render()
 		return false
 
 
@@ -406,13 +405,13 @@ func _add_army_strength(idx: int, value: int) -> void:
 		var army := _armies[idx]
 		if army != null:
 			army.add_strength(value)
-			_render()
+			render()
 
 
 func all_army_poisoning() -> void:
 	for i in _armies:
 		i.poisoning()
-	_render()
+	render()
 
 
 func upgrade_army(idx: int) -> void:
@@ -420,13 +419,13 @@ func upgrade_army(idx: int) -> void:
 		var army := _armies[idx]
 		if army != null:
 			army.upgrade()
-			_render()
+			render()
 
 
 func _set_all_army_movement(value: int) -> void:
 	for i in _armies:
 		i.movement = value
-	_render()
+	render()
 
 
 func is_active() -> bool:
@@ -472,7 +471,7 @@ func encirclement() -> void:
 		for i in _armies:
 			if i.morale == 1:
 				i.set_morale(0)
-	_render()
+	render()
 
 
 func update(delta: float) -> void:
@@ -482,7 +481,7 @@ func update(delta: float) -> void:
 		if y >= 0.0:
 			_army_drafting = false
 			g_Scene.adjacent_areas_encirclement(id)
-		_render()
+		render()
 	if army_moving_in:
 		if _army_moving_in_timer > delta:
 			_army_offset = _army_offset.lerp(Vector2.ZERO, delta / _army_moving_in_timer)
@@ -497,7 +496,7 @@ func update(delta: float) -> void:
 					CStateManager.instance().get_state_ptr(EState.GAME).show_dialogue(dlg, _army_moving_in_complainer, false)
 			if _armies.size() == 1:
 				g_Scene.adjacent_areas_encirclement.bind(id)
-		_render()
+		render()
 	if _army_moving_to_front:
 		var a := maxf(_army_offset.angle() + 12 * delta, 5.96902597 + PI / 2)
 		_army_offset = Vector2.from_angle(a) * (12.0 * sin(0.75 * PI - 0.5 * a) if a > PI else 12.0)
@@ -505,23 +504,27 @@ func update(delta: float) -> void:
 			_army_offset = Vector2.ZERO
 			_army_moving_to_front = false
 			g_Scene.reset_target()
-		_render()
+		render()
 
 
-func _render_building() -> void:
+func render_building() -> void:
+	if not g_Scene.visible:
+		return
 	ecGraphics.instance().render_begin(_canvas_item_building)
 	if type == 2:
-		g_GameRes.render_port(construction_pos.x, construction_pos.y)
+		g_GameRes.render_port(_canvas_item_building, construction_pos.x, construction_pos.y)
 	elif country != null:
-		g_GameRes.render_construction(construction, level, construction_pos.x, construction_pos.y)
-		g_GameRes.render_installation(construction, construction_pos.x, construction_pos.y)
+		g_GameRes.render_construction(_canvas_item_building, construction, level, construction_pos.x, construction_pos.y)
+		g_GameRes.render_installation(_canvas_item_building, construction, installation_pos.x, installation_pos.y)
 	ecGraphics.instance().render_end()
 
 
-func _render() -> void:
+func render() -> void:
+	if not g_Scene.visible:
+		return
 	if country != null:
 		ecGraphics.instance().render_begin(_canvas_item_flag)
-		g_GameRes.render_flag(country.name, construction_pos.x, construction_pos.y)
+		g_GameRes.render_flag(_canvas_item_flag, country.name, construction_pos.x, construction_pos.y)
 		ecGraphics.instance().render_end()
 		ecGraphics.instance().render_begin(_canvas_item_army)
 		var _moving_army := _army_drafting or army_moving_in or _army_moving_to_front
@@ -547,22 +550,22 @@ func _render_army(x: float, y: float, stack: int, army: CArmy) -> void:
 				morale_color = Color.from_rgba8(0x40, 0x40, 0xFF)
 			else:
 				morale_color = Color.from_rgba8(0x40, 0x40, 0xC0)
-		1:
+		0:
 			if army.movement > 0:
 				morale_color = Color.from_rgba8(0xFF, 0xFF, 0xFF)
 			else:
 				morale_color = Color.from_rgba8(0xC0, 0xC0, 0xC0)
-	g_GameRes.render_army(country.name, country.alliance, _armies.size(), x, y, army.def.id, morale_color, sea, army.direction)
+	g_GameRes.render_army(_canvas_item_army, country.name, country.alliance, _armies.size(), x, y, army.def.id, morale_color, sea, army.direction)
 	if army.is_navy():
 		y += 8.0
 	elif sea != 0 and army.cards & (1<<2) != 0:
 		y += 4.0
-	g_GameRes.render_army_info(stack, x, y, army.strength, army.get_max_strength(), army.movement, army.cards, army.level)
+	g_GameRes.render_army_info(_canvas_item_army, stack, x, y, army.strength, army.get_max_strength(), army.movement, army.cards, army.level)
 	if army.cards & (1<<3) != 0:
 		if country.ai:
-			g_GameRes.render_ai_commander_medal(stack, x, y, country.name, country.alliance)
+			g_GameRes.render_ai_commander_medal(_canvas_item_army, stack, x, y, country.name, country.alliance)
 		else:
-			g_GameRes.render_commander_medal(stack, x, y, country.get_commander_level())
+			g_GameRes.render_commander_medal(_canvas_item_army, stack, x, y, country.get_commander_level())
 
 
 func turn_begin() -> void:
@@ -570,7 +573,7 @@ func turn_begin() -> void:
 		i.turn_begin()
 		if sea and i.movement > 1:
 			i.movement = 1
-	_render()
+	render()
 
 
 func turn_end() -> void:
@@ -600,7 +603,7 @@ func turn_end() -> void:
 			level_add = maxi(AppDelegate.get_commander_ability(country.get_commander_level())[2], level_add)
 		i.add_strength(level_add)
 		i.turn_end()
-	_render()
+	render()
 
 
 func save_area(info: SaveAreaInfo) -> void:

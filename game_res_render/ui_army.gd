@@ -65,7 +65,4 @@ var level: int:
 
 
 func _draw() -> void:
-	ecGraphics.instance().render_begin(self)
-	g_GameRes.render_ui_army(country, 0.0, 0.0, id, false, durability, max_durability, movement, cards, level)
-	ecGraphics.instance().render_end()
-	
+	g_GameRes.render_ui_army(get_canvas_item(), country, 0.0, 0.0, id, false, durability, max_durability, movement, cards, level)

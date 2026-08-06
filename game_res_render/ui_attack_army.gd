@@ -73,7 +73,5 @@ var ai: bool:
 
 
 func _draw() -> void:
-	ecGraphics.instance().render_begin(self)
-	g_GameRes.render_ui_attack_army(country, 0.0, 0.0, id, durability, max_durability, movement, cards, level, alliance, ai)
-	ecGraphics.instance().render_end()
+	g_GameRes.render_ui_attack_army(get_canvas_item(), country, 0.0, 0.0, id, durability, max_durability, movement, cards, level, alliance, ai)
 	

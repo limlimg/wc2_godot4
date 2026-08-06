@@ -25,6 +25,4 @@ var common: int:
 
 
 func _draw() -> void:
-	ecGraphics.instance().render_begin(self)
-	g_GameRes.render_ai_commander_medal(stack, 0.0, 0.0, country, common)
-	ecGraphics.instance().render_end()
+	g_GameRes.render_ai_commander_medal(self.get_canvas_item(), stack, 0.0, 0.0, country, common)

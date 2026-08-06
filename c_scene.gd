@@ -31,6 +31,7 @@ func init(areas_enable: String, map: int) -> void:
 	_load_area_data(map)
 	_load_adjoin(map)
 	var real_scene := get_tree().get_first_node_in_group(&"g_Scene")
+	visible = real_scene.is_visible_in_tree()
 	_background = real_scene.get_node(^"CCamera/CBackground").create_instance()
 	_init_areas(map, areas_enable)
 	_check_adjacent_area()
@@ -201,10 +202,13 @@ func release() -> void:
 
 
 func _render() -> void:
+	visible = true
 	for id in _render_area_list.keys():
 		var canvas_item: RID
 		if _area_list[id] != null:
 			canvas_item = _area_list[id].canvas_item_root
+			_area_list[id].render_building()
+			_area_list[id].render()
 		else:
 			canvas_item = _canvas_item_disabled_areas[id]
 		var texture := _render_area_list[id]

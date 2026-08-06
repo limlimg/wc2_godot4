@@ -17,6 +17,4 @@ var commander_level: int:
 
 
 func _draw() -> void:
-	ecGraphics.instance().render_begin(self)
-	g_GameRes.render_commander_medal(stack, 0.0, 0.0, commander_level)
-	ecGraphics.instance().render_end()
+	g_GameRes.render_commander_medal(get_canvas_item(), stack, 0.0, 0.0, commander_level)
