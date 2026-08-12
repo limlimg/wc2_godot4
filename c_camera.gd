@@ -77,23 +77,23 @@ func set_pos_and_scale(x: float, y: float, zoom: float) -> void:
 		min_scale = size.x / scene_rect.size.x
 	if min_scale < size.y / scene_rect.size.y:
 		min_scale = size.y / scene_rect.size.y
-	zoom = maxf(zoom, min_scale)
+	zoom = clampf(zoom, min_scale, 1.0)
 	$Camera2D.zoom = Vector2(zoom, zoom)
 	$Camera2D.position = _clamp_pos(x, y, true)
 
 
-func move(x: float, y: float, exclude_box: bool) -> void:
+func move(x: float, y: float, exclude_box: bool) -> bool:
 	var pos = $Camera2D.position
-	pos += Vector2(x, y) / $Camera2D.zoom
-	_target_pos = pos
-	$Camera2D.position = _clamp_pos(pos.x, pos.y, exclude_box)
+	_target_pos = pos + Vector2(x, y) / $Camera2D.zoom
+	$Camera2D.position = _clamp_pos(_target_pos.x, _target_pos.y, exclude_box)
+	return $Camera2D.position.x == pos.x or $Camera2D.position.y == pos.y
 
 
 func set_auto_fix_pos(value: bool) -> void:
 	_target_pos.x = clampf(_target_pos.x, scene_rect.position.x, scene_rect.end.x)
 	_target_pos.y = clampf(_target_pos.y, scene_rect.position.y, scene_rect.end.y)
 	if value:
-		if Rect2(-0.1, -0.1, 0.2, 0.2).has_point(_target_pos - $Camera2D.position):
+		if not Rect2(-0.1, -0.1, 0.2, 0.2).has_point(_clamp_pos(_target_pos.x, _target_pos.y, true) - $Camera2D.position):
 			_move_timer = 10
 			is_moving = true
 	else:
@@ -115,23 +115,32 @@ func move_to(x: float, y: float, exclude_box: bool) -> void:
 func update(_delta: float) -> void:
 	if not is_moving:
 		return
+	_move_timer -= 1
 	if _move_timer > 1:
-		$Camera2D.position = $Camera2D.position.lerp(_clamp_pos(_target_pos.x, _target_pos.y, false), 1.0 / _move_timer)
+		$Camera2D.position = $Camera2D.position.lerp(_clamp_pos(_target_pos.x, _target_pos.y, true), 1.0 / _move_timer)
 	else:
-		$Camera2D.position = _clamp_pos(_target_pos.x, _target_pos.y, false)
+		$Camera2D.position = _clamp_pos(_target_pos.x, _target_pos.y, true)
 		is_moving = false
 
 
 func is_rect_in_camera(rect: Rect2) -> bool:
-	return scene_rect.intersects(rect)
+	var visible_region: Rect2
+	var view_size = size / camera_zoom
+	visible_region.position = camera_position - view_size / 2
+	visible_region.size = view_size
+	return visible_region.intersects(rect)
 
 
 func is_rect_in_visible_region(rect: Rect2) -> bool:
 	var visible_region: Rect2
-	var view_size = size / $Camera2D.zoom
-	visible_region.position = $Camera2D.position - view_size / 2
-	visible_region.size = view_size
-	return visible_region.intersects(rect)
+	var view_size_x := size.x / camera_zoom.x
+	if ecGraphics.instance().content_scale_size_mode == 3:
+		visible_region.position = $Camera2D.position - Vector2(view_size_x / 2, 346.0 / camera_zoom.y)
+		visible_region.size = Vector2(view_size_x, 666.0 / camera_zoom.y)
+	else:
+		visible_region.position = $Camera2D.position - Vector2(view_size_x / 2, 130.0 / camera_zoom.y)
+		visible_region.size = Vector2(view_size_x, 243.0 / camera_zoom.y)
+	return visible_region.encloses(rect)
 
 
 func _on_resized() -> void:

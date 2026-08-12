@@ -5,16 +5,10 @@ extends GUIButton
 var army: CArmy
 
 func _process(_delta: float) -> void:
+	$UIArmy.queue_redraw()
+
+
+func _on_ui_army_draw() -> void:
 	if army == null or army.def == null:
 		return
-	var node = $Control/UIArmy
-	node.country = army.country
-	node.id = army.def.id
-	node.durability = army.durability
-	node.max_durability = army.get_max_strength()
-	node.movement = army.movement
-	node.cards = army.cards
-	if army.cards & (1 << 3) != 0:
-		node.level = army.country.get_commander_level()
-	else:
-		node.level = army.level
+	g_GameRes.render_ui_army($UIArmy.get_canvas_item(), army.country.name, 0.0, 0.0, army.def.id, false, army.strength, army.get_max_strength(), army.movement, army.cards, army.level if army.cards & (1<<3) == 0 else army.country.get_commander_level())

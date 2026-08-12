@@ -2,55 +2,52 @@
 
 [ext_resource type="Script" uid="uid://sr6ci8l3lcj6" path="res://gui_victory.gd" id="1_3lq7t"]
 [ext_resource type="Texture2D" uid="uid://owchyquo87lp" path="res://resources/assets/texture/board_end.tres" id="1_bkarv"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_iwl0q"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="4_4ysh8"]
 [ext_resource type="Script" uid="uid://8hwlr3pkh8ko" path="res://ec_texture_rect.gd" id="5_po4pt"]
 
-[sub_resource type="Resource" id="Resource_qs37y"]
+[sub_resource type="Resource" id="Resource_2ky0o"]
 script = ExtResource("4_4ysh8")
 name = "victory.png"
 name_ipad = "victory@2x.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="Resource" id="Resource_po4pt"]
+[sub_resource type="Resource" id="Resource_yn5vh"]
 script = ExtResource("5_po4pt")
 region = Rect2(3, 3, 298, 66)
 origin = Vector2(149, 33)
 metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
 
-[sub_resource type="Resource" id="Resource_r5u7v"]
+[sub_resource type="Resource" id="Resource_4ysh8"]
 script = ExtResource("5_po4pt")
 region = Rect2(6, 6, 596, 132)
 origin = Vector2(298, 66)
 metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
 
-[sub_resource type="Resource" id="Resource_pyjdc"]
+[sub_resource type="Resource" id="Resource_po4pt"]
 script = ExtResource("4_4ysh8")
 name = "gameover.png"
 name_ipad = "gameover@2x.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="Resource" id="Resource_i1v7f"]
+[sub_resource type="Resource" id="Resource_6wi8h"]
 script = ExtResource("5_po4pt")
 region = Rect2(3, 3, 380, 53)
 origin = Vector2(190, 26)
 metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
 
-[sub_resource type="Resource" id="Resource_tilc4"]
+[sub_resource type="Resource" id="Resource_r0lbo"]
 script = ExtResource("5_po4pt")
 region = Rect2(6, 6, 760, 106)
 origin = Vector2(380, 53)
 metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
 
-[node name="GUIVictory" type="Control" unique_id=43656708]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIVictory" unique_id=1627139554 instance=ExtResource("1_iwl0q")]
+mouse_filter = 1
 script = ExtResource("1_3lq7t")
+victorious = false
 
-[node name="BoardEnd" type="TextureRect" parent="." unique_id=1121156829]
+[node name="BoardEnd" type="TextureRect" parent="." index="0" unique_id=1397757876]
 custom_minimum_size = Vector2(0, 92)
 layout_mode = 1
 anchors_preset = 14
@@ -61,29 +58,28 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 0.2)
 pivot_offset_ratio = Vector2(0, 0.5)
+mouse_filter = 2
 texture = ExtResource("1_bkarv")
 expand_mode = 1
 
-[node name="Victory" parent="." unique_id=2040529242 instance_placeholder="res://gui_image.tscn"]
+[node name="Victory" parent="." index="1" unique_id=102090705 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-asset = SubResource("Resource_qs37y")
-texture_rect = SubResource("Resource_po4pt")
-texture_rect_ipad = SubResource("Resource_r5u7v")
-texture_res = null
+asset = SubResource("Resource_2ky0o")
+texture_rect = SubResource("Resource_yn5vh")
+texture_rect_ipad = SubResource("Resource_4ysh8")
 
-[node name="GameOver" parent="." unique_id=1824332557 instance_placeholder="res://gui_image.tscn"]
+[node name="GameOver" parent="." index="2" unique_id=279432561 instance_placeholder="res://gui_image.tscn"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-asset = SubResource("Resource_pyjdc")
-texture_rect = SubResource("Resource_i1v7f")
-texture_rect_ipad = SubResource("Resource_tilc4")
-texture_res = null
+asset = SubResource("Resource_po4pt")
+texture_rect = SubResource("Resource_6wi8h")
+texture_rect_ipad = SubResource("Resource_r0lbo")

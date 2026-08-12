@@ -28,30 +28,29 @@ var image_pressed: AssetRegistry:
 
 @export
 var horizontal: bool:
-	get():
-		return $HSlider.visible
 	set(value):
-		$HSlider.visible = value
-		$VSlider.visible = not value
+		if value != horizontal:
+			horizontal = value
+			$HSlider.visible = value
+			$VSlider.visible = not value
 
 
 @export
 var max_value: float:
-	get():
-		return $HSlider.max_value if horizontal else $VSlider.max_value
 	set(value):
-		var f: float
-		f = $VSlider.value * (value / $VSlider.max_value)
-		$VSlider.max_value = value
-		$VSlider.set_value_no_signal(f)
-		f = $HSlider.value * (value / $HSlider.max_value)
-		$HSlider.max_value = value
-		$VSlider.set_value_no_signal(f)
+		if value != max_value:
+			max_value = value
+			var f: float
+			f = $VSlider.value * (value / $VSlider.max_value)
+			$VSlider.max_value = value
+			$VSlider.set_value_no_signal(f)
+			f = $HSlider.value * (value / $HSlider.max_value)
+			$HSlider.max_value = value
+			$VSlider.set_value_no_signal(f)
 
 
 @export
-var value: float:
-	get = get_scroll_pos,
+var scroll_pos: float:
 	set = set_scroll_pos
 
 
@@ -74,18 +73,18 @@ var grabber_size: Vector2:
 @export_group("Textures", "texture_")
 @export
 var texture_normal: Texture2D:
-	get():
-		return $Grabber.texture_normal
 	set(value):
-		$Grabber.texture_normal = value
+		if value != texture_normal:
+			texture_normal = value
+			$Grabber.texture_normal = value
 
 
 @export
 var texture_pressed: Texture2D:
-	get():
-		return $Grabber.texture_pressed
 	set(value):
-		$Grabber.texture_pressed = value
+		if value != texture_pressed:
+			texture_pressed = value
+			$Grabber.texture_pressed = value
 
 
 signal value_changed(value: float)
@@ -125,7 +124,7 @@ func _on_render() -> void:
 	else:
 		$Grabber.size = grabber_size
 	var range_size = size - $Grabber.size
-	var proportion := Vector2($HSlider.value / $HSlider.max_value, $VSlider.value / $VSlider.max_value)
+	var proportion := Vector2($HSlider.value / $HSlider.max_value, $VSlider.value / $VSlider.max_value).maxf(0.0)
 	$Grabber.position = range_size * proportion
 
 
@@ -133,12 +132,14 @@ func get_scroll_pos() -> float:
 	return $HSlider.value if horizontal else $VSlider.value
 
 
-func set_scroll_pos(pos: float) -> void:
-	if horizontal:
-		$HSlider.set_value_no_signal(pos)
-	else:
-		$VSlider.set_value_no_signal(pos)
-	_on_render()
+func set_scroll_pos(value: float) -> void:
+	if value != scroll_pos:
+		scroll_pos = value
+		if horizontal:
+			$HSlider.set_value_no_signal(value)
+		else:
+			$VSlider.set_value_no_signal(value)
+		_on_render()
 
 
 # inspector connection cannot bind and unbind arguments at the same time
@@ -149,3 +150,8 @@ func _on_drag_ended() -> void:
 func _on_value_changed(_value: float) -> void:
 	_on_render()
 	value_changed.emit(_value)
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		accept_event()

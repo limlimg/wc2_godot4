@@ -261,8 +261,14 @@ func _process(delta: float) -> void:
 				# NOTTODO: show mail and more game buttons
 
 
+func _has_point(_point: Vector2) -> bool:
+	return is_visible_in_tree()
+
+
 func _gui_input(event: InputEvent) -> void:
-	if event.is_action(&"ui_cancel"):
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		accept_event()
+	elif event.is_action_released(&"ui_cancel"):
 		if _state == 0:
 			for button in [$FixedWidth/SelCampaigns/ButtonBack, $FixedWidth/SelConquest/ButtonBack]:
 				if button.is_visible_in_tree():

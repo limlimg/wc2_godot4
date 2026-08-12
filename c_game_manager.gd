@@ -16,8 +16,8 @@ var _player_country_name: Array[String]
 var _conquest_player_country_id: String
 var is_new_game: bool
 var _local_game: bool
-var _game_ended: bool
-var _game_won: bool
+var game_ended: bool
+var game_won: bool
 var should_show_next_battle: bool
 var campaign: int
 var battle: int
@@ -72,7 +72,7 @@ func load_game(save_file_name: String) -> void:
 	var header := get_save_header(save_file_name)
 	if header != null:
 		game_mode = header.game_mode
-		_map = header.map_id
+		_map = header.map
 		_areas_enable = header.areas_enable
 		_player_country_name = header.player_country_name
 		_battle_file_name = header.battle_file_name
@@ -92,6 +92,7 @@ func get_save_header(save_file_name: String) -> SaveHeader:
 
 func _get_save_header_from_file(file: ecFile) -> SaveHeader:
 	var header := SaveHeader.new()
+	header._mem.clear()
 	file.read(header._mem, 0xBC)
 	return header
 
@@ -107,7 +108,7 @@ func save_game(save_file: String) -> void:
 	save.game_mode = game_mode
 	save.map = _map
 	save.areas_enable = _areas_enable
-	# TODO: save multiplayer country id (?)
+	save.player_country_name = _player_country_name
 	save.battle_file_name = _battle_file_name
 	save.area_count = 0
 	var date_dict := Time.get_datetime_dict_from_system()
@@ -132,12 +133,13 @@ func save_game(save_file: String) -> void:
 	var mem_area: PackedByteArray
 	var save_country := SaveCountryInfo.new()
 	var save_area := SaveAreaInfo.new()
-	for i in _all_country:
-		i.save_country(save_country)
+	for i in _all_country.size():
+		_all_country[i].save_country(save_country)
 		mem_country.append_array(save_country._mem)
-		save.area_count += i.area_list.size()
-		for j in i.area_list:
+		save.area_count += _all_country[i].area_list.size()
+		for j in _all_country[i].area_list:
 			g_Scene.get_area(j).save_area(save_area)
+			save_area.country_index = i
 			mem_area.append_array(save_area._mem)
 	var file := ecFile.new()
 	if file.open(AppDelegate.get_document_path(save_file), FileAccess.WRITE):
@@ -231,7 +233,7 @@ func battle_victory() -> void:
 
 
 func get_num_victory_stars() -> int:
-	if not _game_won:
+	if not game_won:
 		return 0
 	var turn := current_round + 1
 	if turn <= _great_victory:
@@ -251,7 +253,7 @@ func game_update(delta: float) -> void:
 	var country := get_cur_country()
 	if country == null:
 		return
-	if _game_ended:
+	if game_ended:
 		return
 	country.update(delta)
 	if not country.is_action_finished():
@@ -289,8 +291,8 @@ func end_turn() -> void:
 					# TODO: don't even know what's going on here
 					pass
 				elif current_round >= victory:
-					_game_ended = true
-					_game_won = false
+					game_ended = true
+					game_won = false
 					var game := CStateManager.instance().get_state_ptr(EState.GAME)
 					game.show_dialogue("commander failure 2", &"Guider", false)
 					return
@@ -352,7 +354,7 @@ func init_battle() -> void:
 		_init_camera_pos()
 	else:
 		_real_load_game(_save_file_name)
-	_game_ended = false
+	game_ended = false
 	campaign_reward_medal = 0
 	_local_game = game_mode != 4
 	g_Scene.all_areas_encirclement()
@@ -373,6 +375,8 @@ func init_battle() -> void:
 func _load_battle(file_name: String) -> void:
 	_clear_battle()
 	var res_battle: SaveHeader = load(EC2dAppDelegate.get_asset_path(file_name, ""))
+	_map = res_battle.map
+	_areas_enable = res_battle.areas_enable
 	g_Scene.init(res_battle.areas_enable, res_battle.map)
 	for i in res_battle.country:
 		var country := CCountry.new()
@@ -385,7 +389,7 @@ func _load_battle(file_name: String) -> void:
 			# TODO: set up country for multiplayer
 			pass
 		elif game_mode == 2:
-			country.ai = country.id == _conquest_player_country_id
+			country.ai = country.id != _conquest_player_country_id
 		country.set_commander(i.commander)
 		country.money = i.money
 		country.tech_level = clampi(i.techlevel, 1, 5)
@@ -425,8 +429,6 @@ func _load_battle(file_name: String) -> void:
 
 
 func _clear_battle() -> void:
-	for i in _all_country:
-		i.queue_free()
 	_all_country.clear()
 	_belligerent_country.clear()
 	_dialogue.clear()
@@ -487,7 +489,7 @@ func _real_load_game(file_name: String) -> void:
 		var buf_country: PackedByteArray
 		file.read(buf_country, 276 * save.country_count)
 		var buf_area: PackedByteArray
-		file.read(buf_country, 200 * save.area_count)
+		file.read(buf_area, 200 * save.area_count)
 		file.close()
 		for i in save.country_count:
 			var info := SaveCountryInfo.new()
@@ -528,8 +530,8 @@ func get_local_player_country() -> CCountry:
 
 func check_and_set_result() -> bool:
 	if current_round >= victory or _all_country.is_empty():
-		_game_ended = true
-		_game_won = false
+		game_ended = true
+		game_won = false
 		return true
 	var ai_survive := false
 	var player_survive := false
@@ -553,16 +555,16 @@ func check_and_set_result() -> bool:
 				local_alliance = i.alliance
 	if game_mode != 4:
 		if not player_survive:
-			_game_ended = true
-			_game_won = false
+			game_ended = true
+			game_won = false
 			return true
 		if not ai_survive:
-			_game_ended = true
-			_game_won = true
+			game_ended = true
+			game_won = true
 			return true
 	if alliance_survice.size() == 1:
-		_game_ended = true
-		_game_won = game_mode != 4 or alliance_survice.get(local_alliance, false)
+		game_ended = true
+		game_won = game_mode != 4 or alliance_survice.get(local_alliance, false)
 		return true
 	return false
 

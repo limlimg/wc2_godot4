@@ -82,6 +82,8 @@ var minute: int:
 			_set_info()
 
 
+var _flash_a: float
+
 func _ready() -> void:
 	super()
 	_set_info()
@@ -93,11 +95,12 @@ func init() -> void:
 	super()
 	if Engine.is_editor_hint():
 		return
+	_flash_a = 1.0
 	if g_LocalizableStrings.get_string("language") != "en":
 		if ecGraphics.instance().content_scale_size_mode == 3:
-			$Name.position.y = -4.0
+			$Name.position.y += -4.0
 		else:
-			$Name.position.y = -2.0
+			$Name.position.y += -2.0
 
 
 func _set_info() -> void:
@@ -128,12 +131,8 @@ func _on_render():
 	if selected:
 		$Glow.self_modulate = Color(Color.WHITE, alpha)
 		$Glow.show()
-		if not $AnimationPlayer.is_playing():
-			$AnimationPlayer.play("selected_flash")
 	else:
 		$Glow.hide()
-		if $AnimationPlayer.is_playing():
-			$AnimationPlayer.stop()
 		var color: Color
 		if not enable:
 			color = Color(Color8(0x78, 0x78, 0x78), alpha)
@@ -143,3 +142,13 @@ func _on_render():
 			else:
 				color = Color.WHITE
 		$TextureButton.self_modulate = color
+
+
+func _process(delta: float) -> void:
+	if selected:
+			_flash_a -= 0.4 * delta
+			if _flash_a < 0.6:
+				_flash_a += 0.4
+			$TextureButton.self_modulate = Color.from_rgba8(200, 255, 200) * (0.8 + absf(_flash_a - 0.8))
+	else:
+		$TextureButton.self_modulate = Color.WHITE

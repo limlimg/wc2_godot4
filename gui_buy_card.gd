@@ -1,7 +1,8 @@
+class_name GUIBuyCard
 extends GUIElement
 
 var _selected_card := -1
-var _targeting := false
+var targeting := false
 var _targeting_army := false
 
 @onready var _tabs := [
@@ -20,24 +21,24 @@ func _sel_card(tab: int, index: int) -> void:
 		_selected_card = _tabs[tab].get_card(index).def.type
 	if _selected_card >= 0:
 		_set_sel_card_intro()
-	if _get_sel_card() == null:
+	if get_sel_card() == null:
 		$ButtonOk.enable = false
-	$ButtonOk.enable = _can_buy_sel_card()
+	$ButtonOk.enable = can_buy_sel_card()
 
 
 func _set_sel_card_intro() -> void:
 	if _selected_card >= 0:
-		var card := _get_sel_card()
+		var card := get_sel_card()
 		if card != null:
 			$Name/ecText.text = card.name
 			$Intro/Font5/Label.text = card.intro
 
 
-func _get_sel_card() -> CardDef:
+func get_sel_card() -> CardDef:
 	return CObjectDef.instance().get_card_def(_selected_card)
 
 
-func _can_buy_sel_card() -> bool:
+func can_buy_sel_card() -> bool:
 	if _selected_card < 0:
 		return false
 	var country = g_GameManager.get_cur_country()
@@ -56,14 +57,14 @@ func reset_card_state() -> void:
 		while card != null:
 			var should_enable := true
 			if country.is_enough_money(card.def):
-				card.set_price_color(Color8(0x0F, 0x26, 0x32))
+				card.set_price_color(Color8(0x32, 0x26, 0x0F))
 			else:
-				card.set_price_color(Color8(0x00, 0x00, 0x80))
+				card.set_price_color(Color8(0x80, 0x00, 0x00))
 				should_enable = false
 			if country.is_enough_industry(card.def):
-				card.set_industry_color(Color8(0x0F, 0x26, 0x32))
+				card.set_industry_color(Color8(0x32, 0x26, 0x0F))
 			else:
-				card.set_industry_color(Color8(0x00, 0x00, 0x80))
+				card.set_industry_color(Color8(0x80, 0x00, 0x00))
 				should_enable = false
 			if country.tech_level < card.def.tech:
 				card.tech_request = card.def.tech
@@ -96,20 +97,20 @@ func reset_card_state() -> void:
 				card.time = time
 			card.enable = should_enable
 			j += 1
-	$ButtonOk.enable = _get_sel_card() != null and _can_buy_sel_card()
+	$ButtonOk.enable = get_sel_card() != null and can_buy_sel_card()
 
 
 func reset_card_target() -> void:
 	var country = g_GameManager.get_cur_country()
-	if country != null and _targeting and _selected_card >= 0:
-		AppDelegate.g_Scene.clear_targets()
+	if country != null and targeting and _selected_card >= 0:
+		g_Scene.clear_targets()
 		country.set_card_targets(CObjectDef.instance().get_card_def(_selected_card))
 
 
 func release_target() -> void:
-	_targeting = false
+	targeting = false
 	_targeting_army = false
-	AppDelegate.g_Scene.reset_target()
+	g_Scene.reset_target()
 
 
 func _on_gui_card_tab_tab_selected(tab: int) -> void:
@@ -124,15 +125,15 @@ func _on_gui_button_back_pressed() -> void:
 
 
 func _on_gui_button_ok_pressed() -> void:
-	var card := _get_sel_card()
-	if card != null and _can_buy_sel_card():
+	var card := get_sel_card()
+	if card != null and can_buy_sel_card():
 		var country = g_GameManager.get_cur_country()
 		var target := CObjectDef.instance().get_card_target_type(card)
 		if target == 1 or target == 5:
-			_targeting = true
+			targeting = true
 			_targeting_army = target == 5
 			if not country.ai:
-				AppDelegate.g_Scene.clear_targets()
+				g_Scene.clear_targets()
 				country.set_card_targets(card)
 		else:
 			var action := CountryAction.new()
@@ -152,3 +153,15 @@ func _on_gui_button_ok_pressed() -> void:
 
 func _on_gui_card_list_card_selected(tab: int, index: int) -> void:
 	_sel_card(tab, index)
+
+
+func _has_point(_point: Vector2) -> bool:
+	return is_visible_in_tree()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		accept_event()
+	elif event.is_action_released(&"ui_cancel"):
+		back_pressed.emit()
+		accept_event()

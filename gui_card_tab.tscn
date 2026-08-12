@@ -8,44 +8,38 @@
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="6_lrtfc"]
 [ext_resource type="Texture2D" uid="uid://b8oufvok5xvg3" path="res://resources/assets/texture/board_paper.tres" id="8_u1whf"]
 
-[sub_resource type="Resource" id="Resource_ns26f"]
+[sub_resource type="Resource" id="Resource_11ge4"]
 script = ExtResource("3_fc5c1")
 rect = Rect2(27, -8, 60, 233)
 
-[sub_resource type="Resource" id="Resource_simkc"]
+[sub_resource type="Resource" id="Resource_wrtkv"]
 script = ExtResource("3_fc5c1")
 rect = Rect2(75, 32, 0, 0)
 
-[sub_resource type="Resource" id="Resource_m5d2r"]
+[sub_resource type="Resource" id="Resource_lrtfc"]
 script = ExtResource("6_lrtfc")
 name = "label_groundforces.png"
 
-[sub_resource type="Resource" id="Resource_8kvfc"]
+[sub_resource type="Resource" id="Resource_8h55i"]
 script = ExtResource("6_lrtfc")
 name = "label_navy.png"
 
-[sub_resource type="Resource" id="Resource_8h55i"]
+[sub_resource type="Resource" id="Resource_fvt3u"]
 script = ExtResource("6_lrtfc")
 name = "label_airforces.png"
 
-[sub_resource type="Resource" id="Resource_fvt3u"]
+[sub_resource type="Resource" id="Resource_fc5c1"]
 script = ExtResource("6_lrtfc")
 name = "label_development.png"
 
-[sub_resource type="Resource" id="Resource_fc5c1"]
+[sub_resource type="Resource" id="Resource_ns26f"]
 script = ExtResource("6_lrtfc")
 name = "label_strategy.png"
 
-[node name="GUICardTab" type="Control" unique_id=1481582815]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUICardTab" unique_id=1627139554 instance=ExtResource("2_fvt3u")]
 script = ExtResource("1_v0u3k")
 
-[node name="GUIElement" parent="." unique_id=1627139554 instance=ExtResource("2_fvt3u")]
+[node name="GUIElement" parent="." index="0" unique_id=690494088 instance=ExtResource("2_fvt3u")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -56,66 +50,127 @@ offset_right = 93.0
 offset_bottom = 225.0
 grow_horizontal = 1
 grow_vertical = 1
-rect = SubResource("Resource_ns26f")
-rect_ipad = SubResource("Resource_simkc")
+rect = SubResource("Resource_11ge4")
+rect_ipad = SubResource("Resource_wrtkv")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="GUIElement" unique_id=997040410]
+[node name="HBoxContainer" type="HBoxContainer" parent="GUIElement" index="0" unique_id=1162703222]
 layout_mode = 1
 offset_right = 330.0
 offset_bottom = 233.0
+mouse_filter = 2
 theme_override_constants/separation = 6
 
-[node name="GUIRadioButton" parent="GUIElement/HBoxContainer" unique_id=2034275630 instance=ExtResource("2_u1whf")]
-custom_minimum_size = Vector2(60, 233)
-layout_mode = 2
-texture_res = ExtResource("5_wrtkv")
-image_normal = SubResource("Resource_m5d2r")
-image_pressed = SubResource("Resource_m5d2r")
-
-[node name="GUIRadioButton2" parent="GUIElement/HBoxContainer" unique_id=311383481 instance=ExtResource("2_u1whf")]
+[node name="Control" type="Control" parent="GUIElement/HBoxContainer" index="0" unique_id=364076570]
 show_behind_parent = true
 custom_minimum_size = Vector2(60, 233)
 layout_mode = 2
-texture_res = ExtResource("5_wrtkv")
-image_normal = SubResource("Resource_8kvfc")
-image_pressed = SubResource("Resource_8kvfc")
+mouse_filter = 2
 
-[node name="GUIRadioButton3" parent="GUIElement/HBoxContainer" unique_id=478404264 instance=ExtResource("2_u1whf")]
+[node name="GUIRadioButton" parent="GUIElement/HBoxContainer/Control" index="0" unique_id=2034275630 instance=ExtResource("2_u1whf")]
+layout_mode = 1
+image_normal = SubResource("Resource_lrtfc")
+image_pressed = SubResource("Resource_lrtfc")
+font = null
+enable = null
+text = null
+text_font = null
+text_color = null
+text_offset = null
+text_align = null
+texture_res = ExtResource("5_wrtkv")
+
+[node name="Control2" type="Control" parent="GUIElement/HBoxContainer" index="1" unique_id=69208018]
 show_behind_parent = true
 custom_minimum_size = Vector2(60, 233)
 layout_mode = 2
-texture_res = ExtResource("5_wrtkv")
+mouse_filter = 2
+
+[node name="GUIRadioButton" parent="GUIElement/HBoxContainer/Control2" index="0" unique_id=191710727 instance=ExtResource("2_u1whf")]
+show_behind_parent = true
+layout_mode = 1
 image_normal = SubResource("Resource_8h55i")
 image_pressed = SubResource("Resource_8h55i")
+font = null
+enable = null
+text = null
+text_font = null
+text_color = null
+text_offset = null
+text_align = null
+texture_res = ExtResource("5_wrtkv")
 
-[node name="GUIRadioButton4" parent="GUIElement/HBoxContainer" unique_id=116557806 instance=ExtResource("2_u1whf")]
+[node name="Control3" type="Control" parent="GUIElement/HBoxContainer" index="2" unique_id=870403436]
 show_behind_parent = true
 custom_minimum_size = Vector2(60, 233)
 layout_mode = 2
-texture_res = ExtResource("5_wrtkv")
+mouse_filter = 2
+
+[node name="GUIRadioButton" parent="GUIElement/HBoxContainer/Control3" index="0" unique_id=2073236819 instance=ExtResource("2_u1whf")]
+show_behind_parent = true
+layout_mode = 1
 image_normal = SubResource("Resource_fvt3u")
 image_pressed = SubResource("Resource_fvt3u")
+font = null
+enable = null
+text = null
+text_font = null
+text_color = null
+text_offset = null
+text_align = null
+texture_res = ExtResource("5_wrtkv")
 
-[node name="GUIRadioButton5" parent="GUIElement/HBoxContainer" unique_id=494849362 instance=ExtResource("2_u1whf")]
+[node name="Control4" type="Control" parent="GUIElement/HBoxContainer" index="3" unique_id=726666496]
 show_behind_parent = true
 custom_minimum_size = Vector2(60, 233)
 layout_mode = 2
-selected = true
-texture_res = ExtResource("5_wrtkv")
+mouse_filter = 2
+
+[node name="GUIRadioButton" parent="GUIElement/HBoxContainer/Control4" index="0" unique_id=413662009 instance=ExtResource("2_u1whf")]
+show_behind_parent = true
+layout_mode = 1
 image_normal = SubResource("Resource_fc5c1")
 image_pressed = SubResource("Resource_fc5c1")
+font = null
+enable = null
+text = null
+text_font = null
+text_color = null
+text_offset = null
+text_align = null
+texture_res = ExtResource("5_wrtkv")
 
-[node name="BoardPaper" type="Sprite2D" parent="GUIElement/HBoxContainer" unique_id=1510180055]
+[node name="Control5" type="Control" parent="GUIElement/HBoxContainer" index="4" unique_id=813104760]
+show_behind_parent = true
+custom_minimum_size = Vector2(60, 233)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="GUIRadioButton" parent="GUIElement/HBoxContainer/Control5" index="0" unique_id=1208639499 instance=ExtResource("2_u1whf")]
+show_behind_parent = true
+layout_mode = 1
+selected = true
+image_normal = SubResource("Resource_ns26f")
+image_pressed = SubResource("Resource_ns26f")
+font = null
+enable = null
+text = null
+text_font = null
+text_color = null
+text_offset = null
+text_align = null
+texture_res = ExtResource("5_wrtkv")
+
+[node name="BoardPaper" type="Sprite2D" parent="GUIElement/HBoxContainer" index="5" unique_id=1529325039]
 show_behind_parent = true
 position = Vector2(-33, 8)
 texture = ExtResource("8_u1whf")
 centered = false
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=982568714]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." index="1" unique_id=1200276532]
 remote_path = NodePath("../GUIElement/HBoxContainer/BoardPaper")
 
-[connection signal="pressed" from="GUIElement/HBoxContainer/GUIRadioButton" to="." method="_select_tab" binds= [0]]
-[connection signal="pressed" from="GUIElement/HBoxContainer/GUIRadioButton2" to="." method="_select_tab" binds= [1]]
-[connection signal="pressed" from="GUIElement/HBoxContainer/GUIRadioButton3" to="." method="_select_tab" binds= [2]]
-[connection signal="pressed" from="GUIElement/HBoxContainer/GUIRadioButton4" to="." method="_select_tab" binds= [3]]
-[connection signal="pressed" from="GUIElement/HBoxContainer/GUIRadioButton5" to="." method="_select_tab" binds= [4]]
+[connection signal="pressed" from="GUIElement/HBoxContainer/Control/GUIRadioButton" to="." method="_on_gui_radio_button_pressed" binds= [0]]
+[connection signal="pressed" from="GUIElement/HBoxContainer/Control2/GUIRadioButton" to="." method="_on_gui_radio_button_pressed" binds= [1]]
+[connection signal="pressed" from="GUIElement/HBoxContainer/Control3/GUIRadioButton" to="." method="_on_gui_radio_button_pressed" binds= [2]]
+[connection signal="pressed" from="GUIElement/HBoxContainer/Control4/GUIRadioButton" to="." method="_on_gui_radio_button_pressed" binds= [3]]
+[connection signal="pressed" from="GUIElement/HBoxContainer/Control5/GUIRadioButton" to="." method="_on_gui_radio_button_pressed" binds= [4]]

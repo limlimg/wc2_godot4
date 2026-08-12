@@ -13,204 +13,40 @@
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="6_fnrpd"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="12_ffeyb"]
 
-[sub_resource type="Resource" id="Resource_f7lds"]
+[sub_resource type="Resource" id="Resource_qefp7"]
 script = ExtResource("6_fnrpd")
 scale = Vector2(0, 0)
 
-[sub_resource type="Resource" id="Resource_ffeyb"]
+[sub_resource type="Resource" id="Resource_f7lds"]
 script = ExtResource("6_fnrpd")
 rect = Rect2(0, 330, 512, 18)
 scale = Vector2(1, -1)
 
-[sub_resource type="Resource" id="Resource_t5bh4"]
+[sub_resource type="Resource" id="Resource_ffeyb"]
 script = ExtResource("6_fnrpd")
 scale = Vector2(0, 0)
 
-[sub_resource type="Resource" id="Resource_fnrpd"]
+[sub_resource type="Resource" id="Resource_t5bh4"]
 script = ExtResource("6_fnrpd")
 rect = Rect2(0, 330, 512, 18)
 scale = Vector2(-1, -1)
 
-[sub_resource type="Animation" id="Animation_ulyfx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Left:anchor_left")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Left:anchor_right")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Right:anchor_left")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Right:anchor_right")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2.0]
-}
-
-[sub_resource type="Animation" id="Animation_ydq7b"]
-resource_name = "move_in"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Left:anchor_left")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-0.5, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Left:anchor_right")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.5]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Right:anchor_left")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.5, 1.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Right:anchor_right")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [2.0, 1.5]
-}
-
-[sub_resource type="Animation" id="Animation_pwmbj"]
-resource_name = "move_out"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Left:anchor_left")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.19999999),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -0.5]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Left:anchor_right")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.19999999),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.5, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Right:anchor_left")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.19999999),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 1.5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Right:anchor_right")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.5, 2.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pwmbj"]
-_data = {
-&"RESET": SubResource("Animation_ulyfx"),
-&"move_in": SubResource("Animation_ydq7b"),
-&"move_out": SubResource("Animation_pwmbj")
-}
-
-[node name="GUIBattle" type="Control" unique_id=368823071]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIBattle" unique_id=1627139554 instance=ExtResource("5_t5bh4")]
+mouse_filter = 1
 script = ExtResource("1_g67rq")
+_attack_area = 0
+_defend_area = 0
 
-[node name="Left" type="Control" parent="." unique_id=1092027732]
+[node name="Left" type="Control" parent="." index="0" unique_id=578520879]
 custom_minimum_size = Vector2(0, 320)
 layout_mode = 1
 anchor_left = -0.5
 anchor_top = 0.5
 anchor_bottom = 0.5
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="CBattleScene" parent="Left" unique_id=108436852 instance=ExtResource("1_5gv8k")]
+[node name="CBattleScene" parent="Left" index="0" unique_id=1489653524 instance=ExtResource("1_5gv8k")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -222,25 +58,26 @@ opposite_scene = NodePath("../../Right/CBattleScene")
 crater_texture_res = ExtResource("3_ulyfx")
 effect_texture_res = ExtResource("3_ulyfx")
 
-[node name="BoardDown" type="Sprite2D" parent="Left" unique_id=1176885384]
+[node name="BoardDown" type="Sprite2D" parent="Left" index="1" unique_id=1664603703]
 texture = ExtResource("4_w82aw")
 centered = false
 
-[node name="Flag" type="Sprite2D" parent="Left" unique_id=550662743]
+[node name="Flag" type="Sprite2D" parent="Left" index="2" unique_id=350002742]
 position = Vector2(0, 9)
 centered = false
 
-[node name="BoardUp" type="TextureRect" parent="Left" unique_id=434912705]
+[node name="BoardUp" type="TextureRect" parent="Left" index="3" unique_id=946428190]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 18.0
 grow_horizontal = 2
+mouse_filter = 2
 texture = ExtResource("5_5yeo3")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="BoardUp2" parent="Left" unique_id=1627139554 instance=ExtResource("5_t5bh4")]
+[node name="BoardUp2" parent="Left" index="4" unique_id=1477177027 instance=ExtResource("5_t5bh4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -248,53 +85,57 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(1, -1)
-rect = SubResource("Resource_f7lds")
-rect_ipad = SubResource("Resource_ffeyb")
+rect = SubResource("Resource_qefp7")
+rect_ipad = SubResource("Resource_f7lds")
 
-[node name="TextureRect" type="TextureRect" parent="Left/BoardUp2" unique_id=1423905491]
+[node name="TextureRect" type="TextureRect" parent="Left/BoardUp2" index="0" unique_id=1677135068]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("5_5yeo3")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="ArmyHP" parent="Left" unique_id=1672050932 instance=ExtResource("3_g67rq")]
+[node name="ArmyHP" parent="Left" index="5" unique_id=1672050932 instance=ExtResource("3_g67rq")]
 position = Vector2(4, 43)
 
-[node name="ArmyLevel" parent="Left" unique_id=530033446 instance=ExtResource("4_gmhhi")]
+[node name="ArmyLevel" parent="Left" index="6" unique_id=530033446 instance=ExtResource("4_gmhhi")]
 position = Vector2(56, 32)
 
-[node name="Cards" type="HBoxContainer" parent="Left" unique_id=1588402577]
+[node name="Cards" type="HBoxContainer" parent="Left" index="7" unique_id=1256937945]
 layout_mode = 0
 offset_left = 77.0
 offset_top = 18.0
 offset_right = 115.0
 offset_bottom = 18.0
+mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="TextureRect" type="TextureRect" parent="Left/Cards" unique_id=1398534923]
+[node name="TextureRect" type="TextureRect" parent="Left/Cards" index="0" unique_id=256313044]
 custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
+mouse_filter = 2
 expand_mode = 2
 stretch_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="Left/Cards" unique_id=438267261]
+[node name="TextureRect2" type="TextureRect" parent="Left/Cards" index="1" unique_id=313367450]
 custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
+mouse_filter = 2
 expand_mode = 2
 stretch_mode = 2
 
-[node name="AICommanderMedal" parent="Left" unique_id=1467720846 instance=ExtResource("5_w82aw")]
+[node name="AICommanderMedal" parent="Left" index="8" unique_id=1467720846 instance=ExtResource("5_w82aw")]
 position = Vector2(53, 54)
 
-[node name="CommanderMedal" parent="Left" unique_id=1241850369 instance=ExtResource("6_5yeo3")]
+[node name="CommanderMedal" parent="Left" index="9" unique_id=1241850369 instance=ExtResource("6_5yeo3")]
 position = Vector2(53, 54)
 
-[node name="MinAttack" parent="Left" unique_id=1650770578 instance=ExtResource("12_ffeyb")]
+[node name="MinAttack" parent="Left" index="10" unique_id=1650770578 instance=ExtResource("12_ffeyb")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 128.0
@@ -303,7 +144,7 @@ offset_right = 128.0
 offset_bottom = 12.0
 font = NodePath("/root/g_Num5")
 
-[node name="MaxAttack" parent="Left" unique_id=1464757886 instance=ExtResource("12_ffeyb")]
+[node name="MaxAttack" parent="Left" index="11" unique_id=241203015 instance=ExtResource("12_ffeyb")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 168.0
@@ -312,7 +153,7 @@ offset_right = 168.0
 offset_bottom = 12.0
 font = NodePath("/root/g_Num5")
 
-[node name="Right" type="Control" parent="." unique_id=1358950416]
+[node name="Right" type="Control" parent="." index="1" unique_id=1762659452]
 custom_minimum_size = Vector2(0, 320)
 layout_mode = 1
 anchor_left = 1.5
@@ -321,8 +162,9 @@ anchor_right = 2.0
 anchor_bottom = 0.5
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="CBattleScene" parent="Right" unique_id=1816235197 instance=ExtResource("1_5gv8k")]
+[node name="CBattleScene" parent="Right" index="0" unique_id=480801888 instance=ExtResource("1_5gv8k")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -335,28 +177,29 @@ opposite_scene = NodePath("../../Left/CBattleScene")
 crater_texture_res = ExtResource("3_ulyfx")
 effect_texture_res = ExtResource("3_ulyfx")
 
-[node name="BoardDown" type="Sprite2D" parent="Right" unique_id=1742570887]
+[node name="BoardDown" type="Sprite2D" parent="Right" index="1" unique_id=961645473]
 rotation = -3.1415927
 scale = Vector2(1, -1)
 texture = ExtResource("4_w82aw")
 centered = false
 
-[node name="Flag" type="Sprite2D" parent="Right" unique_id=917209918]
+[node name="Flag" type="Sprite2D" parent="Right" index="2" unique_id=315981351]
 position = Vector2(-46, 9)
 centered = false
 
-[node name="BoardUp" type="TextureRect" parent="Right" unique_id=392230511]
+[node name="BoardUp" type="TextureRect" parent="Right" index="3" unique_id=1998325615]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 18.0
 grow_horizontal = 2
 scale = Vector2(-1, 1)
+mouse_filter = 2
 texture = ExtResource("5_5yeo3")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="BoardUp2" parent="Right" unique_id=1246013166 instance=ExtResource("5_t5bh4")]
+[node name="BoardUp2" parent="Right" index="4" unique_id=1866905109 instance=ExtResource("5_t5bh4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -364,54 +207,58 @@ anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(-1, -1)
-rect = SubResource("Resource_t5bh4")
-rect_ipad = SubResource("Resource_fnrpd")
+rect = SubResource("Resource_ffeyb")
+rect_ipad = SubResource("Resource_t5bh4")
 
-[node name="TextureRect" type="TextureRect" parent="Right/BoardUp2" unique_id=102415074]
+[node name="TextureRect" type="TextureRect" parent="Right/BoardUp2" index="0" unique_id=1308945957]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("5_5yeo3")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Cards" type="HBoxContainer" parent="Right" unique_id=1519479421]
+[node name="Cards" type="HBoxContainer" parent="Right" index="5" unique_id=1656659565]
 layout_mode = 0
 offset_left = -108.0
 offset_top = 18.0
 offset_right = -70.0
 offset_bottom = 18.0
+mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 2
 
-[node name="TextureRect2" type="TextureRect" parent="Right/Cards" unique_id=1517989546]
+[node name="TextureRect2" type="TextureRect" parent="Right/Cards" index="0" unique_id=203742842]
 custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
+mouse_filter = 2
 expand_mode = 4
 stretch_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Right/Cards" unique_id=189590487]
+[node name="TextureRect" type="TextureRect" parent="Right/Cards" index="1" unique_id=826039913]
 custom_minimum_size = Vector2(19, 0)
 layout_mode = 2
+mouse_filter = 2
 expand_mode = 4
 stretch_mode = 2
 
-[node name="AICommanderMedal" parent="Right" unique_id=1961954490 instance=ExtResource("5_w82aw")]
+[node name="AICommanderMedal" parent="Right" index="6" unique_id=497668258 instance=ExtResource("5_w82aw")]
 position = Vector2(-69, 54)
 
-[node name="CommanderMedal" parent="Right" unique_id=1781656991 instance=ExtResource("6_5yeo3")]
+[node name="CommanderMedal" parent="Right" index="7" unique_id=68742353 instance=ExtResource("6_5yeo3")]
 position = Vector2(-69, 54)
 
-[node name="ArmyHP" parent="Right" unique_id=354794038 instance=ExtResource("3_g67rq")]
+[node name="ArmyHP" parent="Right" index="8" unique_id=1615742047 instance=ExtResource("3_g67rq")]
 position = Vector2(-37, 43)
 
-[node name="ArmyLevel" parent="Right" unique_id=1204844584 instance=ExtResource("4_gmhhi")]
+[node name="ArmyLevel" parent="Right" index="9" unique_id=1703916809 instance=ExtResource("4_gmhhi")]
 position = Vector2(-66, 32)
 
-[node name="MinAttack" parent="Right" unique_id=202818103 instance=ExtResource("12_ffeyb")]
+[node name="MinAttack" parent="Right" index="10" unique_id=418460902 instance=ExtResource("12_ffeyb")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = -180.0
@@ -420,7 +267,7 @@ offset_right = -180.0
 offset_bottom = 12.0
 font = NodePath("/root/g_Num5")
 
-[node name="MaxAttack" parent="Right" unique_id=568094909 instance=ExtResource("12_ffeyb")]
+[node name="MaxAttack" parent="Right" index="11" unique_id=1180912207 instance=ExtResource("12_ffeyb")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = -140.0
@@ -428,6 +275,3 @@ offset_top = 12.0
 offset_right = -140.0
 offset_bottom = 12.0
 font = NodePath("/root/g_Num5")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1332024249]
-libraries/ = SubResource("AnimationLibrary_pwmbj")

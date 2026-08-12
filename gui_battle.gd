@@ -1,10 +1,10 @@
 extends GUIElement
 
 @export
-var attack_area: int
+var _attack_area: int
 
 @export
-var defend_area: int
+var _defend_area: int
 
 var _battle_state: int
 var _fight_state: int
@@ -12,29 +12,31 @@ var _second_attack_time: float
 var _start_attack_time: float
 var _fight := CFight.new()
 
-func battle_start() -> void:
+func battle_start(attack_area: int, defend_area: int) -> void:
+	_attack_area = attack_area
+	_defend_area = defend_area
 	# TODO: set stats
 	_reset_battle()
-	_fight.first_attack(attack_area, defend_area)
+	_fight.first_attack(_attack_area, _defend_area)
 	_battle_state = 1
 	_fight_state = 0
 
 
 func _reset_battle() -> void:
-	if attack_area < 0 or defend_area < 0:
+	if _attack_area < 0 or _defend_area < 0:
 		return
-	var area1 = g_Scene.get_area(attack_area)
+	var area1 = g_Scene.get_area(_attack_area)
 	if area1 == null:
 		return
-	var area2 = g_Scene.get_area(defend_area)
+	var area2 = g_Scene.get_area(_defend_area)
 	if area2 == null:
 		return
 	var army1 = area1.get_army(0)
 	var army2 = area2.get_army(0)
 	var army1_other := CObjectDef.instance().get_army_def(army1.def.id, "others")
 	var army2_other := CObjectDef.instance().get_army_def(army2.def.id, "others")
-	$Left/CBattleScene.set_battle_area(attack_area)
-	$Right/CBattleScene.set_battle_area(defend_area)
+	$Left/CBattleScene.set_battle_area(_attack_area)
+	$Right/CBattleScene.set_battle_area(_defend_area)
 	$Left/Flag.texture = g_GameRes.get_flag_image("flag_{0}.png".format([area1.country.name]))
 	$Right/Flag.texture = g_GameRes.get_flag_image("flag_{0}.png".format([area2.country.name]))
 	$Left/MinAttack.text = "{0}".format([army1.def.minatk])
@@ -120,3 +122,12 @@ func _update_fighting(delta: float) -> void:
 
 func _battle_finish() -> void:
 	_battle_state = 3
+
+
+func _has_point(_point: Vector2) -> bool:
+	return is_visible_in_tree()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		accept_event()

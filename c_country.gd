@@ -57,7 +57,7 @@ func init(init_id: StringName, init_name: StringName) -> void:
 
 func remove_area(area_id: int) -> void:
 	area_list.erase(area_id)
-	if g_Scene.get_area(area_id).area_tax.type == 1:
+	if g_Scene.get_area(area_id).type == 1:
 		_capital_list.erase(area_id)
 
 
@@ -96,7 +96,7 @@ func _get_first_capital() -> int:
 func is_conquested() -> bool:
 	for i in area_list:
 		var area = g_Scene.get_area(i)
-		if not area.area_data.sea:
+		if not area.sea:
 			return false
 		if defeated == 1 and area.get_num_armies() > 0:
 			return false
@@ -177,8 +177,8 @@ func action(new_action: CountryAction) -> void:
 			_waiting_camera = true
 	elif action_type == 1 or action_type == 3 or action_type == 4 or action_type == 5:
 			if action_type == 3:
-				g_Scene.get_area(_action.start_area).flashing_red = true
-				g_Scene.get_area(_action.target_area).flashing_red = true
+				g_Scene.flashing_red_area_id_1 = _action.start_area
+				g_Scene.flashing_red_area_id_2 = _action.target_area
 			if not is_local_player():
 				if action_type == 4 or action_type == 5:
 					g_Scene.move_camera_to_area(_action.target_area)
@@ -276,8 +276,8 @@ func _do_action() -> void:
 
 func _finish_action() -> void:
 	if _action.type == 3:
-		g_Scene.get_area(_action.start_area).flashing = false
-		g_Scene.get_area(_action.target_area).flashing = false
+		g_Scene.flashing_red_area_id_1 = -1
+		g_Scene.flashing_red_area_id_1 = -1
 	_action.type = 0
 
 
@@ -299,7 +299,8 @@ func save_country(info: SaveCountryInfo) -> void:
 	info.alliance = alliance
 	info.defeated = defeated
 	info.destroy = _destroy
-	info.commander = commander_def.name
+	if commander_def != null:
+		info.commander = commander_def.name
 	info.commander_alive = commander_alive
 	info.war_medal = _war_medal
 	info.commander_round = commander_round

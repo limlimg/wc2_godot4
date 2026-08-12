@@ -95,10 +95,6 @@ func _on_gui_upgrade_button_pressed() -> void:
 		_set_commander_info()
 
 
-func _gui_input(event: InputEvent) -> void:
-	if event.is_action(&"ui_cancel"):
-		back_pressed.emit()
-		accept_event()
 
 
 func _process(delta: float) -> void:
@@ -107,3 +103,15 @@ func _process(delta: float) -> void:
 		if not _effect.is_live():
 			_effect.queue_free()
 			_effect = null
+
+
+func _has_point(_point: Vector2) -> bool:
+	return is_visible_in_tree()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		accept_event()
+	elif event.is_action_released(&"ui_cancel"):
+		back_pressed.emit()
+		accept_event()

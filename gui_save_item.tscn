@@ -36,57 +36,6 @@ script = ExtResource("4_r52vv")
 rect = Rect2(216, 2, 0, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Animation" id="Animation_42unb"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_yp6wb"]
-resource_name = "selected_flash"
-length = 0.5
-loop_mode = 2
-step = 0.0333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureButton:self_modulate:r")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.784, 0.627]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureButton:self_modulate:g")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.8]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("TextureButton:self_modulate:b")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.784, 0.627]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_72qpu"]
-_data = {
-&"RESET": SubResource("Animation_42unb"),
-&"selected_flash": SubResource("Animation_yp6wb")
-}
-
 [node name="GUISaveItem" unique_id=2034275630 instance=ExtResource("1_175u4")]
 script = ExtResource("2_awrqk")
 empty = true
@@ -99,6 +48,9 @@ month = 0
 day = 0
 hour = 0
 minute = 0
+
+[node name="ecText" parent="." index="3" unique_id=1650770578]
+offset_right = 0.0
 
 [node name="Flag" parent="." index="5" unique_id=1627139554 instance=ExtResource("3_gflr3")]
 layout_mode = 0
@@ -116,6 +68,7 @@ rect_ipad = SubResource("Resource_usce4")
 
 [node name="TextureRect" type="TextureRect" parent="Flag" index="0" unique_id=2067843225]
 layout_mode = 0
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 2
 
@@ -133,7 +86,7 @@ grow_vertical = 1
 rect = SubResource("Resource_gflr3")
 rect_ipad = SubResource("Resource_r52vv")
 
-[node name="ecText" parent="Time" index="0" unique_id=1650770578 instance=ExtResource("6_gflr3")]
+[node name="ecText" parent="Time" index="0" unique_id=1598574067 instance=ExtResource("6_gflr3")]
 layout_mode = 0
 offset_right = 1.0
 offset_bottom = 23.0
@@ -141,7 +94,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.20784314, 0.2901961, 0.23137255, 1)
 font = NodePath("/root/g_Num4b")
-color = Color(0.20784314, 0.2901961, 0.23137255, 1)
+color = Color(0.23137255, 0.2901961, 0.20784314, 1)
 
 [node name="Name" parent="." index="7" unique_id=1202682057 instance=ExtResource("3_gflr3")]
 layout_mode = 0
@@ -166,7 +119,4 @@ size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.8352941, 0.90588236, 0.9372549, 1)
 horizontal_alignment = 1
 font = NodePath("/root/g_Font7")
-color = Color(0.8352941, 0.90588236, 0.9372549, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="8" unique_id=1901739085]
-libraries/ = SubResource("AnimationLibrary_72qpu")
+color = Color(0.9372549, 0.90588236, 0.8352941, 1)

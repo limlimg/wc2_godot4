@@ -16,18 +16,18 @@ var asset: AssetRegistry:
 
 @export
 var texture: Texture2D:
-	get():
-		return $TextureRect.texture
 	set(value):
-		$TextureRect.texture = value
+		if value != texture:
+			texture = value
+			$TextureRect.texture = value
 
 
 @export
 var alpha := 1.0:
-	get():
-		return $TextureRect.self_modulate.a
 	set(value):
-		$TextureRect.self_modulate.a = value
+		if value != alpha:
+			alpha = value
+			$TextureRect.self_modulate.a = value
 
 
 @export_group("Texture Rect", "texture_")

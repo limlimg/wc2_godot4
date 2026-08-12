@@ -50,7 +50,6 @@ window/size/viewport_height=320
 window/size/window_width_override=1024
 window/size/window_height_override=768
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_height"
 window/stretch/scale=2.0
 window/handheld/orientation=4
 

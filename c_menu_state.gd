@@ -6,6 +6,7 @@ var _main_menu: Control
 
 func _on_enter() -> void:
 	GUIManager.instance().event_receiver = $IEventReceiver
+	GUIMotionManager.instance().event_receiver = $IEventReceiver
 	var sound_box := CSoundBox.get_instance()
 	sound_box.load_music("battle1.mp3", "")
 	sound_box.play_music(true)
@@ -41,11 +42,6 @@ func _on_enter() -> void:
 func _on_exit() -> void:
 	CSoundBox.get_instance().unload_music()
 	GUIManager.instance().free_all_child()
-
-
-func _back_pressed() -> bool:
-	show_exit()
-	return true
 
 
 func show_exit() -> void:

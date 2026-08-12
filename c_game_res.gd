@@ -80,7 +80,7 @@ func render_ui_defend_army(to_canvas_item: RID, country_name: StringName, x: flo
 			@warning_ignore("integer_division")
 			_army_res.get_image("commander_level_{0}_s.png".format([level / 3 + 1])).draw(to_canvas_item, Vector2(x + 8.0, y - 8.0))
 	elif level > 0:
-		_army_res.get_image("unitlevelmark_%d.png".format([level])).draw(to_canvas_item, Vector2(x + 8.0, y - 8.0))
+		_army_res.get_image("unitlevelmark_{0}.png".format([level])).draw(to_canvas_item, Vector2(x + 8.0, y - 8.0))
 	var card_pos := Vector2(x - 50.0, y - 20.0)
 	for i in 3:
 		if cards & (1<<i):
@@ -104,7 +104,7 @@ func render_ui_attack_army(to_canvas_item: RID, country_name: StringName, x: flo
 			@warning_ignore("integer_division")
 			_army_res.get_image("commander_level_{0}_s.png".format([level / 3 + 1])).draw(to_canvas_item, Vector2(x + 8.0, y - 8.0))
 	elif level > 0:
-		_army_res.get_image("unitlevelmark_%d.png".format([level])).draw(to_canvas_item, Vector2(x + 8.0, y - 8.0))
+		_army_res.get_image("unitlevelmark_{0}.png".format([level])).draw(to_canvas_item, Vector2(x + 8.0, y - 8.0))
 	var card_pos := Vector2(x + 36.0, y - 20.0)
 	for i in 3:
 		if cards & (1<<i):
@@ -135,7 +135,7 @@ func render_ui_army(to_canvas_item: RID, country_name: StringName, x: float, y: 
 		@warning_ignore("integer_division")
 		_army_res.get_image("commander_level_{0}_s.png".format([level / 3 + 1])).draw(to_canvas_item, Vector2(x + 8.0, y - 8.0))
 	elif level > 0:
-		_army_res.get_image("unitlevelmark_%d.png".format([level])).draw(to_canvas_item, Vector2(x + 8.0, y - 8.0))
+		_army_res.get_image("unitlevelmark_{0}.png".format([level])).draw(to_canvas_item, Vector2(x + 8.0, y - 8.0))
 	var card_pos := Vector2(x + 16.0, y - 20.0)
 	for i in 3:
 		if cards & (1<<i):
@@ -285,7 +285,7 @@ func _render_army_movement_num(to_canvas_item: RID, x: float, y: float, movement
 
 func render_army_level(to_canvas_item: RID, x: float, y: float, level: int) -> void:
 	if level > 0:
-		_army_res.get_image("unitlevelmark_%d.png".format([level])).draw(to_canvas_item, Vector2(x, y))
+		_army_res.get_image("unitlevelmark_{0}.png".format([level])).draw(to_canvas_item, Vector2(x, y))
 
 
 func render_army_hp(to_canvas_item: RID, x: float, y: float, strength: int, max_strength: int) -> void:

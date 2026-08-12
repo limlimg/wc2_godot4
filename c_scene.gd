@@ -42,7 +42,11 @@ func init(areas_enable: String, map: int) -> void:
 	camera = real_scene.get_node(^"CCamera")
 	camera.init(_scene_rect)
 	_bomber = real_scene.get_node(^"CCamera/CBomber").create_instance()
+	_selected_area = null
+	flashing_turn_begin = false
+	flashing_red_area_id_1 = -1
 	_flash_time = 0.0
+	flashing_red_area_id_2 = -1
 	real_scene.visibility_changed.connect(_render, CONNECT_ONE_SHOT)
 
 
@@ -107,8 +111,9 @@ func _load_area_tax(map: int) -> void:
 func _clear_areas() -> void:
 	for i in _area_list:
 		if i != null:
-			i.queue_free()
+			i.free()
 	_area_list.clear()
+	_area_color.clear()
 	_area_target.clear()
 	for i in _canvas_item_disabled_areas.values():
 		RenderingServer.free_rid(i)
@@ -243,7 +248,7 @@ func update(delta: float) -> void:
 	while _h_arrow_h > 2.25:
 		_h_arrow_h -= 2.05
 	var a := 0.5 + absf(_flash_time - 0.3)
-	var y := -20.0 + absf(_v_arrow_y - 20.0)
+	var y := -20.0 + absf(_v_arrow_y + 20.0)
 	for id in _render_area_list.keys():
 		var area := _area_list[id]
 		if area != null:
@@ -292,8 +297,8 @@ func screen_to_scene(x: float, y: float) -> Vector2:
 	return camera.camera_position + (Vector2(x, y) - camera.size / 2) / camera.camera_zoom
 
 
-func move(x: float, y: float) -> void:
-	camera.move(x, y, false)
+func move(x: float, y: float) -> bool:
+	return camera.move(x, y, false)
 
 
 func move_to(x: float, y: float) -> void:
@@ -396,6 +401,7 @@ func clear_targets() -> void:
 	for i in _area_list.size():
 		if _area_list[i] != null and (_area_target[i] == 1 or _area_target[i] == 2):
 			RenderingServer.canvas_item_clear(_area_list[i].canvas_item_arrow)
+			_area_target[i] = 0
 	for i in _arrow:
 		i.queue_free()
 	_arrow.clear()
@@ -423,10 +429,11 @@ func _set_sel_area_target(sel_area: CArea) -> void:
 			arrow.texture = g_GameRes.arrow_red
 			arrow.position += g_GameRes.arrow_red.origin
 			arrow.pivot_offset -= g_GameRes.arrow_red.origin
-		for j in get_num_adjacent_areas(adj_area_id):
-			var area_2_id := _get_adjacent_area_id(adj_area_id, i)
-			if check_attackable(sel_area_id, area_2_id, 0):
-				_area_target[area_2_id] = 2
+		if army_id == 3:
+			for j in get_num_adjacent_areas(adj_area_id):
+				var area_2_id := _get_adjacent_area_id(adj_area_id, j)
+				if check_attackable(sel_area_id, area_2_id, 0):
+					_area_target[area_2_id] = 2
 	if army_id == 9:
 		for i in _area_list:
 			if i != null and i.country != null and i.country.alliance != sel_area.country.alliance and i.get_num_armies() > 0:
@@ -585,10 +592,10 @@ func bomb_area(id: int, action_type: int) -> void:
 	_bomber.bomb_area(id, action_type)
 
 
-func is_bombing(id: int) -> bool:
+func is_bombing() -> bool:
 	if _bomber == null:
 		return false
-	return _bomber.is_bombing(id)
+	return _bomber.is_bombing()
 
 
 func gain_medal(x: float, y: float) -> void:

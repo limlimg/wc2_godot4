@@ -14,9 +14,10 @@ offset_right = 0.0
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 2
 
 [node name="Arrow" parent="Medal" parent_id_path=PackedInt32Array(1865123603) index="1" unique_id=811429696]
-offset_top = -318.66226
-offset_bottom = -318.66226
+offset_top = -321.65314
+offset_bottom = -321.65314

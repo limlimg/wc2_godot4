@@ -22,6 +22,11 @@ var _track_point: PackedFloat32Array
 var _touch_time: float
 var _touch_moved := false
 
+func init() -> void:
+	touching = false
+	_touch_index = 0
+
+
 func touch_begin(x: float, y: float, index: int) -> bool:
 	if touching:
 		return false
@@ -80,7 +85,7 @@ func touch_end(x: float, y: float, index: int) -> bool:
 func _get_start_point() -> PackedFloat32Array:
 	var i := 2
 	var n := _track_point.size() - 3
-	while i < n and _track_point[i] >= _touch_time - 1.0:
+	while i < n and _track_point[i] < _touch_time - 1.0:
 		i += 3
 	return _track_point.slice(i - 2, i + 1)
 

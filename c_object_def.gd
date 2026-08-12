@@ -139,7 +139,7 @@ func _release_general_photos() -> void:
 
 
 func get_general_photo(def_name: StringName) -> GeneralPhoto:
-	return _general_photos.generals[def_name]
+	return _general_photos.generals.get(def_name)
 
 
 func _load_battle_list() -> void:

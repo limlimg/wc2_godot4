@@ -33,18 +33,16 @@ func _exe_cmd(index: int) -> void:
 	var cmd := _cmds.tutorial_script[index]
 	match cmd.name:
 		&"sel area":
-			g_Scene.select_area(cmd.id)
+			CStateManager.instance().get_state_ptr(EState.GAME).select_area(cmd.id)
 			_executing_cmd = false
 		&"unsel area":
-			g_Scene.unselect_area()
+			CStateManager.instance().get_state_ptr(EState.GAME).unselect_area()
 			_executing_cmd = false
 		&"moveto area":
 			if ecGraphics.instance().content_scale_size_mode == 3:
 				g_Scene.move_camera_to_area(cmd.id)
 			else:
 				g_Scene.move_camera_center_to_area(cmd.id)
-			while g_Scene.is_moving():
-				await get_tree().process_frame
 			_executing_cmd = true
 		&"finger at":
 			$Hand.visible = true
@@ -129,16 +127,21 @@ func _process(delta: float) -> void:
 					_executing_cmd = false
 
 
-func _on_button_pressed() -> void:
-	if _current_cmd >= _cmds.tutorial_script.size():
-		return
-	var cmd := _cmds.tutorial_script[_current_cmd]
-	match cmd.name:
-		&"moveto area":
-			g_Scene.set_camera_to_area(cmd.id)
-		&"finger to":
-			$Hand.position = Vector2(cmd.x, cmd.y)
-			_move_hand_timer = 0.0
-		&"wait":
-			_current_cmd += 1
-			_executing_cmd = false
+func _has_point(_point: Vector2) -> bool:
+	return is_visible_in_tree()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		if event is InputEventScreenTouch:
+			if event.pressed:
+				if _current_cmd < _cmds.tutorial_script.size():
+					var cmd := _cmds.tutorial_script[_current_cmd]
+					match cmd.name:
+						&"finger to":
+							$Hand.position = Vector2(cmd.x, cmd.y)
+							_move_hand_timer = 0.0
+						&"wait":
+							_current_cmd += 1
+							_executing_cmd = false
+		accept_event()

@@ -11,122 +11,170 @@
 [ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="11_vqmow"]
 [ext_resource type="PackedScene" uid="uid://d2ake044dm8mq" path="res://gui_image.tscn" id="16_bhu7b"]
 
-[sub_resource type="Resource" id="Resource_n0fo1"]
+[sub_resource type="Resource" id="Resource_14io0"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 480, 320)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_hfp2u"]
+[sub_resource type="Resource" id="Resource_qk6es"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 1024, 768)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_xi3yv"]
+[sub_resource type="Resource" id="Resource_gqg8w"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 640, 320)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_17fge"]
+[sub_resource type="Resource" id="Resource_sq26s"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 568, 320)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_m8cyo"]
+[sub_resource type="Resource" id="Resource_3lq43"]
 script = ExtResource("4_pibd6")
 rect = Rect2(240, 160, 0, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_pibd6"]
+[sub_resource type="Resource" id="Resource_l3ql0"]
 script = ExtResource("4_pibd6")
 rect = Rect2(512, 324, 0, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_0a0pn"]
+[sub_resource type="Resource" id="Resource_bw6rm"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 107, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_xi0lj"]
+[sub_resource type="Resource" id="Resource_mxlgs"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 214, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_li33u"]
+[sub_resource type="Resource" id="Resource_f2i46"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 37)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_5ttj8"]
+[sub_resource type="Resource" id="Resource_2xvk3"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 80)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_1bai5"]
+[sub_resource type="Resource" id="Resource_bv25c"]
 script = ExtResource("9_hfp2u")
 name = "button_mainmenu.png"
 
-[sub_resource type="Resource" id="Resource_ipdpm"]
+[sub_resource type="Resource" id="Resource_v1qj7"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_campaign.png"
 
-[sub_resource type="Resource" id="Resource_65s5d"]
+[sub_resource type="Resource" id="Resource_n0hve"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 33)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_o7pcd"]
+[sub_resource type="Resource" id="Resource_gmu01"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 66)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_2td3l"]
+[sub_resource type="Resource" id="Resource_3aajp"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 37)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_5gl7y"]
+[sub_resource type="Resource" id="Resource_6omxr"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 80)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_i3glt"]
+[sub_resource type="Resource" id="Resource_56bww"]
 script = ExtResource("9_hfp2u")
 name = "button_mainmenu.png"
 
-[sub_resource type="Resource" id="Resource_0pocb"]
+[sub_resource type="Resource" id="Resource_ix0bi"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_conquest.png"
 
-[sub_resource type="Resource" id="Resource_pyfsu"]
+[sub_resource type="Resource" id="Resource_kleci"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 33)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_2u448"]
+[sub_resource type="Resource" id="Resource_occyo"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 66)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_yqtwg"]
+[sub_resource type="Resource" id="Resource_cm1vh"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 37)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_2wvhf"]
+[sub_resource type="Resource" id="Resource_5tpy0"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 80)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_veywj"]
+[sub_resource type="Resource" id="Resource_lfdbm"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_tutorials.png"
 
-[sub_resource type="Resource" id="Resource_w4ujq"]
+[sub_resource type="Resource" id="Resource_0gp5r"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 33)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_luqac"]
+[sub_resource type="Resource" id="Resource_wb121"]
+script = ExtResource("4_pibd6")
+rect = Rect2(0, 0, 0, 66)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_vqmow"]
+script = ExtResource("4_pibd6")
+rect = Rect2(0, 0, 0, 37)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_g3ykt"]
+script = ExtResource("4_pibd6")
+rect = Rect2(0, 0, 0, 80)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_nxjij"]
+script = ExtResource("9_hfp2u")
+name = "m_buttontext_commander.png"
+
+[sub_resource type="Resource" id="Resource_awaol"]
+script = ExtResource("4_pibd6")
+rect = Rect2(0, 0, 0, 33)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_vxim4"]
+script = ExtResource("4_pibd6")
+rect = Rect2(0, 0, 0, 66)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_5jioe"]
+script = ExtResource("4_pibd6")
+rect = Rect2(0, 0, 0, 37)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_gslb1"]
+script = ExtResource("4_pibd6")
+rect = Rect2(0, 0, 0, 80)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_bud8h"]
+script = ExtResource("9_hfp2u")
+name = "m_buttontext_options.png"
+
+[sub_resource type="Resource" id="Resource_bhu7b"]
+script = ExtResource("4_pibd6")
+rect = Rect2(0, 0, 0, 33)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_6ahrv"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 66)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
@@ -141,384 +189,331 @@ script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 80)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_mxqe0"]
-script = ExtResource("9_hfp2u")
-name = "m_buttontext_commander.png"
-
-[sub_resource type="Resource" id="Resource_u5md1"]
-script = ExtResource("4_pibd6")
-rect = Rect2(0, 0, 0, 33)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_p2eoj"]
-script = ExtResource("4_pibd6")
-rect = Rect2(0, 0, 0, 66)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_6ahrv"]
-script = ExtResource("4_pibd6")
-rect = Rect2(0, 0, 0, 37)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_k40u7"]
-script = ExtResource("4_pibd6")
-rect = Rect2(0, 0, 0, 80)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_8iywl"]
-script = ExtResource("9_hfp2u")
-name = "m_buttontext_options.png"
-
-[sub_resource type="Resource" id="Resource_lotck"]
-script = ExtResource("4_pibd6")
-rect = Rect2(0, 0, 0, 33)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_7ovn5"]
-script = ExtResource("4_pibd6")
-rect = Rect2(0, 0, 0, 66)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_bud8h"]
-script = ExtResource("4_pibd6")
-rect = Rect2(0, 0, 0, 37)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_bhu7b"]
-script = ExtResource("4_pibd6")
-rect = Rect2(0, 0, 0, 80)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_c2v50"]
+[sub_resource type="Resource" id="Resource_m8cyo"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_quitgame.png"
 
-[sub_resource type="Resource" id="Resource_uphqh"]
+[sub_resource type="Resource" id="Resource_pibd6"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 33)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_ch1cj"]
+[sub_resource type="Resource" id="Resource_n0fo1"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 0, 66)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_lsubg"]
+[sub_resource type="Resource" id="Resource_hfp2u"]
 script = ExtResource("9_hfp2u")
 name = "button_axis.png"
 
-[sub_resource type="Resource" id="Resource_juhfr"]
+[sub_resource type="Resource" id="Resource_xi3yv"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_axis.png"
 
-[sub_resource type="Resource" id="Resource_pydag"]
+[sub_resource type="Resource" id="Resource_17fge"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-216, -207, 205, 69)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_q0p4j"]
+[sub_resource type="Resource" id="Resource_0a0pn"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-432, -440, 410, 138)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_n2hpq"]
+[sub_resource type="Resource" id="Resource_xi0lj"]
 script = ExtResource("9_hfp2u")
 name = "button_wto.png"
 
-[sub_resource type="Resource" id="Resource_ddyqb"]
+[sub_resource type="Resource" id="Resource_li33u"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_wto.png"
 
-[sub_resource type="Resource" id="Resource_k3yks"]
+[sub_resource type="Resource" id="Resource_5ttj8"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-216, -130, 205, 69)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_owmu2"]
+[sub_resource type="Resource" id="Resource_65s5d"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-432, -286, 410, 138)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_f24wr"]
+[sub_resource type="Resource" id="Resource_o7pcd"]
 script = ExtResource("9_hfp2u")
 name = "mark_locked.png"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="Resource" id="Resource_frouh"]
+[sub_resource type="Resource" id="Resource_2td3l"]
 script = ExtResource("4_pibd6")
 rect = Rect2(150, 35, 0, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_yagmd"]
+[sub_resource type="Resource" id="Resource_5gl7y"]
 script = ExtResource("4_pibd6")
 rect = Rect2(300, 70, 0, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_28dc6"]
+[sub_resource type="Resource" id="Resource_i3glt"]
 script = ExtResource("9_hfp2u")
 name = "button_allies.png"
 
-[sub_resource type="Resource" id="Resource_x0e3y"]
+[sub_resource type="Resource" id="Resource_pyfsu"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_allies.png"
 
-[sub_resource type="Resource" id="Resource_gpofn"]
+[sub_resource type="Resource" id="Resource_2u448"]
 script = ExtResource("4_pibd6")
 rect = Rect2(9, -207, 205, 69)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_cxwmx"]
+[sub_resource type="Resource" id="Resource_yqtwg"]
 script = ExtResource("4_pibd6")
 rect = Rect2(18, -440, 410, 138)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_vkc8d"]
+[sub_resource type="Resource" id="Resource_2wvhf"]
 script = ExtResource("9_hfp2u")
 name = "button_nato.png"
 
-[sub_resource type="Resource" id="Resource_1mydj"]
+[sub_resource type="Resource" id="Resource_w4ujq"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_nato.png"
 
-[sub_resource type="Resource" id="Resource_4ayim"]
+[sub_resource type="Resource" id="Resource_luqac"]
 script = ExtResource("4_pibd6")
 rect = Rect2(9, -130, 205, 69)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_5v80n"]
+[sub_resource type="Resource" id="Resource_u5md1"]
 script = ExtResource("4_pibd6")
 rect = Rect2(18, -286, 410, 138)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_cictn"]
+[sub_resource type="Resource" id="Resource_p2eoj"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_load.png"
 
-[sub_resource type="Resource" id="Resource_7o7ki"]
+[sub_resource type="Resource" id="Resource_k40u7"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_load_press.png"
 
-[sub_resource type="Resource" id="Resource_40ofo"]
+[sub_resource type="Resource" id="Resource_lotck"]
 script = ExtResource("9_hfp2u")
 name = "blue_normal.png"
 name_ipad = "blue_big.png"
 
-[sub_resource type="Resource" id="Resource_yc47k"]
+[sub_resource type="Resource" id="Resource_7ovn5"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, -8, 64, 32)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_ubb10"]
+[sub_resource type="Resource" id="Resource_uphqh"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, -16, 128, 64)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_4yntp"]
+[sub_resource type="Resource" id="Resource_ch1cj"]
 script = ExtResource("9_hfp2u")
 name = "buttontext_back.png"
 
-[sub_resource type="Resource" id="Resource_b4dmi"]
+[sub_resource type="Resource" id="Resource_pydag"]
 script = ExtResource("9_hfp2u")
 name = "buttontext_back_press.png"
 
-[sub_resource type="Resource" id="Resource_oo0i1"]
+[sub_resource type="Resource" id="Resource_q0p4j"]
 script = ExtResource("9_hfp2u")
 name = "buttonboard_gray.png"
 
-[sub_resource type="Resource" id="Resource_wud10"]
+[sub_resource type="Resource" id="Resource_cxwmx"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 32, 30)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_hinvy"]
+[sub_resource type="Resource" id="Resource_owmu2"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, 0, 40, 38)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_eqlmj"]
+[sub_resource type="Resource" id="Resource_f24wr"]
 script = ExtResource("9_hfp2u")
 name = "button_global.png"
 
-[sub_resource type="Resource" id="Resource_w1w1i"]
+[sub_resource type="Resource" id="Resource_frouh"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_global.png"
 
-[sub_resource type="Resource" id="Resource_0gp5r"]
+[sub_resource type="Resource" id="Resource_yagmd"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, -138, 205, 69)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_wb121"]
+[sub_resource type="Resource" id="Resource_gpofn"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, -302, 410, 138)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_7fiyw"]
+[sub_resource type="Resource" id="Resource_5v80n"]
 script = ExtResource("9_hfp2u")
 name = "button_local.png"
 
-[sub_resource type="Resource" id="Resource_mb1ep"]
+[sub_resource type="Resource" id="Resource_k3yks"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_local.png"
 
-[sub_resource type="Resource" id="Resource_5tpy0"]
+[sub_resource type="Resource" id="Resource_4ayim"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, -61, 205, 69)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_lfdbm"]
+[sub_resource type="Resource" id="Resource_yc47k"]
 script = ExtResource("4_pibd6")
 rect = Rect2(0, -148, 410, 138)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_l0ch5"]
+[sub_resource type="Resource" id="Resource_ubb10"]
 script = ExtResource("9_hfp2u")
 name = "button_host.png"
 
-[sub_resource type="Resource" id="Resource_4rp43"]
+[sub_resource type="Resource" id="Resource_wud10"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_host.png"
 
-[sub_resource type="Resource" id="Resource_4263l"]
+[sub_resource type="Resource" id="Resource_hinvy"]
 script = ExtResource("9_hfp2u")
 name = "button_join.png"
 
-[sub_resource type="Resource" id="Resource_viduq"]
+[sub_resource type="Resource" id="Resource_uren7"]
 script = ExtResource("9_hfp2u")
 name = "m_buttontext_join.png"
 
-[sub_resource type="Resource" id="Resource_wihq2"]
+[sub_resource type="Resource" id="Resource_iw1ne"]
 script = ExtResource("9_hfp2u")
 name = "button_conquest1.png"
 
-[sub_resource type="Resource" id="Resource_occyo"]
+[sub_resource type="Resource" id="Resource_k4mar"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-192, -186, 154, 47)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_cm1vh"]
+[sub_resource type="Resource" id="Resource_ss4x7"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-382, -474, 308, 94)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_7q5a3"]
+[sub_resource type="Resource" id="Resource_j730w"]
 script = ExtResource("9_hfp2u")
 name = "button_conquest3.png"
 
-[sub_resource type="Resource" id="Resource_nxjij"]
+[sub_resource type="Resource" id="Resource_27e11"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-192, -127, 154, 47)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_awaol"]
+[sub_resource type="Resource" id="Resource_n8jkv"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-382, -354, 308, 94)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_4t0xo"]
+[sub_resource type="Resource" id="Resource_ysitw"]
 script = ExtResource("9_hfp2u")
 name = "button_conquest5.png"
 
-[sub_resource type="Resource" id="Resource_gslb1"]
+[sub_resource type="Resource" id="Resource_wgn65"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-192, -69, 154, 47)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_uren7"]
+[sub_resource type="Resource" id="Resource_2r7ie"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-382, -234, 308, 94)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_v44nb"]
+[sub_resource type="Resource" id="Resource_hayy6"]
 script = ExtResource("9_hfp2u")
 name = "button_conquest7.png"
 
-[sub_resource type="Resource" id="Resource_ss4x7"]
+[sub_resource type="Resource" id="Resource_csafc"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-192, -10, 154, 47)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_j730w"]
+[sub_resource type="Resource" id="Resource_j6gry"]
 script = ExtResource("4_pibd6")
 rect = Rect2(-382, -114, 308, 94)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_fvs4e"]
+[sub_resource type="Resource" id="Resource_5y0t6"]
 script = ExtResource("9_hfp2u")
 name = "button_conquest2.png"
 
-[sub_resource type="Resource" id="Resource_vqmow"]
+[sub_resource type="Resource" id="Resource_pjwiv"]
 script = ExtResource("4_pibd6")
 rect = Rect2(38, -186, 154, 47)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_g3ykt"]
+[sub_resource type="Resource" id="Resource_is2pf"]
 script = ExtResource("4_pibd6")
 rect = Rect2(70, -474, 308, 94)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_y37sl"]
+[sub_resource type="Resource" id="Resource_1rne6"]
 script = ExtResource("9_hfp2u")
 name = "button_conquest4.png"
 
-[sub_resource type="Resource" id="Resource_vxim4"]
+[sub_resource type="Resource" id="Resource_h6dqr"]
 script = ExtResource("4_pibd6")
 rect = Rect2(38, -127, 154, 47)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_5jioe"]
+[sub_resource type="Resource" id="Resource_n14x2"]
 script = ExtResource("4_pibd6")
 rect = Rect2(70, -354, 308, 94)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_vr5cl"]
+[sub_resource type="Resource" id="Resource_jxx58"]
 script = ExtResource("9_hfp2u")
 name = "button_conquest6.png"
 
-[sub_resource type="Resource" id="Resource_iw1ne"]
+[sub_resource type="Resource" id="Resource_1xoe8"]
 script = ExtResource("4_pibd6")
 rect = Rect2(38, -69, 154, 47)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_k4mar"]
+[sub_resource type="Resource" id="Resource_qokjo"]
 script = ExtResource("4_pibd6")
 rect = Rect2(70, -234, 308, 94)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_hixxt"]
+[sub_resource type="Resource" id="Resource_64p6p"]
 script = ExtResource("9_hfp2u")
 name = "button_conquest8.png"
 
-[sub_resource type="Resource" id="Resource_27e11"]
+[sub_resource type="Resource" id="Resource_nifhe"]
 script = ExtResource("4_pibd6")
 rect = Rect2(38, -10, 154, 47)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_n8jkv"]
+[sub_resource type="Resource" id="Resource_p8sa0"]
 script = ExtResource("4_pibd6")
 rect = Rect2(70, -114, 308, 94)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[node name="GUIMainMenu" type="Control" unique_id=1723006033]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIMainMenu" unique_id=1627139554 instance=ExtResource("3_m8cyo")]
 mouse_filter = 1
 script = ExtResource("1_fciw5")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1086215127]
+[node name="ColorRect" type="ColorRect" parent="." index="0" unique_id=1608914725]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[node name="FixedWidth" parent="." unique_id=1627139554 instance=ExtResource("3_m8cyo")]
+[node name="FixedWidth" parent="." index="1" unique_id=979624446 instance=ExtResource("3_m8cyo")]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 8
@@ -530,23 +525,24 @@ offset_left = -240.0
 offset_top = -160.0
 offset_right = 240.0
 offset_bottom = 160.0
-rect = SubResource("Resource_n0fo1")
-rect_ipad = SubResource("Resource_hfp2u")
-rect_640h = SubResource("Resource_xi3yv")
-rect_568h = SubResource("Resource_17fge")
+rect = SubResource("Resource_14io0")
+rect_ipad = SubResource("Resource_qk6es")
+rect_640h = SubResource("Resource_gqg8w")
+rect_568h = SubResource("Resource_sq26s")
 
-[node name="MainBg" type="TextureRect" parent="FixedWidth" unique_id=1497552438]
+[node name="MainBg" type="TextureRect" parent="FixedWidth" index="0" unique_id=1299774022]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_xqjbv")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Title" parent="FixedWidth" unique_id=2091934776 instance=ExtResource("3_m8cyo")]
+[node name="Title" parent="FixedWidth" index="1" unique_id=811393796 instance=ExtResource("3_m8cyo")]
 layout_mode = 1
 anchors_preset = 0
 anchor_right = 0.0
@@ -557,16 +553,17 @@ offset_right = 240.0
 offset_bottom = 160.0
 grow_horizontal = 1
 grow_vertical = 1
-rect = SubResource("Resource_m8cyo")
-rect_ipad = SubResource("Resource_pibd6")
+rect = SubResource("Resource_3lq43")
+rect_ipad = SubResource("Resource_l3ql0")
 
-[node name="TextureRect" type="TextureRect" parent="FixedWidth/Title" unique_id=2143278307]
+[node name="TextureRect" type="TextureRect" parent="FixedWidth/Title" index="0" unique_id=2132495825]
 layout_mode = 0
 offset_right = 494.0
 offset_bottom = 102.0
+mouse_filter = 2
 texture = ExtResource("4_wce6e")
 
-[node name="MainButton" parent="FixedWidth" unique_id=1736977202 instance=ExtResource("3_m8cyo")]
+[node name="MainButton" parent="FixedWidth" index="2" unique_id=823368470 instance=ExtResource("3_m8cyo")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -574,131 +571,132 @@ anchor_top = 1.0
 offset_right = 107.0
 grow_horizontal = 1
 grow_vertical = 0
-rect = SubResource("Resource_0a0pn")
-rect_ipad = SubResource("Resource_xi0lj")
+rect = SubResource("Resource_bw6rm")
+rect_ipad = SubResource("Resource_mxlgs")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FixedWidth/MainButton" unique_id=1378940527]
+[node name="VBoxContainer" type="VBoxContainer" parent="FixedWidth/MainButton" index="0" unique_id=1506420839]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 grow_vertical = 0
 rotation = 3.14159
 scale = Vector2(-1, -1)
+mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 2
 
-[node name="ButtonCampaign" parent="FixedWidth/MainButton/VBoxContainer" unique_id=1129842832 instance=ExtResource("3_m8cyo")]
+[node name="ButtonCampaign" parent="FixedWidth/MainButton/VBoxContainer" index="0" unique_id=41002556 instance=ExtResource("3_m8cyo")]
 layout_mode = 2
-rect = SubResource("Resource_li33u")
-rect_ipad = SubResource("Resource_5ttj8")
+rect = SubResource("Resource_f2i46")
+rect_ipad = SubResource("Resource_2xvk3")
 
-[node name="GUIButton" parent="FixedWidth/MainButton/VBoxContainer/ButtonCampaign" unique_id=1988150416 instance=ExtResource("5_tap4s")]
+[node name="GUIButton" parent="FixedWidth/MainButton/VBoxContainer/ButtonCampaign" index="0" unique_id=1623850049 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 10
 anchor_bottom = 0.0
 grow_vertical = 1
-image_normal = SubResource("Resource_1bai5")
-image_pressed = SubResource("Resource_1bai5")
-image_text_image = SubResource("Resource_ipdpm")
+image_normal = SubResource("Resource_bv25c")
+image_pressed = SubResource("Resource_bv25c")
+image_text_image = SubResource("Resource_v1qj7")
 play_sound_when_pressed = false
 grey_when_pressed = true
-rect = SubResource("Resource_65s5d")
-rect_ipad = SubResource("Resource_o7pcd")
+rect = SubResource("Resource_n0hve")
+rect_ipad = SubResource("Resource_gmu01")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonConquest" parent="FixedWidth/MainButton/VBoxContainer" unique_id=761496810 instance=ExtResource("3_m8cyo")]
+[node name="ButtonConquest" parent="FixedWidth/MainButton/VBoxContainer" index="1" unique_id=1646210659 instance=ExtResource("3_m8cyo")]
 layout_mode = 2
-rect = SubResource("Resource_2td3l")
-rect_ipad = SubResource("Resource_5gl7y")
+rect = SubResource("Resource_3aajp")
+rect_ipad = SubResource("Resource_6omxr")
 
-[node name="GUIButton" parent="FixedWidth/MainButton/VBoxContainer/ButtonConquest" unique_id=526053146 instance=ExtResource("5_tap4s")]
+[node name="GUIButton" parent="FixedWidth/MainButton/VBoxContainer/ButtonConquest" index="0" unique_id=2141972698 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 10
 anchor_bottom = 0.0
 grow_vertical = 1
-image_normal = SubResource("Resource_i3glt")
-image_pressed = SubResource("Resource_i3glt")
-image_text_image = SubResource("Resource_0pocb")
+image_normal = SubResource("Resource_56bww")
+image_pressed = SubResource("Resource_56bww")
+image_text_image = SubResource("Resource_ix0bi")
 grey_when_pressed = true
-rect = SubResource("Resource_pyfsu")
-rect_ipad = SubResource("Resource_2u448")
+rect = SubResource("Resource_kleci")
+rect_ipad = SubResource("Resource_occyo")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonMultiPlayer" type="Node" parent="FixedWidth/MainButton/VBoxContainer" unique_id=1689164145]
+[node name="ButtonMultiPlayer" type="Node" parent="FixedWidth/MainButton/VBoxContainer" index="2" unique_id=1760545485]
 
-[node name="ButtonTutorial" parent="FixedWidth/MainButton/VBoxContainer" unique_id=2098307513 instance=ExtResource("3_m8cyo")]
+[node name="ButtonTutorial" parent="FixedWidth/MainButton/VBoxContainer" index="3" unique_id=1416415908 instance=ExtResource("3_m8cyo")]
 layout_mode = 2
-rect = SubResource("Resource_yqtwg")
-rect_ipad = SubResource("Resource_2wvhf")
+rect = SubResource("Resource_cm1vh")
+rect_ipad = SubResource("Resource_5tpy0")
 
-[node name="GUIButton" parent="FixedWidth/MainButton/VBoxContainer/ButtonTutorial" unique_id=315823787 instance=ExtResource("5_tap4s")]
+[node name="GUIButton" parent="FixedWidth/MainButton/VBoxContainer/ButtonTutorial" index="0" unique_id=649279330 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 10
 anchor_bottom = 0.0
 grow_vertical = 1
-image_normal = SubResource("Resource_i3glt")
-image_pressed = SubResource("Resource_i3glt")
-image_text_image = SubResource("Resource_veywj")
+image_normal = SubResource("Resource_56bww")
+image_pressed = SubResource("Resource_56bww")
+image_text_image = SubResource("Resource_lfdbm")
 grey_when_pressed = true
-rect = SubResource("Resource_w4ujq")
-rect_ipad = SubResource("Resource_luqac")
+rect = SubResource("Resource_0gp5r")
+rect_ipad = SubResource("Resource_wb121")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonCommander" parent="FixedWidth/MainButton/VBoxContainer" unique_id=651290043 instance=ExtResource("3_m8cyo")]
+[node name="ButtonCommander" parent="FixedWidth/MainButton/VBoxContainer" index="4" unique_id=2065768556 instance=ExtResource("3_m8cyo")]
+layout_mode = 2
+rect = SubResource("Resource_vqmow")
+rect_ipad = SubResource("Resource_g3ykt")
+
+[node name="GUIButton" parent="FixedWidth/MainButton/VBoxContainer/ButtonCommander" index="0" unique_id=172140433 instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = 10
+anchor_bottom = 0.0
+grow_vertical = 1
+image_normal = SubResource("Resource_56bww")
+image_pressed = SubResource("Resource_56bww")
+image_text_image = SubResource("Resource_nxjij")
+grey_when_pressed = true
+rect = SubResource("Resource_awaol")
+rect_ipad = SubResource("Resource_vxim4")
+texture_res = ExtResource("8_n0fo1")
+
+[node name="ButtonOptions" parent="FixedWidth/MainButton/VBoxContainer" index="5" unique_id=126208106 instance=ExtResource("3_m8cyo")]
+layout_mode = 2
+rect = SubResource("Resource_5jioe")
+rect_ipad = SubResource("Resource_gslb1")
+
+[node name="GUIButton" parent="FixedWidth/MainButton/VBoxContainer/ButtonOptions" index="0" unique_id=179088767 instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = 10
+anchor_bottom = 0.0
+grow_vertical = 1
+image_normal = SubResource("Resource_56bww")
+image_pressed = SubResource("Resource_56bww")
+image_text_image = SubResource("Resource_bud8h")
+grey_when_pressed = true
+rect = SubResource("Resource_bhu7b")
+rect_ipad = SubResource("Resource_6ahrv")
+texture_res = ExtResource("8_n0fo1")
+
+[node name="ButtonQuit" parent="FixedWidth/MainButton/VBoxContainer" index="6" unique_id=1731354573 instance=ExtResource("3_m8cyo")]
 layout_mode = 2
 rect = SubResource("Resource_e74gm")
 rect_ipad = SubResource("Resource_xc2c6")
 
-[node name="GUIButton" parent="FixedWidth/MainButton/VBoxContainer/ButtonCommander" unique_id=1385059339 instance=ExtResource("5_tap4s")]
+[node name="GUIButton" parent="FixedWidth/MainButton/VBoxContainer/ButtonQuit" index="0" unique_id=769865206 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 10
 anchor_bottom = 0.0
 grow_vertical = 1
-image_normal = SubResource("Resource_i3glt")
-image_pressed = SubResource("Resource_i3glt")
-image_text_image = SubResource("Resource_mxqe0")
+image_normal = SubResource("Resource_56bww")
+image_pressed = SubResource("Resource_56bww")
+image_text_image = SubResource("Resource_m8cyo")
 grey_when_pressed = true
-rect = SubResource("Resource_u5md1")
-rect_ipad = SubResource("Resource_p2eoj")
+rect = SubResource("Resource_pibd6")
+rect_ipad = SubResource("Resource_n0fo1")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonOptions" parent="FixedWidth/MainButton/VBoxContainer" unique_id=1842379955 instance=ExtResource("3_m8cyo")]
-layout_mode = 2
-rect = SubResource("Resource_6ahrv")
-rect_ipad = SubResource("Resource_k40u7")
-
-[node name="GUIButton" parent="FixedWidth/MainButton/VBoxContainer/ButtonOptions" unique_id=2070166016 instance=ExtResource("5_tap4s")]
-layout_mode = 1
-anchors_preset = 10
-anchor_bottom = 0.0
-grow_vertical = 1
-image_normal = SubResource("Resource_i3glt")
-image_pressed = SubResource("Resource_i3glt")
-image_text_image = SubResource("Resource_8iywl")
-grey_when_pressed = true
-rect = SubResource("Resource_lotck")
-rect_ipad = SubResource("Resource_7ovn5")
-texture_res = ExtResource("8_n0fo1")
-
-[node name="ButtonQuit" parent="FixedWidth/MainButton/VBoxContainer" unique_id=1517231884 instance=ExtResource("3_m8cyo")]
-layout_mode = 2
-rect = SubResource("Resource_bud8h")
-rect_ipad = SubResource("Resource_bhu7b")
-
-[node name="GUIButton" parent="FixedWidth/MainButton/VBoxContainer/ButtonQuit" unique_id=1961777690 instance=ExtResource("5_tap4s")]
-layout_mode = 1
-anchors_preset = 10
-anchor_bottom = 0.0
-grow_vertical = 1
-image_normal = SubResource("Resource_i3glt")
-image_pressed = SubResource("Resource_i3glt")
-image_text_image = SubResource("Resource_c2v50")
-grey_when_pressed = true
-rect = SubResource("Resource_uphqh")
-rect_ipad = SubResource("Resource_ch1cj")
-texture_res = ExtResource("8_n0fo1")
-
-[node name="SelCampaigns" type="Control" parent="FixedWidth" unique_id=1547319078]
+[node name="SelCampaigns" type="Control" parent="FixedWidth" index="3" unique_id=1073630351]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -708,7 +706,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Left" type="Control" parent="FixedWidth/SelCampaigns" unique_id=2087869273]
+[node name="Left" type="Control" parent="FixedWidth/SelCampaigns" index="0" unique_id=394333975]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -716,7 +714,7 @@ anchor_bottom = 1.0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="ButtonAxis" parent="FixedWidth/SelCampaigns/Left" unique_id=1797155140 instance=ExtResource("5_tap4s")]
+[node name="ButtonAxis" parent="FixedWidth/SelCampaigns/Left" index="0" unique_id=942695728 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -727,15 +725,15 @@ offset_right = -216.0
 offset_bottom = -207.0
 grow_horizontal = 1
 grow_vertical = 1
-image_normal = SubResource("Resource_lsubg")
-image_pressed = SubResource("Resource_lsubg")
-image_text_image = SubResource("Resource_juhfr")
+image_normal = SubResource("Resource_hfp2u")
+image_pressed = SubResource("Resource_hfp2u")
+image_text_image = SubResource("Resource_xi3yv")
 grey_when_pressed = true
-rect = SubResource("Resource_pydag")
-rect_ipad = SubResource("Resource_q0p4j")
+rect = SubResource("Resource_17fge")
+rect_ipad = SubResource("Resource_0a0pn")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonWto" parent="FixedWidth/SelCampaigns/Left" unique_id=1263213743 instance=ExtResource("5_tap4s")]
+[node name="ButtonWto" parent="FixedWidth/SelCampaigns/Left" index="1" unique_id=774561700 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -746,15 +744,15 @@ offset_right = -216.0
 offset_bottom = -130.0
 grow_horizontal = 1
 grow_vertical = 1
-image_normal = SubResource("Resource_n2hpq")
-image_pressed = SubResource("Resource_n2hpq")
-image_text_image = SubResource("Resource_ddyqb")
+image_normal = SubResource("Resource_xi0lj")
+image_pressed = SubResource("Resource_xi0lj")
+image_text_image = SubResource("Resource_li33u")
 grey_when_pressed = true
-rect = SubResource("Resource_k3yks")
-rect_ipad = SubResource("Resource_owmu2")
+rect = SubResource("Resource_5ttj8")
+rect_ipad = SubResource("Resource_65s5d")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="Locked" parent="FixedWidth/SelCampaigns/Left/ButtonWto" unique_id=1342067132 instance=ExtResource("16_bhu7b")]
+[node name="Locked" parent="FixedWidth/SelCampaigns/Left/ButtonWto" index="5" unique_id=255202068 instance=ExtResource("16_bhu7b")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -765,12 +763,12 @@ offset_right = 150.0
 offset_bottom = 35.0
 grow_horizontal = 1
 grow_vertical = 1
-asset = SubResource("Resource_f24wr")
-rect = SubResource("Resource_frouh")
-rect_ipad = SubResource("Resource_yagmd")
+asset = SubResource("Resource_o7pcd")
+rect = SubResource("Resource_2td3l")
+rect_ipad = SubResource("Resource_5gl7y")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="Right" type="Control" parent="FixedWidth/SelCampaigns" unique_id=1297972995]
+[node name="Right" type="Control" parent="FixedWidth/SelCampaigns" index="1" unique_id=353916954]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -781,7 +779,7 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="ButtonAllies" parent="FixedWidth/SelCampaigns/Right" unique_id=1832071003 instance=ExtResource("5_tap4s")]
+[node name="ButtonAllies" parent="FixedWidth/SelCampaigns/Right" index="0" unique_id=935340115 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -792,15 +790,15 @@ offset_right = 9.0
 offset_bottom = -207.0
 grow_horizontal = 1
 grow_vertical = 1
-image_normal = SubResource("Resource_28dc6")
-image_pressed = SubResource("Resource_28dc6")
-image_text_image = SubResource("Resource_x0e3y")
+image_normal = SubResource("Resource_i3glt")
+image_pressed = SubResource("Resource_i3glt")
+image_text_image = SubResource("Resource_pyfsu")
 grey_when_pressed = true
-rect = SubResource("Resource_gpofn")
-rect_ipad = SubResource("Resource_cxwmx")
+rect = SubResource("Resource_2u448")
+rect_ipad = SubResource("Resource_yqtwg")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonNato" parent="FixedWidth/SelCampaigns/Right" unique_id=1182738056 instance=ExtResource("5_tap4s")]
+[node name="ButtonNato" parent="FixedWidth/SelCampaigns/Right" index="1" unique_id=164001082 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -811,15 +809,15 @@ offset_right = 9.0
 offset_bottom = -130.0
 grow_horizontal = 1
 grow_vertical = 1
-image_normal = SubResource("Resource_vkc8d")
-image_pressed = SubResource("Resource_vkc8d")
-image_text_image = SubResource("Resource_1mydj")
+image_normal = SubResource("Resource_2wvhf")
+image_pressed = SubResource("Resource_2wvhf")
+image_text_image = SubResource("Resource_w4ujq")
 grey_when_pressed = true
-rect = SubResource("Resource_4ayim")
-rect_ipad = SubResource("Resource_5v80n")
+rect = SubResource("Resource_luqac")
+rect_ipad = SubResource("Resource_u5md1")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="Locked" parent="FixedWidth/SelCampaigns/Right/ButtonNato" unique_id=831063312 instance=ExtResource("16_bhu7b")]
+[node name="Locked" parent="FixedWidth/SelCampaigns/Right/ButtonNato" index="5" unique_id=861224100 instance=ExtResource("16_bhu7b")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -830,12 +828,12 @@ offset_right = 150.0
 offset_bottom = 35.0
 grow_horizontal = 1
 grow_vertical = 1
-asset = SubResource("Resource_f24wr")
-rect = SubResource("Resource_frouh")
-rect_ipad = SubResource("Resource_yagmd")
+asset = SubResource("Resource_o7pcd")
+rect = SubResource("Resource_2td3l")
+rect_ipad = SubResource("Resource_5gl7y")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonLoad" parent="FixedWidth/SelCampaigns" unique_id=731053604 instance=ExtResource("5_tap4s")]
+[node name="ButtonLoad" parent="FixedWidth/SelCampaigns" index="2" unique_id=2146910109 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -844,29 +842,29 @@ anchor_right = 0.5
 offset_top = -8.0
 offset_bottom = -8.0
 grow_vertical = 0
-image_normal = SubResource("Resource_cictn")
-image_pressed = SubResource("Resource_7o7ki")
-image_background = SubResource("Resource_40ofo")
-rect = SubResource("Resource_yc47k")
-rect_ipad = SubResource("Resource_ubb10")
+image_normal = SubResource("Resource_p2eoj")
+image_pressed = SubResource("Resource_k40u7")
+image_background = SubResource("Resource_lotck")
+rect = SubResource("Resource_7ovn5")
+rect_ipad = SubResource("Resource_uphqh")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonBack" parent="FixedWidth/SelCampaigns" unique_id=662656165 instance=ExtResource("5_tap4s")]
+[node name="ButtonBack" parent="FixedWidth/SelCampaigns" index="3" unique_id=668729029 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-image_normal = SubResource("Resource_4yntp")
-image_pressed = SubResource("Resource_b4dmi")
-image_background = SubResource("Resource_oo0i1")
+image_normal = SubResource("Resource_ch1cj")
+image_pressed = SubResource("Resource_pydag")
+image_background = SubResource("Resource_q0p4j")
 play_sound_when_pressed = false
-rect = SubResource("Resource_wud10")
-rect_ipad = SubResource("Resource_hinvy")
+rect = SubResource("Resource_cxwmx")
+rect_ipad = SubResource("Resource_owmu2")
 texture_res = ExtResource("11_vqmow")
 
-[node name="SelMultiplayer" type="Control" parent="FixedWidth" unique_id=1487122513]
+[node name="SelMultiplayer" type="Control" parent="FixedWidth" index="4" unique_id=1025765210]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -876,7 +874,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ButtonGlobal" parent="FixedWidth/SelMultiplayer" unique_id=1317093954 instance=ExtResource("5_tap4s")]
+[node name="ButtonGlobal" parent="FixedWidth/SelMultiplayer" index="0" unique_id=1657566684 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -885,15 +883,15 @@ anchor_right = 0.5
 offset_top = -138.0
 offset_bottom = -138.0
 grow_vertical = 0
-image_normal = SubResource("Resource_eqlmj")
-image_pressed = SubResource("Resource_eqlmj")
-image_text_image = SubResource("Resource_w1w1i")
+image_normal = SubResource("Resource_f24wr")
+image_pressed = SubResource("Resource_f24wr")
+image_text_image = SubResource("Resource_frouh")
 grey_when_pressed = true
-rect = SubResource("Resource_0gp5r")
-rect_ipad = SubResource("Resource_wb121")
+rect = SubResource("Resource_yagmd")
+rect_ipad = SubResource("Resource_gpofn")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonLocal" parent="FixedWidth/SelMultiplayer" unique_id=340862691 instance=ExtResource("5_tap4s")]
+[node name="ButtonLocal" parent="FixedWidth/SelMultiplayer" index="1" unique_id=1907706529 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -902,29 +900,29 @@ anchor_right = 0.5
 offset_top = -61.0
 offset_bottom = -61.0
 grow_vertical = 0
-image_normal = SubResource("Resource_7fiyw")
-image_pressed = SubResource("Resource_7fiyw")
-image_text_image = SubResource("Resource_mb1ep")
+image_normal = SubResource("Resource_5v80n")
+image_pressed = SubResource("Resource_5v80n")
+image_text_image = SubResource("Resource_k3yks")
 grey_when_pressed = true
-rect = SubResource("Resource_5tpy0")
-rect_ipad = SubResource("Resource_lfdbm")
+rect = SubResource("Resource_4ayim")
+rect_ipad = SubResource("Resource_yc47k")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonBack" parent="FixedWidth/SelMultiplayer" unique_id=123460645 instance=ExtResource("5_tap4s")]
+[node name="ButtonBack" parent="FixedWidth/SelMultiplayer" index="2" unique_id=431619763 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-image_normal = SubResource("Resource_4yntp")
-image_pressed = SubResource("Resource_b4dmi")
-image_background = SubResource("Resource_oo0i1")
-rect = SubResource("Resource_wud10")
-rect_ipad = SubResource("Resource_hinvy")
+image_normal = SubResource("Resource_ch1cj")
+image_pressed = SubResource("Resource_pydag")
+image_background = SubResource("Resource_q0p4j")
+rect = SubResource("Resource_cxwmx")
+rect_ipad = SubResource("Resource_owmu2")
 texture_res = ExtResource("11_vqmow")
 
-[node name="SelLocal" type="Control" parent="FixedWidth" unique_id=420819806]
+[node name="SelLocal" type="Control" parent="FixedWidth" index="5" unique_id=660094914]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -934,7 +932,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ButtonHost" parent="FixedWidth/SelLocal" unique_id=93574562 instance=ExtResource("5_tap4s")]
+[node name="ButtonHost" parent="FixedWidth/SelLocal" index="0" unique_id=2130893984 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -943,15 +941,15 @@ anchor_right = 0.5
 offset_top = -138.0
 offset_bottom = -138.0
 grow_vertical = 0
-image_normal = SubResource("Resource_l0ch5")
-image_pressed = SubResource("Resource_l0ch5")
-image_text_image = SubResource("Resource_4rp43")
+image_normal = SubResource("Resource_ubb10")
+image_pressed = SubResource("Resource_ubb10")
+image_text_image = SubResource("Resource_wud10")
 grey_when_pressed = true
-rect = SubResource("Resource_0gp5r")
-rect_ipad = SubResource("Resource_wb121")
+rect = SubResource("Resource_yagmd")
+rect_ipad = SubResource("Resource_gpofn")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonJoin" parent="FixedWidth/SelLocal" unique_id=395242082 instance=ExtResource("5_tap4s")]
+[node name="ButtonJoin" parent="FixedWidth/SelLocal" index="1" unique_id=1148119843 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -960,29 +958,29 @@ anchor_right = 0.5
 offset_top = -61.0
 offset_bottom = -61.0
 grow_vertical = 0
-image_normal = SubResource("Resource_4263l")
-image_pressed = SubResource("Resource_4263l")
-image_text_image = SubResource("Resource_viduq")
+image_normal = SubResource("Resource_hinvy")
+image_pressed = SubResource("Resource_hinvy")
+image_text_image = SubResource("Resource_uren7")
 grey_when_pressed = true
-rect = SubResource("Resource_5tpy0")
-rect_ipad = SubResource("Resource_lfdbm")
+rect = SubResource("Resource_4ayim")
+rect_ipad = SubResource("Resource_yc47k")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonBack" parent="FixedWidth/SelLocal" unique_id=128133234 instance=ExtResource("5_tap4s")]
+[node name="ButtonBack" parent="FixedWidth/SelLocal" index="2" unique_id=1834262185 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-image_normal = SubResource("Resource_4yntp")
-image_pressed = SubResource("Resource_b4dmi")
-image_background = SubResource("Resource_oo0i1")
-rect = SubResource("Resource_wud10")
-rect_ipad = SubResource("Resource_hinvy")
+image_normal = SubResource("Resource_ch1cj")
+image_pressed = SubResource("Resource_pydag")
+image_background = SubResource("Resource_q0p4j")
+rect = SubResource("Resource_cxwmx")
+rect_ipad = SubResource("Resource_owmu2")
 texture_res = ExtResource("11_vqmow")
 
-[node name="SelConquest" type="Control" parent="FixedWidth" unique_id=1001670368]
+[node name="SelConquest" type="Control" parent="FixedWidth" index="6" unique_id=1261995730]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -992,7 +990,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Left" type="Control" parent="FixedWidth/SelConquest" unique_id=1118960605]
+[node name="Left" type="Control" parent="FixedWidth/SelConquest" index="0" unique_id=344892101]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -1000,7 +998,7 @@ anchor_bottom = 1.0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="GUIButton" parent="FixedWidth/SelConquest/Left" unique_id=526895503 instance=ExtResource("5_tap4s")]
+[node name="GUIButton" parent="FixedWidth/SelConquest/Left" index="0" unique_id=284348371 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -1011,14 +1009,14 @@ offset_right = -192.0
 offset_bottom = -186.0
 grow_horizontal = 1
 grow_vertical = 0
-image_normal = SubResource("Resource_wihq2")
-image_pressed = SubResource("Resource_wihq2")
+image_normal = SubResource("Resource_iw1ne")
+image_pressed = SubResource("Resource_iw1ne")
 grey_when_pressed = true
-rect = SubResource("Resource_occyo")
-rect_ipad = SubResource("Resource_cm1vh")
+rect = SubResource("Resource_k4mar")
+rect_ipad = SubResource("Resource_ss4x7")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="GUIButton3" parent="FixedWidth/SelConquest/Left" unique_id=320396988 instance=ExtResource("5_tap4s")]
+[node name="GUIButton3" parent="FixedWidth/SelConquest/Left" index="1" unique_id=12810690 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -1029,133 +1027,133 @@ offset_right = -192.0
 offset_bottom = -127.0
 grow_horizontal = 1
 grow_vertical = 0
-image_normal = SubResource("Resource_7q5a3")
-image_pressed = SubResource("Resource_7q5a3")
-grey_when_pressed = true
-rect = SubResource("Resource_nxjij")
-rect_ipad = SubResource("Resource_awaol")
-texture_res = ExtResource("8_n0fo1")
-
-[node name="GUIButton5" parent="FixedWidth/SelConquest/Left" unique_id=355060089 instance=ExtResource("5_tap4s")]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 0.5
-offset_left = -192.0
-offset_top = -69.0
-offset_right = -192.0
-offset_bottom = -69.0
-grow_horizontal = 1
-grow_vertical = 0
-image_normal = SubResource("Resource_4t0xo")
-image_pressed = SubResource("Resource_4t0xo")
-grey_when_pressed = true
-rect = SubResource("Resource_gslb1")
-rect_ipad = SubResource("Resource_uren7")
-texture_res = ExtResource("8_n0fo1")
-
-[node name="GUIButton7" parent="FixedWidth/SelConquest/Left" unique_id=1420715327 instance=ExtResource("5_tap4s")]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 1.0
-anchor_right = 0.5
-offset_left = -192.0
-offset_top = -10.0
-offset_right = -192.0
-offset_bottom = -10.0
-grow_horizontal = 1
-grow_vertical = 0
-image_normal = SubResource("Resource_v44nb")
-image_pressed = SubResource("Resource_v44nb")
-grey_when_pressed = true
-rect = SubResource("Resource_ss4x7")
-rect_ipad = SubResource("Resource_j730w")
-texture_res = ExtResource("8_n0fo1")
-
-[node name="Right" type="Control" parent="FixedWidth/SelConquest" unique_id=212924287]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
-mouse_filter = 2
-
-[node name="GUIButton2" parent="FixedWidth/SelConquest/Right" unique_id=1518118932 instance=ExtResource("5_tap4s")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = 38.0
-offset_top = -186.0
-offset_right = 38.0
-offset_bottom = -186.0
-grow_horizontal = 1
-grow_vertical = 0
-image_normal = SubResource("Resource_fvs4e")
-image_pressed = SubResource("Resource_fvs4e")
-grey_when_pressed = true
-rect = SubResource("Resource_vqmow")
-rect_ipad = SubResource("Resource_g3ykt")
-texture_res = ExtResource("8_n0fo1")
-
-[node name="GUIButton4" parent="FixedWidth/SelConquest/Right" unique_id=649060181 instance=ExtResource("5_tap4s")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = 38.0
-offset_top = -127.0
-offset_right = 38.0
-offset_bottom = -127.0
-grow_horizontal = 1
-grow_vertical = 0
-image_normal = SubResource("Resource_y37sl")
-image_pressed = SubResource("Resource_y37sl")
-grey_when_pressed = true
-rect = SubResource("Resource_vxim4")
-rect_ipad = SubResource("Resource_5jioe")
-texture_res = ExtResource("8_n0fo1")
-
-[node name="GUIButton6" parent="FixedWidth/SelConquest/Right" unique_id=1505949637 instance=ExtResource("5_tap4s")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = 38.0
-offset_top = -69.0
-offset_right = 38.0
-offset_bottom = -69.0
-grow_horizontal = 1
-grow_vertical = 0
-image_normal = SubResource("Resource_vr5cl")
-image_pressed = SubResource("Resource_vr5cl")
-grey_when_pressed = true
-rect = SubResource("Resource_iw1ne")
-rect_ipad = SubResource("Resource_k4mar")
-texture_res = ExtResource("8_n0fo1")
-
-[node name="GUIButton8" parent="FixedWidth/SelConquest/Right" unique_id=1163016298 instance=ExtResource("5_tap4s")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = 38.0
-offset_top = -10.0
-offset_right = 38.0
-offset_bottom = -10.0
-grow_horizontal = 1
-grow_vertical = 0
-image_normal = SubResource("Resource_hixxt")
-image_pressed = SubResource("Resource_hixxt")
+image_normal = SubResource("Resource_j730w")
+image_pressed = SubResource("Resource_j730w")
 grey_when_pressed = true
 rect = SubResource("Resource_27e11")
 rect_ipad = SubResource("Resource_n8jkv")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonLoad" parent="FixedWidth/SelConquest" unique_id=212308257 instance=ExtResource("5_tap4s")]
+[node name="GUIButton5" parent="FixedWidth/SelConquest/Left" index="2" unique_id=1833532119 instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = -69.0
+offset_right = -192.0
+offset_bottom = -69.0
+grow_horizontal = 1
+grow_vertical = 0
+image_normal = SubResource("Resource_ysitw")
+image_pressed = SubResource("Resource_ysitw")
+grey_when_pressed = true
+rect = SubResource("Resource_wgn65")
+rect_ipad = SubResource("Resource_2r7ie")
+texture_res = ExtResource("8_n0fo1")
+
+[node name="GUIButton7" parent="FixedWidth/SelConquest/Left" index="3" unique_id=1813882301 instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = -10.0
+offset_right = -192.0
+offset_bottom = -10.0
+grow_horizontal = 1
+grow_vertical = 0
+image_normal = SubResource("Resource_hayy6")
+image_pressed = SubResource("Resource_hayy6")
+grey_when_pressed = true
+rect = SubResource("Resource_csafc")
+rect_ipad = SubResource("Resource_j6gry")
+texture_res = ExtResource("8_n0fo1")
+
+[node name="Right" type="Control" parent="FixedWidth/SelConquest" index="1" unique_id=992503710]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="GUIButton2" parent="FixedWidth/SelConquest/Right" index="0" unique_id=370441401 instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = 38.0
+offset_top = -186.0
+offset_right = 38.0
+offset_bottom = -186.0
+grow_horizontal = 1
+grow_vertical = 0
+image_normal = SubResource("Resource_5y0t6")
+image_pressed = SubResource("Resource_5y0t6")
+grey_when_pressed = true
+rect = SubResource("Resource_pjwiv")
+rect_ipad = SubResource("Resource_is2pf")
+texture_res = ExtResource("8_n0fo1")
+
+[node name="GUIButton4" parent="FixedWidth/SelConquest/Right" index="1" unique_id=1888107613 instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = 38.0
+offset_top = -127.0
+offset_right = 38.0
+offset_bottom = -127.0
+grow_horizontal = 1
+grow_vertical = 0
+image_normal = SubResource("Resource_1rne6")
+image_pressed = SubResource("Resource_1rne6")
+grey_when_pressed = true
+rect = SubResource("Resource_h6dqr")
+rect_ipad = SubResource("Resource_n14x2")
+texture_res = ExtResource("8_n0fo1")
+
+[node name="GUIButton6" parent="FixedWidth/SelConquest/Right" index="2" unique_id=1757743138 instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = 38.0
+offset_top = -69.0
+offset_right = 38.0
+offset_bottom = -69.0
+grow_horizontal = 1
+grow_vertical = 0
+image_normal = SubResource("Resource_jxx58")
+image_pressed = SubResource("Resource_jxx58")
+grey_when_pressed = true
+rect = SubResource("Resource_1xoe8")
+rect_ipad = SubResource("Resource_qokjo")
+texture_res = ExtResource("8_n0fo1")
+
+[node name="GUIButton8" parent="FixedWidth/SelConquest/Right" index="3" unique_id=1145162248 instance=ExtResource("5_tap4s")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = 38.0
+offset_top = -10.0
+offset_right = 38.0
+offset_bottom = -10.0
+grow_horizontal = 1
+grow_vertical = 0
+image_normal = SubResource("Resource_64p6p")
+image_pressed = SubResource("Resource_64p6p")
+grey_when_pressed = true
+rect = SubResource("Resource_nifhe")
+rect_ipad = SubResource("Resource_p8sa0")
+texture_res = ExtResource("8_n0fo1")
+
+[node name="ButtonLoad" parent="FixedWidth/SelConquest" index="2" unique_id=1537806915 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -1164,32 +1162,32 @@ anchor_right = 0.5
 offset_top = -8.0
 offset_bottom = -8.0
 grow_vertical = 0
-image_normal = SubResource("Resource_cictn")
-image_pressed = SubResource("Resource_7o7ki")
-image_background = SubResource("Resource_40ofo")
-rect = SubResource("Resource_yc47k")
-rect_ipad = SubResource("Resource_ubb10")
+image_normal = SubResource("Resource_p2eoj")
+image_pressed = SubResource("Resource_k40u7")
+image_background = SubResource("Resource_lotck")
+rect = SubResource("Resource_7ovn5")
+rect_ipad = SubResource("Resource_uphqh")
 texture_res = ExtResource("8_n0fo1")
 
-[node name="ButtonBack" parent="FixedWidth/SelConquest" unique_id=1742304654 instance=ExtResource("5_tap4s")]
+[node name="ButtonBack" parent="FixedWidth/SelConquest" index="3" unique_id=2053769940 instance=ExtResource("5_tap4s")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-image_normal = SubResource("Resource_4yntp")
-image_pressed = SubResource("Resource_b4dmi")
-image_background = SubResource("Resource_oo0i1")
-rect = SubResource("Resource_wud10")
-rect_ipad = SubResource("Resource_hinvy")
+image_normal = SubResource("Resource_ch1cj")
+image_pressed = SubResource("Resource_pydag")
+image_background = SubResource("Resource_q0p4j")
+rect = SubResource("Resource_cxwmx")
+rect_ipad = SubResource("Resource_owmu2")
 texture_res = ExtResource("11_vqmow")
 
-[node name="NewGameTip" type="Node" parent="FixedWidth" unique_id=2004220755]
+[node name="NewGameTip" type="Node" parent="FixedWidth" index="7" unique_id=1106810299]
 
-[node name="ButtonMail" type="Node" parent="FixedWidth" unique_id=1888784421]
+[node name="ButtonMail" type="Node" parent="FixedWidth" index="8" unique_id=322991816]
 
-[node name="ButtonMoreGame" type="Node" parent="FixedWidth" unique_id=1671435569]
+[node name="ButtonMoreGame" type="Node" parent="FixedWidth" index="9" unique_id=2131350369]
 
 [connection signal="pressed" from="FixedWidth/MainButton/VBoxContainer/ButtonCampaign/GUIButton" to="." method="_on_button_campaign_pressed"]
 [connection signal="pressed" from="FixedWidth/MainButton/VBoxContainer/ButtonConquest/GUIButton" to="." method="_on_button_conquest_pressed"]

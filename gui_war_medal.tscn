@@ -7,3 +7,8 @@
 script = ExtResource("2_2c0md")
 medal = 0
 level = 0
+text_font = null
+
+[node name="Arrow" parent="Medal" parent_id_path=PackedInt32Array(1865123603) index="0" unique_id=811429696]
+offset_top = -323.69708
+offset_bottom = -323.69708

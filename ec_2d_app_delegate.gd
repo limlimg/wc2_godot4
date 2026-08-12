@@ -180,6 +180,11 @@ func _application_will_enter_foreground(_application: MainLoop) -> void:
 	pass
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released(&"ui_cancel"):
+		CStateManager.instance().get_state_ptr(EState.MENU).show_exit()
+
+
 func get_document_path(file_name: String) -> String:
 	return "user://" + file_name
 

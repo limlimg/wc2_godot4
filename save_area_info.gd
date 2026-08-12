@@ -59,10 +59,13 @@ var country: StringName
 @export
 var army: Array[SaveArmyInfo]:
 	get():
-		army_count = min(army.size(), 4)
+		army_count = min(army_count, 4)
 		army.resize(army_count)
 		for i in army_count:
 			var x := army[i]
+			if x == null:
+				x = SaveArmyInfo.new()
+				army[i] = x
 			x._mem = _mem
 			x._offset = _offset + 24 + 44 * i
 		return army

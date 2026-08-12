@@ -8,46 +8,35 @@
 [ext_resource type="PackedScene" uid="uid://dr76fdoysjvb3" path="res://ec_uni_font.tscn" id="5_fylra"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="6_dnmqc"]
 
-[sub_resource type="Resource" id="Resource_ojymw"]
+[sub_resource type="Resource" id="Resource_fylra"]
 script = ExtResource("4_bnjhe")
 rect = Rect2(-2, -2, 227, 131)
 
-[sub_resource type="Resource" id="Resource_l6xut"]
+[sub_resource type="Resource" id="Resource_dnmqc"]
 script = ExtResource("4_bnjhe")
 rect = Rect2(-4, -4, 454, 262)
 
-[sub_resource type="Resource" id="Resource_xvlg8"]
+[sub_resource type="Resource" id="Resource_bnjhe"]
 script = ExtResource("4_bnjhe")
 rect = Rect2(16, 60, 0, 0)
 
-[sub_resource type="Resource" id="Resource_d4slx"]
+[sub_resource type="Resource" id="Resource_ojymw"]
 script = ExtResource("4_bnjhe")
 rect = Rect2(32, 120, 0, 0)
 
-[sub_resource type="Resource" id="Resource_8f3fq"]
+[sub_resource type="Resource" id="Resource_l6xut"]
 script = ExtResource("6_dnmqc")
 name = "font4_en.fnt"
 name_hd = "font4_en_hd.fnt"
 name_ipad = "font4_en_hd.fnt"
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k7wgp"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3gx5n"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_flmrv"]
-
-[node name="GUILockedWarning" type="Control" unique_id=131788446]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUILockedWarning" unique_id=1627139554 instance=ExtResource("3_dnmqc")]
+mouse_filter = 1
 script = ExtResource("1_ccynw")
 
-[node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_k7wgp")]
+[node name="Fade" parent="." index="0" unique_id=1674156080 instance=ExtResource("2_k7wgp")]
 
-[node name="BoardLocked" parent="." unique_id=1627139554 instance=ExtResource("3_dnmqc")]
+[node name="BoardLocked" parent="." index="1" unique_id=1322185438 instance=ExtResource("3_dnmqc")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -58,15 +47,15 @@ offset_right = 225.0
 offset_bottom = 129.0
 grow_horizontal = 1
 grow_vertical = 1
-rect = SubResource("Resource_ojymw")
-rect_ipad = SubResource("Resource_l6xut")
+rect = SubResource("Resource_fylra")
+rect_ipad = SubResource("Resource_dnmqc")
 
-[node name="BoardLocked" type="Sprite2D" parent="BoardLocked" unique_id=29363538]
+[node name="BoardLocked" type="Sprite2D" parent="BoardLocked" index="0" unique_id=1445340401]
 position = Vector2(2, 2)
 texture = ExtResource("4_k7wgp")
 centered = false
 
-[node name="GUIElement" parent="BoardLocked" unique_id=1439823703 instance=ExtResource("3_dnmqc")]
+[node name="GUIElement" parent="BoardLocked" index="1" unique_id=1572279367 instance=ExtResource("3_dnmqc")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -77,32 +66,17 @@ offset_right = 16.0
 offset_bottom = 60.0
 grow_horizontal = 1
 grow_vertical = 1
-rect = SubResource("Resource_xvlg8")
-rect_ipad = SubResource("Resource_d4slx")
+rect = SubResource("Resource_bnjhe")
+rect_ipad = SubResource("Resource_ojymw")
 
-[node name="ecUniFont" parent="BoardLocked/GUIElement" unique_id=1248850266 instance=ExtResource("5_fylra")]
+[node name="ecUniFont" parent="BoardLocked/GUIElement" index="0" unique_id=1248850266 instance=ExtResource("5_fylra")]
 layout_mode = 0
-asset = SubResource("Resource_8f3fq")
+asset = SubResource("Resource_l6xut")
 
-[node name="Label" type="Label" parent="BoardLocked/GUIElement/ecUniFont" unique_id=187493172]
+[node name="Label" type="Label" parent="BoardLocked/GUIElement/ecUniFont" index="0" unique_id=241683592]
 layout_mode = 0
 offset_right = 89.0
 offset_bottom = 15.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "locked warning"
-
-[node name="Button" type="Button" parent="." unique_id=286542659]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/normal = SubResource("StyleBoxEmpty_k7wgp")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_3gx5n")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_flmrv")
-
-[connection signal="back_pressed" from="Fade" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

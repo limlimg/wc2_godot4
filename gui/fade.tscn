@@ -5,15 +5,16 @@
 [node name="Fade" type="Node2D" unique_id=1674156080]
 script = ExtResource("1_owpuu")
 
-[node name="Control" type="Control" parent="." unique_id=233764720]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="." unique_id=1087964849]
+[node name="Control" type="Control" parent="." unique_id=717981817]
 top_level = true
-remote_path = NodePath("../Node2D")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Node2D" type="Node2D" parent="." unique_id=982491755]
 
-[connection signal="gui_input" from="Control" to="." method="_on_control_gui_input"]
 [connection signal="draw" from="Node2D" to="." method="_on_node_2d_draw"]

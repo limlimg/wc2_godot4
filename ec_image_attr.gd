@@ -122,7 +122,7 @@ func _draw_rect(to_canvas_item: RID, rect: Rect2, tile: bool, modulate: Color, t
 	src_rect.position *= texture_scale
 	src_rect.size *= texture_scale
 	if tile:
-		src_rect.size *= rect.size / src_rect.size
+		src_rect.size *= rect.size / region.size
 		texture.texture.draw_rect_region(to_canvas_item, rect, src_rect, modulate, transpose, false)
 	else:
 		texture.texture.draw_rect_region(to_canvas_item, rect, src_rect, modulate, transpose, true)

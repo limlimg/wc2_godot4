@@ -2,10 +2,9 @@ extends GUIElement
 
 @export
 var conquest: int:
-	get():
-		return $GUICountryList.conquest
 	set(value):
 		if value != conquest:
+			conquest = value
 			$GUICountryList.conquest = value
 			init()
 
@@ -62,7 +61,13 @@ func _on_button_back_pressed() -> void:
 	back_pressed.emit()
 
 
+func _has_point(_point: Vector2) -> bool:
+	return is_visible_in_tree()
+
+
 func _gui_input(event: InputEvent) -> void:
-	if event.is_action(&"ui_cancel"):
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		accept_event()
+	elif event.is_action_released(&"ui_cancel"):
 		back_pressed.emit()
 		accept_event()

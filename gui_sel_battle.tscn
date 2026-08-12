@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="5_1nx8i"]
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="5_pbuu2"]
 [ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="6_t4vqn"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="7_7c417"]
 [ext_resource type="Script" uid="uid://chtcq7m8aw4se" path="res://ec_texture_res.gd" id="8_kpvdu"]
 [ext_resource type="Script" uid="uid://8hwlr3pkh8ko" path="res://ec_texture_rect.gd" id="9_gbj1g"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="12_o5ukl"]
@@ -16,44 +15,36 @@
 [ext_resource type="PackedScene" uid="uid://dilpumc03hfp0" path="res://gui_battle_list.tscn" id="23_nf5fh"]
 [ext_resource type="PackedScene" uid="uid://ciwlalt7fqwik" path="res://gui_battle_intro.tscn" id="27_aptrf"]
 
-[sub_resource type="Resource" id="Resource_cekmy"]
+[sub_resource type="Resource" id="Resource_sobiq"]
 script = ExtResource("5_1nx8i")
 name = "board_selbattle.webp"
 name_ipad = "board_selbattle_iPad.webp"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="Resource" id="Resource_6lvsi"]
+[sub_resource type="Resource" id="Resource_s03bl"]
 script = ExtResource("9_gbj1g")
 region = Rect2(0, 0, 144, 320)
 metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
 
-[sub_resource type="Resource" id="Resource_v4jtg"]
+[sub_resource type="Resource" id="Resource_gbj1g"]
 script = ExtResource("9_gbj1g")
 region = Rect2(0, 0, 288, 768)
 metadata/_custom_type_script = "uid://8hwlr3pkh8ko"
 
-[sub_resource type="Resource" id="Resource_c3y2v"]
+[sub_resource type="Resource" id="Resource_lqdbo"]
 script = ExtResource("5_pbuu2")
 rect = Rect2(0, 0, 144, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_x3vk5"]
+[sub_resource type="Resource" id="Resource_gsbih"]
 script = ExtResource("5_pbuu2")
 rect = Rect2(0, 0, 288, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Texture2D" id="Texture2D_hto1p"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("7_7c417")
-asset = SubResource("Resource_cekmy")
-metadata/_custom_type_script = "uid://cr8ksgysprxjq"
 
 [sub_resource type="Texture2D" id="Texture2D_4ytgt"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("6_t4vqn")
-texture = SubResource("Texture2D_hto1p")
 region = Rect2(0, 0, 144, 320)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
@@ -61,11 +52,10 @@ metadata/_custom_type_script = "uid://bvddy3vjuki27"
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("6_t4vqn")
-texture = SubResource("Texture2D_hto1p")
 region = Rect2(0, 0, 288, 768)
 metadata/_custom_type_script = "uid://bvddy3vjuki27"
 
-[sub_resource type="Resource" id="Resource_hu8uk"]
+[sub_resource type="Resource" id="Resource_6lvsi"]
 script = ExtResource("8_kpvdu")
 images = Dictionary[StringName, ExtResource("6_t4vqn")]({
 &"board_selbattle.webp": SubResource("Texture2D_4ytgt"),
@@ -73,118 +63,115 @@ images = Dictionary[StringName, ExtResource("6_t4vqn")]({
 })
 metadata/_custom_type_script = "uid://chtcq7m8aw4se"
 
-[sub_resource type="Resource" id="Resource_1nx8i"]
+[sub_resource type="Resource" id="Resource_v4jtg"]
 script = ExtResource("5_pbuu2")
 rect = Rect2(-70, 0, 0, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_t4vqn"]
+[sub_resource type="Resource" id="Resource_pbuu2"]
 script = ExtResource("5_pbuu2")
 rect = Rect2(-167, 0, 0, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_7c417"]
+[sub_resource type="Resource" id="Resource_c3y2v"]
 script = ExtResource("5_pbuu2")
 rect = Rect2(-129, 0, 134, 300)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_kpvdu"]
+[sub_resource type="Resource" id="Resource_x3vk5"]
 script = ExtResource("5_pbuu2")
 rect = Rect2(-258, 0, 268, 728)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_hcepd"]
+[sub_resource type="Resource" id="Resource_1nx8i"]
 script = ExtResource("5_1nx8i")
 name = "buttontext_intro.png"
 
-[sub_resource type="Resource" id="Resource_wdt8c"]
+[sub_resource type="Resource" id="Resource_t4vqn"]
 script = ExtResource("5_1nx8i")
 name = "buttontext_intro_press.png"
 
-[sub_resource type="Resource" id="Resource_yc31o"]
+[sub_resource type="Resource" id="Resource_7c417"]
 script = ExtResource("5_1nx8i")
 name = "button_intro.png"
 
-[sub_resource type="Resource" id="Resource_q5i34"]
+[sub_resource type="Resource" id="Resource_kpvdu"]
 script = ExtResource("5_pbuu2")
 rect = Rect2(5, 0, 31, 26)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_cii06"]
+[sub_resource type="Resource" id="Resource_q5i34"]
 script = ExtResource("5_pbuu2")
 rect = Rect2(10, 0, 62, 52)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_1scgp"]
+[sub_resource type="Resource" id="Resource_cii06"]
 script = ExtResource("5_1nx8i")
 name = "buttontext_ok.png"
 
-[sub_resource type="Resource" id="Resource_pgo8h"]
+[sub_resource type="Resource" id="Resource_j3p20"]
 script = ExtResource("5_1nx8i")
 name = "buttontext_ok_press.png"
 
-[sub_resource type="Resource" id="Resource_i5xih"]
+[sub_resource type="Resource" id="Resource_l8lj5"]
 script = ExtResource("5_1nx8i")
 name = "buttonboard_green.png"
 
-[sub_resource type="Resource" id="Resource_s03bl"]
+[sub_resource type="Resource" id="Resource_bbe7o"]
 script = ExtResource("5_pbuu2")
 rect = Rect2(0, 0, 32, 30)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_gbj1g"]
+[sub_resource type="Resource" id="Resource_8te37"]
 script = ExtResource("5_pbuu2")
 rect = Rect2(0, 0, 40, 38)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_4yntp"]
+[sub_resource type="Resource" id="Resource_e2uao"]
 script = ExtResource("5_1nx8i")
 name = "buttontext_back.png"
 
-[sub_resource type="Resource" id="Resource_b4dmi"]
+[sub_resource type="Resource" id="Resource_cfv1u"]
 script = ExtResource("5_1nx8i")
 name = "buttontext_back_press.png"
 
-[sub_resource type="Resource" id="Resource_oo0i1"]
+[sub_resource type="Resource" id="Resource_x21wt"]
 script = ExtResource("5_1nx8i")
 name = "buttonboard_gray.png"
 
-[sub_resource type="Resource" id="Resource_lqdbo"]
+[sub_resource type="Resource" id="Resource_8n8yh"]
 script = ExtResource("5_pbuu2")
 rect = Rect2(0, 0, 480, 320)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_gsbih"]
+[sub_resource type="Resource" id="Resource_just2"]
 script = ExtResource("5_pbuu2")
 rect = Rect2(0, 0, 960, 640)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[node name="GUISelBattle" type="Control" unique_id=961076300]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUISelBattle" unique_id=1627139554 instance=ExtResource("4_v4jtg")]
+mouse_filter = 1
 script = ExtResource("1_22hmj")
+game_mode = 0
+campaign = 0
 
-[node name="GUISelBattleCommon" parent="." unique_id=1447387296 instance=ExtResource("2_bmoyp")]
+[node name="GUISelBattleCommon" parent="." index="0" unique_id=1447387296 instance=ExtResource("2_bmoyp")]
 layout_mode = 1
 texture_res = ExtResource("3_1kakj")
 
-[node name="BoardSelBattle" parent="." unique_id=1342067132 instance=ExtResource("4_x3vk5")]
+[node name="BoardSelBattle" parent="." index="1" unique_id=1054377514 instance=ExtResource("4_x3vk5")]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
 grow_horizontal = 0
-asset = SubResource("Resource_cekmy")
-texture_rect = SubResource("Resource_6lvsi")
-texture_rect_ipad = SubResource("Resource_v4jtg")
-rect = SubResource("Resource_c3y2v")
-rect_ipad = SubResource("Resource_x3vk5")
-texture_res = SubResource("Resource_hu8uk")
+asset = SubResource("Resource_sobiq")
+texture_rect = SubResource("Resource_s03bl")
+texture_rect_ipad = SubResource("Resource_gbj1g")
+rect = SubResource("Resource_lqdbo")
+rect_ipad = SubResource("Resource_gsbih")
+texture_res = SubResource("Resource_6lvsi")
 
-[node name="Logo" parent="." unique_id=1627139554 instance=ExtResource("4_v4jtg")]
+[node name="Logo" parent="." index="2" unique_id=1483403543 instance=ExtResource("4_v4jtg")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -193,15 +180,16 @@ anchor_bottom = 0.0
 offset_left = -70.0
 offset_right = -70.0
 grow_vertical = 1
-rect = SubResource("Resource_1nx8i")
-rect_ipad = SubResource("Resource_t4vqn")
+rect = SubResource("Resource_v4jtg")
+rect_ipad = SubResource("Resource_pbuu2")
 
-[node name="TextureRect" type="TextureRect" parent="Logo" unique_id=1730523962]
+[node name="TextureRect" type="TextureRect" parent="Logo" index="0" unique_id=1065690200]
 layout_mode = 0
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 2
 
-[node name="GUIBattleList" parent="." unique_id=171860356 instance=ExtResource("23_nf5fh")]
+[node name="GUIBattleList" parent="." index="3" unique_id=339150278 instance=ExtResource("23_nf5fh")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -211,10 +199,10 @@ offset_left = -134.0
 offset_top = -150.0
 offset_bottom = 150.0
 grow_horizontal = 1
-rect = SubResource("Resource_7c417")
-rect_ipad = SubResource("Resource_kpvdu")
+rect = SubResource("Resource_c3y2v")
+rect_ipad = SubResource("Resource_x3vk5")
 
-[node name="ButtonInfo" parent="." unique_id=1210434210 instance=ExtResource("12_o5ukl")]
+[node name="ButtonInfo" parent="." index="4" unique_id=1655765924 instance=ExtResource("12_o5ukl")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -223,42 +211,42 @@ offset_left = 5.0
 offset_right = 5.0
 grow_horizontal = 1
 grow_vertical = 1
-image_normal = SubResource("Resource_hcepd")
-image_pressed = SubResource("Resource_wdt8c")
-image_background = SubResource("Resource_yc31o")
-rect = SubResource("Resource_q5i34")
-rect_ipad = SubResource("Resource_cii06")
+image_normal = SubResource("Resource_1nx8i")
+image_pressed = SubResource("Resource_t4vqn")
+image_background = SubResource("Resource_7c417")
+rect = SubResource("Resource_kpvdu")
+rect_ipad = SubResource("Resource_q5i34")
 texture_res = ExtResource("13_c3y2v")
 
-[node name="ButtonOk" parent="." unique_id=2034275630 instance=ExtResource("12_o5ukl")]
+[node name="ButtonOk" parent="." index="5" unique_id=707712685 instance=ExtResource("12_o5ukl")]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-image_normal = SubResource("Resource_1scgp")
-image_pressed = SubResource("Resource_pgo8h")
-image_background = SubResource("Resource_i5xih")
-rect = SubResource("Resource_s03bl")
-rect_ipad = SubResource("Resource_gbj1g")
+image_normal = SubResource("Resource_cii06")
+image_pressed = SubResource("Resource_j3p20")
+image_background = SubResource("Resource_l8lj5")
+rect = SubResource("Resource_bbe7o")
+rect_ipad = SubResource("Resource_8te37")
 texture_res = ExtResource("13_c3y2v")
 
-[node name="ButtonBack" parent="." unique_id=1417427015 instance=ExtResource("12_o5ukl")]
+[node name="ButtonBack" parent="." index="6" unique_id=1433048498 instance=ExtResource("12_o5ukl")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_right = 0.0
 grow_horizontal = 1
 grow_vertical = 0
-image_normal = SubResource("Resource_4yntp")
-image_pressed = SubResource("Resource_b4dmi")
-image_background = SubResource("Resource_oo0i1")
-rect = SubResource("Resource_s03bl")
-rect_ipad = SubResource("Resource_gbj1g")
+image_normal = SubResource("Resource_e2uao")
+image_pressed = SubResource("Resource_cfv1u")
+image_background = SubResource("Resource_x21wt")
+rect = SubResource("Resource_bbe7o")
+rect_ipad = SubResource("Resource_8te37")
 texture_res = ExtResource("13_c3y2v")
 
-[node name="GUIBattleIntro" parent="." unique_id=2130276311 instance=ExtResource("27_aptrf")]
+[node name="GUIBattleIntro" parent="." index="7" unique_id=1081997408 instance=ExtResource("27_aptrf")]
 visible = false
 z_index = 1
 layout_mode = 1
@@ -271,8 +259,8 @@ offset_left = -240.0
 offset_top = -160.0
 offset_right = 240.0
 offset_bottom = 160.0
-rect = SubResource("Resource_lqdbo")
-rect_ipad = SubResource("Resource_gsbih")
+rect = SubResource("Resource_8n8yh")
+rect_ipad = SubResource("Resource_just2")
 
 [connection signal="battle_selected" from="GUIBattleList" to="." method="_on_gui_battle_list_battle_selected"]
 [connection signal="pressed" from="ButtonInfo" to="." method="_on_button_info_pressed"]

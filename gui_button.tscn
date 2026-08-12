@@ -1,32 +1,50 @@
 [gd_scene format=3 uid="uid://dmysnlqa41guv"]
 
 [ext_resource type="Script" uid="uid://cfykx5f1m6cjg" path="res://gui_button.gd" id="1_0hq7w"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_62fdp"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="2_62fdp"]
 
-[node name="GUIButton" type="Control" unique_id=2034275630]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIButton" unique_id=1627139554 instance=ExtResource("1_62fdp")]
 mouse_filter = 1
 script = ExtResource("1_0hq7w")
+image_normal = null
+image_pressed = null
+image_glow = null
+image_background = null
+image_text_image = null
+font = NodePath("")
+enable = true
+play_sound_when_pressed = true
+grey_when_pressed = false
+grey_scale = 1.0
+alpha = 1.0
+texture_normal = null
+texture_pressed = null
+texture_background = null
+texture_glow = null
+texture_text_image = null
+text = ""
+text_font = NodePath("")
+text_color = Color(1, 1, 1, 1)
+text_offset = Vector2(0, 0)
+text_align = 0
 
-[node name="Background" type="TextureRect" parent="." unique_id=902263730]
+[node name="Background" type="TextureRect" parent="." index="0" unique_id=1534098836]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 stretch_mode = 2
 
-[node name="Glow" type="TextureRect" parent="." unique_id=479568970]
+[node name="Glow" type="TextureRect" parent="." index="1" unique_id=1096322859]
 visible = false
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 stretch_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="." unique_id=1801436601]
+[node name="TextureButton" type="TextureButton" parent="." index="2" unique_id=603119113]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -36,7 +54,7 @@ grow_vertical = 2
 mouse_filter = 1
 ignore_texture_size = true
 
-[node name="ecText" parent="." unique_id=1650770578 instance=ExtResource("2_62fdp")]
+[node name="ecText" parent="." index="3" unique_id=1650770578 instance=ExtResource("2_62fdp")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -45,7 +63,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_vertical = 2
 
-[node name="TextImage" type="TextureRect" parent="." unique_id=1243538427]
+[node name="TextImage" type="TextureRect" parent="." index="4" unique_id=292705039]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

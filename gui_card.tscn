@@ -1,54 +1,66 @@
 [gd_scene format=3 uid="uid://5ts0efddgis5"]
 
 [ext_resource type="Script" uid="uid://bekjdfh7iuge2" path="res://gui_card.gd" id="1_1n35g"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_ygd3l"]
 [ext_resource type="Texture2D" uid="uid://ccmg4utc55mji" path="res://resources/assets/game_res/card_shadow.png.tres" id="2_hsxeo"]
 [ext_resource type="Texture2D" uid="uid://bdyptcoqfrlnm" path="res://resources/assets/game_res/card_common.png.tres" id="2_q4vgn"]
 [ext_resource type="Texture2D" uid="uid://bpvdu53bvcyss" path="res://resources/assets/logo_gui_res/mark_time.png.tres" id="4_06p12"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="5_5liae"]
 [ext_resource type="Texture2D" uid="uid://cgpf1q3hjjl5u" path="res://resources/assets/logo_gui_res/mark_techrequest.png.tres" id="6_3di4u"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_16sg0"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i8v2j"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v74qj"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5liae"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0g25l"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ofr4"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uv6om"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_08e0u"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2gihm"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vmw5j"]
 
-[node name="GUICard" type="Control" unique_id=1070159959]
-layout_mode = 3
+[node name="GUICard" unique_id=1627139554 instance=ExtResource("1_ygd3l")]
 anchors_preset = 0
-offset_right = 480.0
-offset_bottom = 320.0
-mouse_filter = 1
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 script = ExtResource("1_1n35g")
+def = null
+enable = false
+selected = false
+card_alpha = 0.0
+price = 0
+industry = 0
+price_color = Color(0, 0, 0, 1)
+industry_color = Color(0, 0, 0, 1)
+research = 0
+time = 0
+tech_request = 0
 
-[node name="CardShadow" type="Sprite2D" parent="." unique_id=1470134489]
+[node name="CardShadow" type="Sprite2D" parent="." index="0" unique_id=1663359982]
 visible = false
 scale = Vector2(2, 2)
 texture = ExtResource("2_hsxeo")
 centered = false
 
-[node name="CardCommon" type="Sprite2D" parent="." unique_id=858405613]
+[node name="CardCommon" type="Sprite2D" parent="." index="1" unique_id=2027804803]
 texture = ExtResource("2_q4vgn")
 centered = false
 
-[node name="Card" type="Sprite2D" parent="." unique_id=1011071485]
+[node name="Card" type="Sprite2D" parent="." index="2" unique_id=920493111]
 position = Vector2(0, 7)
 centered = false
 
-[node name="Research" type="Sprite2D" parent="." unique_id=889864452]
+[node name="Research" type="Sprite2D" parent="." index="3" unique_id=749573761]
 position = Vector2(50, 46)
 centered = false
 
-[node name="MarkTime" type="Sprite2D" parent="." unique_id=441252545]
+[node name="MarkTime" type="Sprite2D" parent="." index="4" unique_id=2025873181]
 position = Vector2(50, 75)
 texture = ExtResource("4_06p12")
 centered = false
 
-[node name="Time" parent="." unique_id=1650770578 instance=ExtResource("5_5liae")]
+[node name="Time" parent="." index="5" unique_id=1650770578 instance=ExtResource("5_5liae")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 48.0
@@ -58,18 +70,18 @@ offset_bottom = 87.0
 grow_horizontal = 2
 horizontal_alignment = 1
 font = NodePath("/root/g_Num5")
-color = Color(0.81960785, 0.9490196, 1, 1)
+color = Color(1, 0.9490196, 0.81960785, 1)
 
-[node name="MarkTechRequest" type="Sprite2D" parent="." unique_id=575811019]
+[node name="MarkTechRequest" type="Sprite2D" parent="." index="6" unique_id=734164228]
 position = Vector2(50, 75)
 texture = ExtResource("6_3di4u")
 centered = false
 
-[node name="TechRequest" type="Sprite2D" parent="." unique_id=1930123162]
+[node name="TechRequest" type="Sprite2D" parent="." index="7" unique_id=1696695142]
 position = Vector2(50, 65)
 centered = false
 
-[node name="Price" parent="." unique_id=244686124 instance=ExtResource("5_5liae")]
+[node name="Price" parent="." index="8" unique_id=362658386 instance=ExtResource("5_5liae")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 45.0
@@ -77,12 +89,13 @@ offset_top = 130.0
 offset_right = 45.0
 offset_bottom = 130.0
 grow_horizontal = 0
+theme_override_colors/font_color = Color(0.19607843, 0.14901961, 0.05882353, 1)
 horizontal_alignment = 2
 font = NodePath("/root/g_Num3")
-color = Color(0.05882353, 0.14901961, 0.19607843, 1)
+color = Color(0.19607843, 0.14901961, 0.05882353, 1)
 spacing = Vector2i(-1, 0)
 
-[node name="Industry" parent="." unique_id=1487790577 instance=ExtResource("5_5liae")]
+[node name="Industry" parent="." index="9" unique_id=505388047 instance=ExtResource("5_5liae")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 88.0
@@ -92,10 +105,10 @@ offset_bottom = 130.0
 grow_horizontal = 0
 horizontal_alignment = 2
 font = NodePath("/root/g_Num3")
-color = Color(0.05882353, 0.14901961, 0.19607843, 1)
+color = Color(0.19607843, 0.14901961, 0.05882353, 1)
 spacing = Vector2i(-1, 0)
 
-[node name="Attack" parent="." unique_id=554953758 instance=ExtResource("5_5liae")]
+[node name="Attack" parent="." index="10" unique_id=1181335440 instance=ExtResource("5_5liae")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 26.0
@@ -105,9 +118,9 @@ offset_bottom = 108.0
 grow_horizontal = 2
 horizontal_alignment = 1
 font = NodePath("/root/g_Num3")
-color = Color(0.29411766, 0.65882355, 0.89411765, 1)
+color = Color(0.89411765, 0.65882355, 0.29411766, 1)
 
-[node name="Strength" parent="." unique_id=1102048954 instance=ExtResource("5_5liae")]
+[node name="Strength" parent="." index="11" unique_id=520232489 instance=ExtResource("5_5liae")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 61.0
@@ -117,9 +130,9 @@ offset_bottom = 108.0
 grow_horizontal = 2
 horizontal_alignment = 1
 font = NodePath("/root/g_Num3")
-color = Color(0.29411766, 0.65882355, 0.89411765, 1)
+color = Color(0.89411765, 0.65882355, 0.29411766, 1)
 
-[node name="Movement" parent="." unique_id=2063784216 instance=ExtResource("5_5liae")]
+[node name="Movement" parent="." index="12" unique_id=717222477 instance=ExtResource("5_5liae")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 89.5
@@ -129,15 +142,17 @@ offset_bottom = 108.0
 grow_horizontal = 2
 horizontal_alignment = 1
 font = NodePath("/root/g_Num3")
-color = Color(0.29411766, 0.65882355, 0.89411765, 1)
+color = Color(0.89411765, 0.65882355, 0.29411766, 1)
 
-[node name="Button" type="Button" parent="." unique_id=250146568]
+[node name="Button" type="Button" parent="." index="13" unique_id=990713938]
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 150.0
 mouse_filter = 1
-theme_override_styles/normal = SubResource("StyleBoxEmpty_16sg0")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_v74qj")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0g25l")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_uv6om")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2gihm")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i8v2j")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5liae")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6ofr4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_08e0u")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vmw5j")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

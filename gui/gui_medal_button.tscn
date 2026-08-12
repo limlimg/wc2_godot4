@@ -8,6 +8,12 @@
 script = ExtResource("2_ssx07")
 selected = false
 arrow_color = Color(1, 1, 1, 1)
+font = null
+enable = null
+text = null
+text_color = null
+text_offset = null
+text_align = null
 
 [node name="ecText" parent="." index="3" unique_id=1650770578]
 offset_right = -0.5
@@ -32,8 +38,9 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -315.5884
-offset_bottom = -315.5884
+offset_top = -324.00284
+offset_bottom = -324.00284
+mouse_filter = 2
 texture = ExtResource("4_qtr3v")
 expand_mode = 1
 stretch_mode = 2

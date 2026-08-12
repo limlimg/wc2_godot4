@@ -143,3 +143,8 @@ func _process(delta: float) -> void:
 				_fading_overlay.queue_free()
 			_fading = 0
 			event_receiver.emit_faded_out(_fading_cause)
+
+
+func _input(_event: InputEvent) -> void:
+	if _fading:
+		get_viewport().set_input_as_handled()

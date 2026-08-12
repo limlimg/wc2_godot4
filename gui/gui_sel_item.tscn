@@ -6,29 +6,29 @@
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="3_jtl4x"]
 [ext_resource type="Texture2D" uid="uid://6mcfqarlnark" path="res://resources/assets/logo_gui_res/small_rankstar.png.tres" id="4_p240s"]
 
-[sub_resource type="Resource" id="Resource_nb7lm"]
+[sub_resource type="Resource" id="Resource_85a16"]
 script = ExtResource("3_jtl4x")
 rect = Rect2(67, 22, 0, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_v274g"]
+[sub_resource type="Resource" id="Resource_opkyq"]
 script = ExtResource("3_jtl4x")
 rect = Rect2(134, 44, 0, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2mf3m"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jtl4x"]
 
-[node name="GUISelItem" type="Control" unique_id=1745526202]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="GUISelItem" unique_id=1627139554 instance=ExtResource("2_opkyq")]
+mouse_filter = 1
 script = ExtResource("1_2s3h4")
+button_texture = null
+text_texture = null
+locked = false
+star = 0
+selected_offset_ipad = 0.0
+selected_offset = 0.0
 
-[node name="Control" type="Control" parent="." unique_id=549121636]
+[node name="Control" type="Control" parent="." index="0" unique_id=673136823]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,18 +37,20 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ButtonImage" type="TextureRect" parent="Control" unique_id=1928824000]
+[node name="ButtonImage" type="TextureRect" parent="Control" index="0" unique_id=1972350055]
 layout_mode = 0
+mouse_filter = 2
 
-[node name="TextImage" type="TextureRect" parent="Control" unique_id=833545168]
+[node name="TextImage" type="TextureRect" parent="Control" index="1" unique_id=1498641584]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.5
 anchor_bottom = 0.5
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 2
 
-[node name="MarkLocked" parent="Control" unique_id=1627139554 instance=ExtResource("2_opkyq")]
+[node name="MarkLocked" parent="Control" index="2" unique_id=964499731 instance=ExtResource("2_opkyq")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -60,42 +62,43 @@ offset_bottom = 22.0
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.8, 0.8)
-rect = SubResource("Resource_nb7lm")
-rect_ipad = SubResource("Resource_v274g")
+rect = SubResource("Resource_85a16")
+rect_ipad = SubResource("Resource_opkyq")
 
-[node name="TextureRect" type="TextureRect" parent="Control/MarkLocked" unique_id=521815329]
+[node name="TextureRect" type="TextureRect" parent="Control/MarkLocked" index="0" unique_id=40675367]
 layout_mode = 0
 offset_right = 26.0
 offset_bottom = 31.0
 scale = Vector2(0.8, 0.8)
+mouse_filter = 2
 texture = ExtResource("3_2asny")
 
-[node name="SmallRankStar" type="Sprite2D" parent="Control" unique_id=1368077084]
+[node name="SmallRankStar" type="Sprite2D" parent="Control" index="3" unique_id=661405319]
 visible = false
 texture = ExtResource("4_p240s")
 centered = false
 
-[node name="SmallRankStar2" type="Sprite2D" parent="Control" unique_id=1100168597]
+[node name="SmallRankStar2" type="Sprite2D" parent="Control" index="4" unique_id=1054075530]
 visible = false
 texture = ExtResource("4_p240s")
 centered = false
 
-[node name="SmallRankStar3" type="Sprite2D" parent="Control" unique_id=2141047870]
+[node name="SmallRankStar3" type="Sprite2D" parent="Control" index="5" unique_id=1095011305]
 visible = false
 texture = ExtResource("4_p240s")
 centered = false
 
-[node name="SmallRankStar4" type="Sprite2D" parent="Control" unique_id=1457376136]
+[node name="SmallRankStar4" type="Sprite2D" parent="Control" index="6" unique_id=305258708]
 visible = false
 texture = ExtResource("4_p240s")
 centered = false
 
-[node name="SmallRankStar5" type="Sprite2D" parent="Control" unique_id=992292052]
+[node name="SmallRankStar5" type="Sprite2D" parent="Control" index="7" unique_id=2023994910]
 visible = false
 texture = ExtResource("4_p240s")
 centered = false
 
-[node name="Button" type="Button" parent="Control" unique_id=1812914262]
+[node name="Button" type="Button" parent="Control" index="8" unique_id=503888349]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,7 +106,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2mf3m")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jtl4x")
 flat = true
 
 [connection signal="button_down" from="Control/Button" to="." method="_on_button_button_down"]

@@ -1,74 +1,72 @@
 [gd_scene format=3 uid="uid://u7akx8jrxvgd"]
 
 [ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="1_7tnnw"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_bqvql"]
+[ext_resource type="Script" uid="uid://d0fyklcaqonb7" path="res://gui_pause_box.gd" id="2_ps83o"]
 [ext_resource type="Texture2D" uid="uid://77e3wq3t3fnh" path="res://resources/assets/logo_gui_res/menubox.png.tres" id="2_vlbgk"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="3_8j7p4"]
 [ext_resource type="Resource" uid="uid://dfe0w1ve8iqjk" path="res://resources/assets/game_gui_res/texture_res.tres" id="4_lb1fr"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="5_osqj4"]
 
-[sub_resource type="Resource" id="Resource_hcepd"]
+[sub_resource type="Resource" id="Resource_ps83o"]
 script = ExtResource("5_osqj4")
 name = "buttontext_resume.png"
 
-[sub_resource type="Resource" id="Resource_8b1ml"]
+[sub_resource type="Resource" id="Resource_4djco"]
 script = ExtResource("5_osqj4")
 name = "buttontext_resume_press.png"
 
-[sub_resource type="Resource" id="Resource_q8pui"]
+[sub_resource type="Resource" id="Resource_duxhu"]
 script = ExtResource("5_osqj4")
 name = "longgreen_normal.png"
 
-[sub_resource type="Resource" id="Resource_80hww"]
+[sub_resource type="Resource" id="Resource_hix5c"]
 script = ExtResource("5_osqj4")
 name = "buttontext_save.png"
 
-[sub_resource type="Resource" id="Resource_pp3je"]
+[sub_resource type="Resource" id="Resource_p04wp"]
 script = ExtResource("5_osqj4")
 name = "buttontext_save_press.png"
 
-[sub_resource type="Resource" id="Resource_4djco"]
+[sub_resource type="Resource" id="Resource_frk1k"]
 script = ExtResource("5_osqj4")
 name = "buttontext_options.png"
 
-[sub_resource type="Resource" id="Resource_duxhu"]
+[sub_resource type="Resource" id="Resource_lb1fr"]
 script = ExtResource("5_osqj4")
 name = "buttontext_options_press.png"
 
-[sub_resource type="Resource" id="Resource_hix5c"]
+[sub_resource type="Resource" id="Resource_osqj4"]
 script = ExtResource("5_osqj4")
 name = "buttontext_restart.png"
 
-[sub_resource type="Resource" id="Resource_p04wp"]
+[sub_resource type="Resource" id="Resource_8b1ml"]
 script = ExtResource("5_osqj4")
 name = "buttontext_restart_press.png"
 
-[sub_resource type="Resource" id="Resource_frk1k"]
+[sub_resource type="Resource" id="Resource_80hww"]
 script = ExtResource("5_osqj4")
 name = "longred_normal.png"
 
-[sub_resource type="Resource" id="Resource_pprsm"]
+[sub_resource type="Resource" id="Resource_pp3je"]
 script = ExtResource("5_osqj4")
 name = "buttontext_quit.png"
 
-[sub_resource type="Resource" id="Resource_bqvql"]
+[sub_resource type="Resource" id="Resource_4dmcq"]
 script = ExtResource("5_osqj4")
 name = "buttontext_quit_press.png"
 
-[node name="GUIPauseBox" type="Control" unique_id=1648966608]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIPauseBox" unique_id=1627139554 instance=ExtResource("1_bqvql")]
+mouse_filter = 1
+script = ExtResource("2_ps83o")
 
-[node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("1_7tnnw")]
+[node name="Fade" parent="." index="0" unique_id=1674156080 instance=ExtResource("1_7tnnw")]
 
-[node name="MenuBox" type="Sprite2D" parent="." unique_id=1138681124]
+[node name="MenuBox" type="Sprite2D" parent="." index="1" unique_id=187308841]
 texture = ExtResource("2_vlbgk")
 centered = false
 
-[node name="ButtonResume" parent="." unique_id=2034275630 instance=ExtResource("3_8j7p4")]
+[node name="ButtonResume" parent="." index="2" unique_id=1581687790 instance=ExtResource("3_8j7p4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -79,13 +77,13 @@ offset_right = 130.0
 offset_bottom = 86.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("4_lb1fr")
-image_normal = SubResource("Resource_hcepd")
-image_pressed = SubResource("Resource_8b1ml")
-image_background = SubResource("Resource_q8pui")
+image_normal = SubResource("Resource_ps83o")
+image_pressed = SubResource("Resource_4djco")
+image_background = SubResource("Resource_duxhu")
 text_offset = Vector2(49, 17)
+texture_res = ExtResource("4_lb1fr")
 
-[node name="ButtonSave" parent="." unique_id=1469333668 instance=ExtResource("3_8j7p4")]
+[node name="ButtonSave" parent="." index="3" unique_id=1818057976 instance=ExtResource("3_8j7p4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -96,13 +94,13 @@ offset_right = 134.0
 offset_bottom = 124.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("4_lb1fr")
-image_normal = SubResource("Resource_80hww")
-image_pressed = SubResource("Resource_pp3je")
-image_background = SubResource("Resource_q8pui")
+image_normal = SubResource("Resource_hix5c")
+image_pressed = SubResource("Resource_p04wp")
+image_background = SubResource("Resource_duxhu")
 text_offset = Vector2(51, 17)
+texture_res = ExtResource("4_lb1fr")
 
-[node name="ButtonOptions" parent="." unique_id=1376197446 instance=ExtResource("3_8j7p4")]
+[node name="ButtonOptions" parent="." index="4" unique_id=1677895525 instance=ExtResource("3_8j7p4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -113,13 +111,13 @@ offset_right = 130.0
 offset_bottom = 162.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("4_lb1fr")
-image_normal = SubResource("Resource_4djco")
-image_pressed = SubResource("Resource_duxhu")
-image_background = SubResource("Resource_q8pui")
+image_normal = SubResource("Resource_frk1k")
+image_pressed = SubResource("Resource_lb1fr")
+image_background = SubResource("Resource_duxhu")
 text_offset = Vector2(49, 17)
+texture_res = ExtResource("4_lb1fr")
 
-[node name="ButtonRestart" parent="." unique_id=1543952111 instance=ExtResource("3_8j7p4")]
+[node name="ButtonRestart" parent="." index="5" unique_id=1813323094 instance=ExtResource("3_8j7p4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -130,13 +128,13 @@ offset_right = 130.0
 offset_bottom = 200.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("4_lb1fr")
-image_normal = SubResource("Resource_hix5c")
-image_pressed = SubResource("Resource_p04wp")
-image_background = SubResource("Resource_frk1k")
+image_normal = SubResource("Resource_osqj4")
+image_pressed = SubResource("Resource_8b1ml")
+image_background = SubResource("Resource_80hww")
 text_offset = Vector2(49, 17)
+texture_res = ExtResource("4_lb1fr")
 
-[node name="ButtonQuit" parent="." unique_id=547275675 instance=ExtResource("3_8j7p4")]
+[node name="ButtonQuit" parent="." index="6" unique_id=136916667 instance=ExtResource("3_8j7p4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -147,8 +145,14 @@ offset_right = 130.0
 offset_bottom = 238.0
 grow_horizontal = 1
 grow_vertical = 1
-texture_res = ExtResource("4_lb1fr")
-image_normal = SubResource("Resource_pprsm")
-image_pressed = SubResource("Resource_bqvql")
-image_background = SubResource("Resource_frk1k")
+image_normal = SubResource("Resource_pp3je")
+image_pressed = SubResource("Resource_4dmcq")
+image_background = SubResource("Resource_80hww")
 text_offset = Vector2(49, 17)
+texture_res = ExtResource("4_lb1fr")
+
+[connection signal="pressed" from="ButtonResume" to="." method="_on_gui_button_resume_pressed"]
+[connection signal="pressed" from="ButtonSave" to="." method="_on_gui_button_save_pressed"]
+[connection signal="pressed" from="ButtonOptions" to="." method="_on_gui_button_options_pressed"]
+[connection signal="pressed" from="ButtonRestart" to="." method="_on_gui_button_restart_pressed"]
+[connection signal="pressed" from="ButtonQuit" to="." method="_on_gui_button_quit_pressed"]

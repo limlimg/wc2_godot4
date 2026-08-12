@@ -1,50 +1,41 @@
 [gd_scene format=3 uid="uid://c5o8iq207nbba"]
 
-[ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://game_res_render/ai_commander_medal.tscn" id="1_3nn02"]
 [ext_resource type="Script" uid="uid://bf3lgmunho5eg" path="res://gui_tax.gd" id="1_cpoys"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_x7k6p"]
 [ext_resource type="Texture2D" uid="uid://dr7bgmp56b0q0" path="res://resources/assets/logo_gui_res/income_board2.png.tres" id="2_52irx"]
-[ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://game_res_render/commander_medal.tscn" id="2_cpoys"]
 [ext_resource type="Texture2D" uid="uid://crowfkj7bpn2g" path="res://resources/assets/logo_gui_res/income_board.png.tres" id="4_mvlbv"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="7_rmsci"]
 
-[node name="GUITax" type="Control" unique_id=379815843]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUITax" unique_id=1627139554 instance=ExtResource("1_x7k6p")]
 script = ExtResource("1_cpoys")
+area = 0
+money = 0
+industry = 0
 
-[node name="WithCommander" type="Node2D" parent="." unique_id=501836511]
+[node name="WithCommander" type="Node2D" parent="." index="0" unique_id=918923671]
 
-[node name="IncomeBoard2" type="Sprite2D" parent="WithCommander" unique_id=682334514]
+[node name="IncomeBoard2" type="Sprite2D" parent="WithCommander" index="0" unique_id=1443527363]
 texture = ExtResource("2_52irx")
 centered = false
 
-[node name="Commander" type="Sprite2D" parent="WithCommander" unique_id=496359960]
+[node name="Commander" type="Sprite2D" parent="WithCommander" index="1" unique_id=402734898]
 position = Vector2(0, 108)
 centered = false
 
-[node name="AICommanderMedal" parent="WithCommander" unique_id=1467720846 instance=ExtResource("1_3nn02")]
+[node name="CommanderMedal" type="Node2D" parent="WithCommander" index="2" unique_id=256003114]
 position = Vector2(60, 112)
-stack = 1
 
-[node name="CommanderMedal" parent="WithCommander" unique_id=1241850369 instance=ExtResource("2_cpoys")]
-position = Vector2(60, 112)
-stack = 1
+[node name="WithoutCommander" type="Node2D" parent="." index="1" unique_id=712375577]
 
-[node name="WithoutCommander" type="Node2D" parent="." unique_id=1364728028]
-
-[node name="IncomeBoard" type="Sprite2D" parent="WithoutCommander" unique_id=1075759987]
+[node name="IncomeBoard" type="Sprite2D" parent="WithoutCommander" index="0" unique_id=68372715]
 texture = ExtResource("4_mvlbv")
 centered = false
 
-[node name="Installation" type="Sprite2D" parent="." unique_id=1577604407]
+[node name="Installation" type="Sprite2D" parent="." index="2" unique_id=1186375258]
 position = Vector2(55, 28)
 centered = false
 
-[node name="Money" parent="." unique_id=1650770578 instance=ExtResource("7_rmsci")]
+[node name="Money" parent="." index="3" unique_id=1650770578 instance=ExtResource("7_rmsci")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 50.0
@@ -55,9 +46,9 @@ grow_horizontal = 0
 text = "0"
 horizontal_alignment = 2
 font = NodePath("/root/g_Num3")
-color = Color(0.05882353, 0.14901961, 0.19607843, 1)
+color = Color(0.19607843, 0.14901961, 0.05882353, 1)
 
-[node name="Industry" parent="." unique_id=527208843 instance=ExtResource("7_rmsci")]
+[node name="Industry" parent="." index="4" unique_id=226204808 instance=ExtResource("7_rmsci")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 50.0
@@ -68,4 +59,6 @@ grow_horizontal = 0
 text = "0"
 horizontal_alignment = 2
 font = NodePath("/root/g_Num3")
-color = Color(0.05882353, 0.14901961, 0.19607843, 1)
+color = Color(0.19607843, 0.14901961, 0.05882353, 1)
+
+[connection signal="draw" from="WithCommander/CommanderMedal" to="." method="_on_commander_medal_draw"]

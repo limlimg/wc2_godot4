@@ -64,18 +64,17 @@ var image_text_image: AssetRegistry:
 
 @export
 var font: NodePath:
-	get():
-		return $ecText.font
 	set(value):
-		$ecText.font = value
+		if value != font:
+			font = value
+			$ecText.font = value
 
 
 @export
 var enable := true:
-	get():
-		return not $TextureButton.disabled
 	set(value):
-		if value != not $TextureButton.disabled:
+		if value != enable:
+			enable = value
 			$TextureButton.disabled = not value
 			_on_render()
 
@@ -106,71 +105,67 @@ var alpha := 1.0:
 @export_group("Textures", "texture_")
 @export
 var texture_normal: Texture2D:
-	get():
-		return $TextureButton.texture_normal
 	set(value):
-		$TextureButton.texture_normal = value
+		if value != texture_normal:
+			texture_normal = value
+			$TextureButton.texture_normal = value
 
 
 @export
 var texture_pressed: Texture2D:
-	get():
-		return $TextureButton.texture_pressed
 	set(value):
-		$TextureButton.texture_pressed = value
+		if value != texture_pressed:
+			texture_pressed = value
+			$TextureButton.texture_pressed = value
 
 
 @export
 var texture_background: Texture2D:
-	get():
-		return $Background.texture
 	set(value):
-		$Background.texture = value
+		if value != texture_background:
+			texture_background = value
+			$Background.texture = value
 
 
 @export
 var texture_glow: Texture2D:
-	get():
-		return $Glow.texture
 	set(value):
-		$Glow.texture = value
+		if value != texture_glow:
+			texture_glow = value
+			$Glow.texture = value
 
 
 @export
 var texture_text_image: Texture2D:
-	get():
-		return $TextImage.texture
 	set(value):
-		$TextImage.texture = value
+		if value != texture_text_image:
+			texture_text_image = value
+			$TextImage.texture = value
 
 
 @export_group("Text", "text_")
 @export
 var text: String:
-	get = get_text,
 	set = set_text
 
 @export
-var text_font: Theme:
-	get():
-		return $ecText.theme
+var text_font: NodePath:
 	set(value):
-		$ecText.theme = value
+		if value != text_font:
+			text_font = value
+			$ecText.font = value
 
 
 @export
 var text_color := Color.WHITE:
-	get = get_text_color,
 	set = set_text_color
 
 @export
 var text_offset: Vector2:
-	get = get_text_offset,
 	set = set_text_offset
 
 @export
 var text_align: HorizontalAlignment:
-	get = get_text_align,
 	set = set_text_align
 
 signal pressed
@@ -292,51 +287,46 @@ func _set_background(image_name: StringName) -> void:
 		texture_background = res.get_image(image_name)
 
 
-func get_text() -> String:
-	return $ecText.text
-
-
 func set_text(value: String) -> void:
-	$ecText.text = value
-
-
-func get_text_color() -> Color:
-	return $ecText.get_theme_color(&"font_color")
+	if value != text:
+		text = value
+		$ecText.text = value
 
 
 func set_text_color(value: Color) -> void:
-	$ecText.remove_theme_color_override(&"font_color")
-	$ecText.add_theme_color_override(&"font_color", value)
-
-
-func get_text_offset() -> Vector2:
-	return Vector2($ecText.offset_left, $ecText.offset_top)
+	if value != text_color:
+		text_color = value
+		$ecText.remove_theme_color_override(&"font_color")
+		$ecText.add_theme_color_override(&"font_color", value)
 
 
 func set_text_offset(value: Vector2) -> void:
-	$ecText.offset_left = value.x
-	$ecText.offset_right = value.x
-	$ecText.offset_top = value.y
-	$ecText.offset_bottom = value.y
-
-
-func get_text_align() -> HorizontalAlignment:
-	return $ecText.horizontal_alignment
+	if value != text_offset:
+		text_offset = value
+		$ecText.offset_left = value.x
+		$ecText.offset_right = value.x
+		$ecText.offset_top = value.y
+		$ecText.offset_bottom = value.y
 
 
 func set_text_align(value: HorizontalAlignment) -> void:
-	$ecText.horizontal_alignment = value
-	match value:
-		HORIZONTAL_ALIGNMENT_RIGHT:
-			$ecText.grow_horizontal = GROW_DIRECTION_END
-		HORIZONTAL_ALIGNMENT_CENTER:
-			$ecText.grow_horizontal = GROW_DIRECTION_BOTH
-		_:
-			$ecText.grow_horizontal = GROW_DIRECTION_BEGIN
+	if value != text_align:
+		text_align = value
+		$ecText.horizontal_alignment = value
+		match value:
+			HORIZONTAL_ALIGNMENT_RIGHT:
+				$ecText.grow_horizontal = GROW_DIRECTION_END
+			HORIZONTAL_ALIGNMENT_CENTER:
+				$ecText.grow_horizontal = GROW_DIRECTION_BOTH
+			_:
+				$ecText.grow_horizontal = GROW_DIRECTION_BEGIN
 
 
-#func set_text_image(image_name: StringName) -> void:
-	#texture_text_image = _ecImageTexture.from_ec_image_attr(s_texture_res.get_image(image_name))
+func set_text_image(image_name: StringName) -> void:
+	var res := texture_res
+	if res == null:
+		res = s_texture_res
+	texture_text_image = res.get_image(image_name)
 
 
 func set_alpha(value: float) -> void:
@@ -357,3 +347,8 @@ func _on_texture_button_pressed() -> void:
 	if play_sound_when_pressed:
 		CSoundBox.get_instance().play_se("btn.wav")
 	pressed.emit()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		accept_event()

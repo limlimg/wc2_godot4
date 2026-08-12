@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://r8i8smosqhsx" path="res://c_game_state.gd" id="1_i7u21"]
 [ext_resource type="PackedScene" uid="uid://boe8je6i3v5xc" path="res://c_scene.tscn" id="2_3m502"]
+[ext_resource type="PackedScene" uid="uid://dchd7a0cd1asv" path="res://c_touch_inertia.tscn" id="2_6de0u"]
 [ext_resource type="PackedScene" uid="uid://3kjay574huha" path="res://ec_effect_manager.tscn" id="3_j4ryw"]
 [ext_resource type="PackedScene" uid="uid://bdigiv3s86lid" path="res://c_fight_text_mgr.tscn" id="4_6de0u"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="4_r3slg"]
@@ -24,26 +25,6 @@ rect = Rect2(0, 0, 480, 320)
 [sub_resource type="Resource" id="Resource_eyr7r"]
 script = ExtResource("6_j4ryw")
 rect = Rect2(0, 433, 480, 320)
-
-[sub_resource type="Resource" id="Resource_0kjjk"]
-script = ExtResource("6_j4ryw")
-rect = Rect2(0, 0, 0, 320)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_jiok5"]
-script = ExtResource("6_j4ryw")
-rect = Rect2(0, 0, 0, 300)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_xukep"]
-script = ExtResource("6_j4ryw")
-rect = Rect2(0, 0, 0, 320)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
-
-[sub_resource type="Resource" id="Resource_kxxgh"]
-script = ExtResource("6_j4ryw")
-rect = Rect2(0, 0, 0, 320)
-metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [sub_resource type="Resource" id="Resource_v0skf"]
 script = ExtResource("4_r3slg")
@@ -105,6 +86,26 @@ rect = Rect2(0, 0, 480, 320)
 script = ExtResource("6_j4ryw")
 rect = Rect2(0, 0, 960, 640)
 
+[sub_resource type="Resource" id="Resource_0kjjk"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 0, 320)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_jiok5"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 0, 300)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_xukep"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 0, 320)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_kxxgh"]
+script = ExtResource("6_j4ryw")
+rect = Rect2(0, 0, 0, 320)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
 [node name="CGameState" type="Control" unique_id=1645819512]
 layout_mode = 3
 anchors_preset = 15
@@ -112,45 +113,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 script = ExtResource("1_i7u21")
 state = 4
 
+[node name="CTouchInertia" parent="." unique_id=622728665 instance=ExtResource("2_6de0u")]
+deadzone = 15.0
+
 [node name="CScene" parent="." unique_id=1283259973 groups=["g_Scene"] instance=ExtResource("2_3m502")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="ecEffectManager" parent="." unique_id=11432247 groups=["_ZN15ecEffectManager8InstancevE"] instance=ExtResource("3_j4ryw")]
 
 [node name="CFightTextMgr" parent="." unique_id=1897881315 groups=["g_FightTextMgr"] instance=ExtResource("4_6de0u")]
 layout_mode = 0
-
-[node name="GUIBattle" parent="." unique_id=368823071 instance_placeholder="res://gui_battle.tscn"]
-visible = false
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -160.0
-offset_bottom = 160.0
-
-[node name="GUIDefeated" parent="." unique_id=172360110 instance_placeholder="res://gui_defeated.tscn"]
-visible = false
-custom_minimum_size = Vector2(186, 190)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -93.0
-offset_top = -95.0
-offset_right = 93.0
-offset_bottom = 95.0
 
 [node name="GUIActionInfo" parent="." unique_id=2027985913 instance_placeholder="res://gui_action_info.tscn"]
 visible = false
@@ -191,33 +166,6 @@ grow_vertical = 1
 rect = SubResource("Resource_q0ii3")
 rect_ipad = SubResource("Resource_eyr7r")
 
-[node name="GUIBuyCard" parent="." unique_id=595511499 instance_placeholder="res://gui_buy_card.tscn"]
-visible = false
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-offset_top = -320.0
-grow_vertical = 0
-size_flags_vertical = 3
-rect = SubResource("Resource_0kjjk")
-rect_ipad = SubResource("Resource_jiok5")
-rect_640h = SubResource("Resource_xukep")
-rect_568h = SubResource("Resource_kxxgh")
-
-[node name="GUIPauseBox" parent="." unique_id=1648966608 instance_placeholder="res://gui_pause_box.tscn"]
-visible = false
-custom_minimum_size = Vector2(166, 262)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -83.0
-offset_top = -131.0
-offset_right = 83.0
-offset_bottom = 131.0
-
 [node name="GUISmallCard" parent="." unique_id=485651445 instance_placeholder="res://gui_small_card.tscn"]
 visible = false
 layout_mode = 1
@@ -230,6 +178,17 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 offset_right = 104.0
 offset_bottom = 38.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="GUIGold" parent="." unique_id=1663737891 instance_placeholder="res://gui_gold.tscn"]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = -50.0
+offset_right = 104.0
+offset_bottom = -12.0
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -319,15 +278,10 @@ offset_top = -129.0
 offset_right = 92.0
 offset_bottom = 129.0
 
-[node name="GUITutorails" parent="." unique_id=326815524 instance_placeholder="res://gui_tutorails.tscn"]
-layout_mode = 1
-
-[node name="GUIDialogue" parent="." unique_id=545709183 instance_placeholder="res://gui_dialogue.tscn"]
-visible = false
+[node name="GUIResult" parent="." unique_id=659475739 instance_placeholder="res://gui_result.tscn"]
 layout_mode = 1
 
 [node name="GUIBattleIntro" parent="." unique_id=2130276311 instance_placeholder="res://gui_battle_intro.tscn"]
-z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -341,29 +295,81 @@ offset_bottom = 160.0
 rect = SubResource("Resource_iyelv")
 rect_ipad = SubResource("Resource_ul3e6")
 
-[node name="GUIBank" parent="." unique_id=86871795 instance_placeholder="res://gui_bank.tscn"]
-layout_mode = 1
-
-[node name="GUIGold" parent="." unique_id=1663737891 instance_placeholder="res://gui_gold.tscn"]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = -50.0
-offset_right = 104.0
-offset_bottom = -12.0
-grow_horizontal = 1
-grow_vertical = 1
-
 [node name="GUIVictory" parent="." unique_id=43656708 instance_placeholder="res://gui_victory.tscn"]
 layout_mode = 1
 
-[node name="GUIResult" parent="." unique_id=659475739 instance_placeholder="res://gui_result.tscn"]
+[node name="GUIBank" parent="." unique_id=86871795 instance_placeholder="res://gui_bank.tscn"]
 layout_mode = 1
 
 [node name="GUIEnd" parent="." unique_id=230513713 instance_placeholder="res://gui_end.tscn"]
 layout_mode = 1
 
+[node name="GUITutorails" parent="." unique_id=326815524 instance_placeholder="res://gui_tutorails.tscn"]
+layout_mode = 1
+
+[node name="GUIDialogue" parent="." unique_id=545709183 instance_placeholder="res://gui_dialogue.tscn"]
+visible = false
+layout_mode = 1
+
+[node name="GUIBattle" parent="." unique_id=368823071 instance_placeholder="res://gui_battle.tscn"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -160.0
+offset_bottom = 160.0
+
+[node name="GUIDefeated" parent="." unique_id=172360110 instance_placeholder="res://gui_defeated.tscn"]
+visible = false
+custom_minimum_size = Vector2(186, 190)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -95.0
+offset_right = 93.0
+offset_bottom = 95.0
+
+[node name="GUIBuyCard" parent="." unique_id=595511499 instance_placeholder="res://gui_buy_card.tscn"]
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+offset_top = -320.0
+grow_vertical = 0
+size_flags_vertical = 3
+rect = SubResource("Resource_0kjjk")
+rect_ipad = SubResource("Resource_jiok5")
+rect_640h = SubResource("Resource_xukep")
+rect_568h = SubResource("Resource_kxxgh")
+
+[node name="GUIPauseBox" parent="." unique_id=1648966608 instance_placeholder="res://gui_pause_box.tscn"]
+visible = false
+custom_minimum_size = Vector2(166, 262)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -131.0
+offset_right = 83.0
+offset_bottom = 131.0
+
+[node name="GUIOptions" parent="." unique_id=707334202 instance_placeholder="res://gui_options.tscn"]
+layout_mode = 1
+
+[node name="GUISave" parent="." unique_id=1102808812 instance_placeholder="res://gui_save.tscn"]
+layout_mode = 1
+
 [node name="IEventReceiver" parent="." unique_id=817525215 instance=ExtResource("8_j4ryw")]
 
+[connection signal="time_passed" from="GUIVictory" to="." method="_on_gui_victory_time_passed"]
 [connection signal="faded_in" from="IEventReceiver" to="." method="_on_i_event_receiver_faded_in"]
+[connection signal="faded_out" from="IEventReceiver" to="." method="_on_i_event_receiver_faded_out"]
+[connection signal="motion_finished" from="IEventReceiver" to="." method="_on_i_event_receiver_motion_finished"]

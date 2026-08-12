@@ -56,3 +56,14 @@ func _process(delta: float) -> void:
 			_playing = false
 		var y := minf($BoardEnd.scale.y + 6.0 * delta, 1.0)
 		$BoardEnd.scale.y = y
+
+
+func _has_point(_point: Vector2) -> bool:
+	return is_visible_in_tree()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		accept_event()
+	elif event.is_action_released(&"ui_cancel"):
+		accept_event()

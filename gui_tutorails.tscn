@@ -19,63 +19,48 @@ name_534h = "tutorails_script-534h.xml"
 name_512h = "tutorails_script-512h.xml"
 metadata/_custom_type_script = "uid://b0stiqify0vh6"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_50j1d"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6y8mx"]
 bg_color = Color(1, 1, 1, 0)
 border_color = Color(0, 0, 0, 0.5019608)
 
-[sub_resource type="Resource" id="Resource_aeq1j"]
+[sub_resource type="Resource" id="Resource_0byme"]
 script = ExtResource("4_jiu2o")
 rect = Rect2(30, 74, 0, 0)
 
-[sub_resource type="Resource" id="Resource_w1k54"]
+[sub_resource type="Resource" id="Resource_gco50"]
 script = ExtResource("4_jiu2o")
 rect = Rect2(30, 522, 0, 0)
 
-[sub_resource type="Resource" id="Resource_gco50"]
+[sub_resource type="Resource" id="Resource_jiu2o"]
 script = ExtResource("4_jiu2o")
 rect = Rect2(-201, 234, 0, 0)
 
-[sub_resource type="Resource" id="Resource_jiu2o"]
+[sub_resource type="Resource" id="Resource_aeq1j"]
 script = ExtResource("4_jiu2o")
 rect = Rect2(-201, 682, 0, 0)
 
-[sub_resource type="Resource" id="Resource_n8tp8"]
+[sub_resource type="Resource" id="Resource_w1k54"]
 script = ExtResource("4_jiu2o")
 rect = Rect2(-186, 248, 0, 0)
 
-[sub_resource type="Resource" id="Resource_5s6mj"]
+[sub_resource type="Resource" id="Resource_n8tp8"]
 script = ExtResource("4_jiu2o")
 rect = Rect2(-187, 695, 0, 0)
 
-[sub_resource type="Resource" id="Resource_dd2af"]
+[sub_resource type="Resource" id="Resource_5s6mj"]
 script = ExtResource("2_jei2j")
 name = "font8_en.fnt"
 name_hd = "font8_en_hd.fnt"
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jei2j"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_olh4s"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ser6o"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekwma"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yifqu"]
-
-[node name="GUITutorails" type="Control" unique_id=326815524]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUITutorails" unique_id=1627139554 instance=ExtResource("3_gco50")]
+mouse_filter = 1
 script = ExtResource("1_6ixiq")
 asset = SubResource("Resource_olh4s")
 
-[node name="Tutorials" type="Sprite2D" parent="." unique_id=1985153152]
+[node name="Tutorials" type="Sprite2D" parent="." index="0" unique_id=1345890056]
 centered = false
 
-[node name="drawRect" type="Panel" parent="." unique_id=109156952]
+[node name="drawRect" type="Panel" parent="." index="1" unique_id=1600479920]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -83,9 +68,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_50j1d")
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_6y8mx")
 
-[node name="Guider" parent="." unique_id=1627139554 instance=ExtResource("3_gco50")]
+[node name="Guider" parent="." index="2" unique_id=1071813472 instance=ExtResource("3_gco50")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -96,16 +82,17 @@ offset_top = 74.0
 offset_right = 30.0
 offset_bottom = 74.0
 grow_vertical = 1
-rect = SubResource("Resource_aeq1j")
-rect_ipad = SubResource("Resource_w1k54")
+rect = SubResource("Resource_0byme")
+rect_ipad = SubResource("Resource_gco50")
 
-[node name="TextureRect" type="TextureRect" parent="Guider" unique_id=1927801652]
+[node name="TextureRect" type="TextureRect" parent="Guider" index="0" unique_id=1896553886]
 layout_mode = 0
+mouse_filter = 2
 texture = ExtResource("2_50j1d")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="DlgBoard" parent="." unique_id=1907122233 instance=ExtResource("3_gco50")]
+[node name="DlgBoard" parent="." index="3" unique_id=1991947670 instance=ExtResource("3_gco50")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -116,16 +103,17 @@ offset_top = 234.0
 offset_right = -201.0
 offset_bottom = 234.0
 grow_vertical = 1
-rect = SubResource("Resource_gco50")
-rect_ipad = SubResource("Resource_jiu2o")
+rect = SubResource("Resource_jiu2o")
+rect_ipad = SubResource("Resource_aeq1j")
 
-[node name="TextureRect" type="TextureRect" parent="DlgBoard" unique_id=1421692535]
+[node name="TextureRect" type="TextureRect" parent="DlgBoard" index="0" unique_id=283698970]
 layout_mode = 0
+mouse_filter = 2
 texture = ExtResource("3_wn28i")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="Dlg" parent="." unique_id=1378917470 instance=ExtResource("3_gco50")]
+[node name="Dlg" parent="." index="4" unique_id=482038163 instance=ExtResource("3_gco50")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -136,14 +124,14 @@ offset_top = 248.0
 offset_right = -186.0
 offset_bottom = 248.0
 grow_vertical = 1
-rect = SubResource("Resource_n8tp8")
-rect_ipad = SubResource("Resource_5s6mj")
+rect = SubResource("Resource_w1k54")
+rect_ipad = SubResource("Resource_n8tp8")
 
-[node name="Font8" parent="Dlg" unique_id=1248850266 instance=ExtResource("6_6y8mx")]
+[node name="Font8" parent="Dlg" index="0" unique_id=1248850266 instance=ExtResource("6_6y8mx")]
 layout_mode = 0
-asset = SubResource("Resource_dd2af")
+asset = SubResource("Resource_5s6mj")
 
-[node name="Label" type="Label" parent="Dlg/Font8" unique_id=1379782832]
+[node name="Label" type="Label" parent="Dlg/Font8" index="0" unique_id=1401488533]
 layout_mode = 0
 offset_right = 1.0
 offset_bottom = 15.0
@@ -151,22 +139,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 
-[node name="Hand" type="Sprite2D" parent="." unique_id=496225431]
+[node name="Hand" type="Sprite2D" parent="." index="5" unique_id=2014682466]
 visible = false
 texture = ExtResource("4_wn28i")
 centered = false
-
-[node name="Button" type="Button" parent="." unique_id=293262517]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_jei2j")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_olh4s")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ser6o")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_ekwma")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yifqu")
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

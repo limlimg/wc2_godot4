@@ -8,6 +8,9 @@ const _INSTALLATION_STAMP = [
 ]
 
 @export
+var area: int
+
+@export
 var money := 0:
 	set = set_money
 
@@ -16,21 +19,22 @@ var industry := 0:
 	set = set_industry
 
 func set_area(id: int) -> void:
-	var area = g_Scene.get_area(id)
-	set_money(area.get_real_tax())
-	set_industry(area.get_industry())
-	var installation = area.installation
+	area = id
+	var res := texture_res
+	if res == null:
+		res = s_texture_res
+	set_money(g_Scene.get_area(id).get_real_tax())
+	set_industry(g_Scene.get_area(id).get_industry())
+	var installation = g_Scene.get_area(id).installation
 	if installation > 0:
-		$Installation.texture = texture_res.get_res().get_image(_INSTALLATION_STAMP[installation])
+		$Installation.texture = res.get_image(_INSTALLATION_STAMP[installation - 1])
 	else:
 		$Installation.texture = null
-	if area.has_army_card(3):
+	if g_Scene.get_area(id).has_army_card(3):
 		$WithCommander.visible = true
 		$WithoutCommander.visible = false
-		var country = area.country
+		var country = g_Scene.get_area(id).country
 		if country.ai:
-			$WithCommander/IsAI.visible = true
-			$WithCommander/NotAI.visible = false
 			var commander = country.get_commander_name()
 			if not commander.is_empty():
 				var photo := CObjectDef.instance().get_general_photo(commander)
@@ -38,14 +42,11 @@ func set_area(id: int) -> void:
 				if photo != null:
 					photo_name = photo.filename
 					photo_name = photo_name.substr(0, photo_name.rfind(".")) + ".png"
-				$WithCommander/Commander.texture = texture_res.get_image(photo_name)
-				$WithCommander/IsAI/AICommanderMedal.country = country.name
-				$WithCommander/IsAI/AICommanderMedal.common = country.alliance
+				$WithCommander/Commander.texture = res.get_image(photo_name)
+				$WithCommander/CommanderMedal.queue_redraw()
 		else:
-			$WithCommander/IsAI.visible = false
-			$WithCommander/NotAI.visible = true
-			$WithCommander/Commander.texture = texture_res.get_image("general_player.png")
-			$WithCommander/NotAI/CommanderMedal.commander_level = country.get_commander_level()
+			$WithCommander/Commander.texture = res.get_image("general_player.png")
+			$WithCommander/CommanderMedal.queue_redraw()
 	else:
 		$WithCommander.visible = false
 		$WithoutCommander.visible = true
@@ -61,3 +62,11 @@ func set_industry(value: int) -> void:
 	if value != industry:
 		industry = value
 		$Industry.text = "{0}".format([value])
+
+
+func _on_commander_medal_draw() -> void:
+	var country = g_Scene.get_area(area).country
+	if country.ai:
+		g_GameRes.render_ai_commander_medal($WithCommander/CommanderMedal.get_canvas_item(), 1, 0.0, 0.0, country.name, country.alliance)
+	else:
+		g_GameRes.render_commander_medal($WithCommander/CommanderMedal.get_canvas_item(), 1, 0.0, 0.0, country.get_commander_level())

@@ -1,26 +1,24 @@
 [gd_scene format=3 uid="uid://bnrmqpxbn6rtm"]
 
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_7a65q"]
 [ext_resource type="Script" uid="uid://co872n5xu7il2" path="res://gui_action_info.gd" id="1_d0jld"]
 
-[node name="GUIActionInfo" type="Control" unique_id=2027985913]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIActionInfo" unique_id=1627139554 instance=ExtResource("1_7a65q")]
 script = ExtResource("1_d0jld")
+info = ""
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1890636832]
+[node name="ColorRect" type="ColorRect" parent="." index="0" unique_id=2088135102]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 0.5)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=72474147]
+[node name="RichTextLabel" type="RichTextLabel" parent="." index="1" unique_id=436839935]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2

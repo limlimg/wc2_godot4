@@ -2,15 +2,15 @@ extends GUIElement
 
 @export
 var show_board := true:
-	get():
-		return $TechnologyBoard.visible
 	set(value):
-		$TechnologyBoard.visible = value
+		if value != show_board:
+			show_board = value
+			$TechnologyBoard.visible = value
 
 
 var _tech: int
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var country = g_GameManager.get_cur_country()
 	if country != null and _tech != country.tech_level:
 		_tech = country.tech_level

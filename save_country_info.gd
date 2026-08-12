@@ -126,7 +126,7 @@ var destroy: PackedInt32Array:
 	get():
 		return _mem.slice(_offset + 180, _offset + 220).to_int32_array()
 	set(value):
-		for i in min(value.size, 10):
+		for i in min(value.size(), 10):
 			_mem.encode_s32(_offset + 180 + 4 * i, value[i])
 
 

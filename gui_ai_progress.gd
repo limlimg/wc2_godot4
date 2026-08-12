@@ -10,7 +10,8 @@ var progress: int:
 		if value != progress:
 			progress = value
 			while _bars.size() < value:
-				_bars.append($Prototype/TextureRect.duplicate())
+				_bars.append($ProgressBar/Prototype.duplicate())
+				_bars[-1].visible = true
 				$ProgressBar.add_child(_bars[-1])
 			while _bars.size() > value:
 				_bars.pop_back().queue_free()

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ca03jr48w1uws"]
 
 [ext_resource type="Script" uid="uid://clsohyo5himsx" path="res://gui_exit_warning.gd" id="1_6ytht"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_im4tj"]
 [ext_resource type="PackedScene" uid="uid://bw36wnr8tqwkd" path="res://gui/fade.tscn" id="2_kjn2k"]
 [ext_resource type="Texture2D" uid="uid://bi4s1a8uua7dp" path="res://resources/assets/texture/board_exit.tres" id="4_5avr6"]
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="5_3l6l5"]
@@ -8,47 +9,42 @@
 [ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="8_aujea"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="9_r4par"]
 
-[sub_resource type="Resource" id="Resource_mmhwl"]
+[sub_resource type="Resource" id="Resource_l8un6"]
 script = ExtResource("9_r4par")
 name = "button_cancleexit.png"
 
-[sub_resource type="Resource" id="Resource_8nbdp"]
+[sub_resource type="Resource" id="Resource_bhv4r"]
 script = ExtResource("5_3l6l5")
 rect = Rect2(5, 95, 40, 38)
 
-[sub_resource type="Resource" id="Resource_lo0yr"]
+[sub_resource type="Resource" id="Resource_3l6l5"]
 script = ExtResource("5_3l6l5")
 rect = Rect2(10, 190, 80, 76)
 
-[sub_resource type="Resource" id="Resource_fg6kk"]
+[sub_resource type="Resource" id="Resource_aujea"]
 script = ExtResource("9_r4par")
 name = "button_confirmexit.png"
 
-[sub_resource type="Resource" id="Resource_uvya5"]
+[sub_resource type="Resource" id="Resource_r4par"]
 script = ExtResource("5_3l6l5")
 rect = Rect2(175, 95, 40, 38)
 
-[sub_resource type="Resource" id="Resource_8tsxh"]
+[sub_resource type="Resource" id="Resource_e6jq4"]
 script = ExtResource("5_3l6l5")
 rect = Rect2(350, 190, 80, 76)
 
-[node name="GUIExitWarning" type="Control" unique_id=986775281]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIExitWarning" unique_id=1627139554 instance=ExtResource("1_im4tj")]
+mouse_filter = 1
 script = ExtResource("1_6ytht")
 
-[node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_kjn2k")]
+[node name="Fade" parent="." index="0" unique_id=1674156080 instance=ExtResource("2_kjn2k")]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=773164167]
+[node name="Sprite2D" type="Sprite2D" parent="." index="1" unique_id=349895179]
 texture = ExtResource("4_5avr6")
 centered = false
 
-[node name="CancleExit" parent="." unique_id=2034275630 instance=ExtResource("5_kjn2k")]
-layout_mode = 1
+[node name="CancleExit" parent="." index="2" unique_id=1636740745 instance=ExtResource("5_kjn2k")]
+layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -58,15 +54,15 @@ offset_right = 5.0
 offset_bottom = 95.0
 grow_horizontal = 1
 grow_vertical = 1
-image_normal = SubResource("Resource_mmhwl")
-image_pressed = SubResource("Resource_mmhwl")
+image_normal = SubResource("Resource_l8un6")
+image_pressed = SubResource("Resource_l8un6")
 text_offset = Vector2(20, 19)
-rect = SubResource("Resource_8nbdp")
-rect_ipad = SubResource("Resource_lo0yr")
+rect = SubResource("Resource_bhv4r")
+rect_ipad = SubResource("Resource_3l6l5")
 texture_res = ExtResource("8_aujea")
 
-[node name="ConfirmExit" parent="." unique_id=1850582139 instance=ExtResource("5_kjn2k")]
-layout_mode = 1
+[node name="ConfirmExit" parent="." index="3" unique_id=2093575187 instance=ExtResource("5_kjn2k")]
+layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -76,13 +72,12 @@ offset_right = 175.0
 offset_bottom = 95.0
 grow_horizontal = 1
 grow_vertical = 1
-image_normal = SubResource("Resource_fg6kk")
-image_pressed = SubResource("Resource_fg6kk")
+image_normal = SubResource("Resource_aujea")
+image_pressed = SubResource("Resource_aujea")
 text_offset = Vector2(20, 19)
-rect = SubResource("Resource_uvya5")
-rect_ipad = SubResource("Resource_8tsxh")
+rect = SubResource("Resource_r4par")
+rect_ipad = SubResource("Resource_e6jq4")
 texture_res = ExtResource("8_aujea")
 
-[connection signal="back_pressed" from="Fade" to="." method="_on_gui_button_cancel_pressed"]
 [connection signal="pressed" from="CancleExit" to="." method="_on_gui_button_cancel_pressed"]
 [connection signal="pressed" from="ConfirmExit" to="." method="_on_gui_button_confirm_pressed"]

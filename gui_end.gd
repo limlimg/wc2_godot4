@@ -35,3 +35,15 @@ func init() -> void:
 
 func _on_gui_button_back_pressed() -> void:
 	back_pressed.emit()
+
+
+func _has_point(_point: Vector2) -> bool:
+	return is_visible_in_tree()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		accept_event()
+	elif event.is_action_released(&"ui_cancel"):
+		back_pressed.emit()
+		accept_event()

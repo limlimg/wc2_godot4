@@ -44,9 +44,3 @@ flip_v = true
 [node name="CMedal" parent="CCamera" unique_id=1613117480 instance_placeholder="res://c_medal.tscn"]
 
 [node name="CBomber" parent="CCamera" unique_id=511489610 instance_placeholder="res://c_bomber.tscn"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2

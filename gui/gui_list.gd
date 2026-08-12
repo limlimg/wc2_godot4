@@ -4,10 +4,10 @@ extends "res://gui_element.gd"
 
 @export
 var vertical := true:
-	get():
-		return $ScrollContainer/BoxContainer.vertical
 	set(value):
-		$ScrollContainer/BoxContainer.vertical = value
+		if value != vertical:
+			vertical = value
+			$ScrollContainer/BoxContainer.vertical = value
 
 
 @export
@@ -39,8 +39,8 @@ signal item_touched(item: int)
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch:
 		if event.is_pressed():
-			$CTouchInertia.touch_begin(event.position.x, event.position.y, event.index)
-			accept_event()
+			if $CTouchInertia.touch_begin(event.position.x, event.position.y, event.index):
+				accept_event()
 		else:
 			if $CTouchInertia.touch_end(event.position.x, event.position.y, event.index):
 				var pos = get_global_transform() * event.position
@@ -54,6 +54,7 @@ func _gui_input(event: InputEvent) -> void:
 				_add_scroll(-event.relative.y)
 			else:
 				_add_scroll(-event.relative.x)
+			accept_event()
 
 
 func _gel_sel_item(x: float, y: float) -> int:
@@ -71,9 +72,9 @@ func _process(delta: float) -> void:
 	var speed = $CTouchInertia.get_speed()
 	if speed:
 		if vertical:
-			_add_scroll(-speed.y)
+			_add_scroll(-speed.y * delta)
 		else:
-			_add_scroll(-speed.x)
+			_add_scroll(-speed.x * delta)
 	else:
 		var d: float
 		if vertical:

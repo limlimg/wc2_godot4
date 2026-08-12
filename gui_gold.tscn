@@ -1,23 +1,20 @@
 [gd_scene format=3 uid="uid://duidx7fccd24k"]
 
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_m5c5i"]
 [ext_resource type="Script" uid="uid://dqrrdid4hwf8t" path="res://gui_gold.gd" id="1_oqevq"]
 [ext_resource type="Texture2D" uid="uid://dvv46qmkmke7j" path="res://resources/assets/logo_gui_res/asset_board.png.tres" id="1_qd3tg"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="3_m5c5i"]
 
-[node name="GUIGold" type="Control" unique_id=1663737891]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIGold" unique_id=1627139554 instance=ExtResource("1_m5c5i")]
 script = ExtResource("1_oqevq")
+money = 0
+industry = 0
 
-[node name="AssetBoard" type="Sprite2D" parent="." unique_id=183242673]
+[node name="AssetBoard" type="Sprite2D" parent="." index="0" unique_id=795333825]
 texture = ExtResource("1_qd3tg")
 centered = false
 
-[node name="Money" parent="." unique_id=1650770578 instance=ExtResource("3_m5c5i")]
+[node name="Money" parent="." index="1" unique_id=1650770578 instance=ExtResource("3_m5c5i")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 15.0
@@ -26,10 +23,10 @@ offset_right = 15.0
 offset_bottom = 3.0
 text = "0"
 font = NodePath("/root/g_Num3")
-color = Color(0.05882353, 0.14901961, 0.19607843, 1)
+color = Color(0.19607843, 0.14901961, 0.05882353, 1)
 spacing = Vector2i(-1, 0)
 
-[node name="Industry" parent="." unique_id=691745375 instance=ExtResource("3_m5c5i")]
+[node name="Industry" parent="." index="2" unique_id=2132431470 instance=ExtResource("3_m5c5i")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 60.0
@@ -38,5 +35,5 @@ offset_right = 60.0
 offset_bottom = 3.0
 text = "0"
 font = NodePath("/root/g_Num3")
-color = Color(0.05882353, 0.14901961, 0.19607843, 1)
+color = Color(0.19607843, 0.14901961, 0.05882353, 1)
 spacing = Vector2i(-1, 0)

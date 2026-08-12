@@ -19,11 +19,10 @@ class _GUIMotion:
 	var delay_remaining: int
 	var flag: int
 
+var event_receiver: IEventReceiver
 var _motion: Array[_GUIMotion]
 var _active_motion: Array[_GUIMotion]
 var _frozen: bool
-
-signal motion_finished(Control)
 
 static func instance() -> GUIMotionManager:
 	var node := (Engine.get_main_loop() as SceneTree).get_first_node_in_group(&"_ZN16GUIMotionManager8InstancevE")
@@ -122,7 +121,8 @@ func proc_motion() -> bool:
 				else:
 					motion.flag = flag & ~1
 					_active_motion.erase(motion)
-				motion_finished.emit(motion.node)
+				if event_receiver != null:
+					event_receiver.motion_finished.emit(_motion.find(motion))
 			else:
 				# make sure to move towards the target position
 				var target_sign := (target - motion.cur).sign()

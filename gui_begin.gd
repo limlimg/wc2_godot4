@@ -57,14 +57,14 @@ func reset_data() -> void:
 		round_text = "ROUND {0}/{1}".format([g_GameManager.current_round + 1, g_GameManager.victory])
 	else:
 		round_text = "ROUND {0}".format([g_GameManager.current_round + 1])
-	$CenterContainer/RoundStartBoard/Round.text = round_text
+	$Round.text = round_text
 	var country = g_GameManager.get_cur_country()
 	if country != null:
-		$CenterContainer/RoundStartBoard/Taxes.text = "{0}".format([country.get_taxes()])
-		$CenterContainer/RoundStartBoard/Industrys.text = "{0}".format([country.get_industrys()])
+		$Taxes.text = "{0}".format([country.get_taxes()])
+		$Industrys.text = "{0}".format([country.get_industrys()])
 		if g_GameManager.game_mode == 4:
-			$CenterContainer/RoundStartBoard/Sprite2D.texture = null
-		$CenterContainer/RoundStartBoard/ButtonBank.visible = not country.borrowed_loan
+			$Sprite2D.texture = null
+		$ButtonBank.visible = not country.borrowed_loan
 
 
 func _process(_delta: float) -> void:
@@ -82,12 +82,12 @@ func _process(_delta: float) -> void:
 func _on_render() -> void:
 	if texture_res == null:
 		return
-	$CenterContainer/RoundStartBoard/MedalSoldiers/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_soldiers]))
-	$CenterContainer/RoundStartBoard/MedalAirforce/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_airforce]))
-	$CenterContainer/RoundStartBoard/MedalCannon/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_cannon]))
-	$CenterContainer/RoundStartBoard/MedalPanzer/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_panzer]))
-	$CenterContainer/RoundStartBoard/MedalNavy/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_navy]))
-	$CenterContainer/RoundStartBoard/MedalHonor/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_honor]))
+	$MedalSoldiers/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_soldiers]))
+	$MedalAirforce/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_airforce]))
+	$MedalCannon/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_cannon]))
+	$MedalPanzer/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_panzer]))
+	$MedalNavy/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_navy]))
+	$MedalHonor/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_honor]))
 
 
 func _on_button_ok_pressed() -> void:
@@ -96,3 +96,15 @@ func _on_button_ok_pressed() -> void:
 
 func _on_button_bank_pressed() -> void:
 	bank_pressed.emit()
+
+
+func _has_point(_point: Vector2) -> bool:
+	return is_visible_in_tree()
+
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		accept_event()
+	elif event.is_action_released(&"ui_cancel"):
+		ok_pressed.emit()
+		accept_event()

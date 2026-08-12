@@ -34,7 +34,6 @@ func term() -> void:
 	var _cur_state_node = _states.get(_cur_state)
 	if _cur_state_node != null:
 		_cur_state_node.hide()
-		_cur_state_node.set_process(false)
 	_states.clear()
 	_cur_state = EState.ESTATE_MAX
 
@@ -48,12 +47,10 @@ func update(_delta: float) -> void:
 		var _cur_state_node = _states.get(_cur_state)
 		if _cur_state_node != null:
 			_cur_state_node.hide()
-			_cur_state_node.set_process(false)
 		_cur_state = _next_state
 		_cur_state_node = _states.get(_next_state)
 		if _cur_state_node != null:
 			_cur_state_node.show()
-			_cur_state_node.set_process(true)
 
 
 func register_state(state: CBaseState) -> void:
@@ -61,7 +58,6 @@ func register_state(state: CBaseState) -> void:
 		return
 	state.hide()
 	add_child(state)
-	state.set_process(false)
 	_states[state.state] = state
 
 

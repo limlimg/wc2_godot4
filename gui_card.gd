@@ -19,10 +19,10 @@ var enable: bool:
 
 @export
 var selected: bool:
-	get():
-		return $CardShadow.visible
 	set(value):
-		$CardShadow.visible = value
+		if value != selected:
+			selected = value
+			$CardShadow.visible = value
 
 
 @export
@@ -43,12 +43,10 @@ var industry: int:
 
 @export
 var price_color: Color:
-	get=get_price_color,
 	set=set_price_color
 
 @export
 var industry_color: Color:
-	get=get_industry_color,
 	set=set_industry_color
 
 @export
@@ -106,27 +104,27 @@ func init() -> void:
 
 
 func set_price(value: int) -> void:
-	$Price.text = "{0}".format([value])
+	if value != price:
+		price = value
+		$Price.text = "{0}".format([value])
 
 
 func set_industry(value: int) -> void:
-	$Industry.text = "{0}".format([value])
+	if value != industry:
+		industry = value
+		$Industry.text = "{0}".format([value])
 
 
-func get_price_color() -> Color:
-	return $Price.color
+func set_price_color(value: Color) -> void:
+	if value != price_color:
+		price_color = value
+		$Price.color = value
 
 
-func set_price_color(color: Color) -> void:
-	$Price.color = color
-
-
-func get_industry_color() -> Color:
-	return $Industry.color
-
-
-func set_industry_color(color: Color) -> void:
-	$Industry.color = color
+func set_industry_color(value: Color) -> void:
+	if value != industry_color:
+		industry_color = value
+		$Industry.color = value
 
 
 func _on_button_pressed() -> void:
@@ -168,9 +166,9 @@ func _on_render() -> void:
 	if def.type <= 1:
 		var stat_color: Color
 		if enable:
-			stat_color = Color8(0x4B, 0xA8, 0xE4)
+			stat_color = Color8(0xE4, 0xA8, 0x4B)
 		else:
-			stat_color = Color8(0x25, 0x54, 0x72)
+			stat_color = Color8(0x72, 0x54, 0x25)
 		$Attack.self_modulate = stat_color
 		$Strength.self_modulate = stat_color
 		$Movement.self_modulate = stat_color

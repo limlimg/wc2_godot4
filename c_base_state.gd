@@ -12,26 +12,36 @@ extends Control
 @export
 var state: int
 
-var _entered := false
+var _entered := false:
+	set(value):
+		_entered = value
+		set_process(value)
+		set_process_unhandled_input(value)
+
+
+func _ready() -> void:
+	set_process(false)
+	set_process_unhandled_input(false)
+
 
 func _notification(what):
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
 		if is_visible_in_tree() and not _entered:
-			if not get_tree().root.is_node_ready():
-				await get_tree().root.ready
-			_entered = true
 			_on_enter()
+			_entered = true
 		elif _entered:
-			_on_exit()
 			_entered = false
+			_on_exit()
 	elif what == NOTIFICATION_WM_CLOSE_REQUEST:
 		if _entered:
-			_on_exit()
 			_entered = false
+			_on_exit()
 	elif what == NOTIFICATION_APPLICATION_RESUMED:
-		_enter_foreground()
+		if _entered:
+			_enter_foreground()
 	elif what == NOTIFICATION_APPLICATION_PAUSED:
-		_enter_background()
+		if _entered:
+			_enter_background()
 
 
 func _on_enter() -> void:
@@ -39,48 +49,6 @@ func _on_enter() -> void:
 
 
 func _on_exit() -> void:
-	pass
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if not _entered:
-		return
-	if event is InputEventScreenTouch:
-		if event.pressed:
-			_touch_begin(event.position.x, event.position.y, event.index)
-			get_viewport().set_input_as_handled()
-		else:
-			_touch_end(event.position.x, event.position.y, event.index)
-			get_viewport().set_input_as_handled()
-	elif event is InputEventScreenDrag:
-		_touch_move(event.position.x, event.position.y, event.index)
-		get_viewport().set_input_as_handled()
-	elif event.is_action_pressed(&"ui_cancel"):
-		if _back_pressed():
-			get_viewport().set_input_as_handled()
-
-
-func _touch_begin(_x: float, _y: float, _index: float) -> void:
-	pass
-
-
-func _touch_move(_x: float, _y: float, _index: float) -> void:
-	pass
-
-
-func _touch_end(_x: float, _y: float, _index: float) -> void:
-	pass
-
-
-func _back_pressed() -> bool:
-	return false
-
-
-func _key_down(_key: Key) -> void:
-	pass
-
-
-func _scroll_wheel(_x_value: float, _y_value: float, _a3: float) -> void:
 	pass
 
 

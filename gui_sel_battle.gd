@@ -10,16 +10,16 @@ const _CAMPAIGN_LOGO = [
 @export
 var game_mode: int:
 	set(value):
-		game_mode = value
-		$ButtonInfo.visible = (value == 0)
+		if value != game_mode:
+			game_mode = value
+			$ButtonInfo.visible = (value == 0)
 
 
 @export
 var campaign: int:
-	get():
-		return $GUIBattleList.campaign
 	set(value):
 		if value != campaign:
+			campaign = value
 			$GUIBattleList.campaign = value
 			init()
 
@@ -110,7 +110,13 @@ func _on_button_back_pressed() -> void:
 	back_pressed.emit()
 
 
+func _has_point(_point: Vector2) -> bool:
+	return is_visible_in_tree()
+
+
 func _gui_input(event: InputEvent) -> void:
-	if event.is_action(&"ui_cancel"):
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		accept_event()
+	elif event.is_action_released(&"ui_cancel"):
 		back_pressed.emit()
 		accept_event()

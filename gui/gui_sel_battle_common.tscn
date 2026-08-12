@@ -17,60 +17,54 @@
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="13_3d7ta"]
 [ext_resource type="PackedScene" uid="uid://bp1f7if3s8vf4" path="res://gui_medal.tscn" id="14_xi63f"]
 
-[sub_resource type="Resource" id="Resource_6edyx"]
+[sub_resource type="Resource" id="Resource_b143d"]
 script = ExtResource("4_dk1i4")
 rect = Rect2(0, 0, 1715, 750)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_mqori"]
+[sub_resource type="Resource" id="Resource_3d7ta"]
 script = ExtResource("4_dk1i4")
 rect = Rect2(0, 0, 3430, 1500)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_8f3fq"]
+[sub_resource type="Resource" id="Resource_dk1i4"]
 script = ExtResource("13_3d7ta")
 name = "num6.fnt"
 name_hd = "num6_hd.fnt"
 name_ipad = "num6_hd.fnt"
 
-[sub_resource type="Resource" id="Resource_t6uaj"]
+[sub_resource type="Resource" id="Resource_6edyx"]
 script = ExtResource("4_dk1i4")
 rect = Rect2(36, 0, 70, 23)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_rbldi"]
+[sub_resource type="Resource" id="Resource_mqori"]
 script = ExtResource("4_dk1i4")
 rect = Rect2(55, 0, 146, 50)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[node name="GUISelBattleCommon" type="Control" unique_id=1447387296]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="GUISelBattleCommon" unique_id=1627139554 instance=ExtResource("3_3d7ta")]
 script = ExtResource("1_ap38y")
 
-[node name="CommonBg" type="TextureRect" parent="." unique_id=1598357464]
+[node name="CommonBg" type="TextureRect" parent="." index="0" unique_id=1075160633]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("1_euem8")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Minimap" type="Control" parent="." unique_id=8535555]
+[node name="Minimap" type="Control" parent="." index="1" unique_id=830398442]
 editor_description = "Defines total size of minimap"
 anchors_preset = 0
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="Background" parent="Minimap" unique_id=1627139554 instance=ExtResource("3_3d7ta")]
+[node name="Background" parent="Minimap" index="0" unique_id=740492684 instance=ExtResource("3_3d7ta")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -79,83 +73,92 @@ offset_right = 1715.0
 offset_bottom = 750.0
 grow_horizontal = 1
 grow_vertical = 1
-rect = SubResource("Resource_6edyx")
-rect_ipad = SubResource("Resource_mqori")
+rect = SubResource("Resource_b143d")
+rect_ipad = SubResource("Resource_3d7ta")
 
-[node name="GridContainer" type="GridContainer" parent="Minimap/Background" unique_id=945798134]
+[node name="GridContainer" type="GridContainer" parent="Minimap/Background" index="0" unique_id=1512018072]
 layout_mode = 1
 offset_right = 2000.0
 offset_bottom = 1000.0
+mouse_filter = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 4
 
-[node name="Minimap1" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=1612956961]
+[node name="Minimap1" type="TextureRect" parent="Minimap/Background/GridContainer" index="0" unique_id=423073453]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("3_u6gr4")
 stretch_mode = 2
 
-[node name="Minimap2" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=2143372789]
+[node name="Minimap2" type="TextureRect" parent="Minimap/Background/GridContainer" index="1" unique_id=1521394637]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("4_67bt0")
 stretch_mode = 2
 
-[node name="Minimap3" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=2105644886]
+[node name="Minimap3" type="TextureRect" parent="Minimap/Background/GridContainer" index="2" unique_id=405423998]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("5_w8w5v")
 stretch_mode = 2
 
-[node name="Minimap4" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=1520657236]
+[node name="Minimap4" type="TextureRect" parent="Minimap/Background/GridContainer" index="3" unique_id=248404459]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("6_1dr5e")
 stretch_mode = 2
 
-[node name="Minimap5" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=227474964]
+[node name="Minimap5" type="TextureRect" parent="Minimap/Background/GridContainer" index="4" unique_id=1243152245]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("7_bnxjm")
 stretch_mode = 2
 
-[node name="Minimap6" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=427001277]
+[node name="Minimap6" type="TextureRect" parent="Minimap/Background/GridContainer" index="5" unique_id=856540102]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("8_nt22e")
 stretch_mode = 2
 
-[node name="Minimap7" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=1251680486]
+[node name="Minimap7" type="TextureRect" parent="Minimap/Background/GridContainer" index="6" unique_id=68716872]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("9_rv5wm")
 stretch_mode = 2
 
-[node name="Minimap8" type="TextureRect" parent="Minimap/Background/GridContainer" unique_id=573000560]
+[node name="Minimap8" type="TextureRect" parent="Minimap/Background/GridContainer" index="7" unique_id=267985263]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 texture = ExtResource("10_y8pec")
 stretch_mode = 2
 
-[node name="ImageList" type="Node2D" parent="Minimap" unique_id=600736883]
+[node name="ImageList" type="Node2D" parent="Minimap" index="1" unique_id=1561675060]
 
-[node name="Flags" type="Node2D" parent="Minimap/ImageList" unique_id=323837022]
+[node name="Flags" type="Node2D" parent="Minimap/ImageList" index="0" unique_id=1947340409]
 
-[node name="Arrows" type="Node2D" parent="Minimap/ImageList" unique_id=758524085]
+[node name="Arrows" type="Node2D" parent="Minimap/ImageList" index="1" unique_id=1203135514]
 
-[node name="Num6" parent="Minimap/ImageList" unique_id=1248850266 instance=ExtResource("12_b143d")]
-asset = SubResource("Resource_8f3fq")
+[node name="Num6" parent="Minimap/ImageList" index="2" unique_id=1248850266 instance=ExtResource("12_b143d")]
+asset = SubResource("Resource_dk1i4")
 
-[node name="Age" type="Label" parent="Minimap/ImageList/Num6" unique_id=1147939039]
+[node name="Age" type="Label" parent="Minimap/ImageList/Num6" index="0" unique_id=390444163]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -170,23 +173,23 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_alignment = 1
 
-[node name="Prototype" type="Node2D" parent="Minimap" unique_id=1121306584]
+[node name="Prototype" type="Node2D" parent="Minimap" index="2" unique_id=103371418]
 visible = false
 
-[node name="Flag" type="Sprite2D" parent="Minimap/Prototype" unique_id=121774581]
+[node name="Flag" type="Sprite2D" parent="Minimap/Prototype" index="0" unique_id=1833698965]
 editor_description = "As a prototype for dynamic flags"
 position = Vector2(-128, -128)
 centered = false
 
-[node name="Shadow" type="Sprite2D" parent="Minimap/Prototype/Flag" unique_id=2092388097]
+[node name="Shadow" type="Sprite2D" parent="Minimap/Prototype/Flag" index="0" unique_id=1359661151]
 show_behind_parent = true
 texture = ExtResource("12_15bd2")
 centered = false
 
-[node name="Arrow" type="Sprite2D" parent="Minimap/Prototype" unique_id=1661421727]
+[node name="Arrow" type="Sprite2D" parent="Minimap/Prototype" index="1" unique_id=157234990]
 centered = false
 
-[node name="GUIMedal" parent="." unique_id=439510704 instance=ExtResource("14_xi63f")]
+[node name="GUIMedal" parent="." index="2" unique_id=951653911 instance=ExtResource("14_xi63f")]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -196,7 +199,7 @@ offset_top = -23.0
 offset_right = 106.0
 grow_horizontal = 1
 grow_vertical = 0
-rect = SubResource("Resource_t6uaj")
-rect_ipad = SubResource("Resource_rbldi")
+rect = SubResource("Resource_6edyx")
+rect_ipad = SubResource("Resource_mqori")
 
 [connection signal="resized" from="." to="." method="_on_resized"]

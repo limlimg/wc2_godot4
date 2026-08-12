@@ -6,30 +6,25 @@
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="4_c5dhu"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="5_t4t3p"]
 
-[sub_resource type="Resource" id="Resource_8kwhl"]
+[sub_resource type="Resource" id="Resource_bt0co"]
 script = ExtResource("4_c5dhu")
 rect = Rect2(23, 1, 0, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[sub_resource type="Resource" id="Resource_vxiwq"]
+[sub_resource type="Resource" id="Resource_t4t3p"]
 script = ExtResource("4_c5dhu")
 rect = Rect2(40, 1, 0, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[node name="GUIMedal" type="Control" unique_id=642182575]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIMedal" unique_id=1627139554 instance=ExtResource("3_t4t3p")]
 script = ExtResource("1_gytc2")
+_medal = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=75674681]
+[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=108352754]
 texture = ExtResource("1_ev6no")
 centered = false
 
-[node name="GUIElement" parent="." unique_id=1627139554 instance=ExtResource("3_t4t3p")]
+[node name="GUIElement" parent="." index="1" unique_id=1756998747 instance=ExtResource("3_t4t3p")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -40,10 +35,10 @@ offset_right = 23.0
 offset_bottom = 1.0
 grow_horizontal = 1
 grow_vertical = 1
-rect = SubResource("Resource_8kwhl")
-rect_ipad = SubResource("Resource_vxiwq")
+rect = SubResource("Resource_bt0co")
+rect_ipad = SubResource("Resource_t4t3p")
 
-[node name="ecText" parent="GUIElement" unique_id=1650770578 instance=ExtResource("5_t4t3p")]
+[node name="ecText" parent="GUIElement" index="0" unique_id=1650770578 instance=ExtResource("5_t4t3p")]
 layout_mode = 0
 offset_right = 10.0
 offset_bottom = 49.0
@@ -53,4 +48,4 @@ text = "0
 "
 font = NodePath("/root/g_Num1")
 
-[node name="ButtonBuyMedal" type="Node" parent="." unique_id=876432403]
+[node name="ButtonBuyMedal" type="Node" parent="." index="2" unique_id=406944129]

@@ -4,18 +4,18 @@ extends GUIElement
 
 @export
 var button_texture: Texture2D:
-	get():
-		return $Control/ButtonImage.texture
 	set(value):
-		$Control/ButtonImage.texture = value
+		if value != button_texture:
+			button_texture = value
+			$Control/ButtonImage.texture = value
 
 
 @export
 var text_texture: Texture2D:
-	get():
-		return $Control/TextImage.texture
 	set(value):
-		$Control/TextImage.texture = value
+		if value != text_texture:
+			text_texture = value
+			$Control/TextImage.texture = value
 
 
 @export
@@ -51,10 +51,10 @@ var selected_offset: float:
 
 
 var enable: bool:
-	get():
-		return not $Control/Button.disabled
 	set(value):
-		$Control/Button.disabled = not value
+		if value != enable:
+			enable = value
+			$Control/Button.disabled = not value
 
 
 var selected: bool:

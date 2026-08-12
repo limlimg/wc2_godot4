@@ -1,21 +1,19 @@
 [gd_scene format=3 uid="uid://55bpjexr684x"]
 
 [ext_resource type="Script" uid="uid://hld4gs38ov1v" path="res://gui/gui_list.gd" id="1_u6nvb"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_yapty"]
 [ext_resource type="PackedScene" uid="uid://dchd7a0cd1asv" path="res://c_touch_inertia.tscn" id="2_st7b2"]
 
-[node name="GUIList" type="Control" unique_id=339150278]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIList" unique_id=1627139554 instance=ExtResource("1_yapty")]
 mouse_filter = 1
 script = ExtResource("1_u6nvb")
+vertical = true
+separation_ipad = 0
+separation = 0
 
-[node name="CTouchInertia" parent="." unique_id=861780580 instance=ExtResource("2_st7b2")]
+[node name="CTouchInertia" parent="." index="0" unique_id=622728665 instance=ExtResource("2_st7b2")]
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=10035342]
+[node name="ScrollContainer" type="ScrollContainer" parent="." index="1" unique_id=818186936]
 clip_contents = false
 layout_mode = 1
 anchors_preset = 15
@@ -23,13 +21,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 follow_focus = true
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 3
 
-[node name="BoxContainer" type="BoxContainer" parent="ScrollContainer" unique_id=544251423]
+[node name="BoxContainer" type="BoxContainer" parent="ScrollContainer" index="0" unique_id=271811418]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/separation = 0
 vertical = true

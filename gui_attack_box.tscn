@@ -2,85 +2,69 @@
 
 [ext_resource type="Texture2D" uid="uid://ch11i0vsgexiw" path="res://resources/assets/logo_gui_res/attack_board.png.tres" id="1_4vm40"]
 [ext_resource type="Script" uid="uid://dncyt1wp5l611" path="res://gui_attack_box.gd" id="1_j1p28"]
-[ext_resource type="PackedScene" uid="uid://d257pj86yi20b" path="res://game_res_render/ui_attack_army.tscn" id="1_yycet"]
-[ext_resource type="PackedScene" uid="uid://384nv1p6s1wi" path="res://game_res_render/ui_defend_army.tscn" id="2_h34v0"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_logn7"]
 [ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://gui_button_ex.tscn" id="4_0omd4"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="6_aupwa"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="6_p6yii"]
 [ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="7_qvtfe"]
-[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="8_lm7xa"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="8_omktk"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="9_kpifn"]
 
-[sub_resource type="Resource" id="Resource_1scgp"]
+[sub_resource type="Resource" id="Resource_p6yii"]
 script = ExtResource("6_aupwa")
 name = "buttontext_ok.png"
 
-[sub_resource type="Resource" id="Resource_pgo8h"]
+[sub_resource type="Resource" id="Resource_d4ylm"]
 script = ExtResource("6_aupwa")
 name = "buttontext_ok_press.png"
 
-[sub_resource type="Resource" id="Resource_v0skf"]
+[sub_resource type="Resource" id="Resource_lm7xa"]
 script = ExtResource("6_aupwa")
 name = "green_normal.png"
 
-[sub_resource type="Resource" id="Resource_bvffp"]
-script = ExtResource("6_aupwa")
-name = "ui1_hd.webp"
-
-[sub_resource type="Texture2D" id="Texture2D_g71tu"]
+[sub_resource type="Texture2D" id="Texture2D_p6yii"]
 resource_local_to_scene = false
 resource_name = ""
-script = ExtResource("9_kpifn")
-asset = SubResource("Resource_bvffp")
-
-[sub_resource type="Texture2D" id="Texture2D_m2o1a"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("8_lm7xa")
-texture = SubResource("Texture2D_g71tu")
+script = ExtResource("6_p6yii")
 region = Rect2(505.5, 51.5, 67.5, 36)
 origin = Vector2(1.5, 0.5)
 
-[sub_resource type="Resource" id="Resource_hl1tj"]
+[sub_resource type="Resource" id="Resource_kpifn"]
 script = ExtResource("6_aupwa")
 name = "buttontext_cancel.png"
 
-[sub_resource type="Resource" id="Resource_d4ylm"]
+[sub_resource type="Resource" id="Resource_aupwa"]
 script = ExtResource("6_aupwa")
 name = "buttontext_cancel_press.png"
 
-[sub_resource type="Resource" id="Resource_aupwa"]
+[sub_resource type="Resource" id="Resource_qvtfe"]
 script = ExtResource("6_aupwa")
 name = "gray_normal.png"
 
-[node name="GUIAttackBox" type="Control" unique_id=1463077957]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIAttackBox" unique_id=1627139554 instance=ExtResource("1_logn7")]
+mouse_filter = 1
 script = ExtResource("1_j1p28")
+attack = -1
+defend = -1
 
-[node name="AttackBoard" type="Sprite2D" parent="." unique_id=496679981]
+[node name="AttackBoard" type="Sprite2D" parent="." index="0" unique_id=1049489665]
 texture = ExtResource("1_4vm40")
 centered = false
 
-[node name="AttackCountry" type="Sprite2D" parent="." unique_id=1334577377]
+[node name="AttackCountry" type="Sprite2D" parent="." index="1" unique_id=841004138]
 position = Vector2(37, 50)
 centered = false
 
-[node name="UIAttackArmy" parent="." unique_id=1549378055 instance=ExtResource("1_yycet")]
+[node name="UIAttackArmy" type="Node2D" parent="." index="2" unique_id=744901628]
 position = Vector2(60, 120)
 
-[node name="DefendCountry" type="Sprite2D" parent="." unique_id=418925201]
+[node name="DefendCountry" type="Sprite2D" parent="." index="3" unique_id=2047046415]
 position = Vector2(175, 50)
 centered = false
 
-[node name="UIDefendArmy" parent="." unique_id=36125971 instance=ExtResource("2_h34v0")]
+[node name="UIDefendArmy" type="Node2D" parent="." index="4" unique_id=31838448]
 position = Vector2(208, 120)
 
-[node name="ButtonOk" parent="." unique_id=2034275630 instance=ExtResource("4_0omd4")]
+[node name="ButtonOk" parent="." index="5" unique_id=2034275630 instance=ExtResource("4_0omd4")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -91,17 +75,17 @@ offset_right = 243.0
 offset_bottom = 175.0
 grow_horizontal = 1
 grow_vertical = 1
-image_text_normal = SubResource("Resource_1scgp")
-image_text_pressed = SubResource("Resource_pgo8h")
+image_text_normal = SubResource("Resource_p6yii")
+image_text_pressed = SubResource("Resource_d4ylm")
 image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
-image_normal = SubResource("Resource_v0skf")
-image_pressed = SubResource("Resource_v0skf")
-texture_normal = SubResource("Texture2D_m2o1a")
-texture_pressed = SubResource("Texture2D_m2o1a")
+image_normal = SubResource("Resource_lm7xa")
+image_pressed = SubResource("Resource_lm7xa")
+texture_normal = SubResource("Texture2D_p6yii")
+texture_pressed = SubResource("Texture2D_p6yii")
 texture_res = ExtResource("7_qvtfe")
 
-[node name="ButtonCancel" parent="." unique_id=932974651 instance=ExtResource("8_omktk")]
+[node name="ButtonCancel" parent="." index="6" unique_id=1806528537 instance=ExtResource("8_omktk")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -112,10 +96,12 @@ offset_right = 77.0
 offset_bottom = 175.0
 grow_horizontal = 1
 grow_vertical = 1
-image_normal = SubResource("Resource_hl1tj")
-image_pressed = SubResource("Resource_d4ylm")
-image_background = SubResource("Resource_aupwa")
+image_normal = SubResource("Resource_kpifn")
+image_pressed = SubResource("Resource_aupwa")
+image_background = SubResource("Resource_qvtfe")
 texture_res = ExtResource("7_qvtfe")
 
+[connection signal="draw" from="UIAttackArmy" to="." method="_on_ui_attack_army_draw"]
+[connection signal="draw" from="UIDefendArmy" to="." method="_on_ui_defend_army_draw"]
 [connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]
 [connection signal="pressed" from="ButtonCancel" to="." method="_on_button_cancel_pressed"]

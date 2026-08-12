@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cs77s0qa4kr1r"]
 
 [ext_resource type="Texture2D" uid="uid://bdt4ktnlcrivf" path="res://resources/assets/logo_gui_res/country_defeat.png.tres" id="1_e2dqc"]
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_m2o1a"]
 [ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://game_res_render/ai_commander_medal.tscn" id="1_wuq0w"]
 [ext_resource type="Script" uid="uid://c61bupitgwiku" path="res://gui_defeated.gd" id="1_ydi4n"]
 [ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://game_res_render/commander_medal.tscn" id="2_f1uq0"]
@@ -11,72 +12,55 @@
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="9_6vb1t"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="10_xsmeb"]
 [ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="11_m2o1a"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="12_6vb1t"]
 
-[sub_resource type="Resource" id="Resource_1scgp"]
+[sub_resource type="Resource" id="Resource_6vb1t"]
 script = ExtResource("10_xsmeb")
 name = "buttontext_ok.png"
 
-[sub_resource type="Resource" id="Resource_pgo8h"]
+[sub_resource type="Resource" id="Resource_5k0dn"]
 script = ExtResource("10_xsmeb")
 name = "buttontext_ok_press.png"
 
-[sub_resource type="Resource" id="Resource_v0skf"]
+[sub_resource type="Resource" id="Resource_mt7vu"]
 script = ExtResource("10_xsmeb")
 name = "green_normal.png"
 
-[sub_resource type="Resource" id="Resource_bvffp"]
-script = ExtResource("10_xsmeb")
-name = "ui1_hd.webp"
-
-[sub_resource type="Texture2D" id="Texture2D_g71tu"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("12_6vb1t")
-asset = SubResource("Resource_bvffp")
-
-[sub_resource type="Texture2D" id="Texture2D_m2o1a"]
+[sub_resource type="Texture2D" id="Texture2D_p6yii"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("11_m2o1a")
-texture = SubResource("Texture2D_g71tu")
 region = Rect2(505.5, 51.5, 67.5, 36)
 origin = Vector2(1.5, 0.5)
 
-[node name="GUIDefeated" type="Control" unique_id=172360110]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIDefeated" unique_id=1627139554 instance=ExtResource("1_m2o1a")]
+mouse_filter = 1
 script = ExtResource("1_ydi4n")
 texture_res = ExtResource("2_m2o1a")
 
-[node name="Fade" parent="." unique_id=741495168 instance=ExtResource("4_2qn58")]
+[node name="Fade" parent="." index="0" unique_id=1674156080 instance=ExtResource("4_2qn58")]
 alpha = 0.0
 
-[node name="CountryDefeat" type="Sprite2D" parent="." unique_id=1608977990]
+[node name="CountryDefeat" type="Sprite2D" parent="." index="1" unique_id=445391815]
 texture = ExtResource("1_e2dqc")
 centered = false
 
-[node name="Flag" type="Sprite2D" parent="." unique_id=1312985437]
+[node name="Flag" type="Sprite2D" parent="." index="2" unique_id=1229320086]
 position = Vector2(19, 55)
 centered = false
 
-[node name="General" type="Sprite2D" parent="." unique_id=1233594692]
+[node name="General" type="Sprite2D" parent="." index="3" unique_id=1121530353]
 position = Vector2(76, 90)
 centered = false
 
-[node name="AICommanderMedal" parent="." unique_id=1467720846 instance=ExtResource("1_wuq0w")]
+[node name="AICommanderMedal" parent="." index="4" unique_id=1467720846 instance=ExtResource("1_wuq0w")]
 position = Vector2(144, 102)
 stack = 1
 
-[node name="CommanderMedal" parent="." unique_id=1241850369 instance=ExtResource("2_f1uq0")]
+[node name="CommanderMedal" parent="." index="5" unique_id=1241850369 instance=ExtResource("2_f1uq0")]
 position = Vector2(144, 102)
 stack = 1
 
-[node name="Defeated" parent="." unique_id=1650770578 instance=ExtResource("9_6vb1t")]
+[node name="Defeated" parent="." index="6" unique_id=1650770578 instance=ExtResource("9_6vb1t")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -90,7 +74,7 @@ horizontal_alignment = 1
 font = NodePath("/root/g_Font6")
 color = Color(0, 0, 0, 1)
 
-[node name="ButtonOk" parent="." unique_id=2034275630 instance=ExtResource("3_ywyf6")]
+[node name="ButtonOk" parent="." index="7" unique_id=2034275630 instance=ExtResource("3_ywyf6")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -101,15 +85,14 @@ offset_right = 125.0
 offset_bottom = 172.0
 grow_horizontal = 1
 grow_vertical = 1
-image_text_normal = SubResource("Resource_1scgp")
-image_text_pressed = SubResource("Resource_pgo8h")
+image_text_normal = SubResource("Resource_6vb1t")
+image_text_pressed = SubResource("Resource_5k0dn")
 image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
-image_normal = SubResource("Resource_v0skf")
-image_pressed = SubResource("Resource_v0skf")
-texture_normal = SubResource("Texture2D_m2o1a")
-texture_pressed = SubResource("Texture2D_m2o1a")
+image_normal = SubResource("Resource_mt7vu")
+image_pressed = SubResource("Resource_mt7vu")
+texture_normal = SubResource("Texture2D_p6yii")
+texture_pressed = SubResource("Texture2D_p6yii")
 texture_res = ExtResource("2_y8yra")
 
-[connection signal="back_pressed" from="Fade" to="." method="_on_button_ok_pressed"]
 [connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]

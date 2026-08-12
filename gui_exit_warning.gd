@@ -11,7 +11,10 @@ func _on_gui_button_confirm_pressed() -> void:
 	get_tree().quit()
 
 
+func _has_point(_point: Vector2) -> bool:
+	return is_visible_in_tree()
+
+
 func _gui_input(event: InputEvent) -> void:
-	if event.is_action(&"ui_cancel"):
-		cancelled.emit()
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
 		accept_event()

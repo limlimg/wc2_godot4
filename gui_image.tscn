@@ -1,19 +1,21 @@
 [gd_scene format=3 uid="uid://d2ake044dm8mq"]
 
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_x5seq"]
 [ext_resource type="Script" uid="uid://c2ha7p01nkqie" path="res://gui_image.gd" id="1_x72qk"]
 
-[node name="GUIImage" type="Control" unique_id=1342067132]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="GUIImage" unique_id=1627139554 instance=ExtResource("1_x5seq")]
 script = ExtResource("1_x72qk")
+asset = null
+texture = null
+alpha = 1.0
+texture_rect = null
+texture_rect_ipad = null
+texture_rect_640h = null
+texture_rect_568h = null
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=249954962]
+[node name="TextureRect" type="TextureRect" parent="." index="0" unique_id=194175791]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 stretch_mode = 2

@@ -41,6 +41,7 @@ func init() -> void:
 			save_name = "game{0}.sav".format([i])
 		var header = g_GameManager.get_save_header(save_name)
 		if header != null:
+			_list[i].empty = false
 			var country: String
 			if header.game_mode == 4:
 				country = "1v1"
@@ -109,13 +110,25 @@ func _on_gui_button_ok_pressed() -> void:
 			if g_GameManager.get_save_header(save) != null:
 				g_GameManager.load_game(save)
 				ok_pressed.emit()
+	else:
+		if _selected <= 5:
+			var save := "conquest{0}.sav" if game_mode == 2 else "game{0}.sav"
+			save = save.format([_selected])
+			g_GameManager.save_game(save)
+			ok_pressed.emit()
 
 
 func _on_gui_button_back_pressed() -> void:
 	back_pressed.emit()
 
 
+func _has_point(_point: Vector2) -> bool:
+	return is_visible_in_tree()
+
+
 func _gui_input(event: InputEvent) -> void:
-	if event.is_action(&"ui_cancel"):
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		accept_event()
+	if event.is_action_released(&"ui_cancel"):
 		back_pressed.emit()
 		accept_event()

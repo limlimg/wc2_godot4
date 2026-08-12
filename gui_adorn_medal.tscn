@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bjcmxuu6rr2wj"]
 
+[ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_ayb8v"]
 [ext_resource type="Script" uid="uid://chnmvdul8k8d4" path="res://gui_adorn_medal.gd" id="1_ps31k"]
 [ext_resource type="PackedScene" uid="uid://cdca5xgwncvi1" path="res://gui_war_medal.tscn" id="3_dr252"]
 [ext_resource type="Resource" uid="uid://drtonmphvvxyb" path="res://resources/assets/menu_gui_res/texture_res.tres" id="4_7xwpa"]
@@ -78,17 +79,10 @@ script = ExtResource("4_ayb8v")
 rect = Rect2(187, 422, 0, 0)
 metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
-[node name="GUIAdornMedal" type="Control" unique_id=1776806515]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="GUIAdornMedal" unique_id=1627139554 instance=ExtResource("1_ayb8v")]
 script = ExtResource("1_ps31k")
 
-[node name="GUIWarMedal" parent="." unique_id=2034275630 instance=ExtResource("3_dr252")]
+[node name="GUIWarMedal" parent="." index="0" unique_id=2034275630 instance=ExtResource("3_dr252")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -100,11 +94,11 @@ offset_bottom = 205.0
 grow_horizontal = 1
 grow_vertical = 1
 scale = Vector2(0.7, 0.7)
-texture_res = ExtResource("4_7xwpa")
 rect = SubResource("Resource_1ir6m")
 rect_ipad = SubResource("Resource_rdo65")
+texture_res = ExtResource("4_7xwpa")
 
-[node name="GUIWarMedal2" parent="." unique_id=1984168857 instance=ExtResource("3_dr252")]
+[node name="GUIWarMedal2" parent="." index="1" unique_id=1802502099 instance=ExtResource("3_dr252")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -115,13 +109,12 @@ offset_right = 107.0
 offset_bottom = 205.0
 grow_horizontal = 1
 grow_vertical = 1
-scale = Vector2(0.7, 0.7)
 medal = 1
-texture_res = ExtResource("4_7xwpa")
 rect = SubResource("Resource_blko6")
 rect_ipad = SubResource("Resource_vrln6")
+texture_res = ExtResource("4_7xwpa")
 
-[node name="GUIWarMedal3" parent="." unique_id=761955669 instance=ExtResource("3_dr252")]
+[node name="GUIWarMedal3" parent="." index="2" unique_id=117634026 instance=ExtResource("3_dr252")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -132,13 +125,12 @@ offset_right = 123.0
 offset_bottom = 205.0
 grow_horizontal = 1
 grow_vertical = 1
-scale = Vector2(0.7, 0.7)
 medal = 2
-texture_res = ExtResource("4_7xwpa")
 rect = SubResource("Resource_5iu6p")
 rect_ipad = SubResource("Resource_r67bv")
+texture_res = ExtResource("4_7xwpa")
 
-[node name="GUIWarMedal4" parent="." unique_id=263646414 instance=ExtResource("3_dr252")]
+[node name="GUIWarMedal4" parent="." index="3" unique_id=418970602 instance=ExtResource("3_dr252")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -149,13 +141,12 @@ offset_right = 91.0
 offset_bottom = 235.0
 grow_horizontal = 1
 grow_vertical = 1
-scale = Vector2(0.7, 0.7)
 medal = 3
-texture_res = ExtResource("4_7xwpa")
 rect = SubResource("Resource_51bep")
 rect_ipad = SubResource("Resource_oa52a")
+texture_res = ExtResource("4_7xwpa")
 
-[node name="GUIWarMedal5" parent="." unique_id=304063090 instance=ExtResource("3_dr252")]
+[node name="GUIWarMedal5" parent="." index="4" unique_id=604465767 instance=ExtResource("3_dr252")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -166,13 +157,12 @@ offset_right = 107.0
 offset_bottom = 235.0
 grow_horizontal = 1
 grow_vertical = 1
-scale = Vector2(0.7, 0.7)
 medal = 4
-texture_res = ExtResource("4_7xwpa")
 rect = SubResource("Resource_36gg3")
 rect_ipad = SubResource("Resource_tggta")
+texture_res = ExtResource("4_7xwpa")
 
-[node name="GUIWarMedal6" parent="." unique_id=1148235475 instance=ExtResource("3_dr252")]
+[node name="GUIWarMedal6" parent="." index="5" unique_id=1722176914 instance=ExtResource("3_dr252")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -183,13 +173,12 @@ offset_right = 123.0
 offset_bottom = 235.0
 grow_horizontal = 1
 grow_vertical = 1
-scale = Vector2(0.7, 0.7)
 medal = 5
-texture_res = ExtResource("4_7xwpa")
 rect = SubResource("Resource_hufh0")
 rect_ipad = SubResource("Resource_f2cu3")
+texture_res = ExtResource("4_7xwpa")
 
-[node name="GUICommanderMedal" parent="." unique_id=2126108883 instance=ExtResource("5_sshlh")]
+[node name="GUICommanderMedal" parent="." index="6" unique_id=1889585847 instance=ExtResource("5_sshlh")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -200,7 +189,6 @@ offset_right = 70.0
 offset_bottom = 185.0
 grow_horizontal = 1
 grow_vertical = 1
-scale = Vector2(0.7, 0.7)
-texture_res = ExtResource("4_7xwpa")
 rect = SubResource("Resource_shvti")
 rect_ipad = SubResource("Resource_v5fjj")
+texture_res = ExtResource("4_7xwpa")

@@ -45,15 +45,14 @@ var _armies: Array[CArmy]:
 			render()
 
 
-var _army_drafting: bool
+var army_drafting: bool
 var army_moving_in: bool
-var _army_moving_to_front: bool
+var army_moving_to_front: bool
 
 var _army_offset: Vector2:
 	set(value):
 		if value != _army_offset:
 			_army_offset = value
-			render()
 
 
 var _army_moving_in_timer: float
@@ -85,14 +84,17 @@ func init(init_id: int, info: AreaInfo) -> void:
 	if not _canvas_item_flag.is_valid():
 		_canvas_item_flag = RenderingServer.canvas_item_create()
 	RenderingServer.canvas_item_set_parent(_canvas_item_flag, canvas_item_root)
+	RenderingServer.canvas_item_set_transform(_canvas_item_flag, Transform2D.IDENTITY.translated(construction_pos))
 	RenderingServer.canvas_item_set_z_index(_canvas_item_flag, 2)
 	if not _canvas_item_building.is_valid():
 		_canvas_item_building = RenderingServer.canvas_item_create()
 	RenderingServer.canvas_item_set_parent(_canvas_item_building, _canvas_item_flag)
+	RenderingServer.canvas_item_set_transform(_canvas_item_building, Transform2D.IDENTITY.translated(-construction_pos))
 	RenderingServer.canvas_item_set_z_index(_canvas_item_building, -1)
 	if not _canvas_item_army.is_valid():
 		_canvas_item_army = RenderingServer.canvas_item_create()
 	RenderingServer.canvas_item_set_parent(_canvas_item_army, canvas_item_root)
+	RenderingServer.canvas_item_set_transform(_canvas_item_army, Transform2D.IDENTITY.translated(army_pos))
 	RenderingServer.canvas_item_set_z_index(_canvas_item_army, 2)
 	if not canvas_item_arrow.is_valid():
 		canvas_item_arrow = RenderingServer.canvas_item_create()
@@ -103,13 +105,15 @@ func init(init_id: int, info: AreaInfo) -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
-		if not _canvas_item_flag.is_valid():
+		if canvas_item_root.is_valid():
+			RenderingServer.free_rid(canvas_item_root)
+		if _canvas_item_flag.is_valid():
 			RenderingServer.free_rid(_canvas_item_flag)
-		if not _canvas_item_building.is_valid():
+		if _canvas_item_building.is_valid():
 			RenderingServer.free_rid(_canvas_item_building)
-		if not _canvas_item_army.is_valid():
+		if _canvas_item_army.is_valid():
 			RenderingServer.free_rid(_canvas_item_army)
-		if not canvas_item_arrow.is_valid():
+		if canvas_item_arrow.is_valid():
 			RenderingServer.free_rid(canvas_item_arrow)
 
 
@@ -159,11 +163,11 @@ func set_construction(value: int, level_value: int) -> void:
 		0:
 			level = 0
 		1:
-			level = min(level, 4)
+			level = min(level_value, 4)
 		2:
-			level = min(level, 3)
+			level = min(level_value, 3)
 		3:
-			level = min(level, 1)
+			level = min(level_value, 1)
 		_:
 			level = level_value
 
@@ -228,7 +232,7 @@ func add_army(army: CArmy, at_bottom: bool) -> bool:
 
 func remove_army(army: CArmy) -> void:
 	var idx := get_army_idx(army)
-	if idx > 0:
+	if idx >= 0:
 		_armies.remove_at(idx)
 		render()
 
@@ -248,10 +252,8 @@ func move_army_to_front(army, animated: bool) -> void:
 	_armies[0] = moved_army
 	render()
 	if animated:
-		_army_moving_to_front = true
-		_army_offset = Vector2(0.0, -12.0)
-	else:
-		_army_offset = Vector2.ZERO
+		army_moving_to_front = true
+	_army_offset = Vector2.ZERO
 
 
 func draft_army(army_id: int) -> CArmy:
@@ -265,7 +267,7 @@ func draft_army(army_id: int) -> CArmy:
 	new_army.country = country
 	new_army.ai_active = true
 	add_army(new_army, false)
-	_army_drafting = true
+	army_drafting = true
 	_army_offset = Vector2(0.0, -60.0)
 	g_SoundRes.play_char_se(SND_EFFECT.DRAFT_WAV)
 	return new_army
@@ -302,7 +304,7 @@ func move_army_to(to: CArea) -> void:
 func _set_move_in_army(from: CArea, army: CArmy, will_occupy: bool, will_compain: bool, compainer: StringName) -> void:
 	var from_pos := from.army_pos
 	var to_pos := army_pos
-	_army_offset = to_pos - from_pos
+	_army_offset = from_pos - to_pos
 	_army_moving_in_will_occupy = will_occupy
 	if from_pos.x <= to_pos.x:
 		army.direction = 1.0
@@ -312,6 +314,7 @@ func _set_move_in_army(from: CArea, army: CArmy, will_occupy: bool, will_compain
 	army_moving_in = true
 	_army_moving_in_will_complain = will_compain
 	_army_moving_in_complainer = compainer
+	_army_moving_in_timer = 0.25
 	render()
 
 
@@ -475,11 +478,11 @@ func encirclement() -> void:
 
 
 func update(delta: float) -> void:
-	if _army_drafting:
+	if army_drafting:
 		var y := minf(_army_offset.y + 320.0 * delta, 0.0)
 		_army_offset.y = y
 		if y >= 0.0:
-			_army_drafting = false
+			army_drafting = false
 			g_Scene.adjacent_areas_encirclement(id)
 		render()
 	if army_moving_in:
@@ -492,17 +495,20 @@ func update(delta: float) -> void:
 			if _army_moving_in_will_occupy:
 				g_SoundRes.play_char_se(SND_EFFECT.OCCUPY_WAV)
 			if _army_moving_in_will_complain and not _army_moving_in_complainer.is_empty():
-					var dlg := "commander complain {0}".format([randi_range(0, 1)])
+					var dlg := "commander complain {0}".format([randi_range(1, 2)])
 					CStateManager.instance().get_state_ptr(EState.GAME).show_dialogue(dlg, _army_moving_in_complainer, false)
 			if _armies.size() == 1:
 				g_Scene.adjacent_areas_encirclement.bind(id)
 		render()
-	if _army_moving_to_front:
-		var a := maxf(_army_offset.angle() + 12 * delta, 5.96902597 + PI / 2)
-		_army_offset = Vector2.from_angle(a) * (12.0 * sin(0.75 * PI - 0.5 * a) if a > PI else 12.0)
-		if a >= 5.96902597 + PI / 2:
+	if army_moving_to_front:
+		var v := Vector2(-_army_offset.x - 12.0, -_army_offset.y / (1.0 if _army_offset.y >= 0 else 2.0))
+		var a := minf(v.angle() + 12 * delta, 5.96902597 - PI)
+		print(_army_offset, v, v.angle(), a)
+		_army_offset = Vector2(-cos(a) * 12.0 - 12.0, -sin(a) * (12.0 if a <= 0 else 24.0))
+		print(_army_offset)
+		if a >= 5.96902597 - PI:
 			_army_offset = Vector2.ZERO
-			_army_moving_to_front = false
+			army_moving_to_front = false
 			g_Scene.reset_target()
 		render()
 
@@ -510,31 +516,27 @@ func update(delta: float) -> void:
 func render_building() -> void:
 	if not g_Scene.visible:
 		return
-	ecGraphics.instance().render_begin(_canvas_item_building)
+	RenderingServer.canvas_item_clear(_canvas_item_building)
 	if type == 2:
 		g_GameRes.render_port(_canvas_item_building, construction_pos.x, construction_pos.y)
 	elif country != null:
 		g_GameRes.render_construction(_canvas_item_building, construction, level, construction_pos.x, construction_pos.y)
 		g_GameRes.render_installation(_canvas_item_building, construction, installation_pos.x, installation_pos.y)
-	ecGraphics.instance().render_end()
 
 
 func render() -> void:
 	if not g_Scene.visible:
 		return
 	if country != null:
-		ecGraphics.instance().render_begin(_canvas_item_flag)
-		g_GameRes.render_flag(_canvas_item_flag, country.name, construction_pos.x, construction_pos.y)
-		ecGraphics.instance().render_end()
-		ecGraphics.instance().render_begin(_canvas_item_army)
-		var _moving_army := _army_drafting or army_moving_in or _army_moving_to_front
+		RenderingServer.canvas_item_clear(_canvas_item_flag)
+		g_GameRes.render_flag(_canvas_item_flag, country.name, 0.0, 0.0)
+		RenderingServer.canvas_item_clear(_canvas_item_army)
+		var _moving_army := army_drafting or army_moving_in or army_moving_to_front
 		var i := 1 if _moving_army else 0
 		if _armies.size() > i:
-			_render_army(army_pos.x, army_pos.y, _armies.size() - i, _armies[i])
+			_render_army(0.0, 0.0, _armies.size() - i, _armies[i])
 		if _moving_army:
-			var pos := army_pos + _army_offset
-			_render_army(pos.x, pos.y, 1, _armies[i])
-		ecGraphics.instance().render_end()
+			_render_army(_army_offset.x, _army_offset.y, 1, _armies[0])
 
 
 func _render_army(x: float, y: float, stack: int, army: CArmy) -> void:
@@ -555,7 +557,7 @@ func _render_army(x: float, y: float, stack: int, army: CArmy) -> void:
 				morale_color = Color.from_rgba8(0xFF, 0xFF, 0xFF)
 			else:
 				morale_color = Color.from_rgba8(0xC0, 0xC0, 0xC0)
-	g_GameRes.render_army(_canvas_item_army, country.name, country.alliance, _armies.size(), x, y, army.def.id, morale_color, sea, army.direction)
+	g_GameRes.render_army(_canvas_item_army, country.name, country.alliance, stack, x, y, army.def.id, morale_color, sea, army.direction)
 	if army.is_navy():
 		y += 8.0
 	elif sea != 0 and army.cards & (1<<2) != 0:
@@ -612,8 +614,13 @@ func save_area(info: SaveAreaInfo) -> void:
 	info.level = level
 	info.installation = installation
 	info.army_count = _armies.size()
+	var army: Array[SaveArmyInfo]
+	army.resize(info.army_count)
 	for i in info.army_count:
-		_armies[i].save_army(info.army[i])
+		army[i] = SaveArmyInfo.new()
+	for i in info.army_count:
+		_armies[i].save_army(army[i])
+	info.army = army
 
 
 func load_area(info: SaveAreaInfo) -> void:
@@ -624,7 +631,7 @@ func load_area(info: SaveAreaInfo) -> void:
 	if country != null:
 		for i in info.army_count:
 			var new_army := CArmy.new()
-			new_army.def = CObjectDef.instance().get_army_def(info.army[i].id, country.name)
+			new_army.def = CObjectDef.instance().get_army_def(info.army[i].type, country.name)
 			new_army.country = country
 			new_army.load_army(info.army[i])
 			add_army(new_army, true)

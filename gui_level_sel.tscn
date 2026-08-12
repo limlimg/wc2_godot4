@@ -5,52 +5,38 @@
 [ext_resource type="Texture2D" uid="uid://ew3mmy7kab3j" path="res://resources/assets/logo_gui_res/block.png.tres" id="3_33hhi"]
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="3_sl8ga"]
 
-[sub_resource type="Resource" id="Resource_g8bm0"]
+[sub_resource type="Resource" id="Resource_f6xj2"]
 script = ExtResource("3_sl8ga")
 rect = Rect2(0, 5, 20, 0)
 
-[sub_resource type="Resource" id="Resource_eb15d"]
+[sub_resource type="Resource" id="Resource_k4qyj"]
 script = ExtResource("3_sl8ga")
 rect = Rect2(0, 0, 40, 0)
 
-[node name="GUILevelSel" type="Control" unique_id=528832786]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUILevelSel" unique_id=1627139554 instance=ExtResource("2_k4qyj")]
 mouse_filter = 1
 script = ExtResource("1_3bgbm")
+enable = true
+max_value = 0
+value = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1824448873]
+[node name="HBoxContainer" type="HBoxContainer" parent="." index="0" unique_id=412647155]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Prototype" type="Control" parent="." unique_id=2140110252]
+[node name="Prototype" parent="HBoxContainer" index="0" unique_id=1517284727 instance=ExtResource("2_k4qyj")]
 visible = false
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
+rect = SubResource("Resource_f6xj2")
+rect_ipad = SubResource("Resource_k4qyj")
 
-[node name="GUIElement" parent="Prototype" unique_id=1627139554 instance=ExtResource("2_k4qyj")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = 5.0
-offset_right = 20.0
-offset_bottom = 5.0
-grow_horizontal = 1
-grow_vertical = 1
-rect = SubResource("Resource_g8bm0")
-rect_ipad = SubResource("Resource_eb15d")
-
-[node name="TextureRect" type="TextureRect" parent="Prototype/GUIElement" unique_id=698801839]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Prototype" index="0" unique_id=1045045937]
 layout_mode = 0
 offset_right = 20.0
+mouse_filter = 2
 texture = ExtResource("3_33hhi")
 expand_mode = 1
 stretch_mode = 2

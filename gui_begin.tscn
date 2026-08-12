@@ -10,9 +10,43 @@
 [ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="7_1x8k7"]
 [ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://gui_button_ex.tscn" id="7_2258h"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="10_4x52i"]
-[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="11_gfhiv"]
+[ext_resource type="Script" uid="uid://bvddy3vjuki27" path="res://ec_image_attr.gd" id="11_iwmdf"]
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="11_jaih1"]
-[ext_resource type="Script" uid="uid://cr8ksgysprxjq" path="res://ec_texture.gd" id="12_ti42w"]
+
+[sub_resource type="Resource" id="Resource_7mlto"]
+script = ExtResource("5_bskrj")
+
+[sub_resource type="Resource" id="Resource_iwmdf"]
+script = ExtResource("5_bskrj")
+scale = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_47ai8"]
+script = ExtResource("5_bskrj")
+
+[sub_resource type="Resource" id="Resource_a0tjr"]
+script = ExtResource("5_bskrj")
+scale = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_v5tg6"]
+script = ExtResource("5_bskrj")
+
+[sub_resource type="Resource" id="Resource_00kvo"]
+script = ExtResource("5_bskrj")
+scale = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_bskrj"]
+script = ExtResource("5_bskrj")
+
+[sub_resource type="Resource" id="Resource_4x52i"]
+script = ExtResource("5_bskrj")
+scale = Vector2(0.5, 0.5)
+
+[sub_resource type="Resource" id="Resource_gfhiv"]
+script = ExtResource("5_bskrj")
+
+[sub_resource type="Resource" id="Resource_ti42w"]
+script = ExtResource("5_bskrj")
+scale = Vector2(0.5, 0.5)
 
 [sub_resource type="Resource" id="Resource_bhsn6"]
 script = ExtResource("5_bskrj")
@@ -22,99 +56,53 @@ script = ExtResource("5_bskrj")
 scale = Vector2(0.5, 0.5)
 
 [sub_resource type="Resource" id="Resource_8tc1c"]
-script = ExtResource("5_bskrj")
-
-[sub_resource type="Resource" id="Resource_jcpl3"]
-script = ExtResource("5_bskrj")
-scale = Vector2(0.5, 0.5)
-
-[sub_resource type="Resource" id="Resource_074fc"]
-script = ExtResource("5_bskrj")
-
-[sub_resource type="Resource" id="Resource_6qlyq"]
-script = ExtResource("5_bskrj")
-scale = Vector2(0.5, 0.5)
-
-[sub_resource type="Resource" id="Resource_d5tfe"]
-script = ExtResource("5_bskrj")
-
-[sub_resource type="Resource" id="Resource_ob4e0"]
-script = ExtResource("5_bskrj")
-scale = Vector2(0.5, 0.5)
-
-[sub_resource type="Resource" id="Resource_g2mqt"]
-script = ExtResource("5_bskrj")
-
-[sub_resource type="Resource" id="Resource_c0vhc"]
-script = ExtResource("5_bskrj")
-scale = Vector2(0.5, 0.5)
-
-[sub_resource type="Resource" id="Resource_dcvdl"]
-script = ExtResource("5_bskrj")
-
-[sub_resource type="Resource" id="Resource_3i02p"]
-script = ExtResource("5_bskrj")
-scale = Vector2(0.5, 0.5)
-
-[sub_resource type="Resource" id="Resource_1scgp"]
 script = ExtResource("10_4x52i")
 name = "buttontext_ok.png"
 
-[sub_resource type="Resource" id="Resource_pgo8h"]
+[sub_resource type="Resource" id="Resource_jcpl3"]
 script = ExtResource("10_4x52i")
 name = "buttontext_ok_press.png"
 
-[sub_resource type="Resource" id="Resource_v0skf"]
+[sub_resource type="Resource" id="Resource_074fc"]
 script = ExtResource("10_4x52i")
 name = "green_normal.png"
 
-[sub_resource type="Resource" id="Resource_bvffp"]
-script = ExtResource("10_4x52i")
-name = "ui1_hd.webp"
-
-[sub_resource type="Texture2D" id="Texture2D_g71tu"]
+[sub_resource type="Texture2D" id="Texture2D_p6yii"]
 resource_local_to_scene = false
 resource_name = ""
-script = ExtResource("12_ti42w")
-asset = SubResource("Resource_bvffp")
-res_scale = 2.0
-
-[sub_resource type="Texture2D" id="Texture2D_47ai8"]
-resource_local_to_scene = false
-resource_name = ""
-script = ExtResource("11_gfhiv")
-texture = SubResource("Texture2D_g71tu")
+script = ExtResource("11_iwmdf")
 region = Rect2(505.5, 51.5, 67.5, 36)
 origin = Vector2(1.5, 0.5)
 
-[sub_resource type="Resource" id="Resource_40ofo"]
+[sub_resource type="Resource" id="Resource_d5tfe"]
 script = ExtResource("10_4x52i")
 name = "buttontext_bank.png"
 
-[sub_resource type="Resource" id="Resource_47ai8"]
+[sub_resource type="Resource" id="Resource_ob4e0"]
 script = ExtResource("10_4x52i")
 name = "buttontext_bank_press.png"
 
-[sub_resource type="Resource" id="Resource_a0tjr"]
+[sub_resource type="Resource" id="Resource_g2mqt"]
 script = ExtResource("10_4x52i")
 name = "blue_normal.png"
 
-[node name="GUIBegin" type="Control" unique_id=276795201]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIBegin" unique_id=1627139554 instance=ExtResource("4_00kvo")]
+mouse_filter = 1
 script = ExtResource("1_1x8k7")
+medal_soldiers = 0
+medal_airforce = 0
+medal_cannon = 0
+medal_panzer = 0
+medal_navy = 0
+medal_honor = 0
 
-[node name="Fade" parent="." unique_id=1831918263 instance=ExtResource("2_1x8k7")]
+[node name="Fade" parent="." index="0" unique_id=1674156080 instance=ExtResource("2_1x8k7")]
 
-[node name="RoundStartBoard" type="Sprite2D" parent="." unique_id=598272857]
+[node name="RoundStartBoard" type="Sprite2D" parent="." index="1" unique_id=756714762]
 texture = ExtResource("2_7ujwe")
 centered = false
 
-[node name="MedalSoldiers" parent="." unique_id=1627139554 instance=ExtResource("4_00kvo")]
+[node name="MedalSoldiers" parent="." index="2" unique_id=1937475193 instance=ExtResource("4_00kvo")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -125,15 +113,16 @@ offset_right = 30.0
 offset_bottom = 168.0
 grow_horizontal = 1
 grow_vertical = 1
-rect = SubResource("Resource_bhsn6")
-rect_ipad = SubResource("Resource_priee")
+rect = SubResource("Resource_7mlto")
+rect_ipad = SubResource("Resource_iwmdf")
 
-[node name="TextureRect" type="TextureRect" parent="MedalSoldiers" unique_id=302538141]
+[node name="TextureRect" type="TextureRect" parent="MedalSoldiers" index="0" unique_id=457665684]
 layout_mode = 0
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 2
 
-[node name="MedalAirforce" parent="." unique_id=2083821507 instance=ExtResource("4_00kvo")]
+[node name="MedalAirforce" parent="." index="3" unique_id=1523148237 instance=ExtResource("4_00kvo")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -144,15 +133,16 @@ offset_right = 54.0
 offset_bottom = 168.0
 grow_horizontal = 1
 grow_vertical = 1
-rect = SubResource("Resource_8tc1c")
-rect_ipad = SubResource("Resource_jcpl3")
+rect = SubResource("Resource_47ai8")
+rect_ipad = SubResource("Resource_a0tjr")
 
-[node name="TextureRect" type="TextureRect" parent="MedalAirforce" unique_id=1449140460]
+[node name="TextureRect" type="TextureRect" parent="MedalAirforce" index="0" unique_id=848624510]
 layout_mode = 0
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 2
 
-[node name="MedalCannon" parent="." unique_id=627666453 instance=ExtResource("4_00kvo")]
+[node name="MedalCannon" parent="." index="4" unique_id=630768290 instance=ExtResource("4_00kvo")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -163,15 +153,16 @@ offset_right = 78.0
 offset_bottom = 168.0
 grow_horizontal = 1
 grow_vertical = 1
-rect = SubResource("Resource_074fc")
-rect_ipad = SubResource("Resource_6qlyq")
+rect = SubResource("Resource_v5tg6")
+rect_ipad = SubResource("Resource_00kvo")
 
-[node name="TextureRect" type="TextureRect" parent="MedalCannon" unique_id=697870178]
+[node name="TextureRect" type="TextureRect" parent="MedalCannon" index="0" unique_id=1046702722]
 layout_mode = 0
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 2
 
-[node name="MedalPanzer" parent="." unique_id=1861332648 instance=ExtResource("4_00kvo")]
+[node name="MedalPanzer" parent="." index="5" unique_id=2146961629 instance=ExtResource("4_00kvo")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -182,15 +173,16 @@ offset_right = 102.0
 offset_bottom = 168.0
 grow_horizontal = 1
 grow_vertical = 1
-rect = SubResource("Resource_d5tfe")
-rect_ipad = SubResource("Resource_ob4e0")
+rect = SubResource("Resource_bskrj")
+rect_ipad = SubResource("Resource_4x52i")
 
-[node name="TextureRect" type="TextureRect" parent="MedalPanzer" unique_id=1292116143]
+[node name="TextureRect" type="TextureRect" parent="MedalPanzer" index="0" unique_id=52863352]
 layout_mode = 0
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 2
 
-[node name="MedalNavy" parent="." unique_id=856299712 instance=ExtResource("4_00kvo")]
+[node name="MedalNavy" parent="." index="6" unique_id=1834259516 instance=ExtResource("4_00kvo")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -201,15 +193,16 @@ offset_right = 126.0
 offset_bottom = 168.0
 grow_horizontal = 1
 grow_vertical = 1
-rect = SubResource("Resource_g2mqt")
-rect_ipad = SubResource("Resource_c0vhc")
+rect = SubResource("Resource_gfhiv")
+rect_ipad = SubResource("Resource_ti42w")
 
-[node name="TextureRect" type="TextureRect" parent="MedalNavy" unique_id=488991818]
+[node name="TextureRect" type="TextureRect" parent="MedalNavy" index="0" unique_id=187112460]
 layout_mode = 0
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 2
 
-[node name="MedalHonor" parent="." unique_id=1015450185 instance=ExtResource("4_00kvo")]
+[node name="MedalHonor" parent="." index="7" unique_id=719628356 instance=ExtResource("4_00kvo")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -220,15 +213,16 @@ offset_right = 150.0
 offset_bottom = 168.0
 grow_horizontal = 1
 grow_vertical = 1
-rect = SubResource("Resource_dcvdl")
-rect_ipad = SubResource("Resource_3i02p")
+rect = SubResource("Resource_bhsn6")
+rect_ipad = SubResource("Resource_priee")
 
-[node name="TextureRect" type="TextureRect" parent="MedalHonor" unique_id=1160762368]
+[node name="TextureRect" type="TextureRect" parent="MedalHonor" index="0" unique_id=30675663]
 layout_mode = 0
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 2
 
-[node name="Round" parent="." unique_id=1650770578 instance=ExtResource("6_00kvo")]
+[node name="Round" parent="." index="8" unique_id=1650770578 instance=ExtResource("6_00kvo")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 84.5
@@ -238,9 +232,9 @@ offset_bottom = 33.0
 grow_horizontal = 2
 horizontal_alignment = 1
 font = NodePath("/root/g_Num4")
-color = Color(0.08627451, 0.101960786, 0.56078434, 1)
+color = Color(0.56078434, 0.101960786, 0.08627451, 1)
 
-[node name="Taxes" parent="." unique_id=1809116860 instance=ExtResource("6_00kvo")]
+[node name="Taxes" parent="." index="9" unique_id=1157845117 instance=ExtResource("6_00kvo")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 74.0
@@ -248,9 +242,9 @@ offset_top = 96.0
 offset_right = 74.0
 offset_bottom = 96.0
 font = NodePath("/root/g_Num4")
-color = Color(0.02745098, 0.1882353, 0.23921569, 1)
+color = Color(0.23921569, 0.1882353, 0.02745098, 1)
 
-[node name="Industrys" parent="." unique_id=443890231 instance=ExtResource("6_00kvo")]
+[node name="Industrys" parent="." index="10" unique_id=425242418 instance=ExtResource("6_00kvo")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 74.0
@@ -258,13 +252,13 @@ offset_top = 123.0
 offset_right = 74.0
 offset_bottom = 123.0
 font = NodePath("/root/g_Num4")
-color = Color(0.02745098, 0.1882353, 0.23921569, 1)
+color = Color(0.23921569, 0.1882353, 0.02745098, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1792107603]
+[node name="Sprite2D" type="Sprite2D" parent="." index="11" unique_id=1770335156]
 position = Vector2(117, -10)
 centered = false
 
-[node name="GUITech" parent="." unique_id=895432528 instance=ExtResource("5_lusf5")]
+[node name="GUITech" parent="." index="12" unique_id=895432528 instance=ExtResource("5_lusf5")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -278,7 +272,7 @@ grow_vertical = 1
 show_board = false
 texture_res = ExtResource("7_1x8k7")
 
-[node name="ButtonOk" parent="." unique_id=2034275630 instance=ExtResource("7_2258h")]
+[node name="ButtonOk" parent="." index="13" unique_id=2034275630 instance=ExtResource("7_2258h")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -289,17 +283,18 @@ offset_right = 178.0
 offset_bottom = 257.0
 grow_horizontal = 1
 grow_vertical = 1
-image_text_normal = SubResource("Resource_1scgp")
-image_text_pressed = SubResource("Resource_pgo8h")
+mouse_filter = 2
+image_text_normal = SubResource("Resource_8tc1c")
+image_text_pressed = SubResource("Resource_jcpl3")
 image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
-image_normal = SubResource("Resource_v0skf")
-image_pressed = SubResource("Resource_v0skf")
-texture_normal = SubResource("Texture2D_47ai8")
-texture_pressed = SubResource("Texture2D_47ai8")
+image_normal = SubResource("Resource_074fc")
+image_pressed = SubResource("Resource_074fc")
+texture_normal = SubResource("Texture2D_p6yii")
+texture_pressed = SubResource("Texture2D_p6yii")
 texture_res = ExtResource("7_1x8k7")
 
-[node name="ButtonBank" parent="." unique_id=1569546698 instance=ExtResource("11_jaih1")]
+[node name="ButtonBank" parent="." index="14" unique_id=253563591 instance=ExtResource("11_jaih1")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -310,11 +305,10 @@ offset_right = 71.0
 offset_bottom = 257.0
 grow_horizontal = 1
 grow_vertical = 1
-image_normal = SubResource("Resource_40ofo")
-image_pressed = SubResource("Resource_47ai8")
-image_background = SubResource("Resource_a0tjr")
+image_normal = SubResource("Resource_d5tfe")
+image_pressed = SubResource("Resource_ob4e0")
+image_background = SubResource("Resource_g2mqt")
 texture_res = ExtResource("7_1x8k7")
 
-[connection signal="back_pressed" from="Fade" to="." method="_on_button_ok_pressed"]
 [connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]
 [connection signal="pressed" from="ButtonBank" to="." method="_on_button_bank_pressed"]

@@ -72,6 +72,7 @@ func _import(source_file: String, save_path: String, options: Dictionary, platfo
 		if filename == "":
 			push_error("Parse Error: Element does not have valid \"filename\" attibute on line {0} of {1}".format([xml_general.row() + 1, source_file]))
 			return ERR_PARSE_ERROR
+		res_general.filename = filename
 		var p: Array[float] = []
 		if xml_general.query_float_attribute("w", p) != xml_general.TIXML_SUCCESS:
 			push_error("Parse Error: Element does not have valid \"w\" attibute on line {0} of {1}".format([xml_general.row() + 1, source_file]))

@@ -7,72 +7,58 @@
 [ext_resource type="PackedScene" uid="uid://dr76fdoysjvb3" path="res://ec_uni_font.tscn" id="4_7wjfx"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="5_el2yu"]
 
-[sub_resource type="Resource" id="Resource_el2yu"]
+[sub_resource type="Resource" id="Resource_7wjfx"]
 script = ExtResource("3_yekyp")
 rect = Rect2(130, 0, 0, 0)
 
-[sub_resource type="Resource" id="Resource_t4cdh"]
+[sub_resource type="Resource" id="Resource_el2yu"]
 script = ExtResource("3_yekyp")
 rect = Rect2(230, 0, 0, 0)
 
-[sub_resource type="Resource" id="Resource_yekyp"]
+[sub_resource type="Resource" id="Resource_t4cdh"]
 script = ExtResource("3_yekyp")
 rect = Rect2(-201, 234, 0, 0)
 
-[sub_resource type="Resource" id="Resource_eimis"]
+[sub_resource type="Resource" id="Resource_yekyp"]
 script = ExtResource("3_yekyp")
 rect = Rect2(-201, 682, 0, 0)
 
-[sub_resource type="Resource" id="Resource_0qej1"]
+[sub_resource type="Resource" id="Resource_eimis"]
 script = ExtResource("3_yekyp")
 rect = Rect2(-186, 248, 0, 0)
 
-[sub_resource type="Resource" id="Resource_mwv10"]
+[sub_resource type="Resource" id="Resource_0qej1"]
 script = ExtResource("3_yekyp")
 rect = Rect2(-187, 695, 0, 0)
 
-[sub_resource type="Resource" id="Resource_dh6w2"]
+[sub_resource type="Resource" id="Resource_mwv10"]
 script = ExtResource("5_el2yu")
 name = "font8_en.fnt"
 name_hd = "font8_en_hd.fnt"
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dc2mx"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kl1b"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xt4qy"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iv806"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6d2ax"]
-
-[node name="GUIDialogue" type="Control" unique_id=545709183]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="GUIDialogue" unique_id=1627139554 instance=ExtResource("2_t4cdh")]
+mouse_filter = 1
 script = ExtResource("1_dc2mx")
 
-[node name="General" parent="." unique_id=1627139554 instance=ExtResource("2_t4cdh")]
+[node name="General" parent="." index="0" unique_id=917197376 instance=ExtResource("2_t4cdh")]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 7
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.0
 offset_left = 130.0
 offset_right = 130.0
-grow_vertical = 1
-rect = SubResource("Resource_el2yu")
-rect_ipad = SubResource("Resource_t4cdh")
+grow_vertical = 0
+rect = SubResource("Resource_7wjfx")
+rect_ipad = SubResource("Resource_el2yu")
 
-[node name="TextureRect" type="TextureRect" parent="General" unique_id=1233614450]
+[node name="TextureRect" type="TextureRect" parent="General" index="0" unique_id=1151194259]
 layout_mode = 0
+mouse_filter = 2
 expand_mode = 1
 stretch_mode = 2
 
-[node name="DlgBoard" parent="." unique_id=835619328 instance=ExtResource("2_t4cdh")]
+[node name="DlgBoard" parent="." index="1" unique_id=1699072394 instance=ExtResource("2_t4cdh")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -83,16 +69,17 @@ offset_top = 234.0
 offset_right = -201.0
 offset_bottom = 234.0
 grow_vertical = 1
-rect = SubResource("Resource_yekyp")
-rect_ipad = SubResource("Resource_eimis")
+rect = SubResource("Resource_t4cdh")
+rect_ipad = SubResource("Resource_yekyp")
 
-[node name="TextureRect" type="TextureRect" parent="DlgBoard" unique_id=1943158027]
+[node name="TextureRect" type="TextureRect" parent="DlgBoard" index="0" unique_id=1056282442]
 layout_mode = 0
+mouse_filter = 2
 texture = ExtResource("2_tf4ko")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="Dlg" parent="." unique_id=625102438 instance=ExtResource("2_t4cdh")]
+[node name="Dlg" parent="." index="2" unique_id=794305257 instance=ExtResource("2_t4cdh")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -103,33 +90,16 @@ offset_top = 248.0
 offset_right = -186.0
 offset_bottom = 248.0
 grow_vertical = 1
-rect = SubResource("Resource_0qej1")
-rect_ipad = SubResource("Resource_mwv10")
+rect = SubResource("Resource_eimis")
+rect_ipad = SubResource("Resource_0qej1")
 
-[node name="Font8" parent="Dlg" unique_id=1248850266 instance=ExtResource("4_7wjfx")]
+[node name="Font8" parent="Dlg" index="0" unique_id=1248850266 instance=ExtResource("4_7wjfx")]
 layout_mode = 0
-asset = SubResource("Resource_dh6w2")
+asset = SubResource("Resource_mwv10")
 
-[node name="Label" type="Label" parent="Dlg/Font8" unique_id=1379138231]
+[node name="Label" type="Label" parent="Dlg/Font8" index="0" unique_id=577976547]
 layout_mode = 0
 offset_right = 1.0
 offset_bottom = 15.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-
-[node name="Button" type="Button" parent="." unique_id=1672132165]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-theme_override_styles/normal = SubResource("StyleBoxEmpty_dc2mx")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_3kl1b")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_xt4qy")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_iv806")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6d2ax")
-
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
