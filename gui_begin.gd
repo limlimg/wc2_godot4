@@ -91,6 +91,7 @@ func _on_render() -> void:
 
 
 func _on_button_ok_pressed() -> void:
+	hide()
 	ok_pressed.emit()
 
 

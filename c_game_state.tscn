@@ -369,7 +369,6 @@ layout_mode = 1
 
 [node name="IEventReceiver" parent="." unique_id=817525215 instance=ExtResource("8_j4ryw")]
 
-[connection signal="time_passed" from="GUIVictory" to="." method="_on_gui_victory_time_passed"]
 [connection signal="faded_in" from="IEventReceiver" to="." method="_on_i_event_receiver_faded_in"]
 [connection signal="faded_out" from="IEventReceiver" to="." method="_on_i_event_receiver_faded_out"]
 [connection signal="motion_finished" from="IEventReceiver" to="." method="_on_i_event_receiver_motion_finished"]

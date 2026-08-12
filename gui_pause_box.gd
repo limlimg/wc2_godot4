@@ -7,6 +7,7 @@ signal restart_pressed
 signal quit_pressed
 
 func _on_gui_button_resume_pressed() -> void:
+	hide()
 	resume_pressed.emit()
 
 

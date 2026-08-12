@@ -13,6 +13,7 @@ var _targeting_army := false
 	$GUICardList5
 ]
 
+signal ok_pressed
 signal back_pressed
 
 func _sel_card(tab: int, index: int) -> void:
@@ -97,6 +98,7 @@ func reset_card_state() -> void:
 				card.time = time
 			card.enable = should_enable
 			j += 1
+			card = i.get_card(j)
 	$ButtonOk.enable = get_sel_card() != null and can_buy_sel_card()
 
 
@@ -149,6 +151,7 @@ func _on_gui_button_ok_pressed() -> void:
 			reset_card_state()
 		else:
 			hide()
+		ok_pressed.emit()
 
 
 func _on_gui_card_list_card_selected(tab: int, index: int) -> void:

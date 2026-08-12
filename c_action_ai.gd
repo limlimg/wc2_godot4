@@ -10,3 +10,7 @@ static func instance() -> CActionAI:
 	if _instance == null:
 		_instance = new()
 	return _instance
+
+
+func init_ai() -> void:
+	pass

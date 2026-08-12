@@ -521,7 +521,7 @@ func render_building() -> void:
 		g_GameRes.render_port(_canvas_item_building, construction_pos.x, construction_pos.y)
 	elif country != null:
 		g_GameRes.render_construction(_canvas_item_building, construction, level, construction_pos.x, construction_pos.y)
-		g_GameRes.render_installation(_canvas_item_building, construction, installation_pos.x, installation_pos.y)
+		g_GameRes.render_installation(_canvas_item_building, installation, installation_pos.x, installation_pos.y)
 
 
 func render() -> void:

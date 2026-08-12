@@ -177,13 +177,13 @@ func get_cur_dialogue_string() -> String:
 		return ""
 	match campaign:
 		0:
-			return "axis battle {0} {1} {2}".format([campaign + 1, def.commander, def.index])
+			return "axis battle {0} {1} {2}".format([battle + 1, def.commander, def.index])
 		1:
-			return "allies battle {0} {1} {2}".format([campaign + 1, def.commander, def.index])
+			return "allies battle {0} {1} {2}".format([battle + 1, def.commander, def.index])
 		2:
-			return "wto battle {0} {1} {2}".format([campaign + 1, def.commander, def.index])
+			return "wto battle {0} {1} {2}".format([battle + 1, def.commander, def.index])
 		3:
-			return "nato battle {0} {1} {2}".format([campaign + 1, def.commander, def.index])
+			return "nato battle {0} {1} {2}".format([battle + 1, def.commander, def.index])
 	return ""
 
 

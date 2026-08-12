@@ -24,8 +24,9 @@ func _has_point(_point: Vector2) -> bool:
 
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		if not event.pressed:
-			_hide_dlg()
-			pressed.emit()
-			accept_event()
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		if event is InputEventScreenTouch:
+			if not event.pressed:
+				_hide_dlg()
+				pressed.emit()
+		accept_event()

@@ -41,6 +41,7 @@ func _on_button_ok_pressed() -> void:
 
 
 func _on_button_cancel_pressed() -> void:
+	hide()
 	cancel_pressed.emit()
 
 
