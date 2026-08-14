@@ -24,7 +24,6 @@ var _move_timer: int
 var is_moving: bool
 var _target_pos: Vector2
 var _target_zoom := 1.0
-var _move_tween: Tween
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_VISIBILITY_CHANGED:
@@ -77,7 +76,7 @@ func set_pos_and_scale(x: float, y: float, zoom: float) -> void:
 		min_scale = size.x / scene_rect.size.x
 	if min_scale < size.y / scene_rect.size.y:
 		min_scale = size.y / scene_rect.size.y
-	zoom = clampf(zoom, min_scale, 1.0)
+	zoom = clampf(zoom, min_scale, maxf(min_scale, 1.0))
 	$Camera2D.zoom = Vector2(zoom, zoom)
 	$Camera2D.position = _clamp_pos(x, y, true)
 
@@ -100,16 +99,11 @@ func set_auto_fix_pos(value: bool) -> void:
 		is_moving = false
 
 
-func move_to(x: float, y: float, exclude_box: bool) -> void:
+func move_to(x: float, y: float, _exclude_box: bool) -> void:
 	_target_pos = Vector2(x, y)
 	var speed = _MOVE_SPEED[g_GameSettings.speed - 1]
 	_move_timer = ceili(1.0 / speed)
 	is_moving = true
-	if _move_tween != null:
-		_move_tween.kill()
-	_move_tween = create_tween()
-	var target = _clamp_pos(x, y, exclude_box)
-	_move_tween.tween_property($Camera2D, ^"position", target, 1.0 / speed / 60.0)
 
 
 func update(_delta: float) -> void:

@@ -26,7 +26,7 @@ var selected: bool:
 
 
 @export
-var card_alpha: float:
+var card_alpha := 1.0:
 	set(value):
 		if value != card_alpha:
 			card_alpha = value
@@ -81,9 +81,12 @@ func init() -> void:
 	super()
 	if def == null:
 		return
-	if texture_res != null:
-		$Card.texture = texture_res.get_image(def.image)
-		$TechRequest.texture = texture_res.get_image("technology_{0}.png".format([tech_request]))
+	var res := texture_res
+	if res == null:
+		res = s_texture_res
+	if res != null:
+		$Card.texture = res.get_image(def.image)
+		$TechRequest.texture = res.get_image("technology_{0}.png".format([tech_request]))
 	else:
 		$Card.texture = null
 	set_price(def.price)
@@ -169,9 +172,9 @@ func _on_render() -> void:
 			stat_color = Color8(0xE4, 0xA8, 0x4B)
 		else:
 			stat_color = Color8(0x72, 0x54, 0x25)
-		$Attack.self_modulate = stat_color
-		$Strength.self_modulate = stat_color
-		$Movement.self_modulate = stat_color
+		$Attack.color = stat_color
+		$Strength.color = stat_color
+		$Movement.color = stat_color
 		$Attack.visible = true
 		$Strength.visible = true
 		$Movement.visible = true

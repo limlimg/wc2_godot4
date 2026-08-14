@@ -80,14 +80,23 @@ func _process(_delta: float) -> void:
 
 
 func _on_render() -> void:
-	if texture_res == null:
+	var res := texture_res
+	if res == null:
+		res = s_texture_res
+	if res == null:
 		return
-	$MedalSoldiers/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_soldiers]))
-	$MedalAirforce/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_airforce]))
-	$MedalCannon/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_cannon]))
-	$MedalPanzer/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_panzer]))
-	$MedalNavy/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_navy]))
-	$MedalHonor/TextureRect.texture = texture_res.get_res().get_image("medal_%s_{0}.png".format([medal_honor]))
+	if medal_soldiers > 0:
+		$MedalSoldiers/TextureRect.texture = res.get_image("medal_soldiers_{0}.png".format([medal_soldiers]))
+	if medal_airforce > 0:
+		$MedalAirforce/TextureRect.texture = res.get_image("medal_airforce_{0}.png".format([medal_airforce]))
+	if medal_cannon > 0:
+		$MedalCannon/TextureRect.texture = res.get_image("medal_cannon_{0}.png".format([medal_cannon]))
+	if medal_panzer > 0:
+		$MedalPanzer/TextureRect.texture = res.get_image("medal_panzer_{0}.png".format([medal_panzer]))
+	if medal_navy > 0:
+		$MedalNavy/TextureRect.texture = res.get_image("medal_navy_{0}.png".format([medal_navy]))
+	if medal_honor > 0:
+		$MedalHonor/TextureRect.texture = res.get_image("medal_honor_{0}.png".format([medal_honor]))
 
 
 func _on_button_ok_pressed() -> void:
@@ -107,5 +116,5 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventScreenDrag:
 		accept_event()
 	elif event.is_action_released(&"ui_cancel"):
-		ok_pressed.emit()
+		$ButtonOk.pressed.emit()
 		accept_event()

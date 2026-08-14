@@ -1,11 +1,7 @@
 extends GUIElement
 
-@export
 var _attack_area: int
-
-@export
 var _defend_area: int
-
 var _battle_state: int
 var _fight_state: int
 var _second_attack_time: float
@@ -39,6 +35,8 @@ func _reset_battle() -> void:
 	$Right/CBattleScene.set_battle_area(_defend_area)
 	$Left/Flag.texture = g_GameRes.get_flag_image("flag_{0}.png".format([area1.country.name]))
 	$Right/Flag.texture = g_GameRes.get_flag_image("flag_{0}.png".format([area2.country.name]))
+	$Left/ArmyInfo.queue_redraw()
+	$Right/ArmyInfo.queue_redraw()
 	$Left/MinAttack.text = "{0}".format([army1.def.minatk])
 	$Left/MinAttack.color = Color.GREEN if army1.def.minatk > army1_other.minatk else Color.WHITE
 	$Left/MaxAttack.text = "{0}".format([army1.def.maxatk])
@@ -122,6 +120,56 @@ func _update_fighting(delta: float) -> void:
 
 func _battle_finish() -> void:
 	_battle_state = 3
+
+
+func _on_attack_army_info_draw() -> void:
+	var canvas_item = $Left/ArmyInfo.get_canvas_item()
+	var area = g_Scene.get_area(_attack_area)
+	if area == null:
+		return
+	var army = area.get_army(0)
+	if army == null:
+		return
+	var card_x := 77.0
+	if army.cards & (1<<0) != 0:
+		g_GameRes.card_mark[0].draw(canvas_item, Vector2(card_x, 18.0))
+		card_x += 19.0
+	if army.cards & (1<<1) != 0:
+		g_GameRes.card_mark[1].draw(canvas_item, Vector2(card_x, 18.0))
+	if army.cards & (1<<3) != 0:
+		var country = army.country
+		if country.ai:
+			g_GameRes.render_ai_commander_medal(canvas_item, 1, 53.0, 54.0, country.name, country.alliance)
+		else:
+			g_GameRes.render_commander_medal(canvas_item, 1, 53.0, 54.0, country.get_commander_level())
+	g_GameRes.render_army_hp(canvas_item, 4.0, 43.0, army.strength, army.get_max_strength())
+	if army.cards & (1<<3) == 0:
+		g_GameRes.render_army_level(canvas_item, 56.0, 32.0, army.level)
+
+
+func _on_defend_army_info_draw() -> void:
+	var canvas_item = $Right/ArmyInfo.get_canvas_item()
+	var area = g_Scene.get_area(_defend_area)
+	if area == null:
+		return
+	var army = area.get_army(0)
+	if army == null:
+		return
+	var card_x := -89.0
+	if army.cards & (1<<0) != 0:
+		g_GameRes.card_mark[0].draw(canvas_item, Vector2(card_x, 18.0))
+		card_x -= 19.0
+	if army.cards & (1<<1) != 0:
+		g_GameRes.card_mark[1].draw(canvas_item, Vector2(card_x, 18.0))
+	if army.cards & (1<<3) != 0:
+		var country = army.country
+		if country.ai:
+			g_GameRes.render_ai_commander_medal(canvas_item, 1, -69.0, 54.0, country.name, country.alliance)
+		else:
+			g_GameRes.render_commander_medal(canvas_item, 1, -69.0, 54.0, country.get_commander_level())
+	g_GameRes.render_army_hp(canvas_item, -37.0, 43.0, army.strength, army.get_max_strength())
+	if army.cards & (1<<3) == 0:
+		g_GameRes.render_army_level(canvas_item, -66.0, 32.0, army.level)
 
 
 func _has_point(_point: Vector2) -> bool:

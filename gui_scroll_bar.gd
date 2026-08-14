@@ -36,7 +36,7 @@ var horizontal: bool:
 
 
 @export
-var max_value: float:
+var max_value := 100.0:
 	set(value):
 		if value != max_value:
 			max_value = value
@@ -50,7 +50,7 @@ var max_value: float:
 
 
 @export
-var scroll_pos: float:
+var scroll_pos := 50.0:
 	set = set_scroll_pos
 
 
@@ -126,10 +126,6 @@ func _on_render() -> void:
 	var range_size = size - $Grabber.size
 	var proportion := Vector2($HSlider.value / $HSlider.max_value, $VSlider.value / $VSlider.max_value).maxf(0.0)
 	$Grabber.position = range_size * proportion
-
-
-func get_scroll_pos() -> float:
-	return $HSlider.value if horizontal else $VSlider.value
 
 
 func set_scroll_pos(value: float) -> void:

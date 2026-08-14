@@ -12,9 +12,9 @@ var value: int:
 		if n != value:
 			value = n
 			while _bars.size() < n:
-				_bars.append($HBoxContainer/Prototype.duplicate())
+				_bars.append($GUIElement/HBoxContainer/Prototype.duplicate())
 				_bars[-1].visible = true
-				$HBoxContainer.add_child(_bars[-1])
+				$GUIElement/HBoxContainer.add_child(_bars[-1])
 			while _bars.size() > n:
 				_bars.pop_back().free()
 

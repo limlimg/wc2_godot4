@@ -269,11 +269,11 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventScreenDrag:
 		accept_event()
 	elif event.is_action_released(&"ui_cancel"):
-		if _state == 0:
+		if _state != 0:
+			accept_event()
+		else:
 			for button in [$FixedWidth/SelCampaigns/ButtonBack, $FixedWidth/SelConquest/ButtonBack]:
 				if button.is_visible_in_tree():
 					button.pressed.emit()
 					accept_event()
 					return
-			quit_pressed.emit()
-			accept_event()

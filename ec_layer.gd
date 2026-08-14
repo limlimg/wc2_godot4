@@ -50,8 +50,11 @@ func init() -> void:
 		return
 	while _frames.size() < target_size:
 		var frame = ecFrame.new()
+		frame.visible = false
+		add_child(frame)
 		_frames.append(frame)
 	for i in target_size:
+		_frames[i].lib = lib
 		_frames[i].data = data.frames[i]
 	set_loop(0)
 	cur_frame = 0
@@ -65,15 +68,15 @@ func set_loop(value: int) -> void:
 func set_cur_frame(tick: int) -> void:
 	if tick != cur_frame:
 		cur_frame = tick
-		for i in data.frames:
-			if tick >= i.start_tick:
+		for i in data.frames.size():
+			if tick >= data.frames[i].start_tick:
+				_frames[i - 1].visible = false
 				_frames[i].visible = true
-				return
 			else:
 				_frames[i].visible = false
-		if loop != 0:
-			_frames[-1].visible = true
-		else:
+				return
+		if loop == 0:
+			_frames[-1].visible = false
 			_frames[0].visible = true
 
 

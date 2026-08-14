@@ -1,4 +1,5 @@
 @tool
+class_name ecImage
 extends Node2D
 
 @export
@@ -75,8 +76,9 @@ func init():
 		refx = texture.origin.x
 		refy = texture.origin.y
 		if texture.texture != null:
-			texture_w = texture.texture.get_width()
-			texture_h = texture.texture.get_height()
+			texture.texture.complete_loading()
+			texture_w = texture.texture.size_override.x
+			texture_h = texture.texture.size_override.y
 		else:
 			texture_w = 1.0
 			texture_h = 1.0

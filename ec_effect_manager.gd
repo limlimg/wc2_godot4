@@ -17,8 +17,8 @@ func add_effect(file: String, auto_remove: bool) -> ecEffect:
 
 
 func create_effect(file: String) -> ecEffect:
-	var node = $Prototype/ecEffect.create_instance()
-	var res := ecEffectRes.new()
+	var node = $ecEffect.create_instance()
+	var res = node.effect_res.duplicate()
 	var asset := AssetRegistry.new()
 	asset.name = file
 	res.asset = asset

@@ -20,9 +20,10 @@ var _adjoin: Adjoin
 var _scene_rect: Rect2
 var flashing_turn_begin: bool
 var _canvas_item_disabled_areas: Dictionary[int, RID]
+var _canvas_item_selected_area: RID
 var _area_color: PackedColorArray
-var _area_target: PackedByteArray
-var _arrow: Array[CanvasItem]
+var _arrow_blue: ecImage
+var _arrow_red: ecImage
 
 # TODO: implement editor methods?
 
@@ -32,7 +33,7 @@ func init(areas_enable: String, map: int) -> void:
 	_load_adjoin(map)
 	var real_scene := get_tree().get_first_node_in_group(&"g_Scene")
 	visible = real_scene.is_visible_in_tree()
-	_background = real_scene.get_node(^"CCamera/CBackground").create_instance()
+	_background = real_scene.get_node(^"CBackground").create_instance()
 	_init_areas(map, areas_enable)
 	_check_adjacent_area()
 	_scene_rect = _cal_scene_rect()
@@ -41,13 +42,19 @@ func init(areas_enable: String, map: int) -> void:
 	_init_area_image(map)
 	camera = real_scene.get_node(^"CCamera")
 	camera.init(_scene_rect)
-	_bomber = real_scene.get_node(^"CCamera/CBomber").create_instance()
+	_bomber = real_scene.get_node(^"CBomber").create_instance()
 	_selected_area = null
 	flashing_turn_begin = false
 	flashing_red_area_id_1 = -1
 	_flash_time = 0.0
 	flashing_red_area_id_2 = -1
 	real_scene.visibility_changed.connect(_render, CONNECT_ONE_SHOT)
+	_canvas_item_selected_area = RenderingServer.canvas_item_create()
+	RenderingServer.canvas_item_set_parent(_canvas_item_selected_area, real_scene.get_node(^"SelectedOverlay").get_canvas_item())
+	_arrow_blue = real_scene.get_node(^"SelectedOverlay/ArrowBlue")
+	_arrow_blue.texture = g_GameRes.arrow_blue
+	_arrow_red = real_scene.get_node(^"SelectedOverlay/ArrowRed")
+	_arrow_red.texture = g_GameRes.arrow_red
 
 
 func _load_area_data(map: int) -> void:
@@ -88,7 +95,7 @@ func _load_area_tax(map: int) -> void:
 	if path.is_empty():
 		return
 	var area_tax: AreaTaxMap = load(path)
-	var area_parent = get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/Areas").get_canvas_item()
+	var area_parent = get_tree().get_first_node_in_group(&"g_Scene").get_node(^"Areas").get_canvas_item()
 	for k in area_tax.areas.keys():
 		if _area_enable == null or _area_enable.enable[k]:
 			var area := CArea.new()
@@ -105,7 +112,6 @@ func _load_area_tax(map: int) -> void:
 		else:
 			_area_list.append(null)
 	_area_color.resize(_area_list.size())
-	_area_target.resize(_area_list.size())
 
 
 func _clear_areas() -> void:
@@ -114,7 +120,6 @@ func _clear_areas() -> void:
 			i.free()
 	_area_list.clear()
 	_area_color.clear()
-	_area_target.clear()
 	for i in _canvas_item_disabled_areas.values():
 		RenderingServer.free_rid(i)
 	_canvas_item_disabled_areas.clear()
@@ -204,6 +209,8 @@ func release() -> void:
 	_area_data = null
 	_area_mark.release()
 	_clear_areas()
+	if _canvas_item_selected_area.is_valid():
+		RenderingServer.free_rid(_canvas_item_selected_area)
 
 
 func _render() -> void:
@@ -271,9 +278,9 @@ func update(delta: float) -> void:
 				RenderingServer.canvas_item_set_self_modulate(area.canvas_item_root, c)
 				_area_color[id] = c
 			var arrow: Texture2D
-			if _area_target[id] == 1:
+			if area.target == 1:
 				arrow = g_GameRes.arrow_green
-			elif _area_target[id] == 2:
+			elif area.target == 2:
 				arrow = g_GameRes.arrow_yellow
 			if arrow != null:
 				RenderingServer.canvas_item_clear(area.canvas_item_arrow)
@@ -282,10 +289,31 @@ func update(delta: float) -> void:
 				var shadow_size := shadow.get_size() * EC2dAppDelegate.g_content_scale_factor
 				shadow.draw_rect(area.canvas_item_arrow, Rect2(shadow_pos, shadow_size), false)
 				arrow.draw(area.canvas_item_arrow, Vector2(0.0, y))
-	for arrow in _arrow:
-		var node := arrow.get_node(^"TextureRect")
-		node.scale.y = minf(_h_arrow_h, 1.0)
-		node.self_modulate.a = minf(0.9 - 0.4 * _h_arrow_h, 1.0)
+	var selected_area := get_selected_area()
+	if selected_area != null:
+		var graphics := ecGraphics.instance()
+		graphics.render_begin(_canvas_item_selected_area)
+		if selected_area.construction == 3:
+			graphics.render_circle(selected_area.construction_pos.x, selected_area.construction_pos.y, selected_area.country.airstrike_radius(), Color.from_rgba8(0, 0, 0, 0x4F))
+		elif selected_area.sea and selected_area.get_num_armies() > 0 and selected_area.get_army(0).def.id == 9:
+			graphics.render_circle(selected_area.construction_pos.x, selected_area.construction_pos.y, selected_area.country.airstrike_radius(), Color.from_rgba8(0, 0, 0x80, 0x4F))
+		var c := _h_arrow_h if _h_arrow_h <= 1.0 else 1.0 + (_h_arrow_h - 1.0) * 0.4
+		for j in get_num_adjacent_areas(selected_area.id):
+			var adj_area := get_adjacent_area(selected_area.id, j)
+			if adj_area.target == 3 or adj_area.target == 4:
+				var vy := adj_area.army_pos - selected_area.army_pos
+				var vt := Transform2D(vy.rotated(PI / 2).normalized(), vy, adj_area.army_pos)
+				var v0 := vt * Vector2(22.0, 0.0)
+				var v1 := vt * Vector2(-22.0, 0.0)
+				var v2 := vt * Vector2(-22.0, -1.0)
+				var v3 := vt * Vector2(22.0, -1.0)
+				var image: ecImage
+				if adj_area.target == 3:
+					image = _arrow_blue
+				else:
+					image = _arrow_red
+				image.render_4vc(v0.x, v0.y, v1.x, v1.y, v2.x, v2.y, v3.x, v3.y, 0, c)
+		graphics.render_end()
 
 
 func screen_area_id(x: float, y: float) -> int:
@@ -369,24 +397,12 @@ func select_area(area) -> void:
 		area = get_area(area)
 	unselect_area()
 	_selected_area = area
-	var circle := get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/SelectedOverlay")
-	if area.construction == 3:
-		circle.queue_redraw()
-		circle.draw.connect(
-			circle.draw_circle.bind(area.construction_pos, _selected_area.country.airstrike_radius(), Color.from_rgba8(0, 0, 0, 0x4F))
-			, CONNECT_ONE_SHOT)
-	elif _selected_area.sea and _selected_area.get_num_armies() > 0 and _selected_area.get_army(0).def.id == 9:
-		circle.queue_redraw()
-		circle.draw.connect(
-			circle.draw_circle.bind(area.army_pos, _selected_area.country.airstrike_radius(), Color.from_rgba8(0, 0, 0x80, 0x4F))
-			, CONNECT_ONE_SHOT)
 	_set_sel_area_target(area)
 
 
 func unselect_area() -> void:
 	if _selected_area != null:
-		var circle := get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/SelectedOverlay")
-		circle.queue_redraw()
+		RenderingServer.canvas_item_clear(_canvas_item_selected_area)
 	_selected_area = null
 	clear_targets()
 
@@ -398,13 +414,10 @@ func reset_target() -> void:
 
 
 func clear_targets() -> void:
-	for i in _area_list.size():
-		if _area_list[i] != null and (_area_target[i] == 1 or _area_target[i] == 2):
-			RenderingServer.canvas_item_clear(_area_list[i].canvas_item_arrow)
-			_area_target[i] = 0
-	for i in _arrow:
-		i.queue_free()
-	_arrow.clear()
+	for i in _area_list:
+		if i != null and i.target != 0:
+			RenderingServer.canvas_item_clear(i.canvas_item_arrow)
+			i.target = 0
 
 
 func _set_sel_area_target(sel_area: CArea) -> void:
@@ -420,20 +433,16 @@ func _set_sel_area_target(sel_area: CArea) -> void:
 	for i in get_num_adjacent_areas(sel_area_id):
 		var adj_area_id := _get_adjacent_area_id(sel_area_id, i)
 		if check_moveable(sel_area_id, adj_area_id, 0):
-			var arrow := _create_arrow(sel_area_id, adj_area_id)
-			arrow.texture = g_GameRes.arrow_blue
-			arrow.position += g_GameRes.arrow_blue.origin
-			arrow.pivot_offset -= g_GameRes.arrow_blue.origin
+			get_area(adj_area_id).target = 3
+			_create_arrow(sel_area_id, adj_area_id)
 		elif army_id != 3 and army_id != 9 and check_attackable(sel_area_id, adj_area_id, 0):
-			var arrow := _create_arrow(sel_area_id, adj_area_id)
-			arrow.texture = g_GameRes.arrow_red
-			arrow.position += g_GameRes.arrow_red.origin
-			arrow.pivot_offset -= g_GameRes.arrow_red.origin
+			get_area(adj_area_id).target = 4
+			_create_arrow(sel_area_id, adj_area_id)
 		if army_id == 3:
 			for j in get_num_adjacent_areas(adj_area_id):
 				var area_2_id := _get_adjacent_area_id(adj_area_id, j)
 				if check_attackable(sel_area_id, area_2_id, 0):
-					_area_target[area_2_id] = 2
+					g_Scene.get_area(area_2_id).target = 2
 	if army_id == 9:
 		for i in _area_list:
 			if i != null and i.country != null and i.country.alliance != sel_area.country.alliance and i.get_num_armies() > 0:
@@ -441,7 +450,7 @@ func _set_sel_area_target(sel_area: CArea) -> void:
 				if d <= 0.0:
 					continue
 				if d < sel_area.country.airstrike_radius():
-					_area_target[i.id] = 2
+					i.target = 2
 
 
 func check_moveable(from: int, to: int, army_index: int) -> bool:
@@ -539,26 +548,8 @@ func _get_two_areas_distance_square(id1: int, id2: int) -> float:
 	return (area1.army_pos - area2.army_pos).length_squared()
 
 
-func _create_arrow(from: int, to: int) -> TextureRect:
-	var proto := get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/SelectedOverlay/Arrow")
-	var from_area := _area_list[from]
-	var from_pos := from_area.army_pos
-	var to_area := _area_list[to]
-	var to_pos := to_area.army_pos
-	var arrow := proto.duplicate()
-	proto.add_sibling(arrow)
-	arrow.position += from_pos
-	var d := from_pos.distance_to(to_pos)
-	arrow.get_node(^"TextureRect").size.y = d
-	arrow.rotation = (to_pos - from_pos).angle() - PI / 2
-	_arrow.append(arrow)
+func _create_arrow(_from: int, _to: int) -> void:
 	_h_arrow_h = 0.2
-	return arrow.get_node(^"TextureRect")
-
-
-func _set_area_v_arrow(area: CArea) -> void:
-	if _area_target[area.id] == 0:
-		_area_target[area.id] = 2
 
 
 func all_areas_encirclement() -> void:
@@ -599,6 +590,6 @@ func is_bombing() -> bool:
 
 
 func gain_medal(x: float, y: float) -> void:
-	var medal = get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CCamera/CMedal").create_instance()
+	var medal = get_tree().get_first_node_in_group(&"g_Scene").get_node(^"CMedal").create_instance()
 	medal.position = Vector2(x, y)
 	medal.hidden.connect(medal.queue_free)

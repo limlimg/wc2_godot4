@@ -30,44 +30,40 @@ script = ExtResource("1_6smyl")
 card = null
 
 [node name="CardCommon" parent="." index="0" unique_id=846843474 instance=ExtResource("2_6hmkh")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
 anchor_right = 0.0
-anchor_bottom = 0.0
 offset_left = 50.0
-offset_top = 250.0
+offset_top = -70.0
 offset_right = 50.0
-offset_bottom = 320.0
 grow_horizontal = 1
-grow_vertical = 1
+grow_vertical = 0
 scale = Vector2(0.42, 0.42)
 rect = SubResource("Resource_n0f0y")
 rect_ipad = SubResource("Resource_6hmkh")
 
 [node name="TextureRect" type="TextureRect" parent="CardCommon" index="0" unique_id=1137705609]
 layout_mode = 0
-offset_right = 110.0
-offset_bottom = 162.0
-scale = Vector2(0.42, 0.42)
 mouse_filter = 2
 texture = ExtResource("3_kdruj")
+expand_mode = 1
+stretch_mode = 2
 
 [node name="Card" parent="." index="1" unique_id=1390635942 instance=ExtResource("2_6hmkh")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
 anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 50.0
-offset_top = 257.0
-offset_right = 50.0
-offset_bottom = 327.0
+offset_top = -70.0
 grow_horizontal = 1
-grow_vertical = 1
+grow_vertical = 0
 scale = Vector2(0.42, 0.42)
 rect = SubResource("Resource_fo0pl")
 rect_ipad = SubResource("Resource_21m37")
 
 [node name="TextureRect" type="TextureRect" parent="Card" index="0" unique_id=887375264]
 layout_mode = 0
-scale = Vector2(0.42, 0.42)
 mouse_filter = 2
+expand_mode = 1
+stretch_mode = 2

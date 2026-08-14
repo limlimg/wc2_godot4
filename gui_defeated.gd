@@ -1,6 +1,7 @@
 extends GUIElement
 
-var _tween_auto_close: Tween
+var _country: CCountry
+var _auto_close_timer: float
 
 signal ok_pressed
 
@@ -12,6 +13,7 @@ func show_defeated(country: CCountry) -> void:
 		$Flag.texture = res.get_image("flag_{0}.png".format([country.name]))
 	else:
 		$Flag.texture = null
+	_country = country
 	if country.ai:
 		var commander_name := country.get_commander_name()
 		if not commander_name.is_empty():
@@ -22,19 +24,31 @@ func show_defeated(country: CCountry) -> void:
 				$General.texture = res.get_image("general_common.png")
 	else:
 		$General.texture = res.get_image("general_player.png")
+	$CommanderMedal.queue_redraw()
 	show()
 	if g_GameManager.game_mode == 4:
-		_tween_auto_close = create_tween()
-		_tween_auto_close.tween_interval(5.0)
-		_tween_auto_close.tween_callback(_on_button_ok_pressed)
+		_auto_close_timer = 5.0
 	g_SoundRes.play_char_se(SND_EFFECT.POP_WAV)
 
 
 func hide_defeated() -> void:
 	hide()
-	if _tween_auto_close != null:
-		_tween_auto_close.kill()
-		_tween_auto_close = null
+
+
+func _process(delta: float) -> void:
+	if g_GameManager.game_mode == 4:
+		if _auto_close_timer >= 0.0:
+			_auto_close_timer -= delta
+			if _auto_close_timer <= 0.0:
+				_auto_close_timer = -1.0
+				ok_pressed.emit()
+
+
+func _on_commander_medal_draw() -> void:
+	if _country.ai:
+		g_GameRes.render_ai_commander_medal($WithCommander/CommanderMedal.get_canvas_item(), 1, 0.0, 0.0, _country.name, _country.alliance)
+	else:
+		g_GameRes.render_commander_medal($WithCommander/CommanderMedal.get_canvas_item(), 1, 0.0, 0.0, _country.get_commander_level())
 
 
 func _on_button_ok_pressed() -> void:
@@ -49,5 +63,5 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventScreenDrag:
 		accept_event()
 	elif event.is_action_released(&"ui_cancel"):
-		ok_pressed.emit()
+		$ButtonOk.pressed.emit()
 		accept_event()

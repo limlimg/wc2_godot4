@@ -1,7 +1,7 @@
 class_name GUIBuyCard
 extends GUIElement
 
-var _selected_card := -1
+var _selected_card_def: CardDef
 var targeting := false
 var _targeting_army := false
 
@@ -17,10 +17,10 @@ signal ok_pressed
 signal back_pressed
 
 func _sel_card(tab: int, index: int) -> void:
-	_selected_card = -1
+	_selected_card_def = null
 	if tab >= 0 and index >= 0:
-		_selected_card = _tabs[tab].get_card(index).def.type
-	if _selected_card >= 0:
+		_selected_card_def = _tabs[tab].get_card(index).def
+	if _selected_card_def != null:
 		_set_sel_card_intro()
 	if get_sel_card() == null:
 		$ButtonOk.enable = false
@@ -28,7 +28,7 @@ func _sel_card(tab: int, index: int) -> void:
 
 
 func _set_sel_card_intro() -> void:
-	if _selected_card >= 0:
+	if _selected_card_def != null:
 		var card := get_sel_card()
 		if card != null:
 			$Name/ecText.text = card.name
@@ -36,16 +36,16 @@ func _set_sel_card_intro() -> void:
 
 
 func get_sel_card() -> CardDef:
-	return CObjectDef.instance().get_card_def(_selected_card)
+	return _selected_card_def
 
 
 func can_buy_sel_card() -> bool:
-	if _selected_card < 0:
+	if _selected_card_def == null:
 		return false
 	var country = g_GameManager.get_cur_country()
 	if country == null:
 		return false
-	return country.can_buy_card(CObjectDef.instance().get_card_def(_selected_card))
+	return country.can_buy_card(_selected_card_def)
 
 
 func reset_card_state() -> void:
@@ -72,17 +72,19 @@ func reset_card_state() -> void:
 				should_enable = false
 			else:
 				card.tech_request = 1
-			if card.def.id == 21: # research
+			if card.def.id == CARD_ID.RESEARCH_CARD:
 				if country.tech_level >= 5:
 					should_enable = false
 					card.set_price(0)
 					card.set_industry(0)
 				else:
+					if country.research_round > 0:
+						should_enable = false
 					card.set_price(country.get_card_price(card.def))
 					card.set_industry(country.get_card_industry(card.def))
 				card.time = country.research_round
 				card.research = country.tech_level
-			elif card.def.id == 25: # commander
+			elif card.def.id == CARD_ID.COMMANDER_CARD:
 				if country.can_use_commander():
 					card.time = 0
 				elif country.commander_alive:
@@ -90,6 +92,7 @@ func reset_card_state() -> void:
 					should_enable = false
 				else:
 					card.time = country.commander_round
+					should_enable = false
 			else:
 				var time = country.get_card_rounds(card.def.id)
 				if time > 0:
@@ -104,9 +107,9 @@ func reset_card_state() -> void:
 
 func reset_card_target() -> void:
 	var country = g_GameManager.get_cur_country()
-	if country != null and targeting and _selected_card >= 0:
+	if country != null and targeting and _selected_card_def != null:
 		g_Scene.clear_targets()
-		country.set_card_targets(CObjectDef.instance().get_card_def(_selected_card))
+		country.set_card_targets(_selected_card_def)
 
 
 func release_target() -> void:
@@ -166,5 +169,5 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventScreenDrag:
 		accept_event()
 	elif event.is_action_released(&"ui_cancel"):
-		back_pressed.emit()
+		$ButtonBack.pressed.emit()
 		accept_event()

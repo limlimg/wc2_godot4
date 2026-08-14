@@ -75,6 +75,8 @@ func load_game(save_file_name: String) -> void:
 		_map = header.map
 		_areas_enable = header.areas_enable
 		_player_country_name = header.player_country_name
+		# fix original crash when loading a conquest and then restarting
+		_conquest_player_country_id = _player_country_name[0]
 		_battle_file_name = header.battle_file_name
 		campaign = header.campaign
 		battle = header.battle
@@ -518,7 +520,7 @@ func _real_load_game(file_name: String) -> void:
 		current_round = save.current_round
 		random_reward_medal = save.random_reward_medal
 		g_Scene.camera.set_pos(save.camera_x, save.camera_y, false)
-		g_Scene.camera.scale = Vector2(save.camera_scale, save.camera_scale)
+		g_Scene.camera.camera_zoom = Vector2(save.camera_scale, save.camera_scale)
 
 
 func get_local_player_country() -> CCountry:

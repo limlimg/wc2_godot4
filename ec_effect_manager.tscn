@@ -1,8 +1,17 @@
 [gd_scene format=3 uid="uid://3kjay574huha"]
 
 [ext_resource type="Script" uid="uid://boorvbu4dkxcs" path="res://ec_effect_manager.gd" id="1_3sjwc"]
+[ext_resource type="Script" uid="uid://csg3b5wvj6jja" path="res://ec_emitter_attr.gd" id="2_p5a7s"]
+[ext_resource type="Script" uid="uid://db5ial1i1vdli" path="res://ec_effect_res.gd" id="3_nacje"]
+[ext_resource type="Resource" uid="uid://bukq4yhh88ly1" path="res://resources/assets/menu_gui_commander_res/eff.tres" id="4_rl5x5"]
+
+[sub_resource type="Resource" id="Resource_lnjx1"]
+script = ExtResource("3_nacje")
+texture_res = ExtResource("4_rl5x5")
+metadata/_custom_type_script = "uid://db5ial1i1vdli"
 
 [node name="ecEffectManager" type="Node2D" unique_id=709700997]
 script = ExtResource("1_3sjwc")
 
 [node name="ecEffect" parent="." unique_id=1633173356 instance_placeholder="res://ec_effect.tscn"]
+effect_res = SubResource("Resource_lnjx1")

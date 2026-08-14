@@ -53,6 +53,8 @@ func _on_asset_changed() -> void:
 					res = load(path) as ecEffectRes
 		if res != null:
 			emitter = res.emitter
+		else:
+			emitter = []
 	notify_property_list_changed()
 
 

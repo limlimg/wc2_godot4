@@ -66,6 +66,8 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.0
+offset_top = 5.0
+offset_bottom = 5.0
 grow_vertical = 1
 rect = SubResource("Resource_npuqn")
 rect_ipad = SubResource("Resource_vplty")
@@ -93,9 +95,6 @@ rect_ipad = SubResource("Resource_7iik7")
 
 [node name="Medal" type="TextureRect" parent="GUIElement/HBoxContainer/PaddingLeft/GUIElement" index="0" unique_id=1597107220]
 layout_mode = 0
-offset_top = 1.0
-offset_right = 14.0
-offset_bottom = 1.0
 mouse_filter = 2
 texture = ExtResource("4_e8pok")
 expand_mode = 1

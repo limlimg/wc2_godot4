@@ -34,6 +34,8 @@ func target_army(index: int) -> void:
 
 func move_army_to_front(index: int) -> void:
 	var moving_army = $VBoxContainer.get_child(index).army
+	if moving_army == null:
+		return
 	if index >= 3:
 		$VBoxContainer/GUIArmyItem4.army = $VBoxContainer/GUIArmyItem3.army
 	if index >= 2:

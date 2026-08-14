@@ -11,12 +11,11 @@ name_ipad = "battlebg1_iPad.xml"
 name_640h = "battlebg1_568h.xml"
 name_640hd = "battlebg1_640hd.xml"
 name_568h = "battlebg1_568h.xml"
-name_568hd = "\"battlebg1_568hd.xml"
+name_568hd = "battlebg1_568hd.xml"
 name_534h = "battlebg1_568h.xml"
-name_534hd = "\"battlebg1_568hd.xml"
+name_534hd = "battlebg1_568hd.xml"
 name_512h = "battlebg1_568h.xml"
-name_512hd = "\"battlebg1_568hd.xml"
-metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
+name_512hd = "battlebg1_568hd.xml"
 
 [sub_resource type="Resource" id="Resource_imc8w"]
 script = ExtResource("1_6emno")
@@ -31,12 +30,10 @@ name_534h = "battlebg2_568h.xml"
 name_534hd = "battlebg2_568hd.xml"
 name_512h = "battlebg2_568h.xml"
 name_512hd = "battlebg2_568hd.xml"
-metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
 
 [sub_resource type="Resource" id="Resource_cicwj"]
 script = ExtResource("1_6emno")
 name_ipad = "battlebg3_iPad.xml"
-metadata/_custom_type_script = "uid://bbkwpdgd20wlc"
 
 [resource]
 script = ExtResource("2_imc8w")

@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://b7s8bl3nf7gly"]
-
-[ext_resource type="Script" uid="uid://bg6ebf5nfwqt7" path="res://app/src/main/cpp/game_res_render/installation.gd" id="1_g5844"]
-
-[node name="Installation" type="Node2D" unique_id=711469501]
-script = ExtResource("1_g5844")

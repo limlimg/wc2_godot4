@@ -2,18 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brh1hvsppgh0j" path="res://c_battle_scene.gd" id="1_sgd38"]
 [ext_resource type="Texture2D" uid="uid://cd3nhtrsjhflx" path="res://resources/assets/texture/antiaircraft.png.tres" id="2_2x063"]
-[ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="4_6mjas"]
 [ext_resource type="Texture2D" uid="uid://brc2hghwuqks0" path="res://resources/assets/texture/entrenchment.tres" id="4_ctd4l"]
-[ext_resource type="Script" uid="uid://db5ial1i1vdli" path="res://ec_effect_res.gd" id="5_a8fh2"]
-
-[sub_resource type="Resource" id="Resource_ctd4l"]
-script = ExtResource("4_6mjas")
-metadata/_custom_type_script = "uid://b0stiqify0vh6"
-
-[sub_resource type="Resource" id="Resource_pwmsn"]
-script = ExtResource("5_a8fh2")
-asset = SubResource("Resource_ctd4l")
-metadata/_custom_type_script = "uid://db5ial1i1vdli"
 
 [node name="CBattleScene" type="Control" unique_id=1489653524]
 layout_mode = 3
@@ -48,7 +37,6 @@ centered = false
 [node name="CBattleUnit" parent="Units" unique_id=1379823310 instance_placeholder="res://c_battle_unit.tscn"]
 
 [node name="ecEffect" parent="." unique_id=1633173356 instance_placeholder="res://ec_effect.tscn"]
-effect_res = SubResource("Resource_pwmsn")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2113222822]
 layout_mode = 1

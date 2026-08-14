@@ -82,8 +82,9 @@ func init() -> void:
 	elif _item_data is ecShapeData:
 		var shape := Sprite2D.new()
 		if lib.texture_res != null:
-			shape.texture = lib.texture_res.get_image(_item_data.item_name)
-		shape.position = _item_data.shape_position
+			shape.texture = lib.texture_res.get_image(_item_data.item_name + ".png")
+		shape.offset = _item_data.shape_position
+		shape.centered = false
 		add_child(shape)
 		_nodes.append(shape)
 	elif _item_data is ecMotionData:
@@ -93,6 +94,7 @@ func init() -> void:
 			layer.data = i
 			layer.duration = _item_data.duration
 			add_child(layer)
+			move_child(layer, 0)
 			_nodes.append(layer)
 	loop = 0
 	cur_frame = 0

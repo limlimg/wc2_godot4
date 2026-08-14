@@ -43,9 +43,11 @@ func init() -> void:
 		return
 	while _elements.size() < target_size:
 		var element = ecElement.new()
+		add_child(element)
 		_elements.append(element)
 	for i in target_size:
-		_elements[i].data = data.elements[i]
+		_elements[i].lib = lib
+		_elements[i].element_data = data.elements[i]
 
 
 func reset() -> void:

@@ -277,7 +277,7 @@ func _do_action() -> void:
 func _finish_action() -> void:
 	if _action.type == 3:
 		g_Scene.flashing_red_area_id_1 = -1
-		g_Scene.flashing_red_area_id_1 = -1
+		g_Scene.flashing_red_area_id_2 = -1
 	_action.type = 0
 
 
@@ -573,9 +573,10 @@ func use_card(card: CardDef, area_id: int, army_index: int) -> bool:
 			g_SoundRes.play_char_se(SND_EFFECT.SUPPLY_WAV)
 			return true
 		elif card_id == CARD_ID.ACE_FORCES_CARD:
-			if get_card_rounds(CARD_ID.SUPPLY_LINE_CARD) > 0:
+			if get_card_rounds(CARD_ID.ACE_FORCES_CARD) > 0:
 				return false
 			area.get_army(army_index).upgrade()
+			area.render()
 			g_SoundRes.play_char_se(SND_EFFECT.LV_UP_WAV)
 			money -= card_price
 			industry -= card_industry
@@ -662,13 +663,13 @@ func set_card_targets(card: CardDef) -> void:
 		for i in g_Scene.get_num_areas():
 			if check_card_target_area(card, i):
 				if card.id == CARD_ID.AIRBORNE_FORCE_CARD:
-					g_Scene.get_area(i).arrow_texture = g_GameRes.arrow_green
+					g_Scene.get_area(i).target = 1
 				else:
-					g_Scene.get_area(i).arrow_texture = g_GameRes.arrow_yellow
+					g_Scene.get_area(i).target = 2
 	else:
 		for i in area_list:
 			if check_card_target_area(card, i):
-				g_Scene.get_area(i).arrow_texture = g_GameRes.arrow_green
+				g_Scene.get_area(i).target = 1
 
 
 func check_card_target_area(card: CardDef, area_id: int) -> bool:
@@ -727,9 +728,9 @@ func check_card_target_area(card: CardDef, area_id: int) -> bool:
 				CARD_ID.CITY_CARD:
 					return area.can_construct(1)
 				CARD_ID.INDUSTRY_CARD:
-					return area.can_construct(1)
+					return area.can_construct(2)
 				CARD_ID.AIRPORT_CARD:
-					return area.can_construct(1)
+					return area.can_construct(3)
 				CARD_ID.LAND_FORT_CARD:
 					return area.installation == 0
 				CARD_ID.ENTRENCHMENT_CARD:
@@ -761,11 +762,11 @@ func check_card_target_area(card: CardDef, area_id: int) -> bool:
 						and area.get_num_armies() > 0\
 						and not area.has_army_card(0, 3)
 				CARD_ID.SUPPLY_LINE_CARD:
-					if area.country != null:
+					if area.country != self:
 						return false
 					for i in area.get_num_armies():
 						var army = area.get_army(i)
-						if army.hp < army.get_max_strength():
+						if army.strength < army.get_max_strength():
 							return true
 					return false
 				CARD_ID.ACE_FORCES_CARD:

@@ -204,9 +204,14 @@ rect_640h = SubResource("Resource_jr8kc")
 rect_568h = SubResource("Resource_0vedl")
 
 [node name="ecText" parent="Name" index="0" unique_id=1650770578 instance=ExtResource("4_7lva4")]
-layout_mode = 0
-offset_left = -1.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_right = 0.5
 offset_bottom = 23.0
+grow_horizontal = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.19215687, 0.12156863, 0.043137256, 1)
@@ -405,16 +410,15 @@ rect_ipad = SubResource("Resource_4jjju")
 texture_res = ExtResource("18_iypsr")
 
 [node name="GUIMedal" parent="." index="14" unique_id=642182575 instance=ExtResource("18_rm3xk")]
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
 anchor_right = 0.0
-anchor_bottom = 0.0
 offset_left = 36.0
-offset_top = 297.0
+offset_top = -23.0
 offset_right = 106.0
-offset_bottom = 320.0
 grow_horizontal = 1
-grow_vertical = 1
+grow_vertical = 0
 rect = SubResource("Resource_i1oih")
 rect_ipad = SubResource("Resource_2hyii")
 

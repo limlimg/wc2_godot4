@@ -118,5 +118,5 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventScreenDrag:
 		accept_event()
 	elif event.is_action_released(&"ui_cancel"):
-		back_pressed.emit()
+		$ButtonBack.pressed.emit()
 		accept_event()

@@ -2,9 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bdt4ktnlcrivf" path="res://resources/assets/logo_gui_res/country_defeat.png.tres" id="1_e2dqc"]
 [ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="1_m2o1a"]
-[ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://game_res_render/ai_commander_medal.tscn" id="1_wuq0w"]
 [ext_resource type="Script" uid="uid://c61bupitgwiku" path="res://gui_defeated.gd" id="1_ydi4n"]
-[ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://game_res_render/commander_medal.tscn" id="2_f1uq0"]
 [ext_resource type="Resource" uid="uid://eoo8e238q75f" path="res://resources/assets/game_gui_defeated_res/texture_res.tres" id="2_m2o1a"]
 [ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="2_y8yra"]
 [ext_resource type="PackedScene" uid="uid://c21703l00we80" path="res://gui_button_ex.tscn" id="3_ywyf6"]
@@ -52,15 +50,10 @@ centered = false
 position = Vector2(76, 90)
 centered = false
 
-[node name="AICommanderMedal" parent="." index="4" unique_id=1467720846 instance=ExtResource("1_wuq0w")]
-position = Vector2(144, 102)
-stack = 1
+[node name="CommanderMedal" type="Node2D" parent="." index="4" unique_id=1069345554]
+position = Vector2(60, 112)
 
-[node name="CommanderMedal" parent="." index="5" unique_id=1241850369 instance=ExtResource("2_f1uq0")]
-position = Vector2(144, 102)
-stack = 1
-
-[node name="Defeated" parent="." index="6" unique_id=1650770578 instance=ExtResource("9_6vb1t")]
+[node name="Defeated" parent="." index="5" unique_id=1650770578 instance=ExtResource("9_6vb1t")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -74,7 +67,7 @@ horizontal_alignment = 1
 font = NodePath("/root/g_Font6")
 color = Color(0, 0, 0, 1)
 
-[node name="ButtonOk" parent="." index="7" unique_id=2034275630 instance=ExtResource("3_ywyf6")]
+[node name="ButtonOk" parent="." index="6" unique_id=2034275630 instance=ExtResource("3_ywyf6")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
@@ -95,4 +88,5 @@ texture_normal = SubResource("Texture2D_p6yii")
 texture_pressed = SubResource("Texture2D_p6yii")
 texture_res = ExtResource("2_y8yra")
 
+[connection signal="draw" from="CommanderMedal" to="." method="_on_commander_medal_draw"]
 [connection signal="pressed" from="ButtonOk" to="." method="_on_button_ok_pressed"]

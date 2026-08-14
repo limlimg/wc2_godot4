@@ -1,8 +1,6 @@
 extends Control
 
-@export
-var battle_area: int:
-	set = set_battle_area
+var _battle_area: int
 
 @export
 var side: int
@@ -28,9 +26,7 @@ var _effect_to_fire: int
 var _effect_timer: float
 
 func set_battle_area(value: int) -> void:
-	if value == battle_area:
-		return
-	battle_area = value
+	_battle_area = value
 	var area = g_Scene.get_area(value)
 	if area == null:
 		return
@@ -106,9 +102,7 @@ func _create_fort() -> void:
 		fort_lib.load_data(res + ".bin")
 	fort_lib.texture_res = fort_res
 	_fort = $Fort.create_instance()
-	_fort.army_id = 16
-	_fort.library = fort_lib
-	_fort.motions = motions
+	_fort.init(0, 16, fort_lib, motions)
 
 
 func _release_units() -> void:
@@ -121,7 +115,7 @@ func _release_units() -> void:
 
 
 func _create_units() -> void:
-	var area = g_Scene.get_area(battle_area)
+	var area = g_Scene.get_area(_battle_area)
 	var army = area.get_army(0)
 	var army_id = army.def.id
 	var army_name = army.def.name
@@ -133,7 +127,7 @@ func _create_units() -> void:
 		country_name if army_id >= 1 and army_id <= 5 else &"")
 	positions = object_def.get_unit_positions(army_name)
 	var res := motions.res
-	if army_id > 5:
+	if army_id <= 5:
 		if AppDelegate.has_unit_motion(res, country_name):
 			res += "_" + country_name
 		else:
@@ -150,12 +144,11 @@ func _create_units() -> void:
 	for i in 5:
 		if i < num_dices or army.is_navy():
 			var unit = $Units/CBattleUnit.create_instance()
-			unit.unit_index = i
-			unit.army_id = army_id
-			unit.library = unit_lib
-			unit.motions = motions
+			unit.init(i, army_id, unit_lib, motions)
 			unit.position = Vector2(positions.x[i], positions.y[i])
-			unit.scale = Vector2.ONE * positions.scale[i]
+			unit.unit_scale = Vector2.ONE * positions.scale[i]
+			# reverse order of creation in tree
+			unit.get_parent().move_child(unit, 0)
 			if i >= num_dices:
 				unit.set_destroyed()
 				_destroyed_units.append(unit)
@@ -180,8 +173,8 @@ func update(delta: float) -> void:
 			if unit != null:
 				unit.attack()
 				if _attack_index == 0:
-					var army = g_Scene.get_area(battle_area).get_army(0)
-					if army != 0 and army.def.id > 1:
+					var army = g_Scene.get_area(_battle_area).get_army(0)
+					if army != null and army.def.id > 1:
 						get_node(opposite_scene).start_effect(_units.size() + 1)
 					if _fort != null:
 						_fort.attack()
@@ -196,7 +189,7 @@ func update(delta: float) -> void:
 			var rand_x := randi_range(0, 119) + 20.0
 			var rand_y := randi_range(280 - 30 * _units.size(), 299)
 			var rand_effect := randi_range(0, 4)
-			if g_Scene.get_area(battle_area).sea != 0:
+			if g_Scene.get_area(_battle_area).sea != 0:
 				match rand_effect:
 					0:
 						_add_effect("effect_strike2.xml", rand_x, rand_y)
@@ -228,6 +221,8 @@ func update(delta: float) -> void:
 			g_SoundRes.play_char_se(SND_EFFECT.STRIKE_WAV)
 	for i in _units:
 		i.update(delta)
+	for i in _destroyed_units:
+		i.update(delta)
 	if _fort:
 		_fort.update(delta)
 	var i := 0
@@ -248,19 +243,18 @@ func start_effect(num: int) -> void:
 
 func _add_effect(effect_name: String, x: float, y: float) -> void:
 	var effect = $ecEffect.create_instance()
+	effect.effect_res = ecEffectRes.new()
+	effect.effect_res.asset = AssetRegistry.new()
 	effect.effect_res.asset.name = effect_name
 	effect.effect_res.texture_res = effect_texture_res
 	effect.fire_at(x, y, 0.0)
 	_effects.append(effect)
-	effect.stopped().connect(func ():
-		_effects[_effects.find(effect)] = _effects[-1]
-		_effects.pop_back()
-		effect.queue_free())
 
 
 func clear_effect() -> void:
 	for i in _effects:
 		i.queue_free()
+	_effects.clear()
 
 
 func _add_crater(image: StringName, crater_x: float, crater_y: float, crater_scale: float) -> void:
@@ -274,8 +268,8 @@ func _add_crater(image: StringName, crater_x: float, crater_y: float, crater_sca
 
 func clear_craters() -> void:
 	for i in _craters:
-		$Craters.remove_child(i)
 		i.queue_free()
+	_craters.clear()
 
 
 func is_attacking() -> bool:

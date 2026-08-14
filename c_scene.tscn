@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dwigbsm4seqr1" path="res://c_scene.gd" id="1_2l0sg"]
 [ext_resource type="PackedScene" uid="uid://jqqrcwjhx42l" path="res://c_camera.tscn" id="2_giqlr"]
+[ext_resource type="PackedScene" uid="uid://cr754csw241vl" path="res://ec_image.tscn" id="3_qkbiv"]
 
 [node name="CScene" type="Control" unique_id=342875909]
 layout_mode = 3
@@ -15,32 +16,23 @@ script = ExtResource("1_2l0sg")
 [node name="CCamera" parent="." unique_id=1077541885 instance=ExtResource("2_giqlr")]
 layout_mode = 1
 
-[node name="CBackground" parent="CCamera" unique_id=1763912598 instance_placeholder="res://c_background.tscn"]
+[node name="CBackground" parent="." unique_id=1763912598 instance_placeholder="res://c_background.tscn"]
 layout_mode = 0
 offset_left = -82.0
 offset_top = -82.0
 offset_right = 82.0
 offset_bottom = 82.0
 
-[node name="Areas" type="Node2D" parent="CCamera" unique_id=1826169589]
+[node name="Areas" type="Node2D" parent="." unique_id=1826169589]
 
-[node name="SelectedOverlay" type="Node2D" parent="CCamera" unique_id=978128942]
+[node name="SelectedOverlay" type="Node2D" parent="." unique_id=978128942]
 
-[node name="Arrow" type="Node2D" parent="CCamera/SelectedOverlay" unique_id=681593986]
+[node name="ArrowBlue" parent="SelectedOverlay" unique_id=1117931184 instance=ExtResource("3_qkbiv")]
+visible = false
 
-[node name="TextureRect" type="TextureRect" parent="CCamera/SelectedOverlay/Arrow" unique_id=1645406283]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -22.0
-offset_right = 22.0
-offset_bottom = 459.5
-grow_horizontal = 2
-scale = Vector2(1, 0.19999999)
-pivot_offset = Vector2(-22, 0)
-expand_mode = 1
-flip_v = true
+[node name="ArrowRed" parent="SelectedOverlay" unique_id=1399184909 instance=ExtResource("3_qkbiv")]
+visible = false
 
-[node name="CMedal" parent="CCamera" unique_id=1613117480 instance_placeholder="res://c_medal.tscn"]
+[node name="CMedal" parent="." unique_id=1613117480 instance_placeholder="res://c_medal.tscn"]
 
-[node name="CBomber" parent="CCamera" unique_id=511489610 instance_placeholder="res://c_bomber.tscn"]
+[node name="CBomber" parent="." unique_id=511489610 instance_placeholder="res://c_bomber.tscn"]

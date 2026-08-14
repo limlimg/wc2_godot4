@@ -3,6 +3,7 @@ extends Node
 var _army_res: ecTextureRes
 var _image_hp_bar: Texture2D
 var _image_hp_bar_fill: Texture2D
+var card_mark: Array[Texture2D]
 var arrow_green: Texture2D
 var arrow_yellow: Texture2D
 var arrow_blue: Texture2D
@@ -26,6 +27,8 @@ func load_res() -> void:
 	_image_hp_bar_fill.texture = hp_bar_fill.texture
 	_image_hp_bar_fill.region.position.x += 1.0
 	_image_hp_bar_fill.region.size.x = 1.0
+	for i in 4:
+		card_mark.append(_army_res.get_image("cardmark_{0}.png".format([i + 1])))
 	arrow_green = _army_res.get_image(&"arrow_green.png")
 	arrow_yellow = _army_res.get_image(&"arrow_yellow.png")
 	arrow_blue = _army_res.get_image(&"arrow_blue.png")
@@ -84,7 +87,7 @@ func render_ui_defend_army(to_canvas_item: RID, country_name: StringName, x: flo
 	var card_pos := Vector2(x - 50.0, y - 20.0)
 	for i in 3:
 		if cards & (1<<i):
-			_army_res.get_image("cardmark_{0}.png".format([i + 1])).draw(to_canvas_item, card_pos)
+			card_mark[i].draw(to_canvas_item, card_pos)
 			card_pos.y -= 15.0
 
 
@@ -108,7 +111,7 @@ func render_ui_attack_army(to_canvas_item: RID, country_name: StringName, x: flo
 	var card_pos := Vector2(x + 36.0, y - 20.0)
 	for i in 3:
 		if cards & (1<<i):
-			_army_res.get_image("cardmark_{0}.png".format([i + 1])).draw(to_canvas_item, card_pos)
+			card_mark[i].draw(to_canvas_item, card_pos)
 			card_pos.y -= 15.0
 
 
@@ -139,7 +142,7 @@ func render_ui_army(to_canvas_item: RID, country_name: StringName, x: float, y: 
 	var card_pos := Vector2(x + 16.0, y - 20.0)
 	for i in 3:
 		if cards & (1<<i):
-			_army_res.get_image("cardmark_{0}.png".format([i + 1])).draw(to_canvas_item, card_pos)
+			card_mark[i].draw(to_canvas_item, card_pos)
 			card_pos.y -= 15.0
 
 
@@ -223,6 +226,7 @@ func release() -> void:
 	_army_res = null
 	_image_hp_bar = null
 	_image_hp_bar_fill = null
+	card_mark.clear()
 	arrow_green = null
 	arrow_yellow = null
 	arrow_blue = null
@@ -311,5 +315,5 @@ func render_army_info(to_canvas_item: RID, stack: int, x: float, y: float, stren
 	var card_pos := Vector2(x + 26.0, y)
 	for i in 3:
 		if cards & (1<<i):
-			_army_res.get_image("cardmark_{0}.png".format([i + 1])).draw(to_canvas_item, card_pos)
+			card_mark[i].draw(to_canvas_item, card_pos)
 			card_pos.y -= 15.0

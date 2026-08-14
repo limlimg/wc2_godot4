@@ -103,7 +103,8 @@ metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [sub_resource type="Resource" id="Resource_kwhv8"]
 script = ExtResource("13_ljmrf")
-name = "blue_big.png"
+name = "blue_normal.png"
+name_ipad = "blue_big.png"
 
 [sub_resource type="Resource" id="Resource_77jea"]
 script = ExtResource("4_5uof3")

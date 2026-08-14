@@ -21,11 +21,11 @@ func aircraft_carrier_bomb(attack_area: int, defend_area: int) -> void:
 
 func bomb_area(area_id: int, action_type: int) -> void:
 	_target_area = area_id
-	var target_pos :=g_Scene.get_area(area_id).army_pos
+	var target_pos := g_Scene.get_area(area_id).army_pos
 	_target_x = target_pos.x
 	$Plane.position.y = target_pos.y
 	var camera: CCamera = g_Scene.camera
-	var start_x = minf((camera.position.x - camera.size.x / 2) / camera.camera_zoom.x - 100.0, _target_x - 400.0)
+	var start_x = minf(camera.camera_position.x - camera.size.x / 2 / camera.camera_zoom.x - 100.0, _target_x - 400.0)
 	$Plane.position.x = start_x
 	_action_type = action_type
 	visible = true
@@ -42,7 +42,7 @@ func airborne(area_id: int) -> void:
 	_target_x = target_pos.x
 	$Plane.position.y = target_pos.y
 	var camera: CCamera = g_Scene.camera
-	var start_x = minf((camera.position.x - camera.size.x / 2) / camera.camera_zoom.x - 100.0, _target_x - 400.0)
+	var start_x = minf(camera.camera_position.x - camera.size.x / 2 / camera.camera_zoom.x - 100.0, _target_x - 400.0)
 	$Plane.position.x = start_x
 	visible = true
 	_is_airborne = true
@@ -62,27 +62,27 @@ func update(delta: float) -> void:
 	var t := t0 + delta
 	$Plane.position.x = _s_t(t) + _target_x
 	var camera: CCamera = g_Scene.camera
-	var end_x = maxf((camera.position.x + camera.size.x / 2) / camera.camera_zoom.x + 100.0, _target_x + 400.0)
+	var end_x = maxf(camera.camera_position.x + camera.size.x / 2 / camera.camera_zoom.x + 100.0, _target_x + 400.0)
 	if $Plane.position.x > end_x and _effect_ended:
 		visible = false
+	if not _is_airborne and _action_type == 1 or _action_type == 4:
+		if _air_strike_shot <= 4:
+			if t > _t_s((_air_strike_shot - 3) * 50.0):
+				var effect = ecEffectManager.instance().add_effect("effect_airstrike.xml", true)
+				var y = $Plane.position.y + randi_range(-5, 4)
+				effect.fire_at(_target_x - 50.0 + 20.0 * _air_strike_shot, y, 0.0)
+				if _air_strike_shot != 0:
+					g_SoundRes.play_char_se(SND_EFFECT.MACHINE_GUN_WAV)
+				_air_strike_shot += 1
 	if not _effect_playing:
 		if _is_airborne:
 			if t0 < 0.0 and t >= 0.0:
 				_effect_playing = true
 				_effect_timer = sqrt(0.4)
-				var effect = $ecEffectManager.add_effect("effect_parachute.xml", true)
+				var effect = ecEffectManager.instance().add_effect("effect_parachute.xml", true)
 				var y = $Plane.position.y - 60
 				effect.fire_at(_target_x, y, 0.0)
-		elif _action_type == 1 or _action_type == 4:
-			if _air_strike_shot <= 4:
-				if t > _t_s((_air_strike_shot - 3) * -50.0):
-					var effect = $ecEffectManager.add_effect("effect_airstrike.xml", true)
-					var y = $Plane.position.y + randi_range(-5, 4)
-					effect.fire_at(_target_x - 50.0 + 20.0 * _air_strike_shot, y, 0.0)
-					if _air_strike_shot != 0:
-						g_SoundRes.play_char_se(SND_EFFECT.MACHINE_GUN_WAV)
-					_air_strike_shot += 1
-			else:
+		elif t0 < 0.0 and t >= 0.0:
 				_effect_playing = true
 				_effect_timer = sqrt(1.0 / 15.0)
 	else:

@@ -194,12 +194,12 @@ grow_vertical = 1
 
 [node name="ButtonCardRemove" parent="." unique_id=1211914993 instance_placeholder="res://gui_button.tscn"]
 visible = false
-layout_mode = 0
-anchors_preset = 0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
 anchor_right = 0.0
-anchor_bottom = 0.0
 grow_horizontal = 1
-grow_vertical = 1
+grow_vertical = 0
 image_normal = SubResource("Resource_v0skf")
 image_pressed = SubResource("Resource_rlpu7")
 image_background = SubResource("Resource_40ofo")

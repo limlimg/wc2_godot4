@@ -59,6 +59,7 @@ var _army_moving_in_timer: float
 var _army_moving_in_will_occupy: bool
 var _army_moving_in_will_complain: bool
 var _army_moving_in_complainer: StringName
+var target: int
 var canvas_item_root: RID
 var _canvas_item_flag: RID
 var _canvas_item_building: RID
@@ -263,7 +264,7 @@ func draft_army(army_id: int) -> CArmy:
 	if army_def == null:
 		return null
 	var new_army := CArmy.new()
-	new_army.def = army_def
+	new_army.init(army_def)
 	new_army.country = country
 	new_army.ai_active = true
 	add_army(new_army, false)
@@ -503,9 +504,7 @@ func update(delta: float) -> void:
 	if army_moving_to_front:
 		var v := Vector2(-_army_offset.x - 12.0, -_army_offset.y / (1.0 if _army_offset.y >= 0 else 2.0))
 		var a := minf(v.angle() + 12 * delta, 5.96902597 - PI)
-		print(_army_offset, v, v.angle(), a)
 		_army_offset = Vector2(-cos(a) * 12.0 - 12.0, -sin(a) * (12.0 if a <= 0 else 24.0))
-		print(_army_offset)
 		if a >= 5.96902597 - PI:
 			_army_offset = Vector2.ZERO
 			army_moving_to_front = false
@@ -631,7 +630,7 @@ func load_area(info: SaveAreaInfo) -> void:
 	if country != null:
 		for i in info.army_count:
 			var new_army := CArmy.new()
-			new_army.def = CObjectDef.instance().get_army_def(info.army[i].type, country.name)
+			new_army.init(CObjectDef.instance().get_army_def(info.army[i].type, country.name))
 			new_army.country = country
 			new_army.load_army(info.army[i])
 			add_army(new_army, true)

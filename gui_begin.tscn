@@ -15,44 +15,56 @@
 
 [sub_resource type="Resource" id="Resource_7mlto"]
 script = ExtResource("5_bskrj")
+rect = Rect2(30, 168, 0, 0)
 
 [sub_resource type="Resource" id="Resource_iwmdf"]
 script = ExtResource("5_bskrj")
+rect = Rect2(30, 168, 0, 0)
 scale = Vector2(0.5, 0.5)
 
 [sub_resource type="Resource" id="Resource_47ai8"]
 script = ExtResource("5_bskrj")
+rect = Rect2(54, 168, 0, 0)
 
 [sub_resource type="Resource" id="Resource_a0tjr"]
 script = ExtResource("5_bskrj")
+rect = Rect2(54, 168, 0, 0)
 scale = Vector2(0.5, 0.5)
 
 [sub_resource type="Resource" id="Resource_v5tg6"]
 script = ExtResource("5_bskrj")
+rect = Rect2(78, 168, 0, 0)
 
 [sub_resource type="Resource" id="Resource_00kvo"]
 script = ExtResource("5_bskrj")
+rect = Rect2(78, 168, 0, 0)
 scale = Vector2(0.5, 0.5)
 
 [sub_resource type="Resource" id="Resource_bskrj"]
 script = ExtResource("5_bskrj")
+rect = Rect2(102, 168, 0, 0)
 
 [sub_resource type="Resource" id="Resource_4x52i"]
 script = ExtResource("5_bskrj")
+rect = Rect2(102, 168, 0, 0)
 scale = Vector2(0.5, 0.5)
 
 [sub_resource type="Resource" id="Resource_gfhiv"]
 script = ExtResource("5_bskrj")
+rect = Rect2(126, 168, 0, 0)
 
 [sub_resource type="Resource" id="Resource_ti42w"]
 script = ExtResource("5_bskrj")
+rect = Rect2(126, 168, 0, 0)
 scale = Vector2(0.5, 0.5)
 
 [sub_resource type="Resource" id="Resource_bhsn6"]
 script = ExtResource("5_bskrj")
+rect = Rect2(150, 168, 0, 0)
 
 [sub_resource type="Resource" id="Resource_priee"]
 script = ExtResource("5_bskrj")
+rect = Rect2(150, 168, 0, 0)
 scale = Vector2(0.5, 0.5)
 
 [sub_resource type="Resource" id="Resource_8tc1c"]
@@ -67,7 +79,7 @@ name = "buttontext_ok_press.png"
 script = ExtResource("10_4x52i")
 name = "green_normal.png"
 
-[sub_resource type="Texture2D" id="Texture2D_p6yii"]
+[sub_resource type="Texture2D" id="Texture2D_iwmdf"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("11_iwmdf")
@@ -290,8 +302,8 @@ image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
 image_normal = SubResource("Resource_074fc")
 image_pressed = SubResource("Resource_074fc")
-texture_normal = SubResource("Texture2D_p6yii")
-texture_pressed = SubResource("Texture2D_p6yii")
+texture_normal = SubResource("Texture2D_iwmdf")
+texture_pressed = SubResource("Texture2D_iwmdf")
 texture_res = ExtResource("7_1x8k7")
 
 [node name="ButtonBank" parent="." index="14" unique_id=253563591 instance=ExtResource("11_jaih1")]

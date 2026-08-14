@@ -20,20 +20,28 @@ enable = true
 max_value = 0
 value = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." index="0" unique_id=412647155]
+[node name="GUIElement" parent="." index="0" unique_id=1038057604 instance=ExtResource("2_k4qyj")]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+rect = SubResource("Resource_f6xj2")
+rect_ipad = SubResource("Resource_k4qyj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUIElement" index="0" unique_id=412647155]
+layout_mode = 0
 mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Prototype" parent="HBoxContainer" index="0" unique_id=1517284727 instance=ExtResource("2_k4qyj")]
+[node name="Prototype" parent="GUIElement/HBoxContainer" index="0" unique_id=1517284727 instance=ExtResource("2_k4qyj")]
 visible = false
 layout_mode = 2
 rect = SubResource("Resource_f6xj2")
 rect_ipad = SubResource("Resource_k4qyj")
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Prototype" index="0" unique_id=1045045937]
+[node name="TextureRect" type="TextureRect" parent="GUIElement/HBoxContainer/Prototype" index="0" unique_id=1045045937]
 layout_mode = 0
 offset_right = 20.0
 mouse_filter = 2

@@ -3,43 +3,19 @@ extends Node2D
 class Particle:
 	extends Sprite2D
 	
-	@export
+	var initial_pos: Vector2
 	var speed: Vector2
-	
-	@export
 	var speed_shift_curve := Curve.new()
-	
-	@export
 	var gravity: float
-	
-	@export
 	var gravity_shift_curve := Curve.new()
-	
-	@export
 	var initial_scale: Vector2
-	
-	@export
 	var scale_curve := Curve.new()
-	
-	@export
 	var initial_rot_angle: float
-	
-	@export
 	var rot_speed: float
-	
-	@export
 	var rot_shift_curve := Curve.new()
-	
-	@export
 	var color: Color
-	
-	@export
 	var color_gradient := Gradient.new()
-	
-	@export
 	var lifespam: float
-	
-	@export
 	var life := 0.0
 
 
@@ -135,7 +111,7 @@ func update(delta: float) -> void:
 			particle.queue_free()
 			continue
 		var t1 := particle.life / particle.lifespam
-		particle.position = particle.speed * particle.speed_shift_curve.sample_baked(t1)
+		particle.position = particle.initial_pos + particle.speed * particle.speed_shift_curve.sample_baked(t1)
 		particle.position.y += particle.gravity * particle.gravity_shift_curve.sample_baked(t1)
 		particle.rotation = particle.initial_rot_angle + particle.rot_speed * particle.rot_shift_curve.sample_baked(t1)
 		particle.scale = particle.initial_scale * particle.scale_curve.sample_baked(t1)
@@ -154,11 +130,11 @@ func update(delta: float) -> void:
 				particle.material = _particle_material
 			match emitter_attr.settings_type:
 				0:
-					particle.offset.x = randf_range(_last_position.x - position.x, 0.0) + randf_range(-2.0, 2.0)
-					particle.offset.y = randf_range(_last_position.y - position.y, 0.0) + randf_range(-2.0, 2.0)
+					particle.initial_pos.x = randf_range(_last_position.x - position.x, 0.0) + randf_range(-2.0, 2.0)
+					particle.initial_pos.y = randf_range(_last_position.y - position.y, 0.0) + randf_range(-2.0, 2.0)
 				2:
-					particle.offset.x = randf_range(_last_position.x - position.x, 0.0) + randf_range(-0.5, 0.5) * emitter_attr.settings_param_1
-					particle.offset.y = randf_range(_last_position.y - position.y, 0.0) + randf_range(-0.5, 0.5) * emitter_attr.settings_param_2
+					particle.initial_pos.x = randf_range(_last_position.x - position.x, 0.0) + randf_range(-0.5, 0.5) * emitter_attr.settings_param_1
+					particle.initial_pos.y = randf_range(_last_position.y - position.y, 0.0) + randf_range(-0.5, 0.5) * emitter_attr.settings_param_2
 			var speed_angle := _fire_at_angle + randf_range(emitter_attr.angle_min, emitter_attr.angle_max)
 			particle.speed = Vector2.from_angle(speed_angle) * randf_range(emitter_attr.speed_min, emitter_attr.speed_max)
 			particle.speed_shift_curve = _speed_shift_curve
@@ -180,6 +156,10 @@ func update(delta: float) -> void:
 			particle.scale_curve.bake()
 			particle.rot_shift_curve.bake()
 			particle.life = 0.0
+			particle.position = particle.initial_pos
+			particle.rotation = particle.initial_rot_angle
+			particle.scale = particle.initial_scale * particle.scale_curve.sample_baked(0.0)
+			particle.self_modulate = particle.color * particle.color_gradient.sample(0.0)
 			add_child(particle, false, Node.INTERNAL_MODE_BACK)
 			_particles.append(particle)
 			_emitted_quantity += 1
@@ -242,6 +222,7 @@ static func _integrate_curve(curve: Curve) -> Curve:
 		if y0 > integration.max_value:
 			integration.max_value = y0
 		integration.add_point(Vector2(p1.x, y0), p1.y, p1.y)
+		p0 = p1
 	return integration
 
 

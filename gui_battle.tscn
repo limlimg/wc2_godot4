@@ -2,16 +2,32 @@
 
 [ext_resource type="PackedScene" uid="uid://c7xftwk7efcxj" path="res://c_battle_scene.tscn" id="1_5gv8k"]
 [ext_resource type="Script" uid="uid://bpfsj3lintrsq" path="res://gui_battle.gd" id="1_g67rq"]
-[ext_resource type="PackedScene" uid="uid://d1lnnqonc760d" path="res://game_res_render/army_hp.tscn" id="3_g67rq"]
 [ext_resource type="Resource" uid="uid://cq5m16ucm6vuo" path="res://resources/assets/game_res/eff.tres" id="3_ulyfx"]
-[ext_resource type="PackedScene" uid="uid://7cn6l08bv1gv" path="res://game_res_render/army_level.tscn" id="4_gmhhi"]
 [ext_resource type="Texture2D" uid="uid://dbmkdw2tuqyo" path="res://resources/assets/logo_gui_res/board_down.png.tres" id="4_w82aw"]
 [ext_resource type="Texture2D" uid="uid://jdvnbdyerr2e" path="res://resources/assets/texture/board_up.png.tres" id="5_5yeo3"]
 [ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="5_t5bh4"]
-[ext_resource type="PackedScene" uid="uid://3052y8cmxuda" path="res://game_res_render/ai_commander_medal.tscn" id="5_w82aw"]
-[ext_resource type="PackedScene" uid="uid://bcfm8kyvi5m6u" path="res://game_res_render/commander_medal.tscn" id="6_5yeo3"]
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="6_fnrpd"]
 [ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="12_ffeyb"]
+
+[sub_resource type="Resource" id="Resource_hr4th"]
+script = ExtResource("6_fnrpd")
+rect = Rect2(0, 0, 240, 320)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_crx7g"]
+script = ExtResource("6_fnrpd")
+rect = Rect2(0, 0, 512, 320)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_qhid3"]
+script = ExtResource("6_fnrpd")
+rect = Rect2(0, 0, 320, 320)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
+
+[sub_resource type="Resource" id="Resource_fnrpd"]
+script = ExtResource("6_fnrpd")
+rect = Rect2(0, 0, 284, 320)
+metadata/_custom_type_script = "uid://evuj5s5tcpwa"
 
 [sub_resource type="Resource" id="Resource_qefp7"]
 script = ExtResource("6_fnrpd")
@@ -34,17 +50,21 @@ scale = Vector2(-1, -1)
 [node name="GUIBattle" unique_id=1627139554 instance=ExtResource("5_t5bh4")]
 mouse_filter = 1
 script = ExtResource("1_g67rq")
-_attack_area = 0
-_defend_area = 0
 
-[node name="Left" type="Control" parent="." index="0" unique_id=578520879]
-custom_minimum_size = Vector2(0, 320)
+[node name="Left" parent="." index="0" unique_id=64727346 instance=ExtResource("5_t5bh4")]
 layout_mode = 1
-anchor_left = -0.5
+anchors_preset = -1
 anchor_top = 0.5
+anchor_right = 0.0
 anchor_bottom = 0.5
-grow_vertical = 2
-mouse_filter = 2
+offset_left = -240.0
+offset_top = -160.0
+offset_bottom = 160.0
+grow_horizontal = 0
+rect = SubResource("Resource_hr4th")
+rect_ipad = SubResource("Resource_crx7g")
+rect_640h = SubResource("Resource_qhid3")
+rect_568h = SubResource("Resource_fnrpd")
 
 [node name="CBattleScene" parent="Left" index="0" unique_id=1489653524 instance=ExtResource("1_5gv8k")]
 layout_mode = 1
@@ -67,6 +87,7 @@ position = Vector2(0, 9)
 centered = false
 
 [node name="BoardUp" type="TextureRect" parent="Left" index="3" unique_id=946428190]
+texture_repeat = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -89,6 +110,7 @@ rect = SubResource("Resource_qefp7")
 rect_ipad = SubResource("Resource_f7lds")
 
 [node name="TextureRect" type="TextureRect" parent="Left/BoardUp2" index="0" unique_id=1677135068]
+texture_repeat = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,69 +122,41 @@ texture = ExtResource("5_5yeo3")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="ArmyHP" parent="Left" index="5" unique_id=1672050932 instance=ExtResource("3_g67rq")]
-position = Vector2(4, 43)
+[node name="ArmyInfo" type="Node2D" parent="Left" index="5" unique_id=1733882333]
 
-[node name="ArmyLevel" parent="Left" index="6" unique_id=530033446 instance=ExtResource("4_gmhhi")]
-position = Vector2(56, 32)
-
-[node name="Cards" type="HBoxContainer" parent="Left" index="7" unique_id=1256937945]
-layout_mode = 0
-offset_left = 77.0
-offset_top = 18.0
-offset_right = 115.0
-offset_bottom = 18.0
-mouse_filter = 2
-theme_override_constants/separation = 0
-
-[node name="TextureRect" type="TextureRect" parent="Left/Cards" index="0" unique_id=256313044]
-custom_minimum_size = Vector2(19, 0)
-layout_mode = 2
-mouse_filter = 2
-expand_mode = 2
-stretch_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="Left/Cards" index="1" unique_id=313367450]
-custom_minimum_size = Vector2(19, 0)
-layout_mode = 2
-mouse_filter = 2
-expand_mode = 2
-stretch_mode = 2
-
-[node name="AICommanderMedal" parent="Left" index="8" unique_id=1467720846 instance=ExtResource("5_w82aw")]
-position = Vector2(53, 54)
-
-[node name="CommanderMedal" parent="Left" index="9" unique_id=1241850369 instance=ExtResource("6_5yeo3")]
-position = Vector2(53, 54)
-
-[node name="MinAttack" parent="Left" index="10" unique_id=1650770578 instance=ExtResource("12_ffeyb")]
+[node name="MinAttack" parent="Left" index="6" unique_id=1650770578 instance=ExtResource("12_ffeyb")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 128.0
 offset_top = 12.0
-offset_right = 128.0
-offset_bottom = 12.0
+offset_right = 129.0
+offset_bottom = 35.0
 font = NodePath("/root/g_Num5")
 
-[node name="MaxAttack" parent="Left" index="11" unique_id=241203015 instance=ExtResource("12_ffeyb")]
+[node name="MaxAttack" parent="Left" index="7" unique_id=241203015 instance=ExtResource("12_ffeyb")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 168.0
 offset_top = 12.0
-offset_right = 168.0
-offset_bottom = 12.0
+offset_right = 169.0
+offset_bottom = 35.0
 font = NodePath("/root/g_Num5")
 
-[node name="Right" type="Control" parent="." index="1" unique_id=1762659452]
-custom_minimum_size = Vector2(0, 320)
+[node name="Right" parent="." index="1" unique_id=1188422287 instance=ExtResource("5_t5bh4")]
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 1.5
 anchor_top = 0.5
-anchor_right = 2.0
+anchor_right = 1.5
 anchor_bottom = 0.5
+offset_top = -160.0
+offset_right = 240.0
+offset_bottom = 160.0
 grow_horizontal = 0
-grow_vertical = 2
-mouse_filter = 2
+rect = SubResource("Resource_hr4th")
+rect_ipad = SubResource("Resource_crx7g")
+rect_640h = SubResource("Resource_qhid3")
+rect_568h = SubResource("Resource_fnrpd")
 
 [node name="CBattleScene" parent="Right" index="0" unique_id=480801888 instance=ExtResource("1_5gv8k")]
 layout_mode = 1
@@ -178,7 +172,7 @@ crater_texture_res = ExtResource("3_ulyfx")
 effect_texture_res = ExtResource("3_ulyfx")
 
 [node name="BoardDown" type="Sprite2D" parent="Right" index="1" unique_id=961645473]
-rotation = -3.1415927
+rotation = 3.1415925
 scale = Vector2(1, -1)
 texture = ExtResource("4_w82aw")
 centered = false
@@ -188,6 +182,7 @@ position = Vector2(-46, 9)
 centered = false
 
 [node name="BoardUp" type="TextureRect" parent="Right" index="3" unique_id=1998325615]
+texture_repeat = 2
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -211,6 +206,7 @@ rect = SubResource("Resource_ffeyb")
 rect_ipad = SubResource("Resource_t5bh4")
 
 [node name="TextureRect" type="TextureRect" parent="Right/BoardUp2" index="0" unique_id=1308945957]
+texture_repeat = 2
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -222,56 +218,25 @@ texture = ExtResource("5_5yeo3")
 expand_mode = 1
 stretch_mode = 1
 
-[node name="Cards" type="HBoxContainer" parent="Right" index="5" unique_id=1656659565]
-layout_mode = 0
-offset_left = -108.0
-offset_top = 18.0
-offset_right = -70.0
-offset_bottom = 18.0
-mouse_filter = 2
-theme_override_constants/separation = 0
-alignment = 2
+[node name="ArmyInfo" type="Node2D" parent="Right" index="5" unique_id=1896256517]
 
-[node name="TextureRect2" type="TextureRect" parent="Right/Cards" index="0" unique_id=203742842]
-custom_minimum_size = Vector2(19, 0)
-layout_mode = 2
-mouse_filter = 2
-expand_mode = 4
-stretch_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="Right/Cards" index="1" unique_id=826039913]
-custom_minimum_size = Vector2(19, 0)
-layout_mode = 2
-mouse_filter = 2
-expand_mode = 4
-stretch_mode = 2
-
-[node name="AICommanderMedal" parent="Right" index="6" unique_id=497668258 instance=ExtResource("5_w82aw")]
-position = Vector2(-69, 54)
-
-[node name="CommanderMedal" parent="Right" index="7" unique_id=68742353 instance=ExtResource("6_5yeo3")]
-position = Vector2(-69, 54)
-
-[node name="ArmyHP" parent="Right" index="8" unique_id=1615742047 instance=ExtResource("3_g67rq")]
-position = Vector2(-37, 43)
-
-[node name="ArmyLevel" parent="Right" index="9" unique_id=1703916809 instance=ExtResource("4_gmhhi")]
-position = Vector2(-66, 32)
-
-[node name="MinAttack" parent="Right" index="10" unique_id=418460902 instance=ExtResource("12_ffeyb")]
+[node name="MinAttack" parent="Right" index="6" unique_id=418460902 instance=ExtResource("12_ffeyb")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = -180.0
 offset_top = 12.0
-offset_right = -180.0
-offset_bottom = 12.0
+offset_right = -179.0
+offset_bottom = 35.0
 font = NodePath("/root/g_Num5")
 
-[node name="MaxAttack" parent="Right" index="11" unique_id=1180912207 instance=ExtResource("12_ffeyb")]
+[node name="MaxAttack" parent="Right" index="7" unique_id=1180912207 instance=ExtResource("12_ffeyb")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = -140.0
 offset_top = 12.0
-offset_right = -140.0
-offset_bottom = 12.0
+offset_right = -139.0
+offset_bottom = 35.0
 font = NodePath("/root/g_Num5")
+
+[connection signal="draw" from="Left/ArmyInfo" to="." method="_on_attack_army_info_draw"]
+[connection signal="draw" from="Right/ArmyInfo" to="." method="_on_defend_army_info_draw"]

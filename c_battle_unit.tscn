@@ -9,13 +9,11 @@
 script = ExtResource("1_wxp3r")
 
 [node name="StandBy" parent="." unique_id=1474302610 instance=ExtResource("1_8rnuj")]
-process_mode = 4
 
 [node name="Attack" parent="." unique_id=1778415775 instance=ExtResource("1_8rnuj")]
 visible = false
 
 [node name="Destroyed" parent="." unique_id=455760921 instance_placeholder="res://ec_element.tscn"]
-process_mode = 4
 visible = false
 
 [node name="Fire" parent="." unique_id=1633173356 instance_placeholder="res://ec_effect.tscn"]

@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bauwlmhvhufvb" path="res://c_bomber.gd" id="1_2ba0p"]
 [ext_resource type="Texture2D" uid="uid://c771twh1nxc0e" path="res://resources/assets/game_res/fighter.png.tres" id="1_ffuae"]
 [ext_resource type="Texture2D" uid="uid://bt48anokkkh07" path="res://resources/assets/game_res/bomber.png.tres" id="2_2ba0p"]
-[ext_resource type="PackedScene" uid="uid://3kjay574huha" path="res://ec_effect_manager.tscn" id="4_mejs8"]
 
 [node name="CBomber" type="Node2D" unique_id=180358466]
 visible = false
@@ -17,5 +16,3 @@ texture = ExtResource("1_ffuae")
 
 [node name="Bomber" type="Sprite2D" parent="Plane" unique_id=947882342]
 texture = ExtResource("2_2ba0p")
-
-[node name="ecEffectManager" parent="." unique_id=506515038 instance=ExtResource("4_mejs8")]

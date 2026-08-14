@@ -39,7 +39,7 @@ name = "buttontext_ok_press.png"
 script = ExtResource("12_0capv")
 name = "green_normal.png"
 
-[sub_resource type="Texture2D" id="Texture2D_hntj7"]
+[sub_resource type="Texture2D" id="Texture2D_htr7f"]
 resource_local_to_scene = false
 resource_name = ""
 script = ExtResource("10_678ko")
@@ -184,8 +184,8 @@ image_position_ipad = Vector2(11, -5)
 image_position = Vector2(13, 0)
 image_normal = SubResource("Resource_re5ym")
 image_pressed = SubResource("Resource_re5ym")
-texture_normal = SubResource("Texture2D_hntj7")
-texture_pressed = SubResource("Texture2D_hntj7")
+texture_normal = SubResource("Texture2D_htr7f")
+texture_pressed = SubResource("Texture2D_htr7f")
 rect = SubResource("Resource_miapv")
 rect_ipad = SubResource("Resource_ewltq")
 texture_res = ExtResource("5_0capv")

@@ -56,6 +56,8 @@ func init() -> void:
 			_list[i].day = header.save_time_day
 			_list[i].hour = header.save_time_hour
 			_list[i].minute = header.save_time_min
+		else:
+			_list[i].empty = true
 	_update_enable()
 	_selected = -1
 	$ButtonOk.enable = false
@@ -130,5 +132,5 @@ func _gui_input(event: InputEvent) -> void:
 	if event is InputEventScreenTouch or event is InputEventScreenDrag:
 		accept_event()
 	if event.is_action_released(&"ui_cancel"):
-		back_pressed.emit()
+		$ButtonBack.pressed.emit()
 		accept_event()

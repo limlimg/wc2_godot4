@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dmysnlqa41guv" path="res://gui_button.tscn" id="3_45dr7"]
 [ext_resource type="PackedScene" uid="uid://cgahn4turmmsf" path="res://gui_element.tscn" id="3_vy8mv"]
 [ext_resource type="Script" uid="uid://evuj5s5tcpwa" path="res://gui_rect.gd" id="4_ct8jq"]
+[ext_resource type="PackedScene" uid="uid://bev0ex7wxa3dd" path="res://ec_text.tscn" id="5_osks2"]
 [ext_resource type="Resource" uid="uid://cnypi6h346jcm" path="res://resources/assets/logo_gui_res/texture_res.tres" id="6_osks2"]
 [ext_resource type="Script" uid="uid://b0stiqify0vh6" path="res://resources/assets/asset_registry.gd" id="7_8njgi"]
 [ext_resource type="PackedScene" uid="uid://bp1f7if3s8vf4" path="res://gui_medal.tscn" id="8_5wwva"]
@@ -138,15 +139,18 @@ grow_vertical = 1
 rect = SubResource("Resource_wgm66")
 rect_ipad = SubResource("Resource_5wwva")
 
-[node name="Label" type="Label" parent="Tip" index="0" unique_id=922811902]
-layout_mode = 0
+[node name="ecText" parent="Tip" index="0" unique_id=1650770578 instance=ExtResource("5_osks2")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
 offset_left = -32.0
 offset_right = 32.0
 offset_bottom = 23.0
-size_flags_horizontal = 4
-size_flags_vertical = 0
+grow_horizontal = 2
 text = "bank tip"
 horizontal_alignment = 1
+font = NodePath("/root/g_Font2")
 
 [node name="ButtonBack" parent="." index="2" unique_id=2034275630 instance=ExtResource("3_45dr7")]
 layout_mode = 1

@@ -80,7 +80,7 @@ func _on_enter() -> void:
 	if cur_country != null and not cur_country.ai:
 		_gui_ai_progress.hide()
 	else:
-		_update_ai_progress()
+		update_ai_progress()
 		if g_GameManager.game_mode == 4:
 			_gui_ai_progress.hide()
 	_gui_sel_army = $GUISelArmy.create_instance()
@@ -103,14 +103,10 @@ func _on_enter() -> void:
 	_gui_defeated = $GUIDefeated.create_instance()
 	_gui_defeated.ok_pressed.connect(_on_gui_defeated_ok_pressed)
 	_gui_battle = $GUIBattle.create_instance()
-	_gui_battle.reparent(gui_manager)
-	_gui_defeated.reparent(gui_manager)
 	if _gui_action_info != null:
 		_gui_action_info.reparent(gui_manager)
 	_gui_sel_army.reparent(gui_manager)
 	_gui_ai_progress.reparent(gui_manager)
-	_gui_buy_card.reparent(gui_manager)
-	_gui_pause_box.reparent(gui_manager)
 	_gui_small_card.reparent(gui_manager)
 	_gui_tax.reparent(gui_manager)
 	_gui_gold.reparent(gui_manager)
@@ -130,6 +126,10 @@ func _on_enter() -> void:
 		_gui_dialogue.pressed.connect(_on_gui_dialogue_pressed)
 		_gui_dialogue.reparent(gui_manager)
 		get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND
+	_gui_battle.reparent(gui_manager)
+	_gui_defeated.reparent(gui_manager)
+	_gui_buy_card.reparent(gui_manager)
+	_gui_pause_box.reparent(gui_manager)
 	_motion.resize(4)
 	var motion := GUIMotionManager.instance()
 	var target := _button_round.position - _button_round.size
@@ -148,7 +148,7 @@ func _on_enter() -> void:
 		g_GameManager.turn_begin()
 
 
-func _update_ai_progress() -> void:
+func update_ai_progress() -> void:
 	var cur_country = g_GameManager.get_cur_country()
 	if cur_country != null and not cur_country.ai:
 		_gui_ai_progress.set_cur_country_name(cur_country.name)
@@ -558,7 +558,7 @@ func _on_button_round_pressed() -> void:
 		_gui_ai_progress.show()
 		g_GameManager.end_turn()
 		CActionAI.instance().init_ai()
-		_update_ai_progress()
+		update_ai_progress()
 	else:
 		g_GameManager.end_turn()
 		# TODO: send multiplayer action
@@ -597,6 +597,7 @@ func _on_gui_pause_box_options_pressed() -> void:
 	_gui_options = $GUIOptions.create_instance()
 	_gui_options.closed.connect(_on_gui_options_closed)
 	_gui_options.reparent(GUIManager.instance())
+	get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
 
 
 func _on_gui_pause_box_save_pressed() -> void:
@@ -607,6 +608,7 @@ func _on_gui_pause_box_save_pressed() -> void:
 	_gui_save.back_pressed.connect(_on_gui_save_back_pressed)
 	_gui_save.ok_pressed.connect(_on_gui_save_back_pressed)
 	_gui_save.reparent(GUIManager.instance())
+	get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
 
 
 func _on_gui_pause_box_restart_pressed() -> void:
@@ -633,18 +635,21 @@ func _on_gui_buy_card_ok_pressed() -> void:
 		_button_card.hide()
 		_gui_small_card.set_card(_gui_buy_card.get_sel_card())
 		_gui_small_card.show()
+		get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND
 
 
 func _on_gui_options_closed() -> void:
 	_gui_options.queue_free()
 	_gui_options = null
 	_gui_pause_box.show()
+	get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND
 
 
 func _on_gui_save_back_pressed() -> void:
 	_gui_save.queue_free()
 	_gui_save = null
 	_gui_pause_box.show()
+	get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND
 
 
 func _on_gui_attack_box_ok_pressed() -> void:
@@ -708,7 +713,9 @@ func _on_gui_begin_ok_pressed() -> void:
 
 func _on_gui_begin_bank_pressed() -> void:
 	_gui_bank = $GUIBank.create_instance()
+	_gui_bank.back_pressed.connect(_on_gui_bank_back_pressed)
 	_gui_bank.reparent(GUIManager.instance())
+	get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_KEEP
 
 
 func _on_gui_bank_back_pressed() -> void:
@@ -718,6 +725,7 @@ func _on_gui_bank_back_pressed() -> void:
 	_gui_bank.queue_free()
 	_gui_bank = null
 	_gui_begin.reset_data()
+	get_tree().root.content_scale_aspect = Window.CONTENT_SCALE_ASPECT_EXPAND
 
 
 func _on_gui_end_back_pressed() -> void:

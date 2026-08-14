@@ -25,8 +25,8 @@ script = ExtResource("1_6akf1")
 image_normal = null
 image_pressed = null
 horizontal = false
-max_value = 0.0
-scroll_pos = 0.0
+max_value = 100.0
+scroll_pos = 50.0
 grabber_size_ipad = Vector2(0, 0)
 grabber_size = Vector2(0, 0)
 texture_normal = null
@@ -46,7 +46,7 @@ theme_override_icons/grabber = SubResource("PlaceholderTexture2D_gb2si")
 theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_25u8h")
 theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_1ao3m")
 theme_override_styles/slider = SubResource("StyleBoxEmpty_8am1l")
-max_value = 0.0
+value = 50.0
 
 [node name="VSlider" type="VSlider" parent="." index="1" unique_id=779969295]
 layout_mode = 1
@@ -63,10 +63,14 @@ theme_override_icons/grabber = SubResource("PlaceholderTexture2D_vby0o")
 theme_override_icons/grabber_highlight = SubResource("PlaceholderTexture2D_oo5jr")
 theme_override_icons/grabber_disabled = SubResource("PlaceholderTexture2D_khuj1")
 theme_override_styles/slider = SubResource("StyleBoxEmpty_7nsl4")
-max_value = 0.0
+value = 50.0
 
 [node name="Grabber" type="TextureButton" parent="." index="2" unique_id=976103473]
 layout_mode = 0
+offset_left = 240.0
+offset_top = 160.0
+offset_right = 240.0
+offset_bottom = 160.0
 mouse_filter = 2
 toggle_mode = true
 ignore_texture_size = true
