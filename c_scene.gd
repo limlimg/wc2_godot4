@@ -284,9 +284,9 @@ func update(delta: float) -> void:
 				arrow = g_GameRes.arrow_yellow
 			if arrow != null:
 				RenderingServer.canvas_item_clear(area.canvas_item_arrow)
-				var shadow := g_GameRes.arrow_shadow
+				var shadow = g_GameRes.arrow_shadow
 				var shadow_pos := Vector2(-y, y) * 0.5
-				var shadow_size := shadow.get_size() * EC2dAppDelegate.g_content_scale_factor
+				var shadow_size = shadow.get_size() * EC2dAppDelegate.g_content_scale_factor
 				shadow.draw_rect(area.canvas_item_arrow, Rect2(shadow_pos, shadow_size), false)
 				arrow.draw(area.canvas_item_arrow, Vector2(0.0, y))
 	var selected_area := get_selected_area()

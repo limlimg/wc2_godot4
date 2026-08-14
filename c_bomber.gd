@@ -21,7 +21,7 @@ func aircraft_carrier_bomb(attack_area: int, defend_area: int) -> void:
 
 func bomb_area(area_id: int, action_type: int) -> void:
 	_target_area = area_id
-	var target_pos := g_Scene.get_area(area_id).army_pos
+	var target_pos = g_Scene.get_area(area_id).army_pos
 	_target_x = target_pos.x
 	$Plane.position.y = target_pos.y
 	var camera: CCamera = g_Scene.camera
@@ -38,7 +38,7 @@ func bomb_area(area_id: int, action_type: int) -> void:
 
 func airborne(area_id: int) -> void:
 	_target_area = area_id
-	var target_pos :=g_Scene.get_area(area_id).army_pos
+	var target_pos = g_Scene.get_area(area_id).army_pos
 	_target_x = target_pos.x
 	$Plane.position.y = target_pos.y
 	var camera: CCamera = g_Scene.camera

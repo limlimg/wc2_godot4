@@ -129,9 +129,9 @@ func get_num_airport() -> int:
 
 func get_min_dst_to_airport(from_id: int) -> float:
 	var d := INF
-	var from_area := g_Scene.get_area(from_id)
+	var from_area = g_Scene.get_area(from_id)
 	for i in area_list:
-		var to_area := g_Scene.get_area(i)
+		var to_area = g_Scene.get_area(i)
 		if to_area.construction == 3:
 			d = min(d, from_area.army_pos.distance_squared_to(to_area.army_pos))
 	return sqrt(d)
@@ -215,37 +215,37 @@ func update(delta: float) -> void:
 func _do_action() -> void:
 	match _action.type:
 		1:
-			var start_area := g_Scene.get_area(_action.start_area)
+			var start_area = g_Scene.get_area(_action.start_area)
 			var army_index := _action.army_index
 			if army_index > 0:
 				start_area.move_army_to_front(army_index, false)
 				army_index = 0
-			var target_area := g_Scene.get_area(_action.target_area)
+			var target_area = g_Scene.get_area(_action.target_area)
 			start_area.move_army_to(target_area)
 			if target_area != null and target_area.sea != 0:
 				g_SoundRes.play_char_se(SND_EFFECT.SHIP_WAV)
 			else:
 				g_SoundRes.play_char_se(SND_EFFECT.MOVE_WAV)
 		3:
-			var start_area := g_Scene.get_area(_action.start_area)
+			var start_area = g_Scene.get_area(_action.start_area)
 			var army_index := _action.army_index
 			if army_index > 0:
 				start_area.move_army_to_front(army_index, false)
 				army_index = 0
-			var army := start_area.get_army(0)
+			var army = start_area.get_army(0)
 			if army.def.id == 9:
 				g_Scene.aircraft_carrier_bomb(_action.start_area, _action.target_area)
 			else:
-				var target_area := g_Scene.get_area(_action.target_area)
-				var start_x := start_area.army_pos.x
-				var target_x := target_area.army_pos.x
+				var target_area = g_Scene.get_area(_action.target_area)
+				var start_x = start_area.army_pos.x
+				var target_x = target_area.army_pos.x
 				if start_x < target_x:
 					start_area.set_army_dir(0, 1.0)
 					target_area.set_army_dir(0, -1.0)
 				elif start_x > target_x:
 					start_area.set_army_dir(0, -1.0)
 					target_area.set_army_dir(0, 1.0)
-				var animated := g_GameSettings.battle_animation\
+				var animated = g_GameSettings.battle_animation\
 					and ((start_area.country != null and not start_area.country.ai)
 						or (target_area.country != null and not target_area.country.ai))
 				CStateManager.instance().get_state_ptr(EState.GAME).start_battle(_action.start_area, _action.target_area, animated)
