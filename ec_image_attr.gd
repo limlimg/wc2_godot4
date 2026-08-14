@@ -95,7 +95,7 @@ func _validate_property(property: Dictionary) -> void:
 
 
 func _draw(to_canvas_item: RID, pos: Vector2, modulate: Color, transpose: bool) -> void:
-	if texture == null:
+	if texture == null or not region.has_area():
 		return
 	if not Engine.is_editor_hint():
 		texture.complete_loading()
@@ -110,36 +110,45 @@ func _draw(to_canvas_item: RID, pos: Vector2, modulate: Color, transpose: bool) 
 
 
 func _draw_rect(to_canvas_item: RID, rect: Rect2, tile: bool, modulate: Color, transpose: bool) -> void:
-	if texture == null:
+	if texture == null or not region.has_area():
 		return
 	if not Engine.is_editor_hint():
 		texture.complete_loading()
 	if texture.texture == null:
 		return
 	var texture_scale := texture.texture.get_size() / texture.size_override
-	rect.position -= origin
 	var src_rect := region
 	src_rect.position *= texture_scale
 	src_rect.size *= texture_scale
 	if tile:
+		rect.position -= origin
 		src_rect.size *= rect.size / region.size
 		texture.texture.draw_rect_region(to_canvas_item, rect, src_rect, modulate, transpose, false)
 	else:
+		rect.position -= origin * rect.size / region.size
+		if rect.size.x < 0.0:
+			rect.position.x += rect.size.x
+		if rect.size.y < 0.0:
+			rect.position.y += rect.size.y
 		texture.texture.draw_rect_region(to_canvas_item, rect, src_rect, modulate, transpose, true)
 
 
 func _draw_rect_region(to_canvas_item: RID, rect: Rect2, src_rect: Rect2, modulate: Color, transpose: bool, clip_uv: bool) -> void:
-	if texture == null:
+	if texture == null or not region.has_area():
 		return
 	if not Engine.is_editor_hint():
 		texture.complete_loading()
 	if texture.texture == null:
 		return
 	var texture_scale := texture.texture.get_size() / texture.size_override
-	rect.position -= origin
 	src_rect.position += region.position
 	src_rect.position *= texture_scale
 	src_rect.size *= texture_scale
+	rect.position -= origin * rect.size / region.size
+	if rect.size.x < 0.0:
+		rect.position.x += rect.size.x
+	if rect.size.y < 0.0:
+		rect.position.y += rect.size.y
 	texture.texture.draw_rect_region(to_canvas_item, rect, src_rect, modulate, transpose, clip_uv)
 
 
