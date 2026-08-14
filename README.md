@@ -23,7 +23,7 @@ The root folder contains scenes and scripts corresponding to classed in the orig
 ### Current status
 
 [-] Game visual and ui
-[-] Moving army and use cards
+[-] Moving armies and using cards
 [] Fight army (class: CFight)
 [] AI player (class: CActionAI, CActionAssist)
 [] Multiplayer? (class: CPlayerManager, CPlayer, CMatchState, uis)
