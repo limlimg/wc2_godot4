@@ -19,10 +19,10 @@ func _on_gui_button_back_pressed() -> void:
 
 func _on_gui_button_ok_pressed() -> void:
 	var sound := CSoundBox.get_instance()
-	var music = $Music.get_scroll_pos()
+	var music = $Music.scroll_pos
 	sound.set_music_volume(music)
 	g_GameSettings.music_volume = music
-	var se = $SFX.get_scroll_pos()
+	var se = $SFX.scroll_pos
 	sound.set_se_volume(se)
 	g_GameSettings.se_volume = se
 	g_GameSettings.battle_animation = $AnimationCheck.visible
