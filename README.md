@@ -18,4 +18,12 @@ The root folder contains scenes and scripts corresponding to classed in the orig
 
 `resources/assets` folder contains resources and scripts that pack different versions of an asset (e.g. mainbg.webp, mainbg_iPad.webp, mainbg-640h.webp and mainbg-568h.webp) into a single resource that can be used in the editor.
 
-`gui`, `area_render` and `game_res_render` contain scenes and scripts that does not correspond to original classes. Thoses in `gui` are used with GUIElements. Those in `area_render` correspond to CArea::Render* functions. Those in `game_res_render` correspond to CGameRes::Render* functions.
+`gui` contain scenes that are used as components of ui but do not correspond to original classes.
+
+### Current status
+
+[-] Game visual and ui
+[-] Moving army and use cards
+[] Fight army (class: CFight)
+[] AI player (class: CActionAI, CActionAssist)
+[] Multiplayer? (class: CPlayerManager, CPlayer, CMatchState, uis)
