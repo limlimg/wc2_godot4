@@ -24,6 +24,7 @@ offset_right = 82.0
 offset_bottom = 82.0
 
 [node name="Areas" type="Node2D" parent="." unique_id=1826169589]
+y_sort_enabled = true
 
 [node name="SelectedOverlay" type="Node2D" parent="." unique_id=978128942]
 
